@@ -1,0 +1,4663 @@
+/* ==========================================================================
+   Royal Renovators Inc.
+   Shared stylesheet — index.html, service.html
+   ========================================================================== */
+
+/* Fonts ------------------------------------------------------------------ */
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('../fonts/HelveticaNeueLight.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('../fonts/HelveticaNeueMedium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('../fonts/HelveticaNeueBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* Reset ------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body,
+h1, h2, h3, h4, p,
+figure, blockquote,
+ul, ol { margin: 0; padding: 0; }
+
+ul, ol { list-style: none; }
+
+img,
+picture,
+svg,
+video { display: block; max-width: 100%; }
+
+input,
+button,
+textarea,
+select { font: inherit; color: inherit; }
+
+button { background: none; border: 0; cursor: pointer; }
+
+a { color: inherit; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+/* The skewed button faces overhang their boxes by --skew-overhang on each
+   side; at full width that pushes past the viewport and the page scrolls
+   sideways. Clipping at the root contains it — `clip` rather than `hidden`
+   because hidden would make this a scroll container and break the sticky
+   header. It has to sit on html: on body it simply doesn't propagate. */
+html { overflow-x: clip; }
+
+
+/* Tokens ----------------------------------------------------------------- */
+
+:root {
+  /* colors — brand */
+  --white: #ffffff;
+  --black: #000000;
+  --navy: #012C6D;
+  --red: #E8263C;
+
+  /* colors — derived */
+  --navy-deep: #011B44;
+  --red-dark: #C81B2F;
+  --gold: #FFC02E;
+
+  /* colors — semantic */
+  --surface: var(--white);
+  /* Faint tint so alternating bands separate without a rule between them. */
+  --surface-alt: #F4F7FB;
+  --ink: var(--black);
+  --on-dark: var(--white);
+  --on-dark-muted: rgba(255, 255, 255, .85);
+  --hairline-dark: rgba(255, 255, 255, .16);
+  --hairline: rgba(1, 44, 109, .14);
+  --focus-ring: var(--navy);
+  /* Brand red drops below 3:1 on the hero — on-dark stand-in for required marks. */
+  --red-on-dark: #FF7A88;
+  /* Reassurance green — saturated enough to read as green, held light enough
+     to survive the hero glass. */
+  --green-on-dark: #43E88A;
+
+  /* type */
+  --font-sans: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --fw-light: 300;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  --fs-utility: clamp(.75rem, .71rem + .16vw, .8125rem);
+  --fs-body: clamp(1rem, .955rem + .19vw, 1.125rem);
+  --fs-lede: clamp(1.0625rem, .98rem + .36vw, 1.3125rem);
+  --fs-display: clamp(2.375rem, 1.5rem + 3.7vw, 4.375rem);
+
+  --tracking-utility: .18em;
+  --tracking-display: -.03em;
+
+  /* spacing — 4/8 rhythm */
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3rem;
+  --space-9: 4rem;
+
+  /* layout */
+  --container-max: 112.5rem;
+  --edge: 70px;
+  --utility-h: 2.75rem;
+  --nav-h: 6rem;
+  --header-h: calc(var(--utility-h) + var(--nav-h));
+
+  /* radius / shadow */
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 14px;
+  --shadow-menu: 0 18px 44px rgba(1, 27, 68, .18);
+  --shadow-header: 0 2px 14px rgba(1, 27, 68, .12);
+
+  /* motion */
+  --dur-fast: 160ms;
+  --dur-base: 280ms;
+  --ease-out: cubic-bezier(.22, .61, .36, 1);
+
+  /* shape */
+  --skew: -21deg;
+  /* how far a skewed button's corner juts past its box, at button height */
+  --skew-overhang: 9px;
+  --nav-link-pad: .875rem;
+
+  /* layers */
+  --z-media: 0;
+  --z-content: 1;
+  --z-header: 40;
+  --z-drawer: 60;
+}
+
+
+/* Base ------------------------------------------------------------------- */
+
+body {
+  background-color: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  /* Light (300) read as thin at body sizes. This family ships 300/500/700, so
+     Medium is the next step — there is no 400 face to land between them. */
+  font-weight: var(--fw-medium);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 100;
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--navy);
+  color: var(--white);
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-medium);
+  letter-spacing: .04em;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible { transform: translateY(0); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.icon {
+  width: 1rem;
+  flex: none;
+  font-size: .875rem;
+  text-align: center;
+}
+
+/* Fixed width so every label starts on the same vertical line. */
+.menu-icon {
+  width: 1.125rem;
+  flex: none;
+  font-size: .9375rem;
+  text-align: center;
+  color: var(--red);
+}
+
+
+/* Layout ----------------------------------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--edge);
+}
+
+
+/* Buttons ---------------------------------------------------------------- */
+
+/* Skewed slab: the face is a parallelogram, the label counter-skews back to
+   upright, and hover fills the face from the left. */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding-inline: 2rem;
+  border: 1px solid transparent;
+  overflow: hidden;
+  transform: skew(var(--skew));
+  font-size: .875rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: .08em;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  touch-action: manipulation;
+  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+.btn__label {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  transform: skew(calc(-1 * var(--skew)));
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0 100% 0 0;
+  z-index: 0;
+  transition: right var(--dur-base) var(--ease-out);
+}
+
+.btn:hover::before { right: 0; }
+
+.btn--primary {
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.btn--primary::before { background-color: var(--navy); }
+
+/* Inverted: this one rests in what used to be its hover state — filled white
+   with navy text — and the fill retracts on hover instead of sweeping in. */
+.btn--ghost {
+  background-color: rgba(255, 255, 255, .06);
+  border-color: var(--white);
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+
+.btn--ghost::before {
+  right: 0;
+  background-color: var(--white);
+}
+
+.btn--ghost:hover::before { right: 100%; }
+
+.btn--ghost:hover {
+  border-color: rgba(255, 255, 255, .5);
+  color: var(--white);
+}
+
+/* Navy slab that wipes to red — the inverse of --primary, for sections that
+   already carry red elsewhere and don't need a second red button. */
+.btn--navy {
+  background-color: var(--navy);
+  color: var(--white);
+}
+
+.btn--navy::before { background-color: var(--red); }
+
+.btn--outline {
+  background-color: transparent;
+  border-color: rgba(1, 44, 109, .35);
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+
+.btn--outline::before { background-color: var(--navy); }
+
+.btn--outline:hover {
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+
+/* Header ----------------------------------------------------------------- */
+
+/* The info bar scrolls away and the white nav bar pins — no script, no jump. */
+.site-header {
+  position: sticky;
+  top: calc(-1 * var(--utility-h));
+  z-index: var(--z-header);
+}
+
+.site-header.is-scrolled .nav-bar { box-shadow: var(--shadow-header); }
+
+/* Info bar */
+
+.utility-bar {
+  height: var(--utility-h);
+  background-color: var(--navy);
+  color: var(--white);
+  overflow: hidden;
+}
+
+.utility-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  height: var(--utility-h);
+}
+
+.utility-bar__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  min-width: 0;
+  font-size: var(--fs-utility);
+  letter-spacing: .04em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.utility-bar__meta li {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-weight: var(--fw-medium);
+}
+
+.utility-bar__meta .icon { color: rgba(255, 255, 255, .55); }
+
+.utility-bar__hours { color: var(--on-dark-muted); }
+
+.utility-bar__dot {
+  margin-inline: .375rem;
+  color: rgba(255, 255, 255, .45);
+}
+
+.utility-bar__rule {
+  width: 1px;
+  height: .875rem;
+  margin-inline: .5rem;
+  background-color: rgba(255, 255, 255, .3);
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: .125rem;
+  flex: none;
+}
+
+.socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, .82);
+  text-decoration: none;
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.socials a:hover {
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.socials i { font-size: .9375rem; }
+
+/* Nav bar */
+
+/* Positioning context for the full-bleed mega panels. */
+.nav-bar {
+  position: relative;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.nav-bar__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  height: var(--nav-h);
+}
+
+.brand {
+  display: block;
+  flex: none;
+  line-height: 0;
+}
+
+.brand__mark {
+  width: auto;
+  height: 4.75rem;
+}
+
+/* Primary navigation */
+
+/* Auto margins either side split the leftover row space evenly, so the menu
+   sits with equal whitespace to the logo and to the call button. */
+.primary-nav {
+  display: flex;
+  margin-inline: auto;
+}
+
+.primary-nav__list {
+  display: flex;
+  align-items: center;
+  gap: .375rem;
+}
+
+.primary-nav__item { position: relative; }
+
+/* Only the two full-bleed panels go static, so their panel anchors to .nav-bar
+   and can span it. Everything else stays anchored to its own nav item. */
+.primary-nav__item--full { position: static; }
+
+.primary-nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: .3125rem;
+  height: var(--nav-h);
+  padding-inline: var(--nav-link-pad);
+  border-bottom: 3px solid transparent;
+  color: var(--ink);
+  font-size: .9375rem;
+  font-weight: var(--fw-medium);
+  letter-spacing: .01em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+.primary-nav__link:hover { color: var(--red); }
+
+.primary-nav__chevron {
+  flex: none;
+  font-size: .6875rem;
+  color: var(--red);
+}
+
+.primary-nav__link[aria-expanded="true"] {
+  border-bottom-color: var(--red);
+  color: var(--red);
+}
+
+.primary-nav__link[aria-expanded="true"] .primary-nav__chevron { color: var(--red); }
+
+.primary-nav__link[aria-expanded="true"] .primary-nav__chevron { transform: rotate(180deg); }
+
+/* Mega menus */
+
+.mega {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 19rem;
+  padding: var(--space-5);
+  background-color: var(--white);
+  border: 1px solid var(--hairline);
+  border-top: 0;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  box-shadow: var(--shadow-menu);
+  color: var(--navy);
+}
+
+/* Single column dropping straight below the Services button. */
+.mega--services { width: 15.5rem; }
+
+/* Full-bleed panel spanning the nav bar. Nothing is hidden behind a hover, so
+   there is no diagonal travel to a sub-pane and no touch dead-end. */
+.mega--full {
+  left: 0;
+  right: 0;
+  width: auto;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid var(--hairline);
+  border-radius: 0;
+}
+
+.mega__inner {
+  display: grid;
+  gap: var(--space-6);
+  padding-block: var(--space-7) var(--space-5);
+}
+
+.mega__cols {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+
+.mega__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--hairline);
+  font-size: .9375rem;
+  color: rgba(1, 44, 109, .72);
+}
+
+.mega__foot-cta {
+  min-height: 2.875rem;
+  padding-inline: 1.5rem;
+  font-size: .875rem;
+}
+
+.mega__foot-cta .btn__label { gap: .5rem; }
+
+/* Fills the fourth column on the Areas panel, where a list would be padding. */
+.mega__card {
+  padding: var(--space-5);
+  background-color: var(--navy);
+  border-radius: var(--radius-md);
+  color: var(--white);
+}
+
+.mega__card-title {
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.3;
+}
+
+.mega__card-text {
+  margin-top: .5rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, .82);
+}
+
+.mega__card-cta {
+  min-height: 2.625rem;
+  margin-top: var(--space-4);
+  padding-inline: 1.25rem;
+  font-size: .875rem;
+}
+
+.mega__grid { display: grid; gap: var(--space-4) var(--space-6); }
+.mega__grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.mega__heading {
+  margin-bottom: .625rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid rgba(1, 44, 109, .14);
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-medium);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(1, 44, 109, .6);
+}
+
+.mega__list { display: grid; gap: .125rem; }
+
+.mega__list a {
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+  padding: .5rem .625rem;
+  margin-inline: -.625rem;
+  border-radius: var(--radius-sm);
+  font-size: .9375rem;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--ink);
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+/* Hover is carried by the background tint, so the label stays black rather
+   than shifting colour under the cursor. */
+.mega__list a:hover { background-color: rgba(1, 44, 109, .06); }
+
+.mega__link--urgent {
+  color: var(--red);
+  font-weight: var(--fw-medium);
+}
+
+.mega__link--urgent:hover { background-color: rgba(232, 38, 60, .08); }
+
+/* Nav actions */
+
+.nav-bar__actions {
+  display: flex;
+  align-items: center;
+  flex: none;
+  gap: var(--space-5);
+}
+
+.call-cta {
+  min-height: 2.875rem;
+  padding-inline: 1.375rem;
+  font-size: .9375rem;
+  letter-spacing: .04em;
+  /* The skew throws the top-right corner past the box; pull it back to the edge. */
+  margin-right: var(--skew-overhang);
+}
+
+.call-cta .btn__label { gap: .5rem; }
+
+.call-cta__icon {
+  flex: none;
+  font-size: .9375rem;
+}
+
+.call-cta__number { font-variant-numeric: tabular-nums; }
+
+.nav-toggle {
+  display: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  color: var(--navy);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.nav-toggle:hover { background-color: rgba(1, 44, 109, .08); }
+
+.nav-toggle i { font-size: 1.25rem; }
+
+/* Mobile drawer */
+
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-drawer);
+  background-color: rgba(1, 27, 68, .55);
+}
+
+.mobile-nav[hidden] { display: none; }
+
+.mobile-nav__panel {
+  display: flex;
+  flex-direction: column;
+  width: min(23rem, 86%);
+  height: 100%;
+  margin-left: auto;
+  background-color: var(--white);
+  color: var(--navy);
+}
+
+.mobile-nav__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex: none;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid rgba(1, 44, 109, .12);
+}
+
+.brand--static {
+  padding: 0;
+  background-color: transparent;
+}
+
+.brand--static .brand__mark { height: 2.5rem; }
+
+.mobile-nav__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: none;
+  border-radius: var(--radius-md);
+  color: var(--navy);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.mobile-nav__close:hover { background-color: rgba(1, 44, 109, .08); }
+.mobile-nav__close i { font-size: 1.25rem; }
+
+.mobile-nav__body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-2) var(--space-4);
+}
+
+.mobile-nav__group,
+.mobile-nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: 3.25rem;
+  padding-block: .5rem;
+  border-bottom: 1px solid rgba(1, 44, 109, .1);
+  font-size: 1.0625rem;
+  font-weight: var(--fw-medium);
+  text-align: left;
+  text-decoration: none;
+  color: var(--navy);
+}
+
+.mobile-nav__chevron {
+  flex: none;
+  font-size: .8125rem;
+  color: rgba(1, 44, 109, .55);
+}
+
+.mobile-nav__group[aria-expanded="true"] .mobile-nav__chevron { transform: rotate(180deg); }
+
+.mobile-nav__sub {
+  display: grid;
+  gap: .125rem;
+  padding: .625rem 0 .875rem;
+}
+
+.mobile-nav__sub[hidden] { display: none; }
+
+.mobile-nav__sub a {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  min-height: 2.75rem;
+  padding: .625rem .75rem;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  text-decoration: none;
+  color: rgba(1, 44, 109, .82);
+}
+
+.mobile-nav__sub a:hover {
+  background-color: rgba(1, 44, 109, .06);
+  color: var(--navy);
+}
+
+.mobile-nav__foot {
+  display: grid;
+  gap: var(--space-2);
+  flex: none;
+  padding: var(--space-4);
+  padding-bottom: max(var(--space-4), env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(1, 44, 109, .12);
+}
+
+.mobile-nav__note {
+  margin-top: .25rem;
+  font-size: var(--fs-utility);
+  letter-spacing: .06em;
+  text-align: center;
+  color: rgba(1, 44, 109, .65);
+}
+
+body.is-locked { overflow: hidden; }
+
+
+/* Sections --------------------------------------------------------------- */
+
+/* Hero */
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: calc(100vh - var(--header-h));
+  min-height: calc(100svh - var(--header-h));
+  background-color: var(--navy-deep);
+  color: var(--on-dark);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero :focus-visible { outline-color: var(--white); }
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-media);
+}
+
+.hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  /* Two layers. The horizontal one does the real work: it plants a solid bed
+     under the text column and clears off toward the right, so the copy reads
+     without flattening the whole frame. The vertical one only anchors the top
+     and bottom edges. Text sits over roughly .75 alpha; the right edge drops to
+     almost nothing so the footage runs clean behind the form, which carries its
+     own tint and doesn't need the scrim's help. */
+  background:
+    linear-gradient(to right,
+      rgba(1, 27, 68, .84) 0%,
+      rgba(1, 27, 68, .62) 32%,
+      rgba(1, 27, 68, .2) 62%,
+      rgba(1, 27, 68, .06) 100%),
+    linear-gradient(to top,
+      rgba(1, 27, 68, .5) 0%,
+      rgba(1, 44, 109, .26) 50%,
+      rgba(1, 27, 68, .44) 100%);
+}
+
+/* Pitch on the left, capture form on the right. The form track is capped so it
+   stays a card rather than stretching into a second column of text. */
+.hero__inner {
+  position: relative;
+  z-index: var(--z-content);
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
+  align-items: center;
+  gap: var(--space-8) var(--space-9);
+  padding-block: var(--space-8);
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.hero__aside {
+  justify-self: end;
+  width: 100%;
+  max-width: 26rem;
+}
+
+/* Sized so "Queens Roofing Contractor" holds one line all the way down to the
+   point the hero stacks — the measure cap is deliberately generous because the
+   line break is controlled by the type size here, not by max-width. */
+.hero__title {
+  max-width: min(28ch, 100%);
+  font-size: clamp(2.25rem, -1.125rem + 5vw, 4.25rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-display);
+  line-height: 1.08;
+  text-transform: capitalize;
+  text-wrap: balance;
+}
+
+/* Second line of the lockup: same weight, dropped to roughly 40% of the first
+   line's size so the hierarchy comes from scale rather than from weight. */
+.hero__title-sub {
+  display: block;
+  margin-top: .6875rem;
+  font-size: clamp(1.0625rem, .82rem + .55vw, 1.4375rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.005em;
+  line-height: 1.25;
+  color: rgba(255, 255, 255, .92);
+  text-wrap: pretty;
+}
+
+.hero__lede {
+  max-width: min(62ch, 100%);
+  margin-top: var(--space-5);
+  /* Flat 20px rather than the --fs-lede clamp — fixed so the measure below
+     stays predictable at this length. */
+  font-size: 1.25rem;
+  line-height: 1.55;
+  color: var(--on-dark-muted);
+  text-wrap: pretty;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-7);
+}
+
+/* Proof line under the CTAs — three short claims, separated by hairlines. */
+.hero__proof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem var(--space-5);
+  margin-top: var(--space-6);
+  font-size: clamp(.8125rem, .755rem + .24vw, .9375rem);
+  letter-spacing: .03em;
+  color: var(--on-dark-muted);
+}
+
+.hero__proof li {
+  display: flex;
+  align-items: center;
+  gap: .4375rem;
+}
+
+.hero__proof li + li::before {
+  content: '';
+  width: 1px;
+  height: .875rem;
+  margin-right: calc(var(--space-5) - .4375rem);
+  background-color: rgba(255, 255, 255, .28);
+}
+
+.hero__proof strong {
+  font-weight: var(--fw-bold);
+  color: var(--white);
+}
+
+.stars {
+  display: inline-flex;
+  gap: .0625rem;
+  color: var(--gold);
+  font-size: .8125rem;
+}
+
+
+/* Service marquee -------------------------------------------------------- */
+
+.marquee {
+  overflow: hidden;
+  background-color: var(--navy);
+  color: var(--white);
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+}
+
+/* Three identical groups sit in the track, so shifting it by exactly one
+   third lands the second group where the first began — no visible seam. */
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 45s linear infinite;
+}
+
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track { animation-play-state: paused; }
+
+.marquee__group {
+  display: flex;
+  align-items: center;
+  flex: none;
+  padding-block: .9375rem;
+}
+
+.marquee__group li {
+  display: flex;
+  align-items: center;
+  font-size: .875rem;
+  font-weight: var(--fw-medium);
+  letter-spacing: .14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Brand diamond between entries — a square held on its corner. Equal margins
+   either side keep the gap symmetric, including across the group seam. */
+.marquee__group li::after {
+  content: '';
+  flex: none;
+  width: .375rem;
+  height: .375rem;
+  margin-inline: var(--space-6);
+  background-color: var(--red);
+  transform: rotate(45deg);
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.3333%); }
+}
+
+
+/* Estimate form ---------------------------------------------------------- */
+
+/* Frosted safety-glass treatment: the soft white reflection makes the pane
+   legible as glass while the restrained navy base keeps every field readable
+   over moving roof footage. */
+.estimate-form {
+  padding: clamp(1.25rem, 1.05rem + .7vw, 1.625rem);
+  background:
+    linear-gradient(145deg,
+      rgba(255, 255, 255, .2) 0%,
+      rgba(255, 255, 255, .08) 42%,
+      rgba(1, 27, 68, .2) 100%),
+    rgba(4, 19, 39, .38);
+  border: 1px solid rgba(255, 255, 255, .44);
+  border-radius: var(--radius-lg);
+  -webkit-backdrop-filter: blur(28px) saturate(112%);
+  backdrop-filter: blur(28px) saturate(112%);
+  color: var(--white);
+}
+
+/* No blur support — nothing softens the footage, so the base carries more of
+   the load or the labels sit straight on moving detail. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .estimate-form { background: rgba(4, 19, 39, .9); }
+}
+
+.estimate-form__head {
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+}
+
+.estimate-form__title {
+  font-size: clamp(1.125rem, 1.05rem + .26vw, 1.3125rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.25;
+  color: var(--white);
+}
+
+.estimate-form__intro {
+  margin-top: .3125rem;
+  font-size: .875rem;
+  line-height: 1.45;
+  color: var(--on-dark-muted);
+}
+
+.estimate-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.field {
+  display: grid;
+  gap: .3125rem;
+  margin: 0;
+  min-width: 0;
+}
+
+.field--full { grid-column: 1 / -1; }
+
+.field__label {
+  font-size: .8125rem;
+  font-weight: var(--fw-medium);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .94);
+}
+
+.field__req { color: var(--red); }
+
+.field__input {
+  width: 100%;
+  min-height: 2.625rem;
+  padding: .5rem .75rem;
+  background-color: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .32);
+  border-radius: var(--radius-md);
+  color: var(--white);
+  /* 1rem flat, not --fs-body — anything under 16px makes iOS zoom on focus. */
+  font-size: 1rem;
+  line-height: 1.35;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+/* Deliberately small — the visible label carries the field, the placeholder is
+   only an example. Set on the placeholder alone so the typed value stays 16px
+   and iOS doesn't zoom the page on focus. */
+.field__input::placeholder {
+  font-size: .8125rem;
+  letter-spacing: .01em;
+  color: rgba(255, 255, 255, .58);
+  opacity: 1;
+}
+
+.field__input:hover { border-color: rgba(255, 255, 255, .46); }
+
+.field__input:focus {
+  background-color: rgba(255, 255, 255, .2);
+  border-color: rgba(255, 255, 255, .68);
+}
+
+/* Only after the field has been left in a bad state — not while typing. */
+.field__input:user-invalid {
+  border-color: var(--red-on-dark);
+  background-color: rgba(255, 122, 136, .14);
+}
+
+/* Chrome paints autofilled fields a solid yellow-white, which shatters the glass. */
+.field__input:-webkit-autofill,
+.field__input:-webkit-autofill:hover,
+.field__input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--white);
+  -webkit-box-shadow: 0 0 0 100vmax rgba(24, 24, 26, .92) inset;
+  caret-color: var(--white);
+}
+
+.field__input--area {
+  min-height: 4.25rem;
+  resize: vertical;
+}
+
+/* Square face here — a skewed slab beside four rectangular inputs reads as a
+   mistake, and at full width its corners would hang past the card. */
+.estimate-form__submit {
+  width: 100%;
+  min-height: 2.875rem;
+  margin-top: var(--space-4);
+  border-radius: var(--radius-md);
+  transform: none;
+}
+
+.estimate-form__submit .btn__label { transform: none; }
+
+.estimate-form__submit[disabled] {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.estimate-form__submit[disabled]::before { right: 100%; }
+
+.estimate-form__status:empty { display: none; }
+
+.estimate-form__status {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  margin-top: var(--space-3);
+  padding: .625rem .75rem;
+  background-color: rgba(255, 255, 255, .14);
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius-md);
+  font-size: .875rem;
+  line-height: 1.45;
+  color: var(--white);
+}
+
+/* Inline flow rather than a flex row: the lock sits in the text stream, so the
+   icon and the copy centre as one block and stay centred if the line wraps. */
+.estimate-form__legal {
+  display: block;
+  margin-top: var(--space-3);
+  font-size: .8125rem;
+  line-height: 1.45;
+  text-align: center;
+  text-wrap: pretty;
+  color: var(--green-on-dark);
+}
+
+.estimate-form__legal i {
+  margin-right: .4375rem;
+  font-size: .75rem;
+}
+
+
+/* Section primitives ----------------------------------------------------- */
+
+/* Shared by every band below the hero, so the page keeps one vertical rhythm
+   and one heading scale rather than each section inventing its own. */
+.section { padding-block: clamp(3rem, 2.3rem + 2.2vw, 5rem); }
+
+/* Where two bands of the same tone meet, the two full paddings stack into a
+   gap that reads as a hole in the page — the second one gives up half. */
+.areas + .reviews,
+.faqs + .contact,
+.about + .gaf { padding-top: clamp(1rem, .6rem + 1.2vw, 2rem); }
+
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--tracking-utility);
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 1.75rem;
+  height: 2px;
+  background-color: var(--red);
+}
+
+.section-title {
+  /* Wide enough that the heading isn't stacking into a narrow column while the
+     body text beside it runs twice as wide. */
+  max-width: 26ch;
+  margin-top: var(--space-4);
+  font-size: clamp(1.75rem, 1.15rem + 1.9vw, 2.75rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.02em;
+  line-height: 1.22;
+  color: var(--navy);
+  text-wrap: balance;
+}
+
+/* Carries the second half of a heading in brand red. */
+.accent { color: var(--red); }
+
+.section-lede {
+  max-width: 62ch;
+  margin-top: var(--space-5);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: rgba(1, 44, 109, .82);
+  text-wrap: pretty;
+}
+
+
+/* About ------------------------------------------------------------------ */
+
+/* Tops align — centring the two columns left the frame starting well below the
+   eyebrow, which was what read as crooked. */
+.about__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  align-items: start;
+  gap: clamp(2.5rem, 1.2rem + 3.4vw, 4.5rem);
+}
+
+/* Two frames overlapping on the diagonal, with the seal pinned at the join.
+   The padding-bottom reserves the run-off the lower frame needs, so the
+   overlap never collides with whatever section follows. */
+.about__media {
+  position: relative;
+  padding-bottom: 17%;
+}
+
+/* Seal */
+
+/* Sits on the join, where the lower frame's left edge crosses the upper
+   frame's bottom — it clips a corner of each rather than landing in the middle
+   of a photograph. */
+.seal {
+  position: absolute;
+  left: 38%;
+  top: 80%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: clamp(6.25rem, 4.6rem + 4vw, 8.75rem);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background-color: var(--surface);
+  border-radius: 50%;
+}
+
+.seal__ring,
+.seal__core { grid-area: 1 / 1; }
+
+/* The ring turns; the red core stays put. Slow enough to read the wording as
+   it passes. Letter-spacing is left to textLength, which sets it to whatever
+   closes the circle exactly. */
+.seal__ring {
+  width: 100%;
+  height: 100%;
+  animation: seal-spin 26s linear infinite;
+  fill: var(--navy);
+  font-size: 8.6px;
+  font-weight: var(--fw-bold);
+}
+
+.seal:hover .seal__ring { animation-play-state: paused; }
+
+@keyframes seal-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.seal__core {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 47%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: 1.125rem;
+}
+
+/* Skeleton for the photograph. Deliberately static — no shimmer — and hatched
+   at the brand's skew angle so it reads as a reserved slot, not a broken image.
+   Swap the inner note for an <img> and drop the background when the real
+   photograph lands; the aspect-ratio already holds the space, so nothing
+   shifts on the page when it does. */
+.media-frame {
+  position: relative;
+  border-radius: var(--radius-xl);
+  background-color: #EDF1F7;
+  background-image: repeating-linear-gradient(
+    -21deg,
+    rgba(1, 44, 109, .05) 0 10px,
+    transparent 10px 24px);
+  overflow: hidden;
+}
+
+.media-frame__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media-frame__note {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .625rem;
+  color: rgba(1, 44, 109, .42);
+}
+
+.media-frame__note i { font-size: 1.75rem; }
+
+.media-frame__note span {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-medium);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+/* Modifiers sit after the base rule on purpose — `.media-frame` sets
+   position: relative at the same specificity, so declaring these earlier would
+   let the base win and the overlap would collapse into a stack. */
+.media-frame--lead {
+  width: 76%;
+  aspect-ratio: 4 / 3.4;
+}
+
+/* The white ring is what separates the two frames where they cross — without
+   it the photographs will read as one shape once they're dropped in. */
+.media-frame--inset {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 62%;
+  aspect-ratio: 4 / 3.4;
+  border: 7px solid var(--surface);
+}
+
+/* Body copy in this section reads black rather than tinted navy — the navy is
+   left to carry the headings and the tick list. */
+.about .section-lede,
+.about__text { color: var(--ink); }
+
+.about__text {
+  max-width: 62ch;
+  margin-top: var(--space-4);
+  font-size: 1rem;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+/* Two columns of short claims — scannable in one pass, which a single stacked
+   list of full sentences is not. */
+.about__points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4) var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.about__points li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: .75rem;
+  font-size: 1rem;
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+  color: var(--navy);
+}
+
+/* Filled disc, not a bare glyph — keeps the text edge straight if a claim
+   wraps, and reads at a glance. */
+.about__points i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 999px;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: .625rem;
+  /* The icon font carries its own leading, which pushes the glyph off the
+     disc's centre — collapsing it lets flex centring actually land. */
+  line-height: 1;
+}
+
+.about__points i::before {
+  display: block;
+  line-height: 1;
+}
+
+.about__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-7);
+}
+
+
+/* GAF certification ------------------------------------------------------ */
+
+/* Follows About on the same white. Rather than change the background — which
+   would then collide with the tinted Services band underneath — the content
+   sits inside a bordered panel and the panel edge does the separating. */
+.gaf__panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(2rem, 1rem + 2.6vw, 3.5rem);
+  padding: clamp(1.75rem, 1.1rem + 2vw, 3rem);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  background-color: var(--surface);
+}
+
+/* Released from the shared 26ch measure — it has a full column here and the
+   client's wording is long enough that 26ch stacks it into five lines. */
+.gaf__title {
+  max-width: 30ch;
+  text-wrap: pretty;
+}
+
+.gaf__text {
+  max-width: 68ch;
+  margin-top: var(--space-4);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.gaf__points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--hairline);
+}
+
+.gaf__points li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: .625rem;
+  font-size: .9375rem;
+  font-weight: var(--fw-medium);
+  color: var(--navy);
+}
+
+.gaf__points i {
+  width: 1.125rem;
+  font-size: .9375rem;
+  text-align: center;
+  color: var(--red);
+}
+
+.gaf__actions { margin-top: var(--space-6); }
+
+/* Tinted so the panel reads as two zones without a second border inside it. */
+.gaf__aside {
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-alt);
+}
+
+.gaf__aside-title {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--tracking-utility);
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+/* White plate behind the mark — the supplied logo carries its own white
+   background, and the plate makes that look deliberate rather than like a
+   badly cut-out crop sitting on the tint. */
+.gaf__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  margin-bottom: var(--space-5);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  background-color: var(--white);
+}
+
+.gaf__mark img {
+  width: auto;
+  max-width: 100%;
+  max-height: 4.5rem;
+  object-fit: contain;
+}
+
+.gaf__aside-points {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.gaf__aside-points li {
+  font-size: .9375rem;
+  line-height: 1.6;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.gaf__aside-points strong {
+  display: block;
+  font-weight: var(--fw-bold);
+  color: var(--navy);
+}
+
+.gaf__facts {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--hairline);
+}
+
+.gaf__fact {
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--space-4);
+}
+
+.gaf__fact dt {
+  font-size: .8125rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: rgba(1, 44, 109, .68);
+}
+
+.gaf__fact dd {
+  font-size: .9375rem;
+  font-weight: var(--fw-medium);
+  text-align: right;
+  color: var(--navy);
+}
+
+.gaf__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.gaf__card {
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  background-color: var(--surface);
+}
+
+.gaf__card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: var(--space-2);
+  border-radius: 50%;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: 1.0625rem;
+}
+
+.gaf__card-title {
+  font-size: 1.125rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.3;
+  color: var(--navy);
+  text-wrap: pretty;
+}
+
+.gaf__card-text {
+  font-size: .9375rem;
+  line-height: 1.65;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+
+/* Services --------------------------------------------------------------- */
+
+.services { background-color: var(--surface-alt); }
+
+/* The services page runs two of these back to back, so the second drops the
+   tint rather than doubling it. */
+.services--alt { background-color: var(--surface); }
+
+
+/* Heading left, supporting line right — keeps the header from running the full
+   width as one long measure. */
+.services .section-title {
+  max-width: 34ch;
+  text-wrap: pretty;
+}
+
+.services__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  align-items: end;
+  gap: var(--space-5) var(--space-9);
+  margin-bottom: var(--space-8);
+}
+
+/* Sits hard against the right edge of the header row. */
+.services__lede {
+  justify-self: end;
+  max-width: 44ch;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+/* Declared after the base so it actually wins — same specificity, later rule. */
+.services__grid--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* The whole card is the hit target — see the stretched link below. */
+.service-card {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.service-card:hover { border-color: var(--navy); }
+
+/* Inset inside the card padding with its own softer radius — a smaller curve
+   than the card's, which is what keeps nested rounded corners looking
+   concentric rather than fighting each other. Holds its aspect ratio, so
+   dropping in a photograph won't reflow the grid. */
+.service-card__media {
+  aspect-ratio: 16 / 10;
+  margin-bottom: var(--space-2);
+  border-radius: var(--radius-lg);
+}
+
+.service-card__title {
+  font-size: clamp(1.3125rem, 1.19rem + .38vw, 1.5rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.25;
+  color: var(--navy);
+}
+
+.service-card__title a { text-decoration: none; }
+
+/* Stretched link: one real link per card, but the whole card is clickable —
+   no nested anchors and nothing extra for a screen reader to wade through. */
+.service-card__title a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+/* Focus lands on the overlay, so the ring frames the card rather than the words. */
+.service-card__title a:focus-visible { outline: none; }
+
+.service-card__title a:focus-visible::after {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.service-card__text {
+  font-size: .9375rem;
+  line-height: 1.6;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.service-card__points {
+  display: grid;
+  gap: .375rem;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--hairline);
+  font-size: .875rem;
+  color: var(--ink);
+}
+
+.service-card__points li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: .5rem;
+}
+
+.service-card__points li::before {
+  content: '';
+  width: .375rem;
+  height: .375rem;
+  margin-top: .5rem;
+  border-radius: 50%;
+  background-color: var(--red);
+}
+
+.service-card__more {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: var(--space-2);
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-medium);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.service-card__more i { font-size: .75rem; }
+
+.services__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-top: var(--space-7);
+  padding: var(--space-5) var(--space-6);
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-left: 4px solid var(--red);
+  border-radius: var(--radius-md);
+}
+
+.services__foot-text {
+  max-width: 62ch;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: rgba(1, 44, 109, .78);
+}
+
+.services__foot-text strong {
+  display: block;
+  margin-bottom: .4375rem;
+  font-size: 1.25rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.3;
+  color: var(--navy);
+}
+
+.services__foot-cta {
+  flex: none;
+  min-height: 3rem;
+  padding-inline: 1.75rem;
+}
+
+
+/* Building types --------------------------------------------------------- */
+
+/* Light band between the tinted Services grid and the dark Why-us band, so the
+   page alternates tone rather than running three light sections together. */
+.buildings { background-color: var(--surface); }
+
+.buildings__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  align-items: end;
+  gap: var(--space-5) var(--space-9);
+  margin-bottom: clamp(2rem, 1.4rem + 1.8vw, 3rem);
+}
+
+/* Released from the shared 26ch measure and set to `pretty` — `balance` evens
+   the lines out, which on this heading pushes "Building Type" onto its own
+   line and leaves the third line nearly empty. */
+.buildings__title {
+  max-width: 24ch;
+  text-wrap: pretty;
+}
+
+/* The lede is already the head row's second column, so it doesn't need the
+   top margin it carries when it follows a heading in normal flow. */
+.buildings__lede { margin-top: 0; }
+
+.buildings__subhead {
+  font-size: clamp(1.375rem, 1.2rem + .55vw, 1.75rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.2;
+  color: var(--navy);
+  margin-bottom: var(--space-5);
+}
+
+/* Two equal panels rather than photographs beside a copy column. The pair are
+   a comparison, so they have to be the same shape and start on the same line —
+   which the staggered image composition made impossible. */
+.buildings__systems {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+/* Flex column rather than grid, purely so the meta row can be pushed to the
+   bottom with margin-top:auto — the two panels hold different amounts of copy
+   and the service-life figures have to line up across them. */
+.buildings__system {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 1.1rem + 1.3vw, 2.25rem);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  background-color: var(--surface-alt);
+}
+
+.buildings__system-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.buildings__system-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  flex: none;
+  border-radius: var(--radius-md);
+  background-color: var(--navy);
+  color: var(--white);
+  font-size: 1.125rem;
+}
+
+.buildings__system-tag {
+  font-size: .75rem;
+  font-weight: var(--fw-medium);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.buildings__system-title {
+  font-size: clamp(1.25rem, 1.14rem + .35vw, 1.5rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.2;
+  color: var(--navy);
+}
+
+.buildings__system-text {
+  font-size: .9375rem;
+  line-height: 1.7;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.buildings__system-text + .buildings__system-text { margin-top: var(--space-4); }
+
+.buildings__specs {
+  display: grid;
+  gap: .5rem;
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--hairline);
+  font-size: .9375rem;
+  color: var(--ink);
+}
+
+.buildings__specs li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: .625rem;
+}
+
+.buildings__specs li::before {
+  content: '\f00c';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: .6875rem;
+  line-height: 1.7;
+  color: var(--red);
+}
+
+.buildings__system-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--hairline);
+}
+
+.buildings__system-meta span {
+  font-size: var(--fs-utility);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: rgba(1, 44, 109, .68);
+}
+
+.buildings__system-meta strong {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  color: var(--navy);
+}
+
+/* Shared note under both panels — it applies to either system, so it sits
+   below the pair rather than being repeated inside each one. */
+.buildings__note {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-5) clamp(2rem, 1.4rem + 1.8vw, 3.5rem);
+  margin-top: var(--space-5);
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--hairline);
+  border-left: 4px solid var(--red);
+  border-radius: var(--radius-md);
+}
+
+.buildings__note-text {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(1, 44, 109, .82);
+  text-wrap: pretty;
+}
+
+.buildings__note-text strong {
+  font-weight: var(--fw-bold);
+  color: var(--navy);
+}
+
+/* Two claims, each with its icon. */
+.buildings__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-6);
+}
+
+.buildings__stat {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.buildings__stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  flex: none;
+  border-radius: 50%;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: 1.125rem;
+}
+
+.buildings__stat-body { display: grid; gap: .1875rem; }
+
+.buildings__stat-figure {
+  font-size: clamp(1.5rem, 1.3rem + .6vw, 1.875rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.02em;
+  line-height: 1;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+
+.buildings__stat-label {
+  font-size: .875rem;
+  line-height: 1.4;
+  color: rgba(1, 44, 109, .78);
+}
+
+.buildings__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin-top: clamp(2.5rem, 1.8rem + 2.2vw, 4rem);
+}
+
+/* Red rule on the leading edge rather than a full border — it ties the cards
+   to the stat discs above without adding a fourth box outline to the page. */
+.buildings__card {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-5) var(--space-5) var(--space-6);
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--red);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-alt);
+}
+
+.buildings__card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: var(--space-2);
+  border-radius: var(--radius-md);
+  background-color: var(--navy);
+  color: var(--white);
+  font-size: 1rem;
+}
+
+.buildings__card-tag {
+  font-size: .75rem;
+  font-weight: var(--fw-medium);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.buildings__card-title {
+  font-size: 1.125rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.28;
+  color: var(--navy);
+  text-wrap: pretty;
+}
+
+.buildings__card-text {
+  margin-top: .25rem;
+  font-size: .9375rem;
+  line-height: 1.6;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.buildings__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-top: var(--space-7);
+  padding: var(--space-5) var(--space-6);
+  background-color: var(--surface-alt);
+  border: 1px solid var(--hairline);
+  border-left: 4px solid var(--red);
+  border-radius: var(--radius-md);
+}
+
+.buildings__foot-text {
+  max-width: 62ch;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: rgba(1, 44, 109, .78);
+}
+
+.buildings__foot-text strong {
+  display: block;
+  margin-bottom: .4375rem;
+  font-size: 1.25rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.3;
+  color: var(--navy);
+}
+
+.buildings__foot-cta {
+  flex: none;
+  min-height: 3rem;
+  padding-inline: 1.75rem;
+}
+
+
+/* Why us ----------------------------------------------------------------- */
+
+/* The page's one dark feature band. Same diagonal gradient and dot field as
+   the closing banner, layered here rather than on a separate element since
+   there is nothing to sit between them. */
+.whyus {
+  background-color: var(--navy-deep);
+  background-image:
+    radial-gradient(rgba(255, 255, 255, .11) 1px, transparent 1px),
+    linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 52%, #0A3A86 100%);
+  background-size: 22px 22px, auto;
+  color: var(--on-dark);
+}
+
+/* Copy takes the larger share here — it carries six reasons, where the old
+   occupant of this band carried two stats. */
+.whyus__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(2rem, 1rem + 2.8vw, 3.5rem);
+}
+
+/* Held below the flatroof band's old 3.125rem: the copy column is narrower now
+   that the media column has been widened, and at the larger size this heading
+   broke to three lines with "Inc." stranded on the last one. */
+.whyus__title {
+  max-width: none;
+  font-size: clamp(1.875rem, 1.35rem + 1.6vw, 2.625rem);
+  color: var(--white);
+  text-wrap: pretty;
+}
+
+/* Brand red is only ~3.2:1 on this navy, which small uppercase text can't
+   carry — the label goes white and the rule keeps the red. */
+.whyus .section-eyebrow { color: rgba(255, 255, 255, .84); }
+
+.whyus__lede {
+  max-width: 68ch;
+  margin-top: var(--space-5);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--on-dark-muted);
+  text-wrap: pretty;
+}
+
+/* Same size and colour as the lede — the two paragraphs read as one block of
+   copy rather than a lede with a footnote under it. */
+.whyus__text {
+  max-width: 68ch;
+  margin-top: var(--space-4);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--on-dark-muted);
+  text-wrap: pretty;
+}
+
+/* Spans both columns of .whyus__inner. Keeping it in the copy column left the
+   media column empty for the whole height of the list — a large dead area of
+   navy on the right. Three across the full width fills the band instead. */
+.whyus__reasons {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+/* Translucent white rather than a solid panel — a solid card on this gradient
+   would punch six flat rectangles through it and lose the band underneath. */
+.whyus__reason {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: var(--radius-lg);
+  background-color: rgba(255, 255, 255, .06);
+}
+
+.whyus__reason-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: none;
+  border-radius: 50%;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: 1.0625rem;
+}
+
+.whyus__reason-title {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.3;
+  color: var(--white);
+  text-wrap: pretty;
+}
+
+.whyus__reason-text {
+  margin-top: .375rem;
+  font-size: .9375rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, .78);
+  text-wrap: pretty;
+}
+
+.whyus__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-7);
+}
+
+/* Tall shot on the left across both rows; a wide shot and the stat tile
+   stacked beside it. */
+.whyus__media {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: var(--space-4);
+}
+
+.whyus__shot { border-radius: var(--radius-xl); }
+
+.whyus__shot--tall {
+  grid-row: 1 / 3;
+  aspect-ratio: 3 / 4.4;
+}
+
+.whyus__media .whyus__shot:not(.whyus__shot--tall) { aspect-ratio: 4 / 3; }
+
+/* Placeholder tuned for dark backgrounds — the light one would read as three
+   bright holes punched in the band. */
+.media-frame--dark {
+  background-color: rgba(255, 255, 255, .06);
+  background-image: repeating-linear-gradient(
+    -21deg,
+    rgba(255, 255, 255, .05) 0 10px,
+    transparent 10px 24px);
+  border: 1px solid rgba(255, 255, 255, .16);
+}
+
+.media-frame--dark .media-frame__note { color: rgba(255, 255, 255, .5); }
+
+.whyus__tile {
+  display: grid;
+  align-content: center;
+  gap: .375rem;
+  padding: var(--space-5);
+  background-color: var(--red);
+  border-radius: var(--radius-xl);
+  color: var(--white);
+}
+
+.whyus__tile-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: var(--space-3);
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, .18);
+  color: var(--white);
+  font-size: 1.0625rem;
+  line-height: 1;
+}
+
+.whyus__tile-figure {
+  font-size: clamp(2.25rem, 1.7rem + 1.7vw, 3.25rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.03em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.whyus__tile-label {
+  font-size: .9375rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.35;
+}
+
+
+/* Exterior --------------------------------------------------------------- */
+
+.exterior { background-color: var(--surface-alt); }
+
+.exterior .section-title {
+  max-width: 34ch;
+  text-wrap: pretty;
+}
+
+.exterior__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  align-items: end;
+  gap: var(--space-5) var(--space-9);
+  margin-bottom: clamp(2rem, 1.4rem + 1.8vw, 3rem);
+}
+
+.exterior__lede { margin-top: 0; }
+
+.exterior__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+/* Photograph runs to the card edge here — unlike the service cards, where it
+   is inset — so the three trades read as features rather than as another row
+   of the grid above. */
+.exterior__card {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  background-color: var(--surface);
+}
+
+.exterior__media {
+  aspect-ratio: 16 / 10;
+  border-radius: 0;
+}
+
+/* Flex column so the bullet lists can be pushed to the bottom — the three
+   descriptions run to different lengths and the lists were starting on three
+   different lines. */
+.exterior__card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+}
+
+.exterior__card-body .exterior__points { margin-top: auto; }
+
+.exterior__card-title {
+  font-size: clamp(1.3125rem, 1.19rem + .38vw, 1.5rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.25;
+  color: var(--navy);
+}
+
+.exterior__card-text {
+  font-size: .9375rem;
+  line-height: 1.65;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.exterior__points {
+  display: grid;
+  gap: .375rem;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--hairline);
+  font-size: .875rem;
+  color: var(--ink);
+}
+
+.exterior__points li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: .5rem;
+}
+
+.exterior__points li::before {
+  content: '';
+  width: .375rem;
+  height: .375rem;
+  margin-top: .5rem;
+  border-radius: 50%;
+  background-color: var(--red);
+}
+
+/* A single inline row of six checks read as a footnote. As a panel with its
+   own heading and a tile grid, the extras read as scope. */
+.exterior__extras {
+  margin-top: var(--space-7);
+  padding: clamp(1.5rem, 1.1rem + 1.3vw, 2.25rem);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  background-color: var(--surface);
+}
+
+.exterior__extras-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding-bottom: var(--space-5);
+  margin-bottom: var(--space-5);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.exterior__extras-title {
+  font-size: clamp(1.25rem, 1.14rem + .35vw, 1.5rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.25;
+  color: var(--navy);
+}
+
+.exterior__extras-text {
+  max-width: 56ch;
+  margin-top: .5rem;
+  font-size: .9375rem;
+  line-height: 1.6;
+  color: rgba(1, 44, 109, .78);
+  text-wrap: pretty;
+}
+
+.exterior__extras-cta {
+  flex: none;
+  min-height: 3rem;
+  padding-inline: 1.75rem;
+}
+
+.exterior__extras-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.exterior__extras-grid li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-alt);
+  font-size: .9375rem;
+  font-weight: var(--fw-medium);
+  color: var(--navy);
+}
+
+.exterior__extras-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: none;
+  border-radius: 50%;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: .875rem;
+}
+
+
+/* Process ---------------------------------------------------------------- */
+
+/* Heading left, the link sitting on the same baseline at the far right. */
+.process__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: var(--space-5) var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+/* `balance` is dropped so the line breaks where the measure runs out rather
+   than being evened out — that is what puts "Final Sweep" alone on line two. */
+.process__title {
+  max-width: 32ch;
+  font-size: clamp(1.875rem, 1.25rem + 2vw, 2.875rem);
+  text-wrap: pretty;
+}
+
+.process__cta {
+  flex: none;
+  min-height: 3rem;
+  padding-inline: 1.75rem;
+}
+
+.process__steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+
+.process__step {
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--hairline);
+}
+
+/* Sits directly under the rule, above the step title. */
+.process__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: rgba(232, 38, 60, .1);
+  color: var(--red);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.process__step-title {
+  font-size: 1.125rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.3;
+  color: var(--navy);
+}
+
+.process__text {
+  margin-top: var(--space-3);
+  font-size: .9375rem;
+  line-height: 1.65;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+
+/* Estimate banner -------------------------------------------------------- */
+
+/* Full-bleed band: spans the viewport, content still sits on the container
+   grid so it lines up with every section above. */
+.cta-band {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--navy-deep);
+  color: var(--on-dark);
+}
+
+/* Photograph slot. Until there is one, a hatch at the brand's -21deg holds the
+   space so the band never reads as an empty colour block. */
+.cta-band__media {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-media);
+  background-color: #0A2352;
+  background-image: repeating-linear-gradient(
+    -21deg,
+    rgba(255, 255, 255, .05) 0 14px,
+    transparent 14px 34px);
+}
+
+.cta-band__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Sits between the photograph and the copy so white text holds up whatever
+   image eventually goes behind it. */
+.cta-band__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-media);
+  background:
+    radial-gradient(120% 100% at 50% 50%, rgba(1, 27, 68, .55) 0%, rgba(1, 27, 68, .88) 100%);
+}
+
+.cta-band__inner {
+  position: relative;
+  z-index: var(--z-content);
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  padding-block: clamp(2.5rem, 1.9rem + 1.9vw, 4rem);
+}
+
+.cta-band__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--tracking-utility);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .82);
+}
+
+.cta-band__eyebrow::before,
+.cta-band__eyebrow::after {
+  content: '';
+  width: 1.75rem;
+  height: 2px;
+  background-color: var(--red);
+}
+
+.cta-band__title {
+  max-width: 22ch;
+  margin-top: var(--space-4);
+  font-size: clamp(2.125rem, 1.35rem + 2.6vw, 4rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.02em;
+  line-height: 1.12;
+  color: var(--white);
+  text-wrap: balance;
+}
+
+.cta-band__text {
+  max-width: 62ch;
+  margin-top: var(--space-5);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--on-dark-muted);
+  text-wrap: pretty;
+}
+
+.cta-band__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-7);
+}
+
+.cta-band__note {
+  margin-top: var(--space-6);
+  font-size: var(--fs-utility);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .62);
+}
+
+
+/* Projects --------------------------------------------------------------- */
+
+/* Centred head, matching the Awards band. */
+.projects__head {
+  max-width: 46rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.projects__head .section-eyebrow { justify-content: center; }
+
+/* A matching rule on the right — the label is centred here, so a single
+   left-hand dash would leave it visually off-axis. */
+.projects__head .section-eyebrow::after {
+  content: '';
+  width: 1.75rem;
+  height: 2px;
+  background-color: var(--red);
+}
+
+.projects__title {
+  max-width: none;
+  margin-inline: auto;
+  text-wrap: balance;
+}
+
+/* Under the tiles, so the section reads photographs-then-more rather than
+   offering the full gallery before anything has been shown. */
+.projects__foot {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-7);
+}
+
+.projects__more {
+  flex: none;
+  min-height: 3rem;
+  padding-inline: 1.75rem;
+}
+
+/* Scrollable rather than wrapping: four tabs that wrap to a second line stop
+   reading as one control. overflow-x on the strip alone, so the page itself
+   never gains a horizontal scrollbar. */
+.projects__tabs {
+  display: flex;
+  justify-content: center;
+  /* `safe` falls back to flex-start once the strip overflows. Plain `center`
+     in a scroll container pushes the first tabs past the scrollable origin,
+     where they can never be reached — which is exactly what happens on a
+     phone. The plain value above is the fallback for anything that does not
+     understand the keyword. */
+  justify-content: safe center;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--hairline);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.projects__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  flex: none;
+  min-height: 2.875rem;
+  padding-inline: var(--space-5);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background-color: var(--surface);
+  font-size: .9375rem;
+  font-weight: var(--fw-medium);
+  line-height: 1;
+  color: var(--navy);
+  white-space: nowrap;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.projects__tab i {
+  font-size: .875rem;
+  color: var(--red);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.projects__tab:hover { border-color: var(--navy); }
+
+/* Selected state carries colour AND the filled shape — aria-selected alone
+   isn't visible, and colour alone isn't enough on its own. */
+.projects__tab.is-active {
+  background-color: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+.projects__tab.is-active i { color: var(--white); }
+
+/* The panel is the tab's own focus target, so it must not draw a ring of its
+   own when it receives focus programmatically after a tab change. */
+.projects__panel:focus { outline: none; }
+
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.projects__item {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  background: none;
+  border: 0;
+  border-radius: 0;
+}
+
+/* The radius lives on the trigger rather than the item, because the item now
+   also holds the caption underneath it. */
+.projects__item .bento__trigger {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.projects__caption {
+  font-size: .875rem;
+  line-height: 1.45;
+  color: rgba(1, 44, 109, .78);
+  text-wrap: pretty;
+}
+
+
+/* Whole tile is the hit target. Without JS it is still a button that does
+   nothing visible, so the images remain plain pictures. */
+.bento__trigger {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  cursor: zoom-in;
+}
+
+/* The scale is clipped by the tile's own overflow, so the photograph grows
+   inside its frame rather than pushing the layout around. */
+.bento__trigger img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.bento__trigger:hover img,
+.bento__trigger:focus-visible img { transform: scale(1.06); }
+
+.bento__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  background-color: rgba(1, 27, 68, .62);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.bento__trigger:hover .bento__overlay,
+.bento__trigger:focus-visible .bento__overlay { opacity: 1; }
+
+.bento__overlay-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.bento__overlay-text {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-bold);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+
+/* Sits in the proof line, so it matches that type rather than looking like a
+   button dropped into a row of claims. */
+.hero__play {
+  display: inline-flex;
+  align-items: center;
+  gap: .625rem;
+  padding-block: .5rem;
+  font-size: inherit;
+  font-weight: var(--fw-bold);
+  letter-spacing: inherit;
+  color: var(--white);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.hero__play-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 999px;
+  background-color: var(--red);
+  color: var(--white);
+  /* Optical centring — a triangle looks off-centre in a circle otherwise. */
+  padding-left: .125rem;
+  font-size: .625rem;
+  line-height: 1;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.hero__play:hover .hero__play-icon { background-color: var(--white); color: var(--red); }
+
+/* Expanding ring so the control reads as playable at a glance. Uses box-shadow
+   rather than a scaled pseudo-element, so nothing reflows as it runs. */
+@keyframes hero-play-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(232, 38, 60, .55); }
+  70% { box-shadow: 0 0 0 .8rem rgba(232, 38, 60, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(232, 38, 60, 0); }
+}
+
+.hero__play-icon { animation: hero-play-pulse 2.4s var(--ease-out) infinite; }
+
+.hero__play:hover .hero__play-icon { animation-play-state: paused; }
+
+
+/* Video player ------------------------------------------------------------ */
+
+.videobox {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+}
+
+.videobox[hidden] { display: none; }
+
+.videobox__scrim {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, .94);
+}
+
+.videobox__panel {
+  position: relative;
+  width: min(100%, 68rem);
+}
+
+.videobox__video {
+  width: 100%;
+  max-height: 82vh;
+  border-radius: var(--radius-md);
+  background-color: #000;
+}
+
+/* Above the frame on wide screens, tucked inside it when there is no room. */
+.videobox__close {
+  position: absolute;
+  top: -3.5rem;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 999px;
+  color: var(--white);
+  font-size: .9375rem;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+.videobox__close:hover {
+  background-color: var(--red);
+  border-color: var(--red);
+}
+
+.videobox :focus-visible { outline-color: var(--white); }
+
+@media (max-width: 44rem) {
+  .videobox__close {
+    top: var(--space-3);
+    right: var(--space-3);
+    background-color: rgba(0, 0, 0, .6);
+  }
+}
+
+
+/* Lightbox --------------------------------------------------------------- */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox[hidden] { display: none; }
+
+.lightbox__scrim {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(1, 12, 30, .95);
+}
+
+.lightbox__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 78rem);
+  height: 100%;
+  padding: var(--space-4) var(--space-5) var(--space-5);
+}
+
+.lightbox__bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex: none;
+}
+
+.lightbox__count {
+  font-size: .9375rem;
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, .7);
+}
+
+.lightbox__tools {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.lightbox__btn,
+.lightbox__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 999px;
+  color: var(--white);
+  font-size: .9375rem;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+.lightbox__btn:hover,
+.lightbox__nav:hover {
+  background-color: var(--red);
+  border-color: var(--red);
+}
+
+.lightbox__btn--close { margin-left: var(--space-3); }
+
+/* min-height: 0 lets the flex child actually shrink, which is what keeps the
+   image inside the viewport instead of pushing the caption off the bottom. */
+.lightbox__swiper {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  margin-block: var(--space-4);
+}
+
+.lightbox__swiper .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox__swiper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+
+/* z-index beats Swiper's own `.swiper { z-index: 1 }` — without it the slide
+   area paints over these and swallows the clicks. */
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  margin-top: -1.375rem;
+  background-color: rgba(255, 255, 255, .08);
+}
+
+.lightbox__nav--prev { left: var(--space-4); }
+.lightbox__nav--next { right: var(--space-4); }
+
+.lightbox__nav.swiper-button-disabled {
+  opacity: .3;
+  cursor: default;
+}
+
+.lightbox__caption {
+  flex: none;
+  font-size: .9375rem;
+  line-height: 1.5;
+  text-align: center;
+  color: rgba(255, 255, 255, .8);
+}
+
+@media (max-width: 44rem) {
+  .lightbox__nav--prev { left: var(--space-2); }
+  .lightbox__nav--next { right: var(--space-2); }
+}
+
+
+/* Awards ----------------------------------------------------------------- */
+
+.awards {
+  padding-block: clamp(2.5rem, 1.9rem + 1.9vw, 4rem);
+  background-color: var(--surface-alt);
+}
+
+.awards__head {
+  max-width: 46rem;
+  margin: 0 auto var(--space-8);
+  text-align: center;
+}
+
+.awards__head .section-eyebrow { justify-content: center; }
+
+/* A matching rule on the right — the label is centred here, so a single
+   left-hand dash would leave it visually off-axis. */
+.awards__head .section-eyebrow::after {
+  content: '';
+  width: 1.75rem;
+  height: 2px;
+  background-color: var(--red);
+}
+
+.awards__head .section-title {
+  max-width: none;
+  margin-inline: auto;
+}
+
+.awards__head .section-lede { margin-inline: auto; }
+
+.awards__grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+/* White tiles behind the badges. The six artworks have different silhouettes
+   and aspect ratios, so a shared frame is what makes them read as a set. */
+.awards__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5) var(--space-4);
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+}
+
+/* Matched on height rather than width — every badge is roughly square, so a
+   common height makes them look the same size even though none of them are. */
+.awards__badge img {
+  width: auto;
+  height: clamp(4.5rem, 3.4rem + 3.2vw, 6.25rem);
+  object-fit: contain;
+}
+
+.awards__accred {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--hairline);
+  text-align: center;
+}
+
+.awards__accred-label {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-medium);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(1, 44, 109, .62);
+}
+
+.awards__logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5) var(--space-7);
+  margin-top: var(--space-5);
+}
+
+/* These four ship with their own backgrounds, so they sit bare on the tint
+   rather than in tiles that would frame a frame. */
+.awards__logos img {
+  width: auto;
+  height: 2.75rem;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+}
+
+
+/* Carousel arrows -------------------------------------------------------- */
+
+/* Shared by the blog and review carousels — one definition rather than two
+   near-identical sets of round buttons. */
+.slider-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.slider-nav__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgba(1, 44, 109, .3);
+  border-radius: 999px;
+  color: var(--navy);
+  font-size: .9375rem;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.slider-nav__btn:hover {
+  background-color: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+/* Swiper adds this class at either end of the run. */
+.slider-nav__btn.swiper-button-disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+.slider-nav__btn.swiper-button-disabled:hover {
+  background-color: transparent;
+  border-color: rgba(1, 44, 109, .3);
+  color: var(--navy);
+}
+
+
+/* Blog carousel ---------------------------------------------------------- */
+
+.blog__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+
+.blog__title { max-width: none; }
+
+.blog__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.blog__all {
+  min-height: 3rem;
+  padding-inline: 1.75rem;
+}
+
+/* Equal-height slides so the cards line up whatever the title wraps to. */
+.blog-swiper .swiper-slide { height: auto; }
+
+.blog-card {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+}
+
+.blog-card__media {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-xl);
+}
+
+/* Pulled up over the photograph and held short of the right edge, so a strip
+   of the image stays visible behind it — the offset is the whole look. */
+.blog-card__body {
+  position: relative;
+  z-index: 1;
+  margin: -3.5rem var(--space-7) 0 0;
+  padding: var(--space-5);
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.blog-card:hover .blog-card__body { border-color: var(--navy); }
+
+.blog-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+  font-size: .875rem;
+  font-weight: var(--fw-bold);
+  /* Neutral grey rather than a navy tint — the byline is metadata, and a blue
+     one competed with the headline underneath it. */
+  color: #6B7280;
+}
+
+.blog-card__meta i {
+  margin-right: .4375rem;
+  color: var(--red);
+}
+
+.blog-card__dot { color: rgba(1, 44, 109, .4); }
+
+/* Clamped so a long headline can't push one card taller than its neighbours. */
+.blog-card__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: var(--space-4);
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.35;
+  color: var(--navy);
+}
+
+.blog-card__excerpt {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: var(--space-3);
+  font-size: .9375rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.blog-card__more {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: var(--space-4);
+  font-size: .9375rem;
+  font-weight: var(--fw-bold);
+  color: var(--navy);
+}
+
+.blog-card__more i {
+  font-size: .8125rem;
+  color: var(--red);
+}
+
+
+/* Areas we serve --------------------------------------------------------- */
+
+.areas { background-color: var(--surface-alt); }
+
+.areas__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2.5rem, 1.4rem + 2.8vw, 4.5rem);
+}
+
+/* Map slot. Swap for an embedded map or a static image of the coverage area —
+   the aspect ratio already holds the space. */
+/* No panel — the transparent artwork sits straight on the section. The ratio
+   matches the file (1536x1024), so  has nothing to letterbox and the
+   map fills the column edge to edge. */
+.areas__map {
+  aspect-ratio: 3 / 2;
+  background: none;
+  border: 0;
+  border-radius: 0;
+}
+
+/* The artwork carries its own alpha channel, so no blend trick is needed —
+   it will sit on a dark background just as well as this one. */
+.areas__map .media-frame__image { object-fit: contain; }
+
+.areas__map .media-frame__note i { font-size: 2rem; }
+
+.areas__title { max-width: 22ch; }
+
+/* Two columns of five. Rows are separated by hairlines rather than boxed, so
+   ten links stay scannable without turning into ten more cards. */
+.areas__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.areas__list a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .75rem;
+  padding-block: .8125rem;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 1rem;
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+  color: var(--navy);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.areas__list a:hover { color: var(--red); }
+
+.areas__list a > i:first-child {
+  font-size: .875rem;
+  color: var(--red);
+}
+
+/* Muted until hover, so ten arrows don't read as ten red marks in a column. */
+.areas__go {
+  font-size: .75rem;
+  color: rgba(1, 44, 109, .3);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.areas__list a:hover .areas__go { color: var(--red); }
+
+/* Inline flow, not flex: as a flex row each text fragment and link became its
+   own item and the sentence broke into columns once the space tightened. */
+.areas__note {
+  margin-top: var(--space-6);
+  font-size: .9375rem;
+  line-height: 1.6;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.areas__note i {
+  margin-right: .625rem;
+  font-size: .8125rem;
+  color: var(--red);
+}
+
+.areas__note a {
+  font-weight: var(--fw-bold);
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* Reviews ---------------------------------------------------------------- */
+
+.reviews { background-color: var(--surface-alt); }
+
+.reviews__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-5) var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+.reviews__title { max-width: none; }
+
+.reviews__aside {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.reviews-swiper .swiper-slide { height: auto; }
+
+/* Quote mark sits behind the text rather than above it, so the card starts on
+   the stars and reads top to bottom without an ornament in the way. */
+.review {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--space-6);
+  overflow: hidden;
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+}
+
+.review__mark {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  font-size: 2.5rem;
+  color: rgba(1, 44, 109, .07);
+}
+
+.review__stars { font-size: .9375rem; }
+
+.review__text {
+  margin-top: var(--space-4);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+/* Pushed to the bottom so the attributions line up across a row of cards
+   whatever length each quote runs to. */
+/* Avatar beside the name rather than above it. */
+.review__by {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: .875rem;
+  margin-top: auto;
+  padding-top: var(--space-5);
+}
+
+.review__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background-color: rgba(1, 44, 109, .08);
+  color: var(--navy);
+  font-size: .9375rem;
+  line-height: 1;
+}
+
+.review__name {
+  display: block;
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+  color: var(--navy);
+}
+
+.review__meta {
+  display: block;
+  margin-top: .125rem;
+  font-size: .875rem;
+  color: #6B7280;
+}
+
+
+/* FAQs ------------------------------------------------------------------- */
+
+.faqs__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  align-items: start;
+  gap: clamp(2.5rem, 1.4rem + 2.8vw, 4.5rem);
+}
+
+.faqs__title { max-width: 18ch; }
+
+/* Held narrow so the intro reads as a column beside the questions rather than
+   running the full width of its half. */
+.faqs__lede { max-width: 44ch; }
+
+.faqs__actions { margin-top: var(--space-6); }
+
+.faq {
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.faq:first-child { border-top: 1px solid var(--hairline); }
+
+.faq__q {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-4);
+  /* Padding rather than height so the whole row is the target. */
+  padding-block: var(--space-3);
+  cursor: pointer;
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.4;
+  color: var(--navy);
+  list-style: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+/* The default disclosure triangle, removed in both engines. */
+.faq__q::-webkit-details-marker { display: none; }
+
+.faq__q:hover { color: var(--red); }
+
+.faq__chevron {
+  flex: none;
+  font-size: .75rem;
+  color: var(--red);
+}
+
+/* Static flip — an indicator of state, not a transition. */
+.faq[open] .faq__chevron { transform: rotate(180deg); }
+
+/* overflow:hidden is what makes the height animation possible — the script
+   animates this wrapper, and the padding lives on the paragraph so it does not
+   fight the measured height. */
+.faq__a {
+  overflow: hidden;
+  font-size: .9375rem;
+  line-height: 1.65;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.faq__a p {
+  padding-top: var(--space-3);
+  padding-right: var(--space-6);
+}
+
+
+/* Contact ---------------------------------------------------------------- */
+
+/* Heading and map share the left column; the form sits beside them starting on
+   the same line, so the two tops line up. */
+.contact__left {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact__head { margin-bottom: var(--space-5); }
+
+.contact__title { max-width: 22ch; }
+
+/* Map and form side by side. align-items defaults to stretch, which is what
+   makes the map match the form's height rather than being set by hand. */
+.contact__inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 1.1rem + 1.4vw, 2.5rem);
+}
+
+/* One row beneath both, above a rule. */
+.contact__details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-7);
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--hairline);
+}
+
+.contact-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-4);
+}
+
+.contact-item__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.contact-item__label {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-medium);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(1, 44, 109, .62);
+}
+
+.contact-item__value {
+  margin-top: .3125rem;
+  font-size: 1.125rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.35;
+  color: var(--navy);
+  overflow-wrap: anywhere;
+}
+
+.contact-item__value a { text-decoration: none; }
+
+.contact-item__value a:hover { color: var(--red); }
+
+.contact-item__note {
+  margin-top: .375rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* Grows to take whatever height the form leaves, so the column bottoms meet. */
+.contact__map {
+  flex: 1;
+  overflow: hidden;
+  background-color: var(--surface-alt);
+  border-radius: var(--radius-xl);
+}
+
+
+
+/* Block display kills the inline gap under the frame; the border sits above
+   it so the seam between card and map reads as one edge. */
+/* Fills the stretched cell, so its height is whatever the form beside it
+   works out to. min-height keeps it usable if the form is ever short. */
+.contact__map-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 17rem;
+  border: 0;
+}
+
+.contact-form {
+  padding: clamp(1.25rem, 1rem + 1vw, 1.875rem);
+  background-color: var(--surface-alt);
+  border-radius: var(--radius-xl);
+}
+
+.contact-form__head {
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.contact-form__title {
+  font-size: 1.25rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.3;
+  color: var(--navy);
+}
+
+.contact-form__intro {
+  margin-top: .3125rem;
+  font-size: .9375rem;
+  color: var(--ink);
+}
+
+.contact-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.contact-form__submit {
+  width: 100%;
+  min-height: 3rem;
+  margin-top: var(--space-5);
+  border-radius: var(--radius-md);
+  transform: none;
+}
+
+.contact-form__submit .btn__label { transform: none; }
+
+/* Light-theme fields. The .field styles are written for the hero's dark glass,
+   so this flips only the colours and leaves the structure alone. */
+.form--light .field__label { color: rgba(1, 44, 109, .82); }
+
+.form--light .field__req { color: var(--red); }
+
+.form--light .field__input {
+  background-color: var(--surface);
+  border-color: rgba(1, 44, 109, .22);
+  color: var(--navy);
+}
+
+.form--light .field__input::placeholder { color: rgba(1, 44, 109, .45); }
+
+.form--light .field__input:hover { border-color: rgba(1, 44, 109, .38); }
+
+.form--light .field__input:focus {
+  background-color: var(--surface);
+  border-color: var(--navy);
+}
+
+.form--light .field__input:user-invalid {
+  border-color: var(--red);
+  background-color: rgba(232, 38, 60, .06);
+}
+
+.form--light .field__input:-webkit-autofill,
+.form--light .field__input:-webkit-autofill:hover,
+.form--light .field__input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--navy);
+  -webkit-box-shadow: 0 0 0 100vmax var(--surface) inset;
+  caret-color: var(--navy);
+}
+
+.form--light .form-status {
+  background-color: var(--surface);
+  border: 1px solid rgba(1, 44, 109, .18);
+  border-left: 3px solid var(--red);
+  color: var(--navy);
+}
+
+.form-status:empty { display: none; }
+
+.form-status {
+  margin-top: var(--space-4);
+  padding: .625rem .75rem;
+  border-radius: var(--radius-md);
+  font-size: .875rem;
+  line-height: 1.45;
+}
+
+
+/* Page hero (inner pages) ------------------------------------------------- */
+
+/* Same gradient and dot field as the closing banner, so inner pages open in
+   the same voice as the home page closes. */
+.page-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--navy-deep);
+  background-image:
+    radial-gradient(rgba(255, 255, 255, .11) 1px, transparent 1px),
+    linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 52%, #0A3A86 100%);
+  background-size: 22px 22px, auto;
+  color: var(--on-dark);
+}
+
+.page-hero__inner {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  padding-block: clamp(2.5rem, 1.9rem + 2.2vw, 4.5rem);
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem .75rem;
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-medium);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .62);
+}
+
+.breadcrumb a {
+  display: inline-block;
+  padding-block: .5rem;
+  text-decoration: none;
+  color: rgba(255, 255, 255, .82);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.breadcrumb a:hover { color: var(--white); }
+
+/* Separator drawn rather than typed, so it never gets read aloud. */
+.breadcrumb li + li::before {
+  content: '';
+  display: inline-block;
+  width: .3125rem;
+  height: .3125rem;
+  margin-right: .75rem;
+  border-radius: 50%;
+  background-color: var(--red);
+  vertical-align: middle;
+}
+
+.page-hero__title {
+  max-width: 24ch;
+  margin-inline: auto;
+  margin-top: var(--space-4);
+  font-size: clamp(2rem, 1.35rem + 2.3vw, 3.375rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.02em;
+  line-height: 1.22;
+  color: var(--white);
+  text-wrap: balance;
+}
+
+.page-hero__lede {
+  max-width: 62ch;
+  margin-inline: auto;
+  margin-top: var(--space-5);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--on-dark-muted);
+  text-wrap: pretty;
+}
+
+.page-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+
+/* Included (services page) ------------------------------------------------ */
+
+.included { background-color: var(--surface-alt); }
+
+/* Split header, matching the two service grids above it. */
+.included__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: end;
+  gap: var(--space-5) var(--space-9);
+  margin-bottom: var(--space-8);
+}
+
+.included__aside { justify-self: end; }
+
+.included__text {
+  max-width: 46ch;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.included__cta {
+  min-height: 3rem;
+  margin-top: var(--space-5);
+  padding-inline: 1.75rem;
+}
+
+/* A single panel split by hairlines. Four separate cards would make this the
+   third card grid on the page; one divided surface reads as one promise. */
+.included__panel {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: hidden;
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+}
+
+.included__panel li {
+  padding: var(--space-6) var(--space-5);
+  border-left: 1px solid var(--hairline);
+}
+
+.included__panel li:first-child { border-left: 0; }
+
+.included__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: var(--space-4);
+  border-radius: 999px;
+  background-color: rgba(232, 38, 60, .1);
+  color: var(--red);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.included__name {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.35;
+  color: var(--navy);
+}
+
+.included__note {
+  margin-top: .4375rem;
+  font-size: .9375rem;
+  line-height: 1.55;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+
+/* Closing banner ---------------------------------------------------------- */
+
+/* Diagonal navy gradient rather than a flat fill, so it reads as its own
+   surface where it meets the footer's solid navy underneath. */
+.cta-final {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-image: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 52%, #0A3A86 100%);
+  color: var(--on-dark);
+}
+
+.cta-final__dots {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-media);
+  background-image: radial-gradient(rgba(255, 255, 255, .11) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.cta-final__inner {
+  position: relative;
+  z-index: var(--z-content);
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  padding-block: clamp(3rem, 2.2rem + 2.6vw, 5rem);
+}
+
+/* Translucent chip — the same frosted treatment as the hero's glass. */
+.cta-final__eyebrow {
+  padding: .5rem 1.125rem;
+  background-color: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 999px;
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-utility);
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.cta-final__title {
+  max-width: 24ch;
+  margin-top: var(--space-5);
+  font-size: clamp(1.875rem, 1.3rem + 2.1vw, 3.125rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.02em;
+  line-height: 1.28;
+  color: var(--white);
+  text-wrap: balance;
+}
+
+.cta-final__text {
+  max-width: 60ch;
+  margin-top: var(--space-5);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--on-dark-muted);
+  text-wrap: pretty;
+}
+
+.cta-final__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-7);
+}
+
+.cta-final__checks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem var(--space-6);
+  margin-top: var(--space-6);
+  font-size: .9375rem;
+  color: rgba(255, 255, 255, .82);
+}
+
+.cta-final__checks li {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.cta-final__checks i {
+  font-size: .75rem;
+  color: var(--red);
+}
+
+/* Corner chips. Absolute on wide screens so they frame the message without
+   pushing it down; they rejoin the flow below 64rem. */
+.cta-final__pills {
+  display: contents;
+}
+
+.cta-final__pill {
+  position: absolute;
+  z-index: var(--z-content);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem 1rem;
+  background-color: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 999px;
+  font-size: .8125rem;
+  font-weight: var(--fw-bold);
+  white-space: nowrap;
+  color: var(--white);
+}
+
+.cta-final__pill i { font-size: .75rem; color: var(--red); }
+
+.cta-final__pill--tl { top: 15%; left: 11%; }
+.cta-final__pill--tr { top: 12%; right: 11%; }
+.cta-final__pill--bl { bottom: 21%; left: 6%; }
+.cta-final__pill--br { bottom: 18%; right: 5%; }
+
+
+/* Footer ----------------------------------------------------------------- */
+
+.footer {
+  background-color: var(--navy-deep);
+  color: var(--on-dark-muted);
+}
+
+/* Brand on the left, then a deliberate gap, then the three link columns
+   grouped tightly together rather than spread across the remaining width. */
+.footer__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) repeat(3, minmax(0, .78fr));
+  justify-content: space-between;
+  column-gap: var(--space-7);
+  row-gap: var(--space-8);
+  padding-block: clamp(3rem, 2.2rem + 2.4vw, 4.5rem);
+}
+
+/* The logo is navy and red on transparent, so it needs a light panel to sit
+   on — it would disappear straight into the band otherwise. */
+/* Panel size is held by trimming the padding as the mark grows, so only the
+   logo gets bigger, not the white block around it. */
+.footer__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  line-height: 0;
+}
+
+.footer__logo img {
+  width: auto;
+  height: 6.25rem;
+}
+
+.footer__about {
+  max-width: 58ch;
+  margin-top: var(--space-5);
+  font-size: .9375rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, .74);
+  text-wrap: pretty;
+}
+
+.footer__socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: var(--space-5);
+}
+
+.footer__socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, .8);
+  font-size: .875rem;
+  text-decoration: none;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.footer__socials a:hover {
+  background-color: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
+
+.footer__heading {
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: .01em;
+  color: var(--white);
+}
+
+.footer__links {
+  display: grid;
+  gap: .125rem;
+  margin-top: var(--space-4);
+}
+
+/* No bullets: eleven red chevrons down a column is more decoration than the
+   list can carry. The hover colour does the work instead. */
+.footer__links a {
+  display: inline-block;
+  padding-block: .5rem;
+  font-size: .9375rem;
+  line-height: 1.4;
+  text-decoration: none;
+  color: rgba(255, 255, 255, .76);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.footer__links a:hover { color: var(--white); }
+
+/* Contact details as a row of their own, above the credentials strip. */
+.footer__contactbar { border-top: 1px solid rgba(255, 255, 255, .12); }
+
+.footer__contactbar-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-6);
+  padding-block: var(--space-6);
+}
+
+.footer__contactbar-list li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-4);
+}
+
+.footer__contactbar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: .875rem;
+  line-height: 1;
+}
+
+.footer__contactbar-label {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-medium);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .58);
+}
+
+.footer__contactbar-value {
+  margin-top: .25rem;
+  font-size: .9375rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.45;
+  color: var(--white);
+  overflow-wrap: anywhere;
+}
+
+.footer__contactbar-value a {
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.footer__contactbar-value a:hover { color: var(--red); }
+
+/* Credentials get their own rule-bounded strip rather than sitting as a
+   bulleted list inside a column — they apply to the whole business. */
+.footer__creds {
+  border-block: 1px solid rgba(255, 255, 255, .12);
+}
+
+.footer__creds-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3) var(--space-7);
+  padding-block: var(--space-4);
+}
+
+.footer__creds-list li {
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+  font-size: .875rem;
+  color: rgba(255, 255, 255, .78);
+}
+
+.footer__creds-list i { font-size: .875rem; color: var(--red); }
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-6);
+  padding-block: var(--space-5);
+}
+
+.footer__copy {
+  font-size: .875rem;
+  color: rgba(255, 255, 255, .6);
+}
+
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-5);
+  margin-inline-start: auto;
+}
+
+.footer__legal a {
+  font-size: .875rem;
+  text-decoration: none;
+  color: rgba(255, 255, 255, .7);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.footer__legal a:hover { color: var(--white); }
+
+.footer__totop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: var(--radius-sm);
+  color: var(--white);
+  font-size: .875rem;
+  text-decoration: none;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+.footer__totop:hover {
+  background-color: var(--red);
+  border-color: var(--red);
+}
+
+.footer :focus-visible { outline-color: var(--white); }
+
+
+/* Responsive ------------------------------------------------------------- */
+
+@media (max-width: 84rem) {
+  .primary-nav { display: none; }
+
+  .nav-toggle { display: inline-flex; }
+
+  /* The menu's auto margins went with it — push the actions over by hand. */
+  .nav-bar__actions { margin-left: auto; }
+}
+
+/* Below this the headline column gets too narrow to hold "Queens Roofing
+   Contractor" on one line, so the form drops underneath instead. */
+@media (max-width: 80rem) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .hero__aside {
+    justify-self: start;
+    max-width: 30rem;
+  }
+
+  /* Stacked, the copy runs the full width, so a left-weighted wash would leave
+     the ends of the lines exposed — go back to an even vertical one. */
+  .hero__scrim {
+    background:
+      linear-gradient(to top,
+        rgba(1, 27, 68, .78) 0%,
+        rgba(1, 27, 68, .6) 50%,
+        rgba(1, 27, 68, .66) 100%);
+  }
+}
+
+/* Tablet — 40px edge */
+@media (max-width: 64rem) {
+  :root { --edge: 40px; }
+
+  /* Photograph over copy — the frame keeps its shape, the text gets the width. */
+  .about__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(3rem, 2rem + 3vw, 4rem);
+  }
+
+  .about__media { max-width: 36rem; }
+
+  .section-lede,
+  .about__text { max-width: none; }
+
+  /* Three cards get too narrow to hold a readable line here. */
+  .services__grid,
+  .services__grid--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .included__head {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .included__aside { justify-self: start; }
+
+  .included__panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .included__panel li:nth-child(odd) { border-left: 0; }
+
+  .included__panel li:nth-child(n + 3) { border-top: 1px solid var(--hairline); }
+
+  .services__head {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .services__lede {
+    justify-self: start;
+    max-width: 62ch;
+  }
+
+  .process__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .process__head {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .awards__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  /* Map above, list below. */
+  .areas__inner {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .areas__map { max-width: 34rem; }
+
+  .faqs__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+
+  .faqs__title { max-width: 24ch; }
+
+  .contact__inner { grid-template-columns: minmax(0, 1fr); }
+
+  .contact__details { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .cta-final__pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+
+  .cta-final__pill {
+    position: static;
+    inset: auto;
+  }
+
+  /* Brand across the top, the four remaining columns in a row beneath. */
+  .footer__top { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+  .footer__brand { grid-column: 1 / -1; }
+
+  .footer__contactbar-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .projects__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  /* Copy above, image composition below. */
+  .whyus__inner {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .whyus__media { max-width: 36rem; }
+
+  /* Same move for the two heads that pair a title with a lede beside it. */
+  .buildings__head,
+  .exterior__head {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .buildings__title,
+  .buildings__lede,
+  .exterior__lede,
+  .services .section-title,
+  .exterior .section-title,
+  .projects__title { max-width: none; }
+
+  .buildings__systems { grid-template-columns: minmax(0, 1fr); }
+
+  .buildings__note { grid-template-columns: minmax(0, 1fr); }
+
+  .buildings__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .exterior__extras-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .exterior__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  /* Panel is already two columns wide; the aside stops being a sidebar. */
+  .gaf__panel {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .gaf__title { max-width: none; }
+
+  .gaf__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Two columns of claims get too tight to hold a line each. */
+@media (max-width: 34rem) {
+  .about__points { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 44rem) {
+  .services__grid,
+  .services__grid--four { grid-template-columns: minmax(0, 1fr); }
+
+  .included__panel { grid-template-columns: minmax(0, 1fr); }
+
+  .included__panel li { border-left: 0; }
+
+  .included__panel li + li { border-top: 1px solid var(--hairline); }
+
+  .buildings__stats { grid-template-columns: minmax(0, 1fr); }
+
+  .whyus__reasons { grid-template-columns: minmax(0, 1fr); }
+
+  .gaf__points { grid-template-columns: minmax(0, 1fr); }
+
+  .gaf__cards { grid-template-columns: minmax(0, 1fr); }
+
+  .buildings__grid { grid-template-columns: minmax(0, 1fr); }
+
+  .exterior__grid { grid-template-columns: minmax(0, 1fr); }
+
+  .process__steps { grid-template-columns: minmax(0, 1fr); }
+
+  .awards__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .areas__list { grid-template-columns: minmax(0, 1fr); }
+
+  .contact-form__grid { grid-template-columns: minmax(0, 1fr); }
+
+  .contact__details { grid-template-columns: minmax(0, 1fr); }
+
+  .footer__top { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .footer__contactbar-list { grid-template-columns: minmax(0, 1fr); }
+
+  .footer__bottom { justify-content: flex-start; }
+
+  .footer__legal { margin-inline-start: 0; }
+
+  .services__foot,
+  .buildings__foot { justify-content: flex-start; }
+
+  .services__foot-cta,
+  .buildings__foot-cta,
+  .exterior__extras-cta { width: 100%; }
+
+  .exterior__extras-grid { grid-template-columns: minmax(0, 1fr); }
+
+  .buildings__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Two tiles per row survives down to the phone — one enormous photograph per
+   row makes the panel scroll for a page and a half. */
+@media (max-width: 30rem) {
+  .projects__grid { gap: var(--space-3); }
+}
+
+/* Drop the hours before the info bar runs out of room to show them whole. */
+@media (max-width: 54rem) {
+  .utility-bar__meta .utility-bar__hours { display: none; }
+}
+
+/* Paired fields get too narrow to read their own labels — one per row. */
+@media (max-width: 36rem) {
+  .estimate-form__grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Mobile — 20px edge, info bar drops away */
+@media (max-width: 40rem) {
+  :root {
+    --edge: 20px;
+    --nav-h: 4.5rem;
+    --utility-h: 0rem;
+  }
+
+  .utility-bar { display: none; }
+
+  /* nowrap keeps long labels on one line, which on a phone makes the button
+     wider than the column; the skewed corners then hang past the viewport and
+     scroll the page sideways. Let the label wrap instead. */
+  .btn {
+    max-width: 100%;
+    padding-inline: 1.5rem;
+    white-space: normal;
+    text-wrap: balance;
+  }
+
+  .brand__mark { height: 3.5rem; }
+
+  .nav-bar__inner { gap: var(--space-4); }
+
+  .nav-bar__actions { gap: var(--space-3); }
+
+  /* The icon already says "call" — the number alone is enough here. */
+  .call-cta__word { display: none; }
+
+  .call-cta {
+    height: 2.75rem;
+    padding-inline: .8125rem;
+    gap: .4375rem;
+    font-size: .9375rem;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 22rem;
+  }
+}
+
+@media (max-width: 22.5rem) {
+  .brand__mark { height: 3rem; }
+}
+
+/* Smallest phones — the number gives way so nothing spills. */
+@media (max-width: 20rem) {
+  .call-cta {
+    width: 2.75rem;
+    padding-inline: 0;
+    justify-content: center;
+  }
+
+  .call-cta__number { display: none; }
+}
+
+
+/* Motion preferences ----------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* A near-zero duration on an infinite loop flickers rather than stops —
+     these have to be switched off outright. The stepper also stops advancing
+     on its own; the script checks the same query. */
+  .marquee__track,
+  .seal__ring,
+  .hero__play-icon { animation: none !important; }
+
+  /* The overlay still fades — it is the scale that counts as motion. */
+  .bento__trigger img,
+  .bento__trigger:hover img,
+  .bento__trigger:focus-visible img { transform: none; }
+
+}
