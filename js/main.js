@@ -129,20 +129,34 @@
     var panel = drawer.querySelector('.mobile-nav__panel');
     var closeBtn = drawer.querySelector('.mobile-nav__close');
     var lastFocused = null;
+    /* Matches --dur-base; the drawer stays in the tree this long on the way out
+       so the slide can finish before `hidden` removes it. */
+    var DURATION = 280;
+    var hideTimer = null;
 
     function open() {
       lastFocused = document.activeElement;
+      if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
       drawer.hidden = false;
+      /* Force a reflow between unhiding and the class, or the browser has no
+         start state to animate from and the panel simply appears. */
+      void drawer.offsetWidth;
+      drawer.classList.add('is-open');
       document.body.classList.add('is-locked');
       toggle.setAttribute('aria-expanded', 'true');
       closeBtn.focus();
     }
 
     function close() {
-      drawer.hidden = true;
+      if (!drawer.classList.contains('is-open')) return;
+      drawer.classList.remove('is-open');
       document.body.classList.remove('is-locked');
       toggle.setAttribute('aria-expanded', 'false');
       if (lastFocused) lastFocused.focus();
+      hideTimer = setTimeout(function () {
+        drawer.hidden = true;
+        hideTimer = null;
+      }, DURATION);
     }
 
     toggle.addEventListener('click', open);
@@ -191,7 +205,7 @@
     var wide = window.matchMedia('(min-width: 84.01rem)');
     if (typeof wide.addEventListener === 'function') {
       wide.addEventListener('change', function (event) {
-        if (event.matches && !drawer.hidden) close();
+        if (event.matches) close();
       });
     }
   }
