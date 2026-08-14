@@ -22,6 +22,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Page-scoped overrides. Loaded after style.css so this page can diverge
+       from index.html without touching the shared stylesheet. -->
+  <link rel="stylesheet" href="css/nyc2.css">
 </head>
 <body>
 
@@ -161,7 +165,8 @@
                   <div class="mega__foot">
                     <p>Free written estimates, no obligation &mdash; licensed NYC contractor since 1988.</p>
                     <a class="btn btn--navy mega__foot-cta" href="#estimate">
-                      <span class="btn__label">Request a quote</span>
+                      <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+                      <span class="btn__label">Get a free estimate</span>
                     </a>
                   </div>
 
@@ -220,18 +225,12 @@
                         If the building is in the five boroughs, on Long Island or in lower
                         Westchester, we almost certainly cover it. Ask and we&rsquo;ll tell you straight.
                       </p>
-                      <a class="btn btn--ghost mega__card-cta" href="tel:+17184146067">
-                        <span class="btn__label">(718) 414-6067</span>
+                      <a class="btn btn--ghost mega__card-cta" href="#estimate">
+                        <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+                        <span class="btn__label">Get a free quote</span>
                       </a>
                     </div>
 
-                  </div>
-
-                  <div class="mega__foot">
-                    <p>Every area page lists the full range of roofing, siding, gutter and masonry work.</p>
-                    <a class="btn btn--primary mega__foot-cta" href="#estimate">
-                      <span class="btn__label">Get a free estimate</span>
-                    </a>
                   </div>
 
                 </div>
@@ -242,23 +241,24 @@
             <li class="primary-nav__item"><a class="primary-nav__link" href="#faqs">FAQs</a></li>
             <li class="primary-nav__item"><a class="primary-nav__link" href="#blog">Blog</a></li>
             <li class="primary-nav__item"><a class="primary-nav__link" href="#about">About</a></li>
-            <li class="primary-nav__item"><a class="primary-nav__link" href="#contact">Contact</a></li>
+            <li class="primary-nav__item"><a class="primary-nav__link" href="contact.html">Contact</a></li>
 
           </ul>
         </nav>
 
         <div class="nav-bar__actions">
           <a class="btn btn--primary call-cta" href="tel:+17184146067">
+            <span class="btn__pip" aria-hidden="true"><i class="btn__arrow fa-solid fa-phone"></i><i class="btn__arrow btn__arrow--copy fa-solid fa-phone"></i></span>
             <span class="btn__label">
-              <i class="call-cta__icon fa-solid fa-phone" aria-hidden="true"></i>
               <span class="call-cta__word">Call</span>
               <span class="call-cta__number">(718) 414-6067</span>
             </span>
           </a>
 
           <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
+            <span class="nav-toggle__word">Menu</span>
             <i class="fa-solid fa-bars" aria-hidden="true"></i>
-                      <span class="visually-hidden">Open menu</span>
+            <span class="visually-hidden">Open menu</span>
           </button>
         </div>
 
@@ -341,14 +341,18 @@
           <li><a class="mobile-nav__link" href="#about">About</a></li>
           <li><a class="mobile-nav__link" href="#faqs">FAQs</a></li>
           <li><a class="mobile-nav__link" href="#blog">Blog</a></li>
-          <li><a class="mobile-nav__link" href="#contact">Contact</a></li>
+          <li><a class="mobile-nav__link" href="contact.html">Contact</a></li>
 
         </ul>
       </nav>
 
       <div class="mobile-nav__foot">
-        <a class="btn btn--primary" href="#estimate"><span class="btn__label">Get a free estimate</span></a>
-        <a class="btn btn--outline" href="tel:+17184146067"><span class="btn__label">Call (718) 414-6067</span></a>
+        <a class="btn btn--primary" href="#estimate">
+              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+              <span class="btn__label">Get a free estimate</span></a>
+        <a class="btn btn--outline" href="tel:+17184146067">
+              <span class="btn__pip" aria-hidden="true"><i class="btn__arrow fa-solid fa-phone"></i><i class="btn__arrow btn__arrow--copy fa-solid fa-phone"></i></span>
+              <span class="btn__label">Call (718) 414-6067</span></a>
         <p class="mobile-nav__note">Open 7 days, 7am&ndash;11pm &middot; NYC Lic #2030146</p>
       </div>
 
@@ -362,7 +366,7 @@
       <div class="hero__media">
         <video class="hero__video" autoplay muted loop playsinline preload="auto"
                disablepictureinpicture aria-hidden="true" tabindex="-1">
-          <source src="images/hero-vid.mp4" type="video/mp4">
+          <source src="https://res.cloudinary.com/dbsdxu4tv/video/upload/v1771496715/Shingle_Roof_Replacement_-_in_6_Hours_memh5b.mp4" type="video/mp4">
         </video>
         <div class="hero__scrim" aria-hidden="true"></div>
       </div>
@@ -378,30 +382,52 @@
 
           <p class="hero__lede">
             Royal Renovators Inc. is a top-rated roofing contractor serving all of NYC since 1988.
-            A BBB A+ rated, GAF Master Elite roofing company, we specialize in flat roofing
-            systems, shingles, siding, gutters, and masonry for residential homes and commercial
-            buildings.
+            A BBB A+ rated, GAF Master Elite roofing company, specializing in flat roofing
+            systems, shingles, siding, and gutters.
           </p>
 
           <div class="hero__actions">
-            <a class="btn btn--primary" href="#estimate"><span class="btn__label">Get a free estimate</span></a>
-            <a class="btn btn--ghost" href="tel:+17184146067"><span class="btn__label">Call (718) 414-6067</span></a>
+            <a class="btn btn--primary" href="#estimate">
+              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+              <span class="btn__label">Get a free estimate</span></a>
+            <a class="btn btn--ghost" href="tel:+17184146067">
+              <span class="btn__pip" aria-hidden="true"><i class="btn__arrow fa-solid fa-phone"></i><i class="btn__arrow btn__arrow--copy fa-solid fa-phone"></i></span>
+              <span class="btn__label">Call (718) 414-6067</span></a>
           </div>
 
-          <ul class="hero__proof">
-            <li>
-              <span class="stars" aria-hidden="true">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <!-- Trust strip. The four marks are the proof; the old text claims
+               that sat here said the same thing in words. -->
+          <ul class="hero__badges">
+
+            <li class="hero__badge hero__badge--rating">
+              <img src="images/Google__G__logo.svg.webp" alt="Google"
+                   width="1280" height="1280" decoding="async">
+              <span class="hero__rating">
+                <strong>4.9</strong> ratings
+                <span class="visually-hidden">out of 5 on Google</span>
               </span>
-              <span><strong>4.9</strong> client rating</span>
             </li>
-            <li><strong>35+ years</strong> roofing all five boroughs</li>
-            <li>
-              <button class="hero__play" type="button" data-video-open>
-                <span class="hero__play-icon"><i class="fa-solid fa-play" aria-hidden="true"></i></span>
-                Watch now
-              </button>
+
+            <li class="hero__badge">
+              <img src="images/bbb-a-plus-accredited.png" alt="BBB Accredited Business, A+ rating"
+                   width="1360" height="1156" decoding="async">
             </li>
+
+            <li class="hero__badge hero__badge--gaf">
+              <img src="images/GAF-Master-Elite-Logo.png" alt="GAF Factory-Certified Master Elite roofing contractor"
+                   width="1424" height="520" decoding="async">
+            </li>
+
+            <li class="hero__badge">
+              <img src="images/ANGIES_LIST_SUPER_SAVER_award.png" alt="Angie&rsquo;s List Super Service Award"
+                   width="600" height="462" decoding="async">
+            </li>
+
+            <li class="hero__badge">
+              <img src="images/PngItem_1663.png" alt="People love us on Yelp"
+                   width="540" height="539" decoding="async">
+            </li>
+
           </ul>
 
         </div>
@@ -413,7 +439,6 @@
 
             <div class="estimate-form__head">
               <h2 class="estimate-form__title" id="estimate-title">Request your free estimate</h2>
-              <p class="estimate-form__intro">Tell us about the roof — we reply within one business day.</p>
             </div>
 
             <div class="estimate-form__grid">
@@ -451,7 +476,7 @@
               </p>
 
               <p class="field field--full">
-                <label class="field__label" for="ef-message">What do you need?</label>
+                <label class="field__label" for="ef-message">Your message</label>
                 <textarea class="field__input field__input--area" id="ef-message" name="message"
                           rows="2" placeholder="Leak over the back bedroom, flat roof, two storeys…"></textarea>
               </p>
@@ -459,15 +484,11 @@
             </div>
 
             <button class="btn btn--primary estimate-form__submit" type="submit">
-              <span class="btn__label">Get my free estimate</span>
+              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+              <span class="btn__label">Request a free quote</span>
             </button>
 
             <p class="estimate-form__status form-status" data-form-status role="status" aria-live="polite"></p>
-
-            <p class="estimate-form__legal">
-              <i class="fa-solid fa-lock" aria-hidden="true"></i>
-              We only use your details to quote this job. No spam.
-            </p>
 
           </form>
 
@@ -583,8 +604,12 @@
           </ul>
 
           <div class="about__actions">
-            <a class="btn btn--navy" href="#estimate"><span class="btn__label">Request a quote</span></a>
-            <a class="btn btn--outline" href="#about"><span class="btn__label">More about us</span></a>
+            <a class="btn btn--navy" href="#estimate">
+              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+              <span class="btn__label">Get a free estimate</span></a>
+            <a class="btn btn--outline" href="#about">
+              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+              <span class="btn__label">More about us</span></a>
           </div>
 
         </div>
@@ -638,7 +663,8 @@
 
             <div class="gaf__actions">
               <a class="btn btn--navy" href="#estimate">
-                <span class="btn__label">Ask about GAF warranties</span>
+                <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+                <span class="btn__label">Get a free estimate</span>
               </a>
             </div>
 
@@ -695,43 +721,6 @@
           </aside>
 
         </div>
-
-        <ul class="gaf__cards">
-
-          <li class="gaf__card">
-            <span class="gaf__card-icon"><i class="fa-solid fa-medal" aria-hidden="true"></i></span>
-            <h3 class="gaf__card-title">The top 2%, and it has to be earned</h3>
-            <p class="gaf__card-text">
-              GAF certifies only a small fraction of the roofing contractors in North America as
-              Master Elite. A company has to be licensed, adequately insured and able to show a
-              real history of completed work before it qualifies &mdash; which is exactly the
-              paperwork most homeowners have no practical way to check themselves.
-            </p>
-          </li>
-
-          <li class="gaf__card">
-            <span class="gaf__card-icon"><i class="fa-solid fa-file-shield" aria-hidden="true"></i></span>
-            <h3 class="gaf__card-title">Warranties the factory backs</h3>
-            <p class="gaf__card-text">
-              Master Elite status unlocks GAF&rsquo;s enhanced limited warranties, including the
-              Golden Pledge&reg; &mdash; the only one where GAF inspects the finished roof itself
-              and covers workmanship, not just the shingles. Ask us which level your roof
-              qualifies for and we will put it in writing with the estimate.
-            </p>
-          </li>
-
-          <li class="gaf__card">
-            <span class="gaf__card-icon"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></span>
-            <h3 class="gaf__card-title">Installed as a system, not a stack of parts</h3>
-            <p class="gaf__card-text">
-              A roof warranty only holds if the whole assembly goes on the way the manufacturer
-              wrote it: deck preparation, ice and water shield at the eaves and valleys, starter
-              course, field shingles, ventilation and ridge cap. Our crews are trained on the
-              full GAF system rather than one piece of it.
-            </p>
-          </li>
-
-        </ul>
 
       </div>
     </section>
@@ -868,7 +857,8 @@
             We&rsquo;ll look at the roof and tell you straight &mdash; including when it doesn&rsquo;t need replacing.
           </p>
           <a class="btn btn--navy services__foot-cta" href="#estimate">
-            <span class="btn__label">Book a free inspection</span>
+            <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+            <span class="btn__label">Get a free estimate</span>
           </a>
         </div>
 
@@ -998,6 +988,11 @@
           </ul>
         </div>
 
+        <div class="buildings__gridhead">
+          <p class="section-eyebrow">Building types</p>
+          <h3 class="buildings__subhead buildings__subhead--center">Roofing Types and Building Systems</h3>
+        </div>
+
         <ul class="buildings__grid">
 
           <li class="buildings__card">
@@ -1075,7 +1070,8 @@
             including when the answer is that it does not need replacing yet.
           </p>
           <a class="btn btn--primary buildings__foot-cta" href="#estimate">
-            <span class="btn__label">Book a free roof inspection</span>
+            <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+            <span class="btn__label">Get a free estimate</span>
           </a>
         </div>
 
@@ -1110,9 +1106,11 @@
 
           <div class="whyus__actions">
             <a class="btn btn--primary" href="#estimate">
+              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
               <span class="btn__label">Get a free estimate</span>
             </a>
             <a class="btn btn--ghost" href="tel:+17184146067">
+              <span class="btn__pip" aria-hidden="true"><i class="btn__arrow fa-solid fa-phone"></i><i class="btn__arrow btn__arrow--copy fa-solid fa-phone"></i></span>
               <span class="btn__label">Call (718) 414-6067</span>
             </a>
           </div>
@@ -1135,7 +1133,7 @@
 
           <div class="whyus__tile">
             <span class="whyus__tile-icon"><i class="fa-solid fa-award" aria-hidden="true"></i></span>
-            <p class="whyus__tile-figure">38</p>
+            <p class="whyus__tile-figure">35+</p>
             <p class="whyus__tile-label">Years roofing across the five boroughs</p>
           </div>
 
@@ -1243,15 +1241,14 @@
             <div class="exterior__card-body">
               <h3 class="exterior__card-title">Siding</h3>
               <p class="exterior__card-text">
-                Vinyl, fiber cement and stucco repair, installed over a proper weather barrier
-                with the window and door heads flashed. Siding that only looks right is a
-                two-year job; siding that is detailed right is a thirty-year one.
+                Vinyl, fiber cement and stucco, installed over a proper weather barrier with
+                every opening flashed.
               </p>
               <ul class="exterior__points">
                 <li>Vinyl, fiber cement and stucco</li>
                 <li>House wrap and flashing at every opening</li>
-                <li>Soffit, fascia and trim replaced together</li>
               </ul>
+              <span class="exterior__card-more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             </div>
           </li>
 
@@ -1264,15 +1261,14 @@
             <div class="exterior__card-body">
               <h3 class="exterior__card-title">Masonry &amp; pointing</h3>
               <p class="exterior__card-text">
-                Brick pointing, parapet rebuilds, lintel repairs and waterproofing. On older
-                New York stock the parapet is usually the first thing to go, and it takes the
-                roof edge with it if it is left long enough.
+                Pointing, parapet rebuilds and waterproofing. On older New York stock the
+                parapet is usually the first thing to go.
               </p>
               <ul class="exterior__points">
                 <li>Grinding and repointing, matched mortar</li>
                 <li>Parapet rebuilds and coping stones</li>
-                <li>Chimney rebuilds and crown repair</li>
               </ul>
+              <span class="exterior__card-more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             </div>
           </li>
 
@@ -1285,89 +1281,18 @@
             <div class="exterior__card-body">
               <h3 class="exterior__card-title">Gutters &amp; leaders</h3>
               <p class="exterior__card-text">
-                Seamless aluminium gutters formed on site and sized to the roof area they drain,
-                with leaders piped away from the foundation. An undersized gutter overflows every
-                heavy storm no matter how clean it is.
+                Seamless aluminium formed on site, sized to the roof area it drains and piped
+                clear of the foundation.
               </p>
               <ul class="exterior__points">
                 <li>Seamless aluminium, formed on site</li>
                 <li>Sized to the roof area, not the wall</li>
-                <li>Leader lines run clear of the foundation</li>
               </ul>
+              <span class="exterior__card-more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             </div>
           </li>
 
         </ul>
-
-        <div class="exterior__extras">
-
-          <div class="exterior__extras-head">
-            <div>
-              <h3 class="exterior__extras-title">Also handled by the same crews</h3>
-              <p class="exterior__extras-text">
-                One contractor for the whole envelope &mdash; fewer handoffs, one schedule, and
-                one number to call if something needs looking at afterwards.
-              </p>
-            </div>
-            <a class="btn btn--navy exterior__extras-cta" href="#estimate">
-              <span class="btn__label">Get an exterior quote</span>
-            </a>
-          </div>
-
-          <ul class="exterior__extras-grid">
-            <li><span class="exterior__extras-icon"><i class="fa-solid fa-ruler-combined" aria-hidden="true"></i></span>Soffit &amp; fascia</li>
-            <li><span class="exterior__extras-icon"><i class="fa-solid fa-sun" aria-hidden="true"></i></span>Skylights</li>
-            <li><span class="exterior__extras-icon"><i class="fa-solid fa-fire-flame-simple" aria-hidden="true"></i></span>Chimney flashing</li>
-            <li><span class="exterior__extras-icon"><i class="fa-solid fa-droplet-slash" aria-hidden="true"></i></span>Waterproof coatings</li>
-            <li><span class="exterior__extras-icon"><i class="fa-solid fa-border-all" aria-hidden="true"></i></span>Window &amp; door capping</li>
-            <li><span class="exterior__extras-icon"><i class="fa-solid fa-cloud-bolt" aria-hidden="true"></i></span>Storm damage repair</li>
-          </ul>
-
-        </div>
-
-      </div>
-    </section>
-
-    <section class="section process" id="process">
-      <div class="container">
-
-        <div class="process__head">
-          <div class="process__intro">
-            <p class="section-eyebrow">How it works</p>
-            <h2 class="section-title process__title">From First Call to Final Sweep</h2>
-          </div>
-          <a class="btn btn--navy process__cta" href="#estimate">
-            <span class="btn__label">Start with step one</span>
-          </a>
-        </div>
-
-        <ol class="process__steps">
-
-          <li class="process__step">
-            <span class="process__icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>
-            <h3 class="process__step-title">Free inspection</h3>
-            <p class="process__text">We come out, get up on the roof and photograph what we find — including the parts you cannot see from the ground. You keep the photographs either way.</p>
-          </li>
-
-          <li class="process__step">
-            <span class="process__icon"><i class="fa-solid fa-file-lines" aria-hidden="true"></i></span>
-            <h3 class="process__step-title">Written estimate</h3>
-            <p class="process__text">An itemised quote with tear-off and overlay priced separately, so you can compare like for like against anyone else you ask.</p>
-          </li>
-
-          <li class="process__step">
-            <span class="process__icon"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span>
-            <h3 class="process__step-title">Permits and scheduling</h3>
-            <p class="process__text">We pull the permits, order the materials and book a start date around the forecast rather than the calendar.</p>
-          </li>
-
-          <li class="process__step">
-            <span class="process__icon"><i class="fa-solid fa-hammer" aria-hidden="true"></i></span>
-            <h3 class="process__step-title">The work and clean-up</h3>
-            <p class="process__text">Our own crew from tear-off through to the final magnet sweep of the yard, then a walkthrough with you before anyone leaves.</p>
-          </li>
-
-        </ol>
 
       </div>
     </section>
@@ -1393,9 +1318,11 @@
 
         <div class="cta-band__actions">
           <a class="btn btn--primary" href="#estimate">
-            <span class="btn__label">Get my free estimate</span>
+            <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+            <span class="btn__label">Get a free estimate</span>
           </a>
           <a class="btn btn--ghost" href="tel:+17184146067">
+            <span class="btn__pip" aria-hidden="true"><i class="btn__arrow fa-solid fa-phone"></i><i class="btn__arrow btn__arrow--copy fa-solid fa-phone"></i></span>
             <span class="btn__label">Call (718) 414-6067</span>
           </a>
         </div>
@@ -1671,6 +1598,7 @@
 
         <div class="projects__foot">
           <a class="btn btn--outline projects__more" href="#projects-all">
+            <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
             <span class="btn__label">View full gallery</span>
           </a>
         </div>
@@ -1684,11 +1612,7 @@
 
         <div class="awards__head">
           <p class="section-eyebrow">Awards</p>
-          <h2 class="section-title">Recognized by Angi Super Service Award</h2>
-          <p class="section-lede">
-            Being appreciated by the clients we work with means the world to us. It also
-            translates beautifully into our official ratings and awards.
-          </p>
+          <h2 class="section-title">Angi Super Service Award Winner</h2>
         </div>
 
         <ul class="awards__grid">
@@ -1722,20 +1646,20 @@
           <p class="awards__accred-label">Also accredited and reviewed by</p>
           <ul class="awards__logos">
             <li>
-              <img src="images/BBB-A-Logo-2026.webp" alt="BBB Accredited Business, A+ rating"
-                   width="1262" height="868" loading="lazy">
+              <img src="images/bbb-a-plus-accredited.png" alt="BBB Accredited Business, A+ rating"
+                   width="1360" height="1156" loading="lazy" decoding="async">
+            </li>
+            <li class="is-gaf">
+              <img src="images/GAF-Master-Elite-Logo.png" alt="GAF Factory-Certified Master Elite roofing contractor"
+                   width="1424" height="520" loading="lazy" decoding="async">
             </li>
             <li>
-              <img src="images/Master-Elite-logo-300x116-1-1.webp" alt="GAF Factory-Certified Master Elite roofing contractor"
-                   width="300" height="116" loading="lazy">
+              <img src="images/ANGIES_LIST_SUPER_SAVER_award.png" alt="Angie&rsquo;s List Super Service Award"
+                   width="600" height="462" loading="lazy" decoding="async">
             </li>
             <li>
-              <img src="images/Angies_list_NYC.jpg" alt="See our reviews on Angie&rsquo;s List"
-                   width="300" height="116" loading="lazy">
-            </li>
-            <li>
-              <img src="images/Angies_list_NYC-1.jpg" alt="People love us on Yelp"
-                   width="300" height="116" loading="lazy">
+              <img src="images/PngItem_1663.png" alt="People love us on Yelp"
+                   width="540" height="539" loading="lazy" decoding="async">
             </li>
           </ul>
         </div>
@@ -1757,7 +1681,8 @@
             </button>
             </div>
             <a class="btn btn--navy blog__all" href="#blog-all">
-              <span class="btn__label">View all<i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+              <span class="btn__label">View all</span>
             </a>
           </div>
         </div>
@@ -1774,7 +1699,7 @@
                 </div>
                 <div class="blog-card__body">
                   <p class="blog-card__meta">
-                    <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators</span>
+                    <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators Inc.</span>
                     <span class="blog-card__dot" aria-hidden="true">&middot;</span>
                     <span><i class="fa-regular fa-calendar" aria-hidden="true"></i>August 4, 2026</span>
                   </p>
@@ -1794,7 +1719,7 @@
                 </div>
                 <div class="blog-card__body">
                   <p class="blog-card__meta">
-                    <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators</span>
+                    <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators Inc.</span>
                     <span class="blog-card__dot" aria-hidden="true">&middot;</span>
                     <span><i class="fa-regular fa-calendar" aria-hidden="true"></i>July 28, 2026</span>
                   </p>
@@ -1814,7 +1739,7 @@
                 </div>
                 <div class="blog-card__body">
                   <p class="blog-card__meta">
-                    <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators</span>
+                    <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators Inc.</span>
                     <span class="blog-card__dot" aria-hidden="true">&middot;</span>
                     <span><i class="fa-regular fa-calendar" aria-hidden="true"></i>July 21, 2026</span>
                   </p>
@@ -1834,7 +1759,7 @@
                 </div>
                 <div class="blog-card__body">
                   <p class="blog-card__meta">
-                    <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators</span>
+                    <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators Inc.</span>
                     <span class="blog-card__dot" aria-hidden="true">&middot;</span>
                     <span><i class="fa-regular fa-calendar" aria-hidden="true"></i>July 14, 2026</span>
                   </p>
@@ -1854,7 +1779,7 @@
                 </div>
                 <div class="blog-card__body">
                   <p class="blog-card__meta">
-                    <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators</span>
+                    <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators Inc.</span>
                     <span class="blog-card__dot" aria-hidden="true">&middot;</span>
                     <span><i class="fa-regular fa-calendar" aria-hidden="true"></i>July 7, 2026</span>
                   </p>
@@ -1874,7 +1799,7 @@
                 </div>
                 <div class="blog-card__body">
                   <p class="blog-card__meta">
-                    <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators</span>
+                    <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators Inc.</span>
                     <span class="blog-card__dot" aria-hidden="true">&middot;</span>
                     <span><i class="fa-regular fa-calendar" aria-hidden="true"></i>June 30, 2026</span>
                   </p>
@@ -1886,6 +1811,13 @@
             </div>
 
           </div>
+        </div>
+
+        <div class="blog__foot">
+          <a class="btn btn--navy blog__all blog__all--foot" href="#blog-all">
+              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+              <span class="btn__label">View all</span>
+            </a>
         </div>
 
       </div>
@@ -1941,23 +1873,9 @@
               </a>
             </li>
             <li>
-              <a href="#flushing-roofing">
+              <a href="#yonkers-roofing">
                 <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-                <span>Flushing</span>
-                <i class="fa-solid fa-arrow-right areas__go" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#forest-hills-roofing">
-                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-                <span>Forest Hills</span>
-                <i class="fa-solid fa-arrow-right areas__go" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#astoria-roofing">
-                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-                <span>Astoria</span>
+                <span>Yonkers</span>
                 <i class="fa-solid fa-arrow-right areas__go" aria-hidden="true"></i>
               </a>
             </li>
@@ -1972,13 +1890,6 @@
               <a href="#long-island-roofing">
                 <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                 <span>Long Island</span>
-                <i class="fa-solid fa-arrow-right areas__go" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#yonkers-roofing">
-                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-                <span>Yonkers</span>
                 <i class="fa-solid fa-arrow-right areas__go" aria-hidden="true"></i>
               </a>
             </li>
@@ -2142,6 +2053,7 @@
           </p>
           <div class="faqs__actions">
             <a class="btn btn--primary" href="#contact">
+              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
               <span class="btn__label">Ask us a question</span>
             </a>
           </div>
@@ -2230,9 +2142,8 @@
                 action="#contact-form" aria-labelledby="contact-form-title">
 
             <div class="contact-form__head">
-              <h2 class="contact-form__title" id="contact-form-title">Send Us a Message</h2>
-              <p class="contact-form__intro">Tell us what the roof is doing &mdash; we reply within one business day.</p>
-            </div>
+              <h2 class="contact-form__title" id="contact-form-title">Request a Free Quote</h2>
+                          </div>
 
             <div class="contact-form__grid">
 
@@ -2277,7 +2188,8 @@
             </div>
 
             <button class="btn btn--primary contact-form__submit" type="submit">
-              <span class="btn__label">Send message</span>
+              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+              <span class="btn__label">Get a free quote</span>
             </button>
 
             <p class="form-status" data-form-status role="status" aria-live="polite"></p>
@@ -2286,96 +2198,12 @@
 
         </div>
 
-        <ul class="contact__details">
-
-          <li class="contact-item">
-            <span class="contact-item__icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
-            <div>
-              <p class="contact-item__label">Call the office</p>
-              <p class="contact-item__value"><a href="tel:+17184146067">(718) 414-6067</a></p>
-              <p class="contact-item__note">Seven days a week, including emergencies</p>
-            </div>
-          </li>
-
-          <li class="contact-item">
-            <span class="contact-item__icon"><i class="fa-regular fa-envelope" aria-hidden="true"></i></span>
-            <div>
-              <p class="contact-item__label">Email us</p>
-              <p class="contact-item__value"><a href="mailto:info@nycrenovators.com">info@nycrenovators.com</a></p>
-              <p class="contact-item__note">Photographs help us quote faster</p>
-            </div>
-          </li>
-
-          <li class="contact-item">
-            <span class="contact-item__icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
-            <div>
-              <p class="contact-item__label">Where we are</p>
-              <p class="contact-item__value">
-                <a href="https://www.google.com/maps/search/?api=1&query=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375"
-                   target="_blank" rel="noopener">118-35 Queens Blvd, Forest Hills,<br>NY 11375, United States</a>
-              </p>
-              <p class="contact-item__note">All five boroughs, Long Island and Westchester</p>
-            </div>
-          </li>
-
-        </ul>
-
       </div>
     </section>
 
     <!-- Remaining homepage sections -->
 
   </main>
-
-  <!-- Closing banner. The corner pills are absolutely placed on wide screens
-       and fall back into the flow underneath the checks on narrow ones. -->
-  <section class="cta-final" id="ready">
-
-    <div class="cta-final__dots" aria-hidden="true"></div>
-
-    <div class="container cta-final__inner">
-
-      <p class="cta-final__eyebrow">Ready when you are</p>
-
-      <h2 class="cta-final__title">Let&rsquo;s Get You a Roof You Can Stop Thinking About</h2>
-
-      <p class="cta-final__text">
-        Book a free inspection and we will get up there, photograph what we find and put a
-        written price in front of you &mdash; including when the answer is that it can wait.
-      </p>
-
-      <div class="cta-final__actions">
-        <a class="btn btn--ghost" href="#estimate">
-          <span class="btn__label">Book a free inspection</span>
-        </a>
-        <a class="btn btn--primary" href="tel:+17184146067">
-          <span class="btn__label"><i class="fa-solid fa-phone" aria-hidden="true"></i>(718) 414-6067</span>
-        </a>
-      </div>
-
-      <ul class="cta-final__checks">
-        <li><i class="fa-solid fa-check" aria-hidden="true"></i>Free, no-obligation estimate</li>
-        <li><i class="fa-solid fa-check" aria-hidden="true"></i>Licensed, bonded and insured</li>
-        <li><i class="fa-solid fa-check" aria-hidden="true"></i>Forest Hills &middot; serving all five boroughs</li>
-      </ul>
-
-      <ul class="cta-final__pills">
-        <li class="cta-final__pill cta-final__pill--tl">
-          <i class="fa-solid fa-star" aria-hidden="true"></i>4.9 client rating
-        </li>
-        <li class="cta-final__pill cta-final__pill--tr">
-          <i class="fa-solid fa-award" aria-hidden="true"></i>BBB A+ Rated
-        </li>
-        <li class="cta-final__pill cta-final__pill--bl">
-          <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>Roofing since 1988
-        </li>
-        <li class="cta-final__pill cta-final__pill--br">
-          <i class="fa-solid fa-certificate" aria-hidden="true"></i>GAF Master Elite
-        </li>
-      </ul>
-
-    </div>
-  </section>
 
   <!-- Video player. preload="none" so nine megabytes are only fetched if the
        visitor actually asks for it. Sound is on: the click is a user gesture,
@@ -2442,21 +2270,21 @@
                  alt="Royal Renovators Inc." width="440" height="308">
           </a>
           <p class="footer__about">
-            A top-rated Queens roofing contractor serving all of NYC since 1988 &mdash; flat
-            roofing, shingle systems, siding, gutters and masonry for residential and commercial
-            buildings across the five boroughs, Long Island and Westchester.
-            Family-run, licensed and fully insured, with our own crews on every job rather than
-            subcontractors, and a written estimate in your hands before any work starts.
+            Royal Renovators Inc. is a top-rated roofing contractor based in Queens and serving
+            all of NYC since 1988. A BBB A+ rated, GAF Master Elite roofing company, we specialize
+            in <a href="#flat-roofing">flat roofing systems</a>,
+            <a href="#shingle-roofing">shingles</a>, <a href="#siding">siding</a>,
+            <a href="#gutters">gutters</a>, and <a href="#masonry">masonry</a> for residential and
+            commercial buildings.
           </p>
-          <ul class="footer__socials">
-            <li><a href="#facebook" aria-label="Royal Renovators on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-            <li><a href="#instagram" aria-label="Royal Renovators on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
-            <li><a href="#x" aria-label="Royal Renovators on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
-            <li><a href="#youtube" aria-label="Royal Renovators on YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
-            <li><a href="#linkedin" aria-label="Royal Renovators on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
-            <li><a href="#pinterest" aria-label="Royal Renovators on Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
-            <li><a href="#tiktok" aria-label="Royal Renovators on TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a></li>
-          </ul>
+          <p class="footer__about">
+            Royal Renovators Inc. supports a network of distinct, independently operated roofing
+            companies, each serving its own borough-specific market tailored to the local building
+            types and project needs of <a href="#brooklyn-roofing">Brooklyn</a>,
+            <a href="#manhattan-roofing">Manhattan</a>, <a href="#bronx-roofing">the Bronx</a>,
+            <a href="#far-rockaway-roofing">Far Rockaway</a>, and
+            <a href="#long-island-roofing">Long Island</a>.
+          </p>
         </div>
 
         <nav class="footer__col" aria-label="Roofing">
@@ -2492,7 +2320,7 @@
               <li><a href="#areas">Areas We Serve</a></li>
               <li><a href="#blog">Blog</a></li>
               <li><a href="#faqs">FAQs</a></li>
-              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
           </ul>
         </nav>
     </div>
@@ -2510,20 +2338,12 @@
         </li>
 
         <li>
-          <span class="footer__contactbar-icon"><i class="fa-regular fa-envelope" aria-hidden="true"></i></span>
-          <div>
-            <p class="footer__contactbar-label">Email us</p>
-            <p class="footer__contactbar-value"><a href="mailto:info@nycrenovators.com">info@nycrenovators.com</a></p>
-          </div>
-        </li>
-
-        <li>
           <span class="footer__contactbar-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
           <div>
             <p class="footer__contactbar-label">Visit us</p>
             <p class="footer__contactbar-value">
               <a href="https://www.google.com/maps/search/?api=1&query=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375"
-                 target="_blank" rel="noopener">118-35 Queens Blvd, Forest Hills, NY 11375, United States</a>
+                 target="_blank" rel="noopener">118-35 Queens Blvd,<br>Forest Hills, NY 11375</a>
             </p>
           </div>
         </li>
@@ -2532,7 +2352,7 @@
           <span class="footer__contactbar-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
           <div>
             <p class="footer__contactbar-label">Opening hours</p>
-            <p class="footer__contactbar-value"><a href="#contact">Mon &ndash; Sun, 7:00am &ndash; 11:00pm</a></p>
+            <p class="footer__contactbar-value"><a href="contact.html">Mon &ndash; Sun, 7:00am &ndash; 11:00pm</a></p>
           </div>
         </li>
 
@@ -2540,11 +2360,27 @@
     </div>
 
     <div class="footer__creds">
-      <ul class="container footer__creds-list">
-        <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>Licensed NYC contractor #2030146</li>
-        <li><i class="fa-solid fa-award" aria-hidden="true"></i>BBB A+ Rated</li>
-        <li><i class="fa-solid fa-certificate" aria-hidden="true"></i>GAF Factory-Certified Master Elite</li>
-        <li><i class="fa-solid fa-star" aria-hidden="true"></i>Angi Super Service Award</li>
+      <ul class="container footer__badges">
+        <li class="footer__rating">
+          <img src="images/Google__G__logo.svg.webp" alt="Google" width="1280" height="1280" loading="lazy" decoding="async">
+          <span><strong>4.9</strong> ratings</span>
+        </li>
+        <li>
+          <img src="images/bbb-a-plus-accredited.png" alt="BBB Accredited Business, A+ rating"
+               width="1360" height="1156" loading="lazy" decoding="async">
+        </li>
+        <li class="is-gaf">
+          <img src="images/GAF-Master-Elite-Logo.png" alt="GAF Factory-Certified Master Elite roofing contractor"
+               width="1424" height="520" loading="lazy" decoding="async">
+        </li>
+        <li>
+          <img src="images/ANGIES_LIST_SUPER_SAVER_award.png" alt="Angie&rsquo;s List Super Service Award"
+               width="600" height="462" loading="lazy" decoding="async">
+        </li>
+        <li>
+          <img src="images/PngItem_1663.png" alt="People love us on Yelp"
+               width="540" height="539" loading="lazy" decoding="async">
+        </li>
       </ul>
     </div>
 

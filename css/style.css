@@ -1657,11 +1657,6 @@ body.is-locked { overflow: hidden; }
 
 .services { background-color: var(--surface-alt); }
 
-/* The services page runs two of these back to back, so the second drops the
-   tint rather than doubling it. */
-.services--alt { background-color: var(--surface); }
-
-
 /* Heading left, supporting line right — keeps the header from running the full
    width as one long measure. */
 .services .section-title {
@@ -1692,9 +1687,6 @@ body.is-locked { overflow: hidden; }
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-5);
 }
-
-/* Declared after the base so it actually wins — same specificity, later rule. */
-.services__grid--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
 /* The whole card is the hit target — see the stretched link below. */
 .service-card {
@@ -3824,173 +3816,6 @@ body.is-locked { overflow: hidden; }
 }
 
 
-/* Page hero (inner pages) ------------------------------------------------- */
-
-/* Same gradient and dot field as the closing banner, so inner pages open in
-   the same voice as the home page closes. */
-.page-hero {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  background-color: var(--navy-deep);
-  background-image:
-    radial-gradient(rgba(255, 255, 255, .11) 1px, transparent 1px),
-    linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 52%, #0A3A86 100%);
-  background-size: 22px 22px, auto;
-  color: var(--on-dark);
-}
-
-.page-hero__inner {
-  display: grid;
-  justify-items: center;
-  text-align: center;
-  padding-block: clamp(2.5rem, 1.9rem + 2.2vw, 4.5rem);
-}
-
-.breadcrumb ol {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: .5rem .75rem;
-  font-size: var(--fs-utility);
-  font-weight: var(--fw-medium);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, .62);
-}
-
-.breadcrumb a {
-  display: inline-block;
-  padding-block: .5rem;
-  text-decoration: none;
-  color: rgba(255, 255, 255, .82);
-  transition: color var(--dur-fast) var(--ease-out);
-}
-
-.breadcrumb a:hover { color: var(--white); }
-
-/* Separator drawn rather than typed, so it never gets read aloud. */
-.breadcrumb li + li::before {
-  content: '';
-  display: inline-block;
-  width: .3125rem;
-  height: .3125rem;
-  margin-right: .75rem;
-  border-radius: 50%;
-  background-color: var(--red);
-  vertical-align: middle;
-}
-
-.page-hero__title {
-  max-width: 24ch;
-  margin-inline: auto;
-  margin-top: var(--space-4);
-  font-size: clamp(2rem, 1.35rem + 2.3vw, 3.375rem);
-  font-weight: var(--fw-bold);
-  letter-spacing: -.02em;
-  line-height: 1.22;
-  color: var(--white);
-  text-wrap: balance;
-}
-
-.page-hero__lede {
-  max-width: 62ch;
-  margin-inline: auto;
-  margin-top: var(--space-5);
-  font-size: 1.0625rem;
-  line-height: 1.65;
-  color: var(--on-dark-muted);
-  text-wrap: pretty;
-}
-
-.page-hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-3);
-  margin-top: var(--space-6);
-}
-
-
-/* Included (services page) ------------------------------------------------ */
-
-.included { background-color: var(--surface-alt); }
-
-/* Split header, matching the two service grids above it. */
-.included__head {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  align-items: end;
-  gap: var(--space-5) var(--space-9);
-  margin-bottom: var(--space-8);
-}
-
-.included__aside { justify-self: end; }
-
-.included__text {
-  max-width: 46ch;
-  font-size: 1.0625rem;
-  line-height: 1.6;
-  color: var(--ink);
-  text-wrap: pretty;
-}
-
-.included__cta {
-  min-height: 3rem;
-  margin-top: var(--space-5);
-  padding-inline: 1.75rem;
-}
-
-/* A single panel split by hairlines. Four separate cards would make this the
-   third card grid on the page; one divided surface reads as one promise. */
-.included__panel {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  overflow: hidden;
-  background-color: var(--surface);
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius-xl);
-}
-
-.included__panel li {
-  padding: var(--space-6) var(--space-5);
-  border-left: 1px solid var(--hairline);
-}
-
-.included__panel li:first-child { border-left: 0; }
-
-.included__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  margin-bottom: var(--space-4);
-  border-radius: 999px;
-  background-color: rgba(232, 38, 60, .1);
-  color: var(--red);
-  font-size: 1rem;
-  line-height: 1;
-}
-
-.included__name {
-  font-size: 1.0625rem;
-  font-weight: var(--fw-bold);
-  letter-spacing: -.01em;
-  line-height: 1.35;
-  color: var(--navy);
-}
-
-.included__note {
-  margin-top: .4375rem;
-  font-size: .9375rem;
-  line-height: 1.55;
-  color: var(--ink);
-  text-wrap: pretty;
-}
-
-
 /* Closing banner ---------------------------------------------------------- */
 
 /* Diagonal navy gradient rather than a flat fill, so it reads as its own
@@ -4397,21 +4222,7 @@ body.is-locked { overflow: hidden; }
   .about__text { max-width: none; }
 
   /* Three cards get too narrow to hold a readable line here. */
-  .services__grid,
-  .services__grid--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-  .included__head {
-    grid-template-columns: minmax(0, 1fr);
-    align-items: start;
-  }
-
-  .included__aside { justify-self: start; }
-
-  .included__panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-  .included__panel li:nth-child(odd) { border-left: 0; }
-
-  .included__panel li:nth-child(n + 3) { border-top: 1px solid var(--hairline); }
+  .services__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .services__head {
     grid-template-columns: minmax(0, 1fr);
@@ -4522,14 +4333,7 @@ body.is-locked { overflow: hidden; }
 }
 
 @media (max-width: 44rem) {
-  .services__grid,
-  .services__grid--four { grid-template-columns: minmax(0, 1fr); }
-
-  .included__panel { grid-template-columns: minmax(0, 1fr); }
-
-  .included__panel li { border-left: 0; }
-
-  .included__panel li + li { border-top: 1px solid var(--hairline); }
+  .services__grid { grid-template-columns: minmax(0, 1fr); }
 
   .buildings__stats { grid-template-columns: minmax(0, 1fr); }
 
@@ -4612,8 +4416,7 @@ body.is-locked { overflow: hidden; }
 
   /* Headings — tighter tracking at these sizes wants a looser leading, and
      titles here run to three or four lines rather than one or two. */
-  .section-title,
-  .page-hero__title { line-height: 1.3; }
+  .section-title { line-height: 1.3; }
 
   .hero__title { line-height: 1.14; }
 
@@ -4626,10 +4429,8 @@ body.is-locked { overflow: hidden; }
      sensible number of words per line at this width. */
   .section-lede,
   .services__lede,
-  .included__text,
   .cta-band__text,
   .cta-final__text,
-  .page-hero__lede,
   .whyus__lede,
   .whyus__text { font-size: 1rem; }
 
