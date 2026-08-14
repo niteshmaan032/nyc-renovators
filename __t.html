@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><script>window.__e=[];addEventListener("error",function(e){__e.push(e.message)});</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -2419,5 +2419,12 @@
        time main.js initialises the blog carousel. -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
   <script src="js/main.js" defer></script>
-</body>
+<script>addEventListener('load',function(){setTimeout(function(){
+window.scrollTo(0,6000);
+var before=Math.round(scrollY);
+document.querySelector('.footer__totop').click();
+setTimeout(function(){
+ document.title='TOP reduced='+matchMedia('(prefers-reduced-motion: reduce)').matches
+  +' before='+before+' after='+Math.round(scrollY)+' hash='+(location.hash||'none')
+  +' errs='+(__e.length?__e.join('~'):'NONE');},800);},900)})</script></body>
 </html>

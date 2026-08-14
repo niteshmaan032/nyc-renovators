@@ -218,7 +218,7 @@
 
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    new window.Swiper(el, {
+    var swiper = new window.Swiper(el, {
       slidesPerView: 1,
       spaceBetween: 24,
       speed: reduced ? 0 : 450,
@@ -230,6 +230,16 @@
         640: { slidesPerView: 2 },
         1100: { slidesPerView: 3 }
       }
+    });
+
+    /* A second pair of arrows sits under the carousel for narrow screens — only
+       one pair is ever displayed. Swiper binds a single element per selector,
+       so this one is wired by hand. No-ops on pages without them. */
+    [].forEach.call(document.querySelectorAll('.blog__prev-alt'), function (btn) {
+      btn.addEventListener('click', function () { swiper.slidePrev(); });
+    });
+    [].forEach.call(document.querySelectorAll('.blog__next-alt'), function (btn) {
+      btn.addEventListener('click', function () { swiper.slideNext(); });
     });
   }
 
@@ -603,6 +613,23 @@
     });
   }
 
+  /* Back to top. The link used to point at #site-header, which is position:
+     sticky and therefore already parked at the top of the viewport — the
+     browser saw nothing to scroll into view and moved a few pixels. Driving it
+     from script scrolls the document instead of hunting for an element. */
+  function initBackToTop() {
+    var links = [].slice.call(document.querySelectorAll('[data-scroll-top]'));
+    if (!links.length) return;
+
+    links.forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        event.preventDefault();
+        window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     respectMotionPreference();
     watchScroll();
@@ -615,5 +642,6 @@
     initLightbox();
     initVideoBox();
     initForms();
+    initBackToTop();
   });
 })();

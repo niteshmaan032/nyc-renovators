@@ -334,8 +334,8 @@
 .hero__lede {
   max-width: min(58ch, 100%);
   margin-top: var(--space-5);
-  font-size: 1.0625rem;
-  line-height: 1.65;
+  font-size: 1.1875rem;
+  line-height: 1.6;
 }
 
 .hero__actions { margin-top: var(--space-6); }
@@ -472,6 +472,35 @@
 
 /* Exterior cards (15) ----------------------------------------------------- */
 
+/* Stretched link — the whole card is the hit target, with one real anchor in
+   the markup so a screen reader gets one link, not three. */
+.exterior__card { position: relative; }
+
+.exterior__card-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.exterior__card-title a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.exterior__card:hover { border-color: var(--navy); }
+
+/* Focus ring frames the whole card rather than the words — but only where
+   :has() exists, or the guard below would strip the indicator entirely. */
+@supports selector(:has(*)) {
+  .exterior__card:has(a:focus-visible) {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 3px;
+  }
+
+  .exterior__card-title a:focus-visible { outline: none; }
+}
+
 .exterior__card-more {
   display: inline-flex;
   align-items: center;
@@ -515,6 +544,9 @@
 .blog-card__media { aspect-ratio: 2 / 1; }
 
 /* Second "View all", shown on narrow screens only — see the mobile block. */
+/* Two arrow pairs, one shown at a time: the head pair is the desktop set that
+   Swiper binds to; the pair under the carousel is for narrow screens, where
+   the thumb already is. */
 .blog__foot { display: none; }
 
 
@@ -525,10 +557,33 @@
   row-gap: var(--space-6);
 }
 
-/* Three items left now that the email row is gone. */
-.footer__contactbar-list {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  padding-block: var(--space-4);
+/* Four link columns now. They were equal 258px tracks holding ~120px of text,
+   so each carried a wide dead margin and the group read as adrift. max-content
+   makes every column the width of its longest link; space-between spreads the
+   slack into the gutters and pins the last column to the right edge. */
+@media (min-width: 68rem) {
+  .footer__top {
+    grid-template-columns: minmax(14rem, 26rem) repeat(4, max-content);
+    justify-content: space-between;
+    column-gap: var(--space-6);
+  }
+}
+
+/* The shared sheet puts the brand across the top and the link columns in a row
+   beneath at this width — that row is four wide there, and there are five now. */
+@media (max-width: 68rem) {
+  .footer__top { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+  .footer__brand { grid-column: 1 / -1; }
+}
+
+/* Three items left now that the email row is gone. Scoped above 44rem — the
+   shared sheet drops the bar to one column below that, and an unscoped rule
+   here was overriding it and squeezing the address into a 100px column. */
+.footer__contactbar-list { padding-block: var(--space-4); }
+
+@media (min-width: 44.0625rem) {
+  .footer__contactbar-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 .footer__badges {
@@ -582,24 +637,78 @@
   /* m7 — the six why-us reasons go; the copy, tile and CTAs carry the section. */
   .whyus__reasons { display: none; }
 
-  /* m8 — "View all" moves under the carousel, where the thumb already is. */
-  .blog__controls .blog__all { display: none; }
-
-  .blog__foot {
-    display: flex;
-    justify-content: center;
-    margin-top: var(--space-6);
-  }
-
-  /* m5 — stat icon over the figure instead of beside it, so "100%" and "25-Yr"
-     start on the same line as each other rather than each being pushed in by
-     its own icon. */
-  /* Top-aligned, or the tile with the three-line label centres itself and the
-     two figures stop sharing a baseline. */
+  /* One stat per row — side by side they were two narrow columns of wrapped
+     labels. */
   .buildings__stats {
+    grid-template-columns: minmax(0, 1fr);
     align-items: start;
     gap: var(--space-4);
   }
+
+  /* Taller crop — 21:9 is right beside two other cards, but as a single
+     full-width card the photograph became a letterbox strip. */
+  .service-card__media { aspect-ratio: 16 / 10; }
+
+  /* The head stacks: title over CTA, rather than pushed apart. */
+  .blog__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  /* Arrows swap from the head to under the carousel, left-aligned with the
+     cards rather than centred. */
+  .blog__nav--head { display: none; }
+
+  .blog__foot {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: var(--space-6);
+  }
+
+  /* The offset that keeps a strip of photo visible needs a wide card; at one
+     card per screen it just made the text column narrower than its image. */
+  .blog-card__body { margin-right: 0; }
+
+  /* Four marks at desktop size wrapped into a ragged 2-and-2. A 2x2 grid with
+     the wide GAF slab pulled down lands them on an even pair of rows. */
+  .awards__logos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    place-items: center;
+    gap: var(--space-5) var(--space-4);
+  }
+
+  .awards__logos img { height: 3.5rem; }
+
+  .awards__logos .is-gaf img { height: 2.5rem; }
+
+  /* Brand across the top, then the four menus two-up in a 2x2 block. The
+     contact bar below stays single-column — that is the one that broke its
+     address mid-word when it was sharing a row. */
+  .footer__top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-5);
+  }
+
+  .footer__brand { grid-column: 1 / -1; }
+
+  /* Rating on its own row, the four marks on one row beneath it — left to wrap
+     freely the five items landed 2-and-3 with ragged centres. */
+  .footer__badges {
+    gap: var(--space-4) var(--space-4);
+    padding-block: var(--space-5);
+  }
+
+  .footer__rating {
+    flex-basis: 100%;
+    justify-content: center;
+  }
+
+  .footer__badges img { height: 2.75rem; }
+
+  .footer__badges .is-gaf img { height: 2rem; }
 
   .buildings__stat {
     grid-template-columns: minmax(0, 1fr);
@@ -615,15 +724,15 @@
 
 @media (max-width: 40rem) {
 
-  /* m3 — bigger logo, and a hamburger that reads as a button with a word on it. */
+  /* m3 — bigger logo and a plain hamburger; the outline read as a second CTA. */
   .brand__mark { height: 4.25rem; }
 
   .nav-toggle {
     width: auto;
     height: 3rem;
     gap: .5rem;
-    padding-inline: .75rem;
-    border: 1px solid var(--hairline);
+    padding-inline: .5rem;
+    border: none;
   }
 
   .nav-toggle i { font-size: 1.5rem; }
@@ -634,94 +743,82 @@
     letter-spacing: .01em;
   }
 
-  /* m1 — everything below is in service of one thing: the hero, form included,
-     landing inside a single phone screen. Each rule trims a band of height. */
+  /* The hero used to be squeezed into one phone screen, which is what made it
+     feel congested: paired form fields, side-by-side CTAs and 32px marks. It
+     scrolls now, and everything below is sized to be read instead. */
   .hero__inner {
-    gap: var(--space-3);
-    padding-block: var(--space-3);
+    gap: var(--space-5);
+    padding-block: var(--space-7) var(--space-6);
   }
 
-  .hero__title { font-size: 1.75rem; }
+  .hero__title { font-size: 2rem; }
 
-  /* m2 — the line that actually sells, so it gets the size the h1 gave up. */
   .hero__title-sub {
-    margin-top: .375rem;
-    font-size: 1.375rem;
+    margin-top: .625rem;
+    font-size: 1.5rem;
   }
 
   .hero__lede {
-    margin-top: var(--space-3);
-    font-size: .9375rem;
-    line-height: 1.5;
-  }
-
-  /* Side by side rather than stacked — saves a whole button of height. */
-  .hero__actions {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-2);
     margin-top: var(--space-4);
+    font-size: 1.0625rem;
+    line-height: 1.6;
   }
 
-  /* Two buttons share a 350px row here, so the labels have only ~171px each.
-     Capitalised, "Get A Free Estimate" needed 178 and was being clipped —
-     the padding and pip gap give the difference back. */
+  /* One per row — two in a 350px row left both labels clipped. Each button
+     hugs its label rather than stretching, and centres with the copy above. */
+  .hero__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+  }
+
   .hero__actions .btn {
-    min-height: 2.625rem;
-    gap: .5rem;
-    padding-inline: .5rem;
-    font-size: .8125rem;
+    min-height: 3rem;
+    gap: .75rem;
+    padding-inline: 1.5rem;
+    font-size: .9375rem;
   }
 
-  /* At full size the four marks wrap to two rows and push the form off the
-     screen. Scaled down they hold one row inside the 350px content width,
-     which is what keeps the hero to a single screen. */
+  /* Big enough to actually read, allowed to wrap, and centred on the column. */
   .hero__badges {
-    flex-wrap: nowrap;
-    gap: var(--space-2);
-    margin-top: var(--space-3);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-top: var(--space-5);
   }
 
-  .hero__badge img { height: 2rem; }
+  .hero__badge img { height: 3rem; }
 
-  .hero__badge--gaf img { height: 1.5rem; }
+  .hero__badge--gaf img { height: 2.25rem; }
 
-  .hero__badge--rating {
-    gap: .375rem;
-  }
+  .hero__badge--rating img { height: 2rem; }
 
-  .hero__badge--rating img { height: 1.5rem; }
+  .hero__rating { font-size: 1.1875rem; }
 
-  .hero__rating { font-size: 1rem; }
-
-
-  .estimate-form { padding: var(--space-3); }
+  .estimate-form { padding: var(--space-4); }
 
   .estimate-form__head {
-    padding-bottom: var(--space-2);
-    margin-bottom: var(--space-2);
+    padding-bottom: var(--space-3);
+    margin-bottom: var(--space-4);
   }
 
-  .estimate-form__title { font-size: 1.1875rem; }
+  .estimate-form__title { font-size: 1.3125rem; }
 
-  /* Two columns even at phone width: the four short fields pair up cleanly at
-     ~170px each, and dropping two rows is what finally gets the hero inside
-     one screen. The message keeps the full width. */
+  /* One field per row. */
   .estimate-form__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-2);
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
   }
 
-  .estimate-form .field__input { min-height: 2.5rem; }
+  .estimate-form .field__input { min-height: 2.875rem; }
 
-  .estimate-form .field__input--area {
-    min-height: 3.25rem;
-    height: 3.25rem;
-  }
+  .estimate-form .field__input--area { min-height: 5rem; }
 
   .estimate-form__submit {
-    min-height: 2.625rem;
-    margin-top: var(--space-2);
+    min-height: 3rem;
+    margin-top: var(--space-4);
   }
 }
 
@@ -856,3 +953,12 @@
   .page-hero__title { line-height: 1.3; }
   .page-hero__lede { font-size: 1rem; }
 }
+
+
+/* Mobile drawer ----------------------------------------------------------- */
+
+/* The first three items are <button> and the rest are <a>. The shared sheet
+   resets button background and border but not padding, so the three group
+   labels inherited Chrome's default 1px 6px and sat 6px right of the links
+   under them. */
+.mobile-nav__group { padding-inline: 0; }
