@@ -242,6 +242,14 @@
   text-transform: capitalize;
 }
 
+/* The contact form's heading was a step below the hero's; it leads its own
+   section here, so it takes the same weight of type. Centred to match the
+   hero form's heading, on this page and in the homepage's contact section. */
+.contact-form__title {
+  font-size: clamp(1.5rem, 1.3rem + .85vw, 2.125rem);
+  text-align: center;
+}
+
 
 /* ==========================================================================
    Change list — batch 2
@@ -292,9 +300,15 @@
 
 /* Mega-menu column headings (9) ------------------------------------------- */
 
+/* Already at 700, and this family ships no heavier face — 800 would only get a
+   synthesised faux-bold. The weight comes from full-strength navy, a size up
+   and tighter tracking instead; wide letter-spacing thins uppercase text. */
 .mega__heading {
+  font-size: .875rem;
   font-weight: var(--fw-bold);
-  color: rgba(1, 44, 109, .85);
+  letter-spacing: .09em;
+  color: var(--navy);
+  border-bottom-color: rgba(1, 44, 109, .22);
 }
 
 
@@ -577,46 +591,71 @@
   .footer__brand { grid-column: 1 / -1; }
 }
 
-/* Three items left now that the email row is gone. Scoped above 44rem — the
-   shared sheet drops the bar to one column below that, and an unscoped rule
-   here was overriding it and squeezing the address into a 100px column. */
-.footer__contactbar-list { padding-block: var(--space-4); }
-
-@media (min-width: 44.0625rem) {
-  .footer__contactbar-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-
-.footer__badges {
+/* Contact details and the credential marks now share one strip: details left,
+   marks right. The details stack rather than running three across — side by
+   side the two halves needed ~1500px and only had 1460. */
+.footer__midrow {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: var(--space-4) var(--space-6);
-  padding-block: var(--space-4);
+  justify-content: space-between;
+  gap: var(--space-5) var(--space-6);
+  padding-block: var(--space-5);
 }
 
-/* No plates — the marks sit straight on the navy, same as in the hero. */
+/* Stacked on a phone, three across from tablet up — the items are auto-width
+   so they hug their text and leave the marks room on the same line. */
+.footer__contactbar-list {
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+  padding-block: 0;
+}
+
+@media (min-width: 44.0625rem) {
+  .footer__contactbar-list {
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+    gap: var(--space-5);
+  }
+}
+
+/* Smaller than the hero set: these share a line with the contact details, and
+   at the previous size the two halves came to ~1500px against 1460 available. */
+/* One definition for the marks — an earlier pass had left two, and the stale
+   one sat later in the file and won. They share a line with the contact
+   details now, so they are sized to fit beside them, and they carry no plate:
+   the marks sit straight on the navy, same as in the hero. */
+.footer__badges {
+  display: flex;
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3) var(--space-4);
+  padding-block: 0;
+}
+
 .footer__badges img {
   width: auto;
-  height: 4rem;
+  height: 2.625rem;
   padding: 0;
   background-color: transparent;
 }
 
-.footer__badges .is-gaf img { height: 3.125rem; }
+.footer__badges .is-gaf img { height: 2rem; }
 
 .footer__rating {
   display: inline-flex;
   align-items: center;
   gap: .5rem;
   white-space: nowrap;
-  font-size: 1.3125rem;
+  font-size: 1.125rem;
   font-weight: var(--fw-bold);
   line-height: 1;
   color: var(--white);
 }
 
-.footer__rating img { height: 2.25rem; }
+.footer__rating img { height: 2rem; }
 
 
 /* ==========================================================================
@@ -696,9 +735,16 @@
 
   /* Rating on its own row, the four marks on one row beneath it — left to wrap
      freely the five items landed 2-and-3 with ragged centres. */
+  /* Stacked again on a phone: details, then the marks under them. */
+  .footer__midrow {
+    justify-content: flex-start;
+    gap: var(--space-5);
+  }
+
   .footer__badges {
-    gap: var(--space-4) var(--space-4);
-    padding-block: var(--space-5);
+    justify-content: center;
+    gap: var(--space-4);
+    padding-block: 0;
   }
 
   .footer__rating {
@@ -887,13 +933,15 @@
 }
 
 .page-hero__title {
-  max-width: 24ch;
+  /* Wider measure and a step down in size: the heading went from two words to
+     six, so at the previous scale it broke across three lines. */
+  max-width: 26ch;
   margin-inline: auto;
   margin-top: var(--space-4);
-  font-size: clamp(1.875rem, 1.3rem + 2vw, 3rem);
+  font-size: clamp(2rem, 1.35rem + 2.3vw, 3.5rem);
   font-weight: var(--fw-bold);
-  letter-spacing: -.02em;
-  line-height: 1.22;
+  letter-spacing: -.022em;
+  line-height: 1.16;
   color: var(--white);
   text-wrap: balance;
 }
@@ -917,36 +965,126 @@
   margin-top: var(--space-6);
 }
 
-/* The homepage section stretches both columns so the map matches the form's
-   height. Here the left column is the taller one, so stretching just leaves
-   dead space under the submit — start-align instead. */
-.contact--page .contact__inner { align-items: start; }
+/* The credential marks carried over from the homepage hero. Same classes, so
+   they inherit the sizing and the per-mark optical balance already tuned there
+   — only the spacing under the lede is new. */
+.page-hero__marks {
+  justify-content: center;
+  margin-top: var(--space-7);
+}
 
-/* Details stack above the map in the left column, rather than sitting in a row
-   under both columns the way the homepage section used to. */
-.contact-page__details {
+/* Heading and map left, form right, methods across the bottom. align-items is
+   left at stretch so the map grows to whatever height the form ends up — the
+   two columns then finish on the same line without either being hand-sized. */
+.contact-page__inner {
   display: grid;
-  gap: var(--space-5);
-  margin-bottom: var(--space-6);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 30rem);
+  column-gap: clamp(2rem, 1.4rem + 2.4vw, 4.5rem);
+  row-gap: var(--space-5);
 }
 
-/* The map no longer has to match the form's height — it is one item in a
-   stack now, so it gets a shape of its own. */
-.contact__left .contact__map {
-  min-height: 18rem;
-  border-radius: var(--radius-lg);
+.contact-page__aside { display: flex; flex-direction: column; }
+
+/* Fills the column. The details moved out to their own row underneath, so the
+   map was a 253px block beside a 529px form with 276px of dead space below it;
+   letting it grow closes that and squares the two columns off. */
+.contact-page__map {
+  flex: 1 1 auto;
+  min-height: 20rem;
   overflow: hidden;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  background-color: #EDF1F7;
 }
 
-.contact__left .contact__map-frame {
+.contact-page__map-embed {
+  display: block;
   width: 100%;
   height: 100%;
-  min-height: 18rem;
+  min-height: 20rem;
   border: 0;
 }
 
-@media (max-width: 60rem) {
-  .contact__inner { grid-template-columns: minmax(0, 1fr); }
+/* One row spanning both columns, under the map and the form. */
+.contact-methods {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.contact-method {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+/* Border only on hover — the lift read as a click affordance on cards that
+   are not clickable. */
+.contact-method:hover { border-color: rgba(1, 44, 109, .3); }
+
+.contact-method__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: 1.0625rem;
+}
+
+.contact-method__label {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-bold);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(1, 44, 109, .62);
+}
+
+.contact-method__value {
+  margin-top: .375rem;
+  font-size: 1.1875rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.4;
+  color: var(--navy);
+}
+
+.contact-method__value a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.contact-method__value a:hover { color: var(--red); }
+
+
+/* Flat card — the hairline carries the edge on its own. */
+.contact-page .contact-form {
+  padding: clamp(1.5rem, 1.2rem + 1.1vw, 2.25rem);
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+}
+
+
+@media (max-width: 62rem) {
+  .contact-page__inner { grid-template-columns: minmax(0, 1fr); }
+
+  .contact-methods { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 44rem) {
+  .contact-methods { grid-template-columns: minmax(0, 1fr); }
+
+  .contact-method { padding: var(--space-4); }
 }
 
 @media (max-width: 48rem) {
@@ -962,3 +1100,95 @@
    labels inherited Chrome's default 1px 6px and sat 6px right of the links
    under them. */
 .mobile-nav__group { padding-inline: 0; }
+
+
+/* Footer blurb links ------------------------------------------------------ */
+
+/* The trades and boroughs in the two paragraphs under the logo. They inherit
+   the document's underlined link default, which at this size read as noise
+   across two dense paragraphs — weight and a white tint carry them instead. */
+.footer__about a {
+  font-weight: var(--fw-bold);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.footer__about a:hover,
+.footer__about a:focus-visible { text-decoration: underline; }
+
+
+/* Reasons band (contact page) --------------------------------------------- */
+
+.reasons { background-color: var(--surface-alt); }
+
+.reasons__head {
+  display: grid;
+  justify-items: center;
+  margin-bottom: var(--space-7);
+  text-align: center;
+}
+
+.reasons__title {
+  max-width: 30ch;
+  margin-inline: auto;
+}
+
+/* Four across, one line of copy each. */
+.reasons__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+/* align-content: start keeps the three cards in a row reading off the same top
+   line whatever their copy runs to. */
+.reason {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.reason:hover { border-color: rgba(1, 44, 109, .3); }
+
+.reason__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: var(--space-1);
+  border-radius: 999px;
+  background-color: rgba(232, 38, 60, .1);
+  color: var(--red);
+  font-size: 1.0625rem;
+}
+
+.reason__title {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.35;
+  color: var(--navy);
+}
+
+.reason__text {
+  font-size: .875rem;
+  line-height: 1.55;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+@media (max-width: 68rem) {
+  .reasons__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 44rem) {
+  .reasons__grid { grid-template-columns: minmax(0, 1fr); }
+
+  .reason { padding: var(--space-5); }
+}

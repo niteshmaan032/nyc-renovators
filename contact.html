@@ -361,6 +361,8 @@
 
   <main id="main">
 
+    <!-- Page hero. Same dark band as the homepage's closing sections, with the
+         credential marks carried straight over from the homepage hero. -->
     <section class="page-hero">
       <div class="container page-hero__inner">
 
@@ -371,87 +373,63 @@
           </ol>
         </nav>
 
-        <h1 class="page-hero__title">Talk to a Roofer, Not a Call Centre</h1>
+        <h1 class="page-hero__title">Contact Royal Renovators Inc. in Queens</h1>
 
         <p class="page-hero__lede">
-          Tell us what the roof is doing and we will get up there, photograph what we find and
-          put a written price in front of you &mdash; including when the answer is that it can wait.
+          One of the most trusted roofing companies in New York since 1988 &mdash; BBB A+ rated and
+          GAF Master Elite. Call for anything urgent, or send the form and we will come back to
+          you within one business day.
         </p>
 
-        <div class="page-hero__actions">
-          <a class="btn btn--primary" href="#contact-form">
-            <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
-            <span class="btn__label">Get a free estimate</span>
-          </a>
-          <a class="btn btn--ghost" href="tel:+17184146067">
-            <span class="btn__pip" aria-hidden="true"><i class="btn__arrow fa-solid fa-phone"></i><i class="btn__arrow btn__arrow--copy fa-solid fa-phone"></i></span>
-            <span class="btn__label">Call (718) 414-6067</span>
-          </a>
-        </div>
+        <ul class="hero__badges page-hero__marks">
+            <li class="hero__badge hero__badge--rating">
+              <img src="images/Google__G__logo.svg.webp" alt="Google" width="1280" height="1280" decoding="async">
+              <span class="hero__rating"><strong>4.9</strong> ratings</span>
+            </li>
+            <li class="hero__badge">
+              <img src="images/bbb-a-plus-accredited.png" alt="BBB Accredited Business, A+ rating"
+                   width="1360" height="1156" decoding="async">
+            </li>
+            <li class="hero__badge hero__badge--gaf">
+              <img src="images/GAF-Master-Elite-Logo.png" alt="GAF Factory-Certified Master Elite roofing contractor"
+                   width="1424" height="520" decoding="async">
+            </li>
+            <li class="hero__badge">
+              <img src="images/ANGIES_LIST_SUPER_SAVER_award.png" alt="Angie&rsquo;s List Super Service Award"
+                   width="600" height="462" decoding="async">
+            </li>
+            <li class="hero__badge">
+              <img src="images/PngItem_1663.png" alt="People love us on Yelp"
+                   width="540" height="539" decoding="async">
+            </li>
+        </ul>
 
       </div>
     </section>
 
-    <section class="section contact contact--page" id="contact">
-      <div class="container">
+    <!-- Heading and map left, form right, the three ways to reach us in a row
+         beneath both. The details went under rather than in the left column:
+         stacked there they ran ~1030px against the form's ~700 and left the
+         right-hand side empty. -->
+    <section class="section contact-page" id="contact">
+      <div class="container contact-page__inner">
 
-        <div class="contact__inner">
+        <div class="contact-page__aside">
 
-          <div class="contact__left">
-
-            <div class="contact__head">
-              <p class="section-eyebrow">Contact</p>
-              <h2 class="section-title contact__title">Get in Touch</h2>
-            </div>
-
-            <ul class="contact-page__details">
-
-              <li class="contact-item">
-                <span class="contact-item__icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
-                <div>
-                  <p class="contact-item__label">Call the office</p>
-                  <p class="contact-item__value"><a href="tel:+17184146067">(718) 414-6067</a></p>
-                  <p class="contact-item__note">Seven days a week, including emergencies</p>
-                </div>
-              </li>
-
-              <li class="contact-item">
-                <span class="contact-item__icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
-                <div>
-                  <p class="contact-item__label">Where we are</p>
-                  <p class="contact-item__value">
-                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375"
-                       target="_blank" rel="noopener">118-35 Queens Blvd,<br>Forest Hills, NY 11375</a>
-                  </p>
-                  <p class="contact-item__note">All five boroughs, Long Island and Westchester</p>
-                </div>
-              </li>
-
-              <li class="contact-item">
-                <span class="contact-item__icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
-                <div>
-                  <p class="contact-item__label">Opening hours</p>
-                  <p class="contact-item__value">Mon &ndash; Sun, 7:00am &ndash; 11:00pm</p>
-                  <p class="contact-item__note">Emergency leak response outside these hours</p>
-                </div>
-              </li>
-
-            </ul>
-
-            <div class="contact__map">
-              <iframe class="contact__map-frame"
-                      src="https://www.google.com/maps?q=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375&amp;output=embed"
-                      title="Map showing Royal Renovators Inc. at 118-35 Queens Blvd, Forest Hills, NY 11375"
-                      loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-
+          <div class="contact-page__map">
+            <iframe class="contact-page__map-embed"
+                    src="https://www.google.com/maps?q=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375&amp;output=embed"
+                    title="Map showing Royal Renovators Inc. at 118-35 Queens Blvd, Forest Hills, NY 11375"
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
+
+        </div>
 
           <form class="contact-form form--light js-form" id="contact-form" method="post"
                 action="#contact-form" aria-labelledby="contact-form-title">
 
             <div class="contact-form__head">
-              <h2 class="contact-form__title" id="contact-form-title">Request a Free Quote</h2>
+              <h2 class="contact-form__title" id="contact-form-title">Get a Free Estimate</h2>
                           </div>
 
             <div class="contact-form__grid">
@@ -504,6 +482,148 @@
             <p class="form-status" data-form-status role="status" aria-live="polite"></p>
 
           </form>
+
+        <ul class="contact-methods">
+
+            <li class="contact-method">
+              <span class="contact-method__icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+              <div class="contact-method__body">
+                <p class="contact-method__label">Call the office</p>
+                <p class="contact-method__value"><a href="tel:+17184146067">(718) 414-6067</a></p>
+              </div>
+            </li>
+
+            <li class="contact-method">
+              <span class="contact-method__icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+              <div class="contact-method__body">
+                <p class="contact-method__label">Visit the office</p>
+                <p class="contact-method__value">
+                  <a href="https://www.google.com/maps/search/?api=1&amp;query=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375"
+                     target="_blank" rel="noopener">118-35 Queens Blvd,<br>Forest Hills, NY 11375</a>
+                </p>
+              </div>
+            </li>
+
+            <li class="contact-method">
+              <span class="contact-method__icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
+              <div class="contact-method__body">
+                <p class="contact-method__label">Opening hours</p>
+                <p class="contact-method__value">Mon &ndash; Sun, 7:00am &ndash; 11:00pm</p>
+              </div>
+            </li>
+
+        </ul>
+
+  
+
+      </div>
+    </section>
+
+    <!-- Reasons strip. Kept to four one-line points: this is a contact page, so
+         the section is there to reassure in passing, not to re-sell the company
+         the way the homepage's why-us section does. -->
+    <section class="section reasons" id="why-us">
+      <div class="container">
+
+        <div class="reasons__head">
+          <p class="section-eyebrow">Why us</p>
+          <h2 class="section-title reasons__title">Why Homeowners Choose Royal Renovators Inc.</h2>
+        </div>
+
+        <ul class="reasons__grid">
+
+          <li class="reason">
+            <span class="reason__icon"><i class="fa-solid fa-people-group" aria-hidden="true"></i></span>
+            <h3 class="reason__title">Our own crews</h3>
+            <p class="reason__text">Never subcontracted &mdash; the people who quote it do it.</p>
+          </li>
+
+          <li class="reason">
+            <span class="reason__icon"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></span>
+            <h3 class="reason__title">Itemised in writing</h3>
+            <p class="reason__text">Tear-off and overlay priced separately, so you can compare.</p>
+          </li>
+
+          <li class="reason">
+            <span class="reason__icon"><i class="fa-solid fa-droplet" aria-hidden="true"></i></span>
+            <h3 class="reason__title">Seven-day response</h3>
+            <p class="reason__text">We take emergency leak calls every day of the week.</p>
+          </li>
+
+          <li class="reason">
+            <span class="reason__icon"><i class="fa-solid fa-certificate" aria-hidden="true"></i></span>
+            <h3 class="reason__title">Credentials you can check</h3>
+            <p class="reason__text">Licensed #2030146, BBB A+, GAF Master Elite, fully insured.</p>
+          </li>
+
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- Same disclosure component as the homepage, so it inherits the styling
+         and the accordion script; the questions are the ones people ask before
+         they get in touch rather than the homepage's roofing ones. -->
+    <section class="section faqs" id="faqs">
+      <div class="container faqs__inner">
+
+        <div class="faqs__body">
+          <p class="section-eyebrow">FAQs</p>
+          <h2 class="section-title faqs__title">Before You Get in Touch</h2>
+          <p class="section-lede faqs__lede">
+            The things people ask most often before they call &mdash; how fast we reply, what an
+            estimate costs and how far we travel. If yours is not here, put it in the form and we
+            will answer it just as plainly.
+          </p>
+          <div class="faqs__actions">
+            <a class="btn btn--primary" href="#contact-form">
+              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+              <span class="btn__label">Ask us a question</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="faqs__list">
+
+          <details class="faq" name="contact-faq" open>
+            <summary class="faq__q">
+              How quickly will I hear back?
+              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="faq__a"><p>Send the form and we come back to you within one business day. If the roof is actively leaking, call instead — the phone reaches someone seven days a week, including outside office hours.</p></div>
+          </details>
+
+          <details class="faq" name="contact-faq">
+            <summary class="faq__q">
+              Does an estimate cost anything?
+              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="faq__a"><p>No. We get up on the roof, photograph what we find and put a written, itemised price in front of you at no charge and with no obligation — including when the answer is that it does not need replacing yet.</p></div>
+          </details>
+
+          <details class="faq" name="contact-faq">
+            <summary class="faq__q">
+              Can you come out for an emergency?
+              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="faq__a"><p>Yes. Water does not wait for Monday. We take emergency calls every day of the week, make the building safe first and quote the permanent repair afterwards.</p></div>
+          </details>
+
+          <details class="faq" name="contact-faq">
+            <summary class="faq__q">
+              What should I tell you when I get in touch?
+              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="faq__a"><p>The borough, roughly what the roof is doing and how long it has been doing it. A photograph helps more than anything else — it often tells us whether this is a repair or a replacement before we arrive.</p></div>
+          </details>
+
+          <details class="faq" name="contact-faq">
+            <summary class="faq__q">
+              Which areas do you cover?
+              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="faq__a"><p>All five boroughs, Long Island and lower Westchester, from our office in Forest Hills. If you are not sure whether we reach you, ask and we will tell you straight.</p></div>
+          </details>
 
         </div>
 
@@ -592,7 +712,9 @@
 
 
     <div class="footer__contactbar">
-      <ul class="container footer__contactbar-list">
+      <div class="container footer__midrow">
+
+        <ul class="footer__contactbar-list">
 
         <li>
           <span class="footer__contactbar-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
@@ -622,10 +744,8 @@
         </li>
 
       </ul>
-    </div>
 
-    <div class="footer__creds">
-      <ul class="container footer__badges">
+        <ul class="footer__badges">
         <li class="footer__rating">
           <img src="images/Google__G__logo.svg.webp" alt="Google" width="1280" height="1280" loading="lazy" decoding="async">
           <span><strong>4.9</strong> ratings</span>
@@ -647,6 +767,8 @@
                width="540" height="539" loading="lazy" decoding="async">
         </li>
       </ul>
+
+      </div>
     </div>
 
     <div class="container footer__bottom">
