@@ -3818,8 +3818,10 @@ a.contact__card:hover .contact__card-value { color: var(--ink); }
 .call-fab {
   position: fixed;
   right: clamp(1rem, .6rem + 1.2vw, 1.75rem);
-  bottom: clamp(1rem, .6rem + 1.2vw, 1.75rem);
-  z-index: var(--z-drawer);
+  bottom: calc(clamp(1rem, .6rem + 1.2vw, 1.75rem) + env(safe-area-inset-bottom, 0px));
+  /* Above the header and drawer, and clear of the phone's bottom browser UI
+     and any iOS home indicator. */
+  z-index: 90;
 
   display: inline-flex;
   align-items: center;
@@ -3865,6 +3867,18 @@ a.contact__card:hover .contact__card-value { color: var(--ink); }
   max-width: 12rem;
   padding-inline: .75rem .375rem;
   opacity: 1;
+}
+
+/* Slightly smaller on phones, where it sits closer to the thumb and has less
+   screen to spare. */
+@media (max-width: 47.99em) {
+  .call-fab { height: 3rem; }
+
+  .call-fab__icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.0625rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

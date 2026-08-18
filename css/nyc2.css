@@ -1203,8 +1203,10 @@
 .call-fab {
   position: fixed;
   right: clamp(1rem, .6rem + 1.2vw, 1.75rem);
-  bottom: clamp(1rem, .6rem + 1.2vw, 1.75rem);
-  z-index: var(--z-drawer);
+  bottom: calc(clamp(1rem, .6rem + 1.2vw, 1.75rem) + env(safe-area-inset-bottom, 0px));
+  /* Above the header and drawer, and clear of the phone's bottom browser UI
+     and any iOS home indicator. */
+  z-index: 90;
 
   display: inline-flex;
   align-items: center;
@@ -1252,6 +1254,27 @@
   opacity: 1;
 }
 
+/* Slightly smaller on phones, where it sits closer to the thumb and has less
+   screen to spare. */
+@media (max-width: 47.99em) {
+  .call-fab { height: 3rem; }
+
+  .call-fab__icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.0625rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .call-fab__label { transition: opacity var(--dur-fast) var(--ease-out); }
+}
+
+
+/* Footer, small screens ---------------------------------------------------- */
+
+/* The brand block shares a row with the first menu column once the grid drops
+   to two columns; spanning it puts the logo and blurb above the menus. */
+@media (max-width: 44rem) {
+  .footer__brand { grid-column: 1 / -1; }
 }
