@@ -120,6 +120,37 @@
     });
   }
 
+  /* Areas mega menu: one location open at a time, its services shown in the
+     columns below the area row. Every pane is already in the markup, so without
+     this the first area simply stays open and the rest are reachable by their
+     own links. */
+  function initAreaMenu() {
+    var menus = document.querySelectorAll('.areas-menu');
+    if (!menus.length) return;
+
+    menus.forEach(function (menu) {
+      var toggles = Array.prototype.slice.call(menu.querySelectorAll('.areas-menu__tab'));
+      if (!toggles.length) return;
+
+      function open(toggle) {
+        toggles.forEach(function (other) {
+          var pane = document.getElementById(other.getAttribute('aria-controls'));
+          var isTarget = other === toggle;
+          other.setAttribute('aria-expanded', String(isTarget));
+          if (pane) pane.hidden = !isTarget;
+        });
+      }
+
+      toggles.forEach(function (toggle) {
+        toggle.addEventListener('click', function () { open(toggle); });
+        /* Pointer users get it on hover, the way the old site behaved. */
+        toggle.addEventListener('mouseenter', function () {
+          if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) open(toggle);
+        });
+      });
+    });
+  }
+
   /* Mobile drawer with focus trap and scroll lock. */
   function initMobileNav() {
     var drawer = document.getElementById('mobile-nav');
@@ -634,6 +665,7 @@
     respectMotionPreference();
     watchScroll();
     initMegaMenus();
+    initAreaMenu();
     initMobileNav();
     initBlogSwiper();
     initReviewSwiper();

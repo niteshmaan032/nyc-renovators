@@ -31,194 +31,155 @@
   <a class="skip-link" href="#main">Skip to main content</a>
 
 
+  <!-- One compact bar: logo left, menu beside it, number and quote button
+       right. No utility strip, no centred nav, no full-bleed panels — the
+       three things that made this read as nyc2's header. -->
   <header class="site-header" id="site-header">
+    <div class="site-header__inner">
 
-    <!-- Bar 1 — positioning line left, social row right. Collapses on scroll
-         so the nav bar alone stays pinned. -->
-    <div class="utility-bar">
-      <div class="container utility-bar__inner">
+      <a class="brand" href="nyroofing.html" aria-label="NY Roofing — home">
+        <span class="brand__mark">
+          <img class="brand__img" src="images/ny-roofing-logo.png"
+               alt="NY Roofing" width="1348" height="742" fetchpriority="high">
+        </span>
+      </a>
 
-        <div class="utility-bar__left">
-          <p class="utility-bar__claim">
-            <i class="utility-bar__icon fa-solid fa-helmet-safety" aria-hidden="true"></i>
-            Expert Brooklyn Roofing Contractor
-          </p>
+      <div class="site-header__rows">
 
-          <p class="utility-bar__hours">
-            <i class="utility-bar__icon fa-regular fa-clock" aria-hidden="true"></i>
-            Mon &ndash; Sun: 7:00 am &ndash; 11:00 pm
-          </p>
-        </div>
+        <div class="header-bar">
 
-        <ul class="socials">
-          <li><a href="#facebook" aria-label="NY Roofing on Facebook">
-            <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
-          </a></li>
-          <li><a href="#instagram" aria-label="NY Roofing on Instagram">
-            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-          </a></li>
-          <li><a href="#x" aria-label="NY Roofing on X">
-            <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
-          </a></li>
-          <li><a href="#pinterest" aria-label="NY Roofing on Pinterest">
-            <i class="fa-brands fa-pinterest-p" aria-hidden="true"></i>
-          </a></li>
-          <li><a href="#linkedin" aria-label="NY Roofing on LinkedIn">
-            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
-          </a></li>
-        </ul>
+          <nav class="primary-nav" aria-label="Primary">
+            <ul class="primary-nav__list">
 
-      </div>
-    </div>
+              <li class="primary-nav__item">
+                <a class="primary-nav__link" href="nyroofing.html">Home</a>
+              </li>
 
-    <!-- Bar 2 — logo left, menu centre, call CTA right. -->
-    <div class="nav-bar">
-      <div class="container nav-bar__inner">
+              <li class="primary-nav__item primary-nav__item--menu">
+                <button class="primary-nav__link" type="button" aria-expanded="false" aria-controls="menu-services">
+                  Services
+                  <i class="primary-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="mega mega--sm" id="menu-services" hidden>
+                  <ul class="mega__list">
+                    <li><a href="nyroofing.html#siding"><span class="mega__icon" aria-hidden="true"><i class="fa-solid fa-grip-lines"></i></span><span>Siding</span></a></li>
+                    <li><a href="nyroofing.html#gutters"><span class="mega__icon" aria-hidden="true"><i class="fa-solid fa-water"></i></span><span>Gutter Replacement</span></a></li>
+                    <li><a href="nyroofing.html#masonry"><span class="mega__icon" aria-hidden="true"><i class="fa-solid fa-trowel-bricks"></i></span><span>Masonry</span></a></li>
+                  </ul>
+                </div>
+              </li>
 
-        <a class="brand" href="nyroofing.html" aria-label="NY Roofing — home">
-          <!-- Cropped to the artwork's real bounds with the source file's
-               baked-in off-white field made transparent, so the bar needs no
-               blend-mode trick to hide it. -->
-          <span class="brand__mark">
-            <img class="brand__img brand__img--onlight" src="images/ny-roofing-logo.png"
-                 alt="NY Roofing" width="1348" height="742" fetchpriority="high">
-          </span>
-        </a>
+              <li class="primary-nav__item primary-nav__item--menu">
+                <button class="primary-nav__link" type="button" aria-expanded="false" aria-controls="menu-roofing">
+                  Roofing
+                  <i class="primary-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <!-- Twenty-three links, balanced 8/8/7 so the card stays about
+                     340px tall. Pinned under its own trigger, not stretched across
+                     the viewport. -->
+                <div class="mega mega--wide" id="menu-roofing" hidden>
+                  <div class="mega__grid">
 
-        <nav class="primary-nav" aria-label="Primary">
-          <ul class="primary-nav__list">
+                    <div class="mega__col">
+                      <p class="mega__heading">Popular</p>
+                      <ul class="mega__list">
+                        <li><a href="nyroofing.html#flat-roofing">Flat Roofing</a></li>
+                        <li><a href="nyroofing.html#shingle-roofing">Shingle Roofing</a></li>
+                        <li><a href="nyroofing.html#metal-roofing">Metal Roofing</a></li>
+                        <li><a href="nyroofing.html#roof-repair">Roof Repair</a></li>
+                        <li><a href="nyroofing.html#roof-replacement">Roof Replacement</a></li>
+                        <li><a href="nyroofing.html#roof-leak-repair">Roof Leak Repair</a></li>
+                        <li><a href="nyroofing.html#commercial-roofing">Commercial Roofing</a></li>
+                        <li><a href="nyroofing.html#emergency-roofing">Emergency Roofing</a></li>
+                      </ul>
+                    </div>
 
-            <li class="primary-nav__item">
-              <a class="primary-nav__link" href="nyroofing.html">Home</a>
-            </li>
+                    <div class="mega__col">
+                      <p class="mega__heading">Specialty</p>
+                      <ul class="mega__list">
+                        <li><a href="nyroofing.html#epdm-roofing">EPDM Roofing</a></li>
+                        <li><a href="nyroofing.html#tpo-roofing">TPO Roofing</a></li>
+                        <li><a href="nyroofing.html#clay-tile-roofing">Clay Tile Roofing</a></li>
+                        <li><a href="nyroofing.html#slate-roofing">Slate Roofing</a></li>
+                        <li><a href="nyroofing.html#brownstone-roofing">Brownstone Roofing</a></li>
+                        <li><a href="nyroofing.html#skylight-installation">Skylight Installation</a></li>
+                        <li><a href="nyroofing.html#leak-detection">Roof Leak Detection</a></li>
+                        <li><a href="nyroofing.html#roof-inspection">Roof Inspections</a></li>
+                      </ul>
+                    </div>
 
-            <li class="primary-nav__item primary-nav__item--menu">
-              <button class="primary-nav__link" type="button" aria-expanded="false" aria-controls="menu-services">
-                Services
-                <i class="primary-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
-              </button>
-              <!-- Three items only, so a single column under the trigger — a
-                   full-bleed panel for three links reads as a mistake. -->
-              <div class="mega mega--drop" id="menu-services" hidden>
-                <ul class="mega__list">
-                  <li><a href="nyroofing.html#siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
-                  <li><a href="nyroofing.html#gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutter Replacement</span></a></li>
-                  <li><a href="#masonry"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
-                </ul>
-              </div>
-            </li>
+                    <div class="mega__col">
+                      <p class="mega__heading">Brooklyn Areas</p>
+                      <ul class="mega__list">
+                        <li><a href="nyroofing.html#park-slope-roofing">Park Slope</a></li>
+                        <li><a href="nyroofing.html#prospect-park-roofing">Prospect Park</a></li>
+                        <li><a href="nyroofing.html#bed-stuy-roofing">Bed&ndash;Stuy</a></li>
+                        <li><a href="nyroofing.html#brooklyn-heights-roofing">Brooklyn Heights</a></li>
+                        <li><a href="nyroofing.html#bushwick-roofing">Bushwick</a></li>
+                        <li><a href="nyroofing.html#crown-heights-roofing">Crown Heights</a></li>
+                        <li><a href="nyroofing.html#williamsburg-roofing">Williamsburg</a></li>
+                      </ul>
+                    </div>
 
-            <li class="primary-nav__item primary-nav__item--menu primary-nav__item--full">
-              <button class="primary-nav__link" type="button" aria-expanded="false" aria-controls="menu-roofing">
-                Roofing
-                <i class="primary-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
-              </button>
-              <!-- Eighteen roofing pages. Everything visible at once beats a
-                   hover-swapped column list, which fights touch screens. -->
-              <div class="mega mega--full" id="menu-roofing" hidden>
-                <div class="container mega__inner">
-
-                  <div class="mega__col">
-                    <p class="mega__heading">Roof Systems</p>
-                    <ul class="mega__list">
-                      <li><a href="nyroofing.html#flat-roofing"><i class="menu-icon fa-solid fa-square" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
-                      <li><a href="nyroofing.html#shingle-roofing"><i class="menu-icon fa-solid fa-house-chimney" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
-                      <li><a href="#metal-roofing"><i class="menu-icon fa-solid fa-layer-group" aria-hidden="true"></i><span>Metal Roofing</span></a></li>
-                      <li><a href="#epdm-roofing"><i class="menu-icon fa-solid fa-scroll" aria-hidden="true"></i><span>EPDM Roofing</span></a></li>
-                      <li><a href="#tpo-roofing"><i class="menu-icon fa-solid fa-diagram-project" aria-hidden="true"></i><span>TPO Roofing</span></a></li>
-                      <li><a href="nyroofing.html#tile-slate"><i class="menu-icon fa-solid fa-chess-board" aria-hidden="true"></i><span>Clay Tile &amp; Slate</span></a></li>
-                    </ul>
                   </div>
 
-                  <div class="mega__col">
-                    <p class="mega__heading">Repair &amp; Restoration</p>
-                    <ul class="mega__list">
-                      <li><a href="nyroofing.html#roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
-                      <li><a href="#roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
-                      <li><a href="#leak-repair"><i class="menu-icon fa-solid fa-droplet-slash" aria-hidden="true"></i><span>Roof Leak Repair</span></a></li>
-                      <li><a href="#leak-detection"><i class="menu-icon fa-solid fa-magnifying-glass" aria-hidden="true"></i><span>Leak Detection</span></a></li>
-                      <li><a href="#emergency"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Roofing</span></a></li>
-                      <li><a href="#inspections"><i class="menu-icon fa-solid fa-clipboard-check" aria-hidden="true"></i><span>Roof Inspections</span></a></li>
+                  <div class="mega__foot">
+                    <ul class="mega__facts">
+                      <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>Licensed &amp; insured</li>
+                      <li><i class="fa-solid fa-bolt" aria-hidden="true"></i>24/7 emergency response</li>
                     </ul>
-                  </div>
-
-                  <div class="mega__col">
-                    <p class="mega__heading">Specialty</p>
-                    <ul class="mega__list">
-                      <li><a href="nyroofing.html#commercial"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
-                      <li><a href="nyroofing.html#residential"><i class="menu-icon fa-solid fa-house" aria-hidden="true"></i><span>Residential Roofing</span></a></li>
-                      <li><a href="nyroofing.html#brownstone"><i class="menu-icon fa-solid fa-city" aria-hidden="true"></i><span>Brownstone Roofing</span></a></li>
-                      <li><a href="#skylights"><i class="menu-icon fa-solid fa-sun" aria-hidden="true"></i><span>Skylight Installation</span></a></li>
-                      <li><a href="#coating"><i class="menu-icon fa-solid fa-brush" aria-hidden="true"></i><span>Roof Coating</span></a></li>
-                      <li><a href="#ventilation"><i class="menu-icon fa-solid fa-fan" aria-hidden="true"></i><span>Roof Ventilation</span></a></li>
-                    </ul>
-                  </div>
-
-                  <!-- The panel is wide enough that a fourth column of links
-                       would just be filler; an emergency card earns the space. -->
-                  <!-- Same shape as the card in nyc2's Areas panel: a question
-                       the menu itself can't answer, a plain reply, one action. -->
-                  <div class="pitch">
-                    <p class="pitch__title">Not sure which one you need?</p>
-                    <p class="pitch__text">
-                      Tell us what you&rsquo;re seeing &mdash; a stain on the ceiling, water that
-                      never drains, a roof that&rsquo;s simply old. We&rsquo;ll come look and tell
-                      you straight what it needs, at no cost.
-                    </p>
-                    <a class="pitch__cta" href="#contact">
-                      <span class="pitch__cta-label">Get A Free Quote</span>
-                      <span class="pitch__cta-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                    <a class="btn mega__call" href="tel:+16468380441">
+                      <span class="btn__pip" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
+                      <span class="btn__text"><span class="btn__number">(646) 838-0441</span></span>
                     </a>
                   </div>
-
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <li class="primary-nav__item primary-nav__item--menu">
-              <button class="primary-nav__link" type="button" aria-expanded="false" aria-controls="menu-areas">
-                Areas We Serve
-                <i class="primary-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
-              </button>
-              <div class="mega mega--drop" id="menu-areas" hidden>
-                <ul class="mega__list">
-                  <li><a href="nyroofing.html#brooklyn"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Brooklyn</span></a></li>
-                  <li><a href="nyroofing.html#manhattan"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Manhattan</span></a></li>
-                  <li><a href="nyroofing.html#bronx"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>The Bronx</span></a></li>
-                  <li><a href="nyroofing.html#queens"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Queens</span></a></li>
-                  <li><a href="nyroofing.html#staten-island"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Staten Island</span></a></li>
-                </ul>
-              </div>
-            </li>
+              <li class="primary-nav__item primary-nav__item--menu">
+                <button class="primary-nav__link" type="button" aria-expanded="false" aria-controls="menu-areas">
+                  Areas We Serve
+                  <i class="primary-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="mega mega--sm" id="menu-areas" hidden>
+                  <ul class="mega__list">
+                    <li><a href="nyroofing.html#brooklyn"><span class="mega__icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span><span>Brooklyn Roofing</span></a></li>
+                    <li><a href="nyroofing.html#bronx"><span class="mega__icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span><span>Bronx Roofing</span></a></li>
+                    <li><a href="nyroofing.html#manhattan"><span class="mega__icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span><span>Manhattan Roofing</span></a></li>
+                  </ul>
+                </div>
+              </li>
 
-            <li class="primary-nav__item"><a class="primary-nav__link" href="nyroofing.html#projects">Projects</a></li>
-            <li class="primary-nav__item"><a class="primary-nav__link" href="#faqs">FAQs</a></li>
-            <li class="primary-nav__item"><a class="primary-nav__link" href="nyroofing.html#blog">Blog</a></li>
-            <li class="primary-nav__item"><a class="primary-nav__link" href="nyroofing.html#about">About</a></li>
-            <li class="primary-nav__item"><a class="primary-nav__link is-current" href="nyroofing-contact.html" aria-current="page">Contact</a></li>
+              <li class="primary-nav__item"><a class="primary-nav__link" href="nyroofing.html#projects">Projects</a></li>
 
-          </ul>
-        </nav>
+              <li class="primary-nav__item"><a class="primary-nav__link" href="nyroofing.html#faqs">FAQs</a></li>
 
-        <div class="nav-bar__actions">
-          <a class="btn call-cta" href="tel:+16468380441">
+              <li class="primary-nav__item"><a class="primary-nav__link" href="nyroofing.html#blog">Blog</a></li>
+
+              <li class="primary-nav__item"><a class="primary-nav__link" href="nyroofing.html#about">About Us</a></li>
+
+              <li class="primary-nav__item"><a class="primary-nav__link is-current" href="nyroofing-contact.html" aria-current="page">Contact</a></li>
+
+            </ul>
+          </nav>
+
+          <!-- The page's own button, in the hero's brand-on-brand colours, so
+               the header and the hero make the same offer in the same shape. -->
+          <a class="btn header-call" href="tel:+16468380441">
             <span class="btn__pip" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
-            <span class="btn__text">
-              <span class="btn__kicker">Call us 24/7</span>
-              <span class="btn__number">(646) 838-0441</span>
-            </span>
+            <span class="btn__text"><span class="btn__number">(646) 838-0441</span></span>
           </a>
 
           <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">
             <i class="fa-solid fa-bars" aria-hidden="true"></i>
             <span class="nav-toggle__word">Menu</span>
-            <span class="visually-hidden">Open menu</span>
           </button>
+
         </div>
 
       </div>
-    </div>
 
+    </div>
   </header>
 
 
@@ -228,7 +189,7 @@
       <div class="mobile-nav__head">
         <span class="brand brand--static">
           <span class="brand__mark">
-            <img class="brand__img brand__img--onlight" src="images/ny-roofing-logo.png"
+            <img class="brand__img" src="images/ny-roofing-logo.png"
                  alt="NY Roofing" width="1348" height="742">
           </span>
         </span>
@@ -249,10 +210,10 @@
             </button>
             <div class="mobile-nav__subwrap">
               <ul class="mobile-nav__sub">
-              <li><a href="nyroofing.html#siding">Siding</a></li>
-              <li><a href="nyroofing.html#gutters">Gutter Replacement</a></li>
-              <li><a href="#masonry">Masonry</a></li>
-            </ul>
+                <li><a href="#siding">Siding</a></li>
+                <li><a href="#gutters">Gutter Replacement</a></li>
+                <li><a href="#masonry">Masonry</a></li>
+              </ul>
             </div>
           </li>
 
@@ -263,25 +224,35 @@
             </button>
             <div class="mobile-nav__subwrap">
               <ul class="mobile-nav__sub">
-              <li><a href="nyroofing.html#flat-roofing">Flat Roofing</a></li>
-              <li><a href="nyroofing.html#shingle-roofing">Shingle Roofing</a></li>
-              <li><a href="#metal-roofing">Metal Roofing</a></li>
-              <li><a href="#epdm-roofing">EPDM Roofing</a></li>
-              <li><a href="#tpo-roofing">TPO Roofing</a></li>
-              <li><a href="nyroofing.html#tile-slate">Clay Tile &amp; Slate</a></li>
-              <li><a href="nyroofing.html#roof-repair">Roof Repair</a></li>
-              <li><a href="#roof-replacement">Roof Replacement</a></li>
-              <li><a href="#leak-repair">Roof Leak Repair</a></li>
-              <li><a href="#leak-detection">Leak Detection</a></li>
-              <li><a href="#emergency">Emergency Roofing</a></li>
-              <li><a href="#inspections">Roof Inspections</a></li>
-              <li><a href="nyroofing.html#commercial">Commercial Roofing</a></li>
-              <li><a href="nyroofing.html#residential">Residential Roofing</a></li>
-              <li><a href="nyroofing.html#brownstone">Brownstone Roofing</a></li>
-              <li><a href="#skylights">Skylight Installation</a></li>
-              <li><a href="#coating">Roof Coating</a></li>
-              <li><a href="#ventilation">Roof Ventilation</a></li>
-            </ul>
+                <li><p class="mobile-nav__subhead">Popular</p></li>
+                <li><a href="#flat-roofing">Flat Roofing</a></li>
+                <li><a href="#shingle-roofing">Shingle Roofing</a></li>
+                <li><a href="#metal-roofing">Metal Roofing</a></li>
+                <li><a href="#roof-repair">Roof Repair</a></li>
+                <li><a href="#roof-replacement">Roof Replacement</a></li>
+                <li><a href="#roof-leak-repair">Roof Leak Repair</a></li>
+                <li><a href="#commercial-roofing">Commercial Roofing</a></li>
+                <li><a href="#emergency-roofing">Emergency Roofing</a></li>
+
+                <li><p class="mobile-nav__subhead">Specialty</p></li>
+                <li><a href="#epdm-roofing">EPDM Roofing</a></li>
+                <li><a href="#tpo-roofing">TPO Roofing</a></li>
+                <li><a href="#clay-tile-roofing">Clay Tile Roofing</a></li>
+                <li><a href="#slate-roofing">Slate Roofing</a></li>
+                <li><a href="#brownstone-roofing">Brownstone Roofing</a></li>
+                <li><a href="#skylight-installation">Skylight Installation</a></li>
+                <li><a href="#leak-detection">Roof Leak Detection</a></li>
+                <li><a href="#roof-inspection">Roof Inspections</a></li>
+
+                <li><p class="mobile-nav__subhead">Brooklyn Areas</p></li>
+                <li><a href="#park-slope-roofing">Park Slope</a></li>
+                <li><a href="#prospect-park-roofing">Prospect Park</a></li>
+                <li><a href="#bed-stuy-roofing">Bed&ndash;Stuy</a></li>
+                <li><a href="#brooklyn-heights-roofing">Brooklyn Heights</a></li>
+                <li><a href="#bushwick-roofing">Bushwick</a></li>
+                <li><a href="#crown-heights-roofing">Crown Heights</a></li>
+                <li><a href="#williamsburg-roofing">Williamsburg</a></li>
+              </ul>
             </div>
           </li>
 
@@ -292,32 +263,28 @@
             </button>
             <div class="mobile-nav__subwrap">
               <ul class="mobile-nav__sub">
-              <li><a href="nyroofing.html#brooklyn">Brooklyn</a></li>
-              <li><a href="nyroofing.html#manhattan">Manhattan</a></li>
-              <li><a href="nyroofing.html#bronx">The Bronx</a></li>
-              <li><a href="nyroofing.html#queens">Queens</a></li>
-              <li><a href="nyroofing.html#staten-island">Staten Island</a></li>
+                <li><a href="#brooklyn">Brooklyn Roofing</a></li>
+                <li><a href="#bronx">Bronx Roofing</a></li>
+                <li><a href="#manhattan">Manhattan Roofing</a></li>
               </ul>
             </div>
           </li>
 
-          <li><a class="mobile-nav__link" href="nyroofing.html#projects">Projects</a></li>
+          <li><a class="mobile-nav__link" href="#projects">Projects</a></li>
           <li><a class="mobile-nav__link" href="#faqs">FAQs</a></li>
-          <li><a class="mobile-nav__link" href="nyroofing.html#blog">Blog</a></li>
-          <li><a class="mobile-nav__link" href="nyroofing.html#about">About</a></li>
+          <li><a class="mobile-nav__link" href="#blog">Blog</a></li>
+          <li><a class="mobile-nav__link" href="#about">About Us</a></li>
           <li><a class="mobile-nav__link" href="nyroofing-contact.html" aria-current="page">Contact</a></li>
 
         </ul>
       </nav>
 
       <div class="mobile-nav__foot">
-        <a class="btn btn--block" href="tel:+16468380441">
-          <span class="btn__pip" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
-          <span class="btn__text">
-            <span class="btn__kicker">Call us 24/7</span>
-            <span class="btn__number">(646) 838-0441</span>
-          </span>
+        <a class="mobile-nav__call" href="tel:+16468380441">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          (646) 838-0441
         </a>
+        <a class="mobile-nav__quote" href="nyroofing-contact.html">Free Estimate</a>
         <ul class="socials socials--dark">
           <li><a href="#facebook" aria-label="NY Roofing on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
           <li><a href="#instagram" aria-label="NY Roofing on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
@@ -348,8 +315,7 @@
         </nav>
         <h1 class="phead__title">Contact <span class="phead__accent">NY Roofing</span></h1>
         <p class="phead__text">
-          Questions about your roof, or ready for a free estimate? Reach us any
-          day between 7:00&nbsp;am and 11:00&nbsp;pm &mdash; we answer the phone.
+          Questions about your roof, or ready for a free estimate? Reach us any time, 24/7. We answer the phone.
         </p>
       </div>
     </section>
@@ -360,50 +326,6 @@
       <div class="container">
 
         <div class="contact__grid">
-
-          <div class="quote contact__form-card">
-            <p class="quote__title">Get A Free Quote</p>
-
-            <form class="quote__form" id="contact-form" action="#" method="post" novalidate>
-              <div class="field">
-                <label class="field__label" for="c-name">Name</label>
-                <input class="field__input" id="c-name" name="name" type="text"
-                       autocomplete="name" placeholder="Jane Alvarez" required>
-                <p class="field__error" data-error-for="c-name" hidden></p>
-              </div>
-              <div class="field">
-                <label class="field__label" for="c-email">Email</label>
-                <input class="field__input" id="c-email" name="email" type="email"
-                       autocomplete="email" inputmode="email" placeholder="jane@example.com" required>
-                <p class="field__error" data-error-for="c-email" hidden></p>
-              </div>
-              <div class="field">
-                <label class="field__label" for="c-address">Address</label>
-                <input class="field__input" id="c-address" name="address" type="text"
-                       autocomplete="street-address" placeholder="553 Prospect Ave, Brooklyn" required>
-                <p class="field__error" data-error-for="c-address" hidden></p>
-              </div>
-              <div class="field">
-                <label class="field__label" for="c-message">Message</label>
-                <textarea class="field__input field__input--area" id="c-message"
-                          name="message" rows="3"
-                          placeholder="Tell us what the roof needs."></textarea>
-              </div>
-              <button class="quote__submit" type="submit">
-                <span class="quote__submit-label">Get A Free Estimate</span>
-                <span class="quote__submit-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
-              </button>
-            </form>
-
-            <div class="quote__done" id="contact-done" hidden>
-              <span class="quote__done-mark" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
-              <p class="quote__done-title">Thanks &mdash; we&rsquo;ve got it.</p>
-              <p class="quote__done-text">
-                An estimator will reach out shortly. Need us sooner?
-                <a href="tel:+16468380441">Call (646) 838-0441</a>.
-              </p>
-            </div>
-          </div>
 
           <div class="contact__side">
             <!-- One panel, three rows: the icon leads, the fact follows. Rows
@@ -438,7 +360,7 @@
                   <span class="cdetail__icon" aria-hidden="true"><i class="fa-regular fa-clock"></i></span>
                   <span class="cdetail__body">
                     <span class="cdetail__label">Business Hours</span>
-                    <span class="cdetail__value">Mon &ndash; Sun: 7:00 am &ndash; 11:00 pm</span>
+                    <span class="cdetail__value">Open 24/7</span>
                   </span>
                 </span>
               </li>
@@ -454,6 +376,55 @@
             </div>
           </div>
 
+          <div class="quote contact__form-card">
+            <p class="quote__title">Get A Free Quote</p>
+
+            <form class="quote__form" id="contact-form" action="#" method="post" novalidate>
+              <div class="field">
+                <label class="field__label" for="c-name">Name</label>
+                <input class="field__input" id="c-name" name="name" type="text"
+                       autocomplete="name" placeholder="Jane Alvarez" required>
+                <p class="field__error" data-error-for="c-name" hidden></p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="c-phone">Phone</label>
+                <input class="field__input" id="c-phone" name="phone" type="tel"
+                       autocomplete="tel" inputmode="tel" placeholder="(646) 555-0148" required>
+                <p class="field__error" data-error-for="c-phone" hidden></p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="c-email">Email</label>
+                <input class="field__input" id="c-email" name="email" type="email"
+                       autocomplete="email" inputmode="email" placeholder="jane@example.com" required>
+                <p class="field__error" data-error-for="c-email" hidden></p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="c-address">Address</label>
+                <input class="field__input" id="c-address" name="address" type="text"
+                       autocomplete="street-address" placeholder="553 Prospect Ave, Brooklyn" required>
+                <p class="field__error" data-error-for="c-address" hidden></p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="c-message">Message</label>
+                <textarea class="field__input field__input--area" id="c-message"
+                          name="message" rows="3"
+                          placeholder="Tell us what the roof needs."></textarea>
+              </div>
+              <button class="quote__submit" type="submit">
+                <span class="quote__submit-label">Get A Free Estimate</span>
+                <span class="quote__submit-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+              </button>
+            </form>
+
+            <div class="quote__done" id="contact-done" hidden>
+              <span class="quote__done-mark" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+              <p class="quote__done-title">Thanks, we&rsquo;ve got it.</p>
+              <p class="quote__done-text">
+                An estimator will reach out shortly. Need us sooner?
+                <a href="tel:+16468380441">Call (646) 838-0441</a>.
+              </p>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -509,7 +480,7 @@
           <h2 class="faq__title">Common Questions About <span class="faq__accent">Getting Started</span></h2>
           <p class="faq__lede">
             The four we are asked most often before a first visit. Anything else,
-            just call &mdash; there is no charge for a question.
+            just call. There is no charge for a question.
           </p>
         </div>
 
@@ -536,7 +507,7 @@
               <span class="qa__label">Do you handle permits and paperwork?</span>
               <span class="qa__toggle" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
             </summary>
-            <p class="qa__a">We do &mdash; including filings with NYC and coordination with co-op or condo boards where a building requires it.</p>
+            <p class="qa__a">We do, including filings with NYC and coordination with co-op or condo boards where a building requires it.</p>
           </details>
           <details class="qa">
             <summary class="qa__q">
@@ -544,7 +515,7 @@
               <span class="qa__label">Which areas do you cover?</span>
               <span class="qa__toggle" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
             </summary>
-            <p class="qa__a">All five boroughs &mdash; Brooklyn, Manhattan, Queens, the Bronx and Staten Island. Call if you are just outside and we will tell you straight.</p>
+            <p class="qa__a">All five boroughs: Brooklyn, Manhattan, Queens, the Bronx and Staten Island. Call if you are just outside and we will tell you straight.</p>
           </details>
         </div>
 
@@ -570,6 +541,14 @@
             buildings across Brooklyn&rsquo;s neighborhoods. We deliver reliable
             workmanship, quality materials, and long-lasting results.
           </p>
+          <!-- The social links, moved down from the header strip. -->
+          <ul class="socials socials--on-dark site-footer__socials">
+            <li><a href="nyroofing.html#facebook" aria-label="NY Roofing on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+            <li><a href="nyroofing.html#instagram" aria-label="NY Roofing on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="nyroofing.html#x" aria-label="NY Roofing on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="nyroofing.html#linkedin" aria-label="NY Roofing on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
+            <li><a href="nyroofing.html#pinterest" aria-label="NY Roofing on Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
+          </ul>
         </div>
 
         <nav class="site-footer__col" aria-label="Quick links">
@@ -608,7 +587,7 @@
             </li>
             <li>
               <span class="site-footer__contact-icon" aria-hidden="true"><i class="fa-regular fa-clock"></i></span>
-              Mon &ndash; Sun: 7:00 am &ndash; 11:00 pm
+              Open 24/7
             </li>
           </ul>
         </div>
@@ -648,6 +627,6 @@
   </a>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-  <script src="js/nyroofing.js" defer></script>
+  <script src="js/nyroofing.js?v=3" defer></script>
 </body>
 </html>

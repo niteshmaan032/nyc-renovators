@@ -5,6 +5,16 @@
    ========================================================================== */
 
 
+/* Tokens added by this sheet ----------------------------------------------- */
+
+:root {
+  /* The floating call button. Black type sits at 14:1 on this green, so the
+     brightness costs nothing in legibility. */
+  --fab-green: #00F631;
+  --fab-green-dark: #00D82A;
+}
+
+
 /* Buttons — pill with travelling icon ------------------------------------- */
 
 /* Replaces the shared skewed slab with the Uiverse pill: filled capsule, white
@@ -288,7 +298,8 @@
 
 /* Centred heads centre the chip itself now that it is fit-content. */
 .projects__head .section-eyebrow,
-.awards__head .section-eyebrow { margin-inline: auto; }
+.awards__head .section-eyebrow,
+.network__body .section-eyebrow { margin-inline: auto; }
 
 /* On the navy band the red tint has nothing to sit against. */
 .whyus .section-eyebrow {
@@ -741,20 +752,32 @@
     gap: var(--space-5);
   }
 
+  /* The same recipe as the hero strip: a centred row that wraps on its own,
+     at the hero's own mark sizes. Equal grid tracks centred each mark in its
+     own cell instead, which spaced six different silhouettes unevenly. The
+     sizes are what make it fall three and three, exactly as the hero does. */
   .footer__badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
     gap: var(--space-4);
     padding-block: 0;
   }
 
   .footer__rating {
-    flex-basis: 100%;
+    flex-basis: auto;
     justify-content: center;
+    gap: .625rem;
   }
 
-  .footer__badges img { height: 2.75rem; }
+  .footer__rating img { height: 2rem; }
 
-  .footer__badges .is-gaf img { height: 2rem; }
+  .footer__rating span { font-size: 1.1875rem; }
+
+  .footer__badges img { height: 3rem; }
+
+  .footer__badges .is-gaf img { height: 2.25rem; }
 
   .buildings__stat {
     grid-template-columns: minmax(0, 1fr);
@@ -770,15 +793,18 @@
 
 @media (max-width: 40rem) {
 
-  /* m3 — bigger logo and a plain hamburger; the outline read as a second CTA. */
+  /* m3 kept the mark deliberately large on a phone, where it is the only brand
+     cue in the bar. The row was 72px against a 68px logo, which put the mark
+     2px off the bar's own edge — the row grows rather than the logo shrinking. */
+  :root { --nav-h: 5.75rem; }
+
   .brand__mark { height: 4.25rem; }
 
   .nav-toggle {
     width: auto;
     height: 3rem;
     gap: .5rem;
-    padding-inline: .5rem;
-    border: none;
+    padding-inline: .875rem;
   }
 
   .nav-toggle i { font-size: 1.5rem; }
@@ -799,10 +825,7 @@
 
   .hero__title { font-size: 2rem; }
 
-  .hero__title-sub {
-    margin-top: .625rem;
-    font-size: 1.5rem;
-  }
+  .hero__title-sub { margin-top: .75rem; }
 
   .hero__lede {
     margin-top: var(--space-4);
@@ -973,31 +996,175 @@
   margin-top: var(--space-7);
 }
 
-/* Heading and map left, form right, methods across the bottom. align-items is
-   left at stretch so the map grows to whatever height the form ends up — the
-   two columns then finish on the same line without either being hand-sized. */
-.contact-page__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 30rem);
-  column-gap: clamp(2rem, 1.4rem + 2.4vw, 4.5rem);
-  row-gap: var(--space-5);
+/* ==========================================================================
+   Contact page
+   ========================================================================== */
+
+/* Two bands: the heading with the credentials opposite it, then how to reach us
+   and where we are on the left with the form on the right. Light rather than
+   the navy band — six logos, three details, a map and a form is a lot to ask a
+   dark ground to hold. The section below keeps the tint, so the two separate. */
+.page-hero--contact {
+  background-color: var(--surface);
+  background-image: none;
+  color: var(--ink);
 }
 
-.contact-page__aside { display: flex; flex-direction: column; }
+.page-hero--contact .breadcrumb ol { color: rgba(1, 44, 109, .6); }
+.page-hero--contact .breadcrumb a { color: rgba(1, 44, 109, .78); }
+.page-hero--contact .breadcrumb a:hover { color: var(--red); }
+.page-hero--contact :focus-visible { outline-color: var(--focus-ring); }
 
-/* Fills the column. The details moved out to their own row underneath, so the
-   map was a 253px block beside a 529px form with 276px of dead space below it;
-   letting it grow closes that and squares the two columns off. */
-.contact-page__map {
+/* The top padding here is the gap under the heading band — the two do not
+   touch, so the tint reads as a step and not as a stripe stuck to the cards. */
+.contact-hero { padding-block: clamp(1.25rem, 1rem + 1.1vw, 2rem) clamp(1.25rem, .95rem + 1.1vw, 2rem); }
+
+
+/* Top band ----------------------------------------------------------------- */
+
+/* Edge to edge, so the heading reads as its own band rather than as the first
+   item in the column. The tint does the separating a rule used to do. */
+.contact-hero__band { background-color: var(--surface-alt); }
+
+/* Heading left, credentials right. The top right was empty and the marks had
+   nowhere to go but under the fold; this fills one with the other. */
+.contact-hero__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-7);
+  padding-block: clamp(2.25rem, 1.75rem + 1.6vw, 3.5rem);
+}
+
+.contact-hero__head { max-width: 60ch; }
+
+/* The breadcrumb is gone, so the heading opens the page — it takes the room
+   the crumb was using and a size with it. */
+.page-hero--contact .page-hero__title {
+  margin-inline: 0;
+  margin-top: 0;
+  font-size: clamp(1.875rem, 1.225rem + 2vw, 3.125rem);
+  color: var(--navy);
+  text-align: left;
+}
+
+.page-hero--contact .page-hero__lede {
+  max-width: 56ch;
+  margin-inline: 0;
+  margin-top: .625rem;
+  font-size: 1.0625rem;
+  color: rgba(1, 44, 109, .78);
+}
+
+.page-hero--contact .page-hero__marks {
+  justify-content: flex-end;
+  gap: var(--space-3) clamp(.875rem, .65rem + .8vw, 1.5rem);
+  margin-top: 0;
+}
+
+.page-hero--contact .hero__badge img { height: 3.25rem; }
+.page-hero--contact .hero__badge--gaf img { height: 2.5rem; }
+.page-hero--contact .hero__badge--rating img { height: 2.125rem; }
+.page-hero--contact .hero__badge--inc img { height: 2.875rem; }
+
+.page-hero--contact .hero__rating {
+  font-size: 1.0625rem;
+  color: var(--navy);
+}
+
+
+/* Details and map left, form right ----------------------------------------- */
+
+.contact-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 28rem);
+  align-items: stretch;
+  gap: clamp(1.25rem, .9rem + 1.4vw, 2rem);
+  margin-top: var(--space-5);
+}
+
+.contact-hero__left {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Three across rather than stacked: the column is wide, and side by side the
+   phone, the address and the hours are one glance instead of three. */
+.contact-lines {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+/* Carded, so the three details sit as objects on the white rather than as
+   loose text floating above the map. The hairline is the whole edge — a fill
+   would put a third tone between the tinted band and the map below. */
+.contact-line {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: .875rem;
+  padding: .9375rem 1.0625rem;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  background-color: var(--surface);
+  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+/* Only the first two go anywhere, so only those two respond to the pointer. */
+.contact-line:has(a):hover {
+  border-color: rgba(1, 44, 109, .32);
+  box-shadow: 0 6px 18px rgba(1, 27, 68, .07);
+}
+
+.contact-line__icon {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: none;
+  border-radius: 999px;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: .9375rem;
+}
+
+.contact-line__body { display: grid; gap: .1875rem; }
+
+.contact-line__label {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-bold);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(1, 44, 109, .58);
+}
+
+.contact-line__value {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.35;
+  text-decoration: none;
+  color: var(--navy);
+}
+
+a.contact-line__value:hover { color: var(--red); }
+
+/* Takes whatever height the form leaves. The min-height is not a preference:
+   Google's embed swaps its place card — the company name and the directions
+   button — for a bare "Open in Maps" chip below roughly 300px, so this is the
+   floor at which the name is still on the map. */
+.contact__map {
   flex: 1 1 auto;
   min-height: 20rem;
   overflow: hidden;
   border: 1px solid var(--hairline);
   border-radius: var(--radius-xl);
-  background-color: #EDF1F7;
+  background-color: var(--surface-alt);
 }
 
-.contact-page__map-embed {
+.contact__map-frame {
   display: block;
   width: 100%;
   height: 100%;
@@ -1005,86 +1172,90 @@
   border: 0;
 }
 
-/* One row spanning both columns, under the map and the form. */
-.contact-methods {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-4);
+/* Taller once the columns stack, so the map is worth the space it takes on a
+   phone. Note the place card cannot be brought back at this width — Google's
+   embed drops it below roughly 450px of map WIDTH regardless of height, and a
+   phone never gets there. The pin keeps its "Royal Renovators Inc" label. */
+@media (max-width: 68rem) {
+  .contact__map,
+  .contact__map-frame { min-height: 23rem; }
+}
+
+
+/* Form --------------------------------------------------------------------- */
+
+.page-hero--contact .contact-form {
+  align-self: start;
+  padding: clamp(1.125rem, .95rem + .85vw, 1.5rem);
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+}
+
+.page-hero--contact .contact-form__head {
+  padding-bottom: .5rem;
+  margin-bottom: var(--space-3);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.page-hero--contact .contact-form__title {
+  font-size: clamp(1.3125rem, 1.15rem + .6vw, 1.625rem);
+  text-align: left;
+}
+
+.page-hero--contact .contact-form__grid { gap: .625rem var(--space-4); }
+
+.page-hero--contact .field__input--area { min-height: 4rem; }
+
+.page-hero--contact .contact-form__submit {
+  width: 100%;
+  justify-content: center;
   margin-top: var(--space-4);
 }
 
-.contact-method {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: start;
-  gap: var(--space-4);
-  padding: var(--space-5);
-  background-color: var(--surface);
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius-xl);
-  transition: border-color var(--dur-fast) var(--ease-out);
-}
 
-/* Border only on hover — the lift read as a click affordance on cards that
-   are not clickable. */
-.contact-method:hover { border-color: rgba(1, 44, 109, .3); }
+/* Short screens ------------------------------------------------------------ */
 
-.contact-method__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 999px;
-  background-color: var(--red);
-  color: var(--white);
-  font-size: 1.0625rem;
-}
+/* A 1366x768 laptop leaves ~560px under the header. Spacing gives up the
+   difference; the map does not, because under 300px it loses its place card. */
+@media (min-width: 68.0625rem) and (max-height: 52rem) {
+  .contact-hero { padding-block: var(--space-4); }
 
-.contact-method__label {
-  font-size: var(--fs-utility);
-  font-weight: var(--fw-bold);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: rgba(1, 44, 109, .62);
-}
+  .contact-hero__top { padding-block: clamp(2.25rem, 1.75rem + 1.6vw, 3.5rem); }
 
-.contact-method__value {
-  margin-top: .375rem;
-  font-size: 1.1875rem;
-  font-weight: var(--fw-bold);
-  line-height: 1.4;
-  color: var(--navy);
-}
+  .page-hero--contact .page-hero__title { font-size: clamp(1.5rem, 1.025rem + 1.6vw, 2.375rem); }
 
-.contact-method__value a {
-  text-decoration: none;
-  color: inherit;
-}
+  .page-hero--contact .page-hero__lede {
+    margin-top: .375rem;
+    font-size: 1rem;
+  }
 
-.contact-method__value a:hover { color: var(--red); }
+  .contact-hero__grid { margin-top: var(--space-4); }
 
+  .contact-lines { margin-bottom: var(--space-4); }
 
-/* Flat card — the hairline carries the edge on its own. */
-.contact-page .contact-form {
-  padding: clamp(1.5rem, 1.2rem + 1.1vw, 2.25rem);
-  background-color: var(--surface);
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius-xl);
+  .page-hero--contact .hero__badge img { height: 2.375rem; }
+  .page-hero--contact .hero__badge--gaf img { height: 1.875rem; }
+  .page-hero--contact .hero__badge--rating img { height: 1.625rem; }
+  .page-hero--contact .hero__badge--inc img { height: 2.125rem; }
 }
 
 
-@media (max-width: 62rem) {
-  .contact-page__inner { grid-template-columns: minmax(0, 1fr); }
+/* Narrow ------------------------------------------------------------------- */
 
-  .contact-methods { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 68rem) {
+  .contact-hero__grid { grid-template-columns: minmax(0, 1fr); }
+
+  /* The form is the action, so on one column it leads and the map follows. */
+  .page-hero--contact .contact-form { order: -1; }
+
+  .page-hero--contact .page-hero__marks { justify-content: flex-start; }
 }
 
 @media (max-width: 44rem) {
-  .contact-methods { grid-template-columns: minmax(0, 1fr); }
+  .contact-lines { grid-template-columns: minmax(0, 1fr); }
 
-  .contact-method { padding: var(--space-4); }
+  .page-hero--contact .page-hero__marks { gap: var(--space-4); }
 }
 
 @media (max-width: 48rem) {
@@ -1202,20 +1373,27 @@
    which is what stopped the collapsed state being round. */
 .call-fab {
   position: fixed;
-  right: clamp(1rem, .6rem + 1.2vw, 1.75rem);
+  left: clamp(1rem, .6rem + 1.2vw, 1.75rem);
   bottom: calc(clamp(1rem, .6rem + 1.2vw, 1.75rem) + env(safe-area-inset-bottom, 0px));
   /* Above the header and drawer, and clear of the phone's bottom browser UI
      and any iOS home indicator. */
   z-index: 90;
 
   display: inline-flex;
+  /* Icon first now that the button hangs off the left edge, so the number opens
+     out to the right instead of running off the side of the screen. */
+  flex-direction: row-reverse;
   align-items: center;
   gap: 0;
   height: 3.5rem;
   padding: .375rem;
   border-radius: 999px;
-  background-color: var(--red);
-  color: var(--white);
+  /* Not the brand red: on a page where red is the CTA colour, a red disc that
+     follows you down the page competes with every button it floats over. */
+  background-color: var(--fab-green);
+  color: var(--black);
+  box-shadow: 0 8px 24px rgba(1, 27, 68, .22);
+  transition: background-color var(--dur-fast) var(--ease-out);
   font-size: 1.0625rem;
   font-weight: var(--fw-bold);
   font-variant-numeric: tabular-nums;
@@ -1229,7 +1407,7 @@
   flex: none;
   width: 2.75rem;
   height: 2.75rem;
-  color: var(--white);
+  color: var(--black);
   font-size: 1.25rem;
 }
 
@@ -1247,12 +1425,17 @@
     opacity var(--dur-fast) var(--ease-out);
 }
 
+/* Reversed with the button: the padding that used to lead the number now
+   trails it. */
 .call-fab:hover .call-fab__label,
 .call-fab:focus-visible .call-fab__label {
   max-width: 12rem;
-  padding-inline: 1rem .5rem;
+  padding-inline: .5rem 1rem;
   opacity: 1;
 }
+
+.call-fab:hover,
+.call-fab:focus-visible { background-color: var(--fab-green-dark); }
 
 /* Slightly smaller on phones, where it sits closer to the thumb and has less
    screen to spare. */
@@ -1277,4 +1460,451 @@
    to two columns; spanning it puts the logo and blurb above the menus. */
 @media (max-width: 44rem) {
   .footer__brand { grid-column: 1 / -1; }
+}
+
+
+/* ==========================================================================
+   Change list — batch 3
+   ========================================================================== */
+
+
+/* Header ------------------------------------------------------------------ */
+
+/* The hamburger had no edge of its own, so on a white bar it read as floating
+   text rather than as a control. */
+.nav-toggle {
+  border: 1px solid var(--hairline);
+  background-color: var(--white);
+}
+
+.nav-toggle:hover { border-color: rgba(1, 44, 109, .3); }
+
+
+/* The bar keeps its original height, logo size and link spacing. The menus are
+   what carry more now, so the room comes from organising the panels, not from
+   compressing the chrome. */
+
+/* The panel is a floating sheet over the page, so it gets the same shadow the
+   dropdown has instead of running to the viewport edges unframed. */
+.mega--full { box-shadow: var(--shadow-menu); }
+
+
+/* Areas We Serve (1b) ----------------------------------------------------- */
+
+/* The panel is built from the same parts as the Roofing one — mega__cols,
+   mega__heading, mega__list, mega__foot — so the two read as one header rather
+   than as two different devices. Everything below is the area row on top, which
+   is the only part Roofing does not have. */
+
+.areas-menu__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.areas-menu__tab {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-inline: 1.125rem;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: none;
+  font: inherit;
+  font-size: .9375rem;
+  font-weight: var(--fw-medium);
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.areas-menu__tab:hover {
+  border-color: rgba(1, 44, 109, .3);
+  background-color: rgba(1, 44, 109, .05);
+}
+
+/* Filled rather than tinted: with seven pills in a row, only a solid one reads
+   as chosen at a glance. */
+.areas-menu__tab[aria-expanded="true"] {
+  border-color: var(--navy);
+  background-color: var(--navy);
+  color: var(--white);
+  font-weight: var(--fw-bold);
+}
+
+/* Boroughs on one side, everything beyond the city on the other. One hairline
+   says it; two headings would have been a paragraph. */
+.areas-menu__split {
+  width: 1px;
+  height: 1.5rem;
+  margin-inline: .375rem;
+  background-color: var(--hairline);
+}
+
+.areas-menu__pane[hidden] { display: none; }
+
+
+/* Mobile drawer — nested area accordions ---------------------------------- */
+
+.mobile-nav__group--sub {
+  justify-content: flex-start;
+  gap: .75rem;
+  min-height: 2.75rem;
+  padding: .5rem .75rem;
+  border-bottom: 0;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  color: rgba(1, 44, 109, .82);
+}
+
+.mobile-nav__group--sub .menu-icon {
+  flex: none;
+  width: 1rem;
+  font-size: .875rem;
+  color: var(--red);
+}
+
+.mobile-nav__group--sub > span { flex: 1 1 auto; }
+
+.mobile-nav__group--sub[aria-expanded="true"] {
+  background-color: rgba(1, 44, 109, .06);
+  color: var(--navy);
+  font-weight: var(--fw-bold);
+}
+
+/* Indented against a rule so a nested list reads as belonging to the row above
+   rather than as a third level of the same menu. */
+.mobile-nav__sub--nested {
+  padding: .25rem 0 .5rem;
+  margin-left: 1.375rem;
+  border-left: 1px solid rgba(1, 44, 109, .14);
+}
+
+.mobile-nav__sub--nested a {
+  min-height: 2.5rem;
+  padding-block: .4375rem;
+  font-size: .9375rem;
+}
+
+
+/* CTA type (2) ------------------------------------------------------------ */
+
+/* Every button on the page runs through .btn, so one step up here carries the
+   hero, the forms, the banners and the footer with it. */
+.btn { font-size: 1.0625rem; }
+
+.call-cta {
+  min-height: 3rem;
+  font-size: 1.0625rem;
+}
+
+.mega__foot-cta { font-size: 1rem; }
+
+.mega__card-cta { font-size: .9375rem; }
+
+.service-card__more,
+.exterior__card-more { font-size: .9375rem; }
+
+
+/* Hero headline (4) ------------------------------------------------------- */
+
+/* "Trusted roofing since 1988" is a credential, not a sentence, so it is set as
+   one: a two-tone plate, navy for the claim and brand red for the year, the way
+   a licence or certification plaque is stamped. Both tones are SOLID — the
+   earlier glass version leaned on the scrim and washed out whenever a bright
+   frame ran underneath, and over video the type has to carry its own contrast
+   rather than borrow it. White reads 13:1 on the navy and 4.5:1 on the red. */
+.hero__title-sub {
+  display: block;
+  margin-top: .9375rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  line-height: 0;
+}
+
+.hero__stamp {
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  /* Small caps at label size: the headline above stays the loud thing, and the
+     plate reads as the stamp under it instead of a second headline. */
+  font-size: clamp(.875rem, .76rem + .38vw, 1.1875rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: .13em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Padding in em, so the plate keeps its proportions at every clamp step. */
+.hero__stamp-label {
+  padding: .95em 1.05em .95em 1.15em;
+  background-color: var(--navy);
+  color: var(--white);
+}
+
+.hero__stamp-year {
+  display: inline-flex;
+  align-items: center;
+  padding-inline: 1em;
+  background-color: var(--red);
+  color: var(--white);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .11em;
+}
+
+
+/* Hero trust marks (3) ---------------------------------------------------- */
+
+.hero__badge-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .625rem;
+  text-decoration: none;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.hero__badge-link:hover { transform: translateY(-2px); }
+
+/* The medallion is a tall circle, so it is set shorter than the square marks to
+   carry the same optical weight in the row. */
+.hero__badge--inc img { height: 3.5rem; }
+
+
+/* One stat, not two (7) --------------------------------------------------- */
+
+/* Removing the warranty figure left a 50% empty track. The remaining claim
+   takes the whole width as a bordered strip instead, so the note and the stat
+   read as one block rather than as a block plus a gap. */
+.buildings__stats--single {
+  grid-template-columns: minmax(0, 1fr);
+  align-content: center;
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--red);
+  border-radius: var(--radius-md);
+  background-color: var(--surface-alt);
+}
+
+.buildings__stats--single .buildings__stat-figure {
+  font-size: clamp(1.875rem, 1.5rem + 1.1vw, 2.5rem);
+}
+
+.buildings__stats--single .buildings__stat-label {
+  font-size: 1rem;
+  font-weight: var(--fw-medium);
+}
+
+.buildings__stats--single .buildings__stat-icon {
+  width: 3.25rem;
+  height: 3.25rem;
+  font-size: 1.25rem;
+}
+
+
+/* Why-us tile (8) --------------------------------------------------------- */
+
+.whyus__tile-unit {
+  font-size: .5em;
+  font-weight: var(--fw-bold);
+  letter-spacing: normal;
+}
+
+
+/* Accreditation logos (9) ------------------------------------------------- */
+
+.awards__logos a {
+  display: block;
+  line-height: 0;
+  border-radius: var(--radius-sm);
+  transition: transform var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out);
+}
+
+.awards__logos a:hover { transform: translateY(-3px); }
+
+/* Same optical-weight rule as the hero row: the circular medallion is set
+   shorter than the square marks beside it. */
+.awards__logos .is-inc img { height: 4.5rem; }
+
+@media (max-width: 44rem) {
+  .awards__logos .is-inc img { height: 3rem; }
+}
+
+
+/* Areas we serve — column order (10) -------------------------------------- */
+
+/* Column flow with four rows: the four boroughs fill the first column and Far
+   Rockaway, Long Island and Yonkers fill the second, which is the grouping the
+   client asked for. Row flow put a borough beside a non-borough on every line. */
+@media (min-width: 44.0625rem) {
+  .areas__list {
+    grid-auto-flow: column;
+    grid-template-rows: repeat(4, auto);
+  }
+}
+
+
+/* Borough network (11b) --------------------------------------------------- */
+
+/* Was the second paragraph under the footer logo. It is a coverage statement,
+   so it sits under Areas We Serve now — framed rather than filled: a hairline
+   outline with the page showing through it, so the section still reads as one
+   object without adding a third tone to this stretch of the page. */
+
+/* The tint runs edge to edge and full height, so there is no white left in the
+   section at all — it carries straight on from Areas We Serve above it. The
+   padding is only there to give the icon room to sit on the frame. */
+.network {
+  padding-block: var(--space-6) 0;
+  background-color: var(--surface-alt);
+}
+
+.network__panel {
+  position: relative;
+  padding: clamp(2.5rem, 2rem + 1.6vw, 3.25rem) clamp(1.5rem, 1rem + 2vw, 3.5rem)
+           clamp(1.75rem, 1.3rem + 1.6vw, 2.75rem);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  /* Nothing behind it — the section's own tint shows through, and the hairline
+     is the only thing marking the block out. */
+  background-color: transparent;
+  text-align: center;
+}
+
+/* Straddling the top edge, with a ring of page colour around it so the border
+   reads as broken for the icon rather than running behind it. It is what stops
+   the outline being just a rectangle drawn around some text. */
+.network__icon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0;
+  border-radius: 50%;
+  background-color: var(--red);
+  /* The ring matches the band, not the page — a white one would read as a hole
+     punched in the tint. */
+  box-shadow: 0 0 0 .5rem var(--surface-alt);
+  color: var(--white);
+  font-size: 1.375rem;
+}
+
+.network__title {
+  max-width: 22ch;
+  margin-top: var(--space-4);
+  margin-inline: auto;
+  font-size: clamp(1.5rem, 1.2rem + 1.1vw, 2.125rem);
+  color: var(--navy);
+}
+
+.network__title .accent { color: var(--red); }
+
+.network__text {
+  max-width: 74ch;
+  margin-top: var(--space-4);
+  margin-inline: auto;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(1, 44, 109, .82);
+  text-wrap: pretty;
+}
+
+.network__chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: var(--space-5);
+}
+
+.network__chips a {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem .875rem;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background-color: var(--white);
+  font-size: .9375rem;
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+  color: var(--navy);
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.network__chips a i { font-size: .8125rem; color: var(--red); }
+
+.network__chips a:hover {
+  border-color: var(--red);
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.network__chips a:hover i { color: var(--white); }
+
+
+/* Footer (11) ------------------------------------------------------------- */
+
+/* One paragraph under the logo now, and no links inside it. The brand column
+   was sized for two paragraphs, so the top block closes up rather than leaving
+   the space the removed text used to fill. */
+.footer__top { padding-block: clamp(1.75rem, 1.45rem + 1vw, 2.5rem); }
+
+/* The white mark needs no plate behind it — the light panel existed only because
+   the colour logo would have disappeared into the navy. And with no wordmark
+   beside it down here, the mark carries the brand on its own, so it is set
+   larger than it would otherwise need to be. */
+.footer__logo {
+  padding: 0;
+  border-radius: 0;
+  background-color: transparent;
+}
+
+.footer__logo img { height: 6.25rem; }
+
+.footer__about { margin-top: var(--space-4); }
+
+.footer__brand .footer__about:last-child { margin-bottom: 0; }
+
+.footer__badges .is-inc img { height: 2.75rem; }
+
+@media (max-width: 44rem) {
+  .footer__badges .is-inc img { height: 2.75rem; }
+}
+
+
+/* Phones — re-asserting what batch 3 would otherwise override --------------
+   These values are set earlier in this sheet and in style.css; the batch 3
+   rules above carry the same specificity and come later, so the phone sizes
+   have to be restated here to keep winning. */
+
+@media (max-width: 40rem) {
+
+  /* m3 kept the mark deliberately large on a phone, where it is the only brand
+     cue in the bar — the desktop row is what needed to come down, not this. */
+  .brand__mark { height: 4.25rem; }
+
+  /* The plate sizes itself; only the offset is left to set here. */
+  .hero__title-sub { margin-top: .75rem; }
+
+  .hero__actions .btn { font-size: 1.0625rem; }
+
+  .hero__badge--inc img { height: 2.75rem; }
 }

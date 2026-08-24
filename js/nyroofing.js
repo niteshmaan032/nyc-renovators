@@ -5,25 +5,23 @@
 (function () {
   'use strict';
 
-  /* Must stay in lockstep with the `min-width: 88em` block in nyroofing.css.
+  /* Must stay in lockstep with the `min-width: 80em` block in nyroofing.css.
      If they drift, hover opens panels the stylesheet has already hidden. */
-  var DESKTOP = window.matchMedia('(min-width: 88em)');
+  var DESKTOP = window.matchMedia('(min-width: 80em)');
 
 
-  /* Scrolled state — drops the utility bar and deepens the nav shadow. ----- */
+  /* Scrolled state — lifts the bar off the page with a shadow. ------------- */
 
   (function scrolled() {
     var header = document.getElementById('site-header');
     if (!header) return;
 
-    // Hysteresis, and the gap between the two thresholds is load-bearing.
-    // Adding the class collapses the utility bar, which shortens the document
-    // above the viewport and drops scrollY by that bar's height (48px). If
-    // ON - OFF is smaller than the collapse, the drop lands back under OFF, the
-    // class is removed, the bar re-expands, scrollY returns — and the header
-    // flickers between the two states every frame. 80px of gap clears it.
-    var ON = 120;
-    var OFF = 40;
+    // The class only paints a shadow now — nothing collapses, so the document
+    // height never changes and the old 80px of anti-flicker hysteresis is no
+    // longer load-bearing. A few pixels of gap is enough to settle the toggle
+    // at the very top of the page.
+    var ON = 24;
+    var OFF = 8;
     var ticking = false;
 
     function update() {
@@ -499,6 +497,7 @@
 
     var MESSAGES = {
       'c-name': 'Enter your name',
+      'c-phone': 'Enter your phone number',
       'c-email': 'Enter your email',
       'c-address': 'Enter the property address'
     };
@@ -559,5 +558,43 @@
     });
   }());
 
+
+
+  /* Roofing systems picker — a plain tab list. Click or arrow between the
+     tabs; only the chosen panel is in the document's flow. */
+  (function () {
+    var root = document.querySelector('[data-systab]');
+    if (!root) return;
+
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
+    var panels = tabs.map(function (tab) {
+      return document.getElementById(tab.getAttribute('aria-controls'));
+    });
+
+    function select(index, focus) {
+      tabs.forEach(function (tab, i) {
+        var on = i === index;
+        tab.classList.toggle('is-active', on);
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        tab.tabIndex = on ? 0 : -1;
+        if (panels[i]) panels[i].hidden = !on;
+      });
+      if (focus) tabs[index].focus();
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { select(i, false); });
+      tab.addEventListener('keydown', function (event) {
+        var next = null;
+        if (event.key === 'ArrowDown' || event.key === 'ArrowRight') next = (i + 1) % tabs.length;
+        if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = tabs.length - 1;
+        if (next === null) return;
+        event.preventDefault();
+        select(next, true);
+      });
+    });
+  }());
 
 }());

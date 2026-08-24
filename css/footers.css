@@ -1,0 +1,830 @@
+/* ==========================================================================
+   Royal Renovators Inc. — footer options
+   Four alternative footers for nyc2.html, shown side by side in footers.html.
+   Each one lives in its own namespace (.f1 … .f4) rather than reusing
+   .footer__*, so the live footer's rules cannot reach these and none of these
+   can leak back into the site if a block is copied across.
+   Tokens, .container and .btn come from style.css and nyc2.css.
+   ========================================================================== */
+
+
+/* Preview chrome — only for this page, not part of any option --------------- */
+
+.pv { background-color: var(--surface); }
+
+.pv__head {
+  padding-block: clamp(2.5rem, 2rem + 2vw, 4rem);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.pv__eyebrow {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-bold);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.pv__title {
+  margin-top: var(--space-3);
+  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.02em;
+  color: var(--navy);
+}
+
+.pv__lede {
+  max-width: 62ch;
+  margin-top: var(--space-4);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: rgba(1, 44, 109, .78);
+}
+
+.pv__label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-5);
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: clamp(3rem, 2.4rem + 2vw, 4.5rem) var(--edge) var(--space-5);
+}
+
+.pv__num {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: none;
+  border-radius: 999px;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: 1.125rem;
+  font-weight: var(--fw-bold);
+  line-height: 1;
+}
+
+.pv__name {
+  font-size: 1.5rem;
+  font-weight: var(--fw-bold);
+  color: var(--navy);
+}
+
+.pv__note {
+  max-width: 74ch;
+  margin-top: .375rem;
+  font-size: .9375rem;
+  line-height: 1.6;
+  color: rgba(1, 44, 109, .7);
+}
+
+
+/* ==========================================================================
+   1 — Ledger
+   Brand and CTA left, the four columns right, then the three contact facts as
+   one ruled row across the full width. The nearest of the four to the footer
+   on the site today: same navy, same order, tightened and squared off.
+   ========================================================================== */
+
+.f1 {
+  background-color: var(--navy-deep);
+  color: var(--on-dark-muted);
+}
+
+.f1__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.1fr);
+  gap: var(--space-7) clamp(2rem, 1.4rem + 2.4vw, 4rem);
+  padding-block: clamp(2.5rem, 2rem + 2vw, 3.75rem) var(--space-7);
+}
+
+/* The white mark needs no plate behind it — it sits straight on the navy, which
+   is the whole reason for having a white version. */
+.f1__logo {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.f1__logo img { width: auto; height: 5.75rem; }
+
+.f1__about {
+  max-width: 44ch;
+  margin-top: var(--space-5);
+  font-size: .9375rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, .72);
+  text-wrap: pretty;
+}
+
+.f1__cols {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6) var(--space-5);
+}
+
+.f1__heading {
+  font-size: .9375rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: .02em;
+  color: var(--white);
+}
+
+.f1__links {
+  display: grid;
+  gap: .625rem;
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, .16);
+}
+
+.f1__links a {
+  font-size: .9375rem;
+  text-decoration: none;
+  color: rgba(255, 255, 255, .74);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.f1__links a:hover { color: var(--white); }
+
+/* The ledger row: three equal facts, divided by rules rather than boxed. */
+.f1__facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, .16);
+  border-bottom: 1px solid rgba(255, 255, 255, .16);
+}
+
+.f1__fact {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+}
+
+.f1__fact + .f1__fact { border-left: 1px solid rgba(255, 255, 255, .16); }
+
+.f1__fact-icon {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: 1rem;
+}
+
+.f1__fact-body { display: grid; gap: .1875rem; }
+
+.f1__fact-label {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-bold);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .55);
+}
+
+.f1__fact-value {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.4;
+  color: var(--white);
+}
+
+.f1__fact-value a { text-decoration: none; color: inherit; }
+.f1__fact-value a:hover { color: var(--red-on-dark); }
+
+.f1__base { background-color: rgba(0, 0, 0, .18); }
+
+.f1__base-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-6);
+  padding-block: var(--space-4);
+}
+
+.f1__marks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+}
+
+.f1__marks img { width: auto; height: 2.25rem; }
+.f1__marks .is-gaf img { height: 1.75rem; }
+.f1__marks .is-inc img { height: 2rem; }
+
+.f1__marks .is-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--white);
+  font-size: .9375rem;
+  font-weight: var(--fw-bold);
+}
+
+.f1__marks .is-rating img { height: 1.5rem; }
+
+.f1__legalrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+  font-size: .875rem;
+}
+
+.f1__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.f1__legal a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, .74);
+}
+
+.f1__legal a:hover { color: var(--white); }
+
+
+/* ==========================================================================
+   Shared by 2, 3 and 4
+   ========================================================================== */
+
+/* The white mark, bare on the navy in every option — no plate behind it, which
+   is the whole reason for having a white version. */
+.f2__logo,
+.f3__logo,
+.f4__logo {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.f3__logo img { width: auto; height: 5rem; }
+.f4__logo img { width: auto; height: 5.25rem; }
+
+
+/* ==========================================================================
+   2 — Rail
+   The only light option: an off-white ground carrying the colour logo from the
+   header rather than the white mark. A brand rail down the left holds the logo,
+   the blurb and the credential marks, ruled off from the four columns; the
+   contact details drop out of the body and become the base bar, which is what
+   keeps it short.
+   ========================================================================== */
+
+.f2 {
+  background-color: var(--surface-alt);
+  color: var(--ink);
+}
+
+.f2__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.35fr);
+  gap: var(--space-6) clamp(2rem, 1.4rem + 2.4vw, 3.5rem);
+  padding-block: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+}
+
+/* The rule does the separating, so neither side needs a panel behind it. */
+.f2__cols {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-4);
+  padding-left: clamp(2rem, 1.4rem + 2.4vw, 3.5rem);
+  border-left: 1px solid var(--hairline);
+}
+
+/* The colour mark needs no plate on this ground — that was only ever there to
+   keep it off the navy. */
+.f2__logo img { width: auto; height: 5.5rem; }
+
+.f2__about {
+  max-width: 42ch;
+  margin-top: var(--space-4);
+  font-size: .9375rem;
+  line-height: 1.7;
+  color: rgba(1, 44, 109, .78);
+  text-wrap: pretty;
+}
+
+/* Up here with the brand rather than down in the base — the credentials are
+   part of who the company is, and this is the only option that treats them
+   that way. */
+/* Sized to fit the rail on one line — six marks wrapping five-and-one read as a
+   mistake rather than as two rows. */
+.f2__marks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--hairline);
+}
+
+.f2__marks img { width: auto; height: 1.875rem; }
+.f2__marks .is-gaf img { height: 1.4375rem; }
+.f2__marks .is-inc img { height: 1.625rem; }
+
+.f2__marks .is-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  color: var(--navy);
+  font-size: .875rem;
+  font-weight: var(--fw-bold);
+}
+
+.f2__marks .is-rating img { height: 1.375rem; }
+
+.f2__heading {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-bold);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.f2__links {
+  display: grid;
+  gap: .4375rem;
+  margin-top: var(--space-3);
+}
+
+.f2__links a {
+  font-size: .9375rem;
+  text-decoration: none;
+  color: rgba(1, 44, 109, .78);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.f2__links a:hover { color: var(--red); }
+
+/* White rather than a deeper tint: on an off-white footer the base strip reads
+   better lifted out of the ground than pressed into it. */
+.f2__base {
+  background-color: var(--white);
+  border-top: 1px solid var(--hairline);
+}
+
+/* One line, not two: the details and the small print share the base bar rather
+   than the legal row sitting under them behind its own rule. */
+.f2__base-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+  padding-block: var(--space-4);
+}
+
+.f2__facts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) clamp(.875rem, .65rem + 1vw, 1.5rem);
+}
+
+.f2__fact {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: .75rem;
+}
+
+.f2__fact-icon {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: .8125rem;
+}
+
+.f2__fact-body { display: grid; gap: .0625rem; }
+
+.f2__fact-label {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-bold);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(1, 44, 109, .58);
+}
+
+.f2__fact-value {
+  font-size: .9375rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.35;
+  color: var(--navy);
+}
+
+.f2__fact-value a { text-decoration: none; color: inherit; }
+.f2__fact-value a:hover { color: var(--red); }
+
+/* Small print, sized so it shares the bar with the details rather than being
+   pushed onto a line of its own. */
+.f2__legalrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  font-size: .8125rem;
+  color: rgba(1, 44, 109, .7);
+}
+
+.f2__legal { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.f2__legal a { text-decoration: none; color: rgba(1, 44, 109, .74); }
+.f2__legal a:hover { color: var(--red); }
+
+
+/* ==========================================================================
+   3 — Contact bar
+   The details lead, in a red bar across the top with the estimate button beside
+   them. Brand and links share the band under it. The only option where the
+   phone number is the first thing in the footer rather than the last.
+   ========================================================================== */
+
+.f3 {
+  background-color: var(--navy);
+  color: var(--on-dark-muted);
+}
+
+.f3__strip { background-color: var(--red); }
+
+.f3__strip-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-6);
+  padding-block: var(--space-4);
+}
+
+.f3__facts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4) clamp(1.5rem, 1rem + 2vw, 2.75rem);
+}
+
+.f3__fact {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: .75rem;
+}
+
+.f3__fact-icon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, .2);
+  color: var(--white);
+  font-size: .8125rem;
+}
+
+.f3__fact-body { display: grid; gap: .0625rem; }
+
+.f3__fact-label {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-bold);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .8);
+}
+
+.f3__fact-value {
+  font-size: .9375rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.35;
+  color: var(--white);
+}
+
+.f3__fact-value a { text-decoration: none; color: inherit; }
+.f3__fact-value a:hover { text-decoration: underline; }
+
+/* Navy on the red strip — a red button on red would have no edge. */
+.f3__cta {
+  --clr: var(--navy);
+  --pip-ink: var(--navy);
+  flex: none;
+}
+
+.f3__main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.3fr);
+  gap: var(--space-6) clamp(2rem, 1.4rem + 2.4vw, 3.5rem);
+  padding-block: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+}
+
+.f3__about {
+  max-width: 42ch;
+  margin-top: var(--space-4);
+  font-size: .9375rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, .72);
+  text-wrap: pretty;
+}
+
+.f3__cols {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-4);
+}
+
+.f3__heading {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-bold);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--red-on-dark);
+}
+
+.f3__links {
+  display: grid;
+  gap: .4375rem;
+  margin-top: var(--space-3);
+}
+
+.f3__links a {
+  font-size: .9375rem;
+  text-decoration: none;
+  color: rgba(255, 255, 255, .74);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.f3__links a:hover { color: var(--white); }
+
+.f3__base { border-top: 1px solid rgba(255, 255, 255, .16); }
+
+.f3__base-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  padding-block: var(--space-4);
+}
+
+.f3__marks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+}
+
+.f3__marks img { width: auto; height: 2.125rem; }
+.f3__marks .is-gaf img { height: 1.625rem; }
+.f3__marks .is-inc img { height: 1.875rem; }
+
+.f3__marks .is-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--white);
+  font-size: .9375rem;
+  font-weight: var(--fw-bold);
+}
+
+.f3__marks .is-rating img { height: 1.5rem; }
+
+.f3__legalrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+  font-size: .875rem;
+}
+
+.f3__legal { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+.f3__legal a { text-decoration: none; color: rgba(255, 255, 255, .74); }
+.f3__legal a:hover { color: var(--white); }
+
+.f3__strip :focus-visible { outline-color: var(--white); }
+
+
+/* ==========================================================================
+   4 — Three across
+   Brand, links and details side by side in one tier over a slim base. The
+   shortest of the four: nothing is stacked that can sit beside something else.
+   ========================================================================== */
+
+.f4 {
+  background-color: var(--navy-deep);
+  color: var(--on-dark-muted);
+}
+
+.f4__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 2.2fr) minmax(0, .9fr);
+  gap: var(--space-6) clamp(1.5rem, 1.1rem + 1.8vw, 3rem);
+  padding-block: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+}
+
+.f4__about {
+  max-width: 40ch;
+  margin-top: var(--space-4);
+  font-size: .875rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, .72);
+  text-wrap: pretty;
+}
+
+.f4__cta { margin-top: var(--space-4); }
+
+/* One row of four, not two rows of two: the tallest column is seven links
+   either way, so stacking them only doubled the footer's height. */
+.f4__cols {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-4);
+}
+
+.f4__heading {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-bold);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--red-on-dark);
+}
+
+.f4__links {
+  display: grid;
+  gap: .375rem;
+  margin-top: .625rem;
+}
+
+.f4__links a {
+  font-size: .875rem;
+  text-decoration: none;
+  color: rgba(255, 255, 255, .74);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.f4__links a:hover { color: var(--white); }
+
+.f4__facts {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+  padding-left: clamp(1.5rem, 1.1rem + 1.8vw, 2.5rem);
+  border-left: 1px solid rgba(255, 255, 255, .16);
+}
+
+.f4__fact {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: .75rem;
+}
+
+.f4__fact-icon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: .8125rem;
+}
+
+.f4__fact-body { display: grid; gap: .0625rem; }
+
+.f4__fact-label {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-bold);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .55);
+}
+
+.f4__fact-value {
+  font-size: .9375rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.35;
+  color: var(--white);
+}
+
+.f4__fact-value a { text-decoration: none; color: inherit; }
+.f4__fact-value a:hover { color: var(--red-on-dark); }
+
+.f4__base { border-top: 1px solid rgba(255, 255, 255, .16); }
+
+.f4__base-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  padding-block: var(--space-4);
+}
+
+.f4__marks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+}
+
+.f4__marks img { width: auto; height: 2.125rem; }
+.f4__marks .is-gaf img { height: 1.625rem; }
+.f4__marks .is-inc img { height: 1.875rem; }
+
+.f4__marks .is-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--white);
+  font-size: .9375rem;
+  font-weight: var(--fw-bold);
+}
+
+.f4__marks .is-rating img { height: 1.5rem; }
+
+.f4__legalrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+  font-size: .875rem;
+}
+
+.f4__legal { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+.f4__legal a { text-decoration: none; color: rgba(255, 255, 255, .74); }
+.f4__legal a:hover { color: var(--white); }
+
+
+/* Narrow ------------------------------------------------------------------- */
+
+@media (max-width: 80rem) {
+  .f4__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 68rem) {
+  .f1__top { grid-template-columns: minmax(0, 1fr); }
+
+  .f1__cols,
+  .f2__cols,
+  .f3__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .f3__main { grid-template-columns: minmax(0, 1fr); }
+
+  .f2__inner { grid-template-columns: minmax(0, 1fr); }
+
+  .f2__cols {
+    padding-left: 0;
+    padding-top: var(--space-5);
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, .16);
+  }
+
+  .f4__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+
+  .f4__facts {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding-left: 0;
+    padding-top: var(--space-5);
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, .16);
+  }
+}
+
+@media (max-width: 44rem) {
+  .f1__cols,
+  .f2__cols,
+  .f3__cols,
+  .f4__cols { grid-template-columns: minmax(0, 1fr); }
+
+  .f1__facts,
+  .f4__facts { grid-template-columns: minmax(0, 1fr); }
+
+  .f3__strip-inner { justify-content: center; }
+
+  .f3__cta { width: 100%; justify-content: center; }
+
+  .f1__fact + .f1__fact {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, .16);
+  }
+
+  .f4__inner { grid-template-columns: minmax(0, 1fr); }
+
+  .f1__marks,
+  .f2__marks,
+  .f3__marks,
+  .f4__marks { justify-content: center; }
+
+  .f1__base-inner,
+  .f2__base,
+  .f3__base,
+  .f4__base-inner { justify-content: center; text-align: center; }
+}

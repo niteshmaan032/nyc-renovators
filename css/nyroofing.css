@@ -32,6 +32,9 @@
 
   --on-dark: rgba(255, 255, 255, .82);
   --line: rgba(19, 18, 17, .07);
+  /* One step up from --line, for the pieces that have to hold an edge on
+     their own: the header hairline, the dropdown card, the drawer rules. */
+  --line-strong: rgba(19, 18, 17, .1);
   --line-dark: rgba(255, 255, 255, .14);
 
   /* type */
@@ -76,11 +79,16 @@
   /* 70px gutters. Overridden to 20px on phones further down — 140px of gutter
      on a 360px screen leaves the logo and the call button fighting for 220px. */
   --edge: 4.375rem;
-  --utility-h: 3rem;
-  /* Tracks the logo. The bar has to clear the mark, but every pixel it gains
-     beyond that shows up as dead space under the much smaller menu text — so
-     it sits just 12px clear of a 76px logo rather than 14px clear of an 84px one. */
-  --nav-h: 6.25rem;
+  /* 72px. The old 100px bar was sized around a 76px logo; with the mark down
+     to 52px the bar sits 10px clear of it and the whole header lost 76px of
+     height once the utility strip above it went too. */
+  /* Row 1 is the trust strip; row 2 is the nav bar. The brand panel spans both. */
+  --nav-h: 5.5rem;
+  /* What sits above the hero: both rows plus the yellow rule. The hero is
+     sized against this so the first screen ends where the panel ends. */
+  --hero-offset: calc(var(--nav-h) + 3px);
+  /* How far the panel's right edge leans — the pitch of the cut. */
+  --pitch: 2.25rem;
 
   /* radius / shadow */
   --radius-sm: 4px;
@@ -89,8 +97,10 @@
   --radius-xl: 20px;
   /* Hero panel — a deep radius is the reference layout's signature. */
   --radius-2xl: 32px;
-  /* Dropdowns carry no shadow — the border alone separates them from the page. */
-  --shadow-menu: none;
+  /* The panels are detached cards now rather than flush extensions of the bar,
+     so they need a shadow to sit above the page rather than in it. */
+  --shadow-menu: 0 18px 40px -24px rgba(19, 18, 17, .38),
+                 0 2px 6px -3px rgba(19, 18, 17, .07);
   --shadow-header: 0 1px 0 var(--line), 0 6px 18px -14px rgba(19, 18, 17, .1);
 
   /* motion */
@@ -207,7 +217,7 @@ button {
   display: inline-flex;
   align-items: center;
   /* One CTA box for the whole page, taken from the hero call button. The
-     header keeps its own, larger metrics — see .call-cta. */
+     header's call button uses it unchanged — see .header-call. */
   gap: var(--space-2);
   /* 44px minimum keeps the tap target honest. */
   min-height: 3.125rem;
@@ -309,497 +319,406 @@ button {
 
 /* Header shell ------------------------------------------------------------ */
 
+/* Two rows, and the order is the inverse of nyc2's: brand and actions on a
+   white row up top, the nav on a dark row beneath. nyc2 puts its thin strip
+   above and its logo in the nav bar, so the two never read as one template —
+   and giving the brand a row of its own is what lets the mark go from 52px to
+   72px without the bar swallowing the screen. */
 .site-header {
   position: sticky;
   top: 0;
   z-index: var(--z-header);
-  background-color: var(--surface);
-}
-
-
-/* Bar 1 — utility --------------------------------------------------------- */
-
-.utility-bar {
   background-color: var(--dark);
-  color: var(--on-dark);
-  /* Collapsed by height rather than display so the nav bar slides up smoothly
-     when the page scrolls; overflow keeps the content from spilling mid-transition. */
-  height: var(--utility-h);
-  overflow: hidden;
-  transition: height var(--dur-base) var(--ease-out);
-}
-
-.utility-bar__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-5);
-  height: var(--utility-h);
-}
-
-.utility-bar__claim {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  min-width: 0;
-  color: var(--white);
-  font-size: var(--fs-utility);
-  font-weight: var(--fw-semi);
-  /* Title case, so the .1em display tracking that suited all-caps would now
-     just look loose — pulled back to a normal reading rhythm. */
-  letter-spacing: .01em;
-  text-transform: capitalize;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.utility-bar__icon {
-  flex-shrink: 0;
-  color: var(--brand);
-  font-size: var(--fs-16);
-}
-
-/* Claim then hours, sharing the left end of the bar. */
-.utility-bar__left {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  min-width: 0;
-}
-
-/* Rule sits on the hours, so it disappears with them below 62em rather than
-   being left dangling off the end of the claim. */
-.utility-bar__hours {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding-left: var(--space-4);
-  border-left: 1px solid var(--line-dark);
-  color: var(--on-dark);
-  font-size: var(--fs-utility);
-  font-weight: var(--fw-semi);
-  letter-spacing: .01em;
-  white-space: nowrap;
-  /* Reads as data, not a claim — figures line up and the am/pm stays lowercase. */
-  font-variant-numeric: tabular-nums;
-}
-
-/* Socials */
-/* The badges are full-bleed circles with no padding of their own, so the gap
-   has to do all the separating the old chip frames used to. */
-.socials {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
-/* Glyphs rather than image badges: one weight, one silhouette, and they take
-   their colour from CSS so each surface can set its own. */
-.socials a {
-  display: grid;
-  place-items: center;
-  /* 30px in a 48px bar leaves 9px of air above and below; at 34px the chips
-     crowded the bar's edges. */
-  width: 1.875rem;
-  height: 1.875rem;
-  border: 1px solid var(--line-dark);
-  border-radius: var(--radius-sm);
-  color: var(--on-dark);
-  font-size: .8125rem;
-  transition: background-color var(--dur-fast) var(--ease-out),
-              border-color var(--dur-fast) var(--ease-out),
-              color var(--dur-fast) var(--ease-out),
-              transform var(--dur-fast) var(--ease-out);
-}
-
-/* Hover fills the outline, so the border reads as the resting state of a
-   filled chip rather than as separate decoration. */
-.socials a:hover {
-  background-color: var(--brand);
-  border-color: var(--brand);
-  color: var(--ink);
-  transform: translateY(-2px);
-}
-
-/* Drawer footer sits on a light surface, so the chip flips polarity. */
-.socials--dark a {
-  border-color: var(--line);
-  color: var(--ink-2);
-}
-
-.socials--dark a:hover { color: var(--ink); }
-
-
-/* Bar 2 — nav ------------------------------------------------------------- */
-
-/* No resting hairline — the hero panel sits just beneath the bar. The scrolled
-   shadow still appears once the bar detaches from the page top. */
-.nav-bar {
-  background-color: var(--surface);
+  /* A dark header over a dark hero needs its own edge; the brand colour draws
+     it, as a roofline under the bar. */
+  border-bottom: 3px solid var(--brand);
   transition: box-shadow var(--dur-base) var(--ease-out);
 }
 
-.site-header.is-scrolled .nav-bar { box-shadow: var(--shadow-header); }
+.site-header.is-scrolled { box-shadow: var(--shadow-header); }
 
-/* Past the fold the positioning line has done its job — drop it and let the
-   nav bar alone hold the top of the viewport. */
-.site-header.is-scrolled .utility-bar { height: 0; }
-
-.nav-bar__inner {
+/* The panel is flush with the viewport on the left, so the row has no left
+   gutter of its own — the panel carries it. */
+.site-header__inner {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /* Trimmed from 24px: at the 1408 breakpoint the menu had grown into this
-     gap, and the space reads better as padding around the links than as a
-     fixed gutter either side of the nav. */
-  gap: var(--space-4);
-  height: var(--nav-h);
+  align-items: stretch;
+  max-width: var(--container-max);
+  margin-inline: auto;
 }
 
-/* Brand */
+.site-header__rows {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Row 2 — the nine links, then the call pinned to the right end. */
+.header-bar {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--nav-h);
+  /* The call button ends on the same right edge as every section's content. */
+  padding-inline: var(--space-3) var(--edge);
+}
+
+
+/* Brand ------------------------------------------------------------------- */
+
+/* The signature: a white panel the full height of the header, its right edge
+   cut on a pitch. The cut is the one shape that is already in the logo, so the
+   panel reads as the brand's own roofline rather than as a decoration. The
+   extra right padding is the room the cut takes. */
 .brand {
   flex-shrink: 0;
-  display: block;
+  display: grid;
+  place-items: center;
+  /* The mark starts on the same left edge as every section's content. */
+  padding: .5rem calc(var(--space-4) + var(--pitch)) .5rem var(--edge);
+  background-color: var(--surface);
+  clip-path: polygon(0 0, 100% 0, calc(100% - var(--pitch)) 100%, 0 100%);
   line-height: 0;
 }
 
-/* The mark is pre-cropped to the artwork and genuinely transparent, so the old
-   negative-offset crop and multiply blend hack are no longer needed. */
+/* 80px — the largest the mark has been. It owns a column of its own, so the
+   only limit is the header's height. */
 .brand__mark {
-  position: relative;
   display: block;
-  height: 4rem;
+  height: 4.5rem;
   aspect-ratio: 1348 / 742;
 }
 
 .brand__img {
-  position: absolute;
-  inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-/* Single full-colour mark; the header is solid white again. */
-.brand__img--ondark { display: none; }
-
 
 /* Primary nav ------------------------------------------------------------- */
 
-.primary-nav { display: none; }
+.primary-nav { min-width: 0; }
 
-/* The logo and the CTA are different widths, so space-between alone leaves the
-   menu sitting off-centre. Letting the nav take the slack and centring inside
-   it puts the list on the page's true midline. */
-/* gap: 0 — the separation is carried by the links' own 18px padding, so the
-   hairline lands midway between two labels instead of floating in a gap. */
 .primary-nav__list {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0;
 }
 
 .primary-nav__item { position: relative; }
 
-/* Hairline between items, drawn as a background rather than a border-left so
-   it is unaffected by .primary-nav__item--full going position: static, and so
-   it can be a short 24px rule centred on the row instead of full height. */
-.primary-nav__item + .primary-nav__item {
-  background-image: linear-gradient(var(--line), var(--line));
-  background-size: 1px 1.5rem;
-  background-position: left center;
-  background-repeat: no-repeat;
-}
-
-/* Only the full-bleed panel goes static, so it anchors to .nav-bar rather
-   than to its own list item. */
-.primary-nav__item--full { position: static; }
-
-/* Full nav-bar height, so the hover tint fills the whole bar the way nyc2's
-   does rather than sitting as a floating pill. */
 .primary-nav__link {
+  /* One value drives the padding and the underline's end points, so the rule
+     always stops exactly where the label does. */
+  /* Steep on purpose: 8px a side at the 80em breakpoint, where nine items, the
+     panel and the call button only just share the bar, opening to 16px by
+     1470px where there is room to spend. */
+  --pad: clamp(.5rem, -4.04rem + 5.56vw, 1.25rem);
+
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: .375rem;
+  gap: .3125rem;
   height: var(--nav-h);
-  /* Nudges the labels below the bar's true centre. Padding rather than a
-     transform, so the hover tint and the 3px underline still fill the full
-     bar height — only the text moves. */
-  padding-top: var(--space-2);
-  /* nyc2's flat 18px needs 1483px for nine items, which would hand every
-     1440px laptop the burger. Re-sloped again at 70px gutters, which took a
-     further 20px out of the row: ~17.4px a side at the breakpoint, still 26px
-     on wide screens. The ceiling is what stays clear of the logo and the call
-     button at 1408 — measured, not guessed. */
-  padding-inline: clamp(1rem, -.39rem + 1.68vw, 1.625rem);
-  border-bottom: 3px solid transparent;
-  color: var(--ink);
+  padding-inline: var(--pad);
+  color: var(--on-dark);
   font-size: var(--fs-nav);
   font-weight: var(--fw-semi);
-  letter-spacing: .005em;
   white-space: nowrap;
-  transition: background-color var(--dur-fast) var(--ease-out),
-              border-color var(--dur-fast) var(--ease-out),
-              color var(--dur-fast) var(--ease-out);
+  transition: color var(--dur-fast) var(--ease-out);
 }
 
-/* Tint on hover so the whole item responds, not just the word. */
-.primary-nav__link:hover,
-.primary-nav__link[aria-expanded="true"] {
-  background-color: var(--hover-tint);
-  border-bottom-color: var(--brand);
-  color: var(--ink);
-}
-
-/* Brand-coloured dropdown indicator. #FCB909 itself sits at 1.7:1 on white and
-   a 12px chevron nearly vanishes in it, so this is the same hue held to a
-   value that still reads as gold but survives the thin stroke. */
-.primary-nav__chevron {
-  flex: none;
-  font-size: .75rem;
-  color: var(--brand-deep);
+/* A 2px rule under the label, grown from its centre. nyc2 tints the full bar
+   height and drops a 3px border across the whole item; keeping the feedback
+   inside the word is both quieter and unmistakably not that. */
+.primary-nav__link::after {
+  content: "";
+  position: absolute;
+  left: var(--pad);
+  right: var(--pad);
+  bottom: 1.5rem;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--brand);
+  transform: scaleX(0);
   transition: transform var(--dur-base) var(--ease-out);
 }
 
-.primary-nav__link[aria-expanded="true"] .primary-nav__chevron { transform: rotate(180deg); }
+.primary-nav__link:hover,
+.primary-nav__link.is-current,
+.primary-nav__link[aria-expanded="true"] { color: var(--white); }
+
+.primary-nav__link:hover::after,
+.primary-nav__link.is-current::after,
+.primary-nav__link[aria-expanded="true"]::after { transform: scaleX(1); }
+
+.primary-nav__chevron {
+  flex: none;
+  margin-top: 1px;
+  font-size: .625rem;
+  color: rgba(255, 255, 255, .5);
+  transition: transform var(--dur-base) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
+}
+
+.primary-nav__link:hover .primary-nav__chevron { color: var(--brand); }
+
+.primary-nav__link[aria-expanded="true"] .primary-nav__chevron {
+  color: var(--brand);
+  transform: rotate(180deg);
+}
 
 
-/* Mega panels ------------------------------------------------------------- */
+/* Dropdown panels --------------------------------------------------------- */
 
+/* Cards pinned under their own trigger — never full-bleed, never a screenful.
+   The widest of the three is 688px and roughly 340px tall. */
+/* Dark cards hung from a dark bar, a step lighter than the header so they read
+   as in front of it. */
+/* Flush under the header's yellow rule, so that rule is the card's top edge —
+   one line, not a second one floating 7px below the first. */
 .mega {
   position: absolute;
+  top: calc(100% + 3px);
+  left: 0;
   z-index: 5;
-  background-color: var(--surface);
-  /* The trigger flips [hidden] off first, then JS adds .is-open on the next
-     frame so the transition has two states to move between. */
+  padding: var(--space-3);
+  border: 1px solid var(--line-dark);
+  border-top: 0;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  background-color: var(--dark-2);
+  box-shadow: 0 24px 48px -16px rgba(0, 0, 0, .55);
   opacity: 0;
   transform: translateY(-6px);
   transition: opacity var(--dur-base) var(--ease-out),
               transform var(--dur-base) var(--ease-out);
 }
 
+/* Bridges the gap between bar and card, so a cursor travelling down never
+   lands outside the item and starts the close timer. */
+.mega::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -.875rem;
+  height: .875rem;
+}
+
 .mega[hidden] { display: none; }
 
 .mega.is-open { opacity: 1; transform: translateY(0); }
 
-/* Single-column drop, pinned under its trigger */
-.mega--drop {
-  top: 100%;
-  left: 0;
-  min-width: 16rem;
-  padding: var(--space-3);
-  border: 1px solid var(--line);
-  border-top: 0;
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
-}
+/* Three links, five links — one column, each with a chip. */
+.mega--sm { min-width: 15.5rem; }
 
-/* Full-bleed panel, spanning the nav bar */
-.mega--full {
-  top: 100%;
-  left: 0;
-  right: 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 3px solid var(--brand);
-}
-
-.mega__inner {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 18rem);
-  gap: var(--space-6);
-  padding-block: var(--space-7);
-}
-
-.mega__heading {
-  margin-bottom: var(--space-3);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--line);
-  color: var(--ink);
-  font-size: var(--fs-14);
-  font-weight: var(--fw-black);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.mega__list { display: grid; gap: 2px; }
-
-.mega__list a {
+.mega--sm .mega__list a {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3);
-  border-radius: var(--radius-md);
-  color: var(--ink-2);
-  font-size: var(--fs-16);
-  font-weight: var(--fw-medium);
-  transition: background-color var(--dur-fast) var(--ease-out),
-              color var(--dur-fast) var(--ease-out);
+  gap: .75rem;
+  padding: .5rem .625rem;
 }
 
-.mega__list a:hover {
-  background-color: var(--hover-tint);
-  color: var(--ink);
-}
-
-.menu-icon {
+.mega__icon {
   display: grid;
   place-items: center;
   flex-shrink: 0;
   width: 2rem;
   height: 2rem;
   border-radius: var(--radius-sm);
-  /* Brand tint behind a black glyph. The earlier #8A6200 glyph went muddy
-     against the tint — near-black reads cleanly at 14px and lets the yellow
-     chip carry the colour on its own. */
-  background-color: rgba(252, 185, 9, .18);
-  color: var(--ink);
-  font-size: var(--fs-14);
+  background-color: rgba(252, 185, 9, .12);
+  color: var(--brand);
+  font-size: .8125rem;
   transition: background-color var(--dur-fast) var(--ease-out),
-              color var(--dur-fast) var(--ease-out),
-              transform var(--dur-fast) var(--ease-out);
+              color var(--dur-fast) var(--ease-out);
 }
 
-.mega__list a:hover .menu-icon {
+.mega--sm .mega__list a:hover .mega__icon {
   background-color: var(--brand);
   color: var(--ink);
-  transform: scale(1.06);
 }
 
-/* Emergency card in the fourth column */
-/* Pitch card ------------------------------------------------------------- */
-
-/* Modelled on nyc2's .mega__card — a solid panel holding a question, a plain
-   answer and one action. Black here rather than nyc2's navy, and stretched to
-   the column's full height so no white band is left under it. */
-.pitch {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: var(--space-6);
-  border-radius: var(--radius-lg);
-  background-color: var(--dark);
-  color: var(--on-dark);
+/* Twenty-three links in three headed columns, then a foot that gives the card
+   something to do besides list. */
+.mega--wide {
+  width: min(42rem, calc(100vw - 2.5rem));
+  padding: var(--space-4) var(--space-5) 0;
 }
 
-.pitch__title {
-  margin-bottom: var(--space-3);
-  color: var(--white);
-  font-size: var(--fs-24);
-  font-weight: var(--fw-bold);
-  line-height: 1.25;
-  letter-spacing: -.02em;
+.mega__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-6);
+  padding-bottom: var(--space-4);
 }
 
-.pitch__text {
-  margin-bottom: var(--space-5);
-  font-size: var(--fs-14);
-  line-height: 1.6;
+.mega--wide .mega__foot { margin-inline: calc(-1 * var(--space-5)); }
+
+.mega__heading {
+  margin-bottom: var(--space-2);
+  padding: 0 .5rem var(--space-2);
+  border-bottom: 1px solid var(--line-dark);
+  color: var(--brand);
+  font-size: .6875rem;
+  font-weight: var(--fw-black);
+  letter-spacing: .12em;
+  text-transform: uppercase;
 }
 
-.pitch__cta {
+.mega__list { display: grid; }
+
+/* A dash that draws in from the left on hover, and the label steps over to
+   make room for it — the nav's underline gesture, turned on its side. */
+.mega__list a {
   position: relative;
-  z-index: 1;
+  display: block;
+  padding: .375rem .5rem;
+  border-radius: var(--radius-sm);
+  color: var(--on-dark);
+  font-size: var(--fs-14);
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+  white-space: nowrap;
+  transition: background-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              padding-left var(--dur-base) var(--ease-out);
+}
+
+/* Eight rows a column were 32px each and read as a block; 40px with a hair of
+   space between gives each link a line of its own. */
+.mega--wide .mega__list { gap: .125rem; }
+
+.mega--wide .mega__list a { padding-block: .5625rem; }
+
+.mega--wide .mega__list a::before {
+  content: "";
+  position: absolute;
+  left: .5rem;
+  top: 50%;
+  width: 0;
+  height: 2px;
+  border-radius: 1px;
+  background-color: var(--brand);
+  transition: width var(--dur-base) var(--ease-out);
+}
+
+.mega--wide .mega__list a:hover { padding-left: 1.375rem; }
+
+.mega--wide .mega__list a:hover::before { width: .625rem; }
+
+.mega__list a:hover {
+  background-color: rgba(255, 255, 255, .05);
+  color: var(--white);
+}
+
+/* The foot runs edge to edge on a deeper ink, ruled off from the columns. */
+.mega__foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  /* 48px — trimmed from 56 so the button sits lighter in the card. */
-  min-height: 3rem;
-  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
-  border-radius: var(--radius-md);
-  background-color: var(--white);
-  color: var(--ink);
-  overflow: hidden;
-  font-size: var(--fs-15);
-  font-weight: var(--fw-bold);
-  text-transform: capitalize;
-  transition: color var(--dur-base) var(--ease-out);
+  margin-inline: calc(-1 * var(--space-4));
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--line-dark);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  background-color: var(--dark);
 }
 
-/* The same skew wipe every other CTA uses, so the header keeps one button
-   language. Brand yellow is the change now that the button rests on white. */
-.pitch__cta::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: -20%;
-  right: -20%;
-  top: 0;
-  bottom: 0;
-  background-color: var(--brand);
-  transform: skewX(-45deg) scale(0, 1);
-  transition: transform var(--dur-wipe) var(--ease-out);
-}
-
-.pitch__cta:hover::after,
-.pitch__cta:focus-visible::after { transform: skewX(-45deg) scale(1, 1); }
-
-.pitch__cta-arrow {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 1.875rem;
-  height: 1.875rem;
-  border-radius: var(--radius-sm);
-  background-color: var(--ink);
-  color: var(--brand);
-  font-size: var(--fs-12);
-  transition: color var(--dur-base) var(--ease-out),
-              transform var(--dur-fast) var(--ease-out);
-}
-
-.pitch__cta:hover .pitch__cta-arrow { transform: translateX(3px); }
-
-
-/* Nav actions ------------------------------------------------------------- */
-
-.nav-bar__actions {
-  flex-shrink: 0;
+.mega__facts {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
 
-/* Header keeps the original yellow scheme: no keyline at rest, white on the
-   black hover wipe. */
-.call-cta {
+.mega__facts li {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: rgba(255, 255, 255, .68);
+  font-size: var(--fs-12);
+  font-weight: var(--fw-medium);
+  white-space: nowrap;
+}
+
+.mega__facts i { color: var(--brand); font-size: .75rem; }
+
+/* The header's call button, one size down. */
+.mega__call {
   --btn-bg: var(--brand);
   --btn-ink: var(--ink);
   --btn-wipe: var(--ink);
   --btn-ink-hover: var(--white);
-  --btn-ring: transparent;
+  --btn-ring: var(--brand);
   --btn-ring-hover: var(--white);
+  --btn-pip-bg: var(--white);
+  --btn-pip-ink: var(--ink);
 
-  /* The header sits on its own scale, so it keeps the original box rather
-     than following the page-wide hero metrics. */
-  gap: var(--space-3);
-  min-height: 3.25rem;
-  padding: .5rem 1.75rem .5rem .5rem;
+  flex-shrink: 0;
+  min-height: 2.5rem;
+  padding: .375rem 1.125rem .375rem .375rem;
 }
 
-.call-cta .btn__pip {
-  width: 2.375rem;
-  height: 2.375rem;
-  font-size: var(--fs-16);
+.mega__call:hover,
+.mega__call:focus-visible { box-shadow: 0 0 0 2px var(--white); }
+
+.mega__call .btn__pip {
+  width: 1.75rem;
+  height: 1.75rem;
+  font-size: .75rem;
 }
 
-.call-cta .btn__number { font-size: var(--fs-18); }
+.mega__call .btn__number { font-size: var(--fs-14); }
 
+
+/* Header actions ---------------------------------------------------------- */
+
+/* margin-left: auto rather than justify-content, so the actions stay pinned
+   right whether or not the nav is in the bar. */
+/* The hero's call button, verbatim: same --btn variables, same pip, same
+   wipe. Only the position is the header's. */
+.header-call {
+  --btn-bg: var(--brand);
+  --btn-ink: var(--ink);
+  --btn-wipe: var(--ink);
+  --btn-ink-hover: var(--white);
+  --btn-ring: var(--brand);
+  --btn-ring-hover: var(--white);
+  --btn-pip-bg: var(--white);
+  --btn-pip-ink: var(--ink);
+
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* Outside the box, not inset: the black wipe is a pseudo-element painted over
+   the button's own background, and an inset ring sits in that background layer
+   — so the wipe covered it. An outer ring is never under the wipe. */
+.header-call:hover,
+.header-call:focus-visible { box-shadow: 0 0 0 2px var(--white); }
+
+/* The hero's phone button gets the same white ring on hover as the header's. */
+.hero__call:hover,
+.hero__call:focus-visible { box-shadow: 0 0 0 2px var(--white); }
+
+
+
+
+/* Square icon button — the word "Menu" beside it was another 60px of bar. */
+/* Icon and the word together in one outlined box — the word is what makes
+   it read as a control rather than a glyph, and the box holds the two as one. */
 .nav-toggle {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  min-height: 2.75rem;
-  padding: var(--space-2) var(--space-4);
+  gap: .5rem;
+  height: 2.75rem;
+  padding-inline: .875rem;
   border-radius: var(--radius-md);
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   color: var(--ink);
-  font-size: var(--fs-14);
-  font-weight: var(--fw-semi);
-  letter-spacing: var(--tracking-utility);
-  text-transform: uppercase;
+  font-size: 1.0625rem;
   transition: background-color var(--dur-fast) var(--ease-out),
               border-color var(--dur-fast) var(--ease-out);
 }
@@ -809,7 +728,60 @@ button {
   border-color: rgba(19, 18, 17, .24);
 }
 
-.nav-toggle i { font-size: 1.0625rem; }
+.nav-toggle__word {
+  font-size: var(--fs-14);
+  font-weight: var(--fw-bold);
+  letter-spacing: .01em;
+}
+
+
+/* Socials ----------------------------------------------------------------- */
+
+/* Only the drawer footer and the site footer use these now that the utility
+   bar is gone, so they are defined on the light surface and flip for dark. */
+.socials {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.socials a {
+  display: grid;
+  place-items: center;
+  width: 1.875rem;
+  height: 1.875rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  color: var(--ink-2);
+  font-size: .8125rem;
+  transition: background-color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+
+.socials a:hover {
+  background-color: var(--brand);
+  border-color: var(--brand);
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+
+/* On a dark field: pale outline, white glyph. */
+.socials--on-dark a {
+  border-color: var(--line-dark);
+  color: var(--on-dark);
+}
+
+.socials--on-dark a:hover { color: var(--ink); }
+
+/* Kept for the footer, which still names the old modifier. */
+.socials--dark a {
+  border-color: var(--line-strong);
+  color: var(--ink-2);
+}
+
+.socials--dark a:hover { color: var(--ink); }
 
 
 /* Mobile drawer ----------------------------------------------------------- */
@@ -827,12 +799,12 @@ button {
 
 .mobile-nav.is-open { opacity: 1; }
 
+/* A 400px sheet rather than the full screen — the same "don't swallow the
+   viewport" note the client made about the desktop panels. */
 .mobile-nav__panel {
   display: flex;
   flex-direction: column;
-  /* Full width — the drawer takes the screen rather than sharing it with a
-     strip of dimmed page behind. */
-  width: 100%;
+  width: min(25rem, 100%);
   height: 100%;
   margin-left: auto;
   background-color: var(--surface);
@@ -847,8 +819,9 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  padding: var(--space-4) var(--space-5);
-  border-bottom: 1px solid var(--line);
+  height: var(--nav-h);
+  padding-inline: var(--space-4) var(--space-4);
+  border-bottom: 1px solid var(--line-strong);
 }
 
 .brand--static { display: block; line-height: 0; }
@@ -860,7 +833,7 @@ button {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: var(--radius-md);
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   font-size: 1.0625rem;
   transition: background-color var(--dur-fast) var(--ease-out);
 }
@@ -869,12 +842,12 @@ button {
 
 .mobile-nav__body {
   flex: 1;
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-3);
   overflow-y: auto;
   overscroll-behavior: contain;
 }
 
-.mobile-nav__list { display: grid; gap: 2px; }
+.mobile-nav__list { display: grid; }
 
 .mobile-nav__link {
   display: flex;
@@ -882,10 +855,10 @@ button {
   justify-content: space-between;
   gap: var(--space-3);
   width: 100%;
-  padding: var(--space-3) var(--space-4);
+  padding: .625rem var(--space-3);
   border-radius: var(--radius-md);
   color: var(--ink);
-  font-size: var(--fs-18);
+  font-size: var(--fs-16);
   font-weight: var(--fw-semi);
   text-align: left;
 }
@@ -895,7 +868,7 @@ button {
 .mobile-nav__chevron {
   flex-shrink: 0;
   color: var(--muted);
-  font-size: .6875rem;
+  font-size: .625rem;
   transition: transform var(--dur-base) var(--ease-out);
 }
 
@@ -924,15 +897,24 @@ button {
   /* A 0fr row only collapses if its child can actually be crushed to zero. */
   min-height: 0;
   overflow: hidden;
-  margin-left: var(--space-5);
-  border-left: 2px solid var(--line);
+  margin-left: var(--space-4);
+  border-left: 2px solid var(--line-strong);
+}
+
+.mobile-nav__subhead {
+  padding: var(--space-3) var(--space-3) var(--space-1);
+  color: var(--brand-ink);
+  font-size: .6875rem;
+  font-weight: var(--fw-black);
+  letter-spacing: .12em;
+  text-transform: uppercase;
 }
 
 .mobile-nav__sub a {
   display: block;
-  padding: var(--space-3) var(--space-4);
+  padding: .4375rem var(--space-3);
   color: var(--ink-2);
-  font-size: var(--fs-16);
+  font-size: var(--fs-14);
   font-weight: var(--fw-medium);
 }
 
@@ -940,11 +922,63 @@ button {
 
 .mobile-nav__foot {
   display: grid;
-  gap: var(--space-4);
-  padding: var(--space-5);
-  border-top: 1px solid var(--line);
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-top: 1px solid var(--line-strong);
   background-color: var(--surface-2);
 }
+
+/* Same pill as the bar, full width. */
+.mobile-nav__call {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  height: 3rem;
+  border-radius: 999px;
+  background-color: var(--ink);
+  color: var(--white);
+  overflow: hidden;
+  font-size: var(--fs-15);
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.mobile-nav__call::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -20%;
+  right: -20%;
+  top: 0;
+  bottom: 0;
+  background-color: var(--brand);
+  transform: skewX(-45deg) scale(0, 1);
+  transition: transform var(--dur-wipe) var(--ease-out);
+}
+
+.mobile-nav__call:hover { color: var(--ink); }
+
+.mobile-nav__call:hover::after,
+.mobile-nav__call:focus-visible::after { transform: skewX(-45deg) scale(1, 1); }
+
+.mobile-nav__quote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  border-radius: 999px;
+  border: 1px solid rgba(19, 18, 17, .18);
+  color: var(--ink);
+  font-size: var(--fs-14);
+  font-weight: var(--fw-bold);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.mobile-nav__quote:hover { background-color: var(--surface); }
 
 .mobile-nav__foot .socials { justify-content: center; }
 
@@ -953,66 +987,72 @@ body.is-locked { overflow: hidden; }
 
 /* Breakpoints ------------------------------------------------------------- */
 
-/* Phone. The number is the whole reason a roofing header exists, so the CTA
-   never disappears — it sheds its label and becomes the pip alone, which fits
-   beside the burger at any width the bar has to survive. */
-@media (max-width: 33.11em) {
-  .call-cta { padding: .5rem; }
-  .call-cta .btn__text { display: none; }
+/* Nine items at 15px plus a 94px logo and the actions need ~1170px of inner
+   width; at 3vw gutters that lands at 1280. Measured, not guessed — and 128px
+   earlier than the old header, which handed every 1440px laptop the burger. */
+@media (min-width: 80em) {
+  .nav-toggle { display: none; }
 }
 
-/* Below the desktop nav the utility bar goes entirely — its claim, hours and
-   socials all live in the drawer and the footer. The call button goes with it,
-   since the drawer leads with the same number. */
-@media (max-width: 61.99em) {
-  .utility-bar { display: none; }
-  .call-cta { display: none; }
+/* The panel, the strip and the dark bar are desktop only. Below the desktop
+   nav the header goes back to what it was: one white bar, the mark on the
+   left, and the burger. */
+@media (max-width: 79.99em) {
+  :root { --hero-offset: calc(5rem + 1px); }
 
-  /* "Menu" reads better than a bare burger at this size. */
-  .nav-toggle__word { display: inline; }
+  .site-header {
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  .site-header__inner {
+    align-items: center;
+    gap: var(--space-4);
+    padding-inline: clamp(1.25rem, 3vw, var(--edge));
+  }
+
+  .brand {
+    padding: 0;
+    background-color: transparent;
+    clip-path: none;
+  }
+
+  .brand__mark { height: 3.75rem; }
+
+  .primary-nav { display: none; }
+
+  /* Pinned to the far right; with the nav and the number gone the bar is
+     otherwise empty, and the toggle was landing next to the mark. */
+  .header-bar {
+    justify-content: flex-end;
+    gap: var(--space-3);
+    min-height: 5rem;
+    padding: 0;
+  }
+
+  /* No number in the bar on a phone — the drawer leads with it and the floating
+     call button is always on screen, so the bar is the mark and the burger. */
+  .header-call { display: none; }
 }
 
-/* The claim needs ~306px of its own; below this the socials were squeezing it
-   into a hard truncation. They still live in the drawer and the footer. */
-@media (max-width: 39.99em) {
-  .utility-bar .socials { display: none; }
-  .utility-bar__claim { letter-spacing: .04em; }
+/* Below the desktop nav the panels are unreachable; the drawer carries them. */
+@media (max-width: 79.99em) {
+  .mega { display: none !important; }
 }
+
+
 
 /* 40px gutters are a desktop figure. Holding them on a phone costs 80px of a
    360px screen, so the gutter steps down where the content needs the room. */
 @media (max-width: 47.99em) {
-  :root { --edge: 1.25rem; }
-}
+  :root {
+    --edge: 1.25rem;
+    --hero-offset: calc(4.5rem + 1px);
+  }
 
-@media (max-width: 47.99em) {
-  .nav-toggle { padding-inline: var(--space-4); }
-}
+  .header-bar { min-height: 4.5rem; }
 
-/* Tablet: room for the number to spell itself out. */
-@media (min-width: 48em) {
-  .utility-bar__inner { gap: var(--space-6); }
-}
-
-/* The nav needs roughly 1180px before nine items stop crowding the logo. */
-/* Measured, not guessed: nine 17px items + a 72px logo + the call button need
-   ~1403px before anything crowds. 88em matches nyc2's own switch point and is
-   the first step that fits. */
-@media (min-width: 88em) {
-  .primary-nav { display: block; flex: 1; min-width: 0; }
-  .nav-toggle { display: none; }
-  .brand__mark { height: 4.75rem; }
-}
-
-@media (max-width: 87.99em) {
-  .mega { display: none !important; }
-}
-
-/* The card is the first thing to go when the panel narrows — the three
-   service columns are the menu's actual job. */
-@media (max-width: 85em) {
-  .mega__inner { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .pitch { display: none; }
+  .brand__mark { height: 3.25rem; }
 }
 
 
@@ -1041,7 +1081,7 @@ body.is-locked { overflow: hidden; }
   /* Flush to the header: the panel is full-bleed with square top corners, so
      any gap here would read as a seam rather than as breathing room. The
      bottom gap matches the page rhythm's half-gap. */
-  padding: 0 0 40px;
+  padding: 0 0 16px;
 }
 
 /* Full-bleed: no side margin, and square across the top so it meets the header
@@ -1050,10 +1090,14 @@ body.is-locked { overflow: hidden; }
 .hero__panel {
   position: relative;
   width: 100%;
-  /* Deliberately taller than the space left under the header, so the panel
-     fills the first screen on its own and the ticker sits just past the fold
-     as a scroll cue rather than competing with the hero. */
-  min-height: clamp(34rem, 76vh, 46rem);
+  /* Exactly the space left under the header, so the panel — and the form in
+     it — ends at the fold on every screen from a 13" laptop up. 76vh was a
+     share of the screen that ignored the header, which is why a 660px
+     viewport cut the form's submit button off. min-height, not height: if a
+     screen is ever too short for the content, it grows past the fold rather
+     than clipping. */
+  min-height: clamp(27rem, calc(100vh - var(--hero-offset)), 46rem);
+  min-height: clamp(27rem, calc(100svh - var(--hero-offset)), 46rem);
   border-radius: 0 0 var(--radius-2xl) var(--radius-2xl);
   background-color: var(--dark);
   overflow: hidden;
@@ -1066,14 +1110,15 @@ body.is-locked { overflow: hidden; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* The crew works centre-right of frame; holding the frame slightly left of
-     centre keeps them clear of the form card. */
-  object-position: 40% 50%;
+  /* The crew work centre-right of frame; holding the frame slightly left of
+     centre keeps them between the two columns rather than behind the card. */
+  object-position: 42% 50%;
   z-index: -2;
 }
 
-/* Angled rather than flat: heaviest under the headline, clearing across the
-   middle so the roof and crew stay legible between the two columns. */
+/* Angled: heaviest under the headline, clearing through the middle so the
+   crew stay legible between the columns, then darkening again on the right —
+   white type on frosted glass needs the footage behind it held down. */
 .hero__scrim {
   position: absolute;
   inset: 0;
@@ -1082,12 +1127,15 @@ body.is-locked { overflow: hidden; }
     linear-gradient(100deg,
       rgba(10, 10, 9, .94) 0%,
       rgba(10, 10, 9, .86) 26%,
-      rgba(10, 10, 9, .55) 48%,
-      rgba(10, 10, 9, .28) 68%,
-      rgba(10, 10, 9, .42) 100%),
+      rgba(10, 10, 9, .5) 48%,
+      rgba(10, 10, 9, .46) 68%,
+      rgba(10, 10, 9, .62) 100%),
     linear-gradient(to top, rgba(10, 10, 9, .55) 0%, transparent 40%);
 }
 
+/* The copy column is held to 44% so it always ends short of the seam's nearest
+   point (50%); the card centres in whatever is left, which puts it across the
+   seam on a laptop and wholly on the video on a wide monitor. */
 .hero__inner {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 26.5rem);
@@ -1099,7 +1147,22 @@ body.is-locked { overflow: hidden; }
   width: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
-  padding: clamp(2rem, 1rem + 3vw, 4rem) var(--edge);
+  /* Vertical padding tracks the viewport's height: 21px on a 660px screen,
+     27px on a 950px one. The old 3vw figure was 57px on a laptop, which the
+     form could not afford. */
+  padding: clamp(1.25rem, .5rem + 2vh, 3.5rem) var(--edge);
+}
+
+/* Buttons and the three marks share a row where the column allows it, and
+   wrap to two where it does not. */
+.hero__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  /* The row gap is what separates the buttons from the trust marks once the
+     marks wrap beneath them — kept roomy, and scaled by height so a short
+     screen gives a little of it back. */
+  gap: clamp(1.5rem, 3.4vh, 2.25rem) clamp(1.25rem, 1rem + 1.4vw, 2.5rem);
 }
 
 
@@ -1112,7 +1175,7 @@ body.is-locked { overflow: hidden; }
 .hero__eyebrow {
   display: inline-flex;
   align-items: center;
-  margin-bottom: var(--space-4);
+  margin-bottom: clamp(.75rem, 2.6vh, 1.5rem);
   padding: .4375rem .875rem;
   border: 1px solid rgba(255, 255, 255, .22);
   border-radius: 100px;
@@ -1128,10 +1191,12 @@ body.is-locked { overflow: hidden; }
 }
 
 .hero__title {
-  margin: 0 0 var(--space-4);
+  margin: 0 0 clamp(.875rem, 2.8vh, 1.75rem);
   color: var(--white);
-  /* 57px at the top end. */
-  font-size: clamp(2.0625rem, 1.2rem + 2.9vw, 3.5625rem);
+  /* Two lines; 54px at the top end. The vh term is the ceiling on a short
+     screen — a 600px laptop viewport gets 52px, a 560px one 49px — so the two
+     lines give back the height the fold needs before anything else does. */
+  font-size: clamp(2.0625rem, min(1.2rem + 2.7vw, .75rem + 6.6vh), 3.375rem);
   font-weight: var(--fw-black);
   line-height: 1.24;
   /* Inter needs negative tracking to stop large weights from looking loose. */
@@ -1141,7 +1206,7 @@ body.is-locked { overflow: hidden; }
 
 .hero__lede {
   max-width: 34rem;
-  margin-bottom: var(--space-3);
+  margin-bottom: clamp(.625rem, 2vh, 1.25rem);
   color: rgba(255, 255, 255, .92);
   font-size: clamp(1.0625rem, .95rem + .5vw, 1.375rem);
   font-weight: var(--fw-medium);
@@ -1150,8 +1215,8 @@ body.is-locked { overflow: hidden; }
 }
 
 .hero__support {
-  max-width: 30rem;
-  margin-bottom: var(--space-6);
+  max-width: 34rem;
+  margin-bottom: clamp(.875rem, 3vh, 2rem);
   color: rgba(255, 255, 255, .72);
   font-size: var(--fs-16);
   line-height: 1.6;
@@ -1162,7 +1227,6 @@ body.is-locked { overflow: hidden; }
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-4);
-  margin-bottom: var(--space-6);
 }
 
 /* Kept yellow by exception, with the white keyline on permanently. */
@@ -1231,20 +1295,70 @@ body.is-locked { overflow: hidden; }
 
 /* Quote card -------------------------------------------------------------- */
 
+/* Frosted glass, the same glass as the eyebrow pill: the blur samples the
+   footage and scrim painted behind it inside the panel's stacking context,
+   and the inset highlight along the top edge is what sells it as glass rather
+   than as a translucent block. */
 .quote {
-  /* Tight vertically — the breathing room the card needs is one deliberate
-     gap under the heading, not padding spread through the whole box. */
-  padding: var(--space-4) clamp(1.25rem, .9rem + 1.2vw, 1.75rem);
+  position: relative;
+  padding: clamp(.875rem, 1.8vh, 1.25rem) clamp(1.125rem, .9rem + 1.2vw, 1.75rem);
+  border: 1px solid rgba(255, 255, 255, .2);
   border-radius: var(--radius-lg);
-  background-color: var(--surface);
-  /* The white ring reads as the card being cut out of the panel rather than
-     dropped on top of it — the one structural borrowing from the reference. */
-  box-shadow: 0 0 0 10px var(--surface), 0 30px 60px -24px rgba(10, 10, 9, .55);
+  background-color: rgba(255, 255, 255, .1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), 0 30px 60px -24px rgba(10, 10, 9, .6);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+}
+
+/* Brand-yellow brackets on the four corners: two short ticks per corner, each
+   starting where the rounded corner ends so the bracket frames the curve
+   rather than being clipped by it. Eight gradient layers on one pseudo-element,
+   which keeps the markup clean and the card's own border and glass untouched. */
+.quote::before {
+  --tick: 1.75rem;
+  --bar: 2px;
+  --r: var(--radius-lg);
+
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--brand), var(--brand)),
+    linear-gradient(var(--brand), var(--brand)),
+    linear-gradient(var(--brand), var(--brand)),
+    linear-gradient(var(--brand), var(--brand)),
+    linear-gradient(var(--brand), var(--brand)),
+    linear-gradient(var(--brand), var(--brand)),
+    linear-gradient(var(--brand), var(--brand)),
+    linear-gradient(var(--brand), var(--brand));
+  background-size:
+    var(--tick) var(--bar), var(--bar) var(--tick),
+    var(--tick) var(--bar), var(--bar) var(--tick),
+    var(--tick) var(--bar), var(--bar) var(--tick),
+    var(--tick) var(--bar), var(--bar) var(--tick);
+  background-position:
+    top 0 left var(--r),     top var(--r) left 0,
+    top 0 right var(--r),    top var(--r) right 0,
+    bottom 0 left var(--r),  bottom var(--r) left 0,
+    bottom 0 right var(--r), bottom var(--r) right 0;
+  background-repeat: no-repeat;
+}
+
+/* The fields and title sit above the brackets. */
+.quote > * { position: relative; z-index: 1; }
+
+/* Where the browser cannot blur, the card falls back to solid ink — the type
+   inside is set for a dark ground either way. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .quote { background-color: rgba(18, 17, 16, .9); }
 }
 
 .quote__title {
-  margin-bottom: var(--space-5);
-  color: var(--ink);
+  margin-bottom: clamp(.625rem, 1.6vh, 1rem);
+  color: var(--white);
   font-size: var(--fs-24);
   font-weight: var(--fw-black);
   line-height: 1.2;
@@ -1253,28 +1367,62 @@ body.is-locked { overflow: hidden; }
   text-transform: capitalize;
 }
 
-.quote__note {
-  margin: var(--space-2) 0 var(--space-5);
-  color: var(--muted);
-  font-size: var(--fs-14);
-  line-height: 1.5;
+/* Two across, the message and the button at full width. */
+.quote__form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(.5rem, 1.4vh, .875rem) var(--space-3);
 }
+
+.quote__message,
+.quote__submit { grid-column: 1 / -1; }
+
+/* Fields on glass: a lighter pane for each input, white type, and the label
+   in white rather than the page's ink. */
+.quote .field__label { color: rgba(255, 255, 255, .86); }
+
+.quote .field__input {
+  border-color: rgba(255, 255, 255, .24);
+  background-color: rgba(255, 255, 255, .12);
+  color: var(--white);
+}
+
+.quote .field__input::placeholder { color: rgba(255, 255, 255, .5); }
+
+.quote .field__input:hover { border-color: rgba(255, 255, 255, .4); }
+
+.quote .field__input:focus {
+  border-color: var(--brand);
+  background-color: rgba(255, 255, 255, .16);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(252, 185, 9, .28);
+}
+
+.quote .field__input--area {
+  min-height: clamp(3.25rem, 8vh, 4.25rem);
+  padding-top: .625rem;
+  resize: vertical;
+}
+
+.quote__done-title { color: var(--white); }
+.quote__done-text { color: rgba(255, 255, 255, .72); }
+.quote__done-text a { color: var(--brand); }
 
 /* 16px rather than 12px: the gap doubles as the slot an error message drops
    into, so it has to clear one line of 11px text. */
 .quote__form { display: grid; gap: var(--space-4); }
 
-/* Collapses to one column on narrow cards, where two inputs side by side stop
-   being readable long before the breakpoint. */
-.quote__row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-3);
+@media (max-width: 26em) {
+  .quote__form { grid-template-columns: minmax(0, 1fr); }
 }
 
-@media (max-width: 26em) {
-  .quote__row { grid-template-columns: minmax(0, 1fr); }
-}
+/* Every vertical measure in the bar is a clamp on vh: full size on a tall
+   monitor, compact on a 660px laptop, nothing hidden. */
+.quote .field { gap: clamp(.25rem, .8vh, .5rem); }
+
+.quote .field__input { min-height: clamp(2.25rem, 5.6vh, 2.75rem); }
+
+.quote__submit { min-height: clamp(2.5rem, 6.4vh, 3.25rem); }
 
 /* Positioning context for the error, which is taken out of flow below. */
 .field { position: relative; display: grid; gap: var(--space-2); }
@@ -1463,11 +1611,6 @@ body.is-locked { overflow: hidden; }
     gap: var(--space-7);
   }
 
-  .quote {
-    /* The ring only makes sense while the card overlaps the video. */
-    box-shadow: 0 24px 48px -20px rgba(10, 10, 9, .5);
-  }
-
   .hero__panel { min-height: 0; }
 
   .hero__scrim {
@@ -1513,7 +1656,7 @@ body.is-locked { overflow: hidden; }
    Stats strip
    ========================================================================== */
 
-.stats-strip { padding-block: 40px; }
+.stats-strip { padding-block: 16px 40px; }
 
 .stats-strip__list {
   display: grid;
@@ -1674,18 +1817,15 @@ body.is-locked { overflow: hidden; }
    their content. */
 .section { padding-block: 40px; }
 
-/* Sections with their own background get more internal room, since the band's
-   edge makes the bare rhythm read as cramped. No negative margin here — that
-   pulled the band's edge to within 20px of the next section's content. The
-   band keeps the full 40px half-gap on the outside and 60px on the inside. */
+/* One rhythm for every section, tinted or not: 40px of its own padding top
+   and bottom and no margin, so two neighbours always meet at exactly 80px of
+   content-to-content space and nothing stacks on top of that. */
 .svcs,
 .diff,
 .signs,
 .contact {
-  /* 20px of its own on top of the neighbour's 40px half-gap, so every band
-     edge clears the surrounding content by 60px. */
-  margin-block: 20px;
-  padding-block: 60px;
+  margin-block: 0;
+  padding-block: 40px;
 }
 
 /* Every band below the ticker keeps the full .section rhythm — no per-pair
@@ -2154,7 +2294,8 @@ body.is-locked { overflow: hidden; }
 
 /* Why us — side-by-side contrast ------------------------------------------- */
 
-.diff { background-color: #FCFCFB; }
+/* The brand yellow at a wash, so the band reads as warm rather than grey. */
+.diff { background-color: rgba(252, 185, 9, .07); }
 
 /* Split head across the full width. */
 .diff__head {
@@ -2478,192 +2619,243 @@ body.is-locked { overflow: hidden; }
   padding: .5rem 1.75rem;
 }
 
-/* Solutions ---------------------------------------------------------------- */
+/* Systems ------------------------------------------------------------------ */
 
-/* Feature card left, spanning both rows; the two supporting cards stack. */
-.sols__grid {
+.systems { background-color: var(--surface); }
+
+/* Centred head: eyebrow, then the title. */
+.systems__head {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
-  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
-  gap: var(--space-5);
+  justify-items: center;
+  text-align: center;
+  margin-bottom: clamp(1.5rem, 1.2rem + 1vw, 2.5rem);
 }
 
-/* Shared icon square — black at rest, going brand on hover. */
-.sols__icon {
+.systems__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0;
+  padding: .5rem 1rem;
+  border-radius: 100px;
+  background-color: rgba(252, 185, 9, .18);
+  color: var(--brand-ink);
+  font-size: var(--fs-15);
+  font-weight: var(--fw-black);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.systems__title {
+  margin: var(--space-4) 0 0;
+  font-size: clamp(1.75rem, 1.1rem + 2.1vw, 2.875rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.025em;
+  line-height: 1.15;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.systems__accent { color: var(--brand); }
+
+/* The picker: a centred row of tabs on the off-white, the live panel on white
+   beneath, all inside one rounded frame so the two read as one instrument. */
+.systab {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-2xl);
+  background-color: var(--surface);
+  overflow: hidden;
+}
+
+.systab__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem 1.25rem;
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--line);
+  background-color: #FBFAF8;
+}
+
+.systab__tab {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-3);
+  padding: .75rem .875rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  background-color: transparent;
+  color: var(--ink-2);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.systab__tab:hover {
+  background-color: var(--surface);
+  color: var(--ink);
+}
+
+.systab__tab:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: -3px;
+}
+
+/* The live tab goes black with its icon in yellow, so the chosen system is
+   the one dark shape in the rail. */
+.systab__tab.is-active {
+  background-color: var(--ink);
+  border-color: var(--ink);
+  color: var(--white);
+}
+
+.systab__tab.is-active .systab__tab-sub { color: rgba(255, 255, 255, .62); }
+
+.systab__tab-icon {
   display: grid;
   place-items: center;
-  flex: none;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: var(--radius-md);
-  background-color: var(--ink);
-  color: var(--white);
-  font-size: 1.375rem;
+  background-color: rgba(252, 185, 9, .18);
+  color: var(--brand-ink);
+  font-size: 1rem;
   transition:
     background-color var(--dur-fast) var(--ease-out),
     color var(--dur-fast) var(--ease-out);
 }
 
-.sols__feature:hover .sols__icon,
-.sols__card:hover .sols__icon { background-color: var(--brand); color: var(--ink); }
-
-.sols__feature {
-  grid-row: 1 / 3;
-  display: grid;
-  /* Body takes the slack so the statement box sits pinned to the bottom. */
-  grid-template-rows: minmax(0, 1fr) auto;
-  overflow: hidden;
-  background-color: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-xl);
-  transition: border-color var(--dur-fast) var(--ease-out);
-}
-
-.sols__feature:hover { border-color: var(--brand); }
-
-.sols__feature-body {
-  display: grid;
-  align-content: start;
-  justify-items: start;
-  gap: var(--space-5);
-  padding: clamp(1.5rem, 1rem + 1.6vw, 2.5rem);
-}
-
-.sols__feature-title {
-  margin: 0;
-  /* A short brand rule under the title, as in the head cards beside it. */
-  padding-bottom: var(--space-4);
-  border-bottom: 3px solid var(--brand);
-  font-size: clamp(1.3125rem, 1.19rem + .38vw, 1.5rem);
-  font-weight: var(--fw-bold);
-  letter-spacing: -.015em;
-  line-height: 1.3;
+.systab__tab.is-active .systab__tab-icon {
+  background-color: var(--brand);
   color: var(--ink);
 }
 
-.sols__feature-text {
-  margin: 0;
-  font-size: var(--fs-16);
-  line-height: 1.65;
-  color: var(--ink-2);
-  text-wrap: pretty;
-}
+.systab__tab-text { display: grid; gap: .125rem; min-width: 0; }
 
-.sols__points {
-  display: grid;
-  gap: var(--space-4);
-}
-
-.sols__points li {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: start;
-  gap: var(--space-3);
-  font-size: var(--fs-16);
-  font-weight: var(--fw-medium);
-  line-height: 1.55;
-  color: var(--ink);
-}
-
-.sols__points i {
-  margin-top: .1875rem;
-  color: var(--brand-deep);
-  font-size: 1rem;
-}
-
-/* Statement box: tinted brand square closing the feature card. */
-.sols__statement {
-  display: grid;
-  justify-items: start;
-  gap: var(--space-4);
-  margin: 0 clamp(1.5rem, 1rem + 1.6vw, 2.5rem) clamp(1.5rem, 1rem + 1.6vw, 2.5rem);
-  padding: var(--space-6) var(--space-5);
-  border-radius: var(--radius-lg);
-  background-color: rgba(252, 185, 9, .14);
-}
-
-.sols__statement-text {
-  margin: 0;
-  font-size: 1.1875rem;
+.systab__tab-name {
+  font-size: var(--fs-15);
   font-weight: var(--fw-bold);
   letter-spacing: -.01em;
-  line-height: 1.45;
-  color: var(--ink);
-  text-wrap: pretty;
+  line-height: 1.2;
 }
 
-.sols__statement-note {
-  margin: 0;
-  font-size: var(--fs-16);
-  line-height: 1.6;
-  color: var(--ink-2);
-  text-wrap: pretty;
-}
-
-.sols__card {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  background-color: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-xl);
-  transition: border-color var(--dur-fast) var(--ease-out);
-}
-
-.sols__card:hover { border-color: var(--brand); }
-
-.sols__card-body {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-4);
-  padding: clamp(1.25rem, .9rem + 1.1vw, 2rem);
-}
-
-/* Two supporting facts closing the card, tinted so the panel ends on
-   something rather than on empty white. */
-.sols__card-foot {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3) var(--space-5);
-  margin-top: auto;
-  padding: var(--space-4) clamp(1.25rem, .9rem + 1.1vw, 2rem);
-  background-color: rgba(252, 185, 9, .1);
-}
-
-.sols__card-foot li {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--fs-15);
-  font-weight: var(--fw-medium);
-  line-height: 1.35;
-  color: var(--ink);
-}
-
-.sols__card-foot i { color: var(--brand-deep); font-size: .875rem; }
-
-.sols__card-title {
-  margin: 0;
-  padding-bottom: var(--space-3);
-  margin-bottom: var(--space-3);
-  border-bottom: 3px solid var(--brand);
-  font-size: clamp(1.3125rem, 1.19rem + .38vw, 1.5rem);
-  font-weight: var(--fw-bold);
-  letter-spacing: -.015em;
+.systab__tab-sub {
+  font-size: var(--fs-12);
   line-height: 1.3;
+  color: var(--muted);
+}
+
+.systab__panels { min-width: 0; }
+
+.systab__panel {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(1.5rem, 1rem + 1.6vw, 2.75rem);
+  height: 100%;
+  padding: clamp(1.25rem, 1rem + 1vw, 2rem);
+  animation: systab-in .35s var(--ease-out) both;
+}
+
+.systab__panel[hidden] { display: none; }
+
+.systab__panel:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: -3px;
+}
+
+@keyframes systab-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .systab__panel { animation: none; }
+}
+
+.systab__photo {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-xl);
+}
+
+.systab__name {
+  margin: 0 0 var(--space-3);
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.02em;
+  line-height: 1.15;
   color: var(--ink);
 }
 
-.sols__card-text {
+.systab__text {
   margin: 0;
-  font-size: var(--fs-16);
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.7;
   color: var(--ink-2);
   text-wrap: pretty;
 }
 
-.sols__card-text + .sols__card-text { margin-top: var(--space-3); }
+/* Three facts across on a hairline. */
+.systab__facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-5) 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line);
+}
+
+.systab__facts div { display: grid; gap: .125rem; }
+
+.systab__facts dt {
+  font-size: .6875rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.systab__facts dd {
+  margin: 0;
+  font-size: var(--fs-14);
+  font-weight: var(--fw-semi);
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+/* The panel's action is the page's own button. */
+.systab__cta { width: fit-content; }
+
+/* Tablets: the tabs become a scrolling row, left-aligned so the first is
+   never clipped behind the frame's edge. */
+@media (max-width: 61.99em) {
+  .systab__tabs {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .systab__tabs::-webkit-scrollbar { display: none; }
+
+  .systab__tab { flex: none; padding: .625rem .875rem .625rem .625rem; }
+  .systab__tab-sub { display: none; }
+  .systab__tab-icon { width: 2.125rem; height: 2.125rem; font-size: .875rem; }
+
+  .systab__panel { grid-template-columns: minmax(0, 1fr); }
+  .systab__photo { aspect-ratio: 16 / 9; }
+}
+
+@media (max-width: 47.99em) {
+  .systab__facts { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
+}
 
 
 /* Signs -------------------------------------------------------------------- */
@@ -2829,10 +3021,11 @@ body.is-locked { overflow: hidden; }
 /* CTA band — contained dark panel ------------------------------------------ */
 
 /* Full-bleed band; the container inside keeps the content on the page grid. */
-/* Asymmetric on purpose: above it the neighbour is a tinted band whose own
-   margin collapses with this one, below it a plain section adds its 40px
-   half-gap. Both ends clear the band's edge by 60px. */
-.cta-band { margin-block: 60px 20px; }
+/* Same rhythm as every other section: its own padding, no margin. */
+.cta-band {
+  margin-block: 0;
+  padding-block: 40px;
+}
 
 .cta-band__panel {
   position: relative;
@@ -3284,8 +3477,32 @@ body.is-locked { overflow: hidden; }
 
 /* Blog --------------------------------------------------------------------- */
 
-/* The CTA sits under the heading; only the arrows travel. */
-.blog__more { margin-top: var(--space-5); }
+/* "Read more" as a small outlined pill; the card's hover fills it, since the
+   whole card is the link. */
+.bcard__more {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  width: fit-content;
+  margin-top: var(--space-2);
+  padding: .5rem .9375rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 100px;
+  color: var(--ink);
+  font-size: var(--fs-14);
+  font-weight: var(--fw-bold);
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+}
+
+.bcard__more i {
+  font-size: .75rem;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.bcard:hover .bcard__more { border-color: var(--brand); background-color: var(--brand); }
+.bcard:hover .bcard__more i { transform: translateX(3px); }
 
 /* Plain flow by default — DOM order is head, cards, arrows, which is what
    small screens want. Desktop switches to a two-area grid so the arrows ride
@@ -3490,7 +3707,7 @@ body.is-locked { overflow: hidden; }
 .qa__q::-webkit-details-marker { display: none; }
 
 /* A step dimmer than the shared tint, so the row visibly responds. */
-.qa__q:hover { background-color: #F1F0EE; }
+.qa__q:hover { background-color: #F9F8F6; }
 
 .qa__num {
   display: grid;
@@ -3807,6 +4024,50 @@ a.contact__card:hover .contact__card-value { color: var(--ink); }
   border: 0;
 }
 
+/* The form is an opaque white sheet here, not the hero's glass: on the pale
+   band the glass had nothing to blur behind it and read as a grey wash that
+   sank into the page. */
+.contact__form-card {
+  border: 2px solid rgba(19, 18, 17, .09);
+  background-color: var(--surface);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.contact__form-card::before { content: none; }
+
+.contact__form-card .quote__title { color: var(--ink); }
+.contact__form-card .field__label { color: var(--ink-2); }
+
+.contact__form-card .field__input {
+  border-color: var(--line-strong);
+  background-color: var(--surface);
+  color: var(--ink);
+}
+
+.contact__form-card .field__input::placeholder { color: var(--muted); }
+.contact__form-card .field__input:hover { border-color: rgba(19, 18, 17, .28); }
+
+.contact__form-card .field__input:focus {
+  border-color: var(--brand);
+  background-color: var(--surface);
+  box-shadow: 0 0 0 3px rgba(252, 185, 9, .25);
+}
+
+/* The submit sits at its own width on the left rather than spanning the
+   card — a full-width bar under four narrow fields read as a banner. */
+.contact__form-card .quote__submit {
+  align-self: flex-start;
+  width: auto;
+  min-width: 17rem;
+  gap: var(--space-5);
+}
+
+.contact__form-card .quote__done-title { color: var(--ink); }
+.contact__form-card .quote__done-text { color: var(--ink-2); }
+.contact__form-card .quote__done-text a { color: var(--brand-ink); }
+
 
 
 /* Floating call button ----------------------------------------------------- */
@@ -3904,6 +4165,11 @@ a.contact__card:hover .contact__card-value { color: var(--ink); }
   width: auto;
   height: 5.25rem;
   margin-bottom: var(--space-4);
+}
+
+.site-footer__socials {
+  margin-top: var(--space-4);
+  gap: var(--space-2);
 }
 
 .site-footer__about {
@@ -4346,13 +4612,7 @@ a.cdetail__link:hover .cdetail__value { color: var(--brand-ink); }
   .areas__inner { grid-template-columns: minmax(0, 1fr); }
   .contact__grid { grid-template-columns: minmax(0, 1fr); }
 
-  .about__inner,
-
-  .sols__grid {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: none;
-  }
-  .sols__feature { grid-row: auto; }
+  .about__inner { grid-template-columns: minmax(0, 1fr); }
 
   .signs__inner { grid-template-columns: minmax(0, 1fr); }
 
@@ -4704,16 +4964,35 @@ a.local__contact-value:hover { color: var(--brand-ink); }
 
 /* Media ------------------------------------------------------------------- */
 
+/* Room on the right and below for the inset photograph to overhang. */
 .abt__media {
+  --abt-overhang: clamp(1rem, 2.5vw, 1.75rem);
+
   position: relative;
   margin: 0;
+  padding: 0 var(--abt-overhang) var(--abt-overhang) 0;
 }
+
+.abt__shots { position: relative; }
 
 .abt__shot {
   position: relative;
   z-index: 1;
   aspect-ratio: 4 / 4.6;
   border-radius: var(--radius-xl);
+}
+
+/* The second photograph: framed in the page's white so it separates from the
+   first, and hung over its lower-right corner. */
+.abt__shot--second {
+  position: absolute;
+  right: calc(-1 * var(--abt-overhang));
+  bottom: calc(-1 * var(--abt-overhang));
+  z-index: 2;
+  width: 62%;
+  aspect-ratio: 4 / 3;
+  border: 5px solid var(--surface);
+  border-radius: var(--radius-lg);
 }
 
 /* Flush into the frame's top-left corner, in the page's own white and with no
@@ -4909,7 +5188,8 @@ a.local__contact-value:hover { color: var(--brand-ink); }
 
 @media (max-width: 61.99em) {
   .abt__grid { grid-template-columns: minmax(0, 1fr); }
-  .abt__shot { aspect-ratio: 16 / 10; }
+  .abt__shot--main { aspect-ratio: 16 / 10; }
+  .abt__shot--second { width: 50%; }
 }
 
 @media (max-width: 47.99em) {

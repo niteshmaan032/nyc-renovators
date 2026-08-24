@@ -113,40 +113,43 @@
                 Roofing
                 <i class="primary-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
               </button>
-              <!-- Full-bleed panel: everything visible at once, so there is no
-                   hover-swapping to fight and it behaves on touch screens. -->
+              <!-- Full-bleed panel carrying every roofing service the old site
+                   listed, in the same groups it used, plus the roofing areas.
+                   Nothing sits behind a hover, so it works on touch too. -->
               <div class="mega mega--full" id="menu-roofing" hidden>
                 <div class="container mega__inner">
 
                   <div class="mega__cols">
 
                     <div class="mega__col">
-                      <p class="mega__heading">Popular</p>
+                      <p class="mega__heading">Roofing services</p>
                       <ul class="mega__list">
                         <li><a href="#shingle-roofing"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
                         <li><a href="#flat-roofing"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
                         <li><a href="#roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
-                        <li><a href="#roof-installation"><i class="menu-icon fa-solid fa-hammer" aria-hidden="true"></i><span>Roof Installation</span></a></li>
+                        <li><a href="#roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
+
+                        <li><a href="#emergency-roof-repair" class="mega__link--urgent"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Roof Repair</span></a></li>
                       </ul>
                     </div>
 
                     <div class="mega__col">
-                      <p class="mega__heading">By roof type</p>
+                      <p class="mega__heading">Additional services</p>
+                      <ul class="mega__list">
+                        <li><a href="#commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
+                        <li><a href="#residential-roofing"><i class="menu-icon fa-solid fa-house-chimney" aria-hidden="true"></i><span>Residential Roofing</span></a></li>
+                        <li><a href="#roof-installation"><i class="menu-icon fa-solid fa-hammer" aria-hidden="true"></i><span>Roof Installation</span></a></li>
+                        <li><a href="#roof-inspection"><i class="menu-icon fa-solid fa-magnifying-glass" aria-hidden="true"></i><span>Roof Inspection</span></a></li>
+                      </ul>
+                    </div>
+
+                    <div class="mega__col">
+                      <p class="mega__heading">Systems &amp; extras</p>
                       <ul class="mega__list">
                         <li><a href="#epdm-roofing"><i class="menu-icon fa-solid fa-scroll" aria-hidden="true"></i><span>EPDM Roofing</span></a></li>
                         <li><a href="#tpo-roofing"><i class="menu-icon fa-solid fa-layer-group" aria-hidden="true"></i><span>TPO Roofing</span></a></li>
-                        <li><a href="#commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
-                        <li><a href="#skylights"><i class="menu-icon fa-solid fa-sun" aria-hidden="true"></i><span>Skylight Installation</span></a></li>
-                      </ul>
-                    </div>
-
-                    <div class="mega__col">
-                      <p class="mega__heading">Repairs &amp; checks</p>
-                      <ul class="mega__list">
-                        <li><a href="#roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
+                        <li><a href="#skylight-installation"><i class="menu-icon fa-solid fa-sun" aria-hidden="true"></i><span>Skylight Installation</span></a></li>
                         <li><a href="#leak-detection"><i class="menu-icon fa-solid fa-droplet" aria-hidden="true"></i><span>Leak Detection</span></a></li>
-                        <li><a href="#roof-inspection"><i class="menu-icon fa-solid fa-magnifying-glass" aria-hidden="true"></i><span>Roof Inspection</span></a></li>
-                        <li><a href="#emergency-roof-repair" class="mega__link--urgent"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Roof Repair</span></a></li>
                       </ul>
                     </div>
 
@@ -163,7 +166,7 @@
                   </div>
 
                   <div class="mega__foot">
-                    <p>Free written estimates, no obligation &mdash; licensed NYC contractor since 1988.</p>
+                    <p>Free written estimates, no obligation. Licensed NYC contractor since 1988.</p>
                     <a class="btn btn--navy mega__foot-cta" href="#estimate">
                       <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
                       <span class="btn__label">Get a free estimate</span>
@@ -179,63 +182,292 @@
                 Areas We Serve
                 <i class="primary-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
               </button>
-              <!-- Two panes: areas on the left, that area's services on the
-                   right. Every service link is in the markup rather than built
-                   on hover, so all of them are crawlable and work without JS —
-                   without the script the first area's list simply stays open. -->
-              <!-- One destination per area rather than an area-by-service
-                   matrix: seven substantial local pages instead of forty-nine
-                   near-identical ones. -->
+              <!-- Same shape as the Roofing panel: headed columns on hairlines, one
+                   foot bar. The only extra part is the row of areas at the top, which
+                   swaps which set of columns is showing. Every link is in the markup
+                   rather than built on hover, so all of them are crawlable and work
+                   without JS — without the script the first area simply stays open. -->
               <div class="mega mega--full" id="menu-areas" hidden>
-                <div class="container mega__inner">
+                <div class="container mega__inner areas-menu">
 
-                  <div class="mega__cols">
+                  <ul class="areas-menu__tabs">
+                    <li>
+                      <button class="areas-menu__tab" type="button"
+                              aria-expanded="true" aria-controls="am-queens">Queens</button>
+                    </li>
+                    <li>
+                      <button class="areas-menu__tab" type="button"
+                              aria-expanded="false" aria-controls="am-brooklyn">Brooklyn</button>
+                    </li>
+                    <li>
+                      <button class="areas-menu__tab" type="button"
+                              aria-expanded="false" aria-controls="am-bronx">Bronx</button>
+                    </li>
+                    <li>
+                      <button class="areas-menu__tab" type="button"
+                              aria-expanded="false" aria-controls="am-manhattan">Manhattan</button>
+                    </li>
+                    <li class="areas-menu__split" aria-hidden="true"></li>
+                    <li>
+                      <button class="areas-menu__tab" type="button"
+                              aria-expanded="false" aria-controls="am-far-rockaway">Far Rockaway</button>
+                    </li>
+                    <li>
+                      <button class="areas-menu__tab" type="button"
+                              aria-expanded="false" aria-controls="am-long-island">Long Island</button>
+                    </li>
+                    <li>
+                      <button class="areas-menu__tab" type="button"
+                              aria-expanded="false" aria-controls="am-yonkers">Yonkers</button>
+                    </li>
+                  </ul>
 
-                    <div class="mega__col">
-                      <p class="mega__heading">Boroughs</p>
-                      <ul class="mega__list">
-                        <li><a href="#queens-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Queens Roofing</span></a></li>
-                        <li><a href="#brooklyn-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Brooklyn Roofing</span></a></li>
-                        <li><a href="#bronx-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Bronx Roofing</span></a></li>
-                        <li><a href="#manhattan-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Manhattan Roofing</span></a></li>
-                      </ul>
+                  <div class="areas-menu__pane" id="am-queens">
+                    <div class="mega__cols">
+                      <div class="mega__col">
+                        <p class="mega__heading">Roofing systems</p>
+                        <ul class="mega__list">
+                          <li><a href="#queens-flat-roofing"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
+                          <li><a href="#queens-shingle-roofing"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
+                          <li><a href="#queens-commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Repairs</p>
+                        <ul class="mega__list">
+                          <li><a href="#queens-roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
+                          <li><a href="#queens-roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Exterior</p>
+                        <ul class="mega__list">
+                          <li><a href="#queens-siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
+                          <li><a href="#queens-gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Queens</p>
+                        <ul class="mega__list">
+                          <li><a href="#queens-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Roofing in Queens</span></a></li>
+                          <li><a href="#estimate"><i class="menu-icon fa-solid fa-file-lines" aria-hidden="true"></i><span>Free estimate in Queens</span></a></li>
+                        </ul>
+                      </div>
                     </div>
-
-                    <div class="mega__col">
-                      <p class="mega__heading">Beyond the city</p>
-                      <ul class="mega__list">
-                        <li><a href="#far-rockaway-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Far Rockaway Roofing</span></a></li>
-                        <li><a href="#long-island-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Long Island Roofing</span></a></li>
-                        <li><a href="#yonkers-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Yonkers Roofing</span></a></li>
-                      </ul>
+                  </div>
+                  <div class="areas-menu__pane" id="am-brooklyn" hidden>
+                    <div class="mega__cols">
+                      <div class="mega__col">
+                        <p class="mega__heading">Roofing systems</p>
+                        <ul class="mega__list">
+                          <li><a href="#brooklyn-flat-roofing"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
+                          <li><a href="#brooklyn-shingle-roofing"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
+                          <li><a href="#brooklyn-commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Repairs</p>
+                        <ul class="mega__list">
+                          <li><a href="#brooklyn-roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
+                          <li><a href="#brooklyn-roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Exterior</p>
+                        <ul class="mega__list">
+                          <li><a href="#brooklyn-siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
+                          <li><a href="#brooklyn-gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Brooklyn</p>
+                        <ul class="mega__list">
+                          <li><a href="#brooklyn-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Roofing in Brooklyn</span></a></li>
+                          <li><a href="#estimate"><i class="menu-icon fa-solid fa-file-lines" aria-hidden="true"></i><span>Free estimate in Brooklyn</span></a></li>
+                        </ul>
+                      </div>
                     </div>
-
-                    <div class="mega__col">
-                      <p class="mega__heading">Queens neighbourhoods</p>
-                      <ul class="mega__list">
-                        <li><a href="#flushing-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Flushing Roofing</span></a></li>
-                        <li><a href="#forest-hills-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Forest Hills Roofing</span></a></li>
-                        <li><a href="#astoria-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Astoria Roofing</span></a></li>
-                      </ul>
+                  </div>
+                  <div class="areas-menu__pane" id="am-bronx" hidden>
+                    <div class="mega__cols">
+                      <div class="mega__col">
+                        <p class="mega__heading">Roofing systems</p>
+                        <ul class="mega__list">
+                          <li><a href="#bronx-flat-roofing"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
+                          <li><a href="#bronx-shingle-roofing"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
+                          <li><a href="#bronx-commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Repairs</p>
+                        <ul class="mega__list">
+                          <li><a href="#bronx-roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
+                          <li><a href="#bronx-roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Exterior</p>
+                        <ul class="mega__list">
+                          <li><a href="#bronx-siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
+                          <li><a href="#bronx-gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Bronx</p>
+                        <ul class="mega__list">
+                          <li><a href="#bronx-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Roofing in Bronx</span></a></li>
+                          <li><a href="#estimate"><i class="menu-icon fa-solid fa-file-lines" aria-hidden="true"></i><span>Free estimate in Bronx</span></a></li>
+                        </ul>
+                      </div>
                     </div>
-
-                    <div class="mega__card">
-                      <p class="mega__card-title">Not sure we reach you?</p>
-                      <p class="mega__card-text">
-                        If the building is in the five boroughs, on Long Island or in lower
-                        Westchester, we almost certainly cover it. Ask and we&rsquo;ll tell you straight.
-                      </p>
-                      <a class="btn btn--ghost mega__card-cta" href="#estimate">
-                        <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
-                        <span class="btn__label">Get a free quote</span>
-                      </a>
+                  </div>
+                  <div class="areas-menu__pane" id="am-manhattan" hidden>
+                    <div class="mega__cols">
+                      <div class="mega__col">
+                        <p class="mega__heading">Roofing systems</p>
+                        <ul class="mega__list">
+                          <li><a href="#manhattan-flat-roofing"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
+                          <li><a href="#manhattan-shingle-roofing"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
+                          <li><a href="#manhattan-commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Repairs</p>
+                        <ul class="mega__list">
+                          <li><a href="#manhattan-roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
+                          <li><a href="#manhattan-roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Exterior</p>
+                        <ul class="mega__list">
+                          <li><a href="#manhattan-siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
+                          <li><a href="#manhattan-gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Manhattan</p>
+                        <ul class="mega__list">
+                          <li><a href="#manhattan-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Roofing in Manhattan</span></a></li>
+                          <li><a href="#estimate"><i class="menu-icon fa-solid fa-file-lines" aria-hidden="true"></i><span>Free estimate in Manhattan</span></a></li>
+                        </ul>
+                      </div>
                     </div>
+                  </div>
+                  <div class="areas-menu__pane" id="am-far-rockaway" hidden>
+                    <div class="mega__cols">
+                      <div class="mega__col">
+                        <p class="mega__heading">Roofing systems</p>
+                        <ul class="mega__list">
+                          <li><a href="#far-rockaway-flat-roofing"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
+                          <li><a href="#far-rockaway-shingle-roofing"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
+                          <li><a href="#far-rockaway-commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Repairs</p>
+                        <ul class="mega__list">
+                          <li><a href="#far-rockaway-roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
+                          <li><a href="#far-rockaway-roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Exterior</p>
+                        <ul class="mega__list">
+                          <li><a href="#far-rockaway-siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
+                          <li><a href="#far-rockaway-gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Far Rockaway</p>
+                        <ul class="mega__list">
+                          <li><a href="#far-rockaway-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Roofing in Far Rockaway</span></a></li>
+                          <li><a href="#estimate"><i class="menu-icon fa-solid fa-file-lines" aria-hidden="true"></i><span>Free estimate in Far Rockaway</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="areas-menu__pane" id="am-long-island" hidden>
+                    <div class="mega__cols">
+                      <div class="mega__col">
+                        <p class="mega__heading">Roofing systems</p>
+                        <ul class="mega__list">
+                          <li><a href="#long-island-flat-roofing"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
+                          <li><a href="#long-island-shingle-roofing"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
+                          <li><a href="#long-island-commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Repairs</p>
+                        <ul class="mega__list">
+                          <li><a href="#long-island-roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
+                          <li><a href="#long-island-roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Exterior</p>
+                        <ul class="mega__list">
+                          <li><a href="#long-island-siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
+                          <li><a href="#long-island-gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Long Island</p>
+                        <ul class="mega__list">
+                          <li><a href="#long-island-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Roofing in Long Island</span></a></li>
+                          <li><a href="#estimate"><i class="menu-icon fa-solid fa-file-lines" aria-hidden="true"></i><span>Free estimate in Long Island</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="areas-menu__pane" id="am-yonkers" hidden>
+                    <div class="mega__cols">
+                      <div class="mega__col">
+                        <p class="mega__heading">Roofing systems</p>
+                        <ul class="mega__list">
+                          <li><a href="#yonkers-flat-roofing"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
+                          <li><a href="#yonkers-shingle-roofing"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
+                          <li><a href="#yonkers-commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
+                          <li><a href="#yonkers-residential-roofing"><i class="menu-icon fa-solid fa-house-chimney" aria-hidden="true"></i><span>Residential Roofing</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Repairs</p>
+                        <ul class="mega__list">
+                          <li><a href="#yonkers-roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
+                          <li><a href="#yonkers-roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Exterior</p>
+                        <ul class="mega__list">
+                          <li><a href="#yonkers-siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
+                          <li><a href="#yonkers-gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
+                          <li><a href="#yonkers-masonry"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="mega__col">
+                        <p class="mega__heading">Yonkers</p>
+                        <ul class="mega__list">
+                          <li><a href="#yonkers-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Roofing in Yonkers</span></a></li>
+                          <li><a href="#estimate"><i class="menu-icon fa-solid fa-file-lines" aria-hidden="true"></i><span>Free estimate in Yonkers</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
 
+                  <div class="mega__foot">
+                    <p>Same crews and the same standard in every borough. Licensed NYC contractor since 1988.</p>
+                    <a class="btn btn--navy mega__foot-cta" href="#estimate">
+                      <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+                      <span class="btn__label">Get a free estimate</span>
+                    </a>
                   </div>
 
                 </div>
               </div>
             </li>
+
 
             <li class="primary-nav__item"><a class="primary-nav__link" href="#projects">Projects</a></li>
             <li class="primary-nav__item"><a class="primary-nav__link" href="#faqs">FAQs</a></li>
@@ -306,18 +538,22 @@
               <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
             </button>
             <ul class="mobile-nav__sub" id="m-roofing" hidden>
-              <li><a href="#flat-roofing"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
               <li><a href="#shingle-roofing"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
-              <li><a href="#epdm-roofing"><i class="menu-icon fa-solid fa-scroll" aria-hidden="true"></i><span>EPDM Roofing</span></a></li>
-              <li><a href="#tpo-roofing"><i class="menu-icon fa-solid fa-layer-group" aria-hidden="true"></i><span>TPO Roofing</span></a></li>
-              <li><a href="#commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
-              <li><a href="#skylights"><i class="menu-icon fa-solid fa-sun" aria-hidden="true"></i><span>Skylight Installation</span></a></li>
-              <li><a href="#roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
+              <li><a href="#flat-roofing"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
               <li><a href="#roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
+              <li><a href="#roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
+              <li><a href="#commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
+              <li><a href="#residential-roofing"><i class="menu-icon fa-solid fa-house-chimney" aria-hidden="true"></i><span>Residential Roofing</span></a></li>
               <li><a href="#roof-installation"><i class="menu-icon fa-solid fa-hammer" aria-hidden="true"></i><span>Roof Installation</span></a></li>
               <li><a href="#roof-inspection"><i class="menu-icon fa-solid fa-magnifying-glass" aria-hidden="true"></i><span>Roof Inspection</span></a></li>
+              <li><a href="#epdm-roofing"><i class="menu-icon fa-solid fa-scroll" aria-hidden="true"></i><span>EPDM Roofing</span></a></li>
+              <li><a href="#tpo-roofing"><i class="menu-icon fa-solid fa-layer-group" aria-hidden="true"></i><span>TPO Roofing</span></a></li>
+              <li><a href="#skylight-installation"><i class="menu-icon fa-solid fa-sun" aria-hidden="true"></i><span>Skylight Installation</span></a></li>
               <li><a href="#leak-detection"><i class="menu-icon fa-solid fa-droplet" aria-hidden="true"></i><span>Leak Detection</span></a></li>
               <li><a href="#emergency-roof-repair" class="mega__link--urgent"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Roof Repair</span></a></li>
+              <li><a href="#flushing-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Flushing Roofing</span></a></li>
+              <li><a href="#forest-hills-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Forest Hills Roofing</span></a></li>
+              <li><a href="#astoria-roofing"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Astoria Roofing</span></a></li>
             </ul>
           </li>
 
@@ -327,13 +563,120 @@
               <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
             </button>
             <ul class="mobile-nav__sub" id="m-areas" hidden>
-              <li><a href="#queens"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Queens</span></a></li>
-              <li><a href="#brooklyn"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Brooklyn</span></a></li>
-              <li><a href="#bronx"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Bronx</span></a></li>
-              <li><a href="#manhattan"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Manhattan</span></a></li>
-              <li><a href="#far-rockaway"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Far Rockaway</span></a></li>
-              <li><a href="#long-island"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Long Island</span></a></li>
-              <li><a href="#yonkers"><i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Yonkers</span></a></li>
+              <li>
+                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-queens">
+                  <i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Queens</span>
+                  <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-queens" hidden>
+                  <li><a href="#queens-roofing"><span>Queens Roofing</span></a></li>
+                  <li><a href="#queens-flat-roofing"><span>Flat Roofing</span></a></li>
+                  <li><a href="#queens-shingle-roofing"><span>Shingle Roofing</span></a></li>
+                  <li><a href="#queens-commercial-roofing"><span>Commercial Roofing</span></a></li>
+                  <li><a href="#queens-roof-repair"><span>Roof Repair</span></a></li>
+                  <li><a href="#queens-roof-replacement"><span>Roof Replacement</span></a></li>
+                  <li><a href="#queens-siding"><span>Siding</span></a></li>
+                  <li><a href="#queens-gutters"><span>Gutters</span></a></li>
+                </ul>
+              </li>
+              <li>
+                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-brooklyn">
+                  <i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Brooklyn</span>
+                  <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-brooklyn" hidden>
+                  <li><a href="#brooklyn-roofing"><span>Brooklyn Roofing</span></a></li>
+                  <li><a href="#brooklyn-flat-roofing"><span>Flat Roofing</span></a></li>
+                  <li><a href="#brooklyn-shingle-roofing"><span>Shingle Roofing</span></a></li>
+                  <li><a href="#brooklyn-commercial-roofing"><span>Commercial Roofing</span></a></li>
+                  <li><a href="#brooklyn-roof-repair"><span>Roof Repair</span></a></li>
+                  <li><a href="#brooklyn-roof-replacement"><span>Roof Replacement</span></a></li>
+                  <li><a href="#brooklyn-siding"><span>Siding</span></a></li>
+                  <li><a href="#brooklyn-gutters"><span>Gutters</span></a></li>
+                </ul>
+              </li>
+              <li>
+                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-bronx">
+                  <i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Bronx</span>
+                  <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-bronx" hidden>
+                  <li><a href="#bronx-roofing"><span>Bronx Roofing</span></a></li>
+                  <li><a href="#bronx-flat-roofing"><span>Flat Roofing</span></a></li>
+                  <li><a href="#bronx-shingle-roofing"><span>Shingle Roofing</span></a></li>
+                  <li><a href="#bronx-commercial-roofing"><span>Commercial Roofing</span></a></li>
+                  <li><a href="#bronx-roof-repair"><span>Roof Repair</span></a></li>
+                  <li><a href="#bronx-roof-replacement"><span>Roof Replacement</span></a></li>
+                  <li><a href="#bronx-siding"><span>Siding</span></a></li>
+                  <li><a href="#bronx-gutters"><span>Gutters</span></a></li>
+                </ul>
+              </li>
+              <li>
+                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-manhattan">
+                  <i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Manhattan</span>
+                  <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-manhattan" hidden>
+                  <li><a href="#manhattan-roofing"><span>Manhattan Roofing</span></a></li>
+                  <li><a href="#manhattan-flat-roofing"><span>Flat Roofing</span></a></li>
+                  <li><a href="#manhattan-shingle-roofing"><span>Shingle Roofing</span></a></li>
+                  <li><a href="#manhattan-commercial-roofing"><span>Commercial Roofing</span></a></li>
+                  <li><a href="#manhattan-roof-repair"><span>Roof Repair</span></a></li>
+                  <li><a href="#manhattan-roof-replacement"><span>Roof Replacement</span></a></li>
+                  <li><a href="#manhattan-siding"><span>Siding</span></a></li>
+                  <li><a href="#manhattan-gutters"><span>Gutters</span></a></li>
+                </ul>
+              </li>
+              <li>
+                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-far-rockaway">
+                  <i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Far Rockaway</span>
+                  <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-far-rockaway" hidden>
+                  <li><a href="#far-rockaway-roofing"><span>Far Rockaway Roofing</span></a></li>
+                  <li><a href="#far-rockaway-flat-roofing"><span>Flat Roofing</span></a></li>
+                  <li><a href="#far-rockaway-shingle-roofing"><span>Shingle Roofing</span></a></li>
+                  <li><a href="#far-rockaway-commercial-roofing"><span>Commercial Roofing</span></a></li>
+                  <li><a href="#far-rockaway-roof-repair"><span>Roof Repair</span></a></li>
+                  <li><a href="#far-rockaway-roof-replacement"><span>Roof Replacement</span></a></li>
+                  <li><a href="#far-rockaway-siding"><span>Siding</span></a></li>
+                  <li><a href="#far-rockaway-gutters"><span>Gutters</span></a></li>
+                </ul>
+              </li>
+              <li>
+                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-long-island">
+                  <i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Long Island</span>
+                  <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-long-island" hidden>
+                  <li><a href="#long-island-roofing"><span>Long Island Roofing</span></a></li>
+                  <li><a href="#long-island-flat-roofing"><span>Flat Roofing</span></a></li>
+                  <li><a href="#long-island-shingle-roofing"><span>Shingle Roofing</span></a></li>
+                  <li><a href="#long-island-commercial-roofing"><span>Commercial Roofing</span></a></li>
+                  <li><a href="#long-island-roof-repair"><span>Roof Repair</span></a></li>
+                  <li><a href="#long-island-roof-replacement"><span>Roof Replacement</span></a></li>
+                  <li><a href="#long-island-siding"><span>Siding</span></a></li>
+                  <li><a href="#long-island-gutters"><span>Gutters</span></a></li>
+                </ul>
+              </li>
+              <li>
+                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-yonkers">
+                  <i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Yonkers</span>
+                  <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-yonkers" hidden>
+                  <li><a href="#yonkers-roofing"><span>Yonkers Roofing</span></a></li>
+                  <li><a href="#yonkers-flat-roofing"><span>Flat Roofing</span></a></li>
+                  <li><a href="#yonkers-shingle-roofing"><span>Shingle Roofing</span></a></li>
+                  <li><a href="#yonkers-commercial-roofing"><span>Commercial Roofing</span></a></li>
+                  <li><a href="#yonkers-residential-roofing"><span>Residential Roofing</span></a></li>
+                  <li><a href="#yonkers-roof-repair"><span>Roof Repair</span></a></li>
+                  <li><a href="#yonkers-roof-replacement"><span>Roof Replacement</span></a></li>
+                  <li><a href="#yonkers-siding"><span>Siding</span></a></li>
+                  <li><a href="#yonkers-gutters"><span>Gutters</span></a></li>
+                  <li><a href="#yonkers-masonry"><span>Masonry</span></a></li>
+                </ul>
+              </li>
             </ul>
           </li>
 
@@ -353,7 +696,7 @@
         <a class="btn btn--outline" href="tel:+17184146067">
               <span class="btn__pip" aria-hidden="true"><i class="btn__arrow fa-solid fa-phone"></i><i class="btn__arrow btn__arrow--copy fa-solid fa-phone"></i></span>
               <span class="btn__label">Call (718) 414-6067</span></a>
-        <p class="mobile-nav__note">Open 7 days, 7am&ndash;11pm &middot; NYC Lic #2030146</p>
+        <p class="mobile-nav__note">Open 24/7 &middot; NYC Lic #2030146</p>
       </div>
 
     </div>
@@ -377,7 +720,12 @@
 
           <h1 class="hero__title">
             NYC Roofing Contractor
-            <span class="hero__title-sub">Trusted Roofing Since 1988</span>
+            <span class="hero__title-sub">
+              <span class="hero__stamp">
+                <span class="hero__stamp-label">Trusted Roofing Since</span>
+                <span class="hero__stamp-year">1988</span>
+              </span>
+            </span>
           </h1>
 
           <p class="hero__lede">
@@ -400,32 +748,49 @@
           <ul class="hero__badges">
 
             <li class="hero__badge hero__badge--rating">
-              <img src="images/Google__G__logo.svg.webp" alt="Google"
-                   width="1280" height="1280" decoding="async">
-              <span class="hero__rating">
-                <strong>4.9</strong> ratings
-                <span class="visually-hidden">out of 5 on Google</span>
-              </span>
+              <a class="hero__badge-link" href="#google-reviews">
+                <img src="images/Google__G__logo.svg.webp" alt="Google"
+                     width="1280" height="1280" decoding="async">
+                <span class="hero__rating">
+                  <strong>4.9</strong> ratings
+                  <span class="visually-hidden">out of 5 on Google</span>
+                </span>
+              </a>
             </li>
 
             <li class="hero__badge">
-              <img src="images/bbb-a-plus-accredited.png" alt="BBB Accredited Business, A+ rating"
-                   width="1360" height="1156" decoding="async">
+              <a class="hero__badge-link" href="#bbb">
+                <img src="images/bbb-a-plus-accredited.png" alt="BBB Accredited Business, A+ rating"
+                     width="1360" height="1156" decoding="async">
+              </a>
             </li>
 
             <li class="hero__badge hero__badge--gaf">
-              <img src="images/GAF-Master-Elite-Logo.png" alt="GAF Factory-Certified Master Elite roofing contractor"
-                   width="1424" height="520" decoding="async">
+              <a class="hero__badge-link" href="#gaf">
+                <img src="images/GAF-Master-Elite-Logo.png" alt="GAF Factory-Certified Master Elite roofing contractor"
+                     width="1424" height="520" decoding="async">
+              </a>
             </li>
 
             <li class="hero__badge">
-              <img src="images/ANGIES_LIST_SUPER_SAVER_award.png" alt="Angie&rsquo;s List Super Service Award"
-                   width="600" height="462" decoding="async">
+              <a class="hero__badge-link" href="#awards">
+                <img src="images/ANGIES_LIST_SUPER_SAVER_award.png" alt="Angie&rsquo;s List Super Service Award"
+                     width="600" height="462" decoding="async">
+              </a>
             </li>
 
             <li class="hero__badge">
-              <img src="images/PngItem_1663.png" alt="People love us on Yelp"
-                   width="540" height="539" decoding="async">
+              <a class="hero__badge-link" href="#yelp">
+                <img src="images/PngItem_1663.png" alt="People love us on Yelp"
+                     width="540" height="539" decoding="async">
+              </a>
+            </li>
+
+            <li class="hero__badge hero__badge--inc">
+              <a class="hero__badge-link" href="#inc-5000">
+                <img src="images/Inc.-5000-Color-Medallion-Logo-768x768.png" alt="Inc. 5000 honoree"
+                     width="768" height="768" decoding="async">
+              </a>
             </li>
 
           </ul>
@@ -584,8 +949,7 @@
           </h2>
 
           <p class="section-lede">
-            Royal Renovators Inc. has been working on New York roofs since 1988 — flat roofs over
-            Brooklyn brownstones, shingle systems on two-family homes across Forest Hills, and
+            Royal Renovators Inc. has been working on New York roofs since 1988: flat roofs over Brooklyn brownstones, shingle systems on two-family homes across Forest Hills, and
             everything between. We are a licensed NYC contractor, BBB A+ accredited and
             <strong>GAF Factory-Certified Master Elite</strong>.
           </p>
@@ -597,10 +961,10 @@
           </p>
 
           <ul class="about__points">
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i>Own crews, never subcontracted</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i>Experienced roofing since 1988</li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i>Licensed, bonded &amp; insured</li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i>Free written estimates</li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i>Seven-day leak response</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i>Same-day leak response</li>
           </ul>
 
           <div class="about__actions">
@@ -636,7 +1000,7 @@
             <p class="section-lede">
               GAF is the largest roofing manufacturer in North America, and fewer than
               <strong>2% of roofing contractors</strong> carry its Master Elite certification.
-              Royal Renovators Inc. is one of them &mdash; and has been installing GAF systems on
+              Royal Renovators Inc. is one of them, and has been installing GAF systems on
               New York roofs for decades.
             </p>
 
@@ -649,8 +1013,7 @@
 
             <p class="gaf__text">
               For you, the practical difference is the warranty. Certified contractors can
-              register warranties that the manufacturer stands behind directly &mdash; covering
-              the workmanship as well as the materials &mdash; instead of a promise that only
+              register warranties that the manufacturer stands behind directly, covering the workmanship as well as the materials, instead of a promise that only
               lasts as long as the contractor does.
             </p>
 
@@ -734,8 +1097,7 @@
             <h2 class="section-title">Flat Roofing Specialists Serving Queens &amp; New York City</h2>
           </div>
           <p class="services__lede">
-            From a single leak on a Queens two-family to a full commercial re-roof &mdash; the same
-            crews, the same standard, since 1988.
+            From a single leak on a Queens two-family to a full commercial re-roof: the same crews, the same standard, since 1988.
           </p>
         </div>
 
@@ -821,7 +1183,7 @@
             </div>
             <h3 class="service-card__title"><a href="#exterior">Exterior Service</a></h3>
             <p class="service-card__text">
-              Siding, masonry and pointing &mdash; the rest of the building envelope, handled by
+              Siding, masonry and pointing: the rest of the building envelope, handled by
               the same crew that did the roof.
             </p>
             <ul class="service-card__points">
@@ -854,7 +1216,7 @@
         <div class="services__foot">
           <p class="services__foot-text">
             <strong>Not sure which one you need?</strong>
-            We&rsquo;ll look at the roof and tell you straight &mdash; including when it doesn&rsquo;t need replacing.
+            We&rsquo;ll look at the roof and tell you straight, including when it doesn&rsquo;t need replacing.
           </p>
           <a class="btn btn--navy services__foot-cta" href="#estimate">
             <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
@@ -881,8 +1243,7 @@
             New York does not have one kind of roof. A Brooklyn brownstone, a Forest Hills
             two-family, a Queens Boulevard storefront and a Bronx apartment building each fail in
             their own way and each need a different system. We install both flat and shingle
-            roofs, so the recommendation you get is based on the building &mdash; not on the one
-            product a company happens to sell.
+            roofs, so the recommendation you get is based on the building, not on the one product a company happens to sell.
           </p>
         </div>
 
@@ -936,7 +1297,7 @@
             </div>
 
             <p class="buildings__system-text">
-              Shingle roofs go on the pitched stock &mdash; detached and semi-detached homes,
+              Shingle roofs go on the pitched stock: detached and semi-detached homes,
               dormers, extensions and porches. As a GAF Master Elite contractor we install
               architectural shingles as a complete system rather than as a covering laid over
               whatever is already up there.
@@ -957,7 +1318,7 @@
             </ul>
 
             <p class="buildings__system-meta">
-              <span>Typical service life</span><strong>25&ndash;40 years</strong>
+              <span>Typical service life</span><strong>25&ndash;50 years</strong>
             </p>
           </li>
 
@@ -970,19 +1331,12 @@
             in it. Work is scheduled around the forecast rather than the calendar, so nothing gets
             opened up the day before rain.
           </p>
-          <ul class="buildings__stats">
+          <ul class="buildings__stats buildings__stats--single">
             <li class="buildings__stat">
               <span class="buildings__stat-icon"><i class="fa-solid fa-thumbs-up" aria-hidden="true"></i></span>
               <span class="buildings__stat-body">
                 <span class="buildings__stat-figure">100%</span>
-                <span class="buildings__stat-label">Customer service satisfaction</span>
-              </span>
-            </li>
-            <li class="buildings__stat">
-              <span class="buildings__stat-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
-              <span class="buildings__stat-body">
-                <span class="buildings__stat-figure">25&#8209;Yr</span>
-                <span class="buildings__stat-label">Warranty protection</span>
+                <span class="buildings__stat-label">Client satisfaction, every job</span>
               </span>
             </li>
           </ul>
@@ -1033,7 +1387,7 @@
             <p class="buildings__card-tag">Flat &middot; Modified bitumen or single-ply</p>
             <h3 class="buildings__card-title">Apartment buildings</h3>
             <p class="buildings__card-text">
-              Bulkheads, water tanks, HVAC curbs and vent stacks &mdash; every one of them a
+              Bulkheads, water tanks, HVAC curbs and vent stacks, every one of them a
               penetration that has to be flashed. Scheduled around occupancy, with notice to
               residents before anything noisy starts.
             </p>
@@ -1066,8 +1420,7 @@
         <div class="buildings__foot">
           <p class="buildings__foot-text">
             <strong>Not sure which system your building needs?</strong>
-            We will get up on the roof, photograph what is there and tell you straight &mdash;
-            including when the answer is that it does not need replacing yet.
+            We will get up on the roof, photograph what is there and tell you straight, including when the answer is that it does not need replacing yet.
           </p>
           <a class="btn btn--primary buildings__foot-cta" href="#estimate">
             <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
@@ -1133,8 +1486,8 @@
 
           <div class="whyus__tile">
             <span class="whyus__tile-icon"><i class="fa-solid fa-award" aria-hidden="true"></i></span>
-            <p class="whyus__tile-figure">35+</p>
-            <p class="whyus__tile-label">Years roofing across the five boroughs</p>
+            <p class="whyus__tile-figure">35+ <span class="whyus__tile-unit">Years</span></p>
+            <p class="whyus__tile-label">Roofing across the five boroughs</p>
           </div>
 
         </div>
@@ -1225,7 +1578,7 @@
           </div>
           <p class="section-lede exterior__lede">
             A roof is only the top of the envelope. Most of the water damage we are called out to
-            gets in somewhere else &mdash; and we handle all three trades with the same crews, so
+            gets in somewhere else, and we handle all three trades with the same crews, so
             nobody gets to blame the others.
           </p>
         </div>
@@ -1309,11 +1662,11 @@
 
         <p class="cta-band__eyebrow">Free &middot; No obligation</p>
 
-        <h2 class="cta-band__title">Get a Free Roofing Estimate in Queens</h2>
+        <h2 class="cta-band__title">Get a Free Roofing Estimate in New York City</h2>
 
         <p class="cta-band__text">
           Tell us what the roof is doing and we will come out, get up there and put a written
-          price in front of you &mdash; usually within one business day.
+          price in front of you, usually within one business day.
         </p>
 
         <div class="cta-band__actions">
@@ -1646,20 +1999,34 @@
           <p class="awards__accred-label">Also accredited and reviewed by</p>
           <ul class="awards__logos">
             <li>
-              <img src="images/bbb-a-plus-accredited.png" alt="BBB Accredited Business, A+ rating"
-                   width="1360" height="1156" loading="lazy" decoding="async">
+              <a href="#bbb">
+                <img src="images/bbb-a-plus-accredited.png" alt="BBB Accredited Business, A+ rating"
+                     width="1360" height="1156" loading="lazy" decoding="async">
+              </a>
             </li>
             <li class="is-gaf">
-              <img src="images/GAF-Master-Elite-Logo.png" alt="GAF Factory-Certified Master Elite roofing contractor"
-                   width="1424" height="520" loading="lazy" decoding="async">
+              <a href="#gaf">
+                <img src="images/GAF-Master-Elite-Logo.png" alt="GAF Factory-Certified Master Elite roofing contractor"
+                     width="1424" height="520" loading="lazy" decoding="async">
+              </a>
             </li>
             <li>
-              <img src="images/ANGIES_LIST_SUPER_SAVER_award.png" alt="Angie&rsquo;s List Super Service Award"
-                   width="600" height="462" loading="lazy" decoding="async">
+              <a href="#angi">
+                <img src="images/ANGIES_LIST_SUPER_SAVER_award.png" alt="Angie&rsquo;s List Super Service Award"
+                     width="600" height="462" loading="lazy" decoding="async">
+              </a>
             </li>
             <li>
-              <img src="images/PngItem_1663.png" alt="People love us on Yelp"
-                   width="540" height="539" loading="lazy" decoding="async">
+              <a href="#yelp">
+                <img src="images/PngItem_1663.png" alt="People love us on Yelp"
+                     width="540" height="539" loading="lazy" decoding="async">
+              </a>
+            </li>
+            <li class="is-inc">
+              <a href="#inc-5000">
+                <img src="images/Inc.-5000-Color-Medallion-Logo-768x768.png" alt="Inc. 5000 honoree"
+                     width="768" height="768" loading="lazy" decoding="async">
+              </a>
             </li>
           </ul>
         </div>
@@ -1844,8 +2211,7 @@
           <h2 class="section-title areas__title">Roofing Across the Five Boroughs and Beyond</h2>
 
           <p class="section-lede">
-            Based in Forest Hills and on roofs right across the city since 1988 &mdash; plus
-            Long Island and lower Westchester.
+            Based in Forest Hills and on roofs right across the city since 1988, plus Long Island and lower Westchester.
           </p>
 
           <ul class="areas__list">
@@ -1878,13 +2244,6 @@
               </a>
             </li>
             <li>
-              <a href="#yonkers-roofing">
-                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-                <span>Yonkers</span>
-                <i class="fa-solid fa-arrow-right areas__go" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
               <a href="#far-rockaway-roofing">
                 <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                 <span>Far Rockaway</span>
@@ -1898,6 +2257,13 @@
                 <i class="fa-solid fa-arrow-right areas__go" aria-hidden="true"></i>
               </a>
             </li>
+            <li>
+              <a href="#yonkers-roofing">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                <span>Yonkers</span>
+                <i class="fa-solid fa-arrow-right areas__go" aria-hidden="true"></i>
+              </a>
+            </li>
           </ul>
 
           <p class="areas__note">
@@ -1908,6 +2274,39 @@
 
         </div>
 
+      </div>
+    </section>
+
+    <!-- The borough-network note that used to sit in the footer. It reads as
+         part of the coverage story, so it follows Areas We Serve rather than
+         being buried under the logo. -->
+    <section class="section network" id="network">
+      <div class="container">
+        <div class="network__panel">
+
+          <span class="network__icon" aria-hidden="true"><i class="fa-solid fa-sitemap"></i></span>
+
+          <div class="network__body">
+            <p class="section-eyebrow">Our borough network</p>
+            <h2 class="section-title network__title">
+              One Standard, <span class="accent">Five Local Companies</span>
+            </h2>
+            <p class="network__text">
+              Royal Renovators Inc. supports a network of distinct, independently operated roofing
+              companies, each serving its own borough-specific market tailored to the local building
+              types and project needs of Brooklyn, Manhattan, the Bronx, Far Rockaway, and Long
+              Island.
+            </p>
+            <ul class="network__chips">
+              <li><a href="#brooklyn-roofing"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Brooklyn</a></li>
+              <li><a href="#manhattan-roofing"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Manhattan</a></li>
+              <li><a href="#bronx-roofing"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>The Bronx</a></li>
+              <li><a href="#far-rockaway-roofing"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Far Rockaway</a></li>
+              <li><a href="#long-island-roofing"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Long Island</a></li>
+            </ul>
+          </div>
+
+        </div>
       </div>
     </section>
 
@@ -2051,8 +2450,7 @@
           <p class="section-eyebrow">FAQs</p>
           <h2 class="section-title faqs__title">Questions We Get Asked Most</h2>
           <p class="section-lede faqs__lede">
-            Straight answers to the things homeowners ask before they let anyone on the roof —
-            what it costs, who files the permits, what the warranty actually covers and how long
+            Straight answers to the things homeowners ask before they let anyone on the roof: what it costs, who files the permits, what the warranty actually covers and how long
             you will have people on site. If yours is not here, ask us and we will answer it
             just as plainly.
           </p>
@@ -2081,7 +2479,7 @@
               How long does a roof replacement take?
               <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
             </summary>
-            <div class="faq__a"><p>Most residential roofs are a two to four day job once we start. Flat roofs on larger buildings run longer, and weather can move a start date — we tell you before we book, not after.</p></div>
+            <div class="faq__a"><p>Most residential roofs are a two to four day job once we start. Flat roofs on larger buildings run longer, and weather can move a start date, and we tell you before we book, not after.</p></div>
           </details>
 
           <details class="faq" name="faq">
@@ -2097,7 +2495,7 @@
               What warranty do I get?
               <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
             </summary>
-            <div class="faq__a"><p>Manufacturer warranties come from the material — as a GAF Master Elite contractor we can offer cover that most roofers cannot. Our own workmanship warranty sits on top of that and is written into the contract.</p></div>
+            <div class="faq__a"><p>Manufacturer warranties come from the material. As a GAF Master Elite contractor we can offer cover that most roofers cannot. Our own workmanship warranty sits on top of that and is written into the contract.</p></div>
           </details>
 
           <details class="faq" name="faq">
@@ -2271,24 +2669,14 @@
 
         <div class="footer__brand">
           <a class="footer__logo" href="/" aria-label="Royal Renovators Inc. — home">
-            <img src="images/royal-renovators-logo-removebg-preview-e1776149232571.webp"
-                 alt="Royal Renovators Inc." width="440" height="308">
+            <img src="images/royalwhite.png"
+                 alt="Royal Renovators Inc." width="1518" height="1036">
           </a>
           <p class="footer__about">
             Royal Renovators Inc. is a top-rated roofing contractor based in Queens and serving
             all of NYC since 1988. A BBB A+ rated, GAF Master Elite roofing company, we specialize
-            in <a href="#flat-roofing">flat roofing systems</a>,
-            <a href="#shingle-roofing">shingles</a>, <a href="#siding">siding</a>,
-            <a href="#gutters">gutters</a>, and <a href="#masonry">masonry</a> for residential and
+            in flat roofing systems, shingles, siding, gutters, and masonry for residential and
             commercial buildings.
-          </p>
-          <p class="footer__about">
-            Royal Renovators Inc. supports a network of distinct, independently operated roofing
-            companies, each serving its own borough-specific market tailored to the local building
-            types and project needs of <a href="#brooklyn-roofing">Brooklyn</a>,
-            <a href="#manhattan-roofing">Manhattan</a>, <a href="#bronx-roofing">the Bronx</a>,
-            <a href="#far-rockaway-roofing">Far Rockaway</a>, and
-            <a href="#long-island-roofing">Long Island</a>.
           </p>
         </div>
 
@@ -2372,7 +2760,7 @@
           <span class="footer__contactbar-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
           <div>
             <p class="footer__contactbar-label">Opening hours</p>
-            <p class="footer__contactbar-value"><a href="contact.html">Mon &ndash; Sun, 7:00am &ndash; 11:00pm</a></p>
+            <p class="footer__contactbar-value"><a href="contact.html">Open 24/7</a></p>
           </div>
         </li>
 
@@ -2398,6 +2786,10 @@
         <li>
           <img src="images/PngItem_1663.png" alt="People love us on Yelp"
                width="540" height="539" loading="lazy" decoding="async">
+        </li>
+        <li class="is-inc">
+          <img src="images/Inc.-5000-Color-Medallion-Logo-768x768.png" alt="Inc. 5000 honoree"
+               width="768" height="768" loading="lazy" decoding="async">
         </li>
       </ul>
 
