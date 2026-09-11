@@ -25,7 +25,7 @@
 
   <!-- Page-scoped overrides. Loaded after style.css so this page can diverge
        from index.html without touching the shared stylesheet. -->
-  <link rel="stylesheet" href="css/nyc3.css">
+  <link rel="stylesheet" href="css/nyc4.css">
 </head>
 <body>
 
@@ -33,49 +33,6 @@
 
 
   <header class="site-header" id="site-header">
-
-    <div class="utility-bar">
-      <div class="container utility-bar__inner">
-
-        <ul class="utility-bar__meta">
-          <li>
-            <i class="icon fa-solid fa-shield-halved" aria-hidden="true"></i>
-            Licensed NYC Roofing Contractor <span class="utility-bar__rule" aria-hidden="true"></span> License #2030146
-          </li>
-          <li class="utility-bar__hours">
-            <i class="icon fa-solid fa-award" aria-hidden="true"></i>
-            BBB A+ Rated <span class="utility-bar__dot" aria-hidden="true">&bull;</span>
-            GAF Master Elite <span class="utility-bar__dot" aria-hidden="true">&bull;</span>
-            Angi Super Service Award
-          </li>
-        </ul>
-
-        <ul class="socials">
-          <li><a href="#facebook" aria-label="Royal Renovators on Facebook">
-            <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
-          </a></li>
-          <li><a href="#instagram" aria-label="Royal Renovators on Instagram">
-            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-          </a></li>
-          <li><a href="#x" aria-label="Royal Renovators on X">
-            <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
-          </a></li>
-          <li><a href="#youtube" aria-label="Royal Renovators on YouTube">
-            <i class="fa-brands fa-youtube" aria-hidden="true"></i>
-          </a></li>
-          <li><a href="#linkedin" aria-label="Royal Renovators on LinkedIn">
-            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
-          </a></li>
-          <li><a href="#pinterest" aria-label="Royal Renovators on Pinterest">
-            <i class="fa-brands fa-pinterest-p" aria-hidden="true"></i>
-          </a></li>
-          <li><a href="#tiktok" aria-label="Royal Renovators on TikTok">
-            <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
-          </a></li>
-        </ul>
-
-      </div>
-    </div>
 
     <div class="nav-bar">
       <div class="container nav-bar__inner">
@@ -88,25 +45,6 @@
 
         <nav class="primary-nav" aria-label="Primary">
           <ul class="primary-nav__list">
-
-            <li class="primary-nav__item primary-nav__item--menu">
-              <button class="primary-nav__link" type="button" aria-expanded="false" aria-controls="menu-services">
-                Services
-                <i class="primary-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
-              </button>
-              <!-- Six items, so one column straight under the button — no grid,
-                   no full-bleed panel. -->
-              <div class="mega mega--services" id="menu-services" hidden>
-                <ul class="mega__list">
-                  <li><a href="#roofing"><i class="menu-icon fa-solid fa-house-chimney" aria-hidden="true"></i><span>Roofing</span></a></li>
-                  <li><a href="#siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
-                  <li><a href="#windows"><i class="menu-icon fa-solid fa-window-maximize" aria-hidden="true"></i><span>Windows</span></a></li>
-                  <li><a href="#masonry"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
-                  <li><a href="#gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
-                  <li><a href="#exterior"><i class="menu-icon fa-solid fa-house" aria-hidden="true"></i><span>Exterior Services</span></a></li>
-                </ul>
-              </div>
-            </li>
 
             <li class="primary-nav__item primary-nav__item--menu primary-nav__item--full">
               <button class="primary-nav__link" type="button" aria-expanded="false" aria-controls="menu-roofing">
@@ -122,7 +60,7 @@
                     <div class="mega__col">
                       <p class="mega__heading">Roofing services</p>
                       <ul class="mega__list">
-                        <li><a href="nyc3-shingle-roofing.html"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
+                        <li><a href="nyc4-shingle-roofing.html"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
                         <li><a href="nyc3-flat-roofing.html"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
                         <li><a href="#roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
                         <li><a href="#roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
@@ -151,6 +89,24 @@
                     </div>
                   </div>
                 </div>
+              </div>
+            </li>
+
+            <li class="primary-nav__item primary-nav__item--menu">
+              <button class="primary-nav__link" type="button" aria-expanded="false" aria-controls="menu-exteriors">
+                Exteriors
+                <i class="primary-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <!-- Five items, so one column straight under the button — no grid,
+                   no full-bleed panel. -->
+              <div class="mega mega--services" id="menu-exteriors" hidden>
+                <ul class="mega__list">
+                  <li><a href="#siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
+                  <li><a href="#windows"><i class="menu-icon fa-solid fa-window-maximize" aria-hidden="true"></i><span>Windows</span></a></li>
+                  <li><a href="#masonry"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
+                  <li><a href="#gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
+                  <li><a href="#exterior"><i class="menu-icon fa-solid fa-house" aria-hidden="true"></i><span>Exterior Services</span></a></li>
+                </ul>
               </div>
             </li>
 
@@ -397,12 +353,24 @@
               </div>
             </li>
 
+            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc4-projects.html">Projects</a></li>
 
-            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc3-projects.html">Projects</a></li>
-            <li class="primary-nav__item"><a class="primary-nav__link" href="#faqs">FAQs</a></li>
-            <li class="primary-nav__item"><a class="primary-nav__link" href="#blog">Blog</a></li>
+            <li class="primary-nav__item primary-nav__item--menu">
+              <button class="primary-nav__link" type="button" aria-expanded="false" aria-controls="menu-resources">
+                Resources
+                <i class="primary-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <div class="mega mega--services mega--resources" id="menu-resources" hidden>
+                <ul class="mega__list">
+                  <li><a href="#blog"><i class="menu-icon fa-solid fa-newspaper" aria-hidden="true"></i><span>Blog</span></a></li>
+                  <li><a href="#faqs"><i class="menu-icon fa-solid fa-circle-question" aria-hidden="true"></i><span>FAQs</span></a></li>
+                </ul>
+              </div>
+            </li>
+
             <li class="primary-nav__item"><a class="primary-nav__link" href="#about">About</a></li>
-            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc3-contact.html">Contact</a></li>
+
+            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc4-contact.html">Contact</a></li>
 
           </ul>
         </nav>
@@ -447,27 +415,12 @@
         <ul class="mobile-nav__list">
 
           <li>
-            <button class="mobile-nav__group" type="button" aria-expanded="false" aria-controls="m-services">
-              Services
-              <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
-            </button>
-            <ul class="mobile-nav__sub" id="m-services" hidden>
-              <li><a href="#roofing"><i class="menu-icon fa-solid fa-house-chimney" aria-hidden="true"></i><span>Roofing</span></a></li>
-              <li><a href="#siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
-              <li><a href="#windows"><i class="menu-icon fa-solid fa-window-maximize" aria-hidden="true"></i><span>Windows</span></a></li>
-              <li><a href="#masonry"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
-              <li><a href="#gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
-              <li><a href="#exterior"><i class="menu-icon fa-solid fa-house" aria-hidden="true"></i><span>Exterior Services</span></a></li>
-            </ul>
-          </li>
-
-          <li>
             <button class="mobile-nav__group" type="button" aria-expanded="false" aria-controls="m-roofing">
               Roofing
               <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
             </button>
             <ul class="mobile-nav__sub" id="m-roofing" hidden>
-              <li><a href="nyc3-shingle-roofing.html"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
+              <li><a href="nyc4-shingle-roofing.html"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
               <li><a href="nyc3-flat-roofing.html"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
               <li><a href="#roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
               <li><a href="#roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
@@ -482,6 +435,20 @@
               <li><a href="#roof-maintenance"><i class="menu-icon fa-solid fa-clipboard-check" aria-hidden="true"></i><span>Roof Maintenance</span></a></li>
               <li><a href="#roof-coating"><i class="menu-icon fa-solid fa-brush" aria-hidden="true"></i><span>Roof Coating</span></a></li>
               <li><a href="#emergency-roof-repair" class="mega__link--urgent"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Roof Repair</span></a></li>
+            </ul>
+          </li>
+
+          <li>
+            <button class="mobile-nav__group" type="button" aria-expanded="false" aria-controls="m-exteriors">
+              Exteriors
+              <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <ul class="mobile-nav__sub" id="m-exteriors" hidden>
+              <li><a href="#siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
+              <li><a href="#windows"><i class="menu-icon fa-solid fa-window-maximize" aria-hidden="true"></i><span>Windows</span></a></li>
+              <li><a href="#masonry"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
+              <li><a href="#gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
+              <li><a href="#exterior"><i class="menu-icon fa-solid fa-house" aria-hidden="true"></i><span>Exterior Services</span></a></li>
             </ul>
           </li>
 
@@ -608,11 +575,22 @@
             </ul>
           </li>
 
-          <li><a class="mobile-nav__link" href="nyc3-projects.html">Projects</a></li>
+          <li><a class="mobile-nav__link" href="nyc4-projects.html">Projects</a></li>
+
+          <li>
+            <button class="mobile-nav__group" type="button" aria-expanded="false" aria-controls="m-resources">
+              Resources
+              <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <ul class="mobile-nav__sub" id="m-resources" hidden>
+              <li><a href="#blog"><i class="menu-icon fa-solid fa-newspaper" aria-hidden="true"></i><span>Blog</span></a></li>
+              <li><a href="#faqs"><i class="menu-icon fa-solid fa-circle-question" aria-hidden="true"></i><span>FAQs</span></a></li>
+            </ul>
+          </li>
+
           <li><a class="mobile-nav__link" href="#about">About</a></li>
-          <li><a class="mobile-nav__link" href="#faqs">FAQs</a></li>
-          <li><a class="mobile-nav__link" href="#blog">Blog</a></li>
-          <li><a class="mobile-nav__link" href="nyc3-contact.html">Contact</a></li>
+
+          <li><a class="mobile-nav__link" href="nyc4-contact.html">Contact</a></li>
 
         </ul>
       </nav>
@@ -667,16 +645,15 @@
           </h1>
 
           <p class="hero__lede">
-            Royal Renovators Inc. is a top-rated roofing contractor serving all of NYC since 1988.
-            A BBB A+ rated, GAF Master Elite roofing company, specializing in flat roofing
-            systems, shingles, siding, and gutters.
+            Royal Renovators Inc. has served NYC since 1988. We are a BBB A+ rated, GAF Master
+            Elite roofing contractor specializing in flat roofing, shingles, siding, and gutters.
           </p>
 
           <div class="hero__actions">
-            <a class="btn btn--primary" href="#estimate">
+            <a class="btn btn--ghost hero__estimate" href="#estimate">
               <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
               <span class="btn__label">Get a free estimate</span></a>
-            <a class="btn btn--ghost" href="tel:+17184146067">
+            <a class="btn btn--primary" href="tel:+17184146067">
               <span class="btn__pip" aria-hidden="true"><i class="btn__arrow fa-solid fa-phone"></i><i class="btn__arrow btn__arrow--copy fa-solid fa-phone"></i></span>
               <span class="btn__label">Call (718) 414-6067</span></a>
           </div>
@@ -690,16 +667,15 @@
                 <img src="images/Google__G__logo.svg.webp" alt="Google"
                      width="1280" height="1280" decoding="async">
                 <span class="hero__rating">
-                  <strong>4.9</strong> ratings
-                  <span class="visually-hidden">out of 5 on Google</span>
+                  <strong>4.8</strong> <span class="rating-star" aria-hidden="true">&#9733;</span>
+                  <span class="visually-hidden">4.8 out of 5 on Google</span>
                 </span>
               </a>
             </li>
 
             <li class="hero__badge">
               <a class="hero__badge-link" href="#bbb">
-                <img src="images/bbb-a-plus-accredited.png" alt="BBB Accredited Business, A+ rating"
-                     width="1360" height="1156" decoding="async">
+                <img src="images/bb+.webp" alt="BBB Accredited Business, A+ rating" width="400" height="259" decoding="async">
               </a>
             </li>
 
@@ -710,24 +686,17 @@
               </a>
             </li>
 
-            <li class="hero__badge">
+            <li class="hero__badge hero__badge--extra">
               <a class="hero__badge-link" href="#awards">
                 <img src="images/ANGIES_LIST_SUPER_SAVER_award.png" alt="Angie&rsquo;s List Super Service Award"
                      width="600" height="462" decoding="async">
               </a>
             </li>
 
-            <li class="hero__badge">
+            <li class="hero__badge hero__badge--extra">
               <a class="hero__badge-link" href="#yelp">
                 <img src="images/PngItem_1663.png" alt="People love us on Yelp"
                      width="540" height="539" decoding="async">
-              </a>
-            </li>
-
-            <li class="hero__badge hero__badge--inc">
-              <a class="hero__badge-link" href="#inc-5000">
-                <img src="images/Inc.-5000-Color-Medallion-Logo-768x768.png" alt="Inc. 5000 honoree"
-                     width="768" height="768" decoding="async">
               </a>
             </li>
 
@@ -748,47 +717,40 @@
 
               <p class="field">
                 <label class="field__label" for="ef-name">
-                  Full name <span class="field__req" aria-hidden="true">*</span>
+                  Full name
                 </label>
                 <input class="field__input" type="text" id="ef-name" name="name"
                        autocomplete="name" placeholder="Jane Rodriguez" required>
               </p>
 
               <p class="field">
-                <label class="field__label" for="ef-email">
-                  Email <span class="field__req" aria-hidden="true">*</span>
-                </label>
-                <input class="field__input" type="email" id="ef-email" name="email"
-                       autocomplete="email" inputmode="email" placeholder="jane@email.com" required>
-              </p>
-
-              <p class="field">
                 <label class="field__label" for="ef-phone">
-                  Phone <span class="field__req" aria-hidden="true">*</span>
+                  Best Phone Number
                 </label>
                 <input class="field__input" type="tel" id="ef-phone" name="phone"
                        autocomplete="tel" inputmode="tel" placeholder="(718) 000-0000" required>
+                <span class="field__hint">We&rsquo;ll only contact you about your project.</span>
               </p>
 
-              <p class="field">
+              <p class="field field--full">
                 <label class="field__label" for="ef-address">
-                  Address <span class="field__req" aria-hidden="true">*</span>
+                  Property Address
                 </label>
                 <input class="field__input" type="text" id="ef-address" name="address"
                        autocomplete="street-address" placeholder="Street, borough" required>
               </p>
 
               <p class="field field--full">
-                <label class="field__label" for="ef-message">Your message</label>
+                <label class="field__label" for="ef-message">How Can We Help?</label>
                 <textarea class="field__input field__input--area" id="ef-message" name="message"
-                          rows="2" placeholder="Leak over the back bedroom, flat roof, two storeys…"></textarea>
+                          rows="2" placeholder="We have a leak over our home&rsquo;s back bedroom, it&rsquo;s a flat roof&hellip;"></textarea>
               </p>
 
             </div>
 
             <button class="btn btn--primary estimate-form__submit" type="submit">
               <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
-              <span class="btn__label">Request a free quote</span>
+              <span class="btn__label">Request Free Quote</span>
             </button>
 
             <p class="estimate-form__status form-status" data-form-status role="status" aria-live="polite"></p>
@@ -887,26 +849,26 @@
           </h2>
 
           <p class="section-lede">
-            Royal Renovators Inc. has been working on New York roofs since 1988: flat roofs over Brooklyn brownstones, shingle systems on two-family homes across Forest Hills, and
-            everything between. We are a licensed NYC contractor, BBB A+ accredited and
-            <strong>GAF Factory-Certified Master Elite</strong>.
+            Royal Renovators Inc. has been roofing New York City since 1988, from flat roofs on
+            Brooklyn brownstones to shingle roofs on homes across Queens. We are a licensed NYC
+            contractor, BBB A+ accredited, and GAF Master Elite certified.
           </p>
 
           <p class="about__text">
-            Every job runs with our own crews rather than subcontractors. One team stays on your
-            property from tear-off to clean-up, you have one number to call while the work is
-            underway, and the warranty is backed by a company that has been here for decades.
+            Our experienced crews handle the project from inspection through cleanup, with clear
+            communication, written estimates, and workmanship backed by a company that has served
+            New Yorkers for decades.
           </p>
 
           <ul class="about__points">
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i>Experienced roofing since 1988</li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i>Licensed, bonded &amp; insured</li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i>Free written estimates</li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i>Same-day leak response</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i>Roofing NYC since 1988</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i>Fully licensed, insured, BBB A+</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i>GAF Master Elite contractor</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i>Same-Day Leak Response</li>
           </ul>
 
           <div class="about__actions">
-            <a class="btn btn--navy" href="#estimate">
+            <a class="btn btn--primary" href="#estimate">
               <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
               <span class="btn__label">Get a free estimate</span></a>
             <a class="btn btn--outline" href="#about">
@@ -919,714 +881,6 @@
       </div>
     </section>
 
-    <!-- Certification band. Sits on the same white as About, so the content is
-         held inside a bordered panel — the panel edge does the separating that
-         a background change would normally do. -->
-    <section class="section gaf" id="gaf">
-      <div class="container">
-
-        <div class="gaf__panel">
-
-          <div class="gaf__body">
-
-            <p class="section-eyebrow">Factory certified</p>
-
-            <h2 class="section-title gaf__title">
-              GAF Master Elite Roofing Trusted Throughout <span class="accent">New York City</span>
-            </h2>
-
-            <p class="section-lede">
-              GAF is the largest roofing manufacturer in North America, and fewer than
-              <strong>2% of roofing contractors</strong> carry its Master Elite certification.
-              Royal Renovators Inc. is one of them, and has been installing GAF systems on
-              New York roofs for decades.
-            </p>
-
-            <p class="gaf__text">
-              Master Elite is not a badge a contractor can buy. GAF only awards it to companies
-              that are properly licensed, carry full insurance, and hold a documented record of
-              work that stands up over time. Certification is reviewed, not granted once and
-              forgotten, so it stays a live measure of how a company actually works.
-            </p>
-
-            <p class="gaf__text">
-              For you, the practical difference is the warranty. Certified contractors can
-              register warranties that the manufacturer stands behind directly, covering the workmanship as well as the materials, instead of a promise that only
-              lasts as long as the contractor does.
-            </p>
-
-            <ul class="gaf__points">
-              <li><i class="fa-solid fa-certificate" aria-hidden="true"></i>GAF Factory-Certified Master Elite</li>
-              <li><i class="fa-solid fa-building-shield" aria-hidden="true"></i>Licensed NYC contractor #2030146</li>
-              <li><i class="fa-solid fa-thumbs-up" aria-hidden="true"></i>BBB A+ accredited business</li>
-              <li><i class="fa-solid fa-award" aria-hidden="true"></i>Angi Super Service Award recipient</li>
-            </ul>
-
-            <div class="gaf__actions">
-              <a class="btn btn--navy" href="#estimate">
-                <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
-                <span class="btn__label">Get a free estimate</span>
-              </a>
-            </div>
-
-          </div>
-
-          <aside class="gaf__aside" aria-label="Credentials">
-
-            <div class="gaf__mark">
-              <img src="images/GAF-Master-Elite-Logo.png"
-                   alt="GAF Master Elite certified contractor" width="1424" height="520"
-                   loading="lazy" decoding="async">
-            </div>
-
-            <p class="gaf__aside-title">What the certification means for you</p>
-
-            <ul class="gaf__aside-points">
-              <li>
-                <strong>Warranties the factory registers.</strong>
-                Only certified contractors can offer GAF&rsquo;s enhanced limited warranties,
-                including the Golden Pledge&reg; &mdash; the one where GAF inspects the finished
-                roof itself.
-              </li>
-              <li>
-                <strong>Vetted, not self-declared.</strong>
-                Licensing, insurance and completed work are checked by the manufacturer before
-                the status is awarded, and reviewed afterwards to keep it.
-              </li>
-              <li>
-                <strong>One accountable contractor.</strong>
-                The company that quotes the roof registers the warranty and answers for it, so
-                there is no gap between who sold it and who installed it.
-              </li>
-            </ul>
-
-            <dl class="gaf__facts">
-              <div class="gaf__fact">
-                <dt>NYC licence</dt>
-                <dd>#2030146</dd>
-              </div>
-              <div class="gaf__fact">
-                <dt>Certification</dt>
-                <dd>GAF Master Elite</dd>
-              </div>
-              <div class="gaf__fact">
-                <dt>BBB rating</dt>
-                <dd>A+ accredited</dd>
-              </div>
-              <div class="gaf__fact">
-                <dt>Coverage</dt>
-                <dd>Five boroughs &amp; Long Island</dd>
-              </div>
-            </dl>
-
-          </aside>
-
-        </div>
-
-      </div>
-    </section>
-
-    <section class="section services" id="services">
-      <div class="container">
-
-        <div class="services__head">
-          <div>
-            <p class="section-eyebrow">What we do</p>
-            <h2 class="section-title">Flat Roofing Specialists Serving Queens &amp; New York City</h2>
-          </div>
-          <p class="services__lede">
-            From a single leak on a Queens two-family to a full commercial re-roof: the same crews, the same standard, since 1988.
-          </p>
-        </div>
-
-        <ul class="services__grid">
-
-          <li class="service-card">
-            <div class="media-frame service-card__media">
-              <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/09/Flat-Roof-Install-cap-sheet-Royal-pic-1-1-1024x768.jpg"
-                   alt="Royal Renovators crew laying cap sheet on a flat roof" width="1024" height="768"
-                   loading="lazy" decoding="async">
-            </div>
-            <h3 class="service-card__title"><a href="nyc3-flat-roofing.html">Flat Roofing</a></h3>
-            <p class="service-card__text">
-              Low-slope systems for row houses, brownstones and storefronts, laid so water
-              leaves the roof instead of sitting on it.
-            </p>
-            <ul class="service-card__points">
-              <li>EPDM, TPO and modified bitumen</li>
-              <li>Ponding and drainage corrected</li>
-            </ul>
-            <a class="service-card__more" href="nyc3-flat-roofing.html">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-          </li>
-
-          <li class="service-card">
-            <div class="media-frame service-card__media">
-              <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/07/WhatsApp-Image-2022-06-21-at-4.3-1-1-1024x768.webp"
-                   alt="Royal Renovators crew stripping an old shingle roof back to the deck" width="1024" height="768"
-                   loading="lazy" decoding="async">
-            </div>
-            <h3 class="service-card__title"><a href="#flat-roofing">Shingle Roofing</a></h3>
-            <p class="service-card__text">
-              Architectural and three-tab shingle systems on pitched roofs, installed to the
-              manufacturer specification that keeps the warranty intact.
-            </p>
-            <ul class="service-card__points">
-              <li>GAF Timberline architectural shingles</li>
-              <li>Ice and water shield at the eaves</li>
-            </ul>
-            <span class="service-card__more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-          </li>
-
-          <li class="service-card">
-            <div class="media-frame service-card__media">
-              <img class="media-frame__image" src="images/landing/service-roof-repair.jpg"
-                   alt="Roofer repairing flashing around a roof vent" width="1586" height="992"
-                   loading="lazy" decoding="async">
-            </div>
-            <h3 class="service-card__title"><a href="#flat-roofing">Roof Repair</a></h3>
-            <p class="service-card__text">
-              Leaks traced back to where the water actually gets in and sealed properly, rather
-              than patched over to return next winter.
-            </p>
-            <ul class="service-card__points">
-              <li>Leak detection included</li>
-              <li>Emergency call-outs, seven days</li>
-            </ul>
-            <span class="service-card__more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-          </li>
-
-          <li class="service-card">
-            <div class="media-frame service-card__media">
-              <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/09/20-guys-Flat-roof-tearoff-Royal-pic-1024x768.jpg"
-                   alt="Aerial view of a full crew replacing the flat roof of an apartment building" width="1024" height="768"
-                   loading="lazy" decoding="async">
-            </div>
-            <h3 class="service-card__title"><a href="#flat-roofing">Commercial Roofing</a></h3>
-            <p class="service-card__text">
-              Apartment buildings, warehouses and storefronts, with the work staged around your
-              tenants and your trading hours.
-            </p>
-            <ul class="service-card__points">
-              <li>Scheduled around occupancy</li>
-              <li>Maintenance plans available</li>
-            </ul>
-            <span class="service-card__more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-          </li>
-
-          <li class="service-card">
-            <div class="media-frame service-card__media">
-              <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/09/Boom-Crane-Pic-2-Royal-Beacon-Allied-copy-1-1-1024x768.jpg"
-                   alt="Royal Renovators exterior truck and boom crane loading materials on a Brooklyn brownstone street" width="1024" height="768"
-                   loading="lazy" decoding="async">
-            </div>
-            <h3 class="service-card__title"><a href="#exterior">Exterior Service</a></h3>
-            <p class="service-card__text">
-              Siding, masonry and pointing: the rest of the building envelope, handled by
-              the same crew that did the roof.
-            </p>
-            <ul class="service-card__points">
-              <li>Vinyl, fiber cement and stucco siding</li>
-              <li>Brick pointing and parapet rebuilds</li>
-            </ul>
-            <span class="service-card__more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-          </li>
-
-          <li class="service-card">
-            <div class="media-frame service-card__media">
-              <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2026/06/ChatGPT-Image-Jun-17-2026-03_24_58-PM-1024x819.png"
-                   alt="Installer fitting a new seamless gutter and downspout" width="1024" height="819"
-                   loading="lazy" decoding="async">
-            </div>
-            <h3 class="service-card__title"><a href="#exterior">Gutter System</a></h3>
-            <p class="service-card__text">
-              Seamless gutters, leaders and downspouts sized to the roof area, so water leaves the
-              building instead of running down the facade.
-            </p>
-            <ul class="service-card__points">
-              <li>Seamless aluminium, formed on site</li>
-              <li>Leaders piped away from the foundation</li>
-            </ul>
-            <span class="service-card__more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-          </li>
-
-        </ul>
-
-        <div class="services__foot">
-          <p class="services__foot-text">
-            <strong>Not sure which one you need?</strong>
-            We&rsquo;ll look at the roof and tell you straight, including when it doesn&rsquo;t need replacing.
-          </p>
-          <a class="btn btn--navy services__foot-cta" href="#estimate">
-            <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
-            <span class="btn__label">Get a free estimate</span>
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- id doubles as the target for the "Flat Roofing" and "Shingle Roofing"
-         links in the nav and the services grid. -->
-    <section class="section buildings" id="flat-roofing">
-      <div class="container">
-
-        <div class="buildings__head">
-          <div>
-            <p class="section-eyebrow">Roofing systems</p>
-            <h2 class="section-title buildings__title">
-              Flat and Shingle Roofing for Every NYC Building Type
-            </h2>
-          </div>
-          <p class="section-lede buildings__lede">
-            New York does not have one kind of roof. A Brooklyn brownstone, a Forest Hills
-            two-family, a Queens Boulevard storefront and a Bronx apartment building each fail in
-            their own way and each need a different system. We install both flat and shingle
-            roofs, so the recommendation you get is based on the building, not on the one product a company happens to sell.
-          </p>
-        </div>
-
-        <h3 class="buildings__subhead">Two systems, chosen by the roof</h3>
-
-        <ul class="buildings__systems">
-
-          <li class="buildings__system">
-            <div class="buildings__system-head">
-              <span class="buildings__system-icon"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></span>
-              <div>
-                <p class="buildings__system-tag">Low-slope</p>
-                <h4 class="buildings__system-title">Flat roofs</h4>
-              </div>
-            </div>
-
-            <p class="buildings__system-text">
-              Flat roofs cover most of the low-slope building stock in Queens, Brooklyn and the
-              Bronx. We have been working on them since 1988, so we know how they fail: water
-              ponding at the low point, seams splitting as the temperature swings, and flashing
-              that was never detailed properly where the roof meets the parapet.
-            </p>
-
-            <p class="buildings__system-text">
-              A flat roof is a drainage problem before it is a covering problem. We survey where
-              the water actually sits, correct the falls with tapered insulation where the deck
-              will not drain on its own, and detail every parapet, party wall and penetration
-              before the membrane goes down.
-            </p>
-
-            <ul class="buildings__specs">
-              <li>EPDM, TPO and modified bitumen systems</li>
-              <li>Heat-welded or fully adhered seams</li>
-              <li>Tapered insulation to correct standing water</li>
-              <li>Parapet, party-wall and coping detailing</li>
-              <li>Drains, scuppers and leaders cleared and reset</li>
-            </ul>
-
-            <p class="buildings__system-meta">
-              <span>Typical service life</span><strong>15&ndash;25 years</strong>
-            </p>
-          </li>
-
-          <li class="buildings__system">
-            <div class="buildings__system-head">
-              <span class="buildings__system-icon"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></span>
-              <div>
-                <p class="buildings__system-tag">Pitched</p>
-                <h4 class="buildings__system-title">Shingle roofs</h4>
-              </div>
-            </div>
-
-            <p class="buildings__system-text">
-              Shingle roofs go on the pitched stock: detached and semi-detached homes,
-              dormers, extensions and porches. As a GAF Master Elite contractor we install
-              architectural shingles as a complete system rather than as a covering laid over
-              whatever is already up there.
-            </p>
-
-            <p class="buildings__system-text">
-              That means the deck gets inspected and repaired where it is soft, ice and water
-              shield goes down at the eaves and in the valleys, and the ridge is vented. Skip any
-              one of those layers and the warranty behind the roof stops meaning very much.
-            </p>
-
-            <ul class="buildings__specs">
-              <li>GAF Timberline architectural shingles</li>
-              <li>Deck inspected and repaired before covering</li>
-              <li>Ice and water shield at eaves and valleys</li>
-              <li>Starter course, field shingles, ridge vent and cap</li>
-              <li>Step and counter flashing at walls and chimneys</li>
-            </ul>
-
-            <p class="buildings__system-meta">
-              <span>Typical service life</span><strong>25&ndash;50 years</strong>
-            </p>
-          </li>
-
-        </ul>
-
-        <div class="buildings__note">
-          <p class="buildings__note-text">
-            On either system we quote <strong>tear-off and overlay separately</strong>, so you can
-            see what each one actually costs, and we say plainly when a roof still has years left
-            in it. Work is scheduled around the forecast rather than the calendar, so nothing gets
-            opened up the day before rain.
-          </p>
-          <ul class="buildings__stats buildings__stats--single">
-            <li class="buildings__stat">
-              <span class="buildings__stat-icon"><i class="fa-solid fa-thumbs-up" aria-hidden="true"></i></span>
-              <span class="buildings__stat-body">
-                <span class="buildings__stat-figure">100%</span>
-                <span class="buildings__stat-label">Client satisfaction, every job</span>
-              </span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="buildings__gridhead">
-          <p class="section-eyebrow">Building types</p>
-          <h3 class="buildings__subhead buildings__subhead--center">Roofing Types and Building Systems</h3>
-        </div>
-
-        <ul class="buildings__grid">
-
-          <li class="buildings__card">
-            <span class="buildings__card-icon"><i class="fa-solid fa-city" aria-hidden="true"></i></span>
-            <p class="buildings__card-tag">Flat &middot; EPDM, TPO or modified bitumen</p>
-            <h3 class="buildings__card-title">Row houses &amp; brownstones</h3>
-            <p class="buildings__card-text">
-              Shared parapet walls and a neighbour on either side, which is where most of these
-              roofs actually leak. We detail the parapet and the party wall properly rather than
-              running the membrane up and hoping.
-            </p>
-          </li>
-
-          <li class="buildings__card">
-            <span class="buildings__card-icon"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></span>
-            <p class="buildings__card-tag">Shingle &middot; GAF architectural</p>
-            <h3 class="buildings__card-title">Two-family &amp; semi-detached homes</h3>
-            <p class="buildings__card-text">
-              Pitched roofs with dormers, valleys and often a flat section over the back
-              extension. Both systems in one job, with the transition between them flashed as a
-              detail instead of an afterthought.
-            </p>
-          </li>
-
-          <li class="buildings__card">
-            <span class="buildings__card-icon"><i class="fa-solid fa-store" aria-hidden="true"></i></span>
-            <p class="buildings__card-tag">Flat &middot; TPO with tapered insulation</p>
-            <h3 class="buildings__card-title">Storefronts &amp; mixed-use</h3>
-            <p class="buildings__card-text">
-              A leak here reaches stock and tenants, not just a ceiling. We stage the work around
-              trading hours and keep the building watertight at the end of every day rather than
-              at the end of the job.
-            </p>
-          </li>
-
-          <li class="buildings__card">
-            <span class="buildings__card-icon"><i class="fa-solid fa-building" aria-hidden="true"></i></span>
-            <p class="buildings__card-tag">Flat &middot; Modified bitumen or single-ply</p>
-            <h3 class="buildings__card-title">Apartment buildings</h3>
-            <p class="buildings__card-text">
-              Bulkheads, water tanks, HVAC curbs and vent stacks, every one of them a
-              penetration that has to be flashed. Scheduled around occupancy, with notice to
-              residents before anything noisy starts.
-            </p>
-          </li>
-
-          <li class="buildings__card">
-            <span class="buildings__card-icon"><i class="fa-solid fa-house" aria-hidden="true"></i></span>
-            <p class="buildings__card-tag">Shingle &middot; GAF Timberline system</p>
-            <h3 class="buildings__card-title">Detached single-family</h3>
-            <p class="buildings__card-text">
-              The straightforward case, and the one where corners get cut most often. Full
-              tear-off, deck inspected and repaired where it is soft, then the complete system
-              installed to spec so the warranty registers.
-            </p>
-          </li>
-
-          <li class="buildings__card">
-            <span class="buildings__card-icon"><i class="fa-solid fa-warehouse" aria-hidden="true"></i></span>
-            <p class="buildings__card-tag">Flat &middot; Single-ply, large spans</p>
-            <h3 class="buildings__card-title">Warehouses &amp; industrial</h3>
-            <p class="buildings__card-text">
-              Large uninterrupted areas where drainage and seam quality decide how long the roof
-              lasts. Heat-welded seams, mechanically fastened where the deck allows, with a
-              maintenance plan if you want one.
-            </p>
-          </li>
-
-        </ul>
-
-        <div class="buildings__foot">
-          <p class="buildings__foot-text">
-            <strong>Not sure which system your building needs?</strong>
-            We will get up on the roof, photograph what is there and tell you straight, including when the answer is that it does not need replacing yet.
-          </p>
-          <a class="btn btn--primary buildings__foot-cta" href="#estimate">
-            <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
-            <span class="btn__label">Get a free estimate</span>
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Dark band. Same diagonal gradient and dot field as the closing banner —
-         one dark feature section on the page, sitting between two light ones. -->
-    <section class="section whyus" id="why-us">
-      <div class="container whyus__inner">
-
-        <div class="whyus__body">
-
-          <h2 class="section-title whyus__title">
-            Why NYC Property Owners Choose Royal Renovators Inc.
-          </h2>
-
-          <p class="whyus__lede">
-            There is no shortage of roofing companies in New York. What there is a shortage of is
-            companies that will still answer the phone in three years, when the roof they sold you
-            starts doing something it should not.
-          </p>
-
-          <p class="whyus__text">
-            We have been working on the same streets since 1988. Our name is on buildings in
-            Forest Hills, Ridgewood, Astoria, Bay Ridge and the Bronx, and a large share of every
-            year&rsquo;s work comes from people who have already used us or were sent by someone
-            who has. That only holds together if the work does.
-          </p>
-
-          <div class="whyus__actions">
-            <a class="btn btn--primary" href="#estimate">
-              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
-              <span class="btn__label">Get a free estimate</span>
-            </a>
-            <a class="btn btn--ghost" href="tel:+17184146067">
-              <span class="btn__pip" aria-hidden="true"><i class="btn__arrow fa-solid fa-phone"></i><i class="btn__arrow btn__arrow--copy fa-solid fa-phone"></i></span>
-              <span class="btn__label">Call (718) 414-6067</span>
-            </a>
-          </div>
-
-        </div>
-
-        <div class="whyus__media">
-
-          <div class="media-frame media-frame--dark whyus__shot whyus__shot--tall">
-            <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/09/Flat-tearoff-big-crew-Royal-pic-1-1024x768.jpg"
-                 alt="Royal Renovators crew tearing off a flat roof with the Manhattan skyline behind" width="1024" height="768"
-                 loading="lazy" decoding="async">
-          </div>
-
-          <div class="media-frame media-frame--dark whyus__shot">
-            <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/09/20-guys-Flat-roof-tearoff-Royal-pic-1024x768.jpg"
-                 alt="Aerial view of a Royal Renovators crew working across a full flat roof" width="1024" height="768"
-                 loading="lazy" decoding="async">
-          </div>
-
-          <div class="whyus__tile whyus__tile--plain">
-            <p class="whyus__tile-figure">35+ <span class="whyus__tile-unit">Years</span></p>
-            <p class="whyus__tile-label">Roofing across the five boroughs</p>
-          </div>
-
-        </div>
-
-        <ul class="whyus__reasons">
-
-            <li class="whyus__reason">
-              <span class="whyus__reason-icon"><i class="fa-solid fa-certificate" aria-hidden="true"></i></span>
-              <div>
-                <h3 class="whyus__reason-title">Credentials you can check</h3>
-                <p class="whyus__reason-text">
-                  Licensed NYC contractor #2030146, BBB A+ accredited, GAF Factory-Certified
-                  Master Elite, fully insured. Every one of those is verifiable without asking us.
-                </p>
-              </div>
-            </li>
-
-            <li class="whyus__reason">
-              <span class="whyus__reason-icon"><i class="fa-solid fa-star" aria-hidden="true"></i></span>
-              <div>
-                <h3 class="whyus__reason-title">5 star reviews</h3>
-                <p class="whyus__reason-text">
-                  Hundreds of NYC owners have written down how the job went, and every one of
-                  them is public.
-                </p>
-              </div>
-            </li>
-
-            <li class="whyus__reason">
-              <span class="whyus__reason-icon"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></span>
-              <div>
-                <h3 class="whyus__reason-title">Written, itemised estimates</h3>
-                <p class="whyus__reason-text">
-                  Tear-off and overlay priced separately so you can compare like for like against
-                  anyone else you ask. No day-rate arithmetic, no verbal numbers.
-                </p>
-              </div>
-            </li>
-
-            <li class="whyus__reason">
-              <span class="whyus__reason-icon"><i class="fa-solid fa-droplet" aria-hidden="true"></i></span>
-              <div>
-                <h3 class="whyus__reason-title">Seven-day leak response</h3>
-                <p class="whyus__reason-text">
-                  Water does not wait for Monday. We take emergency calls seven days a week and
-                  make the building safe first, then quote the permanent repair.
-                </p>
-              </div>
-            </li>
-
-            <li class="whyus__reason">
-              <span class="whyus__reason-icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></span>
-              <div>
-                <h3 class="whyus__reason-title">A straight answer, including &ldquo;not yet&rdquo;</h3>
-                <p class="whyus__reason-text">
-                  If a roof has five years left in it we will tell you that, with photographs,
-                  rather than sell you a replacement you do not need this season.
-                </p>
-              </div>
-            </li>
-
-            <li class="whyus__reason">
-              <span class="whyus__reason-icon"><i class="fa-solid fa-broom" aria-hidden="true"></i></span>
-              <div>
-                <h3 class="whyus__reason-title">The site left the way we found it</h3>
-                <p class="whyus__reason-text">
-                  Dumpsters placed with your neighbours in mind, a magnet sweep of the yard and
-                  the driveway, and a walkthrough with you before anyone leaves.
-                </p>
-              </div>
-            </li>
-
-        </ul>
-
-      </div>
-    </section>
-
-    <!-- Siding, masonry and gutters — the rest of the envelope. -->
-    <section class="section exterior" id="exterior">
-      <div class="container">
-
-        <div class="exterior__head">
-          <div>
-            <p class="section-eyebrow">Exterior work</p>
-            <h2 class="section-title">
-              Siding, Masonry, and Gutter Work for Your Property&rsquo;s Exterior
-            </h2>
-          </div>
-          <p class="section-lede exterior__lede">
-            A roof is only the top of the envelope. Most of the water damage we are called out to
-            gets in somewhere else, and we handle all three trades with the same crews, so
-            nobody gets to blame the others.
-          </p>
-        </div>
-
-        <ul class="exterior__grid">
-
-          <li class="exterior__card">
-            <div class="media-frame exterior__media">
-              <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2026/06/ChatGPT-Image-Jun-17-2026-03_23_22-PM-1024x819.png"
-                   alt="Royal Renovators tradesmen fitting siding, sealing window trim and setting stone veneer" width="1024" height="819"
-                   loading="lazy" decoding="async">
-            </div>
-            <div class="exterior__card-body">
-              <h3 class="exterior__card-title"><a href="#siding">Siding</a></h3>
-              <p class="exterior__card-text">
-                Vinyl, fiber cement and stucco, installed over a proper weather barrier with
-                every opening flashed.
-              </p>
-              <ul class="exterior__points">
-                <li>Vinyl, fiber cement and stucco</li>
-                <li>House wrap and flashing at every opening</li>
-              </ul>
-              <span class="exterior__card-more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-            </div>
-          </li>
-
-          <li class="exterior__card">
-            <div class="media-frame exterior__media">
-              <img class="media-frame__image" src="images/landing/project-masonry.jpg"
-                   alt="Finished brick masonry repointing on a New York building" width="1122" height="1402"
-                   loading="lazy" decoding="async">
-            </div>
-            <div class="exterior__card-body">
-              <h3 class="exterior__card-title"><a href="#masonry">Masonry &amp; pointing</a></h3>
-              <p class="exterior__card-text">
-                Pointing, parapet rebuilds and waterproofing. On older New York stock the
-                parapet is usually the first thing to go.
-              </p>
-              <ul class="exterior__points">
-                <li>Grinding and repointing, matched mortar</li>
-                <li>Parapet rebuilds and coping stones</li>
-              </ul>
-              <span class="exterior__card-more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-            </div>
-          </li>
-
-          <li class="exterior__card">
-            <div class="media-frame exterior__media">
-              <img class="media-frame__image" src="images/landing/project-gutters.jpg"
-                   alt="New seamless gutters and leader on a brick home" width="1122" height="1402"
-                   loading="lazy" decoding="async">
-            </div>
-            <div class="exterior__card-body">
-              <h3 class="exterior__card-title"><a href="#gutters">Gutters &amp; leaders</a></h3>
-              <p class="exterior__card-text">
-                Seamless aluminium formed on site, sized to the roof area it drains and piped
-                clear of the foundation.
-              </p>
-              <ul class="exterior__points">
-                <li>Seamless aluminium, formed on site</li>
-                <li>Sized to the roof area, not the wall</li>
-              </ul>
-              <span class="exterior__card-more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-            </div>
-          </li>
-
-        </ul>
-
-      </div>
-    </section>
-
-    <section class="cta-band" id="free-estimate">
-
-      <div class="cta-band__media" aria-hidden="true">
-        <img class="cta-band__image" src="images/landing/estimate-crew-background.jpg" alt=""
-             width="1672" height="941" loading="lazy" decoding="async">
-      </div>
-      <div class="cta-band__scrim" aria-hidden="true"></div>
-
-      <div class="container cta-band__inner">
-
-        <p class="cta-band__eyebrow">Free &middot; No obligation</p>
-
-        <h2 class="cta-band__title">Get a Free Roofing Estimate in New York City</h2>
-
-        <p class="cta-band__text">
-          Tell us what the roof is doing and we will come out, get up there and put a written
-          price in front of you, usually within one business day.
-        </p>
-
-        <div class="cta-band__actions">
-          <a class="btn btn--primary" href="#estimate">
-            <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
-            <span class="btn__label">Get a free estimate</span>
-          </a>
-          <a class="btn btn--ghost" href="tel:+17184146067">
-            <span class="btn__pip" aria-hidden="true"><i class="btn__arrow fa-solid fa-phone"></i><i class="btn__arrow btn__arrow--copy fa-solid fa-phone"></i></span>
-            <span class="btn__label">Call (718) 414-6067</span>
-          </a>
-        </div>
-
-        <ul class="cta-band__note">
-          <li class="cta-band__note-lic">Licensed NYC contractor #2030146</li>
-          <li>BBB A+ Rated</li>
-          <li>GAF Master Elite</li>
-        </ul>
-
-      </div>
-    </section>
-
-    <!-- Tabbed gallery. Panels are plain `hidden` rather than display:none in
-         CSS, so the tab script and the markup agree on one source of truth for
-         which panel is showing. -->
     <section class="section projects" id="projects">
       <div class="container">
 
@@ -1887,7 +1141,7 @@
         </div>
 
         <div class="projects__foot">
-          <a class="btn btn--outline projects__more" href="nyc3-projects.html">
+          <a class="btn btn--outline projects__more" href="nyc4-projects.html">
             <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
             <span class="btn__label">View full gallery</span>
           </a>
@@ -1895,6 +1149,646 @@
 
       </div>
     </section>
+
+    <!-- Certification band. Sits on the same white as About, so the content is
+         held inside a bordered panel — the panel edge does the separating that
+         a background change would normally do. -->
+    <section class="section gaf" id="gaf">
+      <div class="container">
+
+        <div class="gaf__panel">
+
+          <div class="gaf__body">
+
+            <p class="section-eyebrow">Factory certified</p>
+
+            <h2 class="section-title gaf__title">
+              GAF Master Elite <span class="accent">Roofing Contractor</span>
+            </h2>
+
+            <p class="section-lede">
+              GAF is the largest roofing manufacturer in North America, and fewer than 2% of
+              roofing contractors carry its Master Elite certification. Royal Renovators Inc. is
+              one of them, and has been installing GAF systems on New York roofs for decades.
+            </p>
+
+          </div>
+
+          <aside class="gaf__aside" aria-label="What GAF Master Elite means for you">
+
+            <div class="gaf__mark">
+              <img src="images/GAF-Master-Elite-Logo.png"
+                   alt="GAF Master Elite certified contractor" width="1424" height="520"
+                   loading="lazy" decoding="async">
+            </div>
+
+            <p class="gaf__aside-title">What GAF Master Elite Means for You</p>
+
+            <ul class="gaf__aside-points">
+              <li>
+                <strong>Factory-Vetted Contractor</strong>
+                Licensing, insurance, reputation, and workmanship standards are reviewed by GAF.
+              </li>
+              <li>
+                <strong>Enhanced Warranty Options</strong>
+                Eligible roofing systems can receive stronger manufacturer-backed warranty
+                protection.
+              </li>
+              <li>
+                <strong>Complete GAF Roofing Systems</strong>
+                We install GAF roofing components as a coordinated system rather than simply
+                replacing the shingles.
+              </li>
+            </ul>
+
+          </aside>
+
+          <!-- Foot: the four credential bullets, then the CTA as the last
+               thing in the section, on both desktop and phone. -->
+          <div class="gaf__foot">
+            <ul class="gaf__points">
+              <li><i class="fa-solid fa-certificate" aria-hidden="true"></i>GAF Factory-Certified Master Elite</li>
+              <li><i class="fa-solid fa-building-shield" aria-hidden="true"></i>Licensed NYC Contractor #2030146</li>
+              <li><i class="fa-solid fa-thumbs-up" aria-hidden="true"></i>BBB A+ Accredited Business</li>
+              <li><i class="fa-solid fa-award" aria-hidden="true"></i>Angi Super Service Award recipient</li>
+            </ul>
+
+            <div class="gaf__actions">
+              <a class="btn btn--primary" href="#estimate">
+                <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+                <span class="btn__label">Get a free estimate</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="container">
+
+        <div class="services__head">
+          <div>
+            <p class="section-eyebrow">What we do</p>
+            <h2 class="section-title">Flat Roofing Specialists Serving Queens &amp; New York City</h2>
+          </div>
+          <p class="services__lede">
+            From a single leak on a Queens two-family to a full commercial re-roof: the same crews, the same standard, since 1988.
+          </p>
+        </div>
+
+        <ul class="services__grid">
+
+          <li class="service-card">
+            <div class="media-frame service-card__media">
+              <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/09/Flat-Roof-Install-cap-sheet-Royal-pic-1-1-1024x768.jpg"
+                   alt="Royal Renovators crew laying cap sheet on a flat roof" width="1024" height="768"
+                   loading="lazy" decoding="async">
+            </div>
+            <h3 class="service-card__title"><a href="nyc3-flat-roofing.html">Flat Roofing</a></h3>
+            <p class="service-card__text">
+              Low-slope systems for row houses, brownstones and storefronts, laid to drain.
+            </p>
+            <ul class="service-card__points">
+              <li>EPDM, TPO and modified bitumen</li>
+              <li>Ponding and drainage corrected</li>
+            </ul>
+            <a class="service-card__more" href="nyc3-flat-roofing.html">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </li>
+
+          <li class="service-card">
+            <div class="media-frame service-card__media">
+              <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/07/WhatsApp-Image-2022-06-21-at-4.3-1-1-1024x768.webp"
+                   alt="Royal Renovators crew stripping an old shingle roof back to the deck" width="1024" height="768"
+                   loading="lazy" decoding="async">
+            </div>
+            <h3 class="service-card__title"><a href="#flat-roofing">Shingle Roofing</a></h3>
+            <p class="service-card__text">
+              GAF shingle systems on pitched roofs, installed to spec so the warranty holds.
+            </p>
+            <ul class="service-card__points">
+              <li>GAF Timberline architectural shingles</li>
+              <li>Ice and water shield at the eaves</li>
+            </ul>
+            <span class="service-card__more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+          </li>
+
+          <li class="service-card">
+            <div class="media-frame service-card__media">
+              <img class="media-frame__image" src="images/landing/service-roof-repair.jpg"
+                   alt="Roofer repairing flashing around a roof vent" width="1586" height="992"
+                   loading="lazy" decoding="async">
+            </div>
+            <h3 class="service-card__title"><a href="#flat-roofing">Roof Repair</a></h3>
+            <p class="service-card__text">
+              Leaks traced to the source and sealed properly, not patched to return next winter.
+            </p>
+            <ul class="service-card__points">
+              <li>Leak detection included</li>
+              <li>Emergency call-outs, seven days</li>
+            </ul>
+            <span class="service-card__more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+          </li>
+
+          <li class="service-card">
+            <div class="media-frame service-card__media">
+              <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/09/20-guys-Flat-roof-tearoff-Royal-pic-1024x768.jpg"
+                   alt="Aerial view of a full crew replacing the flat roof of an apartment building" width="1024" height="768"
+                   loading="lazy" decoding="async">
+            </div>
+            <h3 class="service-card__title"><a href="#flat-roofing">Commercial Roofing</a></h3>
+            <p class="service-card__text">
+              Apartment buildings, warehouses and storefronts, staged around tenants and trading hours.
+            </p>
+            <ul class="service-card__points">
+              <li>Scheduled around occupancy</li>
+              <li>Maintenance plans available</li>
+            </ul>
+            <span class="service-card__more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+          </li>
+
+          <li class="service-card">
+            <div class="media-frame service-card__media">
+              <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/09/Boom-Crane-Pic-2-Royal-Beacon-Allied-copy-1-1-1024x768.jpg"
+                   alt="Royal Renovators exterior truck and boom crane loading materials on a Brooklyn brownstone street" width="1024" height="768"
+                   loading="lazy" decoding="async">
+            </div>
+            <h3 class="service-card__title"><a href="#exterior">Exterior Service</a></h3>
+            <p class="service-card__text">
+              Siding, masonry and pointing, handled by the same crew that did the roof.
+            </p>
+            <ul class="service-card__points">
+              <li>Vinyl, fiber cement and stucco siding</li>
+              <li>Brick pointing and parapet rebuilds</li>
+            </ul>
+            <span class="service-card__more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+          </li>
+
+          <li class="service-card">
+            <div class="media-frame service-card__media">
+              <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2026/06/ChatGPT-Image-Jun-17-2026-03_24_58-PM-1024x819.png"
+                   alt="Installer fitting a new seamless gutter and downspout" width="1024" height="819"
+                   loading="lazy" decoding="async">
+            </div>
+            <h3 class="service-card__title"><a href="#exterior">Gutter System</a></h3>
+            <p class="service-card__text">
+              Seamless gutters and leaders sized to the roof, so water leaves the building.
+            </p>
+            <ul class="service-card__points">
+              <li>Seamless aluminium, formed on site</li>
+              <li>Leaders piped away from the foundation</li>
+            </ul>
+            <span class="service-card__more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+          </li>
+
+        </ul>
+
+        <div class="services__foot">
+          <p class="services__foot-text">
+            <strong>Not sure which one you need?</strong>
+            We&rsquo;ll look at the roof and tell you straight, including when it doesn&rsquo;t need replacing.
+          </p>
+          <a class="btn btn--primary services__foot-cta" href="#estimate">
+            <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+            <span class="btn__label">Get a free estimate</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- id doubles as the target for the "Flat Roofing" and "Shingle Roofing"
+         links in the nav and the services grid. -->
+    <section class="section buildings" id="flat-roofing">
+      <div class="container">
+
+        <div class="buildings__head">
+          <div>
+            <p class="section-eyebrow">Roofing systems</p>
+            <h2 class="section-title buildings__title">
+              Flat and Shingle Roofing for Every NYC Building Type
+            </h2>
+          </div>
+          <p class="section-lede buildings__lede">
+            New York buildings require different roofing systems. Brownstones, row houses,
+            apartment buildings, storefronts, and many extensions typically use low-slope roofing,
+            while pitched homes generally use shingles. We install both, so we recommend the system
+            that fits the building rather than pushing one type of roof.
+          </p>
+        </div>
+
+        <ul class="buildings__systems">
+
+          <li class="buildings__system">
+            <div class="buildings__system-head">
+              <span class="buildings__system-icon"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></span>
+              <div>
+                <p class="buildings__system-tag">Low-slope</p>
+                <h4 class="buildings__system-title">Flat roofs</h4>
+              </div>
+            </div>
+
+            <p class="buildings__system-text">
+              Flat and low-slope roofs are common throughout Queens, Brooklyn, the Bronx, and
+              Manhattan. Proper drainage, seams, flashing, and parapet details are critical to
+              preventing leaks and standing water.
+            </p>
+
+            <ul class="buildings__specs">
+              <li>EPDM, TPO &amp; modified bitumen</li>
+              <li>Drainage and ponding corrections</li>
+              <li>Parapet, flashing &amp; penetration detailing</li>
+              <li>Tapered insulation where needed</li>
+            </ul>
+
+            <p class="buildings__system-meta">
+              <span>Typical service life</span><strong>15&ndash;25 years</strong>
+            </p>
+          </li>
+
+          <li class="buildings__system">
+            <div class="buildings__system-head">
+              <span class="buildings__system-icon"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></span>
+              <div>
+                <p class="buildings__system-tag">Pitched</p>
+                <h4 class="buildings__system-title">Shingle roofs</h4>
+              </div>
+            </div>
+
+            <p class="buildings__system-text">
+              For pitched roofs, we install complete GAF shingle systems on detached homes,
+              two-family properties, dormers, extensions, and other sloped roof areas.
+            </p>
+
+            <ul class="buildings__specs">
+              <li>GAF Timberline architectural shingles</li>
+              <li>Roof deck inspected before installation</li>
+              <li>Ice &amp; water shield at eaves and valleys</li>
+              <li>Proper flashing, ventilation &amp; ridge caps</li>
+            </ul>
+
+            <p class="buildings__system-meta">
+              <span>Typical service life</span><strong>25&ndash;50 years</strong>
+            </p>
+          </li>
+
+        </ul>
+
+        <!-- Banner: the transition note and the estimate CTA on one navy strip,
+             with a slash-edged red panel at the left. -->
+        <div class="buildings__banner">
+          <div class="buildings__banner-mark" aria-hidden="true">
+            <i class="fa-solid fa-house-chimney-window"></i>
+          </div>
+          <div class="buildings__banner-body">
+            <p class="buildings__banner-title">Flat and pitched on the same building?</p>
+            <p class="buildings__banner-text">
+              Some NYC properties have both flat and pitched roof sections. We install and properly
+              transition both systems when required.
+            </p>
+          </div>
+          <a class="btn btn--primary buildings__banner-cta" href="#estimate">
+            <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+            <span class="btn__label">Get a free estimate</span>
+          </a>
+        </div>
+
+        <div class="buildings__gridhead">
+          <p class="section-eyebrow">Building types</p>
+          <h3 class="buildings__subhead buildings__subhead--center">Roofing Types and Building Systems in NYC</h3>
+        </div>
+
+        <ul class="buildings__grid">
+
+          <li class="buildings__card">
+            <span class="buildings__card-icon"><i class="fa-solid fa-city" aria-hidden="true"></i></span>
+            <p class="buildings__card-tag">Flat &middot; EPDM, TPO or modified bitumen</p>
+            <h3 class="buildings__card-title">Row houses &amp; brownstones</h3>
+            <p class="buildings__card-text">
+              Shared parapet walls and a neighbour on either side, which is where most of these
+              roofs actually leak. We detail the parapet and the party wall properly rather than
+              running the membrane up and hoping.
+            </p>
+          </li>
+
+          <li class="buildings__card">
+            <span class="buildings__card-icon"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></span>
+            <p class="buildings__card-tag">Shingle &middot; GAF architectural</p>
+            <h3 class="buildings__card-title">Two-family &amp; semi-detached homes</h3>
+            <p class="buildings__card-text">
+              Pitched roofs with dormers, valleys and often a flat section over the back
+              extension. Both systems in one job, with the transition between them flashed as a
+              detail instead of an afterthought.
+            </p>
+          </li>
+
+          <li class="buildings__card">
+            <span class="buildings__card-icon"><i class="fa-solid fa-store" aria-hidden="true"></i></span>
+            <p class="buildings__card-tag">Flat &middot; TPO with tapered insulation</p>
+            <h3 class="buildings__card-title">Storefronts &amp; mixed-use</h3>
+            <p class="buildings__card-text">
+              A leak here reaches stock and tenants, not just a ceiling. We stage the work around
+              trading hours and keep the building watertight at the end of every day rather than
+              at the end of the job.
+            </p>
+          </li>
+
+          <li class="buildings__card">
+            <span class="buildings__card-icon"><i class="fa-solid fa-building" aria-hidden="true"></i></span>
+            <p class="buildings__card-tag">Flat &middot; Modified bitumen or single-ply</p>
+            <h3 class="buildings__card-title">Apartment buildings</h3>
+            <p class="buildings__card-text">
+              Bulkheads, water tanks, HVAC curbs and vent stacks, every one of them a
+              penetration that has to be flashed. Scheduled around occupancy, with notice to
+              residents before anything noisy starts.
+            </p>
+          </li>
+
+          <li class="buildings__card">
+            <span class="buildings__card-icon"><i class="fa-solid fa-house" aria-hidden="true"></i></span>
+            <p class="buildings__card-tag">Shingle &middot; GAF Timberline system</p>
+            <h3 class="buildings__card-title">Detached single-family</h3>
+            <p class="buildings__card-text">
+              The straightforward case, and the one where corners get cut most often. Full
+              tear-off, deck inspected and repaired where it is soft, then the complete system
+              installed to spec so the warranty registers.
+            </p>
+          </li>
+
+          <li class="buildings__card">
+            <span class="buildings__card-icon"><i class="fa-solid fa-warehouse" aria-hidden="true"></i></span>
+            <p class="buildings__card-tag">Flat &middot; Single-ply, large spans</p>
+            <h3 class="buildings__card-title">Warehouses &amp; industrial</h3>
+            <p class="buildings__card-text">
+              Large uninterrupted areas where drainage and seam quality decide how long the roof
+              lasts. Heat-welded seams, mechanically fastened where the deck allows, with a
+              maintenance plan if you want one.
+            </p>
+          </li>
+
+        </ul>
+
+
+      </div>
+    </section>
+
+    <!-- Dark band. Same diagonal gradient and dot field as the closing banner —
+         one dark feature section on the page, sitting between two light ones. -->
+    <section class="section whyus" id="why-us">
+      <div class="container whyus__inner">
+
+        <div class="whyus__body">
+
+          <h2 class="section-title whyus__title">
+            Why NYC Property Owners Choose Royal Renovators Inc.
+          </h2>
+
+          <p class="whyus__lede">
+            There is no shortage of roofing companies in New York. What there is a shortage of is
+            companies that will still answer the phone in three years, when the roof they sold you
+            starts doing something it should not.
+          </p>
+
+          <p class="whyus__text">
+            We have been working on the same streets since 1988. Our name is on buildings in
+            Forest Hills, Ridgewood, Astoria, Bay Ridge and the Bronx, and a large share of every
+            year&rsquo;s work comes from people who have already used us or were sent by someone
+            who has. That only holds together if the work does.
+          </p>
+
+          <div class="whyus__actions">
+            <a class="btn btn--primary" href="#estimate">
+              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+              <span class="btn__label">Get a free estimate</span>
+            </a>
+            <a class="btn btn--ghost" href="tel:+17184146067">
+              <span class="btn__pip" aria-hidden="true"><i class="btn__arrow fa-solid fa-phone"></i><i class="btn__arrow btn__arrow--copy fa-solid fa-phone"></i></span>
+              <span class="btn__label">Call (718) 414-6067</span>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="whyus__media">
+
+          <div class="media-frame media-frame--dark whyus__shot whyus__shot--tall">
+            <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/09/Flat-tearoff-big-crew-Royal-pic-1-1024x768.jpg"
+                 alt="Royal Renovators crew tearing off a flat roof with the Manhattan skyline behind" width="1024" height="768"
+                 loading="lazy" decoding="async">
+          </div>
+
+          <div class="media-frame media-frame--dark whyus__shot">
+            <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/09/20-guys-Flat-roof-tearoff-Royal-pic-1024x768.jpg"
+                 alt="Aerial view of a Royal Renovators crew working across a full flat roof" width="1024" height="768"
+                 loading="lazy" decoding="async">
+          </div>
+
+          <div class="whyus__tile whyus__tile--plain">
+            <p class="whyus__tile-figure">35+ <span class="whyus__tile-unit">Years</span></p>
+            <p class="whyus__tile-label">Roofing across the five boroughs</p>
+          </div>
+
+        </div>
+
+        <ul class="whyus__reasons">
+
+            <li class="whyus__reason">
+              <span class="whyus__reason-icon"><i class="fa-solid fa-certificate" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="whyus__reason-title">Credentials you can check</h3>
+                <p class="whyus__reason-text">
+                  Licensed NYC contractor #2030146, BBB A+ accredited, GAF Factory-Certified
+                  Master Elite, fully insured. Every one of those is verifiable without asking us.
+                </p>
+              </div>
+            </li>
+
+            <li class="whyus__reason">
+              <span class="whyus__reason-icon"><i class="fa-solid fa-star" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="whyus__reason-title">5 star reviews</h3>
+                <p class="whyus__reason-text">
+                  Hundreds of NYC owners have written down how the job went, and every one of
+                  them is public.
+                </p>
+              </div>
+            </li>
+
+            <li class="whyus__reason">
+              <span class="whyus__reason-icon"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="whyus__reason-title">Written, itemised estimates</h3>
+                <p class="whyus__reason-text">
+                  Tear-off and overlay priced separately so you can compare like for like against
+                  anyone else you ask. No day-rate arithmetic, no verbal numbers.
+                </p>
+              </div>
+            </li>
+
+            <li class="whyus__reason">
+              <span class="whyus__reason-icon"><i class="fa-solid fa-droplet" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="whyus__reason-title">Seven-day leak response</h3>
+                <p class="whyus__reason-text">
+                  Water does not wait for Monday. We take emergency calls seven days a week and
+                  make the building safe first, then quote the permanent repair.
+                </p>
+              </div>
+            </li>
+
+            <li class="whyus__reason">
+              <span class="whyus__reason-icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="whyus__reason-title">A straight answer, including &ldquo;not yet&rdquo;</h3>
+                <p class="whyus__reason-text">
+                  If a roof has five years left in it we will tell you that, with photographs,
+                  rather than sell you a replacement you do not need this season.
+                </p>
+              </div>
+            </li>
+
+            <li class="whyus__reason">
+              <span class="whyus__reason-icon"><i class="fa-solid fa-broom" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="whyus__reason-title">The site left the way we found it</h3>
+                <p class="whyus__reason-text">
+                  Dumpsters placed with your neighbours in mind, a magnet sweep of the yard and
+                  the driveway, and a walkthrough with you before anyone leaves.
+                </p>
+              </div>
+            </li>
+
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- Siding, masonry and gutters — the rest of the envelope. -->
+    <section class="section exterior" id="exterior">
+      <div class="container">
+
+        <div class="exterior__head">
+          <div>
+            <p class="section-eyebrow">Exterior work</p>
+            <h2 class="section-title">
+              Siding, Masonry, and Gutter Work for Your Property&rsquo;s Exterior
+            </h2>
+          </div>
+          <p class="section-lede exterior__lede">
+            A roof is only the top of the envelope. Most of the water damage we are called out to
+            gets in somewhere else, and we handle all three trades with the same crews, so
+            nobody gets to blame the others.
+          </p>
+        </div>
+
+        <ul class="exterior__grid">
+
+          <li class="exterior__card">
+            <div class="media-frame exterior__media">
+              <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2026/06/ChatGPT-Image-Jun-17-2026-03_23_22-PM-1024x819.png"
+                   alt="Royal Renovators tradesmen fitting siding, sealing window trim and setting stone veneer" width="1024" height="819"
+                   loading="lazy" decoding="async">
+            </div>
+            <div class="exterior__card-body">
+              <h3 class="exterior__card-title"><a href="#siding">Siding</a></h3>
+              <p class="exterior__card-text">
+                Vinyl, fiber cement and stucco over a proper weather barrier, every opening flashed.
+              </p>
+              <ul class="exterior__points">
+                <li>Vinyl, fiber cement and stucco</li>
+                <li>House wrap and flashing at every opening</li>
+              </ul>
+              <span class="exterior__card-more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </li>
+
+          <li class="exterior__card">
+            <div class="media-frame exterior__media">
+              <img class="media-frame__image" src="images/landing/project-masonry.jpg"
+                   alt="Finished brick masonry repointing on a New York building" width="1122" height="1402"
+                   loading="lazy" decoding="async">
+            </div>
+            <div class="exterior__card-body">
+              <h3 class="exterior__card-title"><a href="#masonry">Masonry &amp; pointing</a></h3>
+              <p class="exterior__card-text">
+                Pointing, parapet rebuilds and waterproofing on older New York brick.
+              </p>
+              <ul class="exterior__points">
+                <li>Grinding and repointing, matched mortar</li>
+                <li>Parapet rebuilds and coping stones</li>
+              </ul>
+              <span class="exterior__card-more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </li>
+
+          <li class="exterior__card">
+            <div class="media-frame exterior__media">
+              <img class="media-frame__image" src="images/landing/project-gutters.jpg"
+                   alt="New seamless gutters and leader on a brick home" width="1122" height="1402"
+                   loading="lazy" decoding="async">
+            </div>
+            <div class="exterior__card-body">
+              <h3 class="exterior__card-title"><a href="#gutters">Gutters &amp; leaders</a></h3>
+              <p class="exterior__card-text">
+                Seamless aluminium formed on site, sized to the roof and piped clear of the foundation.
+              </p>
+              <ul class="exterior__points">
+                <li>Seamless aluminium, formed on site</li>
+                <li>Sized to the roof area, not the wall</li>
+              </ul>
+              <span class="exterior__card-more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </section>
+
+    <section class="cta-band" id="free-estimate">
+
+      <div class="cta-band__media" aria-hidden="true">
+        <img class="cta-band__image" src="images/landing/estimate-crew-background.jpg" alt=""
+             width="1672" height="941" loading="lazy" decoding="async">
+      </div>
+      <div class="cta-band__scrim" aria-hidden="true"></div>
+
+      <div class="container cta-band__inner">
+
+        <p class="cta-band__eyebrow">Free &middot; No obligation</p>
+
+        <h2 class="cta-band__title">Get a Free Roofing Estimate in New York City</h2>
+
+        <p class="cta-band__text">
+          Tell us what the roof is doing and we will come out, get up there and put a written
+          price in front of you, usually within one business day.
+        </p>
+
+        <div class="cta-band__actions">
+          <a class="btn btn--primary" href="#estimate">
+            <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+            <span class="btn__label">Get a free estimate</span>
+          </a>
+          <a class="btn btn--ghost" href="tel:+17184146067">
+            <span class="btn__pip" aria-hidden="true"><i class="btn__arrow fa-solid fa-phone"></i><i class="btn__arrow btn__arrow--copy fa-solid fa-phone"></i></span>
+            <span class="btn__label">Call (718) 414-6067</span>
+          </a>
+        </div>
+
+        <ul class="cta-band__note">
+          <li class="cta-band__note-lic">Licensed NYC contractor #2030146</li>
+          <li>BBB A+ Rated</li>
+          <li>GAF Master Elite</li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- Tabbed gallery. Panels are plain `hidden` rather than display:none in
+         CSS, so the tab script and the markup agree on one source of truth for
+         which panel is showing. -->
 
 
     <section class="section awards" id="awards">
@@ -1940,15 +1834,14 @@
                 <img src="images/Google__G__logo.svg.webp" alt="Google"
                      width="1280" height="1280" loading="lazy" decoding="async">
                 <span class="awards__rating-score">
-                  <strong>4.9</strong> ratings
-                  <span class="visually-hidden">out of 5 on Google</span>
+                  <strong>4.8</strong> <span class="rating-star" aria-hidden="true">&#9733;</span>
+                  <span class="visually-hidden">4.8 out of 5 on Google</span>
                 </span>
               </a>
             </li>
             <li>
               <a href="#bbb">
-                <img src="images/bbb-a-plus-accredited.png" alt="BBB Accredited Business, A+ rating"
-                     width="1360" height="1156" loading="lazy" decoding="async">
+                <img src="images/bb+.webp" alt="BBB Accredited Business, A+ rating" width="400" height="259" loading="lazy" decoding="async">
               </a>
             </li>
             <li class="is-gaf">
@@ -1967,12 +1860,6 @@
               <a href="#yelp">
                 <img src="images/PngItem_1663.png" alt="People love us on Yelp"
                      width="540" height="539" loading="lazy" decoding="async">
-              </a>
-            </li>
-            <li class="is-inc">
-              <a href="#inc-5000">
-                <img src="images/Inc.-5000-Color-Medallion-Logo-768x768.png" alt="Inc. 5000 honoree"
-                     width="768" height="768" loading="lazy" decoding="async">
               </a>
             </li>
           </ul>
@@ -1995,7 +1882,7 @@
                 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
               </button>
             </div>
-            <a class="btn btn--navy blog__all" href="#blog-all">
+            <a class="btn btn--primary blog__all" href="#blog-all">
               <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
               <span class="btn__label">View all</span>
             </a>
@@ -2499,7 +2386,7 @@
 
               <p class="field">
                 <label class="field__label" for="cf-name">
-                  Full name <span class="field__req" aria-hidden="true">*</span>
+                  Full name
                 </label>
                 <input class="field__input" type="text" id="cf-name" name="name"
                        autocomplete="name" placeholder="Jane Rodriguez" required>
@@ -2507,39 +2394,32 @@
 
               <p class="field">
                 <label class="field__label" for="cf-phone">
-                  Phone <span class="field__req" aria-hidden="true">*</span>
+                  Best Phone Number
                 </label>
                 <input class="field__input" type="tel" id="cf-phone" name="phone"
                        autocomplete="tel" inputmode="tel" placeholder="(718) 000-0000" required>
+                <span class="field__hint">We&rsquo;ll only contact you about your project.</span>
               </p>
 
-              <p class="field">
-                <label class="field__label" for="cf-email">
-                  Email <span class="field__req" aria-hidden="true">*</span>
-                </label>
-                <input class="field__input" type="email" id="cf-email" name="email"
-                       autocomplete="email" inputmode="email" placeholder="jane@email.com" required>
-              </p>
-
-              <p class="field">
+              <p class="field field--full">
                 <label class="field__label" for="cf-address">
-                  Address <span class="field__req" aria-hidden="true">*</span>
+                  Property Address
                 </label>
                 <input class="field__input" type="text" id="cf-address" name="address"
                        autocomplete="street-address" placeholder="Street, borough" required>
               </p>
 
               <p class="field field--full">
-                <label class="field__label" for="cf-message">How can we help?</label>
+                <label class="field__label" for="cf-message">How Can We Help?</label>
                 <textarea class="field__input field__input--area" id="cf-message" name="message"
-                          rows="4" placeholder="Leak over the back bedroom, flat roof, two storeys&hellip;"></textarea>
+                          rows="4" placeholder="We have a leak over our home&rsquo;s back bedroom, it&rsquo;s a flat roof&hellip;"></textarea>
               </p>
 
             </div>
 
             <button class="btn btn--primary contact-form__submit" type="submit">
               <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
-              <span class="btn__label">Get a free quote</span>
+              <span class="btn__label">Request Free Quote</span>
             </button>
 
             <p class="form-status" data-form-status role="status" aria-live="polite"></p>
@@ -2620,16 +2500,23 @@
                  alt="Royal Renovators Inc." width="1518" height="1036">
           </a>
           <p class="footer__about">
-            Royal Renovators Inc. is a top-rated roofing contractor based in Queens and serving
-            Brooklyn, Manhattan, the Bronx, Yonkers, and Long Island since 1988. As a GAF Master
-            Elite contractor with an A+ BBB rating, we specialize in roof repairs, roof
-            replacements, flat and shingle roofing, siding, gutters, windows, and masonry. Our
-            35+ years experienced team serves both residential and commercial properties.
+            Royal Renovators Inc. is a licensed NYC roofing contractor serving Queens, Brooklyn,
+            Manhattan, the Bronx, Yonkers, and Long Island since 1988. We specialize in flat
+            roofing, shingles, roof repairs, siding, gutters, and masonry.
           </p>
           <a class="btn btn--primary footer__cta" href="#estimate">
             <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
             <span class="btn__label">Get a free estimate</span>
           </a>
+          <ul class="socials footer__socials" aria-label="Royal Renovators on social media">
+            <li><a href="#" aria-label="Royal Renovators on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+            <li><a href="#" aria-label="Royal Renovators on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="#" aria-label="Royal Renovators on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="#" aria-label="Royal Renovators on YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+            <li><a href="#" aria-label="Royal Renovators on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
+            <li><a href="#" aria-label="Royal Renovators on Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
+            <li><a href="#" aria-label="Royal Renovators on TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a></li>
+          </ul>
         </div>
 
         <nav class="footer__col" aria-label="Roofing">
@@ -2638,9 +2525,8 @@
               <li><a href="#roof-inspection">Roof Inspection</a></li>
               <li><a href="#roof-repair">Roof Repair</a></li>
               <li><a href="#roof-replacement">Roof Replacement</a></li>
-              <li><a href="#roof-installation">Roof Installation</a></li>
               <li><a href="nyc3-flat-roofing.html">Flat Roofing</a></li>
-              <li><a href="nyc3-shingle-roofing.html">Shingle Roofing</a></li>
+              <li><a href="nyc4-shingle-roofing.html">Shingle Roofing</a></li>
               <li><a href="#commercial-roofing">Commercial Roofing</a></li>
           </ul>
         </nav>
@@ -2661,10 +2547,10 @@
           <ul class="footer__links">
               <li><a href="/">Home</a></li>
               <li><a href="#about">About Us</a></li>
-              <li><a href="nyc3-projects.html">Projects</a></li>
+              <li><a href="nyc4-projects.html">Projects</a></li>
               <li><a href="#blog">Blog</a></li>
               <li><a href="#faqs">FAQs</a></li>
-              <li><a href="nyc3-contact.html">Contact Us</a></li>
+              <li><a href="nyc4-contact.html">Contact Us</a></li>
           </ul>
         </nav>
 
@@ -2677,11 +2563,10 @@
         <ul class="footer__badges">
         <li class="footer__rating">
           <img src="images/Google__G__logo.svg.webp" alt="Google" width="1280" height="1280" loading="lazy" decoding="async">
-          <span><strong>4.9</strong> ratings</span>
+          <span><strong>4.8</strong> <span class="rating-star" aria-hidden="true">&#9733;</span><span class="visually-hidden">4.8 out of 5 on Google</span></span>
         </li>
         <li>
-          <img src="images/bbb-a-plus-accredited.png" alt="BBB Accredited Business, A+ rating"
-               width="1360" height="1156" loading="lazy" decoding="async">
+          <img src="images/bb+.webp" alt="BBB Accredited Business, A+ rating" width="400" height="259" loading="lazy" decoding="async">
         </li>
         <li class="is-gaf">
           <img src="images/GAF-Master-Elite-Logo.png" alt="GAF Factory-Certified Master Elite roofing contractor"
@@ -2717,7 +2602,7 @@
             <p class="footer__contactbar-label">Visit us</p>
             <p class="footer__contactbar-value">
               <a href="https://www.google.com/maps/search/?api=1&query=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375"
-                 target="_blank" rel="noopener">118-35 Queens Blvd,<br>Forest Hills, NY 11375</a>
+                 target="_blank" rel="noopener">118-35 Queens Blvd<br>Forest Hills, NY 11375</a>
             </p>
           </div>
         </li>
@@ -2726,7 +2611,7 @@
           <span class="footer__contactbar-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
           <div>
             <p class="footer__contactbar-label">Opening hours</p>
-            <p class="footer__contactbar-value"><a href="nyc3-contact.html">Mon &ndash; Sun, 7am &ndash; 11pm</a></p>
+            <p class="footer__contactbar-value"><a href="nyc4-contact.html">Mon &ndash; Sun, 7am &ndash; 11pm</a></p>
           </div>
         </li>
 
@@ -2758,7 +2643,7 @@
       <div class="sealpick__head">
         <div>
           <h2 class="sealpick__title" id="sealpick-title">Credential design</h2>
-          <p class="sealpick__sub">Six ways to set &ldquo;Trusted Roofing Since 1988&rdquo;. Pick one to see it in the hero.</p>
+          <p class="sealpick__sub">Nine ways to set &ldquo;Trusted Roofing Since 1988&rdquo;. Pick one to see it in the hero.</p>
         </div>
         <button class="sealpick__close" type="button" data-seal-close>
           <i class="fa-solid fa-xmark" aria-hidden="true"></i>
@@ -2785,6 +2670,6 @@
   </a>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-  <script src="js/nyc3.js" defer></script>
+  <script src="js/nyc4.js" defer></script>
 </body>
 </html>

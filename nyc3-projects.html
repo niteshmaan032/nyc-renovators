@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Contact Us | Royal Renovators Inc.</title>
-  <meta name="description" content="Contact Royal Renovators Inc. — Queens roofing contractor since 1988. Call (718) 414-6067 or request a free written quote. Serving all five boroughs, Long Island and Westchester.">
+  <title>Roofing Projects in Queens &amp; NYC | Royal Renovators Inc.</title>
+  <meta name="description" content="Completed roofing projects across Queens, Brooklyn, the Bronx and Manhattan by Royal Renovators Inc. Flat roofs, shingle roofs, commercial systems and exterior work since 1988. Licensed NYC contractor. Call (718) 414-6067.">
 
   <link rel="icon" href="images/royal-renovators-logo-removebg-preview-e1776149232571.webp">
 
@@ -26,6 +26,10 @@
   <!-- Page-scoped overrides. Loaded after style.css so this page can diverge
        from index.html without touching the shared stylesheet. -->
   <link rel="stylesheet" href="css/nyc3.css">
+
+  <!-- Page-scoped again: the three-column gallery grid exists only here,
+       so it stays out of the sheet the homepage and contact page share. -->
+  <link rel="stylesheet" href="css/nyc3-projects.css">
 </head>
 <body>
 
@@ -398,7 +402,7 @@
             </li>
 
 
-            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc3-projects.html">Projects</a></li>
+            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc3-projects.html" aria-current="page">Projects</a></li>
             <li class="primary-nav__item"><a class="primary-nav__link" href="nyc3.html#faqs">FAQs</a></li>
             <li class="primary-nav__item"><a class="primary-nav__link" href="nyc3.html#blog">Blog</a></li>
             <li class="primary-nav__item"><a class="primary-nav__link" href="nyc3.html#about">About</a></li>
@@ -608,7 +612,7 @@
             </ul>
           </li>
 
-          <li><a class="mobile-nav__link" href="nyc3-projects.html">Projects</a></li>
+          <li><a class="mobile-nav__link" href="nyc3-projects.html" aria-current="page">Projects</a></li>
           <li><a class="mobile-nav__link" href="nyc3.html#about">About</a></li>
           <li><a class="mobile-nav__link" href="nyc3.html#faqs">FAQs</a></li>
           <li><a class="mobile-nav__link" href="nyc3.html#blog">Blog</a></li>
@@ -630,285 +634,642 @@
     </div>
   </div>
 
+
+
   <main id="main">
 
-    <!-- Two bands. Top: the heading with the credentials opposite it. Below:
-         how to reach us and where we are on the left, the form on the right.
-         The map is the same embed the homepage uses, at a height that keeps
-         Google's own place card on screen — see the note on .contact__map. -->
-    <section class="page-hero page-hero--contact">
-      <!-- The heading band runs edge to edge on its own tint; the two cards sit
-           on white below it, with a gap between so the bands read as two steps
-           rather than one long column. -->
-      <div class="contact-hero__band">
-        <div class="container contact-hero__top">
+    <!-- Hero: centred text, no image, same as the service pages. The photos
+         are the point of this page, so the hero stays short. -->
+    <section class="page-hero page-hero--service">
+      <div class="container page-hero__inner pr-hero">
 
-          <div class="contact-hero__head">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="nyc3.html">Home</a></li>
+            <li aria-current="page">Projects</li>
+          </ol>
+        </nav>
 
-            <h1 class="page-hero__title">Contact Us</h1>
+        <h1 class="page-hero__title">Roofing Projects Completed <br class="pr-br">Across Queens &amp; NYC</h1>
 
-            <p class="page-hero__lede">
-              Get a fast free estimate today.
-            </p>
+        <p class="page-hero__lede">
+          Every roofing project tells a different story. From replacing aging flat roofs in
+          Forest Hills to installing new architectural shingles in Bayside and repairing
+          commercial roofing systems in Long Island City, this is the work behind the name
+          since 1988.
+        </p>
 
-          </div>
-
-          <ul class="hero__badges page-hero__marks">
-            <li class="hero__badge hero__badge--rating">
-              <img src="images/Google__G__logo.svg.webp" alt="Google" width="1280" height="1280" decoding="async">
-              <span class="hero__rating"><strong>4.9</strong> ratings</span>
-            </li>
-            <li class="hero__badge">
-              <img src="images/bbb-a-plus-accredited.png" alt="BBB Accredited Business, A+ rating"
-                   width="1360" height="1156" decoding="async">
-            </li>
-            <li class="hero__badge hero__badge--gaf">
-              <img src="images/GAF-Master-Elite-Logo.png" alt="GAF Factory-Certified Master Elite roofing contractor"
-                   width="1424" height="520" decoding="async">
-            </li>
-            <li class="hero__badge">
-              <img src="images/ANGIES_LIST_SUPER_SAVER_award.png" alt="Angie&rsquo;s List Super Service Award"
-                   width="600" height="462" decoding="async">
-            </li>
-            <li class="hero__badge">
-              <img src="images/PngItem_1663.png" alt="People love us on Yelp"
-                   width="540" height="539" decoding="async">
-            </li>
-            <li class="hero__badge hero__badge--inc">
-              <img src="images/Inc.-5000-Color-Medallion-Logo-768x768.png" alt="Inc. 5000 honoree"
-                   width="768" height="768" decoding="async">
-            </li>
-          </ul>
-
-        </div>
-      </div>
-
-      <div class="container contact-hero">
-
-        <div class="contact-hero__grid">
-
-          <div class="contact-hero__left">
-
-            <!-- Queried by business name so the embed resolves to the listing and
-                 shows Google's own card rather than a bare address pin. -->
-            <div class="contact__map">
-              <iframe class="contact__map-frame"
-                      src="https://www.google.com/maps?q=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375&amp;output=embed"
-                      title="Map showing Royal Renovators Inc. at 118-35 Queens Blvd, Forest Hills, NY 11375"
-                      loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-
-            <ul class="contact-lines">
-
-              <li class="contact-line">
-                <span class="contact-line__icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
-                <span class="contact-line__body">
-                  <span class="contact-line__label">Call the office</span>
-                  <a class="contact-line__value" href="tel:+17184146067">(718) 414-6067</a>
-                </span>
-              </li>
-
-              <li class="contact-line contact-line--address">
-                <span class="contact-line__icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
-                <span class="contact-line__body">
-                  <span class="contact-line__label">Visit us</span>
-                  <a class="contact-line__value" href="https://www.google.com/maps/search/?api=1&amp;query=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375"
-                     target="_blank" rel="noopener">118-35 Queens Blvd, Forest Hills, NY 11375</a>
-                </span>
-              </li>
-
-              <li class="contact-line">
-                <span class="contact-line__icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
-                <span class="contact-line__body">
-                  <span class="contact-line__label">Opening hours</span>
-                  <span class="contact-line__value">Mon &ndash; Sun, 7am &ndash; 11pm</span>
-                </span>
-              </li>
-
-            </ul>
-
-          </div>
-
-          <form class="contact-form form--light js-form" id="contact-form" method="post"
-                action="#contact-form" aria-labelledby="contact-form-title">
-
-            <div class="contact-form__head">
-              <h2 class="contact-form__title" id="contact-form-title">Get a Free Estimate</h2>
-            </div>
-
-            <div class="contact-form__grid">
-
-              <p class="field">
-                <label class="field__label" for="cf-name">
-                  Full name <span class="field__req" aria-hidden="true">*</span>
-                </label>
-                <input class="field__input" type="text" id="cf-name" name="name"
-                       autocomplete="name" placeholder="Jane Rodriguez" required>
-              </p>
-
-              <p class="field">
-                <label class="field__label" for="cf-phone">
-                  Phone <span class="field__req" aria-hidden="true">*</span>
-                </label>
-                <input class="field__input" type="tel" id="cf-phone" name="phone"
-                       autocomplete="tel" inputmode="tel" placeholder="(718) 000-0000" required>
-              </p>
-
-              <p class="field">
-                <label class="field__label" for="cf-email">
-                  Email <span class="field__req" aria-hidden="true">*</span>
-                </label>
-                <input class="field__input" type="email" id="cf-email" name="email"
-                       autocomplete="email" inputmode="email" placeholder="jane@email.com" required>
-              </p>
-
-              <p class="field">
-                <label class="field__label" for="cf-address">
-                  Address <span class="field__req" aria-hidden="true">*</span>
-                </label>
-                <input class="field__input" type="text" id="cf-address" name="address"
-                       autocomplete="street-address" placeholder="Street, borough" required>
-              </p>
-
-              <p class="field field--full">
-                <label class="field__label" for="cf-message">How can we help?</label>
-                <textarea class="field__input field__input--area" id="cf-message" name="message"
-                          rows="3" placeholder="Leak over the back bedroom, flat roof, two storeys&hellip;"></textarea>
-              </p>
-
-            </div>
-
-            <button class="btn btn--primary contact-form__submit" type="submit">
+        <div class="page-hero__actions">
+          <a class="btn btn--primary" href="nyc3-contact.html#contact-form">
               <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
-              <span class="btn__label">Get a free quote</span>
-            </button>
-
-            <p class="form-status" data-form-status role="status" aria-live="polite"></p>
-
-          </form>
-
+              <span class="btn__label">Get a free estimate</span>
+            </a>
+          <a class="btn btn--ghost" href="tel:+17184146067">
+              <span class="btn__pip" aria-hidden="true"><i class="btn__arrow fa-solid fa-phone"></i><i class="btn__arrow btn__arrow--copy fa-solid fa-phone"></i></span>
+              <span class="btn__label">Call (718) 414-6067</span>
+            </a>
         </div>
 
       </div>
     </section>
 
-    <!-- Reasons strip. Kept to four one-line points: this is a contact page, so
-         the section is there to reassure in passing, not to re-sell the company
-         the way the homepage's why-us section does. -->
-    <section class="section reasons" id="why-us">
+    <section class="section projects pr-gallery" id="gallery">
       <div class="container">
 
-        <div class="reasons__head">
-          <p class="section-eyebrow">Why us</p>
-          <h2 class="section-title reasons__title">Why Homeowners Choose Royal Renovators Inc.</h2>
+        <div class="projects__head">
+          <p class="section-eyebrow">Recent work</p>
+          <h2 class="section-title projects__title">Recent Work by Category</h2>
+          <p class="pr-head__lede">
+            Flat roofs, shingle roofs, commercial systems and exterior work across Queens,
+            Brooklyn, the Bronx and Manhattan. Pick a category; any photo opens full size.
+          </p>
         </div>
 
-        <ul class="reasons__grid">
+        <div class="projects__tabs" role="tablist" aria-label="Project categories">
+          <button class="projects__tab is-active" type="button" role="tab"
+                  id="ptab-flat" aria-controls="ppanel-flat" aria-selected="true">
+            <i class="fa-solid fa-layer-group" aria-hidden="true"></i>Flat Roofing
+          </button>
+          <button class="projects__tab" type="button" role="tab" tabindex="-1"
+                  id="ptab-shingle" aria-controls="ppanel-shingle" aria-selected="false">
+            <i class="fa-solid fa-house-chimney" aria-hidden="true"></i>Shingle Roofing
+          </button>
+          <button class="projects__tab" type="button" role="tab" tabindex="-1"
+                  id="ptab-commercial" aria-controls="ppanel-commercial" aria-selected="false">
+            <i class="fa-solid fa-building" aria-hidden="true"></i>Commercial
+          </button>
+          <button class="projects__tab" type="button" role="tab" tabindex="-1"
+                  id="ptab-exterior" aria-controls="ppanel-exterior" aria-selected="false">
+            <i class="fa-solid fa-trowel-bricks" aria-hidden="true"></i>Exterior
+          </button>
+        </div>
 
-          <li class="reason">
-            <span class="reason__icon"><i class="fa-solid fa-certificate" aria-hidden="true"></i></span>
-            <h3 class="reason__title">Credentials you can check</h3>
-            <p class="reason__text">Licensed #2030146, BBB A+, GAF Master Elite, fully insured.</p>
-          </li>
+        <div class="projects__panel" role="tabpanel" id="ppanel-flat" aria-labelledby="ptab-flat" tabindex="0">
+          <ul class="projects__grid pr-gallery__grid">
 
-          <li class="reason">
-            <span class="reason__icon"><i class="fa-solid fa-star" aria-hidden="true"></i></span>
-            <h3 class="reason__title">5 star ratings</h3>
-            <p class="reason__text">
-              Hundreds of public reviews from NYC owners, across three sites. We average
-              <strong>4.9 on Google</strong>, are a <strong>People Love Us on Yelp</strong> business,
-              and have won the <strong>Angi Super Service Award</strong> six years running. Every one
-              of those reviews is public and written by a customer.
-            </p>
-          </li>
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Flat roof replacement &middot; Forest Hills, Queens &middot; Jun 2026" aria-label="Open flat roof replacement in Forest Hills in the gallery viewer">
+                <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/09/20-guys-Flat-roof-tearoff-Royal-pic-1024x768.jpg"
+                     alt="Completed flat roof replacement seen from above, full crew on site" width="1024" height="768"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Flat roof replacement</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Forest Hills, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Jun 2026</time></span>
+                </p>
+              </div>
+            </li>
 
-          <li class="reason">
-            <span class="reason__icon"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></span>
-            <h3 class="reason__title">Itemised in writing</h3>
-            <p class="reason__text">Tear-off and overlay priced separately, so you can compare.</p>
-          </li>
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Tear-off and re-roof &middot; Ridgewood, Queens &middot; May 2026" aria-label="Open flat roof tear-off in Ridgewood in the gallery viewer">
+                <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/09/Flat-tearoff-big-crew-Royal-pic-1-1024x768.jpg"
+                     alt="Flat roof tear-off in progress with the Manhattan skyline behind" width="1024" height="768"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Tear-off and re-roof</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Ridgewood, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>May 2026</time></span>
+                </p>
+              </div>
+            </li>
 
-          <li class="reason">
-            <span class="reason__icon"><i class="fa-solid fa-droplet" aria-hidden="true"></i></span>
-            <h3 class="reason__title">Seven-day response</h3>
-            <p class="reason__text">We take emergency leak calls every day of the week.</p>
-          </li>
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Cap sheet installation &middot; Jamaica, Queens &middot; Apr 2026" aria-label="Open cap sheet installation in Queens in the gallery viewer">
+                <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/09/Flat-Roof-Install-cap-sheet-Royal-pic-1-1-1024x768.jpg"
+                     alt="Crew rolling and sealing cap sheet across a flat roof" width="1024" height="768"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Cap sheet installation</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Jamaica, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Apr 2026</time></span>
+                </p>
+              </div>
+            </li>
 
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Full-crew flat roof replacement &middot; Bushwick, Brooklyn &middot; Nov 2025" aria-label="Open full-crew flat roof replacement in Brooklyn in the gallery viewer">
+                <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2022/06/WhatsApp-Image-2022-06-21-at-4.32.41-PM-1-1024x768.jpeg"
+                     alt="Royal Renovators crew and trucks on site for a flat roof replacement" width="1024" height="768"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Full-crew flat roof replacement</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Bushwick, Brooklyn</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Nov 2025</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Modified bitumen torch-down &middot; Astoria, Queens &middot; Oct 2025" aria-label="Open modified bitumen flat roof in progress in the gallery viewer">
+                <img class="media-frame__image" src="images/landing/flatroof-in-progress.jpg"
+                     alt="Roofer torching down modified bitumen on a flat roof" width="1086" height="1448"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Modified bitumen torch-down</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Astoria, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Oct 2025</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Seam and flashing detail &middot; Rego Park, Queens &middot; Sep 2025" aria-label="Open flat roof seam detail in the gallery viewer">
+                <img class="media-frame__image" src="images/landing/flatroof-seam-detail.jpg"
+                     alt="Close-up of a sealed seam on a finished flat roof" width="1448" height="1086"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Seam and flashing detail</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Rego Park, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Sep 2025</time></span>
+                </p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="projects__panel" role="tabpanel" id="ppanel-shingle" aria-labelledby="ptab-shingle" tabindex="0" hidden>
+          <ul class="projects__grid pr-gallery__grid">
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Shingle tear-off back to the deck &middot; Whitestone, Queens &middot; Jul 2026" aria-label="Open shingle tear-off back to the deck in the gallery viewer">
+                <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/07/WhatsApp-Image-2022-06-21-at-4.3-1-1-1024x768.webp"
+                     alt="Old shingles stripped back to the deck beside a Royal Renovators van" width="1024" height="768"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Shingle tear-off back to the deck</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Whitestone, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Jul 2026</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Full shingle replacement &middot; Bayside, Queens &middot; May 2026" aria-label="Open finished shingle roof in Bayside in the gallery viewer">
+                <img class="media-frame__image" src="images/landing/about-finished-roof.jpg"
+                     alt="Finished charcoal shingle roof on a Queens home" width="1448" height="1086"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Full shingle replacement</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Bayside, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>May 2026</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Architectural shingle install &middot; Bay Ridge, Brooklyn &middot; Apr 2026" aria-label="Open architectural shingle installation in Bay Ridge in the gallery viewer">
+                <img class="media-frame__image" src="images/landing/service-roof-installation.jpg"
+                     alt="Roofers aligning architectural shingles during installation" width="1586" height="992"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Architectural shingle install</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Bay Ridge, Brooklyn</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Apr 2026</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Tear-off to the deck &middot; Great Neck, Long Island &middot; Nov 2025" aria-label="Open roof tear-off showing exposed decking in the gallery viewer">
+                <img class="media-frame__image" src="images/landing/service-roof-replacement.jpg"
+                     alt="Roof replacement showing exposed decking and new shingles" width="1586" height="992"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Tear-off to the deck</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Great Neck, Long Island</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Nov 2025</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Designer slate-look shingles &middot; Kew Gardens, Queens &middot; Oct 2025" aria-label="Open designer shingle installation in the gallery viewer">
+                <img class="media-frame__image" src="images/shingle-roofing/designer-shingle-installation.jpg"
+                     alt="Roofer checking premium slate-look asphalt shingles beside copper flashing" width="1672" height="941"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Designer slate-look shingles</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Kew Gardens, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Oct 2025</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Final inspection &middot; Fresh Meadows, Queens &middot; Aug 2025" aria-label="Open finished roof inspection in the gallery viewer">
+                <img class="media-frame__image" src="images/shingle-roofing/finished-roof-inspection.jpg"
+                     alt="Roofer inspecting a newly finished shingle roof" width="1448" height="1086"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Final inspection</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Fresh Meadows, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Aug 2025</time></span>
+                </p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="projects__panel" role="tabpanel" id="ppanel-commercial" aria-labelledby="ptab-commercial" tabindex="0" hidden>
+          <ul class="projects__grid pr-gallery__grid">
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Crane lift and material staging &middot; Williamsburg, Brooklyn &middot; Jun 2026" aria-label="Open crane lift and material staging in Brooklyn in the gallery viewer">
+                <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/09/Boom-Crane-Pic-2-Royal-Beacon-Allied-copy-1-1-1024x768.jpg"
+                     alt="Boom crane lifting roofing materials to a Brooklyn building" width="1024" height="768"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Crane lift and material staging</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Williamsburg, Brooklyn</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Jun 2026</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Warehouse single-ply roof &middot; Sunset Park, Brooklyn &middot; Mar 2026" aria-label="Open warehouse single-ply roofing in the gallery viewer">
+                <img class="media-frame__image" src="images/landing/service-commercial-roofing.jpg"
+                     alt="Commercial roofing crew heat-welding a TPO system" width="1570" height="1001"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Warehouse single-ply roof</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Sunset Park, Brooklyn</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Mar 2026</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="The crew on a finished roof &middot; Long Island City, Queens &middot; Dec 2025" aria-label="Open the crew on a finished roof in Long Island City in the gallery viewer">
+                <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/09/Photo-Jul-02-2024_-2-57-14-PM-_5_-_1_-1-1024x768.webp"
+                     alt="The Royal Renovators crew on a completed rooftop above the Manhattan skyline" width="1024" height="768"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">The crew on a finished roof</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Long Island City, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Dec 2025</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Finished TPO system &middot; Jamaica, Queens &middot; Oct 2025" aria-label="Open finished white TPO commercial roof in the gallery viewer">
+                <img class="media-frame__image" src="images/landing/project-commercial-tpo.jpg"
+                     alt="Finished white TPO membrane on a commercial roof" width="1672" height="941"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Finished TPO system</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Jamaica, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Oct 2025</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Parapet and coping rebuild &middot; Upper West Side, Manhattan &middot; Sep 2025" aria-label="Open parapet and coping rebuild in Manhattan in the gallery viewer">
+                <img class="media-frame__image" src="images/landing/project-parapet-flashing.jpg"
+                     alt="Finished parapet masonry and metal flashing" width="1122" height="1402"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Parapet and coping rebuild</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Upper West Side, Manhattan</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Sep 2025</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Site set-up and delivery &middot; Flushing, Queens &middot; Jul 2025" aria-label="Open Royal Renovators box truck on a commercial site in the gallery viewer">
+                <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2024/09/1-man-standing-1-box-truck-Royal-pic-1-1.jpg"
+                     alt="Royal Renovators box truck and foreman at a commercial job site" width="768" height="1024"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Site set-up and delivery</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Flushing, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Jul 2025</time></span>
+                </p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="projects__panel" role="tabpanel" id="ppanel-exterior" aria-labelledby="ptab-exterior" tabindex="0" hidden>
+          <ul class="projects__grid pr-gallery__grid">
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Seamless gutters and leaders &middot; Ridgewood, Queens &middot; Jun 2026" aria-label="Open seamless gutters and leaders in Ridgewood in the gallery viewer">
+                <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2026/06/ChatGPT-Image-Jun-17-2026-03_24_58-PM-1024x819.png"
+                     alt="New seamless gutter and downspout fitted to a home" width="1024" height="819"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Seamless gutters and leaders</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Ridgewood, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Jun 2026</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Brick repointing &middot; Park Slope, Brooklyn &middot; Apr 2026" aria-label="Open brick repointing on a Brooklyn brownstone in the gallery viewer">
+                <img class="media-frame__image" src="images/landing/project-masonry.jpg"
+                     alt="Finished brick masonry repointing" width="1122" height="1402"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Brick repointing</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Park Slope, Brooklyn</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Apr 2026</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Siding, trim and stone veneer &middot; Forest Hills, Queens &middot; Mar 2026" aria-label="Open siding, trim and stone veneer work in Queens in the gallery viewer">
+                <img class="media-frame__image" src="https://www.nycrenovators.com/wp-content/uploads/2026/06/ChatGPT-Image-Jun-17-2026-03_23_22-PM-1024x819.png"
+                     alt="Siding, trim sealing and stone veneer work by the Royal Renovators exterior crew" width="1024" height="819"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Siding, trim and stone veneer</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Forest Hills, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Mar 2026</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Full envelope job &middot; Forest Hills, Queens &middot; Nov 2025" aria-label="Open full envelope job in Forest Hills in the gallery viewer">
+                <img class="media-frame__image" src="images/landing/service-exterior.jpg"
+                     alt="Tradesmen installing gutters and repairing brickwork" width="1586" height="992"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Full envelope job</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Forest Hills, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Nov 2025</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Vinyl siding replacement &middot; Fresh Meadows, Queens &middot; Sep 2025" aria-label="Open new vinyl siding installation in the gallery viewer">
+                <img class="media-frame__image" src="images/landing/service-siding.jpg"
+                     alt="New siding being fitted to the side of a house" width="1587" height="991"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Vinyl siding replacement</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Fresh Meadows, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Sep 2025</time></span>
+                </p>
+              </div>
+            </li>
+
+            <li class="projects__item media-frame">
+              <button class="bento__trigger" type="button" data-caption="Replacement windows &middot; Astoria, Queens &middot; Aug 2025" aria-label="Open replacement windows installation in the gallery viewer">
+                <img class="media-frame__image" src="images/landing/service-windows.jpg"
+                     alt="Installer fitting a new replacement window" width="1586" height="992"
+                     loading="lazy" decoding="async">
+                <span class="bento__overlay" aria-hidden="true">
+                  <span class="bento__overlay-icon"><i class="fa-solid fa-expand"></i></span>
+                  <span class="bento__overlay-text">View image</span>
+                </span>
+              </button>
+              <div class="pr-tile__meta">
+                <p class="projects__caption pr-tile__title">Replacement windows</p>
+                <p class="pr-tile__facts">
+                  <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Astoria, Queens</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i><time>Aug 2025</time></span>
+                </p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta-band" id="free-estimate">
+
+      <div class="cta-band__media" aria-hidden="true">
+        <img class="cta-band__image" src="images/landing/estimate-crew-background.jpg" alt=""
+             width="1672" height="941" loading="lazy" decoding="async">
+      </div>
+      <div class="cta-band__scrim" aria-hidden="true"></div>
+
+      <div class="container cta-band__inner">
+
+        <p class="cta-band__eyebrow">Free &middot; No obligation</p>
+
+        <h2 class="cta-band__title">Have a Roofing Project in Mind?</h2>
+
+        <p class="cta-band__text">
+          Tell us about the building and what the roof is doing. We will come out, look at it
+          properly, and give you a written price from a licensed NYC contractor. No pressure
+          and no surprises.
+        </p>
+
+        <div class="cta-band__actions">
+          <a class="btn btn--primary" href="nyc3-contact.html#contact-form">
+              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+              <span class="btn__label">Get a free estimate</span>
+            </a>
+          <a class="btn btn--ghost" href="tel:+17184146067">
+              <span class="btn__pip" aria-hidden="true"><i class="btn__arrow fa-solid fa-phone"></i><i class="btn__arrow btn__arrow--copy fa-solid fa-phone"></i></span>
+              <span class="btn__label">Call (718) 414-6067</span>
+            </a>
+        </div>
+
+        <ul class="cta-band__note">
+          <li class="cta-band__note-lic">Licensed NYC contractor #2030146</li>
+          <li>BBB A+ Rated</li>
+          <li>GAF Master Elite</li>
         </ul>
 
       </div>
     </section>
 
-    <!-- Same disclosure component as the homepage, so it inherits the styling
-         and the accordion script; the questions are the ones people ask before
-         they get in touch rather than the homepage's roofing ones. -->
-    <section class="section faqs" id="faqs">
-      <div class="container faqs__inner">
-
-        <div class="faqs__body">
-          <p class="section-eyebrow">FAQs</p>
-          <h2 class="section-title faqs__title">Before You Get in Touch</h2>
-          <p class="section-lede faqs__lede">
-            The things people ask most often before they call: how fast we reply, what an
-            estimate costs and how far we travel. If yours is not here, put it in the form and we
-            will answer it just as plainly.
-          </p>
-          <div class="faqs__actions">
-            <a class="btn btn--primary" href="#contact-form">
-              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
-              <span class="btn__label">Ask us a question</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="faqs__list">
-
-          <details class="faq" name="contact-faq" open>
-            <summary class="faq__q">
-              How quickly will I hear back?
-              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
-            </summary>
-            <div class="faq__a"><p>Send the form and we come back to you within one business day. If the roof is actively leaking, call instead. The phone reaches someone seven days a week, including outside office hours.</p></div>
-          </details>
-
-          <details class="faq" name="contact-faq">
-            <summary class="faq__q">
-              Does an estimate cost anything?
-              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
-            </summary>
-            <div class="faq__a"><p>No. We get up on the roof, photograph what we find and put a written, itemised price in front of you at no charge and with no obligation, including when the answer is that it does not need replacing yet.</p></div>
-          </details>
-
-          <details class="faq" name="contact-faq">
-            <summary class="faq__q">
-              Can you come out for an emergency?
-              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
-            </summary>
-            <div class="faq__a"><p>Yes. Water does not wait for Monday. We take emergency calls every day of the week, make the building safe first and quote the permanent repair afterwards.</p></div>
-          </details>
-
-          <details class="faq" name="contact-faq">
-            <summary class="faq__q">
-              What should I tell you when I get in touch?
-              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
-            </summary>
-            <div class="faq__a"><p>The borough, roughly what the roof is doing and how long it has been doing it. A photograph helps more than anything else, as it often tells us whether this is a repair or a replacement before we arrive.</p></div>
-          </details>
-
-          <details class="faq" name="contact-faq">
-            <summary class="faq__q">
-              Which areas do you cover?
-              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
-            </summary>
-            <div class="faq__a"><p>All five boroughs, Long Island and lower Westchester, from our office in Forest Hills. If you are not sure whether we reach you, ask and we will tell you straight.</p></div>
-          </details>
-
-        </div>
-
-      </div>
-    </section>
-
   </main>
+
+
+  <div class="lightbox" id="lightbox" hidden>
+
+    <div class="lightbox__scrim" data-lightbox-close></div>
+
+    <div class="lightbox__panel" role="dialog" aria-modal="true" aria-label="Project gallery">
+
+      <div class="lightbox__bar">
+        <p class="lightbox__count"><span data-lightbox-index>1</span> / <span data-lightbox-total>6</span></p>
+        <div class="lightbox__tools">
+          <button class="lightbox__btn" type="button" data-lightbox-zoom-out aria-label="Zoom out">
+            <i class="fa-solid fa-magnifying-glass-minus" aria-hidden="true"></i>
+          </button>
+          <button class="lightbox__btn" type="button" data-lightbox-zoom-in aria-label="Zoom in">
+            <i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i>
+          </button>
+          <button class="lightbox__btn lightbox__btn--close" type="button" data-lightbox-close aria-label="Close gallery">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="swiper lightbox__swiper">
+        <div class="swiper-wrapper"></div>
+      </div>
+
+      <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Previous image">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+      </button>
+      <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Next image">
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </button>
+
+      <p class="lightbox__caption" data-lightbox-caption></p>
+
+      <!-- Filled by js/nyc3.js with one thumbnail per photo in the open
+           category; the active one is marked and kept in view. -->
+      <div class="lightbox__thumbs" data-lightbox-thumbs aria-label="All photos in this category"></div>
+
+    </div>
+  </div>
 
   <footer class="footer" id="footer">
 
@@ -961,7 +1322,7 @@
           <ul class="footer__links">
               <li><a href="nyc3.html">Home</a></li>
               <li><a href="nyc3.html#about">About Us</a></li>
-              <li><a href="nyc3-projects.html">Projects</a></li>
+              <li><a href="nyc3-projects.html" aria-current="page">Projects</a></li>
               <li><a href="nyc3.html#blog">Blog</a></li>
               <li><a href="nyc3.html#faqs">FAQs</a></li>
               <li><a href="nyc3-contact.html">Contact Us</a></li>

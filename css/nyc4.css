@@ -2302,13 +2302,13 @@ a.contact-line__value:hover { color: var(--red); }
 /* ==========================================================================
    Credential designs (3)
 
-   The hero plaque is one of six. `data-seal-style` on .hero__seal picks which,
+   The hero plaque is one of five. `data-seal-style` on .hero__seal picks which,
    and every design restyles the same five parts — icon, words, rule, "since",
    year — so the markup never changes and the picker only swaps an attribute.
 
-   All five alternatives are frame treatments: the plaque's solid slab comes
-   off and what holds the words instead is an edge — cut, ruled, angled, broken
-   or bracketed. Each one differs in how much of that edge is actually drawn.
+   The eight alternatives keep the plaque's parts and change its edge or its
+   ground: cut corners, a tag point, a swallowtail notch, a gold-edged pill,
+   a dashed stamp frame, a red icon block, a bare gold rule, a glass frame.
    ========================================================================== */
 
 .seal-trigger {
@@ -2395,97 +2395,6 @@ a.contact-line__value:hover { color: var(--red); }
 }
 
 .hero__seal[data-seal-style="notch"] .hero__seal-rule { background-color: rgba(255, 255, 255, .32); }
-
-
-/* 02 · Rails — nothing at the sides. Two gold rules hold the line above and
-   below the words and the type runs out to its own ends, which is the lightest
-   the credential gets while still being framed. */
-.hero__seal[data-seal-style="rails"] {
-  padding: .5625rem 0;
-  border: 0;
-  border-block: 3px solid var(--gold);
-  border-radius: 0;
-  background: none;
-  box-shadow: none;
-}
-
-.hero__seal[data-seal-style="rails"] .hero__seal-rule { background-color: rgba(255, 255, 255, .3); }
-
-.hero__seal[data-seal-style="rails"] .hero__seal-since { color: rgba(255, 255, 255, .62); }
-
-
-/* 03 · Angle — one corner bracket blown up to hold the whole plate: gold down
-   the left and across the foot, nothing on the other two sides, so the mark
-   opens upward and to the right. */
-.hero__seal[data-seal-style="angle"] {
-  padding: .5625rem 1.125rem .5625rem .875rem;
-  border: 0;
-  border-left: 3px solid var(--gold);
-  border-bottom: 3px solid var(--gold);
-  border-radius: 0;
-  background: linear-gradient(100deg, rgba(1, 27, 68, .5), rgba(1, 27, 68, .18));
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  box-shadow: none;
-}
-
-.hero__seal[data-seal-style="angle"] .hero__seal-rule { background-color: rgba(255, 255, 255, .3); }
-
-
-/* 04 · Breakout — a hairline gold outline with the year in a solid chip that
-   hangs past the right edge, so the frame is broken by the one part of the
-   credential that is a number. */
-.hero__seal[data-seal-style="breakout"] {
-  padding: .5625rem .875rem;
-  border: 2px solid var(--gold);
-  border-radius: 0;
-  background: rgba(1, 27, 68, .4);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  box-shadow: none;
-}
-
-.hero__seal[data-seal-style="breakout"] .hero__seal-icon { color: var(--white); }
-
-.hero__seal[data-seal-style="breakout"] .hero__seal-rule { background-color: rgba(255, 255, 255, .3); }
-
-/* The negative margin is what puts the chip outside the frame; the vertical
-   padding matches the plate's so the chip's edges line up with it. */
-.hero__seal[data-seal-style="breakout"] .hero__seal-year {
-  margin-right: -1.375rem;
-  padding: .45em .9em;
-  background: var(--gold);
-  color: var(--navy-deep);
-  box-shadow: 0 10px 24px rgba(1, 27, 68, .4);
-}
-
-
-/* 05 · Corner brackets — no continuous border at all, just four gold corners
-   holding an otherwise open pane. Eight gradient slices, two per corner, so
-   the brackets keep their length however wide the plaque gets. */
-.hero__seal[data-seal-style="bracket"] {
-  --bk: 2px;
-  --bl: 1rem;
-
-  padding: .625rem 1.0625rem;
-  border: 0;
-  border-radius: 0;
-  background:
-    linear-gradient(var(--gold), var(--gold)) 0 0 / var(--bl) var(--bk) no-repeat,
-    linear-gradient(var(--gold), var(--gold)) 0 0 / var(--bk) var(--bl) no-repeat,
-    linear-gradient(var(--gold), var(--gold)) 100% 0 / var(--bl) var(--bk) no-repeat,
-    linear-gradient(var(--gold), var(--gold)) 100% 0 / var(--bk) var(--bl) no-repeat,
-    linear-gradient(var(--gold), var(--gold)) 0 100% / var(--bl) var(--bk) no-repeat,
-    linear-gradient(var(--gold), var(--gold)) 0 100% / var(--bk) var(--bl) no-repeat,
-    linear-gradient(var(--gold), var(--gold)) 100% 100% / var(--bl) var(--bk) no-repeat,
-    linear-gradient(var(--gold), var(--gold)) 100% 100% / var(--bk) var(--bl) no-repeat,
-    rgba(1, 27, 68, .34);
-  -webkit-backdrop-filter: blur(10px) saturate(130%);
-  backdrop-filter: blur(10px) saturate(130%);
-  box-shadow: 0 12px 32px rgba(1, 27, 68, .3);
-}
-
-.hero__seal[data-seal-style="bracket"] .hero__seal-rule { background-color: rgba(255, 255, 255, .32); }
 
 
 /* ==========================================================================
@@ -2721,3 +2630,491 @@ a.contact-line__value:hover { color: var(--red); }
 }
 
 .reasons__note strong { color: var(--navy); font-weight: var(--fw-bold); }
+
+
+/* ==========================================================================
+   nyc4 — client round of 11 Sep 2026
+   ========================================================================== */
+
+/* Header: the info bar is gone, so the header is the nav bar alone, at the
+   same height as NY Roofing's. */
+:root {
+  --utility-h: 0rem;
+  --nav-h: 5.5rem;
+}
+
+.brand__mark { height: 4.5rem; }
+
+/* Resources dropdown: two rows, so narrower than the exteriors list. */
+.mega--resources { width: 12rem; }
+
+/* "Since" now matches the year: same size, same gold. */
+.hero__seal-since {
+  font-size: clamp(1.125rem, .98rem + .5vw, 1.4375rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: .04em;
+  color: var(--gold);
+}
+
+.sealoption__stage .hero__seal-since { font-size: 1.125rem; }
+
+/* 02 · Tag — the slab with a pointed left end and a gold eyelet, like a
+   hang tag. */
+.hero__seal[data-seal-style="tag"] {
+  position: relative;
+  padding: .5rem 1rem .5rem 1.875rem;
+  border-left: 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background-color: var(--navy);
+  box-shadow: none;
+  clip-path: polygon(1.125rem 0, 100% 0, 100% 100%, 1.125rem 100%, 0 50%);
+}
+
+.hero__seal[data-seal-style="tag"]::before {
+  content: "";
+  position: absolute;
+  left: .9375rem;
+  top: 50%;
+  width: .5rem;
+  height: .5rem;
+  margin-top: -.25rem;
+  border-radius: 50%;
+  background-color: var(--gold);
+}
+
+/* 03 · Swallowtail — the plaque with its right end notched like a ribbon. */
+.hero__seal[data-seal-style="tail"] {
+  padding: .5rem 1.875rem .5rem .8125rem;
+  border-left: 4px solid var(--red);
+  border-radius: 0;
+  background-color: var(--navy);
+  box-shadow: none;
+  clip-path: polygon(0 0, 100% 0, calc(100% - .8125rem) 50%, 100% 100%, 0 100%);
+}
+
+/* 04 · Pill — fully rounded, a thin gold edge, and the shield on a red disc
+   in place of the blade. */
+.hero__seal[data-seal-style="pill"] {
+  padding: .375rem 1.125rem .375rem .4375rem;
+  border: 2px solid var(--gold);
+  border-radius: 999px;
+  background-color: var(--navy-deep);
+}
+
+.hero__seal[data-seal-style="pill"] .hero__seal-icon {
+  display: grid;
+  place-items: center;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 50%;
+  background-color: var(--red);
+  font-size: .8125rem;
+  color: var(--white);
+}
+
+.sealoption__stage .hero__seal[data-seal-style="pill"] .hero__seal-icon { width: 1.5rem; height: 1.5rem; font-size: .6875rem; }
+
+/* 05 · Stamp — the slab with a dashed gold frame set just inside its edge. */
+.hero__seal[data-seal-style="stamp"] {
+  padding: .625rem 1.125rem;
+  border-left: 0;
+  border-radius: 0;
+  background-color: var(--navy-deep);
+  outline: 1px dashed var(--gold);
+  outline-offset: -5px;
+}
+
+/* 06 · Block — the shield sits in a solid red block at the left, full height,
+   and the slab runs on from it. */
+.hero__seal[data-seal-style="block"] {
+  gap: .75rem;
+  padding: 0 1rem 0 0;
+  border-left: 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background-color: var(--navy);
+  overflow: hidden;
+}
+
+.hero__seal[data-seal-style="block"] .hero__seal-icon {
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  padding-inline: .8125rem;
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.hero__seal[data-seal-style="block"] .hero__seal-text { padding-block: .625rem; }
+
+/* 07 · Rule — no slab at all: the words sit on the video, held by a gold
+   rule underneath and the red blade at the left. */
+.hero__seal[data-seal-style="rule"] {
+  padding: .25rem .25rem .5rem .75rem;
+  border-left: 4px solid var(--red);
+  border-bottom: 3px solid var(--gold);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  text-shadow: 0 1px 12px rgba(1, 27, 68, .6);
+}
+
+.hero__seal[data-seal-style="rule"] .hero__seal-rule { background-color: rgba(255, 255, 255, .45); }
+
+/* 08 · Frame — a translucent navy fill inside a thin white edge, so the video
+   shows through behind the words. */
+.hero__seal[data-seal-style="frame"] {
+  padding: .5rem 1rem .5rem .8125rem;
+  border: 1.5px solid rgba(255, 255, 255, .72);
+  border-left: 4px solid var(--red);
+  border-radius: var(--radius-md);
+  background-color: rgba(1, 27, 68, .42);
+  box-shadow: none;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* The picker's rows preview on a navy stage, so the no-slab designs still
+   read there. */
+.sealoption__stage .hero__seal[data-seal-style="block"] .hero__seal-icon { padding-inline: .625rem; }
+
+/* Rating reads "4.8 ★ Google" with a gold star. */
+.rating-star { color: var(--gold); }
+
+/* The hero estimate button is now the white one; its hover keeps the pair
+   readable over the video. */
+.hero__estimate { border-color: rgba(255, 255, 255, .5); }
+
+/* Trust marks: BBB is a wide badge now, so it sits at the GAF height, and
+   the two secondary marks come down a step so the row reads as one weight. */
+.hero__badge img { height: 2.75rem; }
+.hero__badge--gaf img { height: 2.75rem; }
+.hero__badge--extra img { height: 3rem; }
+.awards__logos li:not(.is-google):not(.is-gaf) img { height: 2.75rem; }
+
+/* Forms: the helper line under the phone field. */
+.field__hint {
+  display: block;
+  margin-top: .375rem;
+  font-size: .8125rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, .7);
+}
+
+.form--light .field__hint { color: rgba(1, 44, 109, .68); }
+
+/* Roofing systems: the closing note is copy alone now, no stat beside it. */
+.buildings__note--plain {
+  display: block;
+  max-width: 62ch;
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* The foot lost its copy, so it is no longer a panel: just the button, centred. */
+.buildings__foot {
+  justify-content: center;
+  margin-top: var(--space-6);
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+/* Footer: social icons under the estimate button, in white; the whole block
+   tightened by roughly a tenth. */
+.footer__socials {
+  gap: .25rem;
+  margin-top: var(--space-4);
+}
+
+.footer__socials a { color: var(--white); }
+
+.footer__top { padding-block: clamp(1.5rem, 1.25rem + .9vw, 2.25rem); }
+
+.footer__logo img { height: 4.75rem; }
+
+.footer__about { margin-top: var(--space-3); }
+
+.footer__contactbar { padding-block: var(--space-4); }
+
+.footer__bottom { padding-block: var(--space-3); }
+
+@media (max-width: 40rem) {
+  :root { --nav-h: 5.5rem; }
+
+  .brand__mark { height: 4rem; }
+
+  /* Calling is the preferred action on a phone: the estimate button drops a
+     quarter in size so Call reads as the bigger of the two. */
+  .hero__actions .hero__estimate {
+    min-height: 2.25rem;
+    padding-inline: 1.125rem;
+    font-size: .8125rem;
+  }
+
+  .hero__actions .hero__estimate .btn__pip { width: 20px; height: 20px; }
+
+  /* Google, BBB and GAF only, and sized so the three share one row. */
+  .hero__badge--extra { display: none; }
+
+  .hero__badges { gap: .75rem; }
+
+  .hero__badge img { height: 2.375rem; }
+
+  .hero__badge--gaf img { height: 2.125rem; }
+
+  .hero__badge--rating img { height: 1.75rem; }
+
+  .hero__rating { font-size: 1.0625rem; }
+
+  .field__hint { font-size: .875rem; }
+}
+
+
+/* ==========================================================================
+   nyc4 — second round, 11 Sep 2026
+   ========================================================================== */
+
+/* Forms: name and phone share the first row, the helper line sits under the
+   phone box, then address and the message run full width. */
+
+/* Recent work: the band was carrying more air than its four tiles needed,
+   and it sat on top of the GAF band's own padding. */
+.projects { padding-block: clamp(2.25rem, 1.8rem + 1.5vw, 3.25rem) clamp(2rem, 1.6rem + 1.2vw, 2.75rem); }
+
+.projects__tabs { margin-block: var(--space-5); }
+
+.projects__foot { margin-top: var(--space-5); }
+
+/* The Roofing panel opens under its own button rather than centred under
+   the bar. Only this one: Areas keeps the centred sheet, which is what keeps
+   it inside the viewport. */
+.primary-nav__item--full:has(> #menu-roofing) { position: relative; }
+
+#menu-roofing {
+  left: 0;
+  right: auto;
+  transform: none;
+  width: min(52rem, calc(100vw - 3rem));
+}
+
+/* Roofing systems: the transition note and the CTA on one navy banner. The
+   red mark at the left is slash-edged, the treatment the client kept on the
+   shingle page. */
+.buildings__banner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-5) var(--space-6);
+  margin-top: var(--space-6);
+  padding: var(--space-5) var(--space-6) var(--space-5) 0;
+  overflow: hidden;
+  background-color: var(--navy-deep);
+  background-image:
+    radial-gradient(rgba(255, 255, 255, .11) 1px, transparent 1px),
+    linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 52%, #0A3A86 100%);
+  background-size: 22px 22px, auto;
+  border-radius: var(--radius-lg);
+  color: var(--on-dark);
+}
+
+.buildings__banner-mark {
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  width: 6.5rem;
+  padding-right: 1.25rem;
+  background-color: var(--red);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 1.25rem) 100%, 0 100%);
+  font-size: 1.75rem;
+  color: var(--white);
+}
+
+.buildings__banner-body { display: grid; gap: .25rem; }
+
+.buildings__banner-title {
+  font-size: 1.25rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.015em;
+  line-height: 1.25;
+  color: var(--white);
+  text-wrap: balance;
+}
+
+.buildings__banner-text {
+  max-width: 60ch;
+  font-size: .9375rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, .78);
+  text-wrap: pretty;
+}
+
+.buildings__banner-cta { flex: none; }
+
+.buildings__banner .btn--primary:hover,
+.buildings__banner .btn--primary:focus-visible {
+  --clr: var(--white);
+  --btn-ink: var(--navy);
+  --pip-bg: var(--navy);
+  --pip-ink: var(--white);
+}
+
+@media (max-width: 48rem) {
+  .buildings__banner {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0 var(--space-5) var(--space-5);
+  }
+  .buildings__banner-mark {
+    width: auto;
+    height: 3.5rem;
+    padding: 0;
+    margin-inline: calc(var(--space-5) * -1);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - .75rem), 0 100%);
+    font-size: 1.375rem;
+  }
+}
+
+/* ---- Contact page (nyc4-contact.html) ----------------------------------- */
+
+/* Form first: 60% of the row to the form, 40% to phone, hours, address and map. */
+.contact-hero__grid { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+
+/* Intro band about a third shorter. */
+.contact-hero__top { padding-block: clamp(1.5rem, 1.2rem + 1vw, 2.375rem); }
+
+.page-hero--contact .page-hero__lede a {
+  font-weight: var(--fw-bold);
+  color: var(--navy);
+  text-decoration: none;
+}
+
+.page-hero--contact .page-hero__lede a:hover { color: var(--red); }
+
+.page-hero--contact .contact-form__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+/* Under the button: when to expect a reply. */
+.contact-form__note {
+  margin-top: .625rem;
+  font-size: .875rem;
+  line-height: 1.45;
+  text-align: center;
+  color: rgba(1, 44, 109, .68);
+}
+
+/* What happens next: three compact cards in one row, a trust line under. */
+.next__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.next__card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+  padding: var(--space-5);
+  background-color: var(--white);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+}
+
+.next__num {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--navy);
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+  color: var(--white);
+}
+
+.next__title {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.next__text {
+  margin-top: .375rem;
+  font-size: .9375rem;
+  line-height: 1.55;
+  color: rgba(1, 44, 109, .78);
+  text-wrap: pretty;
+}
+
+.next__trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem .75rem;
+  margin-top: var(--space-5);
+  font-size: .9375rem;
+  font-weight: var(--fw-medium);
+  text-align: center;
+  color: var(--navy);
+}
+
+.next__trust li + li::before {
+  content: "\00b7";
+  margin-right: .75rem;
+  color: var(--red);
+}
+
+@media (max-width: 68rem) {
+  .contact-hero__grid { grid-template-columns: minmax(0, 1fr); }
+  .next__grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 40rem) {
+  /* Email goes right before the message on a phone. */
+  .page-hero--contact .contact-form__grid { grid-template-columns: minmax(0, 1fr); }
+  .page-hero--contact .field--email { order: 1; }
+  .page-hero--contact .field--message { order: 2; }
+}
+
+/* A field beside one that carries a helper line keeps its own height rather
+   than stretching its input to match. */
+.field { align-content: start; }
+
+/* Homepage forms: one input per row at every width. The contact page keeps
+   the two-column rows the client specified for it. */
+.estimate-form__grid,
+.contact .contact-form__grid { grid-template-columns: minmax(0, 1fr); }
+
+
+/* GAF: bullets and the CTA sit under both columns, so the button is the last
+   thing in the section at every width. */
+.gaf__foot {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: var(--space-5);
+  justify-items: start;
+}
+
+.gaf__foot .gaf__points {
+  width: 100%;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 0;
+}
+
+.gaf__foot .gaf__actions { margin-top: 0; }
+
+@media (max-width: 68rem) {
+  .gaf__foot .gaf__points { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 40rem) {
+  .gaf__foot .gaf__points { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* The body lost its bullets to the foot, so it centres against the taller
+   aside instead of leaving a gap under its paragraph. */
+.gaf__body { align-self: center; }

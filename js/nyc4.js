@@ -172,11 +172,14 @@
 
     var STYLES = [
       { id: '', name: 'Plaque', note: 'Navy slab, red blade, gold year' },
-      { id: 'bracket', name: 'Corner brackets', note: 'Four gold corners, no continuous edge' },
       { id: 'notch', name: 'Cut corner', note: 'Corners taken off on a 45, gold rim' },
-      { id: 'rails', name: 'Rails', note: 'Gold rule above and below, open sides' },
-      { id: 'angle', name: 'Angle', note: 'One bracket enlarged: left edge and foot' },
-      { id: 'breakout', name: 'Breakout', note: 'Outline with the year hung past it' }
+      { id: 'tag', name: 'Tag', note: 'Pointed left end with a gold eyelet' },
+      { id: 'tail', name: 'Swallowtail', note: 'Ribbon notch cut into the right end' },
+      { id: 'pill', name: 'Pill', note: 'Rounded, gold edge, shield on a red disc' },
+      { id: 'stamp', name: 'Stamp', note: 'Dashed gold frame inside the slab' },
+      { id: 'block', name: 'Block', note: 'Shield in a solid red block at the left' },
+      { id: 'rule', name: 'Rule', note: 'No slab: gold rule under the words' },
+      { id: 'frame', name: 'Frame', note: 'Glass fill inside a thin white edge' }
     ];
 
     var buttons = [];

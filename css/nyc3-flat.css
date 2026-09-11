@@ -1,0 +1,46 @@
+/* Flat roofing uses the exact typography, spacing and components from
+   nyc3-shingle.css. Only flat-roof-specific content needs additional layout. */
+.flat-bur {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+  padding: var(--space-5);
+  background-color: var(--surface-alt);
+  border: var(--sr-card-border);
+  border-radius: var(--radius-lg);
+}
+.flat-bur .sr-card__text {
+  margin-top: var(--space-3);
+  max-width: 75ch;
+}
+.flat-details {
+  padding-top: 0;
+}
+.flat-page .sr-types__grid > :nth-child(3) .media-frame__image {
+  object-position: center 37%;
+}
+.flat-page #contact-form {
+  scroll-margin-top: calc(var(--nav-h) + 2rem);
+}
+.flat-page .sr-split__body {
+  min-width: 0;
+}
+@media (max-width: 68rem) {
+  .flat-bur {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  .flat-bur > .btn {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
+@media (max-width: 44rem) {
+  .flat-bur {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .flat-bur > .btn {
+    grid-column: 1;
+  }
+}

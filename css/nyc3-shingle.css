@@ -499,90 +499,129 @@
 
 .sr-type--lead .sr-type__spec dd { color: var(--white); }
 
-/* Replacement banner under the three grades. Copy on white at the left, a
-   photo slot at the right, and between them the sweep: a navy band, a white
-   stripe and a red band curving from bottom-left to top-right, drawn as one
-   SVG laid over the seam. */
-.sr-note {
-  --note-h: 14rem;
+/* Replacement banner under the three grades: a short strip, copy on white
+   at the left, the photo at the right, and between them a navy band, a
+   white gap and a red band, all cut on the same diagonal. The bands and
+   the photo are four absolutely positioned layers sharing one clip-path,
+   each shifted right a little further than the last, so they stay parallel
+   at every width. */
+.sr-replace {
+  --slant: 6.5rem;
+  --split: 44%;
   position: relative;
-  isolation: isolate;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 44%;
-  min-height: var(--note-h);
+  min-height: clamp(16rem, 12rem + 9vw, 21rem);
   margin-top: var(--space-6);
   overflow: hidden;
   background-color: var(--white);
   border: var(--sr-card-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 24px 60px -30px rgba(1, 27, 68, .35);
+  isolation: isolate;
+  scroll-margin-top: calc(var(--nav-h) + 1.5rem);
 }
 
-.sr-note__body {
+.sr-replace__body {
   position: relative;
   z-index: 2;
   display: grid;
-  justify-items: start;
   align-content: center;
-  gap: var(--space-3);
-  padding: var(--space-6) clamp(1.5rem, 1.2rem + 1.6vw, 2.75rem);
-  padding-right: clamp(3rem, 1rem + 5vw, 6rem);
+  justify-items: start;
+  gap: var(--space-4);
+  width: var(--split);
+  padding: clamp(1.75rem, 1.2rem + 1.6vw, 2.75rem) clamp(1.5rem, 1rem + 1.6vw, 2.75rem);
 }
 
-.sr-note__title {
-  font-size: clamp(1.375rem, 1.2rem + .7vw, 1.75rem);
+.sr-replace__title {
+  font-size: clamp(1.625rem, 1.15rem + 1.5vw, 2.5rem);
   font-weight: var(--fw-bold);
-  letter-spacing: -.02em;
-  line-height: 1.2;
+  letter-spacing: -.025em;
+  line-height: 1.1;
   color: var(--ink);
+  text-wrap: balance;
 }
 
-/* The three short facts under the copy, as the reference carries. */
-.sr-note__points {
+.sr-replace__list {
   display: grid;
-  gap: .5rem;
+  gap: .625rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.sr-note__points li {
-  display: inline-flex;
+.sr-replace__list li {
+  display: flex;
   align-items: center;
-  gap: .5rem;
-  font-size: .8125rem;
+  gap: .75rem;
+  font-size: clamp(.9375rem, .875rem + .25vw, 1.0625rem);
   font-weight: var(--fw-medium);
+  line-height: 1.35;
   color: var(--ink);
 }
 
-.sr-note__points i {
-  font-size: .8125rem;
+.sr-replace__list svg {
+  flex-shrink: 0;
+  width: 1.375rem;
+  height: 1.375rem;
+  stroke-width: 2;
   color: var(--red);
 }
 
-.sr-note__btn { margin-top: var(--space-2); }
-
-/* The photo slot, square-cornered inside the card. */
-.sr-note__media {
-  position: relative;
-  z-index: 0;
-  min-height: 100%;
-  border-radius: 0;
+.sr-replace__btn {
+  margin-top: var(--space-2);
+  min-height: 3rem;
+  padding-right: 1.75rem;
+  font-size: 1rem;
 }
 
-/* The sweep sits across the seam: its left third is white (covering the
-   photo's left edge), then navy, the white stripe, and red; beyond the red
-   it is transparent, so the photo shows through. */
-.sr-note__swoosh {
+.sr-replace__btn .btn__pip { width: 30px; height: 30px; }
+
+/* The diagonal layers. Each starts `left` of centre and is cut from
+   (slant, top) to (0, bottom), so its left edge leans the same way. */
+.sr-replace__band,
+.sr-replace__visual {
   position: absolute;
-  z-index: 1;
   top: 0;
+  right: 0;
   bottom: 0;
-  left: 40%;
-  width: 34%;
-  height: 100%;
-  pointer-events: none;
+  clip-path: polygon(var(--slant) 0, 100% 0, 100% 100%, 0 100%);
 }
 
+.sr-replace__band--navy { left: var(--split); z-index: 1; background-color: var(--navy); }
+.sr-replace__band--gap  { left: calc(var(--split) + 2.625rem); z-index: 1; background-color: var(--white); }
+.sr-replace__band--red  { left: calc(var(--split) + 3.5rem); z-index: 1; background-color: var(--red); }
+
+.sr-replace__visual {
+  left: calc(var(--split) + 4.75rem);
+  z-index: 1;
+  background-image: url("../images/shingle-roofing/shingle-roof-replacement.jpg");
+  background-position: center 40%;
+  background-size: cover;
+}
+
+@media (max-width: 820px) {
+  .sr-replace {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .sr-replace__body { order: 4; width: auto; padding: var(--space-5) var(--space-5) var(--space-6); }
+  /* The layers become horizontal bars: photo, navy, red, then the copy. */
+  .sr-replace__band,
+  .sr-replace__visual {
+    position: static;
+    clip-path: none;
+  }
+  .sr-replace__visual { order: 1; aspect-ratio: 16 / 9; }
+  .sr-replace__band--red  { order: 2; height: .375rem; }
+  .sr-replace__band--gap  { display: none; }
+  .sr-replace__band--navy { order: 3; height: .75rem; }
+}
+
+@media (max-width: 480px) {
+  .sr-replace__body { padding-inline: var(--space-4); }
+  .sr-replace__btn { width: 100%; justify-content: center; }
+}
 
 /* ==========================================================================
    Why us — navy band, feature grid
@@ -864,7 +903,8 @@
 .sr-areas__note a:hover { color: var(--red); }
 
 /* Four rows on one white panel: name, description with its detail line, and
-   an arrow. Queens, the primary area, is the first row and the only navy one. */
+   an arrow. Every row rests on white and goes navy on hover; the arrow link
+   is stretched over the row so the whole box is clickable. */
 .sr-area-rows {
   margin: 0;
   padding: 0;
@@ -876,6 +916,7 @@
 }
 
 .sr-area-row {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 9rem) minmax(0, 1fr) auto;
   align-items: center;
@@ -884,7 +925,7 @@
   transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
 }
 
-/* Hovering (or tabbing into) any row gives it the Queens treatment. */
+/* Hovering (or tabbing into) any row turns it navy. */
 .sr-area-row:hover,
 .sr-area-row:focus-within {
   background-color: var(--navy-deep);
@@ -896,13 +937,6 @@
 
 .sr-area-row + .sr-area-row { border-top: var(--sr-card-border); }
 
-.sr-area-row--lead {
-  background-color: var(--navy-deep);
-  color: var(--on-dark);
-}
-
-.sr-area-row--lead + .sr-area-row { border-top: 0; }
-
 .sr-area-row__name {
   font-size: 1.375rem;
   font-weight: var(--fw-bold);
@@ -911,7 +945,6 @@
   color: var(--ink);
 }
 
-.sr-area-row--lead .sr-area-row__name,
 .sr-area-row:hover .sr-area-row__name,
 .sr-area-row:focus-within .sr-area-row__name { color: var(--white); }
 
@@ -922,7 +955,6 @@
   text-wrap: pretty;
 }
 
-.sr-area-row--lead .sr-area-row__text,
 .sr-area-row:hover .sr-area-row__text,
 .sr-area-row:focus-within .sr-area-row__text { color: var(--white); }
 
@@ -934,7 +966,6 @@
   text-wrap: pretty;
 }
 
-.sr-area-row--lead .sr-area-row__meta,
 .sr-area-row:hover .sr-area-row__meta,
 .sr-area-row:focus-within .sr-area-row__meta { color: rgba(255, 255, 255, .72); }
 
@@ -951,11 +982,19 @@
   transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
 }
 
-.sr-area-row--lead .sr-area-row__link,
 .sr-area-row:hover .sr-area-row__link,
 .sr-area-row:focus-within .sr-area-row__link {
   border-color: rgba(255, 255, 255, .4);
   color: var(--white);
+}
+
+/* The stretched hit area. A hover anywhere on the row is a hover on the link,
+   so the arrow goes red as the row goes navy. */
+.sr-area-row__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 .sr-area-row__link:hover,
@@ -965,8 +1004,13 @@
   color: var(--white);
 }
 
-.sr-area-row--lead :focus-visible,
-.sr-area-row:hover :focus-visible { outline-color: var(--white); }
+.sr-area-row__link:focus-visible { outline: none; }
+
+/* The focus ring is drawn on the row, since the whole row is the target. */
+.sr-area-row:focus-within {
+  outline: 3px solid var(--white);
+  outline-offset: -3px;
+}
 
 /* ==========================================================================
    Contact
@@ -1025,23 +1069,6 @@
 
   .sr-types__grid { grid-template-columns: minmax(0, 1fr); max-width: 30rem; margin-inline: auto; }
 
-  /* Photo above the copy; the sweep turns to run across the seam. */
-  .sr-note { grid-template-columns: minmax(0, 1fr); grid-template-rows: 11rem auto; min-height: 0; }
-
-  .sr-note__media { grid-row: 1; min-height: 0; }
-
-  .sr-note__body { grid-row: 2; padding: var(--space-5) var(--space-4) var(--space-5); }
-
-  .sr-note__swoosh {
-    top: auto;
-    bottom: calc(100% - 11rem - 1px);
-    left: 0;
-    width: 100%;
-    height: 4.5rem;
-    transform: scaleX(-1) rotate(90deg);
-    transform-origin: center;
-    display: none;
-  }
 
   .sr-why__inner { grid-template-columns: minmax(0, 1fr); }
 
@@ -1088,7 +1115,10 @@
 
   .sr-why__grid { grid-template-columns: minmax(0, 1fr); }
 
-  .sr-note__btn { white-space: normal; }
+
+
+
+
 
   .sr-benefits__grid { grid-template-columns: minmax(0, 1fr); }
 
