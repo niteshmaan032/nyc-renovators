@@ -3090,31 +3090,15 @@ a.contact-line__value:hover { color: var(--red); }
 .contact .contact-form__grid { grid-template-columns: minmax(0, 1fr); }
 
 
-/* GAF: bullets and the CTA sit under both columns, so the button is the last
-   thing in the section at every width. */
-.gaf__foot {
-  grid-column: 1 / -1;
-  display: grid;
-  gap: var(--space-5);
-  justify-items: start;
-}
-
-.gaf__foot .gaf__points {
-  width: 100%;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: 0;
-}
-
-.gaf__foot .gaf__actions { margin-top: 0; }
-
-@media (max-width: 68rem) {
-  .gaf__foot .gaf__points { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
+/* GAF: on desktop the bullets and CTA stay in the left column. On phones the
+   column copies hide and the repeated copies after the aside show, so the
+   CTA is the last thing in the section there. */
+.gaf__mob { display: none; }
 
 @media (max-width: 40rem) {
-  .gaf__foot .gaf__points { grid-template-columns: minmax(0, 1fr); }
+  .gaf__desk { display: none; }
+  .gaf__foot.gaf__mob { display: grid; gap: var(--space-5); justify-items: start; }
+  .gaf__foot .gaf__points { display: grid; width: 100%; margin-top: 0; }
+  .gaf__foot .gaf__actions { display: block; margin-top: 0; }
 }
 
-/* The body lost its bullets to the foot, so it centres against the taller
-   aside instead of leaving a gap under its paragraph. */
-.gaf__body { align-self: center; }
