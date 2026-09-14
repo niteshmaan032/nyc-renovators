@@ -3214,3 +3214,19 @@ a.contact-line__value:hover { color: var(--red); }
 .hero__content { margin-top: 12px; }
 .buildings__system-row { margin-top: var(--space-4); }
 .whyus__reasons { margin-top: var(--space-5); }
+
+/* Responsive hero: fills the screen minus the header and the marquee strip,
+   so the hero and the strip both sit above the fold on any desktop height. */
+.hero { min-height: calc(100svh - var(--nav-h) - 3.5rem); }
+@media (max-height: 640px) { .hero { min-height: 0; } }
+
+/* Short laptop screens: trim the hero and form so the marquee still fits. */
+@media (max-height: 780px) {
+  .hero__inner { padding-block: .75rem .75rem; }
+  .hero__content { margin-top: 0; }
+  .estimate-form { padding: 1rem 1.125rem; }
+  .estimate-form__grid { gap: .5rem; }
+  .estimate-form .field__input { min-height: 2.5rem; }
+  .estimate-form .field__input--area { min-height: 3.5rem; }
+  .estimate-form__head { margin-bottom: .5rem; padding-bottom: .5rem; }
+}

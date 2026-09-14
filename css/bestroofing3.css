@@ -2019,3 +2019,20 @@ body.is-locked { overflow: hidden; }
   .pr-gallery__grid { grid-template-columns: minmax(0, 1fr); }
   .lightbox__thumb { width: 4.25rem; }
 }
+
+/* Hero height is set by its content, not the viewport, so the hero and the
+   credentials marquee both sit above the fold on a laptop screen. */
+/* Responsive: the hero fills the screen minus the fixed header and the
+   marquee band, so both sit above the fold on any desktop height. The
+   panel padding scales with the height too. */
+.hero { min-height: calc(100svh - var(--bar-h) - 4.75rem) !important; }
+.hero__panel { padding-top: clamp(1.25rem, 3vh, 2.5rem) !important; padding-bottom: clamp(1.25rem, 3vh, 2.5rem) !important; }
+@media (max-height: 700px) { .hero { min-height: 0 !important; } }
+
+/* Header stays pinned while scrolling; the page starts below it. The blue
+   notch under the logo is gone. */
+.bar { position: fixed !important; top: 0 !important; left: 0; right: 0; inset: 0 0 auto !important; z-index: 60; }
+.bar__inner { min-height: var(--bar-h); }
+.bar__inner::after { display: none !important; }
+body { padding-top: var(--bar-h); }
+.hero { scroll-margin-top: var(--bar-h); }

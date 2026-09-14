@@ -212,3 +212,6 @@
 /* Contact page: every field on its own row, including the email field. */
 .contact__fields { grid-template-columns: minmax(0, 1fr) !important; }
 .contact-field { grid-column: auto !important; }
+
+/* Contact page: no grey frame around the details-and-form block. */
+.contact__workspace { border: 0 !important; }
