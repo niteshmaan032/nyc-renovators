@@ -1,0 +1,1225 @@
+/* ==========================================================================
+   Shingle roofing page — nyc3-shingle-roofing.html
+   ==========================================================================
+
+   Loaded after css/style.css and css/nyc3.css, and only by this page. Nothing
+   in here touches a class the homepage or the contact page uses. Everything
+   page-specific is prefixed sr-; the rest is built from shared components
+   (media-frame skeleton, section eyebrows, buttons, areas, reviews, faqs,
+   contact).
+
+   The copy is the client's old Queens shingle page, section for section. The
+   layout is built from components rather than repeated photo-and-copy rows:
+   a service-card grid, comparison cards for
+   the shingle grades, a feature grid on navy, a numbered stepper. Only two
+   frames on the page — the overview and the repair section — and both are
+   the shared media-frame skeleton, so the photographs can come later.
+
+   Band order:
+   hero (navy) · services (white) · overview (alt)
+   types (white) · why us (navy) · repair (white) · process (alt)
+   benefits (white) · CTA (photo) · areas (alt) · reviews (alt) · FAQs · contact
+   ========================================================================== */
+
+:root {
+  --tint-navy: rgba(1, 44, 109, .05);
+  --tint-navy-strong: rgba(1, 44, 109, .09);
+  --tint-red: rgba(232, 38, 60, .08);
+  /* One card treatment for the whole page: hairline, radius, no shadow. */
+  --sr-card-border: 1px solid var(--hairline);
+}
+
+/* ==========================================================================
+   Hero + proof card
+   ========================================================================== */
+
+.sr-hero { padding-block: clamp(2.75rem, 2rem + 2.6vw, 4.75rem); }
+
+.sr-hero .page-hero__title { max-width: 20ch; }
+
+/* ==========================================================================
+   Section heads
+   ========================================================================== */
+
+.sr-head { margin-bottom: var(--space-7); }
+
+.sr-head .section-title { max-width: 24ch; }
+
+.sr-head__lede {
+  max-width: 62ch;
+  margin-top: var(--space-4);
+  font-size: var(--fs-body);
+  line-height: 1.62;
+  color: rgba(1, 44, 109, .78);
+  text-wrap: pretty;
+}
+
+.sr-head--center {
+  display: grid;
+  justify-items: center;
+  max-width: 52rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.sr-head--center .section-title { max-width: 26ch; }
+
+/* ==========================================================================
+   Service cards
+   ========================================================================== */
+
+.sr-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Icon, title, text, points. The points row takes the slack. */
+.sr-card {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background-color: var(--white);
+  border: var(--sr-card-border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.sr-card:hover { border-color: rgba(1, 44, 109, .35); }
+
+.sr-card__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--navy);
+  border-radius: var(--radius-md);
+  font-size: 1.125rem;
+  color: var(--white);
+}
+
+.sr-card__title {
+  font-size: 1.125rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.3;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.sr-card__text {
+  font-size: .9375rem;
+  line-height: 1.6;
+  color: rgba(1, 44, 109, .82);
+  text-wrap: pretty;
+}
+
+.sr-card__points {
+  display: grid;
+  align-content: start;
+  gap: .5rem;
+  margin: 0;
+  padding: var(--space-3) 0 0;
+  border-top: var(--sr-card-border);
+  list-style: none;
+}
+
+.sr-card__points li {
+  display: grid;
+  grid-template-columns: 1rem minmax(0, 1fr);
+  gap: .5rem;
+  font-size: .875rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.sr-card__points i {
+  margin-top: .25rem;
+  font-size: .75rem;
+  color: var(--red);
+}
+
+/* Banner under the cards: navy, the hero's dot pattern, copy left, the two
+   actions right. */
+.sr-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-5) var(--space-6);
+  margin-top: var(--space-5);
+  padding: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem) clamp(1.5rem, 1.2rem + 1.6vw, 2.75rem);
+  background-color: var(--navy-deep);
+  background-image:
+    radial-gradient(rgba(255, 255, 255, .11) 1px, transparent 1px),
+    linear-gradient(120deg, var(--navy-deep) 0%, var(--navy) 55%, #0A3A86 100%);
+  background-size: 22px 22px, auto;
+  border-radius: var(--radius-lg);
+  color: var(--on-dark);
+}
+
+.sr-strip :focus-visible { outline-color: var(--white); }
+
+.sr-strip__title {
+  font-size: clamp(1.25rem, 1.1rem + .6vw, 1.625rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  color: var(--white);
+}
+
+.sr-strip__text {
+  max-width: 60ch;
+  margin-top: .375rem;
+  font-size: .9375rem;
+  line-height: 1.55;
+  color: var(--on-dark-muted);
+  text-wrap: pretty;
+}
+
+.sr-strip__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* ==========================================================================
+   Split — frame beside copy (overview, repair)
+   ========================================================================== */
+
+.sr-overview { background-color: var(--surface-alt); }
+
+.sr-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  /* Stretched: the frame runs the full height of the copy beside it. */
+  align-items: stretch;
+  gap: clamp(2rem, 1rem + 4vw, 5.5rem);
+}
+
+.sr-split--reverse { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+.sr-split--reverse .sr-split__media { order: 2; }
+
+.sr-split__media {
+  position: relative;
+  display: grid;
+}
+
+/* Width pinned so the ratio only ever sets height; min-height lets the row
+   (the copy) pull the frame taller so the two columns share their edges. */
+.sr-split__frame {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: 100%;
+}
+
+/* Collage: the photo, and the second frame laid over its lower corner with
+   a ring of the section's ground and a slight tilt. Not stretched: centred. */
+.sr-split__media--collage {
+  align-self: center;
+  padding: 0 2.5rem 3.25rem 0;
+}
+
+.sr-collage__main {
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+}
+
+.sr-collage__over {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 54%;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  border: 6px solid var(--surface-alt);
+  box-shadow: 0 24px 48px -24px rgba(1, 27, 68, .45);
+  transform: rotate(-3deg);
+  transform-origin: bottom right;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sr-collage__over { transition: transform var(--dur-base) var(--ease-out); }
+  .sr-split__media--collage:hover .sr-collage__over { transform: rotate(0); }
+}
+
+/* A fact card over the frame's corner. */
+.sr-float {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  display: grid;
+  gap: .125rem;
+  max-width: 16rem;
+  margin: 0;
+  padding: var(--space-4) var(--space-5);
+  background-color: var(--navy-deep);
+  border-radius: var(--radius-md);
+  color: var(--white);
+  box-shadow: 0 14px 28px -14px rgba(1, 27, 68, .5);
+}
+
+.sr-float--red { background-color: var(--red); }
+
+.sr-float__figure {
+  font-size: 1.75rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.03em;
+  line-height: 1.05;
+  color: var(--white);
+}
+
+.sr-float__figure--link {
+  font-size: 1.375rem;
+  text-decoration: none;
+}
+
+.sr-float__figure--link:hover { text-decoration: underline; }
+
+.sr-float__label {
+  font-size: .8125rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, .8);
+}
+
+.sr-float--red .sr-float__label { order: -1; }
+
+.sr-split__body { align-self: center; }
+
+.sr-split__body .section-title { max-width: 20ch; }
+
+/* "Residential & Light Commercial / Shingle Roofing" — two lines, broken by
+   the <br> in the markup; the measure is lifted so it does not break first. */
+.sr-overview__title {
+  max-width: none;
+  font-size: clamp(1.75rem, 1.05rem + 1.7vw, 2.375rem);
+}
+
+.sr-nowrap { white-space: nowrap; }
+
+.sr-split__body .section-lede { max-width: 56ch; }
+
+.sr-split__text {
+  max-width: 58ch;
+  margin-top: var(--space-4);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  color: rgba(1, 44, 109, .82);
+  text-wrap: pretty;
+}
+
+.sr-split__label {
+  margin-top: var(--space-5);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-bold);
+  color: var(--ink);
+}
+
+.sr-split__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+/* Property-type chips. */
+.sr-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sr-chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 2.5rem;
+  padding: .375rem .875rem .375rem .75rem;
+  background-color: var(--white);
+  border: var(--sr-card-border);
+  border-radius: 100px;
+  font-size: .875rem;
+  font-weight: var(--fw-medium);
+  color: var(--ink);
+}
+
+.sr-chips i {
+  font-size: .8125rem;
+  color: var(--navy);
+}
+
+/* Check list, one or two columns. */
+.sr-list {
+  display: grid;
+  gap: .625rem;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sr-list--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.sr-list li {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-size: .9375rem;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.sr-list__icon {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--tint-navy-strong);
+  border-radius: 50%;
+  font-size: .8125rem;
+  color: var(--navy);
+}
+
+/* ==========================================================================
+   Shingle types — comparison cards
+   ========================================================================== */
+
+.sr-types__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sr-type {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  background-color: var(--white);
+  border: var(--sr-card-border);
+  border-radius: var(--radius-lg);
+}
+
+/* The one most Queens homes end up with: navy body rather than a badge. */
+.sr-type--lead {
+  background-color: var(--navy-deep);
+  border-color: var(--navy-deep);
+  color: var(--on-dark);
+}
+
+.sr-type__media { position: relative; }
+
+/* Square-cornered inside the card: the card carries the radius. */
+.sr-type__media .media-frame {
+  aspect-ratio: 16 / 9;
+  border-radius: 0;
+}
+
+.sr-type__flag {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  padding: .25rem .6875rem;
+  background-color: var(--red);
+  border-radius: 100px;
+  font-size: .75rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: .04em;
+  color: var(--white);
+}
+
+.sr-type__body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: var(--space-3);
+  padding: var(--space-5);
+}
+
+.sr-type__title {
+  font-size: 1.25rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.015em;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.sr-type--lead .sr-type__title { color: var(--white); }
+
+.sr-type__text {
+  font-size: .9375rem;
+  line-height: 1.6;
+  color: rgba(1, 44, 109, .82);
+  text-wrap: pretty;
+}
+
+.sr-type--lead .sr-type__text { color: var(--on-dark-muted); }
+
+.sr-type__specs {
+  display: grid;
+  margin: 0;
+  border-top: var(--sr-card-border);
+}
+
+.sr-type--lead .sr-type__specs { border-top-color: var(--hairline-dark); }
+
+.sr-type__spec {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: .75rem;
+  padding-block: .625rem;
+  border-bottom: var(--sr-card-border);
+}
+
+.sr-type--lead .sr-type__spec { border-bottom-color: var(--hairline-dark); }
+
+.sr-type__spec dt {
+  font-size: .8125rem;
+  font-weight: var(--fw-medium);
+  line-height: 1.45;
+  color: rgba(1, 44, 109, .6);
+}
+
+.sr-type--lead .sr-type__spec dt { color: rgba(255, 255, 255, .66); }
+
+.sr-type__spec dd {
+  margin: 0;
+  font-size: .9375rem;
+  font-weight: var(--fw-medium);
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.sr-type--lead .sr-type__spec dd { color: var(--white); }
+
+/* Replacement banner under the three grades: a short strip, copy on white
+   at the left, the photo at the right, and between them a navy band, a
+   white gap and a red band, all cut on the same diagonal. The bands and
+   the photo are four absolutely positioned layers sharing one clip-path,
+   each shifted right a little further than the last, so they stay parallel
+   at every width. */
+.sr-replace {
+  --slant: 6.5rem;
+  --split: 44%;
+  position: relative;
+  display: grid;
+  min-height: clamp(16rem, 12rem + 9vw, 21rem);
+  margin-top: var(--space-6);
+  overflow: hidden;
+  background-color: var(--white);
+  border: var(--sr-card-border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 24px 60px -30px rgba(1, 27, 68, .35);
+  isolation: isolate;
+  scroll-margin-top: calc(var(--nav-h) + 1.5rem);
+}
+
+.sr-replace__body {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: var(--space-4);
+  width: var(--split);
+  padding: clamp(1.75rem, 1.2rem + 1.6vw, 2.75rem) clamp(1.5rem, 1rem + 1.6vw, 2.75rem);
+}
+
+.sr-replace__title {
+  font-size: clamp(1.625rem, 1.15rem + 1.5vw, 2.5rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.025em;
+  line-height: 1.1;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.sr-replace__list {
+  display: grid;
+  gap: .625rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sr-replace__list li {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-size: clamp(.9375rem, .875rem + .25vw, 1.0625rem);
+  font-weight: var(--fw-medium);
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.sr-replace__list svg {
+  flex-shrink: 0;
+  width: 1.375rem;
+  height: 1.375rem;
+  stroke-width: 2;
+  color: var(--red);
+}
+
+.sr-replace__btn {
+  margin-top: var(--space-2);
+  min-height: 3rem;
+  padding-right: 1.75rem;
+  font-size: 1rem;
+}
+
+.sr-replace__btn .btn__pip { width: 30px; height: 30px; }
+
+/* The diagonal layers. Each starts `left` of centre and is cut from
+   (slant, top) to (0, bottom), so its left edge leans the same way. */
+.sr-replace__band,
+.sr-replace__visual {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  clip-path: polygon(var(--slant) 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.sr-replace__band--navy { left: var(--split); z-index: 1; background-color: var(--navy); }
+.sr-replace__band--gap  { left: calc(var(--split) + 2.625rem); z-index: 1; background-color: var(--white); }
+.sr-replace__band--red  { left: calc(var(--split) + 3.5rem); z-index: 1; background-color: var(--red); }
+
+.sr-replace__visual {
+  left: calc(var(--split) + 4.75rem);
+  z-index: 1;
+  background-image: url("../images/shingle-roofing/shingle-roof-replacement.jpg");
+  background-position: center 40%;
+  background-size: cover;
+}
+
+@media (max-width: 820px) {
+  .sr-replace {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .sr-replace__body { order: 4; width: auto; padding: var(--space-5) var(--space-5) var(--space-6); }
+  /* The layers become horizontal bars: photo, navy, red, then the copy. */
+  .sr-replace__band,
+  .sr-replace__visual {
+    position: static;
+    clip-path: none;
+  }
+  .sr-replace__visual { order: 1; aspect-ratio: 16 / 9; }
+  .sr-replace__band--red  { order: 2; height: .375rem; }
+  .sr-replace__band--gap  { display: none; }
+  .sr-replace__band--navy { order: 3; height: .75rem; }
+}
+
+@media (max-width: 480px) {
+  .sr-replace__body { padding-inline: var(--space-4); }
+  .sr-replace__btn { width: 100%; justify-content: center; }
+}
+
+/* ==========================================================================
+   Why us — navy band, feature grid
+   ========================================================================== */
+
+.sr-why {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--navy-deep);
+  background-image:
+    radial-gradient(rgba(255, 255, 255, .11) 1px, transparent 1px),
+    linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 52%, #0A3A86 100%);
+  background-size: 22px 22px, auto;
+  color: var(--on-dark);
+}
+
+.sr-why :focus-visible { outline-color: var(--white); }
+
+.sr-why__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  align-items: center;
+  gap: clamp(2rem, 1rem + 4vw, 5.5rem);
+}
+
+.sr-why__figure {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  font-size: clamp(2.75rem, 2rem + 2.4vw, 4.25rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.04em;
+  line-height: .9;
+  color: var(--white);
+}
+
+.sr-why__figure span {
+  font-size: 1.125rem;
+  font-weight: var(--fw-medium);
+  letter-spacing: 0;
+  color: var(--red-on-dark);
+}
+
+.sr-why__title {
+  max-width: 18ch;
+  margin-top: var(--space-5);
+  font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.625rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.022em;
+  line-height: 1.15;
+  color: var(--white);
+  text-wrap: balance;
+}
+
+.sr-why__text {
+  max-width: 54ch;
+  margin-top: var(--space-4);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  color: var(--on-dark-muted);
+  text-wrap: pretty;
+}
+
+.sr-why__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.sr-why__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sr-reason {
+  display: grid;
+  align-content: start;
+  gap: .625rem;
+  padding: var(--space-5);
+  background-color: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: var(--radius-lg);
+}
+
+.sr-reason__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background-color: rgba(255, 255, 255, .12);
+  border-radius: var(--radius-md);
+  font-size: 1.0625rem;
+  color: var(--white);
+}
+
+.sr-reason__title {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.3;
+  color: var(--white);
+  text-wrap: balance;
+}
+
+.sr-reason__text {
+  font-size: .9rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, .74);
+  text-wrap: pretty;
+}
+
+/* ==========================================================================
+   Process — stepper
+   ========================================================================== */
+
+.sr-process { background-color: var(--surface-alt); }
+
+.sr-steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sr-step {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--space-3);
+}
+
+/* The connector, drawn per step from the edge of its node across the gap to
+   the next node — so it starts at the first and stops at the last, rather
+   than running on to the container edge. */
+.sr-step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 3rem;
+  right: calc(var(--space-5) * -1);
+  top: calc(1.5rem - 1px);
+  height: 2px;
+  background-color: rgba(1, 44, 109, .18);
+}
+
+.sr-step__dot {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--navy);
+  border: 4px solid var(--surface-alt);
+  border-radius: 50%;
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  color: var(--white);
+}
+
+.sr-step:first-child .sr-step__dot { background-color: var(--red); }
+
+.sr-step__title {
+  margin-top: var(--space-2);
+  font-size: 1.125rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.3;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.sr-step__text {
+  max-width: 34ch;
+  font-size: .9375rem;
+  line-height: 1.6;
+  color: rgba(1, 44, 109, .82);
+  text-wrap: pretty;
+}
+
+/* ==========================================================================
+   Benefits
+   ========================================================================== */
+
+.sr-benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sr-benefit {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+  padding: var(--space-5);
+  background-color: var(--surface-alt);
+  border-radius: var(--radius-lg);
+}
+
+.sr-benefit__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background-color: var(--white);
+  border: var(--sr-card-border);
+  border-radius: 50%;
+  font-size: 1rem;
+  color: var(--navy);
+}
+
+.sr-benefit__title {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.sr-benefit__text {
+  margin-top: .25rem;
+  font-size: .9rem;
+  line-height: 1.5;
+  color: rgba(1, 44, 109, .78);
+  text-wrap: pretty;
+}
+
+/* ==========================================================================
+   Service area — head left, borough rows right
+   ========================================================================== */
+
+.sr-areas { background-color: var(--surface-alt); }
+
+.sr-areas__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  align-items: start;
+  gap: clamp(2rem, 1rem + 4vw, 5.5rem);
+}
+
+/* Three lines, set by the breaks in the markup rather than by the measure. */
+.sr-areas__title { max-width: none; }
+
+.sr-areas__head .section-lede { max-width: 40ch; }
+
+.sr-areas__note {
+  display: flex;
+  align-items: start;
+  gap: .75rem;
+  max-width: 40ch;
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: var(--sr-card-border);
+  font-size: .9375rem;
+  line-height: 1.55;
+  color: rgba(1, 44, 109, .82);
+}
+
+.sr-areas__note i {
+  margin-top: .2rem;
+  color: var(--red);
+}
+
+.sr-areas__note a {
+  font-weight: var(--fw-bold);
+  color: var(--navy);
+}
+
+.sr-areas__note a:hover { color: var(--red); }
+
+/* Four rows on one white panel: name, description with its detail line, and
+   an arrow. Every row rests on white and goes navy on hover; the arrow link
+   is stretched over the row so the whole box is clickable. */
+.sr-area-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: var(--white);
+  border: var(--sr-card-border);
+  border-radius: var(--radius-lg);
+}
+
+.sr-area-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 9rem) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-5);
+  padding: clamp(1.25rem, 1rem + 1vw, 1.75rem) clamp(1.25rem, 1rem + 1.2vw, 2rem);
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+/* Hovering (or tabbing into) any row turns it navy. */
+.sr-area-row:hover,
+.sr-area-row:focus-within {
+  background-color: var(--navy-deep);
+  color: var(--on-dark);
+}
+
+.sr-area-row:hover + .sr-area-row,
+.sr-area-row:focus-within + .sr-area-row { border-top-color: transparent; }
+
+.sr-area-row + .sr-area-row { border-top: var(--sr-card-border); }
+
+.sr-area-row__name {
+  font-size: 1.375rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.015em;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.sr-area-row:hover .sr-area-row__name,
+.sr-area-row:focus-within .sr-area-row__name { color: var(--white); }
+
+.sr-area-row__text {
+  font-size: .9375rem;
+  line-height: 1.55;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.sr-area-row:hover .sr-area-row__text,
+.sr-area-row:focus-within .sr-area-row__text { color: var(--white); }
+
+.sr-area-row__meta {
+  margin-top: .375rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  color: rgba(1, 44, 109, .7);
+  text-wrap: pretty;
+}
+
+.sr-area-row:hover .sr-area-row__meta,
+.sr-area-row:focus-within .sr-area-row__meta { color: rgba(255, 255, 255, .72); }
+
+.sr-area-row__link {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(1, 44, 109, .3);
+  border-radius: var(--radius-md);
+  font-size: .9375rem;
+  text-decoration: none;
+  color: var(--navy);
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+.sr-area-row:hover .sr-area-row__link,
+.sr-area-row:focus-within .sr-area-row__link {
+  border-color: rgba(255, 255, 255, .4);
+  color: var(--white);
+}
+
+/* The stretched hit area. A hover anywhere on the row is a hover on the link,
+   so the arrow goes red as the row goes navy. */
+.sr-area-row__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.sr-area-row__link:hover,
+.sr-area-row__link:focus-visible {
+  background-color: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
+
+.sr-area-row__link:focus-visible { outline: none; }
+
+/* The focus ring is drawn on the row, since the whole row is the target. */
+.sr-area-row:focus-within {
+  outline: 3px solid var(--white);
+  outline-offset: -3px;
+}
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+
+.sr-contact__left {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: var(--space-4);
+}
+
+.sr-contact__title { margin-top: 0; }
+
+/* Phone and address in one row under the map. The contact page's sheet
+   spans the address across the row and sends it last; both are undone here. */
+.sr-contact__lines {
+  max-width: none;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-top: 0;
+}
+
+.sr-contact__lines .contact-line--address {
+  order: 0;
+  grid-column: auto;
+}
+
+/* Fills the row the form sets, so the form is never stretched to match. */
+.sr-contact__map {
+  height: 100%;
+  min-height: 14rem;
+}
+
+/* Title-cased to match the buttons, which already capitalise their labels. */
+.contact-form__title { text-transform: capitalize; }
+
+/* ==========================================================================
+   Narrow
+   ========================================================================== */
+
+@media (max-width: 68rem) {
+
+  .sr-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .sr-strip { grid-template-columns: minmax(0, 1fr); }
+
+  .sr-split,
+  .sr-split--reverse {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-7);
+  }
+
+  .sr-split--reverse .sr-split__media { order: 0; }
+
+  .sr-split__media { max-width: 40rem; }
+
+  .sr-types__grid { grid-template-columns: minmax(0, 1fr); max-width: 30rem; margin-inline: auto; }
+
+
+  .sr-why__inner { grid-template-columns: minmax(0, 1fr); }
+
+  /* Stepper turns vertical: each connector drops from its node to the next. */
+  .sr-steps { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+
+  .sr-step:not(:last-child)::before {
+    left: calc(1.5rem - 1px);
+    right: auto;
+    top: 3rem;
+    bottom: calc(var(--space-6) * -1);
+    width: 2px;
+    height: auto;
+  }
+
+  .sr-step {
+    grid-template-columns: 3rem minmax(0, 1fr);
+    column-gap: var(--space-4);
+  }
+
+  .sr-step__dot { grid-row: 1 / 3; }
+
+  .sr-step__title { margin-top: .5rem; }
+
+  .sr-step__text { max-width: none; }
+
+  .sr-benefits__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .sr-areas__inner { grid-template-columns: minmax(0, 1fr); }
+
+  .sr-areas__head .section-lede { max-width: none; }
+
+}
+
+@media (max-width: 44rem) {
+
+  .sr-hero { padding-block: var(--space-6) var(--space-7); }
+
+  .sr-cards { grid-template-columns: minmax(0, 1fr); }
+
+  .sr-list--two { grid-template-columns: minmax(0, 1fr); }
+
+  .sr-float { left: .875rem; bottom: .875rem; padding: var(--space-3) var(--space-4); }
+
+  .sr-why__grid { grid-template-columns: minmax(0, 1fr); }
+
+
+
+
+
+
+  .sr-benefits__grid { grid-template-columns: minmax(0, 1fr); }
+
+  .sr-area-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: var(--space-3);
+  }
+
+  .sr-area-row__link { grid-column: 2; grid-row: 1; }
+
+  .sr-area-row__body { grid-column: 1 / -1; }
+
+  .sr-contact__lines { grid-template-columns: minmax(0, 1fr); }
+
+  /* Let the heading wrap on its own once the column is narrow. */
+  .sr-br { display: none; }
+
+  .sr-nowrap { white-space: normal; }
+
+  .sr-split__media--collage { padding: 0 1.25rem 2.25rem 0; }
+
+  .sr-collage__over { width: 58%; border-width: 4px; }
+
+}
+
+
+/* ---- nyc5 (11 Sep call) ------------------------------------------------ */
+.sr-head, .sr-areas__head { margin-bottom: var(--space-5); }
+.sr-hero { padding-block: clamp(1.75rem, 1.3rem + 1.6vw, 3rem); }
+
+/* Two real photos under the hero buttons, desktop only. */
+.sr-hero__shots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.sr-hero__shots li { width: min(17rem, 40vw); aspect-ratio: 4 / 3; overflow: hidden; border: 2px solid rgba(255, 255, 255, .35); border-radius: var(--radius-lg); }
+.sr-hero__shots img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* Queens neighborhoods as a tidy grid of rows. */
+.sr-hoods {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sr-hoods li {
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+  padding-block: .625rem;
+  border-bottom: var(--sr-card-border);
+  font-size: 1rem;
+  font-weight: var(--fw-medium);
+  color: var(--ink);
+}
+.sr-hoods i { font-size: .875rem; color: var(--red); }
+@media (max-width: 40rem) {
+  .sr-hero__shots { display: none; }
+  .sr-hoods { grid-template-columns: minmax(0, 1fr); }
+}
+
+
+/* Hero photos sit either side of the copy on desktop (developer round 14 Sep). */
+@media (min-width: 64rem) {
+  .sr-hero { grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) minmax(0, 15rem); column-gap: var(--space-6); }
+  .sr-hero > * { grid-column: 2; }
+  .sr-hero__shots { display: contents; }
+  .sr-hero__shots li { width: 100%; align-self: center; }
+  .sr-hero__shots li:first-child { grid-column: 1; grid-row: 1 / span 4; }
+  .sr-hero__shots li:last-child { grid-column: 3; grid-row: 1 / span 4; }
+}
+
+/* Contact: no gap between the map and the phone/address boxes. */
+.sr-contact__left { grid-template-rows: auto auto auto; align-content: start; }
+.sr-contact__left .contact__map,
+.sr-contact__map { min-height: 22rem; max-height: 22rem; }
+
+/* Hero: a real roof photo behind the copy with a navy layer over it so the
+   text stays readable; the side photos are gone. */
+.page-hero--service {
+  background-color: var(--navy-deep);
+  background-image:
+    linear-gradient(rgba(1, 27, 68, .88), rgba(1, 44, 109, .82)),
+    url("../images/shingle-roofing/architectural-shingle-installation.jpg");
+  background-size: cover;
+  background-position: center 40%;
+}
+.sr-hero__shots { display: none !important; }
+@media (min-width: 64rem) {
+  .sr-hero { grid-template-columns: minmax(0, 1fr); }
+  .sr-hero > * { grid-column: auto; }
+}
+
+/* Contact: the map takes the full column width, phone and address under it. */
+.sr-contact__left { display: block; }
+.sr-contact__left .sr-contact__title { margin-bottom: var(--space-4); }
+.sr-contact__map { width: 100%; max-width: none; }
+.sr-contact__lines { width: 100%; margin-top: var(--space-4); }

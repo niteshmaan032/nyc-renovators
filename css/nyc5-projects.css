@@ -1,0 +1,146 @@
+/* ==========================================================================
+   Projects page — nyc3-projects.html
+   ==========================================================================
+
+   Loaded after css/style.css and css/nyc3.css, and only by this page. Nothing
+   in here touches a class the homepage, the contact page or the shingle page
+   uses. The page is the homepage's tabbed project gallery on its own, with
+   the shared page hero above it and the CTA band below; only the hero
+   measure and the gallery's three-column grid are set here.
+
+   Band order: hero (navy) · gallery (white) · CTA (photo)
+   ========================================================================== */
+
+/* Breaks the heading where the client asked for two lines; hidden once the
+   column is narrow so the heading wraps on its own. */
+.pr-br { display: inline; }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.pr-hero { padding-block: clamp(2.75rem, 2rem + 2.6vw, 4.75rem); }
+
+.pr-hero .page-hero__title { max-width: 30ch; }
+
+/* ==========================================================================
+   Gallery — the shared tabbed component at three columns
+   ========================================================================== */
+
+.pr-head__lede {
+  max-width: 62ch;
+  margin-top: var(--space-4);
+  margin-inline: auto;
+  font-size: var(--fs-body);
+  line-height: 1.62;
+  color: rgba(1, 44, 109, .78);
+  text-wrap: pretty;
+}
+
+.pr-gallery__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+/* Under each photo: the title, then the neighbourhood and the month on one
+   line, with the same red marker the areas rows use. */
+.pr-tile__meta {
+  display: grid;
+  gap: .25rem;
+}
+
+.pr-gallery .projects__caption {
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+
+.pr-tile__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem var(--space-4);
+  font-size: .875rem;
+  line-height: 1.45;
+  color: rgba(1, 44, 109, .72);
+}
+
+.pr-tile__facts span {
+  display: inline-flex;
+  align-items: center;
+  gap: .4375rem;
+}
+
+.pr-tile__facts i {
+  font-size: .8125rem;
+  color: var(--red);
+}
+
+/* ==========================================================================
+   Lightbox thumbnails — the strip under the open photo
+   ========================================================================== */
+
+/* Scrolls sideways on its own; the page never gains a horizontal bar. */
+.lightbox__thumbs {
+  flex: none;
+  display: flex;
+  gap: var(--space-2);
+  max-width: 100%;
+  margin-top: var(--space-4);
+  padding: .25rem .25rem .5rem;
+  align-self: center;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, .3) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lightbox__thumbs:empty { display: none; }
+
+.lightbox__thumb {
+  flex: none;
+  width: 5.5rem;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  background: none;
+  opacity: .55;
+  cursor: pointer;
+  transition: opacity var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+.lightbox__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lightbox__thumb:hover,
+.lightbox__thumb:focus-visible { opacity: .85; }
+
+.lightbox__thumb:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}
+
+.lightbox__thumb.is-active {
+  border-color: var(--red);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .pr-gallery__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+  .pr-br { display: none; }
+}
+
+@media (max-width: 560px) {
+  .pr-gallery__grid { grid-template-columns: minmax(0, 1fr); }
+  .lightbox__thumb { width: 4.25rem; }
+}
