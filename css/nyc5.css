@@ -3230,3 +3230,15 @@ a.contact-line__value:hover { color: var(--red); }
   .estimate-form .field__input--area { min-height: 3.5rem; }
   .estimate-form__head { margin-bottom: .5rem; padding-bottom: .5rem; }
 }
+
+/* Phone header matched to NY Roofing's: 73px bar, 52px logo. */
+@media (max-width: 40rem) {
+  :root { --nav-h: 4.5625rem; }
+  .brand__mark { height: 3.25rem; }
+  .nav-toggle { height: 2.75rem; }
+}
+
+/* Trustindex reviews widget — holds a little height while the script loads so
+   the band never collapses, and keeps the widget on the page's own measure. */
+.reviews__widget { min-height: 12rem; }
+.reviews__widget .ti-widget { max-width: 100%; }

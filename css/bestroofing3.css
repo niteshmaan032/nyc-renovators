@@ -2036,3 +2036,25 @@ body.is-locked { overflow: hidden; }
 .bar__inner::after { display: none !important; }
 body { padding-top: var(--bar-h); }
 .hero { scroll-margin-top: var(--bar-h); }
+
+/* Phone footer: Roofing and Company side by side; Contact spans below them. */
+@media (max-width: 40em) {
+  .foot__cols { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .foot__col--contact { grid-column: 1 / -1; }
+}
+
+/* ==========================================================================
+   Reviews — Trustindex Google widget under the site's own eyebrow + heading
+   ========================================================================== */
+.reviews { background: var(--white); }
+.reviews__head { display: grid; gap: .75rem; justify-items: start; margin-bottom: 2rem; }
+.reviews__head .h2 { max-width: 22ch; }
+.reviews__widget { min-height: 12rem; }
+.reviews__widget .ti-widget { max-width: 100%; }
+
+/* Hero proof: Google rating in place of the emergency chip. */
+.hero__proof .hero__google { gap: .375rem; }
+.hero__google img { width: 1.125rem; height: 1.125rem; object-fit: contain; }
+.hero__google strong { font-weight: 700; color: var(--white); }
+.hero__google i { color: var(--yellow); }
+.hero__proof .hero__google { margin-inline-end: 1.5rem; }

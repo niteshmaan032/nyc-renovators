@@ -24,7 +24,7 @@
   <!-- Standalone sheet. This page shares no CSS with index/nyc2 so the new
        brand palette can never leak into the Royal Renovators pages. -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <link rel="stylesheet" href="css/nyroofing3.css?v=9">
+  <link rel="stylesheet" href="css/nyroofing3.css?v=15">
 </head>
 <body>
 
@@ -295,7 +295,11 @@
         </a>
         <a class="mobile-nav__quote" href="nyroofing3-contact.html">Free Estimate</a>
         <div class="mobile-nav__proof">
-          <img class="bbb-logo bbb-logo--drawer" src="images/bbb-accredited-640.png" alt="BBB Accredited Business" width="640" height="360" loading="lazy" decoding="async">
+          <p class="mobile-nav__lic">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+            <span>Licensed &amp; Insured</span>
+            <img class="bbb-logo bbb-logo--drawer" src="images/bbb-accredited-640.png" alt="BBB Accredited Business" width="640" height="360" decoding="async">
+          </p>
           <ul class="socials socials--dark">
           <li><a href="#facebook" aria-label="NY Roofing on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
           <li><a href="#instagram" aria-label="NY Roofing on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
@@ -1389,8 +1393,6 @@
 
 
     <!-- ================= 10. Testimonials ================= -->
-    <!-- PLACEHOLDER TESTIMONIALS — replace with real, verifiable reviews
-         before this page goes live. -->
     <section class="section testi">
       <div class="container">
 
@@ -1399,115 +1401,11 @@
             <p class="section-eyebrow">Testimonials</p>
             <h2 class="section-title testi__title">What Brooklyn Customers <span class="accent">Say About Us</span></h2>
           </div>
-          <div class="slider-nav">
-            <button class="slider-nav__btn testi__prev" type="button" aria-label="Previous testimonials">
-              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-            </button>
-            <button class="slider-nav__btn testi__next" type="button" aria-label="Next testimonials">
-              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-            </button>
-          </div>
         </div>
 
-        <div class="swiper testi-swiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <figure class="review">
-                <i class="fa-solid fa-quote-right review__mark" aria-hidden="true"></i>
-                <span class="review__stars" aria-label="Five out of five">
-                  <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
-                </span>
-                <blockquote class="review__text">They found the leak two other roofers had missed, and the flat roof has stayed dry through three winters since.</blockquote>
-                <figcaption class="review__by">
-                  <span class="review__avatar" aria-hidden="true">MC</span>
-                  <span class="review__who">
-                    <span class="review__name">Maria C.</span>
-                    <span class="review__meta">Park Slope &middot; Flat roof replacement</span>
-                  </span>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure class="review">
-                <i class="fa-solid fa-quote-right review__mark" aria-hidden="true"></i>
-                <span class="review__stars" aria-label="Five out of five">
-                  <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
-                </span>
-                <blockquote class="review__text">Straightforward pricing, showed up when they said they would, and the crew left the site cleaner than they found it.</blockquote>
-                <figcaption class="review__by">
-                  <span class="review__avatar" aria-hidden="true">DR</span>
-                  <span class="review__who">
-                    <span class="review__name">David R.</span>
-                    <span class="review__meta">Bed-Stuy &middot; Shingle roof repair</span>
-                  </span>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure class="review">
-                <i class="fa-solid fa-quote-right review__mark" aria-hidden="true"></i>
-                <span class="review__stars" aria-label="Five out of five">
-                  <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
-                </span>
-                <blockquote class="review__text">Our brownstone needed careful work around the cornice. They knew exactly what the building required and handled the permits too.</blockquote>
-                <figcaption class="review__by">
-                  <span class="review__avatar" aria-hidden="true">SK</span>
-                  <span class="review__who">
-                    <span class="review__name">Sarah K.</span>
-                    <span class="review__meta">Brooklyn Heights &middot; Brownstone roofing</span>
-                  </span>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure class="review">
-                <i class="fa-solid fa-quote-right review__mark" aria-hidden="true"></i>
-                <span class="review__stars" aria-label="Five out of five">
-                  <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
-                </span>
-                <blockquote class="review__text">Called about a leak on a Friday; they inspected Saturday morning and had it repaired by Tuesday. Fair price and no upselling.</blockquote>
-                <figcaption class="review__by">
-                  <span class="review__avatar" aria-hidden="true">AD</span>
-                  <span class="review__who">
-                    <span class="review__name">Anthony D.</span>
-                    <span class="review__meta">Sunset Park &middot; Roof repair</span>
-                  </span>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure class="review">
-                <i class="fa-solid fa-quote-right review__mark" aria-hidden="true"></i>
-                <span class="review__stars" aria-label="Five out of five">
-                  <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
-                </span>
-                <blockquote class="review__text">They re-did the drainage on our commercial flat roof and the ponding is gone. Clear communication at every step.</blockquote>
-                <figcaption class="review__by">
-                  <span class="review__avatar" aria-hidden="true">GL</span>
-                  <span class="review__who">
-                    <span class="review__name">Grace L.</span>
-                    <span class="review__meta">Williamsburg &middot; Commercial flat roof</span>
-                  </span>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="swiper-slide">
-              <figure class="review">
-                <i class="fa-solid fa-quote-right review__mark" aria-hidden="true"></i>
-                <span class="review__stars" aria-label="Five out of five">
-                  <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
-                </span>
-                <blockquote class="review__text">New siding and gutters on our row house. On time, on budget, and the whole block noticed the difference.</blockquote>
-                <figcaption class="review__by">
-                  <span class="review__avatar" aria-hidden="true">RM</span>
-                  <span class="review__who">
-                    <span class="review__name">Robert M.</span>
-                    <span class="review__meta">Crown Heights &middot; Siding &amp; gutters</span>
-                  </span>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
+        <!-- Trustindex: live Google reviews widget -->
+        <div class="testi__widget">
+          <script defer async src="https://cdn.trustindex.io/loader.js?d1db8fa68d5a3181cb46b4f6cad"></script>
         </div>
 
       </div>
@@ -1927,6 +1825,6 @@
   </a>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-  <script src="js/nyroofing3.js?v=9" defer></script>
+  <script src="js/nyroofing3.js?v=10" defer></script>
 </body>
 </html>

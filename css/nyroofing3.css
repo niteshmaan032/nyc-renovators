@@ -6890,3 +6890,58 @@ a.contact__card:hover .contact__card-value { color: var(--brand); }
 @media (prefers-reduced-motion: reduce) {
   .cta-y::before, .cta-y::after, .cta-w::before, .cta-w::after, .cta-d::before, .cta-d::after { transition: none !important; }
 }
+
+/* Drawer foot: "Licensed & Insured" beside a larger BBB mark, centred. */
+.mobile-nav__proof { display: grid; justify-items: center; gap: .875rem; }
+.mobile-nav__lic { display: inline-flex; align-items: center; justify-content: center; gap: .75rem; margin: 0; color: var(--white); font-size: .9375rem; font-weight: 700; text-transform: capitalize; }
+.mobile-nav__lic i { color: var(--brand); font-size: .9375rem; }
+.bbb-logo--drawer { height: 2.25rem !important; width: auto; }
+
+/* Drawer phone: the base rule's skewed wipe fought the bubble's scale, so the
+   bubble here only translates. It still rises on hover and falls on leave. */
+.mobile-nav__call.cta-d::before, .mobile-nav__call.cta-d::after { transform: translateX(-50%) !important; inset: auto !important; }
+.mobile-nav__call.cta-d::before { top: 100% !important; }
+.mobile-nav__call.cta-d::after { top: 180% !important; }
+.mobile-nav__call.cta-d:hover::before, .mobile-nav__call.cta-d:focus-visible::before { top: -35% !important; }
+.mobile-nav__call.cta-d:hover::after, .mobile-nav__call.cta-d:focus-visible::after { top: -45% !important; }
+.mobile-nav__lic { color: var(--ink) !important; }
+
+/* Drawer phone: slide-up fill drawn with the background itself, since the
+   base skew-wipe pseudo-elements cannot coexist with the bubble. Rises on
+   hover, falls on leave; text and icon swap colour as it covers them. */
+.mobile-nav__call.cta-d::before, .mobile-nav__call.cta-d::after { display: none !important; content: none !important; }
+.mobile-nav__call.cta-d {
+  background-color: var(--ink) !important;
+  background-image: linear-gradient(var(--brand), var(--brand)) !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 0% !important;
+  background-position: center bottom !important;
+  color: #fff !important;
+  transition: background-size .45s cubic-bezier(.55, 0, .1, 1), color .2s ease .25s !important;
+}
+.mobile-nav__call.cta-d i { color: var(--brand) !important; transition: color .2s ease .25s; }
+.mobile-nav__call.cta-d:hover, .mobile-nav__call.cta-d:focus-visible { background-size: 100% 100% !important; color: var(--ink) !important; }
+.mobile-nav__call.cta-d:hover i, .mobile-nav__call.cta-d:focus-visible i { color: var(--ink) !important; }
+
+/* Trustindex reviews widget — replaces the placeholder testimonial slider. */
+.testi__widget { min-height: 12rem; }
+.testi__widget .ti-widget { max-width: 100%; }
+
+/* Hero form states: errors in a red that reads on the dark glass, and the
+   sent panel centred with a yellow call link. */
+.gform__form .field__error { color: #FF5C5C; }
+.gform__form .field.is-invalid .field__input { border-color: #FF5C5C; }
+.gform__form .field.is-invalid .field__input:focus { box-shadow: 0 0 0 3px rgba(255, 92, 92, .28); }
+.gform__done {
+  justify-items: center;
+  text-align: center;
+  padding-block: var(--space-6);
+}
+.gform__done .quote__done-mark { margin-inline: auto; }
+.gform__done .quote__done-title { color: var(--white); }
+.gform__done .quote__done-text { color: rgba(255, 255, 255, .78); max-width: 26rem; }
+.gform__done .quote__done-text a { color: var(--brand); font-weight: var(--fw-bold); }
+/* The sent panel replaces the form: the grid display rule above outranked the
+   hidden attribute, so the filled form stayed on screen under the thank-you. */
+.gform__form[hidden] { display: none; }
+.gform__done { min-height: 18rem; align-content: center; }
