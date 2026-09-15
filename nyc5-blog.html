@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Contact Us | Royal Renovators Inc.</title>
-  <meta name="description" content="Contact Royal Renovators Inc., Queens roofing contractor since 1988. Call (718) 414-6067 or request a free written quote. Serving all five boroughs, Long Island and Westchester.">
+  <title>Roofing Blog &amp; Guides for NYC | Royal Renovators Inc.</title>
+  <meta name="description" content="Roofing guides for Queens and NYC property owners from Royal Renovators Inc.: shingle installation, co-op and condo roofing, roof lifespan, repair vs. replacement, skylights and landmark buildings.">
 
   <link rel="icon" href="images/royal-renovators-logo-removebg-preview-e1776149232571.webp">
 
@@ -26,6 +26,9 @@
   <!-- Page-scoped overrides. Loaded after style.css so this page can diverge
        from index.html without touching the shared stylesheet. -->
   <link rel="stylesheet" href="css/nyc5.css?v=4">
+
+  <!-- Page-scoped: only this page loads it. -->
+  <link rel="stylesheet" href="css/nyc5-blog.css?v=2">
 </head>
 <body>
 
@@ -353,7 +356,7 @@
               </div>
             </li>
 
-            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc5-projects.html">Projects</a></li>
+            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc5-projects.html" aria-current="page">Projects</a></li>
 
             <li class="primary-nav__item primary-nav__item--menu">
               <button class="primary-nav__link" type="button" aria-expanded="false" aria-controls="menu-resources">
@@ -370,7 +373,7 @@
 
             <li class="primary-nav__item"><a class="primary-nav__link" href="nyc5.html#about">About</a></li>
 
-            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc5-contact.html" aria-current="page">Contact</a></li>
+            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc5-contact.html">Contact</a></li>
 
           </ul>
         </nav>
@@ -575,7 +578,7 @@
             </ul>
           </li>
 
-          <li><a class="mobile-nav__link" href="nyc5-projects.html">Projects</a></li>
+          <li><a class="mobile-nav__link" href="nyc5-projects.html" aria-current="page">Projects</a></li>
 
           <li>
             <button class="mobile-nav__group" type="button" aria-expanded="false" aria-controls="m-resources">
@@ -590,13 +593,13 @@
 
           <li><a class="mobile-nav__link" href="nyc5.html#about">About</a></li>
 
-          <li><a class="mobile-nav__link" href="nyc5-contact.html" aria-current="page">Contact</a></li>
+          <li><a class="mobile-nav__link" href="nyc5-contact.html">Contact</a></li>
 
         </ul>
       </nav>
 
       <div class="mobile-nav__foot">
-        <a class="btn btn--primary" href="#contact-form">
+        <a class="btn btn--primary" href="nyc5-contact.html#contact-form">
               <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
               <span class="btn__label">Get a free estimate</span></a>
         <a class="btn btn--outline" href="tel:+17184146067">
@@ -610,264 +613,227 @@
 
   <main id="main">
 
-    <!-- Two bands. Top: the heading with the credentials opposite it. Below:
-         how to reach us and where we are on the left, the form on the right.
-         The map is the same embed the homepage uses, at a height that keeps
-         Google's own place card on screen — see the note on .contact__map. -->
-    <section class="page-hero page-hero--contact">
-      <!-- The heading band runs edge to edge on its own tint; the two cards sit
-           on white below it, with a gap between so the bands read as two steps
-           rather than one long column. -->
-      <div class="contact-hero__band">
-        <div class="container contact-hero__top">
+    <section class="page-hero page-hero--service">
+      <div class="container page-hero__inner bl-hero">
 
-          <div class="contact-hero__head">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="nyc5.html">Home</a></li>
+            <li aria-current="page">Blog</li>
+          </ol>
+        </nav>
 
-            <h1 class="page-hero__title">Contact Royal Renovators Inc</h1>
-
-            <p class="page-hero__lede">
-              Tell us about your roofing or exterior project. Request a free written estimate or
-              call us at <a href="tel:+17184146067">(718) 414-6067</a> for immediate assistance.
-            </p>
-
-          </div>
-
-          <ul class="hero__badges page-hero__marks">
-            <li class="hero__badge hero__badge--rating">
-              <img src="images/Google__G__logo.svg.webp" alt="Google" width="1280" height="1280" decoding="async">
-              <span class="hero__rating"><strong>4.8</strong> <span class="rating-star" aria-hidden="true">&#9733;</span><span class="visually-hidden">4.8 out of 5 on Google</span></span>
-            </li>
-            <li class="hero__badge hero__badge--gaf">
-              <img src="images/GAF-Master-Elite-Logo.png" alt="GAF Factory-Certified Master Elite roofing contractor"
-                   width="1424" height="520" decoding="async">
-            </li>
-            <li class="hero__badge">
-              <img src="images/bb+.webp" alt="BBB Accredited Business, A+ rating" width="400" height="259" decoding="async">
-            </li>
-            <li class="hero__badge hero__badge--extra">
-              <img src="images/ANGIES_LIST_SUPER_SAVER_award.png" alt="Angie&rsquo;s List Super Service Award"
-                   width="600" height="462" decoding="async">
-            </li>
-            <li class="hero__badge hero__badge--extra">
-              <img src="images/PngItem_1663.png" alt="People love us on Yelp"
-                   width="540" height="539" decoding="async">
-            </li>
-          </ul>
-
-        </div>
-      </div>
-
-      <div class="container contact-hero">
-
-        <div class="contact-hero__grid">
-
-          <div class="contact-hero__left">
-
-            <!-- Queried by business name so the embed resolves to the listing and
-                 shows Google's own card rather than a bare address pin. -->
-            <div class="contact__map">
-              <iframe class="contact__map-frame"
-                      src="https://www.google.com/maps?q=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375&amp;output=embed"
-                      title="Map showing Royal Renovators Inc. at 118-35 Queens Blvd, Forest Hills, NY 11375"
-                      loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-
-            <ul class="contact-lines">
-
-              <li class="contact-line">
-                <span class="contact-line__icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
-                <span class="contact-line__body">
-                  <span class="contact-line__label">Call the office</span>
-                  <a class="contact-line__value" href="tel:+17184146067">(718) 414-6067</a>
-                </span>
-              </li>
-
-              <li class="contact-line contact-line--address">
-                <span class="contact-line__icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
-                <span class="contact-line__body">
-                  <span class="contact-line__label">Office Address</span>
-                  <a class="contact-line__value" href="https://www.google.com/maps/search/?api=1&amp;query=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375"
-                     target="_blank" rel="noopener">118-35 Queens Blvd, Forest Hills, NY 11375</a>
-                </span>
-              </li>
-
-              <li class="contact-line">
-                <span class="contact-line__icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
-                <span class="contact-line__body">
-                  <span class="contact-line__label">Phone Hours</span>
-                  <span class="contact-line__value">Mon&ndash;Sun, 7 a.m.&ndash;11 p.m.</span>
-                </span>
-              </li>
-
-            </ul>
-
-          </div>
-
-          <form class="contact-form form--light js-form" id="contact-form" method="post"
-                action="#contact-form" aria-labelledby="contact-form-title">
-
-            <div class="contact-form__head">
-              <h2 class="contact-form__title" id="contact-form-title">Get a Free Estimate</h2>
-            </div>
-
-            <div class="contact-form__grid">
-
-              <p class="field">
-                <label class="field__label" for="cf-name">Full Name</label>
-                <input class="field__input" type="text" id="cf-name" name="name"
-                       autocomplete="name" placeholder="Jane Rodriguez" required>
-              </p>
-
-              <p class="field">
-                <label class="field__label" for="cf-phone">Best Phone Number</label>
-                <input class="field__input" type="tel" id="cf-phone" name="phone"
-                       autocomplete="tel" inputmode="tel" placeholder="(718) 000-0000" required>
-                <span class="field__hint">We&rsquo;ll only contact you about your project.</span>
-              </p>
-
-              <p class="field field--email">
-                <label class="field__label" for="cf-email">Email Address</label>
-                <input class="field__input" type="email" id="cf-email" name="email"
-                       autocomplete="email" inputmode="email" placeholder="jane@email.com" required>
-              </p>
-
-              <p class="field">
-                <label class="field__label" for="cf-address">Property Address</label>
-                <input class="field__input" type="text" id="cf-address" name="address"
-                       autocomplete="street-address" placeholder="Street, borough" required>
-              </p>
-
-              <p class="field field--full field--message">
-                <label class="field__label" for="cf-message">How Can We Help?</label>
-                <textarea class="field__input field__input--area" id="cf-message" name="message"
-                          rows="3" placeholder="We have a leak over our home&rsquo;s back bedroom. It&rsquo;s a flat roof&hellip;"></textarea>
-              </p>
-
-            </div>
-
-            <button class="btn btn--primary contact-form__submit" type="submit">
-              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
-              <span class="btn__label">Request Free Quote</span>
-            </button>
-
-            <p class="contact-form__note">We respond within one business day.</p>
-
-            <p class="form-status" data-form-status role="status" aria-live="polite"></p>
-
-          </form>
-
-        </div>
+        <h1 class="page-hero__title">Our Insights</h1>
 
       </div>
     </section>
 
-    <!-- What happens next: three compact steps in one row, then one trust line. -->
-    <section class="section reasons next" id="what-happens-next">
+    <section class="section bl-featured-band" aria-labelledby="latest-title">
       <div class="container">
-
-        <div class="reasons__head">
-          <p class="section-eyebrow">After you send the form</p>
-          <h2 class="section-title reasons__title">What Happens Next</h2>
-        </div>
-
-        <ol class="next__grid">
-          <li class="next__card">
-            <span class="next__num" aria-hidden="true">1</span>
-            <div>
-              <h3 class="next__title">We review your request</h3>
-              <p class="next__text">We review the project information you send.</p>
+        <p class="section-eyebrow">Latest Article</p>
+        <article class="bl-featured">
+          <a class="bl-featured__media media-frame" href="https://www.nycrenovators.com/blog/shingle-roof-installation-nyc/" aria-hidden="true" tabindex="-1">
+            <img class="media-frame__image" src="images/blog/shingle-roof-installation.jpg" alt="Shingle roof installation showing how shingles are nailed and layered"
+                 fetchpriority="high" decoding="async">
+          </a>
+          <div class="bl-featured__body">
+            <p class="blog-card__meta">
+              <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators Inc.</span>
+              <span class="blog-card__dot" aria-hidden="true">&middot;</span>
+              <span><i class="fa-regular fa-calendar" aria-hidden="true"></i>August 24, 2026</span>
+            </p>
+            <h2 class="bl-featured__title" id="latest-title"><a href="https://www.nycrenovators.com/blog/shingle-roof-installation-nyc/">Shingle Roof Installation: How Shingles Work, How They&rsquo;re Nailed, and What Can Go Over Them</a></h2>
+            <p class="bl-featured__excerpt">How an asphalt shingle roof actually goes together: underlayment, starter course, nailing pattern, and the rules for laying new shingles over old ones.</p>
+            <p class="bl-featured__excerpt">Most shingle roofs fail at the details, not the field: the nail line, the starter course
+              and the flashing. This guide walks through each one so you know what a correct installation looks like before you sign for one.</p>
+            <div class="bl-featured__actions">
+              <a class="btn btn--primary" href="https://www.nycrenovators.com/blog/shingle-roof-installation-nyc/"><span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span><span class="btn__label">Read the article</span></a>
             </div>
-          </li>
-          <li class="next__card">
-            <span class="next__num" aria-hidden="true">2</span>
-            <div>
-              <h3 class="next__title">We contact you</h3>
-              <p class="next__text">A member of our team calls to discuss the property and schedule a free inspection.</p>
-            </div>
-          </li>
-          <li class="next__card">
-            <span class="next__num" aria-hidden="true">3</span>
-            <div>
-              <h3 class="next__title">You receive a free written estimate</h3>
-              <p class="next__text">After inspecting the roof or exterior, we provide a clear written scope and price.</p>
-            </div>
-          </li>
-        </ol>
-
-        <ul class="next__trust" aria-label="Credentials">
-          <li>Licensed NYC Contractor #2030146</li>
-          <li>BBB A+ Accredited</li>
-          <li>GAF Master Elite Roofer</li>
-        </ul>
-
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- Same disclosure component as the homepage, so it inherits the styling
-         and the accordion script; the questions are the ones people ask before
-         they get in touch rather than the homepage's roofing ones. -->
-    <section class="section faqs" id="faqs">
-      <div class="container faqs__inner">
+    <section class="section bl-all" id="articles" aria-labelledby="articles-title">
+      <div class="container">
+        <div class="bl-head">
+          <div>
+            <p class="section-eyebrow">All Articles</p>
+            <h2 class="section-title" id="articles-title">More From the Royal Renovators Blog</h2>
+          </div>
+          <p class="bl-head__note">New guides are added as the questions come in. Have one we have not covered? <a href="nyc5-contact.html#contact-form">Ask us</a>.</p>
+        </div>
+        <div class="bl-grid">
+          <article class="bl-card">
+            <a class="blog-card" href="https://www.nycrenovators.com/blog/roofing-nyc-coops-condos/">
+              <div class="media-frame blog-card__media">
+                <img class="media-frame__image" src="images/blog/coop-condo-roofing.jpg" alt="Planning a roof replacement for a New York City co-op building"
+                     loading="lazy" decoding="async">
+              </div>
+              <div class="blog-card__body">
+                <p class="blog-card__meta">
+                  <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators Inc.</span>
+                  <span class="blog-card__dot" aria-hidden="true">&middot;</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i>July 29, 2026</span>
+                </p>
+                <h3 class="blog-card__title">Roofing for NYC Co-ops and Condos: Planning, Bids, Budgets &amp; Board Approval</h3>
+                <p class="blog-card__excerpt">What a board needs before it can approve a roof: the inspection, comparable bids, a reserve budget and a schedule the residents can live with.</p>
+                <span class="blog-card__more">Continue Reading <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </a>
+          </article>
+          <article class="bl-card">
+            <a class="blog-card" href="https://www.nycrenovators.com/blog/how-long-roof-last-nyc/">
+              <div class="media-frame blog-card__media">
+                <img class="media-frame__image" src="images/blog/roof-lifespan-nyc.jpg" alt="Rows of New York City rooftops with different roofing materials"
+                     loading="lazy" decoding="async">
+              </div>
+              <div class="blog-card__body">
+                <p class="blog-card__meta">
+                  <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators Inc.</span>
+                  <span class="blog-card__dot" aria-hidden="true">&middot;</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i>July 29, 2026</span>
+                </p>
+                <h3 class="blog-card__title">How Long Does a Roof Last in NYC? Lifespan by Material, Building Type &amp; Maintenance</h3>
+                <p class="blog-card__excerpt">Flat roofs, shingles, slate and clay tile all age differently. Realistic lifespans for each, and the maintenance that adds years to them.</p>
+                <span class="blog-card__more">Continue Reading <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </a>
+          </article>
+          <article class="bl-card">
+            <a class="blog-card" href="https://www.nycrenovators.com/blog/roof-repair-vs-replacement-nyc/">
+              <div class="media-frame blog-card__media">
+                <img class="media-frame__image" src="images/blog/repair-vs-replacement.jpg" alt="Roofer comparing a roof repair with a full replacement"
+                     loading="lazy" decoding="async">
+              </div>
+              <div class="blog-card__body">
+                <p class="blog-card__meta">
+                  <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators Inc.</span>
+                  <span class="blog-card__dot" aria-hidden="true">&middot;</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i>July 29, 2026</span>
+                </p>
+                <h3 class="blog-card__title">Roof Repair vs. Replacement in NYC: Costs, Lifespan &amp; How to Decide</h3>
+                <p class="blog-card__excerpt">When a patch is money well spent and when it only delays the inevitable. A practical way to decide, with typical NYC costs for both.</p>
+                <span class="blog-card__more">Continue Reading <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </a>
+          </article>
+          <article class="bl-card">
+            <a class="blog-card" href="https://www.nycrenovators.com/blog/skylights-nyc-roofs-installation-repair/">
+              <div class="media-frame blog-card__media">
+                <img class="media-frame__image" src="images/blog/skylights-nyc-roofs.jpg" alt="Skylight installed on a flat roof in New York City"
+                     loading="lazy" decoding="async">
+              </div>
+              <div class="blog-card__body">
+                <p class="blog-card__meta">
+                  <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators Inc.</span>
+                  <span class="blog-card__dot" aria-hidden="true">&middot;</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i>July 29, 2026</span>
+                </p>
+                <h3 class="blog-card__title">Skylights on NYC Roofs: Installation, Leak Prevention, Repair &amp; Replacement</h3>
+                <p class="blog-card__excerpt">Skylights leak for predictable reasons. How they should be flashed into a flat or pitched roof, and what to do when an old one starts to fail.</p>
+                <span class="blog-card__more">Continue Reading <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </a>
+          </article>
+          <article class="bl-card">
+            <a class="blog-card" href="https://www.nycrenovators.com/blog/landmark-building-roofing-nyc/">
+              <div class="media-frame blog-card__media">
+                <img class="media-frame__image" src="images/blog/landmark-building-roofing.jpg" alt="Roof of a landmarked building in New York City"
+                     loading="lazy" decoding="async">
+              </div>
+              <div class="blog-card__body">
+                <p class="blog-card__meta">
+                  <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators Inc.</span>
+                  <span class="blog-card__dot" aria-hidden="true">&middot;</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i>July 29, 2026</span>
+                </p>
+                <h3 class="blog-card__title">Landmark Building Roofing in NYC: Materials, Permits &amp; Preservation Rules</h3>
+                <p class="blog-card__excerpt">Roofing a landmarked property means matching materials, a Landmarks Preservation Commission review and a permit path most contractors have never run.</p>
+                <span class="blog-card__more">Continue Reading <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </a>
+          </article>
+          <article class="bl-card">
+            <a class="blog-card" href="#post-flat-vs-shingle">
+              <div class="media-frame blog-card__media">
+                <img class="media-frame__image" src="images/landing/blog-flat-vs-shingle.jpg" alt="Flat and shingle roofs on neighboring Queens homes"
+                     loading="lazy" decoding="async">
+              </div>
+              <div class="blog-card__body">
+                <p class="blog-card__meta">
+                  <span><i class="fa-regular fa-user" aria-hidden="true"></i>Royal Renovators Inc.</span>
+                  <span class="blog-card__dot" aria-hidden="true">&middot;</span>
+                  <span><i class="fa-regular fa-calendar" aria-hidden="true"></i>July 21, 2026</span>
+                </p>
+                <h3 class="blog-card__title">Flat Roof or Shingle: Which One Suits a Queens Two-Family?</h3>
+                <p class="blog-card__excerpt">Most two-families in Queens can take either. What decides it is usually the pitch, the parapet and how you plan to use the roof.</p>
+                <span class="blog-card__more">Continue Reading <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </a>
+          </article>
+        </div>
 
+        <nav class="bl-pager" aria-label="Blog pages">
+          <span class="bl-pager__btn bl-pager__btn--prev is-disabled" aria-disabled="true"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span class="sr-only">Previous page</span></span>
+          <a class="bl-pager__page is-current" href="nyc5-blog.html" aria-current="page">1</a>
+          <a class="bl-pager__page" href="nyc5-blog.html#page-2">2</a>
+          <a class="bl-pager__page" href="nyc5-blog.html#page-3">3</a>
+          <a class="bl-pager__btn bl-pager__btn--next" href="nyc5-blog.html#page-2"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i><span class="sr-only">Next page</span></a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="section faqs bl-faqs" id="faqs">
+      <div class="container faqs__inner">
         <div class="faqs__body">
           <p class="section-eyebrow">FAQs</p>
-          <h2 class="section-title faqs__title">Contact &amp; Estimate FAQs</h2>
+          <h2 class="section-title faqs__title">Questions We Get Asked Most</h2>
           <p class="section-lede faqs__lede">
-            Answers about response times, free estimates, emergency service, and the areas we
-            cover.
+            Straight answers to the questions homeowners ask before they let anyone on the roof.
+            The full list, sorted by topic, is on the FAQs page.
           </p>
           <div class="faqs__actions">
-            <a class="btn btn--primary" href="#contact-form">
-              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
-              <span class="btn__label">Request an Estimate</span>
-            </a>
+            <a class="btn btn--primary" href="nyc5-faqs.html"><span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span><span class="btn__label">See all FAQs</span></a>
           </div>
         </div>
-
         <div class="faqs__list">
-
-          <details class="faq" name="contact-faq" open>
+          <details class="faq" name="faq" open>
             <summary class="faq__q">
-              How quickly will I hear back?
+              How much does a roof replacement cost in Queens?
               <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
             </summary>
-            <div class="faq__a"><p>Send the form and we get back to you within one business day. If the roof is actively leaking, call instead. The phone reaches someone seven days a week, including outside office hours.</p></div>
+            <div class="faq__a"><p>Replacement cost depends on the material, the size of the roof and its structural condition. An average-sized home&rsquo;s shingle or flat roof usually costs about $10,000 to $15,000 to replace. A detailed estimate is provided after evaluation.</p></div>
           </details>
-
-          <details class="faq" name="contact-faq">
+          <details class="faq" name="faq">
+            <summary class="faq__q">
+              How long does a roof last in NYC?
+              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="faq__a"><p>Most roofs last 20 to 30 years depending on material quality and maintenance. Shingle roofs we replace come with a 50-year GAF factory-backed warranty. Flat roofs are expected to last 20 years once replaced and come with a 15-year Royal Renovators warranty.</p></div>
+          </details>
+          <details class="faq" name="faq">
+            <summary class="faq__q">
+              Do I need a permit to replace my roof?
+              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="faq__a"><p>Sometimes. It depends on the borough, the building and the scope of work. We check before quoting and discuss it with you, and we work with architects and DOB expeditors when a permit is required.</p></div>
+          </details>
+          <details class="faq" name="faq">
+            <summary class="faq__q">
+              How long does a roof replacement take?
+              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="faq__a"><p>Most residential roofs are a one to two day job once we start. Flat roofs on large commercial buildings run longer, and weather can move a start date, but we tell you before we book, not after.</p></div>
+          </details>
+          <details class="faq" name="faq">
             <summary class="faq__q">
               Does an estimate cost anything?
               <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
             </summary>
-            <div class="faq__a"><p>No. We get up on the roof, photograph what we find and put a written, itemized price in front of you at no charge and with no obligation, including when the answer is that it does not need replacing yet.</p></div>
+            <div class="faq__a"><p>No. We get up on the roof, photograph what we find and put a written, itemized price in front of you at no charge and with no obligation.</p></div>
           </details>
-
-          <details class="faq" name="contact-faq">
-            <summary class="faq__q">
-              Can you come out for an emergency?
-              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
-            </summary>
-            <div class="faq__a"><p>Yes. Water does not wait for Monday. We take emergency calls every day of the week, make the building safe first and quote the permanent repair afterwards.</p></div>
-          </details>
-
-          <details class="faq" name="contact-faq">
-            <summary class="faq__q">
-              What should I tell you when I get in touch?
-              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
-            </summary>
-            <div class="faq__a"><p>The borough, roughly what the roof is doing and how long it has been doing it. A photograph helps more than anything else, as it often tells us whether this is a repair or a replacement before we arrive.</p></div>
-          </details>
-
-          <details class="faq" name="contact-faq">
-            <summary class="faq__q">
-              Which areas do you cover?
-              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
-            </summary>
-            <div class="faq__a"><p>All five boroughs of NYC, Long Island, Yonkers, and Westchester.</p></div>
-          </details>
-
         </div>
-
       </div>
     </section>
 
@@ -887,7 +853,7 @@
             Manhattan, the Bronx, Yonkers, and Long Island since 1988. We specialize in flat
             roofing, shingles, roof repairs, siding, gutters, and masonry.
           </p>
-          <a class="btn btn--primary footer__cta" href="#contact-form">
+          <a class="btn btn--primary footer__cta" href="nyc5-contact.html#contact-form">
             <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
             <span class="btn__label">Get a free estimate</span>
           </a>
@@ -930,10 +896,10 @@
           <ul class="footer__links">
               <li><a href="nyc5.html">Home</a></li>
               <li><a href="nyc5.html#about">About Us</a></li>
-              <li><a href="nyc5-projects.html">Projects</a></li>
+              <li><a href="nyc5-projects.html" aria-current="page">Projects</a></li>
               <li><a href="nyc5-blog.html">Blog</a></li>
               <li><a href="nyc5-faqs.html">FAQs</a></li>
-              <li><a href="nyc5-contact.html" aria-current="page">Contact Us</a></li>
+              <li><a href="nyc5-contact.html">Contact Us</a></li>
           </ul>
         </nav>
 
