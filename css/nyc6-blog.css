@@ -1,0 +1,199 @@
+/* ==========================================================================
+   Blog page — nyc5-blog.html
+   ==========================================================================
+
+   Loaded after css/style.css and css/nyc5.css, and only by this page. The
+   cards reuse the homepage's .blog-card styles; what is set here is the
+   featured article, the three-column grid and the quick-answers strip.
+
+   Band order: hero (navy) · latest (white) · all articles (alt) · FAQs (white)
+   ========================================================================== */
+
+.bl-hero .page-hero__title { max-width: 22ch; }
+
+/* ==========================================================================
+   Latest article
+   ========================================================================== */
+
+.bl-featured {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 1rem + 2.4vw, 3.5rem);
+  align-items: center;
+  margin-top: var(--space-5);
+}
+
+.bl-featured__media {
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.bl-featured__media .media-frame__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow, .5s) var(--ease-out);
+}
+
+.bl-featured:hover .bl-featured__media .media-frame__image { transform: scale(1.03); }
+
+.bl-featured__title {
+  margin-top: var(--space-4);
+  font-size: clamp(1.5rem, 1.15rem + 1.3vw, 2.25rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  color: var(--navy);
+  text-wrap: balance;
+}
+
+.bl-featured__title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.bl-featured__title a:hover { color: var(--red); }
+
+.bl-featured__excerpt {
+  max-width: 56ch;
+  margin-top: var(--space-4);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.bl-featured__excerpt + .bl-featured__excerpt { margin-top: var(--space-3); }
+
+.bl-featured__actions { margin-top: var(--space-6); }
+
+/* ==========================================================================
+   All articles
+   ========================================================================== */
+
+.bl-all { background-color: var(--surface-alt); }
+
+.bl-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-8);
+  margin-bottom: var(--space-6);
+}
+
+.bl-head .section-title { max-width: none; }
+
+.bl-head__note {
+  max-width: 34ch;
+  font-size: .9375rem;
+  line-height: 1.55;
+  color: rgba(1, 44, 109, .78);
+}
+
+.bl-head__note a {
+  font-weight: var(--fw-bold);
+  color: var(--navy);
+}
+
+.bl-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-6) var(--space-5);
+}
+
+.bl-card { min-width: 0; }
+
+/* The homepage cards sit on white; here the band is the alt surface, so the
+   pulled-up body keeps its own white and reads as a card. */
+.bl-grid .blog-card__body { background-color: var(--white); }
+
+/* ==========================================================================
+   Pagination — under the grid, ranged left
+   ========================================================================== */
+
+.bl-pager {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: var(--space-7);
+}
+
+.bl-pager__page,
+.bl-pager__btn {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.75rem;
+  height: 2.75rem;
+  padding-inline: .75rem;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background-color: var(--white);
+  font-size: .9375rem;
+  font-weight: var(--fw-bold);
+  color: var(--navy);
+  text-decoration: none;
+  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.bl-pager__page:hover,
+.bl-pager__btn:hover { border-color: var(--navy); }
+
+.bl-pager__page.is-current {
+  border-color: var(--navy);
+  background-color: var(--navy);
+  color: var(--white);
+}
+
+.bl-pager__btn i { font-size: .8125rem; color: var(--red); }
+
+.bl-pager__btn.is-disabled {
+  opacity: .45;
+  pointer-events: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* The FAQ block reuses the homepage accordion; only the band colour is set. */
+.bl-faqs { background-color: var(--surface); }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .bl-featured { grid-template-columns: minmax(0, 1fr); }
+  .bl-featured__media { aspect-ratio: 16 / 9; }
+  .bl-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5) var(--space-4); }
+}
+
+@media (max-width: 560px) {
+  .bl-grid { grid-template-columns: minmax(0, 1fr); }
+  .bl-head__note { max-width: none; }
+}
+
+/* Round 4 (15 Sep): shorter hero, smaller featured photo, four-line excerpt. */
+.bl-hero { padding-block: clamp(1.25rem, 1rem + 1vw, 2rem); }
+.bl-featured { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: start; }
+.bl-featured__media { aspect-ratio: 16 / 10; max-width: 34rem; }
+.bl-featured__excerpt {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.bl-featured__actions { margin-top: var(--space-5); }
+.bl-featured-band, .bl-all { padding-block: clamp(1rem, .8rem + .8vw, 1.5rem); }

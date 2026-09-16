@@ -1,0 +1,339 @@
+/* ==========================================================================
+   FAQs page — nyc5-faqs.html
+   ==========================================================================
+
+   Loaded after css/style.css and css/nyc5.css, and only by this page. The
+   questions reuse the homepage's .faq disclosure styles (and the accordion
+   script in js/nyc5.js); what is set here is the two-column layout, the
+   sticky topic rail with its search box, and the topic group headings.
+
+   Band order: hero (navy) · questions (white) · CTA (photo)
+   ========================================================================== */
+
+.fq-hero .page-hero__title { max-width: none; }
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.fq-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 17rem) minmax(0, 1fr);
+  gap: clamp(2rem, 1.2rem + 2.8vw, 4.5rem);
+  align-items: start;
+}
+
+.fq-body { min-width: 0; }
+
+/* ==========================================================================
+   Side rail
+   ========================================================================== */
+
+.fq-side {
+  position: sticky;
+  top: calc(var(--nav-h) + 1rem);
+  display: grid;
+  gap: var(--space-5);
+  /* Grid items default to min-width:auto, which would let the topic row
+     stretch the rail (and the page) to the chips' full width on phones. */
+  min-width: 0;
+}
+
+.fq-nav { min-width: 0; }
+
+.fq-search {
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+  padding: 0 .875rem;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background-color: var(--surface);
+  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.fq-search:focus-within {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(1, 44, 109, .14);
+}
+
+.fq-search i {
+  flex: none;
+  font-size: .875rem;
+  color: var(--red);
+}
+
+.fq-search__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 2.75rem;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: .9375rem;
+  color: var(--ink);
+}
+
+.fq-search__input:focus { outline: 0; }
+
+.fq-search__input::-webkit-search-cancel-button { cursor: pointer; }
+
+.fq-nav__label {
+  font-size: var(--fs-utility);
+  font-weight: var(--fw-bold);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(1, 44, 109, .6);
+}
+
+.fq-nav__list {
+  display: grid;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hairline);
+}
+
+.fq-nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: .625rem .25rem .625rem .75rem;
+  border-bottom: 1px solid var(--hairline);
+  border-left: 3px solid transparent;
+  font-size: .9375rem;
+  font-weight: var(--fw-medium);
+  line-height: 1.3;
+  color: var(--navy);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out);
+}
+
+.fq-nav__link:hover { color: var(--red); }
+
+.fq-nav__link.is-active {
+  border-left-color: var(--red);
+  background-color: var(--surface-alt);
+  font-weight: var(--fw-bold);
+}
+
+.fq-nav__count {
+  flex: none;
+  min-width: 1.75rem;
+  padding: .125rem .5rem;
+  border-radius: 999px;
+  background-color: var(--surface-alt);
+  font-size: .75rem;
+  font-weight: var(--fw-bold);
+  text-align: center;
+  color: rgba(1, 44, 109, .7);
+}
+
+.fq-nav__link.is-active .fq-nav__count {
+  background-color: var(--navy);
+  color: var(--white);
+}
+
+.fq-side__cta {
+  padding: var(--space-5);
+  border-radius: var(--radius-xl);
+  background-color: var(--navy);
+  color: var(--on-dark);
+}
+
+.fq-side__cta-title {
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  color: var(--white);
+}
+
+.fq-side__cta-text {
+  margin-top: var(--space-2);
+  font-size: .875rem;
+  line-height: 1.5;
+  color: var(--on-dark-muted);
+}
+
+.fq-side__cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: var(--space-4);
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.fq-side__cta-link i { color: var(--red-on-dark); }
+
+.fq-side__cta-link:hover { color: var(--red-on-dark); }
+
+/* ==========================================================================
+   Topic groups
+   ========================================================================== */
+
+.fq-group + .fq-group { margin-top: var(--space-8); }
+
+/* Anchored from the rail: land below the fixed header, not under it. */
+.fq-group { scroll-margin-top: calc(var(--nav-h) + 1.25rem); }
+
+.fq-group__head { margin-bottom: var(--space-4); }
+
+.fq-group__title {
+  position: relative;
+  width: fit-content;
+  padding-bottom: .5rem;
+  font-size: clamp(1.375rem, 1.2rem + .6vw, 1.75rem);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  color: var(--navy);
+}
+
+.fq-group__title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.75rem;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--red);
+}
+
+.fq-group__intro {
+  margin-top: var(--space-3);
+  font-size: .9375rem;
+  line-height: 1.55;
+  color: rgba(1, 44, 109, .78);
+}
+
+/* ==========================================================================
+   Search states
+   ========================================================================== */
+
+.fq-status {
+  margin-bottom: var(--space-4);
+  font-size: .875rem;
+  font-weight: var(--fw-bold);
+  color: rgba(1, 44, 109, .7);
+}
+
+.fq-status[hidden],
+.fq-empty[hidden],
+.fq-group[hidden],
+.faq[hidden] { display: none; }
+
+/* The top rule sits on the list, not the first question, so it survives the
+   search hiding whichever question happens to come first. */
+.fq-group .faqs__list { border-top: 1px solid var(--hairline); }
+.fq-group .faq:first-child { border-top: 0; }
+
+.fq-empty {
+  padding: var(--space-7) var(--space-5);
+  border: 1px dashed var(--hairline);
+  border-radius: var(--radius-xl);
+  text-align: center;
+}
+
+.fq-empty__title {
+  font-size: 1.125rem;
+  font-weight: var(--fw-bold);
+  color: var(--navy);
+}
+
+.fq-empty__text {
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-5);
+  font-size: .9375rem;
+  color: var(--ink);
+}
+
+/* The search highlights matches inside the question. */
+.fq-mark {
+  padding: 0 .1em;
+  border-radius: 2px;
+  background-color: rgba(232, 38, 60, .14);
+  color: inherit;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .fq-layout { grid-template-columns: minmax(0, 1fr); }
+
+  /* The rail becomes a header: search, then the topics as a scrolling row of
+     chips, and the phone card drops out (the CTA band below carries it). */
+  .fq-side {
+    position: static;
+    gap: var(--space-4);
+  }
+
+  .fq-nav__list {
+    display: flex;
+    gap: .5rem;
+    max-width: 100%;
+    margin-top: var(--space-2);
+    padding-bottom: .25rem;
+    border-top: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .fq-nav__list::-webkit-scrollbar { display: none; }
+
+  .fq-nav__link {
+    flex: none;
+    padding: .5rem .875rem;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    font-size: .875rem;
+    white-space: nowrap;
+  }
+
+  .fq-nav__link.is-active {
+    border-color: var(--navy);
+    background-color: var(--navy);
+    color: var(--white);
+  }
+
+  .fq-nav__link.is-active .fq-nav__count {
+    background-color: rgba(255, 255, 255, .18);
+    color: var(--white);
+  }
+
+  .fq-side__cta { display: none; }
+
+  .fq-group + .fq-group { margin-top: var(--space-7); }
+}
+
+/* Round 4 (15 Sep): tighter hero; numbered topics; the sticky rail scrolls
+   inside itself on short screens so the last topic is never cut off. */
+.fq-hero { padding-block: clamp(1.25rem, 1rem + 1vw, 2rem); }
+.fq { padding-block: clamp(1rem, .8rem + .8vw, 1.5rem); }
+.fq-side {
+  max-height: calc(100vh - var(--nav-h) - 2rem);
+  overflow-y: auto;
+  padding-bottom: var(--space-6);
+  scrollbar-width: thin;
+}
+.fq-nav__list { counter-reset: topic; }
+.fq-nav__link { justify-content: flex-start; counter-increment: topic; }
+.fq-nav__link::before {
+  content: counter(topic) ".";
+  flex: none;
+  min-width: 1.5rem;
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+  color: var(--red);
+}
+.fq-nav__count { margin-left: auto; }
+@media (max-width: 900px) {
+  .fq-side { max-height: none; overflow: visible; padding-bottom: 0; }
+  .fq-nav__link::before { min-width: 0; margin-right: .375rem; }
+  .fq-nav__count { margin-left: .5rem; }
+}
