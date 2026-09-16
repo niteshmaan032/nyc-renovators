@@ -7072,3 +7072,14 @@ a.contact__card:hover .contact__card-value { color: var(--brand); }
 .page-contact .contact__form-card .quote__form { gap: 20px !important; }
 .page-contact .cboard__map, .cboard__map { min-height: 6rem !important; height: auto !important; flex: 1 1 auto; }
 .page-contact .cboard__map iframe, .cboard__map iframe { height: 100%; min-height: 0; }
+/* Shorter map floor so the card closes up toward the shorter form. */
+.page-contact .cboard__side { grid-template-rows: auto minmax(14rem, 1fr); }
+.page-contact .cboard__map { min-height: 14rem !important; }
+.page-contact .cboard__map iframe { min-height: 14rem; }
+
+/* The homepage's phone section order must not reach the contact page: there
+   the form and map stay directly under the page head, then the steps and FAQs. */
+@media (max-width: 40em) {
+  .page-contact main { display: block; }
+  .page-contact .contact, .page-contact .faq, .page-contact .process-sec { order: 0; }
+}
