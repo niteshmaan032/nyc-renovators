@@ -3484,3 +3484,26 @@ a.contact-line__value:hover { color: var(--red); }
 .footer__midrow { align-items: center; row-gap: var(--space-2); }
 .footer__midrow .footer__contactbar-list { align-items: center; margin: 0; }
 .footer__bottom { padding-block: var(--space-2) var(--space-3); }
+
+/* 18 Sep client round ------------------------------------------------------ */
+/* Reassurance line: a little air above it instead of touching the field. */
+.field--note { margin-top: calc(var(--space-3) * -1 + .375rem); }
+/* Why Choose lede: the short version on phones, the long one elsewhere. */
+.whyus__lede--mob { display: none; }
+@media (max-width: 40rem) {
+  .about__text--desk { display: none; }
+  .whyus__lede--desk { display: none; }
+  .whyus__lede--mob { display: block; }
+  /* What We Do: the four cards become a swipeable row. */
+  .services__grid { display: flex; gap: var(--space-4); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .5rem; margin-inline: calc(var(--gutter, 1.25rem) * -1); padding-inline: var(--gutter, 1.25rem); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .services__grid::-webkit-scrollbar { display: none; }
+  .services__grid > .service-card { flex: 0 0 82%; scroll-snap-align: start; }
+  /* Areas: list stays on phones (Queens removed from it on every size). */
+  /* Footer: shorter Roofing column. */
+  .footer__link--desk { display: none; }
+  /* Contact page: title on one line, lede breaks after "project." */
+  .page-hero--contact .page-hero__title { font-size: 1.45rem; letter-spacing: -.02em; white-space: nowrap; }
+}
+/* Six areas now: three boroughs in the left column, Far Rockaway, Long Island
+   and Yonkers in the right. */
+@media (min-width: 44.0625rem) { .areas__list { grid-template-rows: repeat(3, auto); } }
