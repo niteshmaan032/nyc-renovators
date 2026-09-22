@@ -25,7 +25,7 @@
 
   <!-- Page-scoped overrides. Loaded after style.css so this page can diverge
        from index.html without touching the shared stylesheet. -->
-  <link rel="stylesheet" href="css/nyc6.css?v=11">
+  <link rel="stylesheet" href="css/nyc6.css?v=19">
 </head>
 <body>
 
@@ -368,7 +368,7 @@
               </div>
             </li>
 
-            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc6.html#about">About</a></li>
+            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc6-about.html">About</a></li>
 
             <li class="primary-nav__item"><a class="primary-nav__link" href="nyc6-contact.html" aria-current="page">Contact</a></li>
 
@@ -588,7 +588,7 @@
             </ul>
           </li>
 
-          <li><a class="mobile-nav__link" href="nyc6.html#about">About</a></li>
+          <li><a class="mobile-nav__link" href="nyc6-about.html">About</a></li>
 
           <li><a class="mobile-nav__link" href="nyc6-contact.html" aria-current="page">Contact</a></li>
 
@@ -623,12 +623,12 @@
 
           <div class="contact-hero__head">
 
-            <h1 class="page-hero__title">Contact Royal Renovators Inc</h1>
+            <h1 class="page-hero__title">Contact Royal Renovators Inc.</h1>
 
             <p class="page-hero__lede">
               Tell us about your roofing project.<br>
               Request a free written estimate or
-              call us at <a href="tel:+17184146067">(718) 414-6067</a> for immediate assistance.
+              call us at <a href="tel:+17184146067">(718) 414-6067</a><span class="u-mob-inline"> for immediate assistance</span>.
             </p>
 
           </div>
@@ -652,6 +652,10 @@
             <li class="hero__badge hero__badge--extra">
               <img src="images/PngItem_1663.png" alt="People love us on Yelp"
                    width="540" height="539" decoding="async">
+            </li>
+            <li class="hero__badge hero__badge--extra hero__badge--inc">
+              <img src="images/Inc.-5000-Color-Medallion-Logo-768x768.png" alt="Inc. 5000 honoree"
+                   width="768" height="768" decoding="async">
             </li>
           </ul>
 
@@ -817,7 +821,7 @@
             Answers about response times, free estimates, emergency service, and the areas we
             cover.
           </p>
-          <div class="faqs__actions">
+          <div class="faqs__actions faqs__actions--desk">
             <a class="btn btn--primary" href="#contact-form">
               <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
               <span class="btn__label">Request an Estimate</span>
@@ -886,9 +890,9 @@
           <p class="footer__about">
             Royal Renovators Inc. is a licensed NYC roofing contractor serving Queens, Brooklyn,
             Manhattan, the Bronx, Yonkers, and Long Island since 1988. We specialize in flat
-            roofing, shingles, roof repairs, siding, gutters, and masonry.
+            roofing, shingles, roof repair, siding, gutters, and masonry.
           </p>
-          <a class="btn btn--primary footer__cta" href="#contact-form">
+          <a class="btn btn--primary footer__cta" href="nyc6.html#contact-form">
             <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
             <span class="btn__label">Get a free estimate</span>
           </a>
@@ -897,12 +901,11 @@
         <nav class="footer__col" aria-label="Roofing">
           <h2 class="footer__heading">Roofing</h2>
           <ul class="footer__links">
-              <li><a href="nyc6.html#roof-inspection">Roof Inspection</a></li>
               <li><a href="nyc6.html#roof-repair">Roof Repair</a></li>
               <li><a href="nyc6.html#roof-replacement">Roof Replacement</a></li>
               <li><a href="nyc3-flat-roofing.html">Flat Roofing</a></li>
               <li><a href="nyc6-shingle-roofing.html">Shingle Roofing</a></li>
-              <li><a href="nyc6.html#commercial-roofing">Commercial Roofing</a></li>
+              <li class="footer__link--desk"><a href="nyc6.html#commercial-roofing">Commercial Roofing</a></li>
           </ul>
         </nav>
 
@@ -920,11 +923,11 @@
         <nav class="footer__col" aria-label="Company">
           <h2 class="footer__heading">Company</h2>
           <ul class="footer__links">
-              <li><a href="nyc6.html#about">About Us</a></li>
+              <li><a href="nyc6-about.html">About Us</a></li>
               <li><a href="nyc6-projects.html">Projects</a></li>
               <li><a href="nyc6-blog.html">Blog</a></li>
               <li><a href="nyc6-faqs.html">FAQs</a></li>
-              <li><a href="nyc6-contact.html" aria-current="page">Contact Us</a></li>
+              <li><a href="nyc6-contact.html">Contact Us</a></li>
           </ul>
         </nav>
 
@@ -1026,6 +1029,6 @@
   </a>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-  <script src="js/nyc6.js?v=2" defer></script>
+  <script src="js/nyc6.js?v=3" defer></script>
 </body>
 </html>

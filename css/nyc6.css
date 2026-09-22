@@ -2299,71 +2299,11 @@ a.contact-line__value:hover { color: var(--red); }
 }
 
 
-/* ==========================================================================
-   Credential designs (3)
-
-   The hero plaque is one of five. `data-seal-style` on .hero__seal picks which,
-   and every design restyles the same five parts — icon, words, rule, "since",
-   year — so the markup never changes and the picker only swaps an attribute.
-
-   The eight alternatives keep the plaque's parts and change its edge or its
-   ground: cut corners, a tag point, a swallowtail notch, a gold-edged pill,
-   a dashed stamp frame, a red icon block, a bare gold rule, a glass frame.
-   ========================================================================== */
-
-.seal-trigger {
-  display: inline-flex;
-  align-items: center;
-  gap: .75rem;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: inherit;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-
-.seal-trigger__hint {
-  display: inline-flex;
-  align-items: center;
-  gap: .375rem;
-  padding: .3125rem .625rem;
-  border: 1px solid rgba(255, 255, 255, .34);
-  border-radius: 999px;
-  font-size: .6875rem;
-  font-weight: var(--fw-medium);
-  letter-spacing: .1em;
-  line-height: 1;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: rgba(255, 255, 255, .78);
-  /* Present but quiet until the plaque is hovered — it is a tool, not part of
-     the credential it sits beside. */
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
-}
-
-.seal-trigger__hint i { font-size: .75rem; }
-
-.seal-trigger:hover .seal-trigger__hint,
-.seal-trigger:focus-visible .seal-trigger__hint {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.seal-trigger:hover .hero__seal { transform: translateY(-2px); }
-
-@media (hover: none) {
-  .seal-trigger__hint { opacity: 1; transform: none; }
-}
+@media (hover: none) {}
 
 /* On a phone the hint is always showing, and the plaque already fills the
    line — so it wraps under rather than pushing the plaque off the screen. */
-@media (max-width: 40rem) {
-  .seal-trigger { flex-wrap: wrap; row-gap: .5rem; }
-}
+@media (max-width: 40rem) {}
 
 .hero__seal { transition: transform var(--dur-fast) var(--ease-out); }
 
@@ -2397,205 +2337,7 @@ a.contact-line__value:hover { color: var(--red); }
 .hero__seal[data-seal-style^="notch"] .hero__seal-rule { background-color: rgba(255, 255, 255, .32); }
 
 
-/* ==========================================================================
-   The picker
-   ========================================================================== */
-
-.sealpick {
-  position: fixed;
-  inset: 0;
-  z-index: 120;
-}
-
-.sealpick[hidden] { display: none; }
-
-.sealpick__scrim {
-  position: absolute;
-  inset: 0;
-  background: rgba(1, 27, 68, .5);
-  opacity: 0;
-  transition: opacity var(--dur-base) var(--ease-out);
-}
-
-.sealpick__panel {
-  position: absolute;
-  inset: 0 auto 0 0;
-  display: flex;
-  flex-direction: column;
-  width: min(27rem, 100%);
-  background-color: var(--white);
-  box-shadow: 0 0 60px rgba(1, 27, 68, .3);
-  transform: translateX(-100%);
-  transition: transform var(--dur-base) var(--ease-out);
-}
-
-.sealpick.is-open .sealpick__scrim { opacity: 1; }
-.sealpick.is-open .sealpick__panel { transform: translateX(0); }
-
-.sealpick__head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-4);
-  padding: var(--space-5);
-  border-bottom: 1px solid var(--hairline);
-}
-
-.sealpick__title {
-  font-size: 1.125rem;
-  font-weight: var(--fw-bold);
-  line-height: 1.2;
-  color: var(--navy);
-}
-
-.sealpick__sub {
-  margin-top: .375rem;
-  font-size: .8125rem;
-  line-height: 1.5;
-  color: rgba(1, 44, 109, .68);
-}
-
-.sealpick__close {
-  display: grid;
-  place-items: center;
-  flex: none;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 50%;
-  background-color: var(--surface-alt);
-  color: var(--navy);
-}
-
-.sealpick__close:hover { background-color: rgba(1, 44, 109, .12); }
-
-.sealpick__list {
-  flex: 1 1 auto;
-  display: grid;
-  gap: .625rem;
-  align-content: start;
-  padding: var(--space-5);
-  overflow-y: auto;
-}
-
-.sealoption {
-  display: grid;
-  gap: .625rem;
-  width: 100%;
-  padding: .75rem;
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius-lg);
-  background: none;
-  text-align: left;
-  cursor: pointer;
-  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
-}
-
-.sealoption:hover { border-color: rgba(1, 44, 109, .3); }
-
-.sealoption[aria-pressed="true"] {
-  border-color: var(--navy);
-  box-shadow: inset 0 0 0 1px var(--navy);
-}
-
-/* Each preview sits on the hero's own navy, because that is the only ground
-   these designs will ever be seen on. */
-.sealoption__stage {
-  display: grid;
-  place-items: center;
-  min-height: 5.5rem;
-  padding: 1rem;
-  border-radius: var(--radius-md);
-  background-color: var(--navy-deep);
-  background-image: linear-gradient(135deg, var(--navy-deep), #0A3A86);
-  overflow: hidden;
-}
-
-/* The previews are copies of the hero plaque, and the plaque sizes itself in
-   viewport units — at hero scale it would run off a 27rem drawer. Every part
-   is pinned to a fixed preview size instead, so all six rows are the same
-   height and none of them clips. */
-.sealoption__stage .hero__seal { transform: none; }
-
-.sealoption__stage .hero__seal-icon { font-size: .875rem; }
-.sealoption__stage .hero__seal-text { font-size: .75rem; }
-.sealoption__stage .hero__seal-since { font-size: .625rem; }
-.sealoption__stage .hero__seal-year { font-size: 1.125rem; }
-.sealoption__stage .hero__seal-rule { height: 1rem; }
-
-/* The glass designs blur what is behind them, and behind them here is the
-   stage's own gradient — which is the point: the preview shows the effect. */
-.sealoption__stage .hero__seal { max-width: 100%; }
-
-.sealoption__foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-}
-
-.sealoption__name {
-  font-size: .9375rem;
-  font-weight: var(--fw-bold);
-  color: var(--ink);
-}
-
-.sealoption__note {
-  display: block;
-  margin-top: .125rem;
-  font-size: .75rem;
-  font-weight: var(--fw-light);
-  color: rgba(1, 44, 109, .6);
-}
-
-.sealoption__tick {
-  display: grid;
-  place-items: center;
-  flex: none;
-  width: 1.5rem;
-  height: 1.5rem;
-  border: 1px solid var(--hairline);
-  border-radius: 50%;
-  font-size: .6875rem;
-  color: transparent;
-}
-
-.sealoption[aria-pressed="true"] .sealoption__tick {
-  border-color: var(--navy);
-  background-color: var(--navy);
-  color: var(--white);
-}
-
-.sealpick__foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  padding: var(--space-4) var(--space-5);
-  border-top: 1px solid var(--hairline);
-  background-color: var(--surface-alt);
-}
-
-.sealpick__now { font-size: .8125rem; color: rgba(1, 44, 109, .7); }
-.sealpick__now strong { color: var(--navy); font-weight: var(--fw-bold); }
-
-.sealpick__reset {
-  min-height: 2.25rem;
-  padding-inline: .875rem;
-  border: 1px solid var(--hairline);
-  border-radius: 999px;
-  font-size: .8125rem;
-  font-weight: var(--fw-medium);
-  color: var(--navy);
-}
-
-.sealpick__reset:hover { border-color: var(--navy); background-color: var(--navy); color: var(--white); }
-
-@media (prefers-reduced-motion: reduce) {
-  .sealpick__scrim,
-  .sealpick__panel { transition: none; }
-
-  .seal-trigger:hover .hero__seal { transform: none; }
-}
+@media (prefers-reduced-motion: reduce) {}
 
 
 /* Contact page reasons note ------------------------------------------------ */
@@ -2654,11 +2396,7 @@ a.contact-line__value:hover { color: var(--red); }
   font-weight: var(--fw-bold);
   letter-spacing: .04em;
   color: var(--gold);
-}
-
-.sealoption__stage .hero__seal-since { font-size: 1.125rem; }
-
-/* 04 · Pill — fully rounded, a thin gold edge, and the shield on a red disc
+}/* 04 · Pill — fully rounded, a thin gold edge, and the shield on a red disc
    in place of the blade. */
 .hero__seal[data-seal-style="pill"] {
   padding: .375rem 1.125rem .375rem .4375rem;
@@ -2676,11 +2414,7 @@ a.contact-line__value:hover { color: var(--red); }
   background-color: var(--red);
   font-size: .8125rem;
   color: var(--white);
-}
-
-.sealoption__stage .hero__seal[data-seal-style="pill"] .hero__seal-icon { width: 1.5rem; height: 1.5rem; font-size: .6875rem; }
-
-/* 05 · Stamp — the slab with a dashed gold frame set just inside its edge. */
+}/* 05 · Stamp — the slab with a dashed gold frame set just inside its edge. */
 .hero__seal[data-seal-style="stamp"] {
   padding: .625rem 1.125rem;
   border-left: 0;
@@ -3507,3 +3241,91 @@ a.contact-line__value:hover { color: var(--red); }
 /* Six areas now: three boroughs in the left column, Far Rockaway, Long Island
    and Yonkers in the right. */
 @media (min-width: 44.0625rem) { .areas__list { grid-template-rows: repeat(3, auto); } }
+
+/* 18 Sep Friday call ------------------------------------------------------- */
+/* Desktop/mobile copy swaps. */
+.u-mob, .u-mob-inline { display: none; }
+.hero__lede--mob { display: none; }
+/* Plaque: shield sits a touch higher, level with the text. */
+.hero__seal-icon { position: relative; top: -1px; }
+/* GAF: contractor ID tight under the logo box. */
+.gaf__mark { margin-bottom: .375rem; padding-block: var(--space-4); }
+.gaf__id { margin-top: 0; }
+/* Roofing systems photos are real project shots now: fill the box. */
+.buildings__system-photo img { height: 100%; object-fit: cover; }
+.buildings__system-photo { aspect-ratio: 16 / 9; }
+/* "Not sure which one you need?" band: no dead space around it, Why Choose pulled up. */
+.services__foot { margin-top: var(--space-5); }
+.services { padding-bottom: var(--space-4); }
+.buildings { padding-block: var(--space-4); }
+.whyus { padding-top: var(--space-5); }
+/* Why Choose: the aerial photo grows to fill the column so the 35+ tile ends level
+   with the tall photo. */
+.whyus__media { grid-template-rows: minmax(0, 1fr) auto; align-items: stretch; }
+.whyus__media .whyus__shot:not(.whyus__shot--tall) { aspect-ratio: auto; height: 100%; min-height: 0; align-self: stretch; }
+.whyus__media .whyus__shot:not(.whyus__shot--tall) .media-frame__image { height: 100%; object-fit: cover; }
+.whyus__tile { align-self: end; }
+/* Roofing Types: less room above, tighter cards (three-line descriptions). */
+.buildings--types { padding-top: var(--space-3); }
+.buildings--types .buildings__gridhead { margin-bottom: var(--space-3); }
+.buildings__card { padding: var(--space-4); }
+.buildings__card-text { font-size: .875rem; line-height: 1.5; }
+.buildings__card-title { font-size: 1rem; }
+/* Accredited strip and Roofing Tips sit closer under Areas We Serve. */
+.areas { padding-bottom: var(--space-4); }
+.accred { padding-block: var(--space-3); }
+.blog { padding-top: var(--space-4); }
+/* Footer: about half the white space. */
+.footer__top { padding-block: var(--space-4) var(--space-3); }
+.footer__contactbar { padding-block: var(--space-2) 0; }
+
+@media (max-width: 40rem) {
+  .u-desk { display: none !important; }
+  .u-mob { display: inline; }
+  .u-mob-inline { display: inline; }
+  .hero__lede--desk { display: none; }
+  .hero__lede--mob { display: block; }
+  /* GAF mark in the hero does nothing on a phone. */
+  .hero__badge--gaf .hero__badge-link { pointer-events: none; }
+  /* Only the Call button in the hero; the form is right below. */
+  .hero__actions .hero__estimate { display: none; }
+  .about__point--desk { display: none; }
+  /* Not sure what you need? + button, with little space above. */
+  .services__foot { margin-top: var(--space-3); }
+  .services__foot-text { margin-bottom: var(--space-3); }
+  /* Areas: map sits under the intro where the borough links were. */
+  .areas__inner { display: flex; flex-direction: column; }
+  .areas__body { display: contents; }
+  .areas__body .section-eyebrow { order: 1; }
+  .areas__body .areas__title { order: 2; }
+  .areas__body .section-lede { order: 3; }
+  .areas__map { order: 4; margin-top: var(--space-4); }
+  .areas__list { display: none; }
+  .areas__note { order: 5; margin-top: var(--space-4); }
+  /* Reviews and GAF: about half the padding; Angi line off the GAF list. */
+  .reviews, .gaf { padding-block: var(--space-3); }
+  .gaf__points li:last-child { display: none; }
+  /* Exterior cards slide sideways like the What We Do cards. */
+  .exterior__grid { display: flex; gap: var(--space-4); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .5rem; margin-inline: -1.25rem; padding-inline: 1.25rem; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .exterior__grid::-webkit-scrollbar { display: none; }
+  .exterior__grid > li { flex: 0 0 82%; scroll-snap-align: start; }
+  /* Footer: Google, BBB, GAF only, pulled up. */
+  .footer__badges > li:nth-child(n + 4) { display: none; }
+  .footer__contactbar { padding-top: 0; }
+  /* Contact page: the FAQ estimate button is redundant on a phone. */
+  .faqs__actions--desk { display: none; }
+}
+@media (max-width: 40rem) {
+  .about__points .about__point--desk { display: none; }
+  .areas__map { width: 100%; aspect-ratio: 3 / 2; }
+}
+
+/* Building Types: tighter above the section and between heading and cards. */
+.buildings--types { padding-top: var(--space-2); }
+.buildings--types .buildings__gridhead { margin-top: 0; padding-top: 0; margin-bottom: 0; }
+.buildings--types .buildings__grid { margin-top: var(--space-4); }
+.buildings--types { padding-top: var(--space-5); }
+/* Why Choose cards: every description holds to four lines. */
+.whyus__reason-text { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; font-size: .9rem; line-height: 1.55; }
+@media (max-width: 1400px) and (min-width: 40.0625rem) { .whyus__reason-text { font-size: .82rem; line-height: 1.5; } }
+@media (max-width: 1300px) and (min-width: 40.0625rem) { .whyus__reason-text { font-size: .78rem; letter-spacing: -.005em; } }

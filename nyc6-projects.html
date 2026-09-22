@@ -25,7 +25,7 @@
 
   <!-- Page-scoped overrides. Loaded after style.css so this page can diverge
        from index.html without touching the shared stylesheet. -->
-  <link rel="stylesheet" href="css/nyc6.css?v=11">
+  <link rel="stylesheet" href="css/nyc6.css?v=19">
 
   <!-- Page-scoped again: the three-column gallery grid exists only here,
        so it stays out of the sheet the homepage and contact page share. -->
@@ -372,7 +372,7 @@
               </div>
             </li>
 
-            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc6.html#about">About</a></li>
+            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc6-about.html">About</a></li>
 
             <li class="primary-nav__item"><a class="primary-nav__link" href="nyc6-contact.html">Contact</a></li>
 
@@ -592,7 +592,7 @@
             </ul>
           </li>
 
-          <li><a class="mobile-nav__link" href="nyc6.html#about">About</a></li>
+          <li><a class="mobile-nav__link" href="nyc6-about.html">About</a></li>
 
           <li><a class="mobile-nav__link" href="nyc6-contact.html">Contact</a></li>
 
@@ -1240,7 +1240,7 @@
 
       <p class="lightbox__caption" data-lightbox-caption></p>
 
-      <!-- Filled by js/nyc6.js?v=2 with one thumbnail per photo in the open
+      <!-- Filled by js/nyc6.js?v=3 with one thumbnail per photo in the open
            category; the active one is marked and kept in view. -->
       <div class="lightbox__thumbs" data-lightbox-thumbs aria-label="All photos in this category"></div>
 
@@ -1259,7 +1259,7 @@
           <p class="footer__about">
             Royal Renovators Inc. is a licensed NYC roofing contractor serving Queens, Brooklyn,
             Manhattan, the Bronx, Yonkers, and Long Island since 1988. We specialize in flat
-            roofing, shingles, roof repairs, siding, gutters, and masonry.
+            roofing, shingles, roof repair, siding, gutters, and masonry.
           </p>
           <a class="btn btn--primary footer__cta" href="nyc6-contact.html#contact-form">
             <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
@@ -1270,12 +1270,11 @@
         <nav class="footer__col" aria-label="Roofing">
           <h2 class="footer__heading">Roofing</h2>
           <ul class="footer__links">
-              <li><a href="nyc6.html#roof-inspection">Roof Inspection</a></li>
               <li><a href="nyc6.html#roof-repair">Roof Repair</a></li>
               <li><a href="nyc6.html#roof-replacement">Roof Replacement</a></li>
               <li><a href="nyc3-flat-roofing.html">Flat Roofing</a></li>
               <li><a href="nyc6-shingle-roofing.html">Shingle Roofing</a></li>
-              <li><a href="nyc6.html#commercial-roofing">Commercial Roofing</a></li>
+              <li class="footer__link--desk"><a href="nyc6.html#commercial-roofing">Commercial Roofing</a></li>
           </ul>
         </nav>
 
@@ -1293,8 +1292,8 @@
         <nav class="footer__col" aria-label="Company">
           <h2 class="footer__heading">Company</h2>
           <ul class="footer__links">
-              <li><a href="nyc6.html#about">About Us</a></li>
-              <li><a href="nyc6-projects.html" aria-current="page">Projects</a></li>
+              <li><a href="nyc6-about.html">About Us</a></li>
+              <li><a href="nyc6-projects.html">Projects</a></li>
               <li><a href="nyc6-blog.html">Blog</a></li>
               <li><a href="nyc6-faqs.html">FAQs</a></li>
               <li><a href="nyc6-contact.html">Contact Us</a></li>
@@ -1399,6 +1398,6 @@
   </a>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-  <script src="js/nyc6.js?v=2" defer></script>
+  <script src="js/nyc6.js?v=3" defer></script>
 </body>
 </html>

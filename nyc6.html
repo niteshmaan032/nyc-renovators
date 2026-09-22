@@ -25,7 +25,7 @@
 
   <!-- Page-scoped overrides. Loaded after style.css so this page can diverge
        from index.html without touching the shared stylesheet. -->
-  <link rel="stylesheet" href="css/nyc6.css?v=11">
+  <link rel="stylesheet" href="css/nyc6.css?v=19">
 </head>
 <body>
 
@@ -368,7 +368,7 @@
               </div>
             </li>
 
-            <li class="primary-nav__item"><a class="primary-nav__link" href="#about">About</a></li>
+            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc6-about.html">About</a></li>
 
             <li class="primary-nav__item"><a class="primary-nav__link" href="nyc6-contact.html">Contact</a></li>
 
@@ -588,7 +588,7 @@
             </ul>
           </li>
 
-          <li><a class="mobile-nav__link" href="#about">About</a></li>
+          <li><a class="mobile-nav__link" href="nyc6-about.html">About</a></li>
 
           <li><a class="mobile-nav__link" href="nyc6-contact.html">Contact</a></li>
 
@@ -627,26 +627,23 @@
           <h1 class="hero__title">
             NYC Roofing Contractor
             <span class="hero__title-sub">
-              <button class="seal-trigger" type="button"
-                      aria-haspopup="dialog" aria-expanded="false" aria-controls="seal-picker">
-                <span class="hero__seal" data-seal data-seal-style="notch">
+              <span class="hero__seal" data-seal data-seal-style="outline">
                   <i class="hero__seal-icon fa-solid fa-shield-halved" aria-hidden="true"></i>
                   <span class="hero__seal-text">Trusted Roofing</span>
                   <span class="hero__seal-rule" aria-hidden="true"></span>
-                  <span class="hero__seal-since">since</span>
+                  <span class="hero__seal-since">Since</span>
                   <span class="hero__seal-year">1988</span>
                 </span>
-                <span class="seal-trigger__hint" aria-hidden="true">
-                  <i class="fa-solid fa-swatchbook"></i>Change design
-                </span>
-                <span class="visually-hidden">Change the design of this credential</span>
-              </button>
             </span>
           </h1>
 
-          <p class="hero__lede">
+          <p class="hero__lede hero__lede--desk">
             Royal Renovators Inc. has served NYC since 1988. We are a BBB A+ rated, GAF Master
             Elite roofing contractor specializing in flat roofing, shingles, siding, and gutters.
+          </p>
+          <p class="hero__lede hero__lede--mob">
+            Serving NYC since 1988. BBB A+ rated and GAF Master Elite, specializing in flat
+            roofing, shingles, siding and gutters.
           </p>
 
           <div class="hero__actions">
@@ -867,7 +864,7 @@
             <li><i class="fa-solid fa-check" aria-hidden="true"></i>Roofing NYC Since 1988</li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i>Fully Licensed, Insured, BBB A+</li>
             <li><i class="fa-solid fa-check" aria-hidden="true"></i>GAF Master Elite Contractor</li>
-            <li><i class="fa-solid fa-check" aria-hidden="true"></i>Same-Day Leak Response</li>
+            <li class="about__point--desk"><i class="fa-solid fa-check" aria-hidden="true"></i>Same-Day Leak Response</li>
           </ul>
 
           <div class="about__actions">
@@ -1264,7 +1261,7 @@
         <div class="services__head">
           <div>
             <p class="section-eyebrow">What we do</p>
-            <h2 class="section-title">Flat Roofing Specialists Serving Queens &amp; New York City</h2>
+            <h2 class="section-title">Flat Roofing Specialists Serving Queens &amp; <span class="u-desk">New York City</span><span class="u-mob">NYC</span></h2>
           </div>
           <p class="services__lede">
             From a shingle roof leak on a Queens two-family home to a full commercial reroof: the same crews, the same standard, since 1988.
@@ -1380,7 +1377,6 @@
         <div class="services__foot">
           <p class="services__foot-text">
             <strong>Not sure which one you need?</strong>
-            We&rsquo;ll look at the roof and tell you straight, including when it doesn&rsquo;t need replacing.
           </p>
           <a class="btn btn--primary services__foot-cta" href="#estimate">
             <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
@@ -1404,9 +1400,8 @@
             </h2>
           </div>
           <p class="section-lede buildings__lede">
-            New York buildings require different roofing systems. Brownstones, row houses,
-            apartment buildings, storefronts, and many extensions typically use low-slope roofing,
-            while pitched homes generally use shingles.
+            NYC brownstones, apartments, and storefronts typically use low-slope roofing, while
+            pitched homes generally use shingles.
             </p>
         </div>
 
@@ -1422,9 +1417,8 @@
             </div>
 
             <p class="buildings__system-text">
-              Flat and low-slope roofs are common throughout Queens, Brooklyn, the Bronx, and
-              Manhattan. Proper drainage, seams, flashing, and parapet details are critical to
-              preventing leaks and standing water.
+              Common throughout NYC, flat and low-slope roofs need proper drainage, sealed seams,
+              and flashing to prevent leaks and standing water.
             </p>
 
             <div class="buildings__system-row">
@@ -1435,7 +1429,7 @@
               <li>Tapered Insulation Where Needed</li>
             </ul>
             <div class="buildings__system-photo">
-              <img src="images/landing/service-flat-roofing.jpg" alt="Crew finishing a flat roof membrane on a Queens building"
+              <img src="images/live/flat-roof-crew-queens.jpg" alt="Royal Renovators crew on a white flat roof in Queens"
                    width="1586" height="992" loading="lazy" decoding="async">
             </div>
             </div>
@@ -1467,7 +1461,7 @@
               <li>Proper Flashing, Ventilation &amp; Ridge Caps</li>
             </ul>
             <div class="buildings__system-photo">
-              <img src="images/shingle-roofing/architectural-shingle-installation.jpg" alt="Roofer laying architectural shingles on a pitched roof"
+              <img src="images/live/shingle-gaf-timberline-install.jpg" alt="GAF Timberline shingles being installed on a pitched roof"
                    width="1672" height="941" loading="lazy" decoding="async">
             </div>
             </div>
@@ -1692,9 +1686,8 @@
             </h2>
           </div>
           <p class="section-lede exterior__lede">
-            A roof is only the top of the envelope. Much of the water damage we are called out to
-            gets in somewhere else, and we handle all three trades with the same crews, so nobody
-            gets to blame the others.
+            Water can enter through more than your roof. We handle siding, masonry, and gutters
+            with one team accountable for the work.
           </p>
         </div>
 
@@ -2357,7 +2350,7 @@
           <p class="footer__about">
             Royal Renovators Inc. is a licensed NYC roofing contractor serving Queens, Brooklyn,
             Manhattan, the Bronx, Yonkers, and Long Island since 1988. We specialize in flat
-            roofing, shingles, roof repairs, siding, gutters, and masonry.
+            roofing, shingles, roof repair, siding, gutters, and masonry.
           </p>
           <a class="btn btn--primary footer__cta" href="#estimate">
             <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
@@ -2390,7 +2383,7 @@
         <nav class="footer__col" aria-label="Company">
           <h2 class="footer__heading">Company</h2>
           <ul class="footer__links">
-              <li><a href="#about">About Us</a></li>
+              <li><a href="nyc6-about.html">About Us</a></li>
               <li><a href="nyc6-projects.html">Projects</a></li>
               <li><a href="nyc6-blog.html">Blog</a></li>
               <li><a href="nyc6-faqs.html">FAQs</a></li>
@@ -2491,32 +2484,6 @@
 
   <!-- Credential design picker. Slides in from the left; each row is the real
        plaque in that design, and choosing one swaps the class on the hero. -->
-  <div class="sealpick" id="seal-picker" hidden>
-    <div class="sealpick__scrim" data-seal-close></div>
-
-    <div class="sealpick__panel" role="dialog" aria-modal="true" aria-labelledby="sealpick-title">
-
-      <div class="sealpick__head">
-        <div>
-          <h2 class="sealpick__title" id="sealpick-title">Credential design</h2>
-          <p class="sealpick__sub">Seven ways to set &ldquo;Trusted Roofing Since 1988&rdquo;. Pick one to see it in the hero.</p>
-        </div>
-        <button class="sealpick__close" type="button" data-seal-close>
-          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-          <span class="visually-hidden">Close</span>
-        </button>
-      </div>
-
-      <ul class="sealpick__list" data-seal-list></ul>
-
-      <div class="sealpick__foot">
-        <p class="sealpick__now">Showing <strong data-seal-current>Cut corner</strong></p>
-        <button class="sealpick__reset" type="button" data-seal-reset>Reset to cut corner</button>
-      </div>
-
-    </div>
-  </div>
-
   <!-- Both deferred, so they execute in order and Swiper is defined by the
        time main.js initialises the blog carousel. -->
   <!-- Floating call button: a disc at rest, the number slides out on hover. -->
@@ -2526,6 +2493,6 @@
   </a>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-  <script src="js/nyc6.js?v=2" defer></script>
+  <script src="js/nyc6.js?v=3" defer></script>
 </body>
 </html>

@@ -151,131 +151,6 @@
     });
   }
 
-  /* Credential design picker ------------------------------------------------
-     The hero plaque is a button; clicking it opens a drawer off the left edge
-     holding six live copies of itself, one per design. Choosing one sets
-     data-seal-style on the hero plaque and nothing else moves. Like the CTA
-     picker on ctaselection.html, nothing is stored: a refresh puts the page
-     back on its own design. */
-  function initSealPicker() {
-    var trigger = document.querySelector('.seal-trigger');
-    var picker = document.getElementById('seal-picker');
-    var seal = document.querySelector('[data-seal]');
-    if (!trigger || !picker || !seal) return;
-
-    var list = picker.querySelector('[data-seal-list]');
-    var current = picker.querySelector('[data-seal-current]');
-    var panel = picker.querySelector('.sealpick__panel');
-    var DURATION = 280;
-    var hideTimer = null;
-    var lastFocused = null;
-
-    var STYLES = [
-      { id: 'notch', name: 'Cut corner', note: 'Navy slab, corners cut on a 45, gold rim' },
-      { id: 'square', name: 'Square', note: 'Sharp corners, full gold border' },
-      { id: 'rounded', name: 'Rounded', note: 'Soft corners, full gold border' },
-      { id: 'double', name: 'Double border', note: 'Gold border with a second inner line' },
-      { id: 'pill', name: 'Pill', note: 'Fully rounded, shield on a red disc' },
-      { id: 'stamp', name: 'Stamp', note: 'Dashed gold frame set inside the edge' },
-      { id: 'redtab', name: 'Red tab', note: 'Navy slab with a red bar down the left' },
-      { id: 'outline', name: 'Outline', note: 'See-through, white border only' }
-    ];
-
-    var buttons = [];
-
-    function apply(style) {
-      if (style) seal.setAttribute('data-seal-style', style);
-      else seal.removeAttribute('data-seal-style');
-
-      buttons.forEach(function (button) {
-        button.setAttribute('aria-pressed', String(button.dataset.sealStyle === style));
-      });
-
-      var chosen = STYLES.filter(function (item) { return item.id === style; })[0];
-      if (current && chosen) current.textContent = chosen.name;
-    }
-
-    STYLES.forEach(function (style) {
-      var item = document.createElement('li');
-
-      var button = document.createElement('button');
-      button.className = 'sealoption';
-      button.type = 'button';
-      button.dataset.sealStyle = style.id;
-      button.setAttribute('aria-pressed', String(style.id === 'notch'));
-
-      var stage = document.createElement('div');
-      stage.className = 'sealoption__stage';
-
-      /* A copy of the real plaque rather than a swatch, so the row shows
-         exactly what the hero will show. */
-      var preview = seal.cloneNode(true);
-      preview.removeAttribute('data-seal');
-      if (style.id) preview.setAttribute('data-seal-style', style.id);
-      else preview.removeAttribute('data-seal-style');
-      stage.appendChild(preview);
-
-      var foot = document.createElement('div');
-      foot.className = 'sealoption__foot';
-      foot.innerHTML =
-        '<span class="sealoption__name">' + style.name +
-        '<span class="sealoption__note">' + style.note + '</span></span>' +
-        '<span class="sealoption__tick" aria-hidden="true"><i class="fa-solid fa-check"></i></span>';
-
-      button.appendChild(stage);
-      button.appendChild(foot);
-      button.addEventListener('click', function () { apply(style.id); });
-
-      item.appendChild(button);
-      list.appendChild(item);
-      buttons.push(button);
-    });
-
-    function open() {
-      lastFocused = document.activeElement;
-      if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
-      picker.hidden = false;
-      /* A reflow between unhiding and the class, or there is no start state for
-         the panel to slide from. */
-      void picker.offsetWidth;
-      picker.classList.add('is-open');
-      trigger.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-      var close = picker.querySelector('.sealpick__close');
-      if (close) close.focus();
-    }
-
-    function close() {
-      picker.classList.remove('is-open');
-      trigger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      hideTimer = setTimeout(function () { picker.hidden = true; }, DURATION);
-      if (lastFocused) lastFocused.focus();
-    }
-
-    trigger.addEventListener('click', open);
-
-    picker.querySelectorAll('[data-seal-close]').forEach(function (el) {
-      el.addEventListener('click', close);
-    });
-
-    var reset = picker.querySelector('[data-seal-reset]');
-    if (reset) reset.addEventListener('click', function () { apply('notch'); });
-
-    picker.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') { close(); return; }
-      if (event.key !== 'Tab') return;
-
-      /* Keep the tab ring inside the drawer while it is open. */
-      var focusable = panel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-      if (!focusable.length) return;
-      var first = focusable[0];
-      var last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
-    });
-  }
-
   /* Mobile drawer with focus trap and scroll lock. */
   function initMobileNav() {
     var drawer = document.getElementById('mobile-nav');
@@ -832,7 +707,6 @@
     watchScroll();
     initMegaMenus();
     initAreaMenu();
-    initSealPicker();
     initMobileNav();
     initBlogSwiper();
     initReviewSwiper();
@@ -844,3 +718,15 @@
     initBackToTop();
   });
 })();
+
+/* FAQ "Click to see more" (shingle page, phones): reveals the questions the
+   stylesheet hides after the fifth. The content is always in the page. */
+(function faqSeeMore() {
+  var btn = document.querySelector('.faqs__more');
+  var list = document.querySelector('.faqs__list--collapsible');
+  if (!btn || !list) return;
+  btn.addEventListener('click', function () {
+    list.classList.remove('is-collapsed');
+    btn.setAttribute('aria-expanded', 'true');
+  });
+}());
