@@ -975,5 +975,15 @@
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
   <script src="js/nyc6.js?v=3" defer></script>
+
+  <!-- Live chat (Blazeo), starts six seconds after load -->
+  <script>
+  function delayStartChat(){
+  var script = document.createElement('script');
+  script.src = "//blazeo.com/scripts/invitation.ashx?company=nycrenovators";
+  document.body.appendChild(script);
+  }
+  setTimeout(delayStartChat, 6000);
+  </script>
 </body>
 </html>
