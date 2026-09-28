@@ -1,0 +1,56 @@
+/* Brooklyn contact page: a short introduction, location and form, then FAQs. */
+.contact-page__intro {
+  padding: calc(var(--nav-h) + 2.75rem) 0 2.75rem;
+  background-color: var(--navy-deep);
+  background-image: repeating-linear-gradient(135deg, transparent 0 68px, rgba(255, 255, 255, .075) 69px, transparent 70px), linear-gradient(90deg, var(--navy-deep) 0%, #092f62 100%);
+  background-size: 45% 100%, 100% 100%;
+  background-position: right center;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+.contact-page__intro-inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(2rem, 4vw, 5rem); }
+.contact-page__intro h1 {
+  color: #fff;
+  font-size: clamp(2rem, 1.5rem + 1.4vw, 2.875rem);
+  line-height: 1.15;
+  letter-spacing: -.03em;
+}
+.contact-page__intro p {
+  max-width: 58ch;
+  margin-top: 1rem;
+  color: var(--on-dark-muted);
+  font-size: 1.125rem;
+}
+.contact-page__proof { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 1rem .6rem; border: 1px solid var(--hairline-dark); border-left: 3px solid var(--red); border-radius: 8px; background: rgba(255, 255, 255, .06); }
+.contact-page__proof li { display: flex; flex-direction: column; align-items: flex-start; gap: .55rem; min-width: 0; padding: .3rem .8rem; }
+.contact-page__proof li + li { border-left: 1px solid var(--hairline-dark); }
+.contact-page__proof-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; flex: none; border-radius: 50%; background: #fff; }
+.contact-page__proof-icon img { width: 1.45rem; height: 1.45rem; object-fit: contain; }
+.contact-page__proof-icon svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: var(--red); stroke-width: 1.7; }
+.contact-page__proof strong { display: block; color: #fff; font-size: .9375rem; line-height: 1.2; }
+.contact-page__proof small { display: block; margin-top: .15rem; color: #f5b73e; font-size: .75rem; letter-spacing: .05em; line-height: 1.2; }
+.contact-page__proof li:last-child small { color: var(--on-dark-muted); letter-spacing: 0; }
+.contact-page__main { padding-block: clamp(2rem, 1.5rem + 2vw, 4rem); background: #fff; }
+.contact-page__main .contact__inner { gap: clamp(1rem, 1rem + 1vw, 1.75rem); }
+.contact-page__main .contact__location { box-shadow: 0 14px 40px rgba(2, 35, 80, .06); }
+.contact-page__main .contact__map { min-height: 26rem; }
+.contact-page__main .contact__form { align-content: start; }
+.contact-page__main .contact__form .quote-card__title { padding-top: 0; }
+.contact-page__main .form-availability { text-align: center; }
+.contact-page__faq { border-top: 1px solid var(--hairline); }
+
+@media (max-width: 48rem) {
+  .contact-page__intro { padding: calc(var(--nav-h) + 2.5rem) 0 2.5rem; }
+  .contact-page__intro-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .contact-page__intro p { font-size: 1rem; }
+  .contact-page__proof li { padding-inline: .6rem; }
+  .contact-page__main .contact__map { min-height: 25rem; }
+}
+@media (max-width: 40rem) {
+  .contact-page__proof { padding: .75rem .3rem; }
+  .contact-page__proof li { padding-inline: .45rem; }
+  .contact-page__proof strong { font-size: .75rem; }
+  .contact-page__proof small { font-size: .65rem; }
+  .contact-page__proof-icon { width: 2rem; height: 2rem; }
+  .contact-page__proof-icon img, .contact-page__proof-icon svg { width: 1.2rem; height: 1.2rem; }
+}

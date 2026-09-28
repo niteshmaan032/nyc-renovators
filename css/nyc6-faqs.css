@@ -337,3 +337,23 @@
   .fq-nav__link::before { min-width: 0; margin-right: .375rem; }
   .fq-nav__count { margin-left: .5rem; }
 }
+
+/* Call 23 Sep: each topic heading reads as a heading, not another question.
+   Boxed, black, no red underline and no hairline between it and the list. */
+.fq { padding-top: clamp(1.5rem, 1.1rem + 1.2vw, 2.25rem); }
+.fq-group__head {
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  background-color: var(--white);
+}
+.fq-group__title {
+  padding-bottom: 0;
+  color: var(--black);
+}
+.fq-group__title::after { content: none; }
+.fq-group__intro { margin-top: var(--space-2); }
+.fq-group .faqs__list { border-top: 0; }
+@media (max-width: 900px) {
+  .fq-group__head { padding: var(--space-3) var(--space-4); }
+}

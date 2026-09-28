@@ -144,3 +144,8 @@
   .pr-gallery__grid { grid-template-columns: minmax(0, 1fr); }
   .lightbox__thumb { width: 4.25rem; }
 }
+
+/* 23 Sep call: almost no space above the breadcrumb, and none between the
+   gallery and the CTA band. */
+.pr-hero { padding-top: var(--space-3); }
+.pr-gallery { padding-bottom: 0; }

@@ -197,3 +197,11 @@
 }
 .bl-featured__actions { margin-top: var(--space-5); }
 .bl-featured-band, .bl-all { padding-block: clamp(1rem, .8rem + .8vw, 1.5rem); }
+
+/* Call 23 Sep: on phones the Round 4 two-column rule above was still winning,
+   leaving a thumbnail beside a very tall text column. Stack the photo full
+   width above the text instead. */
+@media (max-width: 900px) {
+  .bl-featured { grid-template-columns: minmax(0, 1fr); }
+  .bl-featured__media { max-width: none; aspect-ratio: 16 / 9; }
+}

@@ -1241,3 +1241,57 @@
   .faqs__more i { font-size: .75rem; color: var(--red); }
   .faqs__more[aria-expanded="true"] { display: none; }
 }
+
+/* 23 Sep call --------------------------------------------------------------- */
+/* Hero: less padding and the title on one line. This page is the model for the
+   other service pages: keep blocks short so the next section peeks in. */
+.sr-hero { padding-block: clamp(1.25rem, 1rem + 1vw, 2rem); }
+.sr-hero .page-hero__title { max-width: none; white-space: nowrap; }
+@media (max-width: 44rem) {
+  .sr-hero .page-hero__title { font-size: clamp(1.375rem, 6.4vw, 1.75rem); }
+}
+
+/* The phone is the bigger call to action; the estimate button steps down. */
+.btn.sr-btn--lead {
+  min-height: 3.25rem;
+  padding: .9375rem 1.875rem;
+  padding-left: 22px;
+  font-size: 1.0625rem;
+}
+.btn.sr-btn--minor {
+  min-height: 2.5rem;
+  padding: .625rem 1.125rem;
+  padding-left: 16px;
+  font-size: .875rem;
+}
+.sr-strip__actions, .sr-why__actions, .cta-band__actions, .sr-hero .page-hero__actions { align-items: center; }
+
+/* Contact: a shorter form in a dark-blue box, and less space above the section. */
+.sr-contact { padding-top: .5rem; }
+.sr-contact .contact-form {
+  align-self: start;
+  padding: clamp(1rem, .85rem + .6vw, 1.5rem);
+  border: 2px solid var(--navy);
+}
+.sr-contact .contact-form__head { padding-bottom: var(--space-3); margin-bottom: var(--space-4); }
+.sr-contact .contact-form__grid { gap: var(--space-3); }
+.sr-contact .field__input--area { min-height: 4rem; }
+.sr-contact .contact-form__submit { margin-top: var(--space-4); }
+
+/* Neighborhoods: the "see more" button is a phone-only control. */
+.sr-hoods__more { display: none; }
+
+@media (max-width: 40rem) {
+  /* Card sliders: the first card starts inset from the edge, like the rest
+     of the page, so it reads as a card rather than an already-scrolled row. */
+  .sr-cards, .sr-types__grid, .sr-why__grid { scroll-padding-inline: 1.25rem; }
+
+  /* Why us: the first two reason tiles are dropped on phones. */
+  .sr-why__grid > li:nth-child(-n + 2) { display: none; }
+
+  /* Neighborhoods: five rows, then the button. */
+  .sr-hoods.is-collapsed li:nth-child(n + 6) { display: none; }
+  .sr-hoods__more { display: inline-flex; align-items: center; gap: .5rem; margin-top: var(--space-4); padding: .625rem 1rem; border: 1px solid var(--hairline); border-radius: 999px; background: var(--surface); color: var(--navy); font: inherit; font-weight: var(--fw-bold); font-size: .9375rem; cursor: pointer; }
+  .sr-hoods__more i { font-size: .75rem; color: var(--red); }
+  .sr-hoods__more[aria-expanded="true"] { display: none; }
+}

@@ -3329,3 +3329,144 @@ a.contact-line__value:hover { color: var(--red); }
 .whyus__reason-text { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; font-size: .9rem; line-height: 1.55; }
 @media (max-width: 1400px) and (min-width: 40.0625rem) { .whyus__reason-text { font-size: .82rem; line-height: 1.5; } }
 @media (max-width: 1300px) and (min-width: 40.0625rem) { .whyus__reason-text { font-size: .78rem; letter-spacing: -.005em; } }
+
+/* 23 Sep weekly call ------------------------------------------------------- */
+/* Hero to About: less white space (desktop). */
+@media (min-width: 40.0625rem) { .about { padding-top: var(--space-2); } }
+/* "Not sure which one you need?": plain white box, no red rule. */
+.services__foot { border-left: 1px solid var(--hairline); }
+/* Why Choose: half the gap above the cards; the cards shorter, even top and
+   bottom, now that each description is three lines. */
+.whyus__reasons { margin-top: var(--space-3); }
+.whyus__reason { padding: var(--space-4); align-items: center; }
+/* Footer: contact bar pulled up under the rule, and the three labels start on
+   one line even though the address wraps to two. */
+.footer__midrow { padding-block: var(--space-2) var(--space-3); }
+.footer__midrow .footer__contactbar-list { align-items: start; }
+.footer__contactbar-list li { align-items: start; }
+/* Contact page: form heading centred. */
+.page-hero--contact .contact-form__title { text-align: center; }
+/* Projects: hero pulled up to the header; no dead space before the CTA band. */
+.page-hero--service .pr-hero { padding-top: var(--space-2); padding-bottom: var(--space-4); }
+.pr-gallery { padding-bottom: 0; margin-bottom: 0; }
+.pr-gallery + .cta-band { margin-top: 0; }
+/* Hero video: navy ground carries the poster frame too, so a phone that holds
+   autoplay back never shows an empty band. */
+.hero__media { background: var(--navy-deep) url("https://res.cloudinary.com/dbsdxu4tv/video/upload/so_1,w_1280,q_auto/v1771496715/Shingle_Roof_Replacement_-_in_6_Hours_memh5b.jpg") center / cover no-repeat; }
+/* Swipe rows: the first card starts inset, level with the page gutter. */
+.services__grid, .exterior__grid { scroll-padding-inline: var(--gutter, 1.25rem); }
+
+@media (max-width: 40rem) {
+  /* Phone-only bullets dropped from the Roofing Systems cards. */
+  .u-desk-item { display: none; }
+  /* What We Do: tighter head above the card row. */
+  .services__head { margin-bottom: var(--space-3); }
+  .services__lede { margin-top: var(--space-2); }
+  /* Not sure box: heading centred over the button, less padding inside. */
+  .services__foot { justify-content: center; text-align: center; padding: var(--space-4); gap: var(--space-3); }
+  .services__foot-text { margin-inline: auto; margin-bottom: 0; }
+  .services__foot-text strong { margin-bottom: 0; }
+  /* Why Choose heading: "Royal Renovators Inc." kept together on its own line. */
+  .whyus__brand { display: block; white-space: nowrap; }
+  /* Phone calls first: the Call button is the big one, the estimate the small one. */
+  .whyus__actions .btn--primary { font-size: 1.125rem; padding-block: 1rem; padding-right: 2rem; }
+  .whyus__actions .btn--ghost { font-size: .9375rem; min-height: 2.5rem; padding-block: .625rem; }
+  /* Half the gap between Why Choose and Exterior Work. */
+  .whyus { padding-bottom: .5rem; }
+  .exterior { padding-top: .5rem; }
+  .exterior__grid { scroll-padding-inline: 1.25rem; }
+  /* Areas: heading and intro closer together. */
+  .areas__body .section-lede { margin-top: var(--space-2); }
+  /* Footer: badges and contact block closer to the rule and to each other. */
+  .footer__top { padding-bottom: var(--space-2); }
+  .footer__midrow { padding-top: var(--space-2); gap: var(--space-3); }
+}
+
+/* 28 Sep client round ------------------------------------------------------ */
+/* Hero: heading block and the form card start level; both a step lower than
+   before, CTAs and credential marks back to left-justified (the chat pop-up
+   now waits ten seconds and sits on the right). */
+.hero__inner { align-items: start; }
+.hero__content { margin-top: 1.25rem; }
+.hero__aside { align-self: start; margin-top: 1.25rem; }
+.hero__actions, .hero__badges { justify-content: flex-start; align-self: flex-start; }
+@media (max-height: 780px) { .hero__content, .hero__aside { margin-top: .75rem; } }
+
+/* Hero marks: Inc. 5000 replaces Angi; every mark larger, evenly spaced. */
+.hero__badges { gap: 1.5rem; }
+.hero__badge img { height: 3.375rem; }
+.hero__badge--gaf img { height: 3.375rem; }
+.hero__badge--extra img { height: 3.375rem; }
+.hero__badge--inc img { height: 3.625rem; }
+.hero__badge--rating img { height: 2.75rem; }
+.hero__rating { font-size: 1.5rem; }
+
+/* Hero form: Name | Phone; the reassurance line starts a touch right of the
+   phone field; "We'll call you back within the hour" under the button. */
+.field--note { padding-left: .5rem; }
+.estimate-form__callback { margin: .5rem 0 0; text-align: center; font-size: .8125rem; line-height: 1.3; color: rgba(1, 44, 109, .72); }
+.estimate-form__callback + .form-status:empty { display: none; }
+
+/* Inline links (Queens) in the About and Areas copy. */
+.inline-link { color: var(--red); font-weight: var(--fw-medium); text-decoration: underline; text-decoration-color: rgba(232, 38, 60, .35); text-underline-offset: .15em; }
+.inline-link:hover { text-decoration-color: currentColor; }
+
+/* Accredited-and-reviewed-by: NRCA mark added. */
+.accred__logos .is-nrca img { height: 2.125rem !important; width: auto; }
+
+/* Areas We Serve: tiles are links now. */
+.areas__list a.areas__item { text-decoration: none; cursor: pointer; }
+.areas__list a.areas__item:hover, .areas__list a.areas__item:focus-visible { color: var(--red); }
+
+/* Why Choose: the photo block matches the height of the text column, so no
+   empty space sits under the reasons. */
+@media (min-width: 64.0625rem) {
+  .whyus__inner { align-items: stretch; }
+  .whyus__media { contain: size; height: 100%; min-height: 0; grid-template-rows: minmax(0, 1fr) auto; }
+  .whyus__media .whyus__shot--tall { aspect-ratio: auto; height: 100%; min-height: 0; }
+  .whyus__media .whyus__shot--tall .media-frame__image { height: 100%; object-fit: cover; }
+}
+
+@media (max-width: 48rem) {
+  /* Phones: no floating green call button. */
+  .call-fab { display: none !important; }
+}
+@media (max-width: 40rem) {
+  /* Hero form: Name and Phone on one line; no reassurance line. */
+  .estimate-form--white .estimate-form__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .estimate-form--white .field--full { grid-column: 1 / -1; }
+  .estimate-form--white .field--note { display: none; }
+  /* About: half the white space above the photos and above the eyebrow. */
+  .about { padding-top: .5rem; }
+  .about__inner { gap: 1.5rem; }
+  .about__media { padding-bottom: 12%; }
+}
+
+/* Live chat (Blazeo/ApexChat) invitation: bottom-right instead of bottom-left.
+   The green call button swaps to the left on desktop so the two never overlap. */
+#apexchat_prechat_invitation_wrapper { left: auto !important; right: 0 !important; padding: 0 0 0 10px !important; }
+@media (min-width: 48em) {
+  .call-fab { left: clamp(1rem, .6rem + 1.2vw, 1.75rem); right: auto; flex-direction: row-reverse; }
+  .call-fab:hover .call-fab__label,
+  .call-fab:focus-visible .call-fab__label { padding-inline: .5rem 1rem; }
+}
+
+/* 28 Sep follow-ups ------------------------------------------------------- */
+/* Hero form: pull Address and the fields below it up under the phone note. */
+.estimate-form--white .field--note { margin-bottom: calc(var(--space-3) * -1); }
+.estimate-form--white .field--note + .field { margin-top: calc(var(--space-2) * -1); }
+/* Mobile: every hero logo on one row (Google, BBB, GAF, Inc. 5000, Yelp). */
+@media (max-width: 40rem) {
+  .hero__badges { display: flex; flex-wrap: nowrap; align-items: center; justify-content: flex-start; gap: .5rem; width: 100%; }
+  .hero__badge { flex: 0 0 auto; min-width: 0; }
+  .hero__badge--extra { display: inline-flex; }
+  .hero__badge img { height: 1.9rem; }
+  .hero__badge--gaf img { height: 1.75rem; }
+  .hero__badge--rating img { height: 1.5rem; }
+  .hero__badge--rating { font-size: .9rem; }
+  .hero__badge--inc img { height: 2.1rem; }
+}
+
+/* "2% of roofing contractors": heavier than the lede's bold. The family only
+   ships a 700, so the stroke thickens it and navy lifts it off the grey copy. */
+.section-lede .lede-emph { font-weight: 700; color: var(--navy); -webkit-text-stroke: .035em currentColor; paint-order: stroke fill; }

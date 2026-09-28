@@ -25,7 +25,7 @@
 
   <!-- Page-scoped overrides. Loaded after style.css so this page can diverge
        from index.html without touching the shared stylesheet. -->
-  <link rel="stylesheet" href="css/nyc6.css?v=19">
+  <link rel="stylesheet" href="css/nyc6.css?v=25">
 </head>
 <body>
 
@@ -61,7 +61,6 @@
                       <p class="mega__heading">Roofing services</p>
                       <ul class="mega__list">
                         <li><a href="nyc6-shingle-roofing.html"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
-                        <li><a href="nyc3-flat-roofing.html"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
                         <li><a href="#roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
                         <li><a href="#roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
                         <li><a href="#emergency-roof-repair" class="mega__link--urgent"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Roof Repair</span></a></li>
@@ -421,7 +420,6 @@
             </button>
             <ul class="mobile-nav__sub" id="m-roofing" hidden>
               <li><a href="nyc6-shingle-roofing.html"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
-              <li><a href="nyc3-flat-roofing.html"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
               <li><a href="#roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
               <li><a href="#roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
               <li><a href="#commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
@@ -613,8 +611,13 @@
     <section class="hero">
 
       <div class="hero__media">
+        <!-- Poster: a frame of the same clip, so a phone that holds autoplay back
+             (Low Power Mode, Reduce Motion, slow data) shows the roof, not navy.
+             Phones get a 720px baseline-H.264 cut of the clip instead of the 15 MB master. -->
         <video class="hero__video" autoplay muted loop playsinline preload="auto"
-               disablepictureinpicture aria-hidden="true" tabindex="-1">
+               disablepictureinpicture aria-hidden="true" tabindex="-1"
+               poster="https://res.cloudinary.com/dbsdxu4tv/video/upload/so_1,w_1280,q_auto/v1771496715/Shingle_Roof_Replacement_-_in_6_Hours_memh5b.jpg">
+          <source media="(max-width: 44rem)" src="https://res.cloudinary.com/dbsdxu4tv/video/upload/w_720,q_auto,vc_h264:baseline:3.1/v1771496715/Shingle_Roof_Replacement_-_in_6_Hours_memh5b.mp4" type="video/mp4">
           <source src="https://res.cloudinary.com/dbsdxu4tv/video/upload/v1771496715/Shingle_Roof_Replacement_-_in_6_Hours_memh5b.mp4" type="video/mp4">
         </video>
         <div class="hero__scrim" aria-hidden="true"></div>
@@ -638,12 +641,10 @@
           </h1>
 
           <p class="hero__lede hero__lede--desk">
-            Royal Renovators Inc. has served NYC since 1988. We are a BBB A+ rated, GAF Master
-            Elite roofing contractor specializing in flat roofing, shingles, siding, and gutters.
+            Royal Renovators Inc. is a licensed NYC roofing contractor (LIC&nbsp;#2030146), BBB A+ rated and GAF Master Elite certified, specializing in flat roofing, shingles, and siding.
           </p>
           <p class="hero__lede hero__lede--mob">
-            Serving NYC since 1988. BBB A+ rated and GAF Master Elite, specializing in flat
-            roofing, shingles, siding and gutters.
+            Royal Renovators Inc. is a licensed NYC roofing contractor (LIC&nbsp;#2030146), BBB A+ rated and GAF Master Elite certified, specializing in flat roofing, shingles, and siding.
           </p>
 
           <div class="hero__actions">
@@ -683,10 +684,10 @@
               </a>
             </li>
 
-            <li class="hero__badge hero__badge--extra">
-              <a class="hero__badge-link" href="#awards">
-                <img src="images/ANGIES_LIST_SUPER_SAVER_award.png" alt="Angie&rsquo;s List Super Service Award"
-                     width="600" height="462" decoding="async">
+            <li class="hero__badge hero__badge--extra hero__badge--inc">
+              <a class="hero__badge-link" href="#inc-5000">
+                <img src="images/Inc.-5000-Color-Medallion-Logo-768x768.png" alt="Inc. 5000 honoree"
+                     width="768" height="768" decoding="async">
               </a>
             </li>
 
@@ -714,7 +715,7 @@
 
               <p class="field">
                 <label class="field__label" for="ef-name">
-                  Full name
+                  Name
                 </label>
                 <input class="field__input" type="text" id="ef-name" name="name"
                        autocomplete="name" placeholder="Jane Rodriguez" required>
@@ -722,7 +723,7 @@
 
               <p class="field">
                 <label class="field__label" for="ef-phone">
-                  Best Phone Number
+                  Phone
                 </label>
                 <input class="field__input" type="tel" id="ef-phone" name="phone"
                        autocomplete="tel" inputmode="tel" placeholder="(718) 000-0000" required>
@@ -734,7 +735,7 @@
 
               <p class="field field--full">
                 <label class="field__label" for="ef-address">
-                  Property Address
+                  Address
                 </label>
                 <input class="field__input" type="text" id="ef-address" name="address"
                        autocomplete="street-address" placeholder="Street, borough" required>
@@ -750,8 +751,10 @@
 
             <button class="btn btn--primary estimate-form__submit" type="submit">
               <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
-              <span class="btn__label">Get a Free Estimate</span>
+              <span class="btn__label">Get My Free Estimate</span>
             </button>
+
+            <p class="estimate-form__callback">We&rsquo;ll call you back within the hour</p>
 
             <p class="estimate-form__status form-status" data-form-status role="status" aria-live="polite"></p>
 
@@ -850,7 +853,7 @@
 
           <p class="section-lede">
             Royal Renovators Inc. has been roofing New York City since 1988, from flat roofs on
-            Brooklyn brownstones to shingle roofs on homes across Queens. We are a licensed NYC
+            Brooklyn brownstones to shingle roofs on homes across <a class="inline-link" href="/queens/">Queens</a>. We are a licensed NYC
             contractor, BBB A+ accredited, and GAF Master Elite certified.
           </p>
 
@@ -1185,9 +1188,9 @@
             </h2>
 
             <p class="section-lede">
-              GAF is the largest roofing manufacturer in North America, and fewer than 2% of
-              roofing contractors carry its Master Elite certification. Royal Renovators Inc. is
-              one of them, and has been installing GAF systems on New York roofs for decades.
+              GAF is the largest roofing manufacturer in North America, and fewer than <strong class="lede-emph">2% of
+              roofing contractors</strong> carry its Master Elite certification. Royal Renovators Inc. is
+              one of them.
             </p>
 
             <ul class="gaf__points gaf__desk">
@@ -1219,13 +1222,11 @@
             <ul class="gaf__aside-points">
               <li>
                 <strong>Enhanced Warranty Options</strong>
-                Eligible roofing systems can receive stronger manufacturer-backed warranty
-                protection.
+                As Master Elite roofers, we can offer up to a 50 year factory-backed warranty.
               </li>
               <li>
                 <strong>Complete GAF Roofing Systems</strong>
-                We install GAF roofing components as a coordinated system rather than simply
-                replacing the shingles.
+                We install a full GAF system, not just replacing new shingles.
               </li>
             </ul>
 
@@ -1264,7 +1265,7 @@
             <h2 class="section-title">Flat Roofing Specialists Serving Queens &amp; <span class="u-desk">New York City</span><span class="u-mob">NYC</span></h2>
           </div>
           <p class="services__lede">
-            From a shingle roof leak on a Queens two-family home to a full commercial reroof: the same crews, the same standard, since 1988.
+            Roof repairs and replacements for homes and businesses across Queens and NYC since 1988.
           </p>
         </div>
 
@@ -1276,7 +1277,7 @@
                    alt="Royal Renovators crew laying cap sheet on a flat roof" width="1024" height="768"
                    loading="lazy" decoding="async">
             </div>
-            <h3 class="service-card__title"><a href="nyc3-flat-roofing.html">Flat Roofing</a></h3>
+            <h3 class="service-card__title"><a href="#flat-roofing">Flat Roofing</a></h3>
             <p class="service-card__text">
               Low-slope systems for row houses, brownstones and storefronts, laid to drain.
             </p>
@@ -1284,7 +1285,7 @@
               <li>EPDM, TPO and Modified Bitumen</li>
               <li>Ponding and Drainage Corrected</li>
             </ul>
-            <a class="service-card__more" href="nyc3-flat-roofing.html">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <a class="service-card__more" href="#flat-roofing">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           </li>
 
           <li class="service-card">
@@ -1426,7 +1427,7 @@
               <li>EPDM, TPO &amp; Modified Bitumen</li>
               <li>Drainage and Ponding Corrections</li>
               <li>Parapet, Flashing &amp; Penetration Detailing</li>
-              <li>Tapered Insulation Where Needed</li>
+              <li class="u-desk-item">Tapered Insulation Where Needed</li>
             </ul>
             <div class="buildings__system-photo">
               <img src="images/live/flat-roof-crew-queens.jpg" alt="Royal Renovators crew on a white flat roof in Queens"
@@ -1456,7 +1457,7 @@
             <div class="buildings__system-row">
               <ul class="buildings__specs">
               <li>GAF Timberline Architectural Shingles</li>
-              <li>Roof Deck Inspected Before Installation</li>
+              <li class="u-desk-item">Roof Deck Inspected Before Installation</li>
               <li>Ice &amp; Water Shield at Eaves and Valleys</li>
               <li>Proper Flashing, Ventilation &amp; Ridge Caps</li>
             </ul>
@@ -1480,7 +1481,7 @@
             <i class="fa-solid fa-house-chimney-window"></i>
           </div>
           <div class="buildings__banner-body">
-            <p class="buildings__banner-title">Flat and pitched on the same building?</p>
+            <p class="buildings__banner-title"><span class="u-desk">Flat and pitched on the same building?</span><span class="u-mob">Flat &amp; pitched on same building?</span></p>
             <p class="buildings__banner-text">
               Some NYC properties have both flat and pitched roof sections. We install and properly
               transition both systems when required.
@@ -1505,23 +1506,13 @@
         <div class="whyus__body">
 
           <h2 class="section-title whyus__title">
-            Why NYC Property Owners Choose Royal Renovators Inc.
+            Why NYC Property Owners Choose <span class="whyus__brand">Royal Renovators Inc.</span>
           </h2>
 
-          <p class="whyus__lede whyus__lede--desk">
-            There is no shortage of roofing companies in New York. What there is a shortage of is
-            companies that will still answer the phone in three years, when the roof they sold you
-            starts doing something it should not.
-          </p>
-          <p class="whyus__lede whyus__lede--mob">
-            Plenty of companies can install a roof. The real test is whether they are still there
-            when you need them years later.
-          </p>
-
-          <p class="whyus__text">
-            Since 1988, our name is on buildings throughout Forest Hills, Astoria, Bed-stuy, and
-            the Bronx, and a large share of every year&rsquo;s work comes from people who have
-            already used us or their family and friends.
+          <p class="whyus__lede">
+            Since 1988, Royal Renovators Inc. has provided roof repairs and replacements across
+            New York City. As a licensed, insured GAF Master Elite contractor, we offer clear
+            estimates and stand behind our work.
           </p>
 
           <div class="whyus__actions">
@@ -1566,7 +1557,7 @@
                 <h3 class="whyus__reason-title">Credentials You Can Check</h3>
                 <p class="whyus__reason-text">
                   Licensed NYC contractor #2030146, BBB A+ accredited, GAF Factory-Certified
-                  Master Elite, fully insured. Every one of those is verifiable without asking us.
+                  Master Elite, fully insured.
                 </p>
               </div>
             </li>
@@ -1587,8 +1578,8 @@
               <div>
                 <h3 class="whyus__reason-title">Written, Itemized Estimates</h3>
                 <p class="whyus__reason-text">
-                  Tear-off and overlay priced separately so you can compare like for like against
-                  anyone else you ask. No day-rate arithmetic, no verbal numbers.
+                  Tear-off and layover priced separately so you can compare like for like against
+                  anyone else you ask.
                 </p>
               </div>
             </li>
@@ -1705,8 +1696,8 @@
                 Vinyl, fiber cement and stucco over a proper weather barrier, every opening flashed.
               </p>
               <ul class="exterior__points">
-                <li>Vinyl, Fiber Cement and Stucco</li>
-                <li>House Wrap and Flashing at Every Opening</li>
+                <li>Vinyl, Fiber Cement &amp; Stucco</li>
+                <li>House Wrap &amp; Flashing on Walls</li>
               </ul>
               <span class="exterior__card-more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             </div>
@@ -1724,8 +1715,8 @@
                 Pointing, parapet rebuilds and waterproofing on older New York brick.
               </p>
               <ul class="exterior__points">
-                <li>Grinding and Repointing, Matched Mortar</li>
-                <li>Parapet Rebuilds and Coping Stones</li>
+                <li>Grinding &amp; Repointing, Matched Mortar</li>
+                <li>Parapet Rebuilds &amp; Coping Stones</li>
               </ul>
               <span class="exterior__card-more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             </div>
@@ -1744,7 +1735,7 @@
               </p>
               <ul class="exterior__points">
                 <li>Seamless Aluminum, Formed on Site</li>
-                <li>Sized to the Roof Area, not the Wall</li>
+                <li>Sized to the Roof, not the Wall</li>
               </ul>
               <span class="exterior__card-more">Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             </div>
@@ -1819,51 +1810,51 @@
           <h2 class="section-title areas__title">Roofing Across the Five Boroughs and Beyond</h2>
 
           <p class="section-lede">
-            Based in Forest Hills, and roofing right across NYC since 1988, plus Long Island and Yonkers.
+            Based in Forest Hills, <a class="inline-link" href="/queens/">Queens</a> and roofing across NYC since 1988, as well as Yonkers and Long Island.
           </p>
 
           <ul class="areas__list">
             <li>
-              <span class="areas__item">
+              <a class="areas__item" href="brooklyn.html">
                 <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                 <span>Brooklyn</span>
                 <i class="fa-solid fa-arrow-right areas__go" aria-hidden="true"></i>
-              </span>
+              </a>
             </li>
             <li>
-              <span class="areas__item">
+              <a class="areas__item" href="https://www.nycrenovators.com/bronx/">
                 <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                 <span>Bronx</span>
                 <i class="fa-solid fa-arrow-right areas__go" aria-hidden="true"></i>
-              </span>
+              </a>
             </li>
             <li>
-              <span class="areas__item">
+              <a class="areas__item" href="https://www.nycrenovators.com/manhattan/">
                 <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                 <span>Manhattan</span>
                 <i class="fa-solid fa-arrow-right areas__go" aria-hidden="true"></i>
-              </span>
+              </a>
             </li>
             <li>
-              <span class="areas__item">
+              <a class="areas__item" href="https://www.nycrenovators.com/far-rockaway/">
                 <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                 <span>Far Rockaway</span>
                 <i class="fa-solid fa-arrow-right areas__go" aria-hidden="true"></i>
-              </span>
+              </a>
             </li>
             <li>
-              <span class="areas__item">
+              <a class="areas__item" href="https://www.nycrenovators.com/long-island/">
                 <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                 <span>Long Island</span>
                 <i class="fa-solid fa-arrow-right areas__go" aria-hidden="true"></i>
-              </span>
+              </a>
             </li>
             <li>
-              <span class="areas__item">
+              <a class="areas__item" href="https://www.nycrenovators.com/yonkers/">
                 <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                 <span>Yonkers</span>
                 <i class="fa-solid fa-arrow-right areas__go" aria-hidden="true"></i>
-              </span>
+              </a>
             </li>
           </ul>
 
@@ -1956,6 +1947,12 @@
               <a href="#inc-5000">
                 <img src="images/Inc.-5000-Color-Medallion-Logo-768x768.png" alt="Inc. 5000 honoree"
                      width="768" height="768" loading="lazy" decoding="async">
+              </a>
+            </li>
+            <li class="is-nrca">
+              <a href="#nrca">
+                <img src="images/nrcalogo.gif" alt="NRCA member, National Roofing Contractors Association"
+                     width="920" height="263" loading="lazy" decoding="async">
               </a>
             </li>
           </ul>
@@ -2363,7 +2360,6 @@
           <ul class="footer__links">
               <li><a href="#roof-repair">Roof Repair</a></li>
               <li><a href="#roof-replacement">Roof Replacement</a></li>
-              <li><a href="nyc3-flat-roofing.html">Flat Roofing</a></li>
               <li><a href="nyc6-shingle-roofing.html">Shingle Roofing</a></li>
               <li class="footer__link--desk"><a href="#commercial-roofing">Commercial Roofing</a></li>
           </ul>
@@ -2502,7 +2498,7 @@
   script.src = "//blazeo.com/scripts/invitation.ashx?company=nycrenovators";
   document.body.appendChild(script);
   }
-  setTimeout(delayStartChat, 6000);
+  setTimeout(delayStartChat, 10000);
   </script>
 </body>
 </html>
