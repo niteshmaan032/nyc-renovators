@@ -2334,7 +2334,7 @@ setTimeout(delayStartChat, 6000);
 <script>
   window.addEventListener("load", function () {
     webreels.initialize({
-      apiKey: "AIzaSy6miK8fgHsQ0mqxwxgHNoiY_JTjQryNu1u",
+      apiKey: "[REDACTED_WEBREELS_API_KEY]",
     });
   });
 </script>
