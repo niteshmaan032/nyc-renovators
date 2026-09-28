@@ -3470,3 +3470,15 @@ a.contact-line__value:hover { color: var(--red); }
 /* "2% of roofing contractors": heavier than the lede's bold. The family only
    ships a 700, so the stroke thickens it and navy lifts it off the grey copy. */
 .section-lede .lede-emph { font-weight: 700; color: var(--navy); -webkit-text-stroke: .035em currentColor; paint-order: stroke fill; }
+
+/* Hero form submit: the hero's primary buttons invert to white on hover (they
+   sit on navy), but this one sits on the white card, so it goes navy instead. */
+.page-hero .estimate-form--white .btn--primary:hover,
+.page-hero .estimate-form--white .btn--primary:focus-visible,
+.estimate-form--white .estimate-form__submit:hover,
+.estimate-form--white .estimate-form__submit:focus-visible {
+  --clr: var(--navy);
+  --btn-ink: var(--white);
+  --pip-bg: var(--white);
+  --pip-ink: var(--navy);
+}

@@ -142,7 +142,13 @@
       }
 
       toggles.forEach(function (toggle) {
-        toggle.addEventListener('click', function () { open(toggle); });
+        toggle.addEventListener('click', function () {
+          /* A tab with data-href is also a page: hover previews its pane,
+             a click goes to the page (Brooklyn -> brooklyn.html). */
+          var href = toggle.getAttribute('data-href');
+          if (href) { window.location.href = href; return; }
+          open(toggle);
+        });
         /* Pointer users get it on hover, the way the old site behaved. */
         toggle.addEventListener('mouseenter', function () {
           if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) open(toggle);

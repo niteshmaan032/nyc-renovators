@@ -25,7 +25,7 @@
 
   <!-- Page-scoped overrides. Loaded after style.css so this page can diverge
        from index.html without touching the shared stylesheet. -->
-  <link rel="stylesheet" href="css/nyc6.css?v=26">
+  <link rel="stylesheet" href="css/nyc6.css?v=27">
 </head>
 <body>
 
@@ -128,7 +128,7 @@
                     </li>
                     <li>
                       <button class="areas-menu__tab" type="button"
-                              aria-expanded="false" aria-controls="am-brooklyn">Brooklyn</button>
+                              aria-expanded="false" aria-controls="am-brooklyn" data-href="brooklyn.html">Brooklyn</button>
                     </li>
                     <li>
                       <button class="areas-menu__tab" type="button"
@@ -478,7 +478,7 @@
                   <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
                 </button>
                 <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-brooklyn" hidden>
-                  <li><a href="#brooklyn-roofing"><span>Brooklyn Roofing</span></a></li>
+                  <li><a href="brooklyn.html"><span>Brooklyn Roofing</span></a></li>
                   <li><a href="#brooklyn-flat-roofing"><span>Flat Roofing</span></a></li>
                   <li><a href="#brooklyn-shingle-roofing"><span>Shingle Roofing</span></a></li>
                   <li><a href="#brooklyn-commercial-roofing"><span>Commercial Roofing</span></a></li>
@@ -1889,7 +1889,7 @@
               Island, and Yonkers.
             </p>
             <ul class="network__chips">
-            <li><a href="https://www.nycrenovators.com/brooklyn/"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Brooklyn</a></li>
+            <li><a href="brooklyn.html"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Brooklyn</a></li>
             <li><a href="https://www.nycrenovators.com/manhattan/"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Manhattan</a></li>
             <li><a href="https://www.nycrenovators.com/bronx/"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>The Bronx</a></li>
             <li><a href="https://www.nycrenovators.com/far-rockaway/"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Far Rockaway</a></li>
@@ -2487,7 +2487,7 @@
   </a>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-  <script src="js/nyc6.js?v=3" defer></script>
+  <script src="js/nyc6.js?v=4" defer></script>
 
   <!-- Live chat (Blazeo), starts six seconds after load -->
   <script>
