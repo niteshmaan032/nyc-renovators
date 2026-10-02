@@ -1295,3 +1295,8 @@
   .sr-hoods__more i { font-size: .75rem; color: var(--red); }
   .sr-hoods__more[aria-expanded="true"] { display: none; }
 }
+
+/* --- 28 Sep call -------------------------------------------------------- */
+/* F1. The overview heading read a size below the hero title; the client wanted
+   the pair matched, so it takes the hero's scale. */
+.sr-overview__title { font-size: clamp(2rem, 1.35rem + 2.3vw, 3.5rem); }

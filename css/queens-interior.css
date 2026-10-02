@@ -1,0 +1,614 @@
+/* ==========================================================================
+   Queens interior pages — About and Contact
+   Loads after css/queens.css and only adds or overrides. Every section follows
+   the house rules: --section-pad outside, 1.5rem between a head and its
+   content, buttons left to the shared .btn so they stay 49px.
+   ========================================================================== */
+
+/* Shared hero ------------------------------------------------------------- */
+/* Same viewport-relative fold as the home hero, so one screen plus a teaser
+   of the next section. The grid no longer carries a fixed min-height. */
+.page-interior .interior-hero {
+  display: grid;
+  align-items: center;
+  min-height: calc(100svh - var(--nav-h) - 3.5rem);
+  padding-top: calc(var(--nav-h) + clamp(1.5rem, 2vw, 2.5rem));
+  padding-bottom: clamp(1.5rem, 2vw, 2.5rem);
+  background: var(--navy-deep);
+  color: #fff;
+}
+@media (max-height: 640px), (max-width: 60rem) {
+  .page-interior .interior-hero { min-height: 0; }
+}
+.interior-hero__grid { display: grid; grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr); align-items: stretch; gap: clamp(2rem, 4vw, 5rem); }
+.interior-hero__copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding-block: clamp(1rem, 2vw, 2rem); }
+.interior-hero__copy h1 { max-width: 13ch; color: #fff; font-size: clamp(2.5rem, 1.9rem + 2.4vw, 4.5rem); line-height: 1.04; letter-spacing: -.045em; }
+.interior-hero__copy > p:not(.section-eyebrow) { max-width: 48ch; margin-top: 1.25rem; color: var(--on-dark-muted); font-size: 1.0625rem; }
+.interior-hero__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 1.5rem; margin-top: 1.75rem; }
+.interior-hero__text-link { display: inline-flex; align-items: center; gap: .5rem; color: #fff; font-weight: var(--fw-bold); text-decoration: none; }
+.interior-hero__text-link:hover { text-decoration: underline; text-underline-offset: .25em; }
+.interior-hero__text-link svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 2; }
+.interior-hero__media { position: relative; min-height: 22rem; margin: 0; overflow: hidden; border-radius: var(--radius-lg); }
+.interior-hero__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.interior-hero__media figcaption { position: absolute; right: 1rem; bottom: 1rem; padding: .45rem .7rem; background: #fff; color: var(--navy); font-size: .75rem; font-weight: var(--fw-bold); }
+.interior-hero--about .interior-hero__media img { object-position: center 43%; }
+.interior-hero--contact .interior-hero__media img { object-position: center 55%; }
+.interior-hero__phone { color: #fff; font-size: clamp(1.5rem, 1.1rem + 1vw, 2rem); font-weight: var(--fw-bold); text-decoration: none; }
+.interior-hero__phone:hover { color: #ff8490; text-decoration: underline; text-underline-offset: .2em; }
+
+/* ==========================================================================
+   About page — five sections mirroring the approved nyc6 About layout
+   ========================================================================== */
+
+/* Shared head: eyebrow + title on the left, lede on the right, 1.5rem below */
+.qab-head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-items: end; gap: var(--space-5) clamp(2rem, 4vw, 4rem); margin-bottom: var(--space-5); }
+.qab-head .section-lede { margin-top: 0; justify-self: end; max-width: 46ch; }
+.qab-title { max-width: 20ch; }
+
+/* 1. Intro — photo collage beside the opening copy */
+.qab-intro { background: #fff; }
+.qab-intro__inner { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); align-items: center; gap: clamp(2rem, 4vw, 4.5rem); }
+.qab-intro__media { position: relative; padding: 0 0 3.5rem 2.5rem; }
+.qab-frame { margin: 0; overflow: hidden; border-radius: var(--radius-lg); }
+.qab-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.qab-frame--lead { aspect-ratio: 4 / 3.1; }
+.qab-frame--inset { position: absolute; left: 0; bottom: 0; width: 46%; aspect-ratio: 1 / .88; border: 6px solid #fff; box-shadow: 0 14px 34px rgba(1, 27, 68, .18); }
+.qab-intro__text { max-width: 60ch; margin-top: var(--space-4); color: var(--muted); }
+.qab-points { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem 1rem; margin: var(--space-5) 0; }
+.qab-points li { display: flex; align-items: center; gap: .6rem; min-width: 0; color: var(--navy); font-weight: var(--fw-bold); font-size: .9375rem; }
+.qab-points svg { width: 1rem; height: 1rem; flex: none; fill: none; stroke: var(--red); stroke-width: 2.6; }
+
+/* 2. Results — navy band with four stat tiles */
+.qab-results { background: var(--navy); color: #fff; }
+.qab-results__inner { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: clamp(2rem, 4vw, 4.5rem); }
+.qab-results .section-title { color: #fff; }
+.qab-results__text { max-width: 58ch; margin-top: var(--space-4); color: var(--on-dark-muted); font-size: 1rem; }
+.qab-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--hairline-dark); border: 1px solid var(--hairline-dark); }
+.qab-stats li { display: grid; align-content: center; gap: .3rem; min-height: 8.5rem; padding: 1.25rem; background: var(--navy); }
+.qab-stats strong { font-size: clamp(1.75rem, 1.3rem + 1.5vw, 2.75rem); line-height: 1; letter-spacing: -.03em; }
+.qab-stats strong .qab-stats__star { color: var(--gold); font-size: .7em; }
+.qab-stats span { color: var(--on-dark-muted); font-size: .8125rem; font-weight: var(--fw-medium); line-height: 1.4; }
+
+/* 3. Services — navy feature panel, then cards with a red CTA tile */
+.qab-services { background: var(--surface-alt); }
+.qab-feature { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: stretch; overflow: hidden; border-radius: var(--radius-lg); background: var(--navy-deep); color: #fff; }
+.qab-feature__photo { position: relative; min-height: 18rem; }
+.qab-feature__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.qab-feature__body { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(1.5rem, 2.5vw, 2.5rem); }
+.qab-feature__eyebrow { display: inline-flex; align-items: center; gap: .5rem; color: #ff8490; font-size: .75rem; font-weight: var(--fw-bold); letter-spacing: .12em; text-transform: uppercase; }
+.qab-feature__eyebrow svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 2; }
+.qab-feature__body h3 { max-width: 18ch; margin-top: .6rem; color: #fff; font-size: clamp(1.4rem, 1.2rem + .8vw, 1.9rem); }
+.qab-feature__body > p { max-width: 54ch; margin-top: .7rem; color: var(--on-dark-muted); font-size: .9375rem; }
+.qab-feature__systems { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1rem; }
+.qab-feature__systems li { padding: .4rem .7rem; border: 1px solid var(--hairline-dark); border-radius: 4px; font-size: .8125rem; font-weight: var(--fw-bold); }
+.qab-feature .btn { margin-top: 1.25rem; }
+.qab-cards { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
+.qab-card { display: flex; flex-direction: column; min-width: 0; padding: 1.4rem; border: 1px solid var(--hairline); border-radius: var(--radius-lg); background: #fff; }
+.qab-card__icon { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 8px; background: var(--red); color: #fff; }
+.qab-card__icon svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.9; }
+.qab-card h3 { margin-top: .9rem; font-size: 1.0625rem; line-height: 1.3; }
+.qab-card p { margin-top: .45rem; color: var(--muted); font-size: .875rem; line-height: 1.55; }
+.qab-card--cta { align-items: flex-start; justify-content: center; border-color: var(--red); background: var(--red); }
+.qab-card--cta h3 { max-width: 14ch; margin-top: 0; color: #fff; font-size: 1.25rem; }
+.qab-card--cta .btn { margin-top: 1rem; }
+
+/* 4. Why choose — photo beside the reason cards */
+.qab-why { background: #fff; }
+.qab-why__inner { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); align-items: stretch; gap: clamp(1.5rem, 3vw, 3rem); }
+.qab-why__photo { position: relative; min-height: 24rem; margin: 0; overflow: hidden; border-radius: var(--radius-lg); }
+.qab-why__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.qab-why__photo figcaption { position: absolute; right: 1rem; bottom: 1rem; left: 1rem; display: flex; align-items: center; gap: .9rem; padding: .9rem 1rem; border-radius: 6px; background: #fff; }
+.qab-why__years { color: var(--red); font-size: 2.25rem; font-weight: var(--fw-bold); line-height: 1; letter-spacing: -.03em; }
+.qab-why__years span { font-size: .55em; }
+.qab-why__photo figcaption strong { display: block; color: var(--navy); font-size: .9375rem; line-height: 1.25; }
+.qab-why__photo figcaption span:last-child { color: var(--muted); font-size: .8125rem; }
+.qab-reasons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.qab-reasons li { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); align-content: start; gap: .25rem .9rem; min-width: 0; padding: 1.2rem; border: 1px solid var(--hairline); border-radius: var(--radius-lg); background: var(--surface-alt); }
+.qab-reasons__icon { grid-row: 1 / 3; display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 8px; background: var(--red); color: #fff; }
+.qab-reasons__icon svg { width: 1.2rem; height: 1.2rem; fill: none; stroke: currentColor; stroke-width: 1.9; }
+.qab-reasons h3 { font-size: 1rem; line-height: 1.3; }
+.qab-reasons p { margin-top: .3rem; color: var(--muted); font-size: .875rem; line-height: 1.5; }
+
+/* 5. Value — centred closing banner, copy only */
+.qab-value { background: var(--navy-deep); color: #fff; }
+.qab-value__inner { display: grid; justify-items: center; text-align: center; padding-block: clamp(1.5rem, 1.1rem + 1.4vw, 2.5rem); }
+.qab-value .section-title { max-width: 24ch; color: #fff; }
+.qab-value__text { max-width: 62ch; margin-top: var(--space-3); color: var(--on-dark-muted); font-size: 1.0625rem; }
+.qab-value__text--sub { margin-top: .5rem; }
+.qab-value__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); margin-top: var(--space-5); }
+.qab-value__note { display: flex; flex-wrap: wrap; justify-content: center; gap: .375rem 1rem; margin-top: var(--space-4); font-size: var(--fs-utility); letter-spacing: .1em; text-transform: uppercase; color: rgba(255, 255, 255, .62); }
+.qab-value__note li + li::before { content: "·"; margin-right: 1rem; }
+/* Navy grounds: the estimate button keeps its shape against the dark panel. */
+.qab-results .btn--primary,
+.qab-value .btn--primary { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .45); }
+
+/* ==========================================================================
+   Contact page
+   ========================================================================== */
+.contact-page { padding-block: var(--section-pad); background: var(--surface-alt); }
+.contact-page__grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: start; gap: clamp(1.5rem, 3vw, 3rem); }
+.contact-page__intro { max-width: 40ch; margin-top: .75rem; color: var(--muted); }
+.contact-page__details { display: grid; gap: 0; margin-top: var(--space-5); }
+.contact-page__details > div { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .1rem .75rem; padding: .7rem 0; border-top: 1px solid var(--hairline); }
+.contact-page__details svg { grid-row: 1 / 3; width: 2rem; height: 2rem; padding: .4rem; border-radius: 5px; background: #fff; fill: none; stroke: var(--red); stroke-width: 2; }
+.contact-page__details span { color: var(--muted); font-size: .6875rem; font-weight: var(--fw-bold); letter-spacing: .12em; text-transform: uppercase; }
+.contact-page__details a, .contact-page__details strong { color: var(--navy); font-size: 1rem; font-weight: var(--fw-bold); line-height: 1.35; text-decoration: none; }
+.contact-page__details a:hover { color: var(--red); text-decoration: underline; text-underline-offset: .2em; }
+/* Tall enough for Google to draw the place card with the company name. */
+.contact-page__map { height: 22rem; margin-top: var(--space-4); overflow: hidden; border-radius: var(--radius-lg); background: #dce6f1; }
+.contact-page__map iframe { width: 100%; height: 100%; border: 0; }
+/* One centred heading, and a tighter form than the default card. */
+.contact-page__form { display: grid; gap: .75rem; padding: clamp(1.25rem, 1.6vw, 1.75rem); border-top: 5px solid var(--red); }
+.contact-page__form .quote-card__title { padding: 0 0 .6rem; text-align: center; font-size: clamp(1.5rem, 1.25rem + .6vw, 1.875rem); }
+.contact-page__form .field-row { gap: .75rem; }
+.contact-page__form .field__note { margin-top: -.3rem; color: var(--muted); font-size: .8125rem; }
+.contact-page__form .field textarea { min-height: 4.5rem; }
+.contact-page__form-note { margin-top: -.15rem; color: var(--muted); font-size: .8125rem; text-align: center; }
+.contact-page__form-note a { color: var(--navy); font-weight: var(--fw-bold); }
+.contact-next { padding-block: var(--section-pad); }
+.contact-next__head { margin-bottom: var(--space-5); }
+.contact-next__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.contact-next__grid > div { padding: 1.4rem; border-top: 3px solid var(--red); background: var(--surface-alt); }
+.contact-next__grid span { color: var(--red); font-size: .75rem; font-weight: var(--fw-bold); letter-spacing: .12em; }
+.contact-next__grid h3 { margin-top: .4rem; font-size: 1.3rem; }
+.contact-next__grid p { margin-top: .45rem; color: var(--muted); font-size: .9375rem; }
+.contact-faq { padding-block: var(--section-pad); background: #e6f0fa; }
+.contact-faq__grid { display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); align-items: start; gap: clamp(1.5rem, 4vw, 4rem); }
+.contact-faq__intro .section-title { max-width: 15ch; }
+.contact-faq__intro > p:not(.section-eyebrow) { max-width: 43ch; margin-top: var(--space-4); color: var(--muted); }
+.contact-faq__phone { display: inline-flex; align-items: center; gap: .5rem; margin-top: var(--space-5); color: var(--navy); font-size: .9375rem; font-weight: var(--fw-bold); text-decoration: none; }
+.contact-faq__phone:hover { color: var(--red); }
+.contact-faq__phone svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2; }
+.contact-faq__list { border-top: 1px solid var(--hairline); }
+.contact-faq__list details { border-bottom: 1px solid var(--hairline); }
+.contact-faq__list summary { position: relative; display: block; padding: 1rem 3rem 1rem 0; color: var(--navy); font-size: clamp(1.0625rem, 1rem + .25vw, 1.25rem); font-weight: var(--fw-bold); line-height: 1.35; cursor: pointer; list-style: none; }
+.contact-faq__list summary::-webkit-details-marker { display: none; }
+.contact-faq__list summary::after { position: absolute; top: 50%; right: .2rem; width: 1.75rem; height: 1.75rem; border: 1px solid var(--hairline); border-radius: 50%; background: #fff; color: var(--red); content: '+'; display: grid; place-items: center; font-size: 1.25rem; font-weight: var(--fw-medium); line-height: 1; transform: translateY(-50%); }
+.contact-faq__list details[open] summary::after { content: '−'; }
+.contact-faq__list summary:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+.contact-faq__list details > p { max-width: 64ch; padding: 0 2.5rem 1.1rem 0; color: var(--muted); font-size: .9375rem; line-height: 1.65; }
+.contact-faq__list details > p a { color: var(--navy); font-weight: var(--fw-bold); }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 64rem) {
+  .qab-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 60rem) {
+  .interior-hero__grid,
+  .qab-intro__inner, .qab-results__inner, .qab-feature, .qab-why__inner,
+  .contact-page__grid, .contact-faq__grid { grid-template-columns: 1fr; }
+  .qab-head { grid-template-columns: 1fr; align-items: start; }
+  .qab-head .section-lede { justify-self: start; }
+  .interior-hero__copy { padding-block: 1.25rem 1.75rem; }
+  .interior-hero__media { max-height: 24rem; }
+  .qab-feature__photo { min-height: 0; aspect-ratio: 16 / 9; }
+  .qab-why__photo { min-height: 0; aspect-ratio: 16 / 10; }
+}
+@media (max-width: 48rem) {
+  .qab-reasons { grid-template-columns: 1fr; }
+}
+@media (max-width: 40rem) {
+  .page-interior .interior-hero { padding-top: calc(var(--nav-h) + 1.25rem); }
+  .interior-hero__copy h1 { font-size: clamp(2.3rem, 1.8rem + 2vw, 3rem); }
+  .interior-hero__media { min-height: 15rem; aspect-ratio: 16 / 10; }
+  .qab-intro__media { padding: 0 0 2.5rem 1.5rem; }
+  .qab-points { grid-template-columns: 1fr; }
+  .qab-stats { grid-template-columns: 1fr; }
+  .qab-stats li { min-height: 0; }
+  .contact-next__grid { grid-template-columns: 1fr; }
+  .contact-page__form .field-row { grid-template-columns: 1fr; }
+  .contact-page__map { height: 19rem; }
+
+  /* Three or more cards slide sideways on phones. */
+  .qab-cards, .qab-reasons {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    margin-inline: calc(-1 * var(--edge));
+    padding-inline: var(--edge);
+    padding-bottom: .25rem;
+    scrollbar-width: none;
+  }
+  .qab-cards::-webkit-scrollbar, .qab-reasons::-webkit-scrollbar { display: none; }
+  .qab-cards > *, .qab-reasons > * { flex: 0 0 82%; scroll-snap-align: start; }
+  .qab-cards > :last-child, .qab-reasons > :last-child { scroll-snap-align: end; }
+}
+
+
+/* ==========================================================================
+   1 Oct — contact and about fixes
+   ========================================================================== */
+
+/* (Contact column stretching retired — see the 1 Oct density pass below.) */
+
+/* --- Contact: FAQ sits on white, with its own CTA ------------------------ */
+.contact-faq { background: #fff; }
+.contact-faq__intro .section-title { max-width: none; }
+.contact-faq__more { margin-top: var(--space-5); }
+
+/* --- About: paired columns finish level ---------------------------------- */
+.qab-intro__inner,
+.qab-results__inner { align-items: stretch; }
+.qab-intro__media { display: flex; flex-direction: column; }
+.qab-frame--lead { flex: 1 1 auto; aspect-ratio: auto; min-height: 22rem; }
+
+/* --- About: value banner carries a shingle-course pattern ---------------- */
+.qab-value { position: relative; isolation: isolate; overflow: hidden; }
+.qab-value::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* Minimal: a single widely spaced roofline, nothing more. */
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='160'%20height='80'%20viewBox='0%200%20160%2080'%3E%3Cpath%20d='M0%2060L80%2020l80%2040'%20fill='none'%20stroke='%23ffffff'%20stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 160px 80px;
+  opacity: .07;
+}
+.qab-value__inner { position: relative; }
+
+/* The details column can now run taller than the form's natural content, so
+   the form becomes a flex column and the message box takes up the slack —
+   otherwise the grid stretched the submit button out of its 49px. */
+/* The form sizes to its own content; the aside is what fills the row. */
+/* The <br> sets the two lines, so the ch cap must not force a third. */
+.qab-value .section-title { max-width: none; }
+
+/* Footer legal: one line between the credential marks and the socials,
+   matching the home page. */
+.footer__proof-row .footer__legal { flex: 1 1 auto; display: flex; justify-content: center; text-align: center; min-width: 0; }
+.footer__proof-row .footer__legal p { display: inline; margin: 0; color: var(--muted); font-size: .75rem; line-height: 1.4; }
+.footer__proof-row .footer__legal a { color: var(--muted); text-decoration: none; }
+.footer__proof-row .footer__legal a:hover { color: var(--red); text-decoration: underline; }
+.footer__proof-row .footer__sep { margin-inline: .4rem; color: var(--hairline); }
+@media (max-width: 30rem) {
+  .footer__proof-row .footer__sep { display: block; height: 0; margin: .15rem 0; overflow: hidden; }
+}
+
+/* 1 Oct: About page proportions ------------------------------------------ */
+/* Two-line headings need room, so the 20ch clamp comes off where a <br> sets
+   the break. */
+.qab-title { max-width: none; }
+.qab-title br { display: block; }
+
+/* 1. Intro: the lead photo was taller than the copy beside it, so the whole
+   section ran long. Shorter frames, and the column balance shifts to the copy. */
+.qab-intro__inner { grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); align-items: center; }
+.qab-frame--lead { aspect-ratio: 4 / 2.5; min-height: 0; }
+.qab-frame--inset { aspect-ratio: 4 / 3; }
+
+/* 2. Results: the stat tiles were oversized against the copy. */
+.qab-results__inner { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); }
+.qab-stats li { min-height: 6.25rem; padding: 1rem; }
+.qab-stats strong { font-size: clamp(1.5rem, 1.1rem + 1.1vw, 2.125rem); }
+.qab-stats span { font-size: .75rem; }
+
+/* 3. Flat roofing feature: the copy column left a gap on the right, so the
+   photo takes more width and the text runs wider. */
+.qab-feature { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.qab-feature__body h3 { max-width: none; }
+.qab-feature__body > p { max-width: none; }
+
+/* Intro heading must land on exactly two lines, and the photo column should
+   match the copy rather than leaving the section lopsided. */
+.qab-intro .qab-title { font-size: clamp(1.5rem, 1.05rem + 1.35vw, 2.1rem); line-height: 1.2; }
+.qab-intro__inner { align-items: stretch; }
+.qab-intro__media { display: flex; flex-direction: column; justify-content: center; }
+.qab-intro__body { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+.qab-intro__body .qab-points { width: 100%; }
+.qab-intro__text { max-width: 62ch; }
+
+/* --- Contact: the details column redesigned ------------------------------
+   The aside, not the form, carries the extra height. Details become stacked
+   cards with their own ground, and the map takes whatever is left. */
+.contact-page__aside { display: flex; flex-direction: column; }
+.contact-page__details {
+  display: grid; gap: .5rem; margin-top: var(--space-5);
+}
+.contact-page__details > div {
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  gap: .15rem .9rem;
+  align-content: center;
+  padding: .9rem 1rem;
+  border: 1px solid var(--hairline);
+  border-top: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  background: var(--surface-alt);
+}
+.contact-page__details svg {
+  width: 2.75rem; height: 2.75rem; padding: .7rem;
+  border-radius: 8px; background: var(--red);
+  stroke: #fff;
+}
+.contact-page__details a, .contact-page__details strong { font-size: 1.0625rem; }
+.contact-page__map {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 22rem;
+  margin-top: var(--space-4);
+}
+
+/* --- Contact: "What happens next" head centred --------------------------- */
+.contact-next__head { text-align: center; }
+.contact-next__head .section-eyebrow { margin-inline: auto; }
+.contact-next__head .section-title,
+.contact-next__head > p { margin-inline: auto; }
+
+/* Results: shorter copy, so the stat tiles come down to match it. */
+.qab-stats li { min-height: 5.5rem; }
+
+/* About hero: two lines, set smaller so it reads as a page title rather than
+   a billboard. */
+.interior-hero--about .interior-hero__copy h1 {
+  max-width: none;
+  font-size: clamp(2rem, 1.5rem + 1.7vw, 3.1rem);
+  line-height: 1.12;
+  letter-spacing: -.035em;
+}
+
+/* Contact: the form keeps its natural rows, so the submit stays 49px; the
+   aside's map takes up the remaining height instead. */
+.contact-page__form { align-content: start; }
+.contact-page__map { min-height: 18rem; }
+
+/* ==========================================================================
+   1 Oct — Contact page density pass, modelled on nyc6-contact.html
+   Contact-only: every selector below is scoped to the contact page so the
+   About page, which shares this sheet, is untouched.
+   ========================================================================== */
+
+/* --- Compact heading band replaces the tall photo hero ------------------- */
+.contact-band {
+  padding-top: calc(var(--nav-h) + clamp(1rem, 1.4vw, 1.5rem));
+  background: var(--surface-alt);
+}
+.contact-band__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4) var(--space-7);
+  padding-bottom: clamp(1.25rem, 1rem + 1vw, 2rem);
+}
+.contact-band__head { max-width: 60ch; }
+.contact-band__head h1 {
+  margin-top: .35rem;
+  color: var(--navy);
+  font-size: clamp(1.875rem, 1.225rem + 2vw, 3.125rem);
+  line-height: 1.1;
+  letter-spacing: -.035em;
+}
+.contact-band__lede {
+  max-width: 56ch;
+  margin-top: .625rem;
+  color: rgba(1, 44, 109, .78);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+.contact-band__lede a { color: var(--navy); font-weight: var(--fw-bold); text-decoration: none; }
+.contact-band__lede a:hover { color: var(--red); text-decoration: underline; text-underline-offset: .2em; }
+.contact-band__marks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3) clamp(.875rem, .65rem + .8vw, 1.5rem);
+  margin: 0;
+}
+.contact-band__marks .hero__badge { display: inline-flex; align-items: center; gap: .5rem; }
+.contact-band__marks .hero__badge img { height: 3.25rem; width: auto; object-fit: contain; }
+.contact-band__marks .hero__badge--gaf img { height: 2.5rem; }
+.contact-band__marks .hero__badge--rating img { height: 2.125rem; }
+.contact-band__marks .hero__badge--inc img { height: 2.875rem; }
+.contact-band__marks .hero__rating {
+  display: inline-flex; align-items: baseline; gap: .25rem;
+  color: var(--navy); font-size: 1.0625rem; font-weight: var(--fw-bold); line-height: 1;
+}
+.contact-band__marks .rating-star { color: var(--gold); font-size: .9em; }
+
+/* --- Form tightened to the nyc6 card ------------------------------------- */
+.page-contact .contact-page__form {
+  align-self: start;
+  align-content: start;
+  gap: .75rem;
+  padding: 1.5rem;
+}
+.page-contact .contact-page__form .quote-card__title {
+  padding: 0 0 .6rem;
+  font-size: clamp(1.3125rem, 1.15rem + .6vw, 1.625rem);
+}
+.page-contact .contact-page__form .field-row { gap: .75rem var(--space-4); }
+.page-contact .contact-page__form .field input { min-height: 2.625rem; padding: .5rem .8rem; }
+.page-contact .contact-page__form .field textarea { min-height: 5.1875rem; }
+.page-contact .contact-page__form .btn--block { margin-top: .25rem; }
+
+/* --- Left column sits naturally beside the form, no stretching ----------- */
+.page-contact .contact-page__grid { align-items: start; }
+.page-contact .contact-page__aside { display: block; }
+.page-contact .contact-page__map {
+  flex: none;
+  height: 19rem;      /* enough for Google to draw the place card */
+  min-height: 0;
+  margin-top: 0;
+}
+/* nyc6 runs map first, then the detail cards; the same order balances here. */
+.page-contact .contact-page__details { margin-top: var(--space-4); }
+
+/* Band trimmed closer to nyc6's 171px, and the field metrics matched exactly. */
+.contact-band { padding-top: calc(var(--nav-h) + clamp(.75rem, 1vw, 1.125rem)); }
+.contact-band__top { padding-bottom: clamp(1rem, .8rem + .8vw, 1.5rem); }
+.contact-band__head h1 { margin-top: .25rem; }
+
+.page-contact .contact-page__form .field input {
+  min-height: 2.625rem; padding: .45rem .8rem;
+  font-size: .9375rem; line-height: 1.4;
+}
+.page-contact .contact-page__form .field textarea {
+  min-height: 5.1875rem; padding: .5rem .8rem;
+  font-size: .9375rem; line-height: 1.4;
+}
+
+/* Left column re-proportioned so it lands beside the form rather than
+   towering over it: shorter map, compact one-line cards. The heading is the
+   page's opening title now that the hero band is gone, so it is set a clear
+   step above the section-title scale. */
+.page-contact .contact-page__aside .section-title { font-size: clamp(2.5rem, 1.9rem + 2.4vw, 3.5rem); }
+.page-contact .contact-page__map { height: 19rem; }  /* Google needs this much to draw its place card. */
+.page-contact .contact-page__details { gap: .4rem; margin-top: var(--space-4); }
+.page-contact .contact-page__details > div {
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: .1rem .75rem;
+  padding: .65rem .85rem;
+}
+.page-contact .contact-page__details svg { width: 2.25rem; height: 2.25rem; padding: .55rem; }
+.page-contact .contact-page__details a,
+.page-contact .contact-page__details strong { font-size: .9375rem; }
+
+/* Phone and hours pair up on one row so the column finishes near the form
+   instead of running well past it; the address keeps the full width. */
+@media (min-width: 60.0625rem) {
+  .page-contact .contact-page__details { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .4rem; }
+  /* Phone and hours share row 1; the address needs the full width on row 2. */
+  .page-contact .contact-page__details > div:nth-child(1) { grid-column: 1; grid-row: 1; }
+  .page-contact .contact-page__details > div:nth-child(3) { grid-column: 2; grid-row: 1; }
+  .page-contact .contact-page__details > div:nth-child(2) { grid-column: 1 / -1; grid-row: 2; }
+}
+
+/* Narrow screens: the marks wrap under the copy, so they align left and the
+   band keeps its padding tight rather than leaving a gap. */
+@media (max-width: 60rem) {
+  .contact-band__top { align-items: flex-start; gap: var(--space-4); padding-bottom: clamp(.875rem, .7rem + .7vw, 1.25rem); }
+  .contact-band__marks { justify-content: flex-start; }
+  .contact-band__marks .hero__badge img { height: 2.375rem; }
+  .contact-band__marks .hero__badge--gaf img { height: 1.875rem; }
+  .contact-band__marks .hero__badge--rating img { height: 1.625rem; }
+  .contact-band__marks .hero__badge--inc img { height: 2.125rem; }
+}
+
+/* ==========================================================================
+   1 Oct — final Queens pass
+   ========================================================================== */
+
+/* A1. About hero: the full-viewport band left a lot of dead space above and
+   below the copy, so it sizes to its content with a floor instead. */
+.page-about .interior-hero {
+  min-height: 0;
+  padding-top: calc(var(--nav-h) + clamp(1rem, 1.2vw, 1.5rem));
+  padding-bottom: clamp(1rem, 1.2vw, 1.5rem);
+}
+.page-about .interior-hero__copy { padding-block: 0; }
+.page-about .interior-hero__copy > p:not(.section-eyebrow) { margin-top: .85rem; }
+.page-about .interior-hero__actions { margin-top: 1.25rem; }
+@media (min-width: 60.0625rem) {
+  .page-about .interior-hero__media { min-height: 17rem; }
+}
+
+/* A2. Service cards: three lines of body on every card, headings on one line,
+   and a text link under each so the heights line up exactly. */
+.qab-card { justify-content: flex-start; }
+.qab-card h3 { white-space: nowrap; }
+.qab-card p { margin-top: .4rem; }
+.qab-card__more {
+  display: inline-flex; align-items: center; gap: .35rem;
+  margin-top: auto; padding-top: .8rem;
+  color: var(--red); font-size: .8125rem; font-weight: var(--fw-bold);
+  text-decoration: none;
+}
+.qab-card__more svg { width: .9rem; height: .9rem; fill: none; stroke: currentColor; stroke-width: 2.2; transition: transform .2s; }
+.qab-card__more:hover { text-decoration: underline; text-underline-offset: .2em; }
+.qab-card__more:hover svg { transform: translateX(3px); }
+
+/* A3. The red tile centres its copy and button, and the button inverts to
+   white on hover so it never blends into the red ground. */
+.qab-card--cta { align-items: center; justify-content: center; text-align: center; }
+.qab-card--cta h3 { max-width: none; white-space: normal; }
+.qab-card--cta .qab-card__cta { --sweep: #fff; }
+.qab-card--cta .qab-card__cta:hover,
+.qab-card--cta .qab-card__cta:focus-visible {
+  --btn-ink: #000;
+  --pip-bg: #000;
+  --pip-ink: #fff;
+  color: #000;
+}
+
+/* A4. Value banner: one tighter paragraph, less inner height. */
+.qab-value__inner { padding-block: clamp(1rem, .8rem + .8vw, 1.6rem); }
+.qab-value__text { max-width: 76ch; margin-top: .6rem; font-size: 1rem; }
+.qab-value__actions { margin-top: var(--space-4); }
+.qab-value__note { margin-top: var(--space-3); }
+
+/* C1/C2. The contact band is gone, so the contact section carries the top
+   padding that clears the fixed header. */
+.page-contact .contact-page { padding-top: calc(var(--nav-h) + clamp(1rem, 1.4vw, 1.75rem)); }
+.page-contact .contact-page__aside .section-title { margin-top: 0; }
+
+/* C3. Hours and address each keep to a single line. */
+.page-contact .contact-page__details a,
+.page-contact .contact-page__details strong { white-space: nowrap; font-size: .875rem; }
+@media (min-width: 60.0625rem) {
+  /* The address is the longest line, so it keeps the full width of the column. */
+  .page-contact .contact-page__details > div:nth-child(2) { grid-column: 1 / -1; }
+}
+
+/* C4. The closing banner uses the home page's footer lead, kept compact. */
+.page-contact .footer__lead-inner { padding-block: clamp(1rem, .8rem + .9vw, 1.75rem); }
+
+/* Mobile collapse re-asserted. Several desktop grid declarations were added
+   after the 60rem breakpoint, so they were winning on narrow screens and the
+   two-column layouts never stacked. */
+@media (max-width: 60rem) {
+  .interior-hero__grid,
+  .qab-intro__inner,
+  .qab-results__inner,
+  .qab-feature,
+  .qab-why__inner,
+  .contact-page__grid,
+  .contact-faq__grid { grid-template-columns: 1fr; }
+  .page-contact .contact-page__grid { grid-template-columns: 1fr; }
+  .qab-intro__media,
+  .qab-intro__body { display: block; }
+}
+
+/* --- Contact hero, modelled on the Brooklyn contact page ----------------- */
+.contact-hero {
+  padding: calc(var(--nav-h) + 2.25rem) 0 2.25rem;
+  background-color: var(--navy-deep);
+  background-image:
+    repeating-linear-gradient(135deg, transparent 0 68px, rgba(255, 255, 255, .075) 69px, transparent 70px),
+    linear-gradient(90deg, var(--navy-deep) 0%, #0a3a86 100%);
+  background-size: 45% 100%, 100% 100%;
+  background-position: right center;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+.contact-hero__inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(2rem, 4vw, 5rem); }
+.contact-hero h1 { color: #fff; font-size: clamp(2rem, 1.5rem + 1.4vw, 2.875rem); line-height: 1.15; letter-spacing: -.03em; }
+.contact-hero p { max-width: 58ch; margin-top: 1rem; color: var(--on-dark-muted); font-size: 1.125rem; }
+.contact-hero__proof {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 1rem .6rem;
+  border: 1px solid var(--hairline-dark); border-left: 3px solid var(--red);
+  border-radius: 8px; background: rgba(255, 255, 255, .06);
+}
+.contact-hero__proof li { display: flex; flex-direction: column; align-items: flex-start; gap: .55rem; min-width: 0; padding: .3rem .8rem; }
+.contact-hero__proof li + li { border-left: 1px solid var(--hairline-dark); }
+.contact-hero__proof-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; flex: none; border-radius: 50%; background: #fff; }
+.contact-hero__proof-icon img { width: 1.45rem; height: 1.45rem; object-fit: contain; }
+.contact-hero__proof-icon svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: var(--red); stroke-width: 1.7; }
+.contact-hero__proof strong { display: block; color: #fff; font-size: .9375rem; line-height: 1.2; }
+.contact-hero__proof small { display: block; margin-top: .15rem; color: var(--gold); font-size: .75rem; letter-spacing: .05em; line-height: 1.2; }
+
+/* The contact section no longer needs to clear the fixed header itself. */
+.page-contact .contact-page { padding-top: var(--section-pad); }
+
+@media (max-width: 60rem) {
+  .contact-hero__inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 48rem) {
+  .contact-hero { padding: calc(var(--nav-h) + 1.5rem) 0 1.5rem; }
+  .contact-hero__proof { grid-template-columns: 1fr; gap: .25rem; }
+  .contact-hero__proof li + li { border-left: 0; border-top: 1px solid var(--hairline-dark); }
+}

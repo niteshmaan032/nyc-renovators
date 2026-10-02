@@ -720,3 +720,71 @@ svg { display: inline-block; }
   .areas__panel .swipe-hint { margin: 0; padding-bottom: .75rem; }
   .areas__list.slider > .areas__item { flex: 0 0 62%; }
 }
+
+/* ==========================================================================
+   28 Sep client call — appended overrides, so the rules above stay intact.
+   ========================================================================== */
+
+/* 1. Hero: copy block starts level with the top of the estimate form. */
+.hero__inner { align-items: start; }
+.hero__form .hero__privacy-note { justify-self: end; margin-top: -.35rem; margin-bottom: .1rem; }
+
+/* 6. About: the 35+ line stays on one line. */
+.about__stat { width: min(13.5rem, 46%); }
+.about__stat span { white-space: nowrap; }
+
+/* 8-10. Material tiles read at a similar length, three lines each. */
+.tile > span:not(.icon-box) { max-width: 30ch; }
+
+/* 12. Neighborhood bar is now a single call to action. */
+.areas__bar { justify-content: center; padding: .85rem 2rem; }
+/* .areas__bar a forces white text, so restate the button colours here. */
+.areas__bar .btn { min-height: 2.75rem; color: var(--navy); font-weight: 700; }
+.areas__bar .btn:hover, .areas__bar .btn:focus-visible { color: #fff; }
+
+/* 15. Areas block sits higher and the two intro columns line up. */
+.areas__intro { margin-bottom: var(--space-4); align-items: end; }
+.areas__intro .section-lede { align-self: end; }
+
+/* 17. Contact: the two columns finish level and the form matches the hero. */
+.contact__inner { align-items: stretch; gap: 1.25rem; }
+.contact__location, .contact .quote-card { height: 100%; }
+/* The form sets the row height; the map flexes to fill the other column,
+   so neither card carries dead space. */
+.contact .contact__map { min-height: 16rem; }
+.contact .quote-card { align-content: start; gap: .875rem; padding: clamp(1.25rem, 1rem + 1vw, 1.75rem); }
+.contact .quote-card__title { padding: 0 0 .85rem; font-size: clamp(1.4rem, 1.2rem + .5vw, 1.65rem); }
+.contact .field label { font-size: .6875rem; }
+.contact .field input { min-height: 2.75rem; }
+.contact .field textarea { min-height: 5.25rem; }
+.contact__privacy { justify-self: end; margin-top: -.35rem; font-size: .6875rem; letter-spacing: -.01em; white-space: nowrap; }
+
+/* 18. Footer: Yelp mark matches the Google mark. */
+.footer__brand img.footer__yelp { width: 2.1rem; height: 2.1rem; }
+
+/* 18. Live chat (Blazeo/ApexChat) invitation sits bottom-right. */
+#apexchat_prechat_invitation_wrapper { left: auto !important; right: 0 !important; padding: 0 0 0 10px !important; }
+
+@media (max-width: 60rem) {
+  .hero__inner { align-items: start; }
+}
+@media (max-width: 40rem) {
+  .contact__privacy, .hero__form .hero__privacy-note { justify-self: start; white-space: normal; }
+  .areas__bar { padding: .85rem 1rem; }
+  .areas__bar .btn { width: 100%; }
+}
+
+/* Reassurance line centred under the estimate button. */
+.form-callback { margin-top: .1rem; text-align: center; font-size: .8125rem; color: var(--muted); }
+.hero__form .form-callback { color: var(--navy); }
+
+/* The chat widget names its wrapper differently between breakpoints, so pin
+   every variant to the right, not just the prechat one. */
+@media (max-width: 48rem) {
+  #apexchat_prechat_invitation_wrapper,
+  #apexchat_invitation_wrapper,
+  [id^="apexchat"][id*="invitation"] {
+    left: auto !important;
+    right: 0 !important;
+  }
+}

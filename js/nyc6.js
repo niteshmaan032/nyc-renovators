@@ -143,16 +143,35 @@
 
       toggles.forEach(function (toggle) {
         toggle.addEventListener('click', function () {
-          /* A tab with data-href is also a page: hover previews its pane,
-             a click goes to the page (Brooklyn -> brooklyn.html). */
+          /* A tab with data-href is also a page. On a phone the first tap has
+             to reveal the pane, or the borough's services are unreachable —
+             only a tap on the already-open tab follows the link. */
           var href = toggle.getAttribute('data-href');
-          if (href) { window.location.href = href; return; }
+          var isOpen = toggle.getAttribute('aria-expanded') === 'true';
+          if (href && isOpen) { window.location.href = href; return; }
           open(toggle);
         });
         /* Pointer users get it on hover, the way the old site behaved. */
         toggle.addEventListener('mouseenter', function () {
           if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) open(toggle);
         });
+      });
+    });
+  }
+
+  /* Drawer sub-lists that are too long to scroll past: four rows show, the
+     rest sit in the markup behind a "Click to view more" row. */
+  function initDrawerMore() {
+    var buttons = document.querySelectorAll('.mobile-nav__more');
+    Array.prototype.forEach.call(buttons, function (btn) {
+      var list = document.getElementById(btn.getAttribute('aria-controls'));
+      if (!list) return;
+      btn.addEventListener('click', function () {
+        var collapsed = list.classList.toggle('is-collapsed');
+        btn.setAttribute('aria-expanded', String(!collapsed));
+        btn.textContent = collapsed
+          ? (btn.getAttribute('data-more-label') || 'Click to view more')
+          : (btn.getAttribute('data-less-label') || 'Show less');
       });
     });
   }
@@ -714,6 +733,7 @@
     initMegaMenus();
     initAreaMenu();
     initMobileNav();
+    initDrawerMore();
     initBlogSwiper();
     initReviewSwiper();
     initFaqs();

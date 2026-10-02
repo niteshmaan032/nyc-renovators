@@ -11,7 +11,7 @@
   <link rel="preload" href="fonts/HelveticaNeueLight.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/HelveticaNeueMedium.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/brooklyn.css?v=41">
+  <link rel="stylesheet" href="css/brooklyn.css?v=45">
 </head>
 <body class="page-brooklyn">
 <script>document.documentElement.classList.add('js');</script>
@@ -28,19 +28,6 @@
 
     <nav class="nav" aria-label="Primary">
       <ul class="nav__list">
-        <li class="nav__item"><a class="nav__link" href="brooklyn.html">Home</a></li>
-
-        <li class="nav__item has-menu">
-          <button class="nav__link" type="button" aria-expanded="false" aria-controls="menu-services">Services <svg class="nav__chevron" aria-hidden="true"><use href="#i-chevron"/></svg></button>
-          <div class="dropdown" id="menu-services" hidden>
-            <ul class="menu-list">
-              <li><a href="#services" data-href="brooklyn-siding.html"><svg aria-hidden="true"><use href="#i-wall"/></svg><span>Siding</span></a></li>
-              <li><a href="#services" data-href="brooklyn-gutters.html"><svg aria-hidden="true"><use href="#i-drop"/></svg><span>Gutters</span></a></li>
-              <li><a href="#services" data-href="brooklyn-masonry.html"><svg aria-hidden="true"><use href="#i-hammer"/></svg><span>Masonry</span></a></li>
-            </ul>
-          </div>
-        </li>
-
         <li class="nav__item has-menu nav__item--mega">
           <button class="nav__link" type="button" aria-expanded="false" aria-controls="menu-roofing">Roofing <svg class="nav__chevron" aria-hidden="true"><use href="#i-chevron"/></svg></button>
           <div class="dropdown dropdown--mega" id="menu-roofing" hidden>
@@ -79,10 +66,30 @@
           </div>
         </li>
 
+        <li class="nav__item has-menu">
+          <button class="nav__link" type="button" aria-expanded="false" aria-controls="menu-services">Services <svg class="nav__chevron" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+          <div class="dropdown" id="menu-services" hidden>
+            <ul class="menu-list">
+              <li><a href="#services" data-href="brooklyn-siding.html"><svg aria-hidden="true"><use href="#i-wall"/></svg><span>Siding</span></a></li>
+              <li><a href="#services" data-href="brooklyn-gutters.html"><svg aria-hidden="true"><use href="#i-drop"/></svg><span>Gutters</span></a></li>
+              <li><a href="#services" data-href="brooklyn-masonry.html"><svg aria-hidden="true"><use href="#i-hammer"/></svg><span>Masonry</span></a></li>
+            </ul>
+          </div>
+        </li>
+
+
         <li class="nav__item"><a class="nav__link" href="#" data-href="brooklyn-projects.html">Projects</a></li>
-        <li class="nav__item"><a class="nav__link" href="#faq" data-href="brooklyn-faqs.html">FAQs</a></li>
-        <li class="nav__item"><a class="nav__link" href="#" data-href="brooklyn-blog.html">Blogs</a></li>
-        <li class="nav__item"><a class="nav__link" href="#about" data-href="brooklyn-about-us.html">About Us</a></li>
+
+        <li class="nav__item has-menu">
+          <button class="nav__link" type="button" aria-expanded="false" aria-controls="menu-resources">Resources <svg class="nav__chevron" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+          <div class="dropdown" id="menu-resources" hidden>
+            <ul class="menu-list">
+              <li><a href="#faq" data-href="brooklyn-faqs.html"><svg aria-hidden="true"><use href="#i-search"/></svg><span>FAQs</span></a></li>
+              <li><a href="#" data-href="brooklyn-blog.html"><svg aria-hidden="true"><use href="#i-calendar"/></svg><span>Blogs</span></a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav__item"><a class="nav__link" href="brooklyn-about-us.html">About Us</a></li>
         <li class="nav__item"><a class="nav__link" href="brooklyn-contact-us.html">Contact Us</a></li>
       </ul>
     </nav>
@@ -97,15 +104,6 @@
   <div class="drawer" id="drawer" hidden>
     <nav aria-label="Mobile">
       <ul class="drawer__list">
-        <li><a class="drawer__link" href="brooklyn.html">Home</a></li>
-        <li>
-          <button class="drawer__group" type="button" aria-expanded="false" aria-controls="d-services">Services <svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
-          <ul class="drawer__sub" id="d-services" hidden>
-            <li><a href="#services" data-href="brooklyn-siding.html">Siding</a></li>
-            <li><a href="#services" data-href="brooklyn-gutters.html">Gutters</a></li>
-            <li><a href="#services" data-href="brooklyn-masonry.html">Masonry</a></li>
-          </ul>
-        </li>
         <li>
           <button class="drawer__group" type="button" aria-expanded="false" aria-controls="d-roofing">Roofing <svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
           <ul class="drawer__sub" id="d-roofing" hidden>
@@ -131,10 +129,23 @@
             <li><a href="#areas" data-href="brooklyn-williamsburg-roofing.html">Williamsburg Roofing</a></li>
           </ul>
         </li>
+        <li>
+          <button class="drawer__group" type="button" aria-expanded="false" aria-controls="d-services">Services <svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
+          <ul class="drawer__sub" id="d-services" hidden>
+            <li><a href="#services" data-href="brooklyn-siding.html">Siding</a></li>
+            <li><a href="#services" data-href="brooklyn-gutters.html">Gutters</a></li>
+            <li><a href="#services" data-href="brooklyn-masonry.html">Masonry</a></li>
+          </ul>
+        </li>
         <li><a class="drawer__link" href="#" data-href="brooklyn-projects.html">Projects</a></li>
-        <li><a class="drawer__link" href="#faq" data-href="brooklyn-faqs.html">FAQs</a></li>
-        <li><a class="drawer__link" href="#" data-href="brooklyn-blog.html">Blogs</a></li>
-        <li><a class="drawer__link" href="#about" data-href="brooklyn-about-us.html">About Us</a></li>
+        <li>
+          <button class="drawer__group" type="button" aria-expanded="false" aria-controls="d-resources">Resources <svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
+          <ul class="drawer__sub" id="d-resources" hidden>
+            <li><a href="#faq" data-href="brooklyn-faqs.html">FAQs</a></li>
+            <li><a href="#" data-href="brooklyn-blog.html">Blogs</a></li>
+          </ul>
+        </li>
+        <li><a class="drawer__link" href="brooklyn-about-us.html">About Us</a></li>
         <li><a class="drawer__link" href="brooklyn-contact-us.html">Contact Us</a></li>
       </ul>
       <div class="drawer__actions">
@@ -149,6 +160,7 @@
 
   <!-- ===== Hero ===== -->
   <section class="hero" id="hero" aria-labelledby="hero-title">
+    <!-- TODO: hero photo to be replaced, better image pending from the client -->
     <div class="hero__visual" aria-hidden="true">
       <img class="hero__bg hero__slide is-active" src="images/brooklyn/bk-01-b52bd603.jpg" alt="" width="1600" height="1200" fetchpriority="high">
       <img class="hero__bg hero__slide" src="images/brooklyn/bk-02-ae2b0412.jpg" alt="" width="1024" height="768" loading="lazy">
@@ -173,12 +185,13 @@
       <form class="quote-card hero__form" id="hero-form" novalidate aria-labelledby="hero-form-title">
         <h2 class="quote-card__title" id="hero-form-title">Get a Free Estimate</h2>
         <div class="field-row">
-          <div class="field"><label for="hf-name">Full Name</label><input id="hf-name" name="name" type="text" autocomplete="name" placeholder="Full name" required></div>
-          <div class="field"><label for="hf-phone">Best Phone Number</label><input id="hf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(718) 000-0000" required></div>
+          <div class="field"><label for="hf-name">Name</label><input id="hf-name" name="name" type="text" autocomplete="name" placeholder="Full name" required></div>
+          <div class="field"><label for="hf-phone">Phone</label><input id="hf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(718) 000-0000" required></div>
         </div>
-        <div class="field"><label for="hf-address">Property Address</label><input id="hf-address" name="address" type="text" autocomplete="street-address" placeholder="Street address, Brooklyn" required></div>
-        <div class="field"><label for="hf-message">What do you need help with?</label><textarea id="hf-message" name="message" rows="3" placeholder="Leaking flat roof, worn shingles, or something else? Tell us what you need"></textarea></div>
-        <button class="btn btn--solid btn--block" type="submit">Get a Free Estimate</button>
+        <div class="field"><label for="hf-address">Address</label><input id="hf-address" name="address" type="text" autocomplete="street-address" placeholder="Street address, Brooklyn" required></div>
+        <div class="field"><label for="hf-message">How Can We Help?</label><textarea id="hf-message" name="message" rows="3" placeholder="Leaking flat roof, worn shingles, or something else? Tell us what you need"></textarea></div>
+        <button class="btn btn--solid btn--block" type="submit">Get My Free Estimate</button>
+        <p class="form-callback">We&rsquo;ll call you back within the hour</p>
       </form>
     </div>
     <div class="hero__pagination" role="group" aria-label="Choose hero photo">
@@ -205,7 +218,7 @@
       <div class="about__media">
         <figure class="about__photo about__photo--main"><img src="images/brooklyn/bk-07-02c41a3a.webp" alt="The Royal Roofing &amp; Siding Brooklyn crew together on a Brooklyn rooftop" width="1024" height="768" loading="lazy"><figcaption>Brooklyn crews. Brooklyn rooftops.</figcaption></figure>
         <figure class="about__photo about__photo--small"><img src="images/brooklyn/bk-06-9ed51afa.jpg" alt="Crew tearing off an old flat roof on a Brooklyn building" width="1024" height="768" loading="lazy"></figure>
-        <div class="about__stat"><strong>35+</strong><span>years of roofing experience</span></div>
+        <div class="about__stat"><strong>35+</strong><span>years of experience</span></div>
       </div>
       <div class="about__copy">
         <p class="eyebrow">About us</p>
@@ -347,12 +360,12 @@
       <div class="section-head section-head--center">
         <p class="eyebrow">Flat roof systems</p>
         <h2 class="section-title" id="systems-title">Materials Built for Brooklyn Flat Roofs</h2>
-        <p class="section-lede">We install and maintain EPDM, TPO, modified bitumen, and SBS with the drainage and waterproofing that stop ponding water and membrane damage.</p>
+        <p class="section-lede">We install and maintain EPDM, TPO, modified bitumen, and SBS with the correct drainage and waterproofing that stop ponding water and membrane damage.</p>
       </div>
       <div class="tiles tiles--4 slider" data-slider>
-        <div class="tile"><span class="icon-box"><svg aria-hidden="true"><use href="#i-layers"/></svg></span><strong>EPDM Roofing</strong><span>A flexible rubber membrane for flat and low-slope roofs, with seams and penetrations planned around the building.</span></div>
-        <div class="tile"><span class="icon-box"><svg aria-hidden="true"><use href="#i-sun"/></svg></span><strong>TPO Roofing</strong><span>A light-colored single-ply membrane that reflects heat and suits roofs where layout and detailing make it the right fit.</span></div>
-        <div class="tile"><span class="icon-box"><svg aria-hidden="true"><use href="#i-zap"/></svg></span><strong>Modified Bitumen</strong><span>A layered asphalt-based system used on many low-slope roofs, with attention to transitions and drainage.</span></div>
+        <div class="tile"><span class="icon-box"><svg aria-hidden="true"><use href="#i-layers"/></svg></span><strong>EPDM Roofing</strong><span>A flexible rubber membrane for flat and low-slope roofs with fully sealed seams and penetrations.</span></div>
+        <div class="tile"><span class="icon-box"><svg aria-hidden="true"><use href="#i-sun"/></svg></span><strong>TPO Roofing</strong><span>A white colored single-ply membrane that reflects heat and keeps the entire roof cool.</span></div>
+        <div class="tile"><span class="icon-box"><svg aria-hidden="true"><use href="#i-zap"/></svg></span><strong>Modified Bitumen</strong><span>A layered asphalt-based system built for low-slope roofs with sealed transitions and drainage.</span></div>
         <div class="tile"><span class="icon-box"><svg aria-hidden="true"><use href="#i-wall"/></svg></span><strong>SBS &amp; Parapet Details</strong><span>SBS membranes with sealed parapet walls and flashing, the details that keep brownstone roofs dry.</span></div>
       </div>
       <p class="swipe-hint" aria-hidden="true">← Swipe to see more →</p>
@@ -365,7 +378,7 @@
     <div class="container cta-band__inner">
       <p class="eyebrow eyebrow--light eyebrow--center">Free · No obligation</p>
       <h2 class="cta-band__title" id="cta-title">Get a Free Roofing Estimate in Brooklyn</h2>
-      <p class="cta-band__text">Tell us what is happening on your roof. We will take a look at the property, explain the options, and talk through the next step.</p>
+      <p class="cta-band__text">Tell us what is happening on your roof. We will take a look at the property, explain the options &amp; talk you through the next step.</p>
       <div class="cta-band__actions">
         <a class="btn btn--solid btn--white" href="#contact-form">Get a Free Estimate</a>
         <a class="btn btn--solid" href="tel:+17185362667">Call 718-536-2667</a>
@@ -384,7 +397,7 @@
         <ul class="editorial__features" aria-label="What we focus on">
           <li><svg aria-hidden="true"><use href="#i-building"/></svg><span>Building-specific solutions</span></li>
           <li><svg aria-hidden="true"><use href="#i-drop"/></svg><span>Reliable waterproofing</span></li>
-          <li><svg aria-hidden="true"><use href="#i-shield"/></svg><span>Roof and exterior protection</span></li>
+          <li><svg aria-hidden="true"><use href="#i-shield"/></svg><span>Roof and siding protection</span></li>
         </ul>
         <a class="btn btn--solid" href="#contact">Get a Free Estimate</a>
       </div>
@@ -398,7 +411,7 @@
       <div class="areas__intro">
         <div>
           <p class="eyebrow">Areas we serve</p>
-          <h2 class="section-title" id="areas-title">Roofing Across Brooklyn,<br>Neighborhood by Neighborhood</h2>
+          <h2 class="section-title" id="areas-title">Roofing Across All<br>Brooklyn Neighborhoods</h2>
         </div>
         <p class="section-lede">Brooklyn's brownstones, row houses, multifamily buildings, and storefronts all need different roof details. Our crews work across the borough, including these neighborhoods.</p>
       </div>
@@ -418,7 +431,7 @@
           <li><span class="areas__item"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>Prospect Heights</span></span></li>
         </ul>
       <p class="swipe-hint" aria-hidden="true">← Swipe to see more →</p>
-        <div class="areas__bar"><p>Don't see your neighborhood? We may still be nearby.</p><a href="tel:+17185362667">Check your address <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+        <div class="areas__bar"><a class="btn btn--solid btn--white" href="#contact-form">Get Free Estimate</a></div>
       </div>
     </div>
   </section>
@@ -458,7 +471,6 @@
         <details><summary>Do you provide full roofing services in Brooklyn?</summary><p>Yes. Royal Roofing &amp; Siding Brooklyn provides flat roofing, roof repair, replacement, shingle roofing, and commercial roofing services throughout Brooklyn.</p></details>
         <details><summary>What exterior services do you offer besides roofing?</summary><p>We provide siding installation, gutter services, window replacement, masonry repair, and other exterior restoration services.</p></details>
         <details><summary>Is flat roofing common in Brooklyn?</summary><p>Yes. Flat roofing systems are widely used in Brooklyn residential and commercial properties. We specialize in durable flat roofing solutions.</p></details>
-        <details><summary>Do you handle masonry repairs in Brooklyn?</summary><p>Yes. We provide brick repair, repointing, chimney restoration, and other masonry services.</p></details>
         <details><summary>How do I schedule a roofing inspection in Brooklyn?</summary><p>Contact Royal Roofing &amp; Siding Brooklyn to schedule a free consultation and professional roof evaluation.</p></details>
         <details><summary>Do you offer free roofing estimates in Brooklyn?</summary><p>Yes. Royal Roofing &amp; Siding Brooklyn provides free roofing estimates for residential and commercial property owners. Our team evaluates the condition of the roof and discusses the most suitable roofing solutions based on the property's needs.</p></details>
       </div>
@@ -485,13 +497,14 @@
         <form class="quote-card contact__form" id="contact-form" novalidate aria-labelledby="contact-form-title">
           <div class="contact__form-head"><h3 class="quote-card__title" id="contact-form-title">Get a Free Estimate</h3></div>
           <div class="field-row">
-            <div class="field"><label for="cf-name">Full Name</label><input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Your name" required></div>
-            <div class="field"><label for="cf-phone">Best Phone Number</label><input id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(718) 000-0000" required></div>
+            <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Your name" required></div>
+            <div class="field"><label for="cf-phone">Phone</label><input id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(718) 000-0000" required></div>
           </div>
-          <div class="field"><label for="cf-address">Property Address</label><input id="cf-address" name="address" type="text" autocomplete="street-address" placeholder="Street address, Brooklyn" required></div>
-          <div class="field"><label for="cf-message">What do you need help with?</label><textarea id="cf-message" name="message" rows="4" placeholder="Tell us about the roof or exterior work"></textarea></div>
-          <p class="contact__privacy">We'll only contact you about your project.</p>
-          <button class="btn btn--solid btn--block" type="submit">Get a Free Estimate</button>
+          <p class="field__note contact__privacy">We&rsquo;ll only contact you about your project.</p>
+          <div class="field"><label for="cf-address">Address</label><input id="cf-address" name="address" type="text" autocomplete="street-address" placeholder="Street address, Brooklyn" required></div>
+          <div class="field"><label for="cf-message">How Can We Help?</label><textarea id="cf-message" name="message" rows="3" placeholder="Tell us about the roof or exterior work"></textarea></div>
+          <button class="btn btn--solid btn--block" type="submit">Get My Free Estimate</button>
+          <p class="form-callback">We&rsquo;ll call you back within the hour</p>
         </form>
       </div>
     </div>
@@ -505,7 +518,7 @@
     <div class="footer__main">
       <div class="footer__brand">
         <a href="brooklyn.html" aria-label="Royal Roofing &amp; Siding Brooklyn home"><img src="images/brooklyn/bk-04-62d5c289.jpg" alt="Royal Roofing &amp; Siding Brooklyn" width="761" height="746" loading="lazy"></a>
-        <p>Roofing and exterior work for Brooklyn homes, brownstones, and commercial buildings.</p>
+        <p>Royal Roofing &amp; Siding Brooklyn specializes in flat roofing systems for brownstones, row houses, and industrial buildings, including TPO, EPDM, and SBS, with a deep understanding of Brooklyn&rsquo;s unique building landscape.</p>
         <div class="footer__actions">
           <a class="btn btn--solid footer__estimate" href="#contact">Get a Free Estimate</a>
         </div>
@@ -514,7 +527,6 @@
             <li><a href="https://www.facebook.com/royalroofingandsidingbrooklyn/" aria-label="Facebook" rel="noopener" target="_blank"><svg aria-hidden="true"><use href="#i-fb"/></svg></a></li>
             <li><a href="https://www.instagram.com/royalroofingbrooklyn/" aria-label="Instagram" rel="noopener" target="_blank"><svg aria-hidden="true"><use href="#i-ig"/></svg></a></li>
             <li><a href="https://x.com/sidingbrooklyn" aria-label="X" rel="noopener" target="_blank"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
-            <li><a href="https://www.linkedin.com/company/royal-roofing-siding-brooklyn/" aria-label="LinkedIn" rel="noopener" target="_blank"><svg aria-hidden="true"><use href="#i-in"/></svg></a></li>
           </ul>
           <div class="footer__badges">
             <div class="rating-mark rating-mark--dark footer__google" aria-label="Google rating: 5.0 out of 5 stars">
@@ -528,16 +540,16 @@
       <div class="footer__right">
       <nav class="footer__cols" aria-label="Footer">
         <div>
-          <p class="footer__heading">Services</p>
-          <ul><li><a href="#services">Roof Repair</a></li><li><a href="#services">Roof Replacement</a></li><li><a href="#services">Siding</a></li><li><a href="#contact">Gutters &amp; Masonry</a></li></ul>
+          <p class="footer__heading">Roofing</p>
+          <ul><li><a href="#services">Roof Repair</a></li><li><a href="#services">Roof Replacement</a></li><li><a href="#services">Roof Inspection</a></li><li><a href="#services">Commercial Roofing</a></li></ul>
         </div>
         <div>
           <p class="footer__heading">Roof systems</p>
-          <ul><li><a href="#flat-shingle">Flat Roofing</a></li><li><a href="#flat-shingle">Shingle Roofing</a></li><li><a href="#services">Commercial Roofing</a></li><li><a href="#systems">EPDM &amp; TPO</a></li></ul>
+          <ul><li><a href="#flat-shingle">Flat Roofing</a></li><li><a href="#flat-shingle">Shingle Roofing</a></li><li><a href="#systems">EPDM Roofing</a></li><li><a href="#systems">TPO Roofing</a></li></ul>
         </div>
         <div>
           <p class="footer__heading">Explore</p>
-          <ul><li><a href="#about">About Us</a></li><li><a href="#areas">Areas We Serve</a></li><li><a href="#faq">FAQs</a></li><li><a href="brooklyn-contact-us.html">Contact</a></li></ul>
+          <ul><li><a href="brooklyn-about-us.html">About Us</a></li><li><a href="#" data-href="brooklyn-projects.html">Projects</a></li><li><a href="#faq">FAQs</a></li><li><a href="brooklyn-contact-us.html">Contact Us</a></li></ul>
         </div>
       </nav>
       <div class="footer__office">
@@ -555,5 +567,16 @@
 </footer>
 
 <script src="js/brooklyn.js?v=4" defer></script>
+
+<!-- Live chat (Blazeo), starts ten seconds after load.
+     TODO: confirm the Brooklyn chat account id with the client — this uses the Royal account. -->
+<script>
+function delayStartChat(){
+  var script = document.createElement('script');
+  script.src = "//blazeo.com/scripts/invitation.ashx?company=nycrenovators";
+  document.body.appendChild(script);
+}
+setTimeout(delayStartChat, 10000);
+</script>
 </body>
 </html>

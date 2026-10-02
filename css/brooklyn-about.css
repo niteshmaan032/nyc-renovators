@@ -1,0 +1,299 @@
+/* Brooklyn About: an architectural field guide built on the Brooklyn palette. */
+.page-brooklyn-about .bk-about-kicker { display: inline-flex; align-items: center; gap: .7rem; margin: 0 0 1rem; color: var(--red); font-size: .75rem; font-weight: 700; letter-spacing: .16em; line-height: 1.3; text-transform: uppercase; }
+.page-brooklyn-about .bk-about-kicker::before { content: ''; width: 1.65rem; height: 2px; flex: none; background: currentColor; }
+.page-brooklyn-about .bk-about-kicker--light { color: #f2a9b2; }
+.page-brooklyn-about h1, .page-brooklyn-about h2 { letter-spacing: -.04em; }
+.page-brooklyn-about h1 > span, .page-brooklyn-about h2 > span { display: block; }
+.page-brooklyn-about h2 { font-size: clamp(1.85rem, 1.25rem + 1.35vw, 2.75rem); line-height: 1.12; }
+.page-brooklyn-about h3 { font-size: clamp(1.22rem, 1.1rem + .4vw, 1.55rem); line-height: 1.2; }
+.page-brooklyn-about figure { margin: 0; }
+.page-brooklyn-about figcaption { font-size: .75rem; font-weight: 700; letter-spacing: .04em; }
+.page-brooklyn-about .bk-about-text-link { display: inline-flex; align-items: center; gap: .55rem; min-height: 2.75rem; color: var(--navy); font-size: .9375rem; font-weight: 700; text-decoration: none; }
+.page-brooklyn-about .bk-about-text-link:hover { color: var(--red); }
+.page-brooklyn-about .bk-about-text-link--light { color: #fff; }
+.page-brooklyn-about .bk-about-text-link--light:hover { color: #ffc2c9; }
+.page-brooklyn-about .bk-about-text-link svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 2; }
+
+.bk-about-hero { overflow: hidden; background: var(--navy-deep); color: #fff; }
+.bk-about-hero__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(2rem, 4vw, 5rem); padding-top: calc(var(--nav-h) + 3rem); padding-bottom: clamp(2.5rem, 4vw, 4.5rem); }
+.bk-about-hero__copy { padding-block: 1rem; }
+.bk-about-hero h1 { max-width: none; color: #fff; font-size: clamp(2.7rem, 4.4vw, 5.1rem); line-height: 1.04; }
+.bk-about-hero h1 em { color: #f6b1b9; font-style: normal; }
+.bk-about-hero__copy > p:not(.bk-about-kicker) { max-width: 49ch; margin-top: 1.5rem; color: var(--on-dark-muted); font-size: clamp(1.05rem, 1rem + .25vw, 1.22rem); line-height: 1.6; }
+.bk-about-hero__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 1.5rem; margin-top: 2rem; }
+.bk-about-hero__visual { position: relative; height: clamp(28rem, 43vw, 39rem); min-width: 0; overflow: hidden; background: #31506c; }
+.bk-about-hero__visual::before { position: absolute; z-index: 1; top: 0; left: 0; width: 28%; height: .45rem; background: var(--red); content: ''; }
+.bk-about-hero__visual img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+.bk-about-hero__visual figcaption { position: absolute; right: 0; bottom: 0; display: grid; gap: .12rem; min-width: 11rem; padding: .85rem 1.2rem; background: #fff; color: var(--navy); }
+.bk-about-hero__visual figcaption span { color: var(--muted); font-size: .67rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.bk-about-hero__visual figcaption strong { font-size: 1.08rem; letter-spacing: 0; }
+.bk-about-hero__foot { border-top: 1px solid var(--hairline-dark); }
+.bk-about-hero__foot .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.75rem; color: var(--on-dark-muted); font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+
+.bk-about-intro { padding-block: clamp(3.5rem, 6vw, 6rem); background: #fff; }
+.bk-about-intro__grid { display: grid; grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr); gap: clamp(2rem, 5vw, 6rem); align-items: stretch; }
+.bk-about-intro__media { position: relative; min-height: 29rem; overflow: hidden; background: var(--navy); }
+.bk-about-intro__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; }
+.bk-about-intro__media figcaption { position: absolute; right: 0; bottom: 0; display: grid; gap: .1rem; width: min(20rem, 80%); padding: .85rem 1rem; background: var(--navy); color: #fff; }
+.bk-about-intro__media figcaption strong { font-size: .88rem; }
+.bk-about-intro__media figcaption span { color: var(--on-dark-muted); font-size: .71rem; font-weight: 500; letter-spacing: 0; }
+.bk-about-intro__copy { align-self: center; max-width: 66ch; }
+.bk-about-intro h2 { max-width: none; }
+.bk-about-intro__copy > p:not(.bk-about-kicker) { max-width: 60ch; margin-top: 1rem; color: var(--muted); font-size: clamp(1rem, .95rem + .18vw, 1.12rem); }
+.bk-about-intro__copy > h2 + p { color: var(--ink); }
+.bk-about-intro__copy .bk-about-text-link { margin-top: 1.1rem; }
+
+.bk-about-buildings { padding-block: clamp(3.5rem, 5vw, 5.5rem); background: var(--sky); }
+.bk-about-buildings__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .75fr); align-items: end; gap: 2rem; margin-bottom: 2rem; }
+.bk-about-buildings__head h2 { max-width: none; }
+.bk-about-buildings__head > p { max-width: 49ch; color: var(--muted); }
+.bk-about-buildings__cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.bk-about-buildings__cards article { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; min-height: 22rem; padding: clamp(1.4rem, 2vw, 2rem); border-top: .28rem solid var(--navy); background: #fff; box-shadow: 0 12px 30px rgba(2, 35, 80, .06); }
+.bk-about-buildings__cards article:nth-child(2) { border-top-color: var(--red); }
+.bk-about-buildings__index { color: var(--red); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.bk-about-buildings__cards h3 { max-width: 18ch; margin-top: 2rem; font-size: clamp(1.35rem, 1.15rem + .65vw, 1.7rem); }
+.bk-about-buildings__cards p { max-width: 44ch; margin-top: .75rem; color: var(--muted); font-size: .96rem; }
+.bk-about-buildings__focus { width: 100%; margin-top: auto; padding-top: 1.4rem; border-top: 1px solid var(--hairline); color: var(--navy); font-size: .8rem; font-weight: 700; }
+.bk-about-buildings__cta { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 1rem; padding: 1.2rem clamp(1.4rem, 2vw, 2rem); background: var(--navy); color: #fff; }
+.bk-about-buildings__cta p { display: grid; gap: .15rem; }
+.bk-about-buildings__cta strong { color: #fff; font-size: 1.125rem; }
+.bk-about-buildings__cta span { color: var(--on-dark-muted); font-size: .9rem; }
+.bk-about-buildings__cta .btn { flex: none; }
+
+.bk-about-scope { padding-block: clamp(3.5rem, 5vw, 5.5rem); background: #fff; }
+.bk-about-scope__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .68fr); align-items: end; gap: 2rem; margin-bottom: 2rem; }
+.bk-about-scope__head h2 { max-width: none; }
+.bk-about-scope__head > p { max-width: 49ch; color: var(--muted); }
+.bk-about-scope__layout { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); align-items: stretch; gap: 1rem; }
+.bk-about-scope__feature { display: grid; grid-template-rows: minmax(15rem, 1fr) auto; min-width: 0; background: var(--navy); color: #fff; }
+.bk-about-scope__feature figure { position: relative; min-height: 15rem; overflow: hidden; }
+.bk-about-scope__feature figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 48%; }
+.bk-about-scope__feature figcaption { position: absolute; left: 1rem; bottom: 1rem; padding: .5rem .7rem; background: #fff; color: var(--navy); }
+.bk-about-scope__feature > div { padding: clamp(1.4rem, 2vw, 2rem); }
+.bk-about-scope__feature h3 { color: #fff; font-size: clamp(1.5rem, 1.2rem + .8vw, 2rem); }
+.bk-about-scope__feature p { max-width: 62ch; margin-top: .65rem; color: var(--on-dark-muted); }
+.bk-about-scope__side { display: grid; grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.bk-about-scope__side article { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; padding: clamp(1.4rem, 2vw, 2rem); background: var(--sky); }
+.bk-about-scope__side article:last-child { background: var(--mist); }
+.bk-about-scope__side h3 { margin-top: .45rem; }
+.bk-about-scope__side p { max-width: 54ch; margin-top: .65rem; color: var(--muted); }
+.bk-about-scope__tag { color: var(--red); font-size: .69rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.bk-about-scope__feature .bk-about-scope__tag { color: #f6b1b9; }
+.bk-about-scope__layout a { display: inline-flex; align-items: center; gap: .45rem; min-height: 2.75rem; margin-top: 1rem; color: var(--navy); font-size: .875rem; font-weight: 700; text-decoration: none; }
+.bk-about-scope__side a { margin-top: auto; padding-top: 1rem; }
+.bk-about-scope__feature a { color: #fff; }
+.bk-about-scope__layout a:hover { color: var(--red); }
+.bk-about-scope__feature a:hover { color: #ffc2c9; }
+.bk-about-scope__layout a svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 2; }
+
+.bk-about-details { padding-block: clamp(3.5rem, 5vw, 5.5rem); background: #edf3f9; }
+.bk-about-details__grid { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); align-items: start; gap: clamp(2.5rem, 6vw, 7rem); }
+.bk-about-details__intro h2 { max-width: 15ch; }
+.bk-about-details__intro > p:not(.bk-about-kicker) { max-width: 49ch; margin-top: 1rem; color: var(--muted); }
+.bk-about-details__notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2rem; }
+.bk-about-details__notes article { padding-top: 1rem; border-top: 2px solid var(--red); }
+.bk-about-details__notes article > span { color: var(--red); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.bk-about-details__notes h3 { margin-top: .55rem; }
+.bk-about-details__notes p { max-width: 42ch; margin-top: .55rem; color: var(--muted); font-size: .94rem; }
+
+.bk-about-process { padding-block: clamp(3.5rem, 5vw, 6rem); background: var(--navy-deep); color: #fff; }
+.bk-about-process__grid { display: grid; grid-template-columns: minmax(0, .87fr) minmax(0, 1.13fr); gap: clamp(2.5rem, 6vw, 7rem); align-items: center; }
+.bk-about-process h2, .bk-about-process h3 { color: #fff; }
+.bk-about-process__intro h2 { max-width: none; }
+.bk-about-process__intro > p:not(.bk-about-kicker) { max-width: 48ch; margin-top: 1rem; color: var(--on-dark-muted); }
+.bk-about-process__intro figure { position: relative; height: clamp(13rem, 19vw, 19rem); margin-top: 2rem; overflow: hidden; }
+.bk-about-process__intro figure img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; }
+.bk-about-process__intro figcaption { position: absolute; right: 0; bottom: 0; padding: .55rem .8rem; background: #fff; color: var(--navy); }
+.bk-about-process__steps { display: grid; margin: 0; padding: 0; border-top: 1px solid var(--hairline-dark); list-style: none; }
+.bk-about-process__steps li { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1.1rem; padding: 1.45rem 0; border-bottom: 1px solid var(--hairline-dark); }
+.bk-about-process__steps li > span { color: #f6b1b9; font-size: .85rem; font-weight: 700; letter-spacing: .1em; }
+.bk-about-process__steps p { max-width: 55ch; margin-top: .35rem; color: var(--on-dark-muted); font-size: .94rem; }
+
+.bk-about-planning { padding-block: clamp(3.5rem, 5vw, 5.5rem); background: #f7f9fc; }
+.bk-about-planning__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .72fr); align-items: end; gap: 2rem; margin-bottom: 1.75rem; }
+.bk-about-planning__head > p { max-width: 51ch; color: var(--muted); }
+.bk-about-planning__photo { position: relative; height: clamp(18rem, 25vw, 25rem); overflow: hidden; background: var(--navy); }
+.bk-about-planning__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 48%; }
+.bk-about-planning__photo figcaption { position: absolute; left: 1rem; bottom: 1rem; padding: .55rem .85rem; background: #fff; color: var(--navy); }
+.bk-about-planning__points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 3rem); margin-top: 1.75rem; }
+.bk-about-planning__points article { padding-top: 1rem; border-top: 2px solid var(--navy); }
+.bk-about-planning__points article > span { color: var(--red); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.bk-about-planning__points h3 { margin-top: .55rem; }
+.bk-about-planning__points p { max-width: 46ch; margin-top: .55rem; color: var(--muted); font-size: .94rem; }
+
+.bk-about-values { padding-block: clamp(3.5rem, 5vw, 5.5rem); background: #fff; }
+.bk-about-values__head { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.bk-about-values__head h2 { max-width: none; }
+.bk-about-values__head > p:last-child { max-width: 55ch; margin-top: 1rem; color: var(--muted); }
+.bk-about-values__principles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 2.25rem; border-block: 1px solid var(--hairline); }
+.bk-about-values__principles article { min-width: 0; padding: clamp(1.5rem, 2.4vw, 2.5rem); }
+.bk-about-values__principles article + article { border-left: 1px solid var(--hairline); }
+.bk-about-values__principles svg { width: 1.75rem; height: 1.75rem; fill: none; stroke: var(--red); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.bk-about-values__principles h3 { margin-top: 1.2rem; }
+.bk-about-values__principles p { max-width: 43ch; margin-top: .6rem; color: var(--muted); font-size: .94rem; }
+
+.bk-about-neighborhoods { padding-block: clamp(3.5rem, 5vw, 5.5rem); background: var(--sky); }
+.bk-about-neighborhoods__panel { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); min-height: 24rem; box-shadow: 0 18px 40px rgba(2, 35, 80, .07); }
+.bk-about-neighborhoods__intro { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(2rem, 4vw, 4rem); background: var(--navy); color: #fff; }
+.bk-about-neighborhoods__intro h2 { max-width: none; color: #fff; }
+.bk-about-neighborhoods__intro > p:not(.bk-about-kicker) { max-width: 45ch; margin-top: 1rem; color: var(--on-dark-muted); }
+.bk-about-neighborhoods__intro .bk-about-text-link { margin-top: 1.2rem; }
+.bk-about-neighborhoods__directory { display: flex; flex-direction: column; justify-content: center; padding: clamp(2rem, 4vw, 4rem); background: #fff; }
+.bk-about-neighborhoods__directory > p { color: var(--red); font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.bk-about-neighborhoods__directory ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1.5rem; margin-top: 1rem; border-top: 1px solid var(--hairline); }
+.bk-about-neighborhoods__directory li { display: flex; align-items: center; gap: .7rem; min-width: 0; min-height: 3.9rem; padding: .7rem 0; border-bottom: 1px solid var(--hairline); color: var(--navy); font-size: clamp(.95rem, .9rem + .2vw, 1.1rem); font-weight: 700; line-height: 1.3; }
+.bk-about-neighborhoods__directory li::before { width: .45rem; height: .45rem; flex: none; background: var(--red); content: ''; transform: rotate(45deg); }
+.bk-about-neighborhoods__directory > span { margin-top: 1.1rem; color: var(--muted); font-size: .84rem; }
+
+.bk-about-cta { padding-block: clamp(3.5rem, 5vw, 5rem); background-color: var(--navy-deep); background-image: url('../images/brooklyn/roofing-pattern.svg'); background-size: 160px 80px; color: #fff; }
+.bk-about-cta__inner { display: flex; flex-direction: column; align-items: center; max-width: 58rem; text-align: center; }
+.bk-about-cta .bk-about-kicker { justify-content: center; }
+.bk-about-cta h2 { max-width: none; color: #fff; }
+.bk-about-cta__inner > p:not(.bk-about-kicker) { max-width: 54ch; margin-top: 1rem; color: var(--on-dark-muted); }
+.bk-about-cta__actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 1rem 1.5rem; margin-top: 1.5rem; }
+.bk-about-cta__phone { display: inline-flex; align-items: center; min-height: 2.75rem; color: #fff; font-size: 1rem; font-weight: 700; text-decoration: underline; text-underline-offset: .25em; }
+.bk-about-cta__phone:hover { color: #f6b1b9; }
+.bk-about-cta__hours { margin-top: .8rem; color: var(--on-dark-muted); font-size: .83rem; }
+
+@media (max-width: 60rem) {
+  .bk-about-hero__grid, .bk-about-intro__grid, .bk-about-buildings__head, .bk-about-scope__head, .bk-about-details__grid, .bk-about-process__grid, .bk-about-planning__head, .bk-about-neighborhoods__panel { grid-template-columns: 1fr; }
+  .bk-about-hero__grid { gap: 2rem; }
+  .bk-about-hero h1 { max-width: 15ch; }
+  .bk-about-hero__visual { height: clamp(20rem, 50vw, 32rem); }
+  .bk-about-buildings__head { gap: .75rem; }
+  .bk-about-buildings__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bk-about-buildings__cards article { min-height: 20rem; }
+  .bk-about-buildings__cards article:last-child { grid-column: 1 / -1; min-height: 0; }
+  .bk-about-scope__layout { grid-template-columns: 1fr; }
+  .bk-about-scope__feature { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); grid-template-rows: auto; }
+  .bk-about-scope__side { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; }
+  .bk-about-intro__media { min-height: 0; aspect-ratio: 16 / 10; }
+  .bk-about-details__grid { gap: 2rem; }
+  .bk-about-process__intro figure { height: 18rem; max-width: 36rem; }
+}
+@media (max-width: 48rem) {
+  .bk-about-hero__grid { padding-top: calc(var(--nav-h) + 2.5rem); }
+  .bk-about-hero__foot .container { align-items: flex-start; flex-direction: column; justify-content: center; gap: .2rem; padding-block: .7rem; }
+  .bk-about-scope__feature { grid-template-columns: 1fr; grid-template-rows: 15rem auto; }
+  .bk-about-buildings__cards { grid-template-columns: 1fr; }
+  .bk-about-buildings__cards article, .bk-about-buildings__cards article:last-child { grid-column: auto; min-height: 0; }
+  .bk-about-buildings__cards h3 { margin-top: 1.25rem; }
+  .bk-about-buildings__focus { margin-top: 1.4rem; }
+  .bk-about-buildings__cta { align-items: flex-start; flex-direction: column; }
+  .bk-about-scope__side { grid-template-columns: 1fr; }
+  .bk-about-neighborhoods__directory ul { grid-template-columns: 1fr; }
+  .bk-about-values__principles { grid-template-columns: 1fr; }
+  .bk-about-values__principles article { padding-inline: 0; }
+  .bk-about-values__principles article + article { border-left: 0; border-top: 1px solid var(--hairline); }
+  .bk-about-details__notes { grid-template-columns: 1fr; gap: 1.25rem; }
+  .bk-about-planning__points { grid-template-columns: 1fr; gap: 1.25rem; }
+  .bk-about-planning__photo { height: 17rem; }
+  .bk-about-cta__actions { flex-direction: column; gap: .5rem; }
+}
+@media (max-width: 40rem) {
+  .bk-about-hero h1 { font-size: clamp(2.35rem, 8.5vw, 3rem); }
+  .bk-about-hero__visual { height: 19rem; }
+  .bk-about-intro__media { aspect-ratio: 4 / 3; }
+  .bk-about-process__steps li { grid-template-columns: 2.4rem minmax(0, 1fr); gap: .7rem; }
+  .bk-about-neighborhoods__intro, .bk-about-neighborhoods__directory { padding: 1.5rem; }
+}
+
+/* ==========================================================================
+   Client-screen pass (1 Oct): hero above the fold, home-page section rhythm,
+   and the two CTA pairings. Appended as overrides so the design rules above
+   stay untouched.
+   ========================================================================== */
+
+/* --- Hero: fills one screen, with the next section peeking -------------- */
+.page-brooklyn-about .bk-about-hero {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100svh - 3.5rem);
+}
+.page-brooklyn-about .bk-about-hero__grid {
+  flex: 1 1 auto;
+  align-content: center;
+  padding-top: calc(var(--nav-h) + 1.25rem);
+  padding-bottom: 1.5rem;
+  gap: clamp(1.5rem, 3vw, 3.5rem);
+}
+.page-brooklyn-about .bk-about-hero__copy { padding-block: 0; }
+.page-brooklyn-about .bk-about-hero__copy > p:not(.bk-about-kicker) { margin-top: 1rem; }
+.page-brooklyn-about .bk-about-hero__actions { margin-top: 1.5rem; }
+.page-brooklyn-about .bk-about-hero__visual { height: clamp(17rem, 27vw, 26rem); }
+.page-brooklyn-about .bk-about-hero__foot { flex: none; }
+.page-brooklyn-about .bk-about-hero__foot .container { min-height: 3rem; }
+@media (max-height: 640px), (max-width: 60rem) {
+  .page-brooklyn-about .bk-about-hero { min-height: 0; }
+}
+@media (min-width: 60.01rem) and (max-height: 780px) {
+  .page-brooklyn-about .bk-about-hero h1 { font-size: clamp(2.4rem, 3.6vw, 4rem); }
+  .page-brooklyn-about .bk-about-hero__visual { height: clamp(15rem, 24vw, 22rem); }
+}
+
+/* --- Section rhythm: the home page's --section-pad on every band --------- */
+.page-brooklyn-about .bk-about-intro,
+.page-brooklyn-about .bk-about-buildings,
+.page-brooklyn-about .bk-about-scope,
+.page-brooklyn-about .bk-about-details,
+.page-brooklyn-about .bk-about-process,
+.page-brooklyn-about .bk-about-planning,
+.page-brooklyn-about .bk-about-values,
+.page-brooklyn-about .bk-about-neighborhoods {
+  padding-block: var(--section-pad);
+}
+/* The closing band breathes like the home page's CTA band. */
+.page-brooklyn-about .bk-about-cta { padding-block: clamp(2rem, 1.5rem + 2vw, 3.5rem); }
+
+/* --- Inner gaps: head-to-content at the home page's 1.5rem --------------- */
+.page-brooklyn-about .bk-about-buildings__head,
+.page-brooklyn-about .bk-about-scope__head,
+.page-brooklyn-about .bk-about-planning__head { margin-bottom: var(--space-5); }
+.page-brooklyn-about .bk-about-details__grid,
+.page-brooklyn-about .bk-about-process__grid { gap: clamp(1.5rem, 4vw, 4rem); }
+.page-brooklyn-about .bk-about-intro__grid { gap: clamp(1.5rem, 3.5vw, 4rem); }
+@media (min-width: 60.01rem) { .page-brooklyn-about .bk-about-intro__media { min-height: 24rem; } }
+.page-brooklyn-about .bk-about-values__principles { margin-top: var(--space-5); }
+.page-brooklyn-about .bk-about-planning__points { margin-top: var(--space-5); }
+.page-brooklyn-about .bk-about-process__intro figure { margin-top: var(--space-5); height: clamp(11rem, 15vw, 15rem); }
+.page-brooklyn-about .bk-about-neighborhoods__panel { min-height: 0; }
+
+/* Cards: the home page's body padding, and shorter equal-height columns. */
+.page-brooklyn-about .bk-about-buildings__cards article,
+.page-brooklyn-about .bk-about-scope__side article,
+.page-brooklyn-about .bk-about-scope__feature > div,
+.page-brooklyn-about .bk-about-values__principles article,
+.page-brooklyn-about .bk-about-neighborhoods__intro,
+.page-brooklyn-about .bk-about-neighborhoods__directory {
+  padding: clamp(1.25rem, 1rem + .75vw, 1.75rem);
+}
+.page-brooklyn-about .bk-about-buildings__cards article { min-height: 18rem; }
+.page-brooklyn-about .bk-about-buildings__cards h3 { margin-top: 1.25rem; }
+.page-brooklyn-about .bk-about-buildings__focus { padding-top: 1rem; }
+.page-brooklyn-about .bk-about-buildings__cta { padding: 1rem clamp(1.25rem, 1rem + .75vw, 1.75rem); }
+.page-brooklyn-about .bk-about-values__principles h3 { margin-top: .85rem; }
+.page-brooklyn-about .bk-about-planning__photo { height: clamp(15rem, 20vw, 20rem); }
+.page-brooklyn-about .bk-about-neighborhoods__directory li { min-height: 3.2rem; }
+.page-brooklyn-about .bk-about-process__steps li { padding: 1.1rem 0; }
+
+/* --- CTA pairings --------------------------------------------------------
+   Estimate: white at rest, red sweeping in. Uses the shared .btn--white.
+   Phone:    red at rest, white sweeping in. New variant, same system — it
+             only re-points the custom properties the sweep already reads. */
+.page-brooklyn-about .btn--phone {
+  --color: var(--red);
+  --active: var(--red-dark);
+  --hover-bg: #fff;
+  --hover-ink: var(--navy);
+}
+/* A white button on a white ground needs an edge; on navy it does not. */
+.page-brooklyn-about .drawer__actions .btn--white { border-color: rgba(2, 35, 80, .22); }
+.page-brooklyn-about .bk-about-cta__actions .btn { flex: none; }
+
+/* The hero row stretches to the screen it now fills, so the photo uses the
+   height instead of leaving a band of empty navy above and below. */
+@media (min-width: 60.01rem) {
+  .page-brooklyn-about .bk-about-hero__grid { align-content: stretch; align-items: stretch; }
+  .page-brooklyn-about .bk-about-hero__copy { display: flex; flex-direction: column; justify-content: center; }
+  .page-brooklyn-about .bk-about-hero__visual { height: auto; min-height: 20rem; }
+}

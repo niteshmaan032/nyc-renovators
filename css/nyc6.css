@@ -2828,11 +2828,12 @@ a.contact-line__value:hover { color: var(--red); }
 .awards__logos .is-gaf img { height: 2.375rem; }
 .awards__logos .is-inc img { height: 3.25rem; }
 
-/* Areas: the borough list is not linked. It keeps the row look and the red
-   hover, but nothing happens on click. */
+/* Areas: the borough list is plain text, never linked. The sister companies are
+   separate entities, so the boroughs must not read as clickable — no pointer,
+   no hover colour, no arrow. Only "Queens" in the lede above is a link. */
 .areas__list .areas__item {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
   gap: .75rem;
   padding-block: .8125rem;
@@ -2841,11 +2842,11 @@ a.contact-line__value:hover { color: var(--red); }
   font-weight: var(--fw-medium);
   color: var(--navy);
   cursor: default;
-  transition: color var(--dur-fast) var(--ease-out);
 }
-.areas__list .areas__item:hover { color: var(--red); }
+.areas__list .areas__item:hover,
+.areas__list .areas__item:focus,
+.areas__list .areas__item:focus-visible { color: var(--navy); outline: none; }
 .areas__list .areas__item > i:first-child { font-size: .875rem; color: var(--red); }
-.areas__list .areas__item:hover .areas__go { color: var(--red); }
 
 /* Contact: the map fits one screen; the heading sits level with the form top. */
 .contact__map { min-height: 0; max-height: 22rem; }
@@ -3414,10 +3415,6 @@ a.contact-line__value:hover { color: var(--red); }
 /* Accredited-and-reviewed-by: NRCA mark added. */
 .accred__logos .is-nrca img { height: 2.125rem !important; width: auto; }
 
-/* Areas We Serve: tiles are links now. */
-.areas__list a.areas__item { text-decoration: none; cursor: pointer; }
-.areas__list a.areas__item:hover, .areas__list a.areas__item:focus-visible { color: var(--red); }
-
 /* Why Choose: the photo block matches the height of the text column, so no
    empty space sits under the reasons. */
 @media (min-width: 64.0625rem) {
@@ -3457,7 +3454,7 @@ a.contact-line__value:hover { color: var(--red); }
 .estimate-form--white .field--note + .field { margin-top: calc(var(--space-2) * -1); }
 /* Mobile: every hero logo on one row (Google, BBB, GAF, Inc. 5000, Yelp). */
 @media (max-width: 40rem) {
-  .hero__badges { display: flex; flex-wrap: nowrap; align-items: center; justify-content: flex-start; gap: .5rem; width: 100%; }
+  .hero__badges { display: flex; flex-wrap: nowrap; align-items: center; justify-content: center; gap: .5rem; width: 100%; }
   .hero__badge { flex: 0 0 auto; min-width: 0; }
   .hero__badge--extra { display: inline-flex; }
   .hero__badge img { height: 1.9rem; }
@@ -3482,3 +3479,182 @@ a.contact-line__value:hover { color: var(--red); }
   --pip-bg: var(--white);
   --pip-ink: var(--navy);
 }
+
+
+/* ==========================================================================
+   28 Sep call — Royal homepage
+   ========================================================================== */
+
+/* A5. The FAQ block was bleeding into Get in Touch. A content-width rule
+   separates them, and both columns of the contact row now start on the same
+   line: the left card gains the padding the form card already had, which is
+   what lifts the form to meet it. */
+.faqs + .contact > .container {
+  border-top: 1px solid var(--hairline);
+  padding-top: clamp(1.5rem, 1.1rem + 1.4vw, 2.5rem);
+}
+.contact__inner { align-items: start; }
+.contact__left--boxed { padding-top: .375rem; }
+/* "Get in Touch" is set several steps larger than the form's heading, so the
+   left card's top padding is trimmed until the two titles read on one line. */
+.contact__left--boxed .contact__head { margin-bottom: var(--space-3); }
+.contact__left > .section-title { margin-top: 0; }
+
+/* A6. The form filled almost a full screen. Tighter padding, a shallower
+   head rule and a shorter message box bring it back. */
+.contact .contact-form { padding: clamp(1rem, .8rem + .7vw, 1.375rem); }
+.contact .contact-form__head { padding-bottom: var(--space-3); margin-bottom: var(--space-4); }
+.contact .contact-form__grid { row-gap: var(--space-3); }
+.contact .field__input--area { min-height: 4.25rem; }
+.contact .contact-form__submit { margin-top: var(--space-3); }
+
+/* --- 28 Sep call — mobile ------------------------------------------------ */
+
+/* B2. The invitation must open bottom-right on phones too. The widget names
+   its wrapper differently between breakpoints, so pin every variant. */
+@media (max-width: 48rem) {
+  #apexchat_prechat_invitation_wrapper,
+  #apexchat_invitation_wrapper,
+  [id^="apexchat"][id*="invitation"] {
+    left: auto !important;
+    right: 0 !important;
+  }
+}
+
+@media (max-width: 40rem) {
+  /* B3. The note is hidden on phones, so the pull-up that tucked Address under
+     it left no gap at all. Address sits on the normal grid rhythm again. */
+  .estimate-form--white .field--note + .field { margin-top: 0; }
+
+  /* B4. Name and Phone share a row on phones; their labels centre over the
+     inputs. Every full-width label stays ranged left. */
+  .estimate-form--white .estimate-form__grid > .field:not(.field--full) .field__label { text-align: center; }
+
+  /* B5. Half the white space down the page. */
+  .reviews,
+  .gaf,
+  .buildings,
+  .whyus,
+  .exterior,
+  .accred,
+  .blog { padding-block: .5rem; }
+  .cta-band__inner { padding-block: 1.25rem; }
+  .reviews__head,
+  .gaf__body .section-lede,
+  .buildings__head,
+  .whyus__head,
+  .exterior__head,
+  .blog__head { margin-bottom: var(--space-3); }
+  /* Areas: the map sits directly under the intro, so the gap above it halves. */
+  .areas { padding-block: .5rem; }
+  .areas__map { margin-top: var(--space-3); }
+
+  /* The one place that wanted more room, not less: the estimate band needs to
+     breathe before Areas We Serve starts. */
+  .cta-band + .areas { padding-top: var(--space-5); }
+}
+
+/* --- 28 Sep call — Roofing mega menu ------------------------------------- */
+/* C1. Property Types carries only two rows, so the estimate button fills the
+   rest of the column instead of leaving a hole beside the other two. */
+.mega__col--cta { display: flex; flex-direction: column; }
+.mega__col--cta .mega__list { flex: 0 0 auto; }
+.mega__cta { align-self: stretch; justify-content: center; margin-top: var(--space-4); }
+
+/* C2. Drawer "Click to view more": the extra rows stay in the markup for
+   search engines and open on tap. */
+.mobile-nav__sub.is-collapsed .is-more { display: none; }
+.mobile-nav__more-row { display: block; }
+.mobile-nav__more {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  width: 100%;
+  padding: .625rem 0;
+  border: 0;
+  background: none;
+  color: var(--red);
+  font: inherit;
+  font-weight: var(--fw-bold);
+  text-align: left;
+  cursor: pointer;
+}
+.mobile-nav__more::after { content: "+"; font-weight: var(--fw-bold); }
+.mobile-nav__more[aria-expanded="true"]::after { content: "\2212"; }
+.mobile-nav__more:hover { text-decoration: underline; }
+
+/* --- 28 Sep call — contact page ------------------------------------------ */
+
+/* E3. The labels sat at almost the same size as the answers typed under them,
+   which made the form hard to scan. Up ~15% and bold. */
+.page-contact .contact-form .field__label {
+  font-size: .9375rem;
+  font-weight: var(--fw-bold);
+}
+
+/* E2. The reassurance line lifts under the phone field and starts a step in
+   from the input edge. */
+.page-contact .contact-form .field__hint {
+  margin-top: .125rem;
+  padding-left: .5rem;
+}
+
+/* E4. Room above the message box so it reads as its own question. */
+.page-contact .contact-form .field--message { margin-top: var(--space-3); }
+
+/* E7. Half the white space in the two deepest gaps on the page: under the
+   hero, and between "What happens next" and the FAQs. */
+.page-contact .page-hero { padding-bottom: clamp(1rem, .8rem + .8vw, 1.5rem); }
+.page-contact .reasons.next { padding-block: clamp(1rem, .8rem + .8vw, 1.5rem); }
+
+/* E8. Same field rhythm and submit as the homepage form. */
+.page-contact .contact-form__grid { row-gap: var(--space-3); }
+.page-contact .contact-form__submit { margin-top: var(--space-3); }
+
+/* F4. House rule from the call: on a phone any run of three or more cards
+   scrolls sideways instead of stacking. What We Do and Exterior Work already
+   did; these are the groups that were still stacking. */
+@media (max-width: 40rem) {
+  .buildings__grid,
+  .whyus__reasons,
+  .projects__grid {
+    display: flex;
+    gap: var(--space-4);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: .5rem;
+    margin-inline: calc(var(--gutter, 1.25rem) * -1);
+    padding-inline: var(--gutter, 1.25rem);
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .buildings__grid::-webkit-scrollbar,
+  .whyus__reasons::-webkit-scrollbar,
+  .projects__grid::-webkit-scrollbar { display: none; }
+  .buildings__grid > li,
+  .whyus__reasons > li,
+  .projects__grid > li { flex: 0 0 82%; scroll-snap-align: start; }
+}
+
+/* 30 Sep follow-ups ------------------------------------------------------- */
+/* Homepage contact: the form card matches the left column's height instead of
+   stopping short of it. */
+@media (min-width: 60.0625rem) {
+  .contact__inner { align-items: stretch; }
+  .contact__inner > .contact-form {
+    display: flex; flex-direction: column; height: 100%;
+  }
+  .contact__inner > .contact-form .contact-form__grid { flex: 1; align-content: center; }
+}
+
+/* Contact page: same two-up rhythm as the homepage hero form —
+   Name | Phone, Email | Address, then the message full width. */
+.page-contact .contact-form__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.page-contact .contact-form__grid .field--full { grid-column: 1 / -1; }
+@media (max-width: 40rem) {
+  .page-contact .contact-form__grid { grid-template-columns: 1fr; }
+}
+
+/* Homepage logo is the page you are already on, so it is inert: a <span> that
+   keeps the anchor's box exactly, with no pointer affordance. */
+.brand--current { cursor: default; }

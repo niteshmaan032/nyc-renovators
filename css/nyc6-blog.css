@@ -9,7 +9,13 @@
    Band order: hero (navy) · latest (white) · all articles (alt) · FAQs (white)
    ========================================================================== */
 
-.bl-hero .page-hero__title { max-width: 22ch; }
+/* 28 Sep call, F3: the 22ch cap broke the title over two lines. Off the cap it
+   holds one line on every desktop and wraps only on a phone, and the featured
+   article moves up to meet it. */
+.bl-hero .page-hero__title { max-width: none; }
+.bl-hero { padding-bottom: clamp(1rem, .8rem + .8vw, 1.5rem); }
+.bl-featured-band { padding-top: clamp(1rem, .8rem + .8vw, 1.5rem); }
+.bl-featured { margin-top: var(--space-3); }
 
 /* ==========================================================================
    Latest article
