@@ -25,7 +25,7 @@
 
   <!-- Page-scoped overrides. Loaded after style.css so this page can diverge
        from index.html without touching the shared stylesheet. -->
-  <link rel="stylesheet" href="css/nyc6.css?v=31">
+  <link rel="stylesheet" href="css/nyc6.css?v=34">
 </head>
 <body>
 
@@ -466,12 +466,12 @@
             </button>
             <ul class="mobile-nav__sub" id="m-areas" hidden>
               <li>
-                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-queens">
+                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-queens" data-href="queens.html">
                   <i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Queens</span>
                   <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
                 </button>
                 <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-queens" hidden>
-                  <li><a href="#queens-roofing"><span>Queens Roofing</span></a></li>
+                  <li><a href="queens.html"><span>Queens Roofing</span></a></li>
                   <li><a href="#queens-flat-roofing"><span>Flat Roofing</span></a></li>
                   <li><a href="#queens-shingle-roofing"><span>Shingle Roofing</span></a></li>
                   <li><a href="#queens-commercial-roofing"><span>Commercial Roofing</span></a></li>
@@ -482,7 +482,7 @@
                 </ul>
               </li>
               <li>
-                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-brooklyn">
+                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-brooklyn" data-href="brooklyn.html">
                   <i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Brooklyn</span>
                   <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
                 </button>
@@ -2459,7 +2459,7 @@
   </a>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-  <script src="js/nyc6.js?v=5" defer></script>
+  <script src="js/nyc6.js?v=6" defer></script>
 
   <!-- Live chat (Blazeo), starts six seconds after load -->
   <script>

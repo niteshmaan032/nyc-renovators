@@ -900,3 +900,27 @@ svg { display: inline-block; }
     right: 0 !important;
   }
 }
+
+/* 4 Oct mobile round ------------------------------------------------------- */
+@media (max-width: 40rem) {
+  /* Swipe rows: the snap point respects the page edge, so the first card no
+     longer touches the side of the screen. */
+  .slider { scroll-padding-inline: var(--edge); }
+
+  /* Hero: copy, buttons and marks centred; no photo dots on phones. */
+  .hero__copy { text-align: center; }
+  .hero__copy .section-eyebrow { margin-inline: auto; }
+  .hero__title, .hero__text { margin-inline: auto; }
+  .hero__actions, .hero__badges { justify-content: center; }
+  .hero__pagination { display: none; }
+
+  /* Banner above the footer: centred. */
+  .footer__lead-inner { justify-items: center; text-align: center; }
+  .footer__lead h2, .footer__lead h2 + p { margin-inline: auto; }
+  .footer__lead-actions { justify-content: center; justify-items: center; }
+  .footer__call { justify-items: center; }
+
+  /* Live chat avatar pinned bottom right, not over the middle of the page. */
+  #apexchat_prechat_invitation_wrapper { width: 6.5rem !important; padding: 0 !important; right: .25rem !important; }
+  #apexchat_prechat_invitation_frame { width: 100% !important; }
+}

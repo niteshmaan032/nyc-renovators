@@ -3658,3 +3658,65 @@ a.contact-line__value:hover { color: var(--red); }
 /* Homepage logo is the page you are already on, so it is inert: a <span> that
    keeps the anchor's box exactly, with no pointer affordance. */
 .brand--current { cursor: default; }
+
+/* 4 Oct mobile round -------------------------------------------------------- */
+/* Drawer: Queens and Brooklyn open their own page from the name; the arrow is
+   its own, larger tap target that opens the list. */
+.mobile-nav__group[data-href] .mobile-nav__chevron {
+  margin: -.5rem -.75rem -.5rem 0;
+  padding: .875rem 1rem;
+  border-left: 1px solid rgba(1, 44, 109, .2);
+}
+
+/* Live chat: the Blazeo avatar is pinned bottom right, clear of the content,
+   instead of floating in the middle of a phone screen. */
+@media (max-width: 40rem) {
+  #apexchat_prechat_invitation_wrapper {
+    left: auto !important;
+    right: .25rem !important;
+    width: 6.5rem !important;
+  }
+  #apexchat_prechat_invitation_frame { width: 100% !important; }
+}
+
+@media (max-width: 40rem) {
+  /* Swipe rows (Recent Work, Why Choose, Building Types): the snap point
+     respects the page gutter, so the first card no longer touches the edge. */
+  .buildings__grid,
+  .whyus__reasons,
+  .projects__grid { scroll-padding-inline: var(--gutter, 1.25rem); }
+
+  /* Headings sit closer to the paragraph under them. */
+  .section-title + .section-lede,
+  .section-title + .whyus__lede,
+  .cta-band__title + .cta-band__text { margin-top: var(--space-3); }
+  .services__head,
+  .buildings__head,
+  .exterior__head { row-gap: 0; }
+  .services__head .services__lede,
+  .buildings__head .section-lede,
+  .exterior__head .section-lede { margin-top: var(--space-3); }
+
+  /* Factory Certified: no second inset inside the page gutter, so the copy
+     runs the same width as every other section. */
+  .gaf__panel { padding: var(--space-4) 0 0; gap: var(--space-5); }
+
+  /* Why Choose: the card row moves up under the photo. */
+  .whyus__reasons { margin-top: calc(var(--space-3) * -1); }
+
+  /* Areas We Serve: eyebrow, heading and intro on the same rhythm as the
+     other sections (the column gap was adding 40px between each). */
+  .areas__inner { gap: 0; }
+  .areas__body .section-lede { margin-top: var(--space-3); }
+
+  /* Contact hero: all five marks fit on one row; Yelp a step smaller. */
+  .page-hero--contact .page-hero__marks {
+    flex-wrap: nowrap;
+    gap: min(.75rem, 2.5vw);
+    justify-content: space-between;
+  }
+  .page-hero--contact .hero__badge img { height: min(2.125rem, 8.5vw); }
+  .page-hero--contact .hero__badge--rating img { height: min(1.625rem, 6.5vw); }
+  .page-hero--contact .hero__badge--gaf img { height: min(2.25rem, 9vw); }
+  .page-hero--contact .hero__badge--extra:not(.hero__badge--inc) img { height: min(1.75rem, 7vw); }
+}

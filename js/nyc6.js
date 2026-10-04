@@ -248,9 +248,17 @@
       }
     });
 
-    /* Accordion groups inside the drawer. */
+    /* Accordion groups inside the drawer. A group with its own page (Queens,
+       Brooklyn) goes there when its name is tapped; only the arrow opens the
+       list. Keyboard activation still opens the list, whose first link is the
+       same page. */
     drawer.querySelectorAll('.mobile-nav__group').forEach(function (group) {
-      group.addEventListener('click', function () {
+      group.addEventListener('click', function (event) {
+        var href = group.getAttribute('data-href');
+        if (href && event.detail !== 0 && !event.target.closest('.mobile-nav__chevron')) {
+          window.location.href = href;
+          return;
+        }
         var expanded = group.getAttribute('aria-expanded') === 'true';
         group.setAttribute('aria-expanded', String(!expanded));
         document.getElementById(group.getAttribute('aria-controls')).hidden = expanded;

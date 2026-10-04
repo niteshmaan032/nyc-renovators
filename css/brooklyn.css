@@ -788,3 +788,33 @@ svg { display: inline-block; }
     right: 0 !important;
   }
 }
+
+/* ==========================================================================
+   4 Oct mobile round — appended overrides.
+   ========================================================================== */
+@media (max-width: 40rem) {
+  /* Hero: copy, buttons and proof marks centred; no photo dots on phones. */
+  .hero__copy { text-align: center; }
+  .hero__title span, .hero__text { margin-inline: auto; }
+  .hero__actions, .hero__proof { justify-content: center; }
+  .hero__pagination { display: none; }
+
+  /* Swipe rows: the snap point respects the page edge, so the first card no
+     longer touches the side of the screen. */
+  .slider { scroll-padding-inline: var(--edge); }
+  .areas__list.slider { scroll-padding-inline: .75rem; }
+
+  /* Footer: the paragraph sits under the logo, the Google box is back to its
+     compact size (the logo rule was sizing its icon too), and each contact
+     item gets its own full-width line. */
+  .footer__brand { grid-template-columns: 1fr; }
+  .footer__brand p { max-width: none; }
+  .footer__brand .footer__google { padding: .25rem .5rem; }
+  .footer__brand .footer__google img { width: 1.25rem; height: 1.25rem; }
+  .footer__office { grid-template-columns: 1fr; gap: .85rem; }
+  .footer__office-item:last-child { grid-column: auto; }
+
+  /* Live chat avatar pinned bottom right, not over the middle of the page. */
+  #apexchat_prechat_invitation_wrapper { width: 6.5rem !important; padding: 0 !important; right: .25rem !important; }
+  #apexchat_prechat_invitation_frame { width: 100% !important; }
+}

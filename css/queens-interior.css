@@ -612,3 +612,27 @@
   .contact-hero__proof { grid-template-columns: 1fr; gap: .25rem; }
   .contact-hero__proof li + li { border-left: 0; border-top: 1px solid var(--hairline-dark); }
 }
+
+/* 4 Oct mobile round ------------------------------------------------------- */
+@media (max-width: 40rem) {
+  /* About hero: copy centred like the home hero; the photo keeps to the
+     column instead of being pushed wider by its minimum height. */
+  .interior-hero__copy { align-items: center; text-align: center; }
+  .interior-hero__copy h1,
+  .interior-hero__copy > p { margin-inline: auto; }
+  .interior-hero__actions { justify-content: center; }
+  .interior-hero__media { width: 100%; min-width: 0; min-height: 0; }
+
+  /* Swipe rows start level with the page edge. */
+  .qab-cards, .qab-reasons { scroll-padding-inline: var(--edge); }
+
+  /* Contact hero: centred copy; the three proof points share one row. */
+  .contact-hero__copy { text-align: center; }
+  .contact-hero h1, .contact-hero p { margin-inline: auto; }
+  .contact-hero__proof { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; padding: .75rem .25rem; }
+  .contact-hero__proof li { align-items: center; gap: .45rem; padding: .25rem .2rem; text-align: center; }
+  .contact-hero__proof li + li { border-top: 0; border-left: 1px solid var(--hairline-dark); }
+  .contact-hero__proof-icon { width: 2.25rem; height: 2.25rem; }
+  .contact-hero__proof strong { font-size: .8125rem; }
+  .contact-hero__proof small { font-size: .65rem; letter-spacing: 0; white-space: nowrap; }
+}
