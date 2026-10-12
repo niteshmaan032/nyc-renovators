@@ -3526,9 +3526,8 @@ a.contact-line__value:hover { color: var(--red); }
      it left no gap at all. Address sits on the normal grid rhythm again. */
   .estimate-form--white .field--note + .field { margin-top: 0; }
 
-  /* B4. Name and Phone share a row on phones; their labels centre over the
-     inputs. Every full-width label stays ranged left. */
-  .estimate-form--white .estimate-form__grid > .field:not(.field--full) .field__label { text-align: center; }
+  /* B4. Name and Phone share a row on phones. Their labels range left like
+     every other label (5 Oct call; they were centred). */
 
   /* B5. Half the white space down the page. */
   .reviews,
@@ -3560,6 +3559,24 @@ a.contact-line__value:hover { color: var(--red); }
 .mega__col--cta { display: flex; flex-direction: column; }
 .mega__col--cta .mega__list { flex: 0 0 auto; }
 .mega__cta { align-self: stretch; justify-content: center; margin-top: var(--space-4); }
+
+/* Oct 5 call: a trust card (from the Queens menu) sits above the estimate
+   button, and the pair drops to the foot of the Property Types column so the
+   button lines up with the last link in the other two columns. */
+.mega__col--cta .mega__promo {
+  display: grid;
+  justify-items: start;
+  gap: .15rem;
+  margin-top: auto;
+  padding: .45rem .625rem .5rem;
+  border-left: 3px solid var(--red);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  background: var(--surface-alt);
+}
+.mega__col--cta .mega__promo-title { margin: 0; color: var(--navy); font-size: .875rem; font-weight: var(--fw-bold); line-height: 1.3; }
+.mega__col--cta .mega__promo-text { margin: 0; color: rgba(1, 44, 109, .72); font-size: .6875rem; line-height: 1.35; }
+.mega__col--cta .mega__promo-text span { white-space: nowrap; }
+.mega__col--cta .mega__promo + .mega__cta { margin-top: .55rem; }
 
 /* C2. Drawer "Click to view more": the extra rows stay in the markup for
    search engines and open on tap. */
@@ -3655,9 +3672,6 @@ a.contact-line__value:hover { color: var(--red); }
   .page-contact .contact-form__grid { grid-template-columns: 1fr; }
 }
 
-/* Homepage logo is the page you are already on, so it is inert: a <span> that
-   keeps the anchor's box exactly, with no pointer affordance. */
-.brand--current { cursor: default; }
 
 /* 4 Oct mobile round -------------------------------------------------------- */
 /* Drawer: Queens and Brooklyn open their own page from the name; the arrow is
@@ -3719,4 +3733,80 @@ a.contact-line__value:hover { color: var(--red); }
   .page-hero--contact .hero__badge--rating img { height: min(1.625rem, 6.5vw); }
   .page-hero--contact .hero__badge--gaf img { height: min(2.25rem, 9vw); }
   .page-hero--contact .hero__badge--extra:not(.hero__badge--inc) img { height: min(1.75rem, 7vw); }
+}
+
+/* Exterior Work cards: less room above and below the copy; sides unchanged. */
+.exterior__card-body { padding-block: 1.25rem; }
+
+/* ==========================================================================
+   5 Oct call — Royal homepage (scoped to body.page-home)
+   ========================================================================== */
+
+/* Service ticker to About: twice the white space it had (desktop). */
+@media (min-width: 40.0625rem) {
+  .page-home .marquee + .about { padding-top: var(--space-4); }
+}
+
+/* Roofing Tips to FAQs: the same content-width hairline that already sits
+   between the FAQs and Get in Touch. */
+.page-home .blog + .faqs > .container {
+  border-top: 1px solid var(--hairline);
+  padding-top: clamp(1.5rem, 1.1rem + 1.4vw, 2.5rem);
+}
+
+@media (max-width: 40rem) {
+  /* Building Types: the eyebrow comes back above the swipe row; the
+     subheading stays off. */
+  .page-home .buildings--types .buildings__gridhead { display: grid; margin-bottom: 0; }
+  .page-home .buildings--types .buildings__subhead { display: none; }
+  .page-home .buildings--types .buildings__grid { margin-top: var(--space-3); }
+
+  /* Accredited and Reviewed By: a little more room above the label and
+     under the logos. */
+  .page-home .accred { padding-block: var(--space-4); }
+
+  /* Get in Touch moves up: the gap after the last FAQ is cut. */
+  .page-home .faqs { padding-bottom: 0; }
+  .page-home .faqs + .contact { padding-top: 0; }
+  .page-home .faqs + .contact > .container { padding-top: var(--space-4); }
+  .page-home .contact__left--boxed { padding-top: 0; }
+
+  /* Bottom estimate form: the hero form's card, fields and rhythm, with Name
+     and Phone side by side and no reassurance line. */
+  .page-home .contact .contact-form {
+    border: 1px solid rgba(1, 44, 109, .16);
+    border-radius: 8px;
+    background: var(--white);
+    box-shadow: 0 10px 28px rgba(1, 27, 68, .14);
+  }
+  .page-home .contact .contact-form__title {
+    font-size: 1.3125rem;
+    line-height: 1.25;
+    letter-spacing: -.01em;
+    text-transform: capitalize;
+  }
+  .page-home .contact .contact-form__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: var(--space-4);
+  }
+  .page-home .contact .contact-form__grid .field--full { grid-column: 1 / -1; }
+  .page-home .contact .contact-form__grid .field--note { display: none; }
+  .page-home .contact .field { gap: .5rem; }
+  .page-home .contact .field__label { color: var(--navy); font-size: .832rem; }
+  .page-home .contact .field__input {
+    min-height: 2.875rem;
+    padding: .5rem .8rem;
+    border-color: rgba(1, 44, 109, .2);
+    background: var(--surface-alt);
+    color: var(--black);
+  }
+  .page-home .contact .field__input--area { min-height: 5rem; }
+  .page-home .contact .contact-form__submit { margin-top: var(--space-4); min-height: 3rem; }
+}
+
+/* Exterior Work cards: every description holds to three lines and no bullet
+   wraps, so the grey rules line up across the swipe row. Narrow phones get
+   back some of the card's side padding to make that fit. */
+@media (max-width: 24rem) {
+  .page-home .exterior__card-body { padding-inline: 1.25rem; }
 }

@@ -149,3 +149,18 @@
    gallery and the CTA band. */
 .pr-hero { padding-top: var(--space-3); }
 .pr-gallery { padding-bottom: 0; }
+
+/* 5 Oct call. More room under the category tabs on desktop; white space and a
+   thin line between the last row of captions and the CTA band (the captions
+   looked cut off against it); and the gaps inside the band halved. */
+@media (min-width: 40.0625rem) {
+  .pr-gallery .projects__tabs { margin-bottom: var(--space-6); }
+}
+.pr-gallery { padding-bottom: clamp(1.5rem, 1.2rem + 1vw, 2.25rem); }
+.pr-gallery > .container {
+  padding-bottom: clamp(1.5rem, 1.2rem + 1vw, 2.25rem);
+  border-bottom: 1px solid var(--hairline);
+}
+.pr-cta .cta-band__title { margin-top: var(--space-2); }
+.pr-cta .cta-band__text { margin-top: var(--space-3); }
+.pr-cta .cta-band__actions { margin-top: 1.25rem; }

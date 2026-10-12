@@ -1,0 +1,955 @@
+/* ==========================================================================
+   Royal Roofing Bronx: design system + homepage
+   --------------------------------------------------------------------------
+   Shared by every Bronx page (bronx.html, bronx-contact-us.html, and later
+   bronx-faqs.html, bronx-blog.html, bronx-shingle-roofing.html).
+
+   CONTENTS
+     1.  Fonts
+     2.  Tokens (colour, type, space, radius, shadow, layout)
+     3.  Base + reset
+     4.  Layout: container, section rhythm, backgrounds
+     5.  Section heads: kicker, title, lede
+     6.  Buttons
+     7.  Small parts: icon chip, check list, tag, review badges, breadcrumb
+     8.  Forms (estimate card)
+     9.  Cards (.bx-card, the "Bronx leaf" shape)
+     10. FAQ accordion
+     11. Mobile swipe rows (.slider)
+     12. Header (same markup + behaviour as Brooklyn, Bronx colours)
+     13. Compact page hero for inner pages (.bx-pagehero)
+     14. Footer (Brooklyn "bkf" markup, Bronx colours)
+     15. Homepage sections (.bx-hero ... .bx-contact)
+     16. Responsive
+     17. Reduced motion
+
+   NAMING
+     Header, drawer, dropdowns, forms and footer keep the Brooklyn class
+     names (header, nav__*, drawer__*, quote-card, field, bkf__*) so the
+     markup is a 1:1 copy and js/bronx.js works unchanged.
+     Everything new is prefixed bx- (block__element--modifier).
+   ========================================================================== */
+
+/* 1. Fonts ---------------------------------------------------------------- */
+@font-face { font-family: 'Helvetica Neue'; src: url('../fonts/HelveticaNeueLight.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Helvetica Neue'; src: url('../fonts/HelveticaNeueMedium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Helvetica Neue'; src: url('../fonts/HelveticaNeueBold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+
+/* 2. Tokens --------------------------------------------------------------- */
+:root {
+  /* Brand: orange #E25002 and navy #042651, with tints and shades. */
+  --orange-50:  #FFF4EC;   /* faint wash: hover rows, tinted panels */
+  --orange-100: #FDE4D3;   /* chip / tag background */
+  --orange-300: #FF9F66;   /* orange text on navy (7.5:1) */
+  --orange-500: #E25002;   /* BRAND: buttons, header line, accents */
+  --orange-600: #C44502;   /* button hover / pressed */
+  --orange-700: #A63A01;   /* small orange text on white (6.5:1) */
+
+  --navy-50:  #EEF2F8;     /* light section background */
+  --navy-100: #DCE4F0;     /* borders on tinted panels */
+  --navy-600: #1A4E8C;
+  --navy-700: #0A3A73;     /* raised surface on navy */
+  --navy-800: #042651;     /* BRAND: headings, dark sections */
+  --navy-900: #021634;     /* footer, deepest surface */
+
+  /* Neutrals, biased slightly toward navy. */
+  --grey-25:  #F8F9FB;
+  --grey-50:  #F2F4F8;
+  --grey-100: #E4E8EF;
+  --grey-200: #CDD4DF;
+  --grey-400: #8C96A8;     /* placeholders, disabled */
+  --grey-600: #5A6478;     /* muted body text (6:1 on white) */
+  --grey-800: #2B3243;     /* body text */
+
+  /* Semantic aliases: use these in components. */
+  --brand: var(--orange-500);
+  --brand-hover: var(--orange-600);
+  --brand-ink: var(--orange-700);
+  --navy: var(--navy-800);
+  --navy-deep: var(--navy-900);
+  --ink: var(--grey-800);
+  --muted: var(--grey-600);
+  --surface: #fff;
+  --surface-alt: var(--grey-50);
+  --surface-tint: var(--navy-50);
+  --line: rgba(4, 38, 81, .13);
+  --line-strong: rgba(4, 38, 81, .26);
+  --line-dark: rgba(255, 255, 255, .16);
+  --on-dark: #fff;
+  --on-dark-muted: rgba(255, 255, 255, .8);
+  --star: #F5A623;
+
+  /* Type: one family, one scale. */
+  --font-sans: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --fs-h1: clamp(2.1rem, 1.35rem + 2.3vw, 3.4rem);
+  --fs-h2: clamp(1.65rem, 1.2rem + 1.35vw, 2.4rem);
+  --fs-h3: clamp(1.125rem, 1rem + .35vw, 1.3rem);
+  --fs-lede: clamp(1rem, .95rem + .2vw, 1.125rem);
+  --fs-body: 1rem;
+  --fs-small: .9375rem;
+  --fs-xs: .8125rem;
+  --fs-label: .75rem;          /* uppercase labels, kickers */
+
+  /* Space: one gap scale, one section padding. */
+  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
+  --space-5: 1.5rem; --space-6: 2rem; --space-7: 2.5rem; --space-8: 3rem;
+  --section-pad: clamp(2rem, 1.2rem + 1.6vw, 2.75rem);
+  --head-gap: var(--space-5);  /* section head -> content */
+
+  /* Shape. The "Bronx leaf": big radius on two opposite corners. */
+  --radius-xs: 3px;            /* chips, tags */
+  --radius-sm: 4px;            /* buttons, inputs */
+  --radius-card: 16px 4px 16px 4px;
+  --radius-media: 16px 4px 16px 4px;
+
+  --shadow-sm: 0 2px 10px rgba(2, 22, 52, .06);
+  --shadow-card: 0 14px 36px rgba(2, 22, 52, .10);
+  --shadow-float: 0 24px 60px rgba(2, 22, 52, .22);
+  --shadow-header: 0 2px 14px rgba(2, 22, 52, .12);
+  --shadow-menu: 0 18px 44px rgba(2, 22, 52, .18);
+
+  /* Layout (same container and header height as Brooklyn). */
+  --container-max: 112.5rem;
+  --edge: 70px;
+  --nav-h: 6.25rem;
+  --header-line: 4px;
+  --z-header: 50;
+}
+@media (max-width: 88rem) { :root { --nav-h: 5.75rem; } }
+@media (max-width: 75rem) { :root { --edge: 40px; } }
+@media (max-width: 48rem) { :root { --edge: 20px; --nav-h: 4.75rem; --header-line: 3px; } }
+@media (max-width: 40rem) { :root { --section-pad: 2rem; --head-gap: 1.25rem; } }
+
+/* 3. Base + reset ---------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+section[id], form[id] { scroll-margin-top: calc(var(--nav-h) + var(--header-line) + .75rem); }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--surface);
+  overflow-x: clip;
+}
+img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3, h4 { margin: 0; color: var(--navy); font-weight: 700; line-height: 1.18; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+figure { margin: 0; }
+button { font: inherit; color: inherit; }
+svg { display: inline-block; }
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+.skip-link { position: absolute; left: -999px; top: 0; z-index: 100; padding: .5rem 1rem; background: var(--navy); color: #fff; }
+.skip-link:focus { left: 1rem; top: 1rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* 4. Layout ---------------------------------------------------------------- */
+.container { width: min(var(--container-max), 100%); margin-inline: auto; padding-inline: var(--edge); }
+
+/* Every content section: <section class="bx-section [bx-section--alt]"> */
+.bx-section { padding-block: var(--section-pad); background: var(--surface); }
+.bx-section--alt  { background: var(--surface-alt); }
+.bx-section--tint { background: var(--surface-tint); }
+.bx-section--navy { background: var(--navy); color: var(--on-dark-muted); }
+.bx-section--navy h2, .bx-section--navy h3 { color: #fff; }
+.bx-section + .bx-section:not([class*="--"]) { border-top: 1px solid var(--line); }
+
+/* 5. Section heads ---------------------------------------------------------
+   <div class="bx-head [bx-head--split|bx-head--center]">
+     <div>
+       <p class="bx-kicker">Eyebrow</p>
+       <h2 class="bx-title">Title</h2>
+     </div>
+     <p class="bx-lede">Lede</p>          (or inside the first div)
+   </div>
+   The kicker -> title -> lede spacing is identical in every section. */
+.bx-head { margin-bottom: var(--head-gap); }
+.bx-head--center { text-align: center; }
+.bx-head--center .bx-title, .bx-head--center .bx-lede { margin-inline: auto; }
+.bx-head--center .bx-kicker { justify-content: center; }
+.bx-head--split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--space-4) var(--space-8); align-items: end; }
+.bx-head--split .bx-lede { margin-top: 0; justify-self: end; max-width: 54ch; }
+.bx-head__aside { justify-self: end; display: flex; flex-wrap: wrap; gap: var(--space-3); }
+
+.bx-kicker {
+  display: flex; align-items: center; gap: .65rem;
+  margin-bottom: var(--space-3);
+  color: var(--brand-ink);
+  font-size: var(--fs-label); font-weight: 700; line-height: 1.2; letter-spacing: .14em; text-transform: uppercase;
+}
+.bx-kicker::before { content: ""; width: 1.75rem; height: 3px; flex: none; border-radius: 2px; background: var(--brand); }
+.bx-kicker--light { color: var(--orange-300); }
+
+.bx-title { max-width: 30ch; font-size: var(--fs-h2); letter-spacing: -.022em; }
+.bx-title--light { color: #fff; }
+.bx-lede { max-width: 64ch; margin-top: var(--space-3); font-size: var(--fs-lede); line-height: 1.6; color: var(--ink); text-wrap: pretty; }
+.bx-section--navy .bx-lede { color: var(--on-dark-muted); }
+
+/* 6. Buttons ---------------------------------------------------------------
+   .btn                       base (orange outline)
+   .btn--solid                orange fill (default CTA)
+   .btn--navy                 navy fill or navy outline (with/without --solid)
+   .btn--white                white fill, navy text (on dark backgrounds)
+   .btn--ghost-light          white outline on dark backgrounds
+   .btn--block / .btn--sm     full width / compact
+   .btn__icon                 leading svg icon                               */
+.btn {
+  --color: var(--brand);
+  --hover: var(--navy);
+  display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+  min-height: 3.125rem; margin: 0; padding: .7rem 1.6rem;
+  border: 2px solid var(--color); border-radius: var(--radius-sm);
+  background: transparent; color: var(--color);
+  font-family: inherit; font-size: 1.0625rem; font-weight: 700; line-height: 1.2;
+  text-decoration: none; white-space: nowrap; cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+}
+.btn:hover, .btn:focus-visible { background: var(--color); color: #fff; }
+.btn:active { transform: translateY(1px); }
+.btn--solid { background: var(--color); color: #fff; }
+.btn--solid:hover, .btn--solid:focus-visible { background: var(--hover); border-color: var(--hover); color: #fff; }
+.btn--navy { --color: var(--navy); --hover: var(--brand); }
+.btn--white { --color: #fff; --hover: var(--brand); color: var(--navy); }
+.btn--white.btn--solid { color: var(--navy); }
+.btn--white.btn--solid:hover, .btn--white.btn--solid:focus-visible { color: #fff; }
+.btn--ghost-light { --color: rgba(255, 255, 255, .85); color: #fff; }
+.btn--ghost-light:hover, .btn--ghost-light:focus-visible { background: #fff; border-color: #fff; color: var(--navy); }
+.btn--block { width: 100%; }
+.btn--sm { min-height: 2.75rem; padding: .55rem 1.1rem; font-size: 1rem; }
+.btn__icon { width: 1.05rem; height: 1.05rem; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Text link with arrow: <a class="bx-link">Label <svg><use href="#i-arrow"/></svg></a> */
+.bx-link { display: inline-flex; align-items: center; gap: .45rem; min-height: 2.75rem; color: var(--navy); font-weight: 700; text-decoration: none; }
+.bx-link svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: var(--brand); stroke-width: 2.2; transition: transform .2s; }
+.bx-link:hover { color: var(--brand-ink); }
+.bx-link:hover svg { transform: translateX(3px); }
+
+/* 7. Small parts ----------------------------------------------------------- */
+/* Icon chip: <span class="bx-ico"><svg><use href="#i-roof"/></svg></span> */
+.bx-ico {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 2.75rem; height: 2.75rem; border-radius: 50%;
+  background: var(--orange-50); color: var(--brand); box-shadow: inset 0 0 0 1px var(--orange-100);
+}
+.bx-ico svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.bx-ico--dark { background: rgba(255, 255, 255, .08); color: var(--orange-300); box-shadow: inset 0 0 0 1px var(--line-dark); }
+
+/* Check list: <ul class="bx-checks"><li><svg><use href="#i-check"/></svg>Text</li></ul> */
+.bx-checks { display: grid; gap: .5rem; }
+.bx-checks li { display: flex; align-items: flex-start; gap: .55rem; color: var(--navy); font-weight: 500; }
+.bx-checks svg { width: 1.1rem; height: 1.1rem; flex: none; margin-top: .25rem; fill: none; stroke: var(--brand); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Tags: <ul class="bx-tags"><li>EPDM</li></ul> */
+.bx-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+.bx-tags li { padding: .2rem .55rem; border: 1px solid var(--line); border-radius: var(--radius-xs); background: #fff; color: var(--navy); font-size: var(--fs-xs); font-weight: 500; line-height: 1.4; white-space: nowrap; }
+
+/* Review badges (Google, Yelp): no rating numbers for the Bronx.
+   <ul class="bx-badges"><li class="bx-badge"><img ...><span><strong>Google</strong><small>Reviews</small></span></li></ul> */
+.bx-badges { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.bx-badge {
+  display: inline-flex; align-items: center; gap: .6rem;
+  min-height: 3.25rem; padding: .45rem .9rem .45rem .55rem;
+  border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fff;
+  color: var(--navy); line-height: 1.1;
+}
+.bx-badge img { width: 2rem; height: 2rem; object-fit: contain; }
+.bx-badge strong { display: block; font-size: 1rem; }
+.bx-badge small { display: block; margin-top: .15rem; color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.bx-badge .bx-stars { color: var(--star); font-size: .8rem; letter-spacing: .08em; }
+
+/* Breadcrumb for inner pages: <nav class="bx-crumbs" aria-label="Breadcrumb"><ol><li><a href="bronx.html">Home</a></li><li aria-current="page">FAQ</li></ol></nav> */
+.bx-crumbs ol { display: flex; flex-wrap: wrap; gap: .35rem; font-size: var(--fs-xs); font-weight: 500; }
+.bx-crumbs li { display: flex; align-items: center; gap: .35rem; color: var(--on-dark-muted); }
+.bx-crumbs li + li::before { content: "/"; color: rgba(255, 255, 255, .45); }
+.bx-crumbs a { color: #fff; text-decoration: none; }
+.bx-crumbs a:hover { text-decoration: underline; text-underline-offset: .2em; }
+
+/* 8. Forms -----------------------------------------------------------------
+   <form class="quote-card" novalidate>
+     <h2 class="quote-card__title">Get a Free Estimate</h2>
+     <div class="field-row"> <div class="field">label+input</div> x2 </div>
+     <div class="field">...</div>
+     <button class="btn btn--solid btn--block">Get My Free Estimate</button>
+     <p class="form-callback">We’ll call you back within the hour</p>
+   </form>
+   js/bronx.js validates every form.quote-card (name, phone, email, address). */
+.quote-card {
+  display: grid; gap: .8rem;
+  padding: clamp(1.15rem, .9rem + .8vw, 1.6rem);
+  border: 1px solid var(--line); border-top: 4px solid var(--brand); border-radius: var(--radius-sm);
+  background: #fff; color: var(--ink); box-shadow: var(--shadow-card);
+}
+.quote-card__title { font-size: clamp(1.35rem, 1.15rem + .5vw, 1.6rem); letter-spacing: -.015em; }
+.quote-card__sub { margin-top: -.45rem; color: var(--muted); font-size: var(--fs-small); }
+.field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; align-items: start; }
+.field { display: grid; gap: .3rem; min-width: 0; }
+.field label { color: var(--navy); font-size: .6875rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.field input, .field textarea {
+  width: 100%; min-height: 2.75rem; padding: .6rem .8rem;
+  border: 1px solid var(--grey-200); border-radius: var(--radius-sm); background: var(--grey-25);
+  font: inherit; font-size: 1rem; font-weight: 500; color: var(--ink);
+  transition: border-color .15s, background-color .15s;
+}
+.field textarea { min-height: 5.25rem; resize: vertical; }
+.field input:hover, .field textarea:hover { border-color: var(--grey-400); }
+.field input:focus, .field textarea:focus { outline: 2px solid var(--navy); outline-offset: 0; border-color: var(--navy); background: #fff; }
+.field input::placeholder, .field textarea::placeholder { color: var(--grey-400); font-size: .875rem; }
+.field-error { color: var(--brand-ink); font-size: var(--fs-xs); font-weight: 700; }
+.has-error input, .has-error textarea { border-color: var(--brand); }
+.form-callback { margin-top: -.35rem; color: var(--navy); font-size: var(--fs-xs); line-height: 1.3; text-align: center; }
+.form-thanks { padding: .75rem 0 0; text-align: center; }
+.form-thanks strong { display: block; margin-bottom: .35rem; color: var(--navy); font-size: 1.125rem; }
+.form-thanks a { color: var(--brand-ink); font-weight: 700; }
+
+/* 9. Cards -----------------------------------------------------------------
+   <article class="bx-card">
+     <div class="bx-card__media"><img ...></div>    (optional, fixed 3:2)
+     <div class="bx-card__body">
+       <p class="bx-card__tag">Tag</p>
+       <h3 class="bx-card__title">One-line title</h3>
+       <p class="bx-card__text">Three lines max (clamped)</p>
+       <div class="bx-card__foot">button / link (pinned to the bottom)</div>
+     </div>
+   </article>
+   Cards in a row share structure; text is clamped so rows stay level. */
+.bx-card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: #fff; transition: border-color .2s, box-shadow .2s, transform .2s; }
+.bx-card:hover { border-color: var(--line-strong); box-shadow: var(--shadow-card); }
+.bx-card__media { aspect-ratio: 3 / 2; overflow: hidden; background: var(--navy-50); }
+.bx-card__media img { width: 100%; height: 100%; object-fit: cover; }
+.bx-card__body { display: flex; flex-direction: column; flex: 1; gap: .45rem; padding: 1.15rem 1.25rem 1.25rem; }
+.bx-card__tag { color: var(--brand-ink); font-size: var(--fs-label); font-weight: 700; letter-spacing: .08em; line-height: 1.35; text-transform: uppercase; }
+.bx-card__title { font-size: var(--fs-h3); letter-spacing: -.012em; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.bx-card__text { color: var(--muted); font-size: var(--fs-small); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.bx-card__foot { margin-top: auto; padding-top: .5rem; }
+
+/* 10. FAQ accordion ---------------------------------------------------------
+   <div class="bx-faq [bx-faq--2col]">
+     <details class="bx-faq__item"><summary>Question</summary><div class="bx-faq__a"><p>Answer</p></div></details>
+   </div>                                                                     */
+.bx-faq { display: grid; gap: .6rem; align-items: start; }
+.bx-faq--2col { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem 1.25rem; }
+.bx-faq__item { border: 1px solid var(--line); border-left: 3px solid var(--line-strong); border-radius: var(--radius-sm); background: #fff; transition: border-color .2s, box-shadow .2s; }
+.bx-faq__item[open] { border-left-color: var(--brand); box-shadow: var(--shadow-sm); }
+.bx-faq__item summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  min-height: 3.75rem; padding: .75rem 1rem .75rem 1.1rem;
+  color: var(--navy); font-weight: 700; font-size: 1rem; line-height: 1.35;
+  list-style: none; cursor: pointer;
+}
+.bx-faq__item summary::-webkit-details-marker { display: none; }
+.bx-faq__item summary::after {
+  content: ""; flex: none; width: 1.75rem; height: 1.75rem; border-radius: var(--radius-sm);
+  background: var(--grey-50) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23042651' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E") center / 1rem no-repeat;
+  transition: background-color .2s;
+}
+.bx-faq__item[open] summary::after { background-color: var(--brand); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M6 12h12'/%3E%3C/svg%3E"); }
+.bx-faq__item summary:hover { color: var(--brand-ink); }
+.bx-faq__a { padding: 0 3.25rem 1rem 1.1rem; color: var(--muted); font-size: var(--fs-small); line-height: 1.6; }
+.bx-faq__a a { color: var(--brand-ink); font-weight: 700; }
+
+/* 11. Mobile swipe rows -----------------------------------------------------
+   Add class "slider" (and data-slider) to any grid that should become a
+   horizontal swipe row under 40rem, plus <p class="swipe-hint">.            */
+.swipe-hint { display: none; margin-top: .6rem; color: var(--muted); font-size: var(--fs-xs); text-align: center; }
+
+/* 12. Header ----------------------------------------------------------------
+   Markup: copy <header class="header is-scrolled" id="top"> ... </header>
+   from bronx.html. Solid white from the top, orange line underneath.       */
+.header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: var(--z-header);
+  background: #fff; border-bottom: var(--header-line) solid var(--brand); box-shadow: var(--shadow-header);
+}
+.header__inner { position: relative; display: flex; align-items: center; gap: var(--space-4); height: var(--nav-h); }
+.brand { display: block; flex: none; line-height: 0; }
+.brand img { width: auto; height: 5.25rem; }
+.nav { display: flex; flex: 1; align-items: center; justify-content: center; min-width: 0; }
+.nav__list { display: flex; align-items: stretch; gap: .5rem; height: var(--nav-h); }
+.nav__item { position: relative; display: flex; }
+.nav__item + .nav__item { background: linear-gradient(var(--line), var(--line)) left center / 1px 1.5rem no-repeat; }
+.nav__link {
+  display: inline-flex; align-items: center; justify-content: center; gap: .375rem;
+  height: 100%; padding-inline: 1.1875rem; border: 0; background: none; cursor: pointer;
+  color: var(--navy); font-size: 1.0625rem; font-weight: 500; letter-spacing: .005em; text-decoration: none; white-space: nowrap;
+  transition: color .2s, background-color .2s;
+}
+.nav__link:hover, .nav__link[aria-expanded="true"] { color: var(--brand-ink); background: var(--orange-50); }
+.nav__link[aria-current="page"] { color: var(--brand-ink); box-shadow: inset 0 -3px 0 var(--brand); }
+.nav__chevron { width: .75rem; height: .75rem; fill: none; stroke: currentColor; stroke-width: 2.5; transition: transform .2s; }
+.nav__link[aria-expanded="true"] .nav__chevron { transform: rotate(180deg); }
+.header__cta { display: flex; flex: none; align-items: center; gap: var(--space-4); }
+.header__btn { padding-inline: 1.1rem; }
+
+.dropdown {
+  position: absolute; top: 100%; left: 0; min-width: 14rem; padding: .75rem;
+  border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fff; box-shadow: var(--shadow-menu);
+}
+.dropdown::before { content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 3px; background: var(--brand); }
+.dropdown[hidden] { display: none; }
+.dropdown--mega {
+  position: fixed; top: calc(var(--nav-h) + var(--header-line)); left: 50%;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem 1.5rem;
+  width: min(62rem, calc(100vw - var(--edge) - var(--edge))); padding: 1.25rem 1.5rem 1rem; transform: translateX(-50%);
+}
+.mega__heading { margin: 0 0 .5rem; padding-bottom: .5rem; border-bottom: 1px solid var(--line); color: var(--muted); font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.menu-list a {
+  display: flex; align-items: center; gap: .75rem; padding: .55rem .75rem; border-radius: var(--radius-sm);
+  color: var(--navy); font-size: 1.0625rem; font-weight: 500; text-decoration: none; white-space: nowrap;
+  transition: background-color .15s, color .15s;
+}
+.menu-list a svg { width: 1.125rem; height: 1.125rem; flex: none; fill: none; stroke: var(--brand); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.menu-list a:hover { background: var(--orange-50); color: var(--brand-ink); }
+.menu-list a.is-urgent { color: var(--brand-ink); font-weight: 700; }
+
+.menu-btn { display: none; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fff; cursor: pointer; }
+.menu-btn span { width: 1.25rem; height: 2px; border-radius: 2px; background: var(--navy); transition: transform .2s, opacity .2s; }
+.menu-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.drawer {
+  position: absolute; top: 100%; left: 0; right: 0; max-height: calc(100vh - var(--nav-h)); overflow-y: auto; overscroll-behavior: contain;
+  padding: .5rem var(--edge) 1.25rem; border-top: var(--header-line) solid var(--brand); background: #fff; box-shadow: var(--shadow-menu);
+}
+.drawer[hidden] { display: none; }
+.drawer__list > li + li { border-top: 1px solid var(--line); }
+.drawer__link, .drawer__group {
+  display: flex; align-items: center; justify-content: space-between; width: 100%; padding: .875rem 0;
+  border: 0; background: none; color: var(--navy); font-size: 1.125rem; font-weight: 500; text-align: left; text-decoration: none; cursor: pointer;
+}
+.drawer__group svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 2.2; transition: transform .2s; }
+.drawer__group[aria-expanded="true"] svg { transform: rotate(180deg); }
+.drawer__sub { padding: 0 0 .75rem .75rem; }
+.drawer__sub[hidden] { display: none; }
+.drawer__sub a { display: block; padding: .5rem 0; color: var(--ink); font-size: 1.0625rem; font-weight: 300; text-decoration: none; }
+.drawer__sub a.is-urgent { color: var(--brand-ink); font-weight: 700; }
+.drawer__label { margin-top: .5rem; padding: .25rem 0; color: var(--muted); font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.drawer__actions { display: grid; gap: .75rem; margin-top: 1rem; }
+
+@media (max-width: 88rem) {
+  .nav { display: none; }
+  .brand img { height: 4.75rem; }
+  .header__cta { margin-left: auto; }
+  .menu-btn { display: inline-flex; }
+  .header__btn { min-height: 3rem; padding: .6rem 1.2rem; font-size: 1rem; }
+}
+@media (min-width: 88.01rem) { .drawer { display: none; } }
+@media (max-width: 48rem) {
+  .brand img { height: 3.6rem; }
+  /* Mobile: the phone button becomes an orange square icon button. */
+  .header__btn { width: 2.75rem; min-width: 2.75rem; height: 2.75rem; min-height: 2.75rem; padding: 0; }
+  .header__btn .btn__label { display: none; }
+  .header__btn .btn__icon { width: 1.25rem; height: 1.25rem; }
+  .header__cta { gap: .5rem; }
+}
+
+/* 13. Compact page hero (inner pages) ---------------------------------------
+   <section class="bx-pagehero" aria-labelledby="page-title">
+     <div class="container bx-pagehero__inner">
+       <div class="bx-pagehero__copy">
+         <nav class="bx-crumbs">...</nav>
+         <h1 id="page-title">Title</h1>
+         <p>One or two lines</p>
+       </div>
+       <div class="bx-pagehero__aside">optional card / buttons</div>
+     </div>
+   </section>
+   Navy, ~16rem tall on desktop, starts under the fixed header.            */
+.bx-pagehero {
+  position: relative; isolation: isolate; overflow: hidden;
+  padding: calc(var(--nav-h) + var(--header-line) + clamp(1.75rem, 1.2rem + 1.5vw, 2.75rem)) 0 clamp(1.75rem, 1.2rem + 1.5vw, 2.75rem);
+  background: var(--navy); color: var(--on-dark-muted);
+}
+/* Faint roofline pattern on the right half. */
+.bx-pagehero::before {
+  content: ""; position: absolute; z-index: -1; inset: 0 0 0 52%;
+  background:
+    linear-gradient(90deg, var(--navy) 0%, transparent 35%),
+    repeating-linear-gradient(135deg, transparent 0 46px, rgba(255, 255, 255, .06) 46px 47px),
+    repeating-linear-gradient(45deg, transparent 0 46px, rgba(255, 255, 255, .06) 46px 47px);
+}
+.bx-pagehero::after { content: ""; position: absolute; left: 0; bottom: 0; width: min(18rem, 40%); height: 4px; background: var(--brand); }
+.bx-pagehero__inner { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: var(--space-5) var(--space-8); align-items: center; }
+.bx-pagehero h1 { margin-top: var(--space-3); color: #fff; font-size: clamp(2rem, 1.4rem + 1.8vw, 3rem); letter-spacing: -.028em; }
+.bx-pagehero__copy > p { max-width: 58ch; margin-top: var(--space-3); font-size: var(--fs-lede); }
+.bx-pagehero__aside { justify-self: end; }
+
+/* 14. Footer ----------------------------------------------------------------
+   Markup: copy <footer class="footer bkf"> ... </footer> from bronx.html.
+   Logo with text to its right, 3 link columns, contact bar (Google + Yelp,
+   Call / Office / Hours), bottom row (Facebook, Instagram, X, copyright,
+   Terms & Privacy, back to top).                                          */
+.footer { border-top: 4px solid var(--brand); background: var(--navy-deep); color: var(--on-dark-muted); font-size: .9rem; }
+.footer a { text-decoration: none; }
+.bkf { --bkf-head: var(--orange-300); --bkf-line: rgba(255, 255, 255, .12); font-size: 1rem; }
+.bkf p { margin: 0; }
+.bkf__top { display: grid; grid-template-columns: minmax(0, 2.6fr) repeat(3, minmax(max-content, 1fr)); gap: 2rem clamp(1.5rem, 1rem + 2vw, 2.85rem); padding-block: 1.5rem .75rem; }
+.bkf__brand { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 1.25rem; align-content: start; align-items: start; min-width: 0; }
+.bkf__logo { grid-row: 1 / span 2; display: inline-flex; padding: .35rem; border-radius: 50%; background: #fff; line-height: 0; }
+.bkf__logo img { width: auto; height: 4.75rem; }
+.bkf__about { max-width: 46ch; color: rgba(255, 255, 255, .74); font-size: .9375rem; line-height: 1.7; }
+.bkf__cta { justify-self: start; margin-top: 1rem; min-height: 3rem; padding: .6rem 1.35rem; font-size: 1rem; }
+.bkf__col { min-width: 0; }
+.bkf .bkf__heading { max-width: none; color: var(--bkf-head); font-size: 1rem; line-height: 1.6; letter-spacing: .01em; }
+.bkf__links { display: grid; gap: 2px; margin-top: 1rem; }
+.bkf__links a { display: inline-block; padding: .5rem 0; color: rgba(255, 255, 255, .76); font-size: .9375rem; line-height: 1.4; }
+.bkf__links a:hover, .bkf__links a:focus-visible { color: #fff; text-decoration: underline; text-underline-offset: .2em; }
+
+.bkf__contactbar { border-top: 1px solid var(--bkf-line); }
+.bkf__midrow { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 2rem; padding-block: .75rem; }
+.bkf__badges { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; }
+.bkf__badges li { display: flex; align-items: center; gap: .5rem; }
+.bkf__rating img { width: 2rem; height: 2rem; }
+.bkf__rating span { color: #fff; font-size: .9375rem; font-weight: 700; line-height: 1.2; }
+.bkf__yelp img { width: 2.625rem; height: 2.625rem; object-fit: contain; }
+.bkf__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.bkf__contacts { display: grid; grid-auto-flow: column; justify-content: end; gap: 1.5rem; }
+.bkf__contacts li { display: grid; grid-template-columns: 2.5rem auto; align-items: start; gap: 1rem; }
+.bkf__icon { display: flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--brand); color: #fff; }
+.bkf__icon svg { width: 1.05rem; height: 1.05rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.bkf__label { color: rgba(255, 255, 255, .58); font-size: .8125rem; letter-spacing: .14em; line-height: 1.6; text-transform: uppercase; }
+.bkf__value { margin-top: .25rem !important; color: #fff; font-size: .9375rem; font-weight: 700; line-height: 1.45; }
+.bkf__value a { color: #fff; }
+.bkf__value a:hover, .bkf__value a:focus-visible { text-decoration: underline; text-underline-offset: .2em; }
+
+.bkf__bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 1.5rem; padding-block: .5rem .75rem; }
+.bkf__socials { display: flex; flex-wrap: wrap; gap: .25rem; margin-right: auto; }
+.bkf__socials a, .bkf__totop { display: flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border: 1px solid rgba(255, 255, 255, .18); border-radius: 3px; color: #fff; transition: background-color .15s, border-color .15s; }
+.bkf__socials a:hover, .bkf__socials a:focus-visible, .bkf__totop:hover, .bkf__totop:focus-visible { background: var(--brand); border-color: var(--brand); }
+.bkf__socials svg, .bkf__totop svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.bkf__socials a[aria-label="Facebook"] svg { width: 1.15rem; height: 1.15rem; fill: currentColor; stroke: none; }
+.bkf__totop { margin-left: .75rem; border-color: rgba(255, 255, 255, .22); }
+.bkf__copy { margin-left: auto !important; color: rgba(255, 255, 255, .6); font-size: .875rem; line-height: 1.6; }
+.bkf__legal { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.5rem; }
+.bkf__legal a { color: rgba(255, 255, 255, .7); font-size: .875rem; }
+.bkf__legal a:hover, .bkf__legal a:focus-visible { color: #fff; text-decoration: underline; text-underline-offset: .2em; }
+
+/* ==========================================================================
+   15. Homepage sections (bronx.html). Inner pages may reuse any of these.
+   ========================================================================== */
+
+/* Hero: the nyc6 roof-replacement clip fills the section behind a navy
+   scrim; copy + rating row on the left, estimate card on the right.
+   The scrim never drops below .8 navy behind the copy column, so white text
+   stays above 9:1 and the orange-300 accents above 4.5:1 even over the
+   brightest frame of the video. -------------------------------------------- */
+.bx-hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center;
+  min-height: calc(100svh - 5.5rem);
+  padding: calc(var(--nav-h) + var(--header-line) + clamp(1.5rem, 1rem + 1.4vw, 2.5rem)) 0 clamp(1.75rem, 1.2rem + 1.4vw, 2.75rem);
+  background: var(--navy-deep); color: var(--on-dark-muted);
+}
+/* The poster frame doubles as the background, so a browser that holds
+   autoplay back (or a reduced-motion visitor) still sees the roof. */
+.bx-hero__media { position: absolute; z-index: -1; inset: 0; background: var(--navy-deep) url("https://res.cloudinary.com/dbsdxu4tv/video/upload/so_1,w_1280,q_auto/v1771496715/Shingle_Roof_Replacement_-_in_6_Hours_memh5b.jpg") center / cover no-repeat; }
+.bx-hero__video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.bx-hero__scrim {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(2, 22, 52, .9) 0%, rgba(2, 22, 52, .84) 45%, rgba(2, 22, 52, .6) 70%, rgba(2, 22, 52, .45) 100%),
+    linear-gradient(180deg, rgba(2, 22, 52, .35) 0%, transparent 30%, transparent 75%, rgba(2, 22, 52, .45) 100%);
+}
+/* Orange rule along the bottom edge, level with the trust strip. */
+.bx-hero::after { content: ""; position: absolute; left: 0; bottom: 0; width: min(22rem, 40%); height: 4px; background: var(--brand); }
+.bx-hero__inner { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 25rem); gap: clamp(2rem, 1rem + 4vw, 6rem); align-items: center; }
+.bx-hero__copy { min-width: 0; max-width: 44rem; }
+.bx-hero__title { color: #fff; font-size: clamp(2.1rem, .6rem + 2.6vw, 3rem); line-height: 1.06; letter-spacing: -.035em; }
+@media (min-width: 75.01rem) { .bx-hero__title { white-space: nowrap; } }
+.bx-hero__title span { display: block; margin-top: .55rem; color: var(--orange-300); font-size: .62em; line-height: 1.2; letter-spacing: -.02em; }
+.bx-hero__text { max-width: 54ch; margin-top: var(--space-4); color: rgba(255, 255, 255, .88); font-size: var(--fs-lede); line-height: 1.6; text-wrap: pretty; }
+.bx-hero__proof { display: flex; flex-wrap: wrap; align-items: stretch; gap: .6rem; margin-top: var(--space-5); }
+.bx-hero__proof .bx-badge { border-color: transparent; box-shadow: var(--shadow-sm); }
+.bx-hero__stat { display: flex; flex-direction: column; justify-content: center; min-height: 3.25rem; padding: .35rem .9rem; border: 1px solid rgba(255, 255, 255, .22); border-left: 3px solid var(--brand); border-radius: var(--radius-sm); background: rgba(2, 22, 52, .55); color: #fff; line-height: 1.1; }
+.bx-hero__stat strong { font-size: 1.125rem; }
+.bx-hero__stat small { margin-top: .2rem; color: rgba(255, 255, 255, .8); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.bx-hero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
+.bx-hero :focus-visible { outline-color: #fff; }
+.bx-hero__form :focus-visible { outline-color: var(--brand); }
+.bx-hero__form { position: relative; box-shadow: var(--shadow-float); }
+
+/* Trust strip: navy band directly under the hero. ------------------------ */
+.bx-trust { background: var(--navy); color: var(--on-dark-muted); }
+.bx-trust__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.bx-trust__item { display: flex; align-items: center; gap: .85rem; min-width: 0; padding: 1.1rem 1.25rem; }
+.bx-trust__item + .bx-trust__item { border-left: 1px solid var(--line-dark); }
+.bx-trust__item:first-child { padding-left: 0; }
+.bx-trust__item strong { display: block; color: #fff; font-size: 1rem; line-height: 1.3; }
+.bx-trust__item span:not(.bx-ico) { display: block; font-size: var(--fs-small); line-height: 1.4; }
+
+/* About: copy left, photo right, facts row underneath the copy. ---------- */
+.bx-about__inner { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(2rem, 1rem + 3vw, 4.5rem); align-items: center; }
+.bx-about__copy > p:not(.bx-kicker):not(.bx-lede) { max-width: 64ch; margin-top: var(--space-3); color: var(--muted); }
+.bx-about__cover { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; margin-top: var(--space-5); }
+.bx-about__cover-label { margin-right: .35rem; color: var(--navy); font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.bx-about__cover li { padding: .35rem .8rem; border: 1px solid var(--orange-100); border-radius: 999px; background: var(--orange-50); color: var(--navy); font-size: var(--fs-small); font-weight: 500; }
+.bx-about__facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: var(--space-5); border-block: 1px solid var(--line); }
+.bx-about__facts div { padding: .9rem 1rem; }
+.bx-about__facts div:first-child { padding-left: 0; }
+.bx-about__facts div + div { border-left: 1px solid var(--line); }
+.bx-about__facts dt { color: var(--navy); font-size: clamp(1.5rem, 1.2rem + .8vw, 2rem); font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+.bx-about__facts dd { margin: .35rem 0 0; color: var(--muted); font-size: var(--fs-xs); font-weight: 500; line-height: 1.4; }
+.bx-about__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
+.bx-about__media { position: relative; }
+.bx-about__media img { width: 100%; height: clamp(18rem, 40vh, 25rem); object-fit: cover; border-radius: var(--radius-media); }
+.bx-about__media figcaption { position: absolute; left: 0; bottom: 1.25rem; padding: .7rem 1rem .7rem .9rem; border-left: 4px solid var(--brand); background: #fff; color: var(--navy); font-size: var(--fs-small); font-weight: 700; line-height: 1.3; box-shadow: var(--shadow-card); }
+.bx-about__media figcaption small { display: block; color: var(--muted); font-size: var(--fs-xs); font-weight: 500; }
+
+/* Services: six photo tiles, 3 x 2. The photo fills the tile; the text sits
+   on its own navy gradient at the bottom so it reads over any photo. Every
+   tile has the same height, number badge, title, two-line summary and link;
+   the summaries are written to fit two lines, so nothing is cut off. ------ */
+.bx-services__grid { --tile-h: clamp(13rem, calc((100vh - 20rem) / 2), 17rem); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.bx-svc {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  min-width: 0; height: var(--tile-h);
+  border-radius: var(--radius-card); background: var(--navy);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+.bx-svc__img { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+/* Light top tint so the number badge and photo edges hold together. */
+.bx-svc::before { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(180deg, rgba(2, 22, 52, .28) 0%, transparent 35%); }
+/* Orange rule along the bottom; grows on hover. */
+.bx-svc::after { content: ""; position: absolute; left: 0; bottom: 0; width: 3.5rem; height: 4px; background: var(--brand); transition: width .35s ease; }
+.bx-svc__num {
+  position: absolute; top: .9rem; left: .9rem;
+  display: inline-flex; align-items: center; justify-content: center; min-width: 2.6rem; height: 2.1rem; padding: 0 .55rem;
+  border-radius: 10px 3px 10px 3px; background: var(--brand); color: #fff;
+  font-size: .9375rem; font-weight: 700; letter-spacing: .02em; line-height: 1;
+  box-shadow: 0 4px 14px rgba(2, 22, 52, .3);
+}
+.bx-svc__body {
+  display: flex; flex-direction: column; gap: .4rem;
+  padding: 2.75rem 1.35rem 1.15rem;
+  background: linear-gradient(180deg, rgba(2, 22, 52, 0) 0, rgba(2, 22, 52, .86) 2.6rem, rgba(2, 22, 52, .94) 100%);
+}
+.bx-svc__title { color: #fff; font-size: var(--fs-h3); letter-spacing: -.015em; white-space: nowrap; overflow: hidden; text-overflow: clip; }
+.bx-svc__text { color: rgba(255, 255, 255, .86); font-size: var(--fs-small); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 3em; }
+.bx-svc__more { display: inline-flex; align-items: center; align-self: flex-start; gap: .45rem; margin-top: .2rem; color: #fff; font-size: var(--fs-small); font-weight: 700; text-decoration: none; }
+.bx-svc__more svg { width: 1.05rem; height: 1.05rem; fill: none; stroke: var(--orange-300); stroke-width: 2.4; transition: transform .2s; }
+.bx-svc__more::before { content: ""; position: absolute; inset: 0; z-index: 1; }   /* whole tile is clickable */
+.bx-svc__more:focus-visible { outline: none; }
+.bx-svc:focus-within { outline: 3px solid var(--brand); outline-offset: 3px; }
+.bx-svc:hover { box-shadow: var(--shadow-card); transform: translateY(-3px); }
+.bx-svc:hover .bx-svc__img { transform: scale(1.06); }
+.bx-svc:hover::after { width: 100%; }
+.bx-svc:hover .bx-svc__more svg { transform: translateX(4px); }
+.bx-svc:hover .bx-svc__more { color: var(--orange-300); }
+
+/* Flat vs shingle: split comparison table. ------------------------------- */
+.bx-compare__table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; border: 1px solid var(--line); border-radius: var(--radius-card); overflow: hidden; background: #fff; }
+.bx-compare__table col.bx-compare__label-col { width: 16%; }
+.bx-compare__table th, .bx-compare__table td { padding: .85rem 1.35rem; text-align: left; vertical-align: top; }
+.bx-compare__table tbody th { color: var(--navy); font-size: var(--fs-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: var(--grey-50); border-right: 1px solid var(--line); }
+.bx-compare__table tbody td { color: var(--ink); font-size: var(--fs-small); line-height: 1.5; }
+.bx-compare__table tbody tr + tr > * { border-top: 1px solid var(--line); }
+.bx-compare__table tbody td + td, .bx-compare__table thead th + th + th, .bx-compare__table tfoot td + td { border-left: 1px solid var(--line); }
+.bx-compare__table thead th { padding: 0; vertical-align: bottom; background: #fff; border-bottom: 1px solid var(--line-strong); }
+.bx-compare__corner { padding: 1rem 1.35rem !important; background: var(--grey-50) !important; border-right: 1px solid var(--line); vertical-align: middle !important; color: var(--muted); font-size: var(--fs-xs); font-weight: 500; }
+.bx-compare__sys { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); align-items: center; gap: 1rem; padding: .9rem 1.35rem; color: #fff; }
+.bx-compare__sys--flat { background: var(--navy); }
+.bx-compare__sys--shingle { background: var(--brand-hover); }  /* #C44502: white text passes AA */
+.bx-compare__sys img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px 3px 10px 3px; }
+.bx-compare__sys small { display: block; color: rgba(255, 255, 255, .78); font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.bx-compare__sys strong { display: block; margin-top: .2rem; color: #fff; font-size: clamp(1.25rem, 1.05rem + .5vw, 1.55rem); line-height: 1.15; letter-spacing: -.015em; }
+.bx-compare__table tfoot td { padding: .85rem 1.35rem; border-top: 1px solid var(--line); background: var(--grey-25); }
+.bx-compare__table tfoot td:first-child { background: var(--grey-50); border-right: 1px solid var(--line); }
+
+/* Building types: four leaf cards with line drawings. --------------------- */
+.bx-types__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+.bx-types__art { display: flex; align-items: flex-end; justify-content: center; height: 8.25rem; padding: 1rem 1rem 0; border-bottom: 3px solid var(--brand); background: linear-gradient(180deg, var(--navy-50), #fff); }
+.bx-types__art svg { width: 100%; max-width: 13.5rem; height: 100%; fill: none; stroke: var(--navy); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.bx-types__art .roof { stroke: var(--brand); stroke-width: 3.5; }
+.bx-types__art .fill { fill: var(--navy-100); stroke: none; }
+.bx-types__where { display: flex; align-items: flex-start; gap: .45rem; min-height: calc(2.8em + .75rem); padding-top: .75rem; border-top: 1px solid var(--line); color: var(--navy); font-size: var(--fs-xs); font-weight: 700; line-height: 1.4; }
+.bx-types__where svg { width: 1rem; height: 1rem; flex: none; margin-top: .05rem; fill: none; stroke: var(--brand); stroke-width: 2; }
+
+/* Commercial: navy section, copy + photo, three features underneath. ------ */
+.bx-commercial__top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 1rem + 3vw, 4.5rem); align-items: center; }
+.bx-commercial__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
+.bx-commercial__media { position: relative; }
+.bx-commercial__media img { width: 100%; height: clamp(16rem, 36vh, 21.5rem); object-fit: cover; border-radius: var(--radius-media); }
+.bx-commercial__media figcaption { position: absolute; left: 1rem; bottom: 1rem; padding: .4rem .75rem; border-radius: var(--radius-xs); background: var(--brand); color: #fff; font-size: var(--fs-xs); font-weight: 700; }
+.bx-commercial__features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: var(--space-6); border-top: 1px solid var(--line-dark); }
+.bx-commercial__features li { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem 1.5rem 0 0; }
+.bx-commercial__features li + li { padding-left: 1.5rem; border-left: 1px solid var(--line-dark); }
+.bx-commercial__features strong { display: block; color: #fff; font-size: 1.0625rem; line-height: 1.3; }
+.bx-commercial__features span:not(.bx-ico) { display: block; margin-top: .25rem; font-size: var(--fs-small); line-height: 1.55; }
+
+/* Projects: mosaic (one large tile + four). ----------------------------- */
+.bx-projects__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(2, clamp(10.5rem, 23vh, 13rem)); gap: .9rem; }
+.bx-project { position: relative; overflow: hidden; border-radius: var(--radius-media); background: var(--navy); }
+.bx-project:first-child { grid-column: span 2; grid-row: span 2; }
+.bx-project img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+.bx-project:hover img { transform: scale(1.04); }
+.bx-project figcaption { position: absolute; inset: auto 0 0 0; padding: 2.5rem 1.1rem .9rem; background: linear-gradient(180deg, transparent, rgba(2, 22, 52, .7) 40%, rgba(2, 22, 52, .92)); color: var(--on-dark-muted); font-size: var(--fs-xs); line-height: 1.4; }
+.bx-project figcaption strong { display: block; color: #fff; font-size: 1rem; }
+.bx-project:first-child figcaption strong { font-size: 1.25rem; }
+
+/* Neighborhoods: chips laid out on a 3 x 3 compass grid of the borough. -- */
+.bx-areas__inner { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 1rem + 3vw, 4.5rem); align-items: center; }
+.bx-areas__types { display: grid; gap: 0; margin-top: var(--space-5); border-top: 1px solid var(--line); }
+.bx-areas__types li { display: flex; align-items: center; gap: .9rem; padding: .7rem 0; border-bottom: 1px solid var(--line); }
+.bx-areas__types strong { display: block; color: var(--navy); font-size: 1rem; line-height: 1.3; }
+.bx-areas__types span:not(.bx-ico) { display: block; color: var(--muted); font-size: var(--fs-small); line-height: 1.4; }
+.bx-areas__copy > .btn { margin-top: var(--space-5); }
+.bx-map {
+  position: relative; min-width: 0; padding: 1rem; border: 1px solid var(--navy-100); border-radius: var(--radius-card);
+  background-color: var(--navy-50);
+  background-image:
+    linear-gradient(var(--navy-100) 1px, transparent 1px),
+    linear-gradient(90deg, var(--navy-100) 1px, transparent 1px);
+  background-size: 2rem 2rem;
+  background-position: -1px -1px;
+}
+.bx-map__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+.bx-map__zone { display: flex; flex-direction: column; gap: .45rem; min-width: 0; padding: .7rem .75rem .8rem; border: 1px dashed var(--line-strong); border-radius: var(--radius-sm); background: rgba(255, 255, 255, .86); }
+.bx-map__zone h3 { color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .14em; line-height: 1.2; text-transform: uppercase; }
+.bx-map__zone ul { display: flex; flex-direction: column; align-items: flex-start; gap: .35rem; }
+.bx-map__chip { display: inline-flex; align-items: center; gap: .3rem; padding: .3rem .6rem; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--navy); font-size: var(--fs-xs); font-weight: 700; line-height: 1.3; white-space: nowrap; }
+.bx-map__chip svg { width: .8rem; height: .8rem; fill: none; stroke: var(--brand); stroke-width: 2.4; }
+.bx-map__zone--hq { border: 2px solid var(--brand); background: #fff; }
+.bx-map__chip--hq { border-color: var(--brand); background: var(--brand); color: #fff; }
+.bx-map__chip--hq svg { stroke: #fff; }
+.bx-map__legend { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; margin-top: .75rem; color: var(--navy); font-size: var(--fs-xs); font-weight: 500; }
+.bx-map__legend span { display: inline-flex; align-items: center; gap: .4rem; }
+.bx-map__dot { width: .7rem; height: .7rem; border-radius: 50%; background: var(--brand); }
+.bx-map__north { display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; border: 1.5px solid var(--navy); border-radius: 50%; font-size: .6875rem; font-weight: 700; }
+
+/* FAQ section on the homepage. ------------------------------------------ */
+.bx-faqsec .bx-head { margin-bottom: var(--head-gap); }
+
+/* Reviews (Trustindex). ---------------------------------------------------- */
+.bx-reviews .bx-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem 2rem; align-items: end; }
+.bx-reviews__widget { min-height: 12rem; }
+
+/* Get In Touch: form card left, map right with a details card on top. ---- */
+.bx-contact__inner { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 1.25rem; align-items: stretch; }
+.bx-contact__form .quote-card__title { font-size: var(--fs-h2); }
+.bx-contact__map { position: relative; min-height: 26rem; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--navy-50); }
+.bx-contact__map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.bx-contact__card { position: absolute; z-index: 1; left: 1rem; bottom: 1rem; width: min(22rem, calc(100% - 2rem)); padding: .35rem 1.1rem; border-left: 4px solid var(--brand); border-radius: var(--radius-sm); background: #fff; box-shadow: var(--shadow-card); }
+
+/* Detail rows (call / office / hours), shared by the homepage + contact page:
+   <ul class="bx-details"><li><span class="bx-ico">svg</span><div><p class="bx-details__label">Call</p><p class="bx-details__value"><a href="tel:...">718-395-5061</a></p></div></li></ul> */
+.bx-details li { display: flex; align-items: center; gap: .85rem; padding: .7rem 0; }
+.bx-details li + li { border-top: 1px solid var(--line); }
+.bx-details .bx-ico { width: 2.4rem; height: 2.4rem; }
+.bx-details .bx-ico svg { width: 1.1rem; height: 1.1rem; }
+.bx-details__label { color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .12em; line-height: 1.3; text-transform: uppercase; }
+.bx-details__value { margin-top: .1rem; color: var(--navy); font-size: var(--fs-small); font-weight: 700; line-height: 1.4; }
+.bx-details__value a { color: inherit; text-decoration: none; }
+.bx-details__value a:hover { color: var(--brand-ink); text-decoration: underline; text-underline-offset: .2em; }
+.bx-details__value--lg { font-size: 1.25rem; }
+
+/* Live chat (Blazeo/ApexChat) invitation sits bottom-right. */
+#apexchat_prechat_invitation_wrapper { left: auto !important; right: 0 !important; padding: 0 0 0 10px !important; }
+
+/* ==========================================================================
+   16. Responsive
+   ========================================================================== */
+
+/* Short desktop screens (e.g. 1366 x 650): tighten the hero so it fits. */
+@media (min-width: 60.01rem) and (max-height: 780px) {
+  .bx-hero { min-height: calc(100svh - 4rem); padding-top: calc(var(--nav-h) + var(--header-line) + 1.25rem); padding-bottom: 1.5rem; }
+  .bx-hero__form { padding: 1rem 1.15rem; gap: .6rem; }
+  .bx-hero__form .field textarea { min-height: 3.6rem; height: 4.25rem; }
+  .bx-hero__form .field input { min-height: 2.5rem; }
+  .bx-hero__text { margin-top: .75rem; }
+  .bx-hero__proof, .bx-hero__actions { margin-top: 1rem; }
+  /* Services: two rows of shorter tiles so the section stays on one screen. */
+  .bx-services { padding-block: 1.5rem; }
+  .bx-services .bx-head { margin-bottom: 1rem; }
+  .bx-services__grid { --tile-h: max(11.5rem, calc((100vh - 17.5rem) / 2)); gap: .75rem; }
+  .bx-svc__body { padding: 2.25rem 1.15rem .95rem; gap: .3rem; }
+}
+
+/* Short desktop screens (1366 x 650): every homepage section keeps to one
+   screen below the fixed header (about 554px), so the rhythm tightens. */
+@media (min-width: 60.01rem) and (max-height: 780px) {
+  :root { --section-pad: 1.5rem; --head-gap: 1rem; }
+  .bx-services__grid { --tile-h: max(11.5rem, calc((100vh - 16rem) / 2)); }
+  .bx-about__facts div { padding-block: .65rem; }
+  .bx-about__media img { height: clamp(16rem, 52vh, 21rem); }
+  .bx-compare__table th, .bx-compare__table td { padding: .5rem 1.1rem; }
+  .bx-compare__table tbody td { font-size: .875rem; line-height: 1.4; }
+  .bx-compare__sys { grid-template-columns: 4.5rem minmax(0, 1fr); padding: .6rem 1.1rem; }
+  .bx-compare__table tfoot td { padding: .6rem 1.1rem; }
+  .bx-types__art { height: 6.5rem; }
+  .bx-commercial__features { margin-top: var(--space-5); }
+  .bx-commercial__features li { padding-top: 1rem; }
+  .bx-areas__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.5rem; }
+  .bx-areas__types { margin-top: 1rem; }
+  .bx-areas__types li { padding-block: .45rem; }
+  .bx-areas__copy > .btn { margin-top: 1rem; }
+  .bx-map { padding: .75rem; }
+  .bx-map__grid { gap: .5rem; }
+  .bx-map__zone { padding: .55rem .65rem .6rem; gap: .35rem; }
+  .bx-map__zone ul { flex-direction: row; flex-wrap: wrap; gap: .3rem; }
+  .bx-map__legend { margin-top: .5rem; }
+  .bx-contact__form { gap: .6rem; padding: 1.1rem 1.35rem; }
+  .bx-contact__form .field textarea { min-height: 4rem; height: 4rem; }
+  .bx-contact__map { min-height: 0; }
+}
+
+@media (max-width: 75rem) {
+  .bx-head--split { grid-template-columns: minmax(0, 1fr); }
+  .bx-head--split .bx-lede, .bx-head__aside { justify-self: start; }
+  .bx-trust__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bx-trust__item:nth-child(3) { padding-left: 0; border-left: 0; }
+  .bx-trust__item:nth-child(n+3) { border-top: 1px solid var(--line-dark); }
+  .bx-svc__text { -webkit-line-clamp: 3; min-height: 4.5em; }
+  .bx-svc__body { padding-inline: 1.1rem; }
+  .bx-types__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bx-areas__inner { grid-template-columns: minmax(0, 1fr); }
+  .bkf__top { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .bkf__brand { grid-column: 1 / -1; }
+  .bkf__about { max-width: 62ch; }
+}
+
+/* Small laptops and landscape tablets: narrower form column. */
+@media (min-width: 60.01rem) and (max-width: 75rem) {
+  .bx-hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 22rem); }
+}
+
+/* Portrait tablets and phones: the hero stacks (copy, then the form); the
+   scrim evens out because text now runs the full width of the video. */
+@media (max-width: 60rem) {
+  .bx-hero { min-height: 0; }
+  .bx-hero__scrim { background: linear-gradient(180deg, rgba(2, 22, 52, .86) 0%, rgba(2, 22, 52, .82) 55%, rgba(2, 22, 52, .9) 100%); }
+  .bx-hero__inner { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+  .bx-hero__copy { max-width: 46rem; }
+  .bx-hero__form { width: 100%; max-width: 34rem; }
+  .bx-services__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); --tile-h: 15rem; }
+}
+
+@media (max-width: 60rem) {
+  .bx-about__inner, .bx-commercial__top, .bx-contact__inner { grid-template-columns: minmax(0, 1fr); }
+  .bx-about__media { order: -1; }
+  .bx-about__media img { height: auto; aspect-ratio: 16 / 9; }
+  .bx-commercial__media img { height: auto; aspect-ratio: 16 / 9; }
+  .bx-faq--2col { grid-template-columns: minmax(0, 1fr); }
+  .bx-projects__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; grid-auto-rows: 12rem; }
+  .bx-contact__map { min-height: 22rem; }
+  .bx-pagehero__inner { grid-template-columns: minmax(0, 1fr); }
+  .bx-pagehero__aside { justify-self: start; }
+}
+
+@media (max-width: 48rem) {
+  .bkf__contacts { grid-auto-flow: row; justify-content: start; gap: 1rem; }
+  .bkf__copy { margin-left: 0 !important; }
+  .bx-reviews .bx-head { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 40rem) {
+  /* Swipe rows: cards scroll sideways and snap to the page edge. */
+  .slider { display: flex !important; grid-template-columns: none !important; grid-template-rows: none !important; gap: .85rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--edge); -webkit-overflow-scrolling: touch; margin-inline: calc(-1 * var(--edge)); padding: 0 var(--edge) .25rem; scrollbar-width: none; }
+  .slider::-webkit-scrollbar { display: none; }
+  .slider > * { flex: 0 0 82%; scroll-snap-align: start; }
+  .swipe-hint { display: block; }
+
+  .bx-hero { padding-top: calc(var(--nav-h) + var(--header-line) + 1.5rem); padding-bottom: 2rem; }
+  .bx-hero__copy { text-align: center; }
+  .bx-hero__copy .bx-kicker { justify-content: center; }
+  .bx-hero__title { font-size: clamp(2rem, 1.6rem + 2vw, 2.4rem); }
+  .bx-hero__title span { font-size: .66em; }
+  .bx-hero__text { margin-inline: auto; }
+  .bx-hero__proof { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4rem; }
+  .bx-hero__proof > * { justify-content: center; min-width: 0; }
+  .bx-hero__proof .bx-badge { gap: .4rem; padding: .35rem .4rem; }
+  .bx-hero__proof .bx-badge img { width: 1.4rem; height: 1.4rem; }
+  .bx-hero__proof .bx-badge strong { font-size: .875rem; }
+  .bx-hero__proof small { font-size: .5625rem; letter-spacing: .06em; }
+  .bx-hero__stat { align-items: center; padding: .35rem .4rem; border-left: 0; border-top: 3px solid var(--brand); }
+  .bx-hero__stat strong { font-size: .875rem; }
+  .bx-hero__actions .btn { flex: 1 1 12rem; }
+  .bx-hero__form { margin-inline: auto; }
+  .bx-hero__proof .bx-hero__stat small { color: rgba(255, 255, 255, .8); }
+
+  .bx-trust__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bx-trust__item { flex-direction: column; align-items: flex-start; gap: .5rem; padding: .9rem .75rem; }
+  .bx-trust__item:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .bx-trust__item:nth-child(even) { padding-left: .9rem; border-left: 1px solid var(--line-dark); }
+  .bx-trust__item span:not(.bx-ico) { font-size: var(--fs-xs); }
+  .bx-trust .bx-ico { width: 2.25rem; height: 2.25rem; }
+
+  .bx-about__facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .bx-about__facts div { padding: .75rem .5rem; }
+  .bx-about__facts dt { font-size: 1.25rem; }
+  .bx-about__facts div:first-child { padding-left: 0; }
+  .bx-about__media figcaption { bottom: .75rem; font-size: var(--fs-xs); }
+  .bx-about__actions .btn { flex: 1 1 12rem; }
+
+  /* Service tiles become a swipe row. */
+  .bx-services__grid { --tile-h: 19rem; }
+  .bx-svc:hover { transform: none; }
+  .bx-svc__text { -webkit-line-clamp: 3; min-height: 4.5em; }
+
+  /* Comparison table: each criterion becomes a label row over two columns. */
+  .bx-compare__table, .bx-compare__table thead, .bx-compare__table tbody, .bx-compare__table tfoot { display: block; }
+  .bx-compare__table colgroup { display: none; }
+  .bx-compare__table tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bx-compare__corner, .bx-compare__table tfoot td:first-child { display: none; }
+  .bx-compare__table tbody th { grid-column: 1 / -1; padding: .5rem .85rem; border-right: 0; }
+  .bx-compare__table tbody tr + tr > * { border-top: 0; }
+  .bx-compare__table tbody tr > th { border-top: 1px solid var(--line); }
+  .bx-compare__table tbody td { padding: .65rem .85rem; font-size: .875rem; }
+  .bx-compare__table tbody td + td { border-left: 1px solid var(--line); }
+  .bx-compare__table thead th + th + th { border-left: 1px solid rgba(255, 255, 255, .2); }
+  .bx-compare__sys { grid-template-columns: 1fr; gap: .6rem; padding: .75rem .85rem; }
+  .bx-compare__sys strong { font-size: 1.1rem; }
+  .bx-compare__table tfoot td { padding: .75rem .85rem; }
+  .bx-compare__table tfoot .btn { width: 100%; padding-inline: .5rem; font-size: .9rem; white-space: normal; text-align: center; }
+
+  .bx-commercial__features { border-top: 0; margin-top: var(--space-5); }
+  .bx-commercial__features li, .bx-commercial__features li + li { flex-direction: column; gap: .6rem; padding: 1rem; border: 1px solid var(--line-dark); border-radius: var(--radius-card); background: rgba(255, 255, 255, .04); }
+  .bx-commercial__actions .btn { flex: 1 1 12rem; }
+
+  .bx-projects__grid { grid-auto-rows: auto; }
+  .bx-project, .bx-project:first-child { aspect-ratio: 4 / 3; }
+
+  .bx-map { padding: .75rem; }
+  .bx-map__grid { padding-bottom: .25rem; }
+  .bx-map__grid.slider { margin-inline: -.75rem; padding-inline: .75rem; scroll-padding-inline: .75rem; }
+  .bx-map__grid.slider > * { flex: 0 0 64%; }
+  .bx-areas__copy > .btn { width: 100%; }
+
+  .bx-contact__map { min-height: 20rem; }
+  .bx-contact__card { position: relative; left: auto; bottom: auto; width: auto; margin: 0; border-radius: 0; box-shadow: none; }
+  .bx-contact__map { display: flex; flex-direction: column; min-height: 0; }
+  .bx-contact__map iframe { position: relative; height: 18rem; }
+
+  .field-row { gap: .6rem; }
+  .bx-faq__a { padding-right: 1.1rem; }
+  .field input::placeholder, .field textarea::placeholder { font-size: .8125rem; }
+
+  .bx-pagehero::before { inset: 0 0 0 30%; }
+
+  /* Footer (same mobile rules as Brooklyn). */
+  .bkf__top { gap: 1.75rem .75rem; padding-top: 1.25rem; }
+  .bkf__brand { column-gap: 1rem; }
+  .bkf__logo img { height: 4rem; }
+  .bkf__links { margin-top: .75rem; }
+  .bkf .bkf__heading { display: inline-block; padding: .2rem .5rem; border-radius: 4px; background: var(--brand); color: #fff; font-size: .8125rem; letter-spacing: 0; white-space: nowrap; }
+  .bkf__midrow { flex-direction: column; align-items: flex-start; gap: 1rem; padding-block: 1rem; }
+  .bkf__badges { gap: 2rem; }
+  .bkf__bottom { padding-block: .25rem 1rem; }
+  .bkf__socials, .bkf__copy { flex-basis: 100%; }
+  .bkf__totop { margin-left: auto; }
+
+  #apexchat_prechat_invitation_wrapper, #apexchat_invitation_wrapper, [id^="apexchat"][id*="invitation"] { left: auto !important; right: .25rem !important; }
+}
+
+/* 17. Reduced motion ------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+  .bx-svc:hover .bx-svc__img, .bx-project:hover img { transform: none; }
+  .bx-svc:hover { transform: none; }
+  /* Hero: no autoplaying footage; the poster frame on .bx-hero__media shows instead. */
+  .bx-hero__video { display: none; }
+}

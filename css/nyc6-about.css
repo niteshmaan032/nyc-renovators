@@ -8,7 +8,9 @@
    ========================================================================== */
 
 body .page-hero--service:has(.ab-hero) {
-  background-image: linear-gradient(rgba(1, 27, 68, .86), rgba(1, 44, 109, .8)), url("../images/live/about-hero.jpg");
+  /* Overlay a little lighter so the crew shows through (5 Oct call); the
+     white copy still clears AA contrast over the brightest part of the photo. */
+  background-image: linear-gradient(rgba(1, 27, 68, .76), rgba(1, 44, 109, .7)), url("../images/live/about-hero.jpg");
   background-size: cover;
   background-position: center 35%;
 }
@@ -20,9 +22,12 @@ body .page-hero--service:has(.ab-hero) {
 .ab-head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--space-3) var(--space-8); align-items: end; margin-bottom: var(--space-5); }
 .ab-head__lede { margin: 0; max-width: 50ch; }
 
-/* ---- 1. Intro: the homepage About treatment ------------------------------ */
+/* ---- 1. Intro: overlapping photo collage left, copy right ------------------ */
 
+/* 5 Oct call: the crew photo leads and the office-team photo overlaps it as the
+   inset; the collage centers vertically against the copy. */
 .ab-intro { background-color: var(--surface); }
+.ab-intro .about__inner { align-items: center; }
 .ab-intro .about__body { container-type: inline-size; }
 .ab-intro .ab-intro__title { font-size: clamp(1.25rem, 4.7cqi, 2.375rem); text-wrap: initial; }
 .ab-intro__title > span { display: block; }
@@ -32,6 +37,8 @@ body .page-hero--service:has(.ab-hero) {
 .ab-intro .about__text { margin-top: var(--space-3); }
 .ab-intro .about__points { margin-top: var(--space-4); }
 .ab-intro .about__actions { margin-top: var(--space-5); }
+/* The office-team photo is 16:9; keep the people in frame inside the inset. */
+.ab-intro__inset .media-frame__image { object-position: 55% 65%; }
 
 /* ---- 2. Results: copy + four stat tiles ------------------------------------ */
 
@@ -60,13 +67,13 @@ body .page-hero--service:has(.ab-hero) {
 .ab-services { background-color: var(--surface-alt); }
 .ab-services .ab-head { gap: 2rem; margin-bottom: 1.75rem; }
 .ab-services .ab-title { font-size: clamp(1.75rem, 1.2rem + 1.8vw, 2.75rem); }
-.ab-services .ab-head__lede { font-size: 1.0625rem; line-height: 1.65; }
+.ab-services .ab-head__lede { font-size: 1.0625rem; line-height: 1.65; max-width: 62ch; }
 .ab-service-feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); overflow: hidden; border-radius: var(--radius-xl); background: var(--navy); color: var(--white); }
 .ab-service-feature__photo { position: relative; min-height: 19rem; }
 .ab-service-feature__photo img { position: absolute; width: 100%; height: 100%; object-fit: cover; object-position: center 48%; }
 .ab-service-feature__body { padding: clamp(1.5rem, 2.5vw, 2.5rem); }
 .ab-service-feature__eyebrow { display: flex; align-items: center; gap: .625rem; font-size: .75rem; font-weight: var(--fw-bold); letter-spacing: .1em; text-transform: uppercase; color: var(--on-dark-muted); }
-.ab-service-feature h3 { margin-top: .75rem; max-width: 27ch; color: var(--white); font-size: clamp(1.5rem, 1.1rem + .9vw, 2rem); font-weight: var(--fw-bold); line-height: 1.2; }
+.ab-service-feature h3 { margin-top: .75rem; max-width: none; color: var(--white); font-size: clamp(1.5rem, 1.1rem + .9vw, 2rem); font-weight: var(--fw-bold); line-height: 1.2; }
 .ab-service-feature__body > p:not([class]) { margin-top: .875rem; max-width: 58ch; font-size: 1rem; line-height: 1.65; color: var(--on-dark-muted); }
 .ab-service-feature__systems { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
 .ab-service-feature__systems li { border: 1px solid var(--hairline-dark); border-radius: var(--radius-md); padding: .375rem .625rem; font-size: .75rem; line-height: 1.2; }
@@ -74,6 +81,8 @@ body .page-hero--service:has(.ab-hero) {
 .ab-service-feature__link { display: inline-flex; align-items: center; gap: .875rem; min-height: 2.75rem; margin-top: .75rem; color: var(--white); text-decoration: underline; text-underline-offset: .3em; font-size: .9375rem; font-weight: var(--fw-bold); }
 .ab-service-feature__link:hover { text-decoration-thickness: 2px; }
 .ab-service-feature__link:focus-visible { outline: 2px solid var(--white); outline-offset: 4px; }
+.ab-services__eyebrow { margin-top: 1.75rem; }
+.ab-services__eyebrow + .ab-cards { margin-top: .875rem; }
 .ab-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: 1.5rem 0 0; padding: 0; list-style: none; border: 1px solid var(--hairline); border-radius: var(--radius-xl); overflow: hidden; background: var(--hairline); }
 .ab-card { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); align-content: start; column-gap: .875rem; padding: 1.5rem; background: var(--surface); }
 .ab-card__icon { display: grid; place-items: center; grid-row: 1 / 3; width: 2.5rem; height: 2.5rem; border-radius: var(--radius-md); background: var(--surface-alt); color: var(--red-dark); font-size: 1.125rem; }
@@ -101,27 +110,29 @@ body .page-hero--service:has(.ab-hero) {
 /* ---- 4. Why choose: working crew + reasons ------------------------------- */
 
 .ab-why { background-color: var(--surface); }
-.ab-why__head { display: grid; grid-template-columns: 1.2fr 1fr; align-items: end; gap: clamp(2rem, 5vw, 5rem); margin-bottom: 2rem; }
+.ab-why__head { display: grid; grid-template-columns: 1.2fr 1fr; align-items: end; gap: clamp(2rem, 5vw, 5rem); margin-bottom: 1.25rem; }
 .ab-why__head .ab-title { max-width: 25ch; font-size: clamp(1.75rem, 1.2rem + 1.8vw, 2.75rem); }
 .ab-why__head .ab-title span { color: var(--red-dark); }
 .ab-why__head .section-lede { max-width: 52ch; margin: 0; font-size: 1.0625rem; line-height: 1.65; }
-.ab-why__inner { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.35fr); gap: clamp(1.5rem, 3vw, 3rem); align-items: stretch; }
-.ab-why__photo { position: relative; min-height: 25rem; overflow: hidden; border-radius: var(--radius-xl); background: var(--navy-deep); }
+/* 5 Oct call: tighter rows so the section fits on one screen, and a smaller
+   photo that matches the height of the tightened list. */
+.ab-why__inner { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.4fr); gap: clamp(1.5rem, 3vw, 3rem); align-items: stretch; }
+.ab-why__photo { position: relative; min-height: 17rem; overflow: hidden; border-radius: var(--radius-xl); background: var(--navy-deep); }
 .ab-why__photo > img { position: absolute; width: 100%; height: 100%; object-fit: cover; object-position: 48% center; }
 .ab-why__photo::after { content: ""; position: absolute; inset: 25% 0 0; background: linear-gradient(transparent, rgba(1, 27, 68, .96)); }
 .ab-why__caption { position: absolute; z-index: 1; inset: auto 0 0; display: flex; align-items: center; gap: 1rem; padding: 1.75rem; color: var(--white); }
 .ab-why__years { font-size: clamp(3.5rem, 5vw, 5rem); font-weight: var(--fw-bold); line-height: 1; letter-spacing: -.06em; }
 .ab-why__years > span { font-size: .55em; vertical-align: top; line-height: 1.4; }
-.ab-why__caption strong { display: block; max-width: 16ch; font-size: 1.125rem; line-height: 1.3; }
-.ab-why__caption div > span { display: block; margin-top: .5rem; max-width: 24ch; font-size: .8125rem; line-height: 1.5; color: var(--on-dark-muted); }
+.ab-why__caption strong { display: block; font-size: 1.125rem; line-height: 1.3; white-space: nowrap; }
+.ab-why__caption div > span { display: block; margin-top: .375rem; font-size: .8125rem; line-height: 1.5; color: var(--on-dark-muted); }
 .ab-reasons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; margin: 0; padding: 0; list-style: none; }
-.ab-reason { display: flex; gap: 1rem; align-items: flex-start; padding: 1.5rem 0; border-bottom: 1px solid var(--hairline); }
-.ab-reason:nth-child(-n+2) { padding-top: .5rem; }
-.ab-reason:nth-last-child(-n+2) { border-bottom: 0; padding-bottom: .5rem; }
+.ab-reason { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 0; border-bottom: 1px solid var(--hairline); }
+.ab-reason:nth-child(-n+2) { padding-top: .25rem; }
+.ab-reason:nth-last-child(-n+2) { border-bottom: 0; padding-bottom: .25rem; }
 .ab-reason__icon { display: grid; place-items: center; flex: 0 0 2.75rem; height: 2.75rem; border-radius: 50%; background-color: var(--surface-alt); color: var(--navy); font-size: 1.125rem; }
 .ab-reason h3 { font-size: 1.0625rem; font-weight: var(--fw-bold); line-height: 1.35; color: var(--navy); }
-.ab-reason p { margin-top: .5rem; font-size: .9375rem; line-height: 1.6; color: var(--ink); }
-.ab-why__footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem; margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid var(--hairline); }
+.ab-reason p { margin-top: .375rem; font-size: .9375rem; line-height: 1.6; color: var(--ink); }
+.ab-why__footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--hairline); }
 .ab-why__footer > p { display: flex; align-items: center; gap: .75rem; color: var(--navy); font-weight: var(--fw-bold); font-size: 1.0625rem; }
 .ab-why__footer > p > i { color: var(--red-dark); font-size: 1.5rem; }
 .ab-why__actions { display: flex; flex-wrap: wrap; gap: .75rem; }
@@ -203,3 +214,13 @@ body .page-hero--service:has(.ab-hero) {
   .ab-stats strong { font-size: 1.625rem; }
 }
 
+
+/* Phones (5 Oct call): a little more room above "Reviews" and above "Get In
+   Touch", and about half the gap between the reviews heading and the widget
+   (the Trustindex header carries its own ~4rem of top space). */
+@media (max-width: 40rem) {
+  .ab-reviews { padding-top: 1.5rem; }
+  .ab-reviews .reviews__head { margin-bottom: 0; }
+  .ab-reviews .reviews__widget { margin-top: -1.5rem; }
+  .ab-reviews + .sr-contact { padding-top: 1.5rem; }
+}

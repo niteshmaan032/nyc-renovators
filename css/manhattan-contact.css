@@ -1,0 +1,40 @@
+/* ==========================================================================
+   Royal Roofing & Siding NYC (Manhattan): contact page (manhattan-contact-us.html)
+   Loads after css/manhattan.css and only uses its tokens. Prefix: mc-
+   Sections: page hero call card, form + details + map, what happens next
+   (.mh-steps from the system), contact FAQs (.mh-faq--center).
+   ========================================================================== */
+
+/* Hero call card (sits in .mh-pagehero__aside) ---------------------------- */
+.mc-callcard { display: flex; align-items: center; gap: 1rem; padding: 1.15rem 1.5rem; border: 1px solid var(--line-dark); border-top: 3px solid var(--brand); border-radius: var(--radius-sm); background: rgba(1, 29, 56, .72); backdrop-filter: blur(4px); }
+.mc-callcard .mh-ico { width: 3rem; height: 3rem; }
+.mc-callcard__label { color: var(--on-dark-muted); font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.mc-callcard__phone { display: inline-block; margin-top: .15rem; color: #fff; font-family: var(--font-display); font-size: clamp(1.6rem, 1.25rem + .9vw, 2rem); font-weight: 600; line-height: 1.15; letter-spacing: -.01em; text-decoration: none; }
+.mc-callcard__phone:hover { text-decoration: underline; text-decoration-color: var(--brand); text-underline-offset: .18em; }
+.mc-callcard__hours { margin-top: .2rem; color: var(--on-dark-muted); font-size: var(--fs-small); }
+
+/* Form + details + map ---------------------------------------------------- */
+.mc-main__inner { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: var(--space-6); align-items: stretch; }
+.mc-form { align-content: start; }
+.mc-form .quote-card__title { font-size: var(--fs-h2); }
+.mc-side { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-top: 2px solid var(--navy); border-radius: var(--radius-card); background: #fff; }
+.mc-details { padding: 1.15rem 1.5rem .35rem; }
+.mc-details__title { font-size: var(--fs-h3); }
+.mc-details .mh-details { margin-top: .35rem; }
+.mc-map { position: relative; flex: 1; min-height: 15rem; border-top: 1px solid var(--line); background: var(--navy-50); }
+.mc-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* Responsive -------------------------------------------------------------- */
+@media (max-width: 60rem) {
+  .mc-main__inner { grid-template-columns: minmax(0, 1fr); }
+  .mc-map { flex: none; height: 20rem; }
+}
+@media (max-width: 40rem) {
+  .mc-callcard { width: 100%; padding: .9rem 1rem; }
+  .mc-callcard .mh-ico { width: 2.5rem; height: 2.5rem; }
+  .mc-details { padding: 1rem 1rem .25rem; }
+  .mc-map { height: 18rem; }
+}
+
+/* Map tall enough for Google to show the business card (it needs about 300px). */
+.mc-map { min-height: 19rem; }

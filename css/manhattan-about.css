@@ -1,0 +1,199 @@
+/* ==========================================================================
+   Royal Roofing & Siding NYC (Manhattan): About page (manhattan-about-us.html)
+   Loads after css/manhattan.css and only uses its tokens. Prefix: ma-
+   Same structure as the Queens About page (photo hero, intro, specialties,
+   why choose us, local company), drawn in the Manhattan design language.
+   Sections: hero (light ground + job photo), intro (two framed photos),
+   specialties (flat roofing feature + 6 equal cards), boards & high-rises
+   (navy), approach (.mh-steps 2 x 2), why choose us (photo + 6 reasons),
+   areas (.mh-areas), reviews (.mh-reviews), FAQ (.mh-faq), CTA (.mh-ctaband).
+   Button colours are never set here: they come from css/manhattan.css.
+   ========================================================================== */
+
+/* Shared small parts ------------------------------------------------------- */
+.ma-eyebrow { display: flex; align-items: center; gap: .45rem; color: var(--brand-ink); font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; line-height: 1.3; text-transform: uppercase; }
+.ma-eyebrow svg { width: 1rem; height: 1rem; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* 1. Hero: light ground, copy left, real job photo right. ------------------
+   A photo up top instead of a navy banner (client request). */
+.ma-hero {
+  position: relative; overflow: hidden;
+  padding: calc(var(--nav-h) + var(--header-line) + clamp(1.25rem, .5rem + 2.2vh, 2.5rem)) 0 clamp(1.5rem, .75rem + 2.2vh, 2.75rem);
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--grey-50) 0%, #fff 100%);
+}
+.ma-hero__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: var(--col-gap); align-items: center; }
+.ma-hero__copy { min-width: 0; }
+.ma-hero .mh-crumbs { margin-bottom: var(--space-5); }
+.ma-hero .mh-crumbs li { color: var(--muted); }
+.ma-hero .mh-crumbs a { color: var(--navy); font-weight: 700; }
+.ma-hero h1 { max-width: none; font-size: var(--fs-h1); line-height: 1.06; letter-spacing: -.022em; }
+.ma-hero .mh-lede { max-width: 54ch; margin-top: var(--space-4); }
+.ma-hero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
+.ma-hero__facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: var(--space-6); border-block: 1px solid var(--line); }
+.ma-hero__facts li { min-width: 0; padding: .8rem 1rem; }
+.ma-hero__facts li:first-child { padding-left: 0; }
+.ma-hero__facts li + li { border-left: 1px solid var(--line); }
+.ma-hero__facts strong { display: block; color: var(--navy); font-size: 1rem; line-height: 1.3; }
+.ma-hero__facts span { display: block; margin-top: .15rem; color: var(--muted); font-size: var(--fs-xs); line-height: 1.4; }
+
+.ma-hero__media { position: relative; z-index: 0; min-width: 0; margin: 0 0 .75rem .75rem; }
+/* Amber block offset behind the photo: the window square from the logo. */
+.ma-hero__media::before { content: ""; position: absolute; z-index: -1; left: -.75rem; bottom: -.75rem; width: 42%; height: 46%; background: var(--brand); }
+.ma-hero__media img {
+  width: 100%; height: clamp(17rem, calc(100svh - var(--nav-h) - 12rem), 31rem);
+  object-fit: cover; object-position: 50% 38%; border-radius: var(--radius-media); box-shadow: var(--shadow-card);
+}
+.ma-hero__media figcaption { position: absolute; right: 1rem; bottom: 1rem; padding: .4rem .75rem; border-radius: var(--radius-xs); background: var(--navy); color: #fff; font-size: var(--fs-xs); font-weight: 700; line-height: 1.3; }
+
+/* 2. Intro: lead photo with an inset photo, copy right. -------------------- */
+.ma-intro__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: var(--col-gap); align-items: center; }
+.ma-intro__media { position: relative; min-width: 0; padding: 0 16% 11% 0; }
+.ma-frame { overflow: hidden; border-radius: var(--radius-media); background: var(--navy-50); }
+.ma-frame img { width: 100%; height: 100%; object-fit: cover; }
+.ma-frame--lead { aspect-ratio: 4 / 3; max-height: 26rem; }
+.ma-frame--inset { position: absolute; right: 0; bottom: 0; width: 44%; aspect-ratio: 4 / 3; border: 6px solid #fff; box-shadow: var(--shadow-card); }
+.ma-frame--inset::after { content: ""; position: absolute; top: 0; left: 0; width: 3rem; height: 3px; background: var(--brand); }
+.ma-intro__copy { min-width: 0; }
+.ma-intro__text { max-width: 62ch; margin-top: var(--space-3); color: var(--muted); }
+.ma-intro__checks { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem 1.5rem; margin-top: var(--space-5); padding-block: var(--space-4); border-block: 1px solid var(--line); }
+.ma-intro__checks li { font-size: var(--fs-small); line-height: 1.45; }
+.ma-intro__checks svg { margin-top: .15rem; }
+.ma-intro__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; margin-top: var(--space-5); }
+
+/* 3. Specialties: flat roofing feature left, 2 x 3 equal cards right. ------ */
+.ma-spec .mh-head { margin-bottom: var(--space-5); }
+.ma-spec__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 1.25rem; align-items: stretch; }
+.ma-feature { position: relative; display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: #fff; }
+.ma-feature__media { position: relative; flex: 1 1 auto; min-height: 9rem; overflow: hidden; background: var(--navy-50); }
+/* Absolute so the photo fills whatever height the card rows give it, never sets it. */
+.ma-feature__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ma-feature__body { display: flex; flex-direction: column; gap: .55rem; padding: 1.15rem 1.35rem 1.35rem; border-top: 3px solid var(--brand); }
+.ma-feature__title { font-size: clamp(1.25rem, 1.05rem + .5vw, 1.55rem); }
+.ma-feature__text { color: var(--muted); font-size: var(--fs-small); line-height: 1.55; }
+.ma-feature .mh-tags { margin-top: .15rem; }
+.ma-feature__btn { align-self: flex-start; margin-top: .5rem; }
+
+.ma-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 1.25rem; }
+.ma-card { position: relative; display: flex; flex-direction: column; gap: .5rem; min-width: 0; padding: 1.05rem 1.25rem .6rem; border: 1px solid var(--line); border-radius: var(--radius-card); background: #fff; transition: border-color .2s, box-shadow .2s; }
+.ma-card::before { content: ""; position: absolute; top: -1px; left: -1px; width: 3rem; height: 3px; background: var(--brand); }
+.ma-card:hover { border-color: var(--line-strong); box-shadow: var(--shadow-card); }
+.ma-card__head { display: flex; align-items: center; gap: .85rem; }
+.ma-card__head .mh-ico { width: 2.5rem; height: 2.5rem; }
+.ma-card h3 { font-size: var(--fs-h3); }
+.ma-card p { color: var(--muted); font-size: var(--fs-small); line-height: 1.55; }
+.ma-card .mh-link { align-self: flex-start; margin-top: auto; min-height: 2.25rem; }
+.ma-card .mh-link::after { content: ""; position: absolute; inset: 0; }   /* whole card is clickable */
+.ma-card:has(.mh-link:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
+.ma-card .mh-link:focus-visible { outline: 0; }
+
+/* 4. Boards, managers & high-rises (navy). ---------------------------------- */
+.ma-boards__inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: var(--col-gap); align-items: center; }
+.ma-boards__media { position: relative; min-width: 0; }
+.ma-boards__media img { width: 100%; height: clamp(20rem, 52vh, 28rem); object-fit: cover; border-radius: var(--radius-media); }
+.ma-boards__media figcaption { position: absolute; left: 1rem; bottom: 1rem; padding: .4rem .75rem; border-radius: var(--radius-xs); background: var(--navy-deep); color: #fff; font-size: var(--fs-xs); font-weight: 700; box-shadow: inset 0 -2px 0 var(--brand); }
+.ma-boards__copy { min-width: 0; }
+.ma-boards .mh-title { color: #fff; }
+.ma-boards__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; margin-top: var(--space-5); border-top: 1px solid var(--line-dark); }
+.ma-boards__list li { display: flex; align-items: flex-start; gap: .9rem; min-width: 0; padding: .95rem 0; border-bottom: 1px solid var(--line-dark); }
+.ma-boards__list h3 { color: #fff; font-size: 1.0625rem; line-height: 1.3; }
+.ma-boards__list p { margin-top: .2rem; font-size: var(--fs-small); line-height: 1.5; }
+
+/* 5. Approach: copy left, 2 x 2 numbered steps right. ----------------------- */
+.ma-approach__inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: var(--col-gap); align-items: center; }
+.ma-approach__copy { min-width: 0; }
+.ma-approach__text { max-width: 60ch; margin-top: var(--space-3); color: var(--muted); }
+.ma-approach__copy .btn { margin-top: var(--space-5); }
+.ma-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6) var(--space-7); }
+.ma-steps .mh-step p { display: block; overflow: visible; -webkit-line-clamp: unset; }   /* copy written to fit; never cut */
+.ma-approach__hint { grid-column: 1 / -1; }
+
+/* 6. Why choose us: photo left, 2 x 3 reasons right. ------------------------ */
+.ma-why .mh-head { margin-bottom: var(--space-5); }
+.ma-why .mh-title { max-width: none; }
+.ma-why__inner { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: var(--col-gap); align-items: stretch; }
+.ma-why__media { position: relative; min-width: 0; min-height: 18rem; overflow: hidden; border-radius: var(--radius-media); background: var(--navy-50); }
+.ma-why__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.ma-why__media figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 2.5rem 1.25rem 1rem; background: linear-gradient(180deg, transparent, rgba(1, 29, 56, .88)); color: #fff; line-height: 1.35; }
+.ma-why__media figcaption strong { display: block; font-size: 1.0625rem; }
+.ma-why__media figcaption span { display: block; color: var(--on-dark-muted); font-size: var(--fs-xs); font-weight: 500; }
+.ma-reasons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; border-top: 2px solid var(--navy); }
+.ma-reasons li { display: flex; align-items: flex-start; gap: .9rem; min-width: 0; padding: 1.1rem 0; border-bottom: 1px solid var(--line-strong); }
+.ma-reasons h3 { font-size: 1.0625rem; line-height: 1.3; }
+.ma-reasons p { margin-top: .2rem; color: var(--muted); font-size: var(--fs-small); line-height: 1.5; }
+
+/* 9. FAQ: head left, shared accordion right. -------------------------------- */
+.ma-faq__inner { display: grid; grid-template-columns: minmax(0, 24rem) minmax(0, 1fr); gap: var(--col-gap); align-items: start; }
+.ma-faq__head { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.ma-faq__head .mh-lede { margin-bottom: var(--space-4); }
+.ma-faq__call { font-size: 1.25rem; }
+.ma-faq__call svg { stroke: var(--brand-ink); }
+
+/* Short laptop screens (1366 x 650): hero copy tightens so the hero fits. -- */
+@media (min-width: 60.01rem) and (max-height: 780px) {
+  .ma-hero .mh-crumbs { margin-bottom: var(--space-3); }
+  .ma-hero .mh-kicker { margin-bottom: .5rem; }
+  .ma-hero .mh-lede { margin-top: .75rem; font-size: 1rem; }
+  .ma-hero__actions { margin-top: 1rem; }
+  .ma-hero__actions .btn { min-height: 2.85rem; padding-block: .55rem; }
+  .ma-hero__facts { margin-top: 1.1rem; }
+  .ma-hero__facts li { padding-block: .6rem; }
+}
+
+/* Responsive ---------------------------------------------------------------- */
+@media (max-width: 75rem) {
+  .ma-spec__grid { grid-template-columns: minmax(0, 1fr); }
+  .ma-feature { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+  .ma-feature__media { min-height: 16rem; }
+  .ma-feature__body { border-top: 0; border-left: 3px solid var(--brand); }
+  .ma-reasons { grid-template-columns: minmax(0, 1fr); }
+  .ma-reasons li { padding-block: .8rem; }
+}
+
+@media (max-width: 60rem) {
+  .ma-hero__inner, .ma-intro__inner, .ma-boards__inner, .ma-approach__inner, .ma-why__inner, .ma-faq__inner { grid-template-columns: minmax(0, 1fr); }
+  /* The photo leads on tablets and phones so it is the first thing seen. */
+  .ma-hero__media { order: -1; margin: 0 0 .75rem .75rem; }
+  .ma-hero__media img { height: auto; aspect-ratio: 16 / 9; }
+  .ma-hero h1 { max-width: none; }
+  .ma-intro__media { max-width: 40rem; }
+  .ma-boards__media img { height: auto; aspect-ratio: 16 / 9; }
+  .ma-why__media { min-height: 0; aspect-ratio: 16 / 9; }
+  .ma-reasons { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 48rem) {
+  .ma-feature { display: flex; }
+  .ma-feature__media { flex: none; min-height: 0; aspect-ratio: 16 / 9; }
+  .ma-feature__body { border-left: 0; border-top: 3px solid var(--brand); }
+  .ma-reasons { grid-template-columns: minmax(0, 1fr); }
+  .ma-boards__list { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 40rem) {
+  .ma-hero { padding-top: calc(var(--nav-h) + var(--header-line) + 1rem); }
+  .ma-hero .mh-crumbs { margin-bottom: var(--space-3); }
+  .ma-hero__actions .btn { flex: 1 1 12rem; }
+  .ma-hero__facts { grid-template-columns: minmax(0, 1fr); }
+  .ma-hero__facts li, .ma-hero__facts li:first-child { padding: .6rem 0; }
+  .ma-hero__facts li + li { border-left: 0; border-top: 1px solid var(--line); }
+  .ma-hero__media::before { left: -.75rem; bottom: -.75rem; }
+
+  .ma-intro__checks { grid-template-columns: minmax(0, 1fr); }
+  .ma-intro__actions .btn { flex: 1 1 12rem; }
+
+  .ma-spec__grid { gap: 1rem; }
+  .ma-cards.slider { grid-auto-rows: auto; }
+  .ma-cards.slider > .ma-card { flex-basis: 78%; }
+
+  .ma-boards__list li { padding-block: .8rem; }
+
+  .ma-approach__copy .btn { width: 100%; }
+  .ma-steps.slider { gap: .85rem; }
+
+  .ma-faq__head .mh-lede { margin-bottom: .5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ma-card { transition: none; }
+}

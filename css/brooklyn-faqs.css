@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Royal Roofing & Siding Brooklyn — brooklyn-faqs.html
+   Loads after css/brooklyn.css. The accordions reuse the shared .faq__list
+   styles; this file adds the hero search, the topic rail, and the groups.
+   ========================================================================== */
+
+/* Compact page hero (shared pattern with brooklyn-blog.html) -------------- */
+.bk-phero {
+  padding: calc(var(--nav-h) + 1.5rem) 0 1.5rem;
+  background-color: var(--navy-deep);
+  background-image: repeating-linear-gradient(135deg, transparent 0 68px, rgba(255, 255, 255, .075) 69px, transparent 70px), linear-gradient(90deg, var(--navy-deep) 0%, #092f62 100%);
+  background-size: 45% 100%, 100% 100%;
+  background-position: right center;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+.bk-crumbs ol { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .5rem; margin: 0; padding: 0; list-style: none; color: var(--on-dark-muted); font-size: .8125rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.bk-crumbs li + li::before { content: "/"; margin-right: .5rem; color: rgba(255, 255, 255, .4); }
+.bk-crumbs a { color: #fff; text-decoration: none; }
+.bk-crumbs a:hover, .bk-crumbs a:focus-visible { text-decoration: underline; text-underline-offset: .2em; }
+.bk-phero h1 { margin-top: .6rem; color: #fff; font-size: clamp(2rem, 1.5rem + 1.4vw, 2.875rem); line-height: 1.15; letter-spacing: -.03em; }
+.bk-phero__lede { max-width: 80ch; margin-top: .5rem; color: var(--on-dark-muted); font-size: 1.125rem; }
+
+/* Hero: copy left, search right ------------------------------------------- */
+.bkq-hero__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 30rem); align-items: end; gap: 1.5rem clamp(2rem, 4vw, 5rem); }
+.bkq-search { padding: 1rem 1.1rem .85rem; border: 1px solid var(--hairline-dark); border-left: 3px solid var(--red); border-radius: 8px; background: rgba(255, 255, 255, .06); }
+.bkq-search__label { display: block; margin-bottom: .5rem; color: #fff; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.bkq-search__field { position: relative; }
+.bkq-search__field svg { position: absolute; left: .9rem; top: 50%; width: 1.15rem; height: 1.15rem; transform: translateY(-50%); fill: none; stroke: var(--navy); stroke-width: 2.2; pointer-events: none; }
+.bkq-search__field input {
+  width: 100%; min-height: 3.25rem; padding: .7rem 1rem .7rem 2.75rem;
+  border: 2px solid transparent; border-radius: 6px; background: #fff;
+  font: inherit; font-size: 1rem; font-weight: 500; color: var(--ink);
+}
+.bkq-search__field input::placeholder { color: #8c95a1; }
+.bkq-search__field input:focus { outline: none; border-color: var(--red); }
+.bkq-search__status { min-height: 1.3em; margin-top: .5rem; color: var(--on-dark-muted); font-size: .8125rem; line-height: 1.3; }
+
+/* Body: sticky topic rail + grouped accordions ---------------------------- */
+.bkq-body { padding-block: var(--section-pad) calc(var(--section-pad) + 1rem); background: #fafafa; }
+.bkq-body__inner { display: grid; grid-template-columns: minmax(0, 17.5rem) minmax(0, 1fr); gap: clamp(1.5rem, 1rem + 2.5vw, 3.5rem); align-items: start; }
+.bkq-rail { position: sticky; top: calc(var(--nav-h) + 4px + 1.25rem); min-width: 0; }
+.bkq-rail__title { margin-bottom: .6rem; color: var(--muted); font-size: var(--fs-utility); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.bkq-rail__list { display: grid; gap: .3rem; margin: 0; padding: 0; list-style: none; }
+.bkq-rail__list a {
+  display: grid; grid-template-columns: 1.85rem minmax(0, 1fr) auto; align-items: center; gap: .7rem;
+  min-height: 3rem; padding: .45rem .75rem .45rem .5rem;
+  border: 1px solid transparent; border-left: 3px solid transparent; border-radius: 6px;
+  color: var(--navy); font-size: .9688rem; font-weight: 700; line-height: 1.25; text-decoration: none;
+  transition: background-color .2s, border-color .2s, color .2s;
+}
+.bkq-rail__list a:hover { background: #fff; border-color: var(--hairline); }
+.bkq-rail__list a.is-active { background: #fff; border-color: var(--hairline); border-left-color: var(--red); box-shadow: 0 8px 22px rgba(2, 35, 80, .06); }
+.bkq-rail__num { display: inline-flex; align-items: center; justify-content: center; width: 1.85rem; height: 1.85rem; border-radius: 6px; background: var(--sky); color: var(--navy); font-size: .875rem; }
+.bkq-rail__list a.is-active .bkq-rail__num { background: var(--red); color: #fff; }
+.bkq-rail__count { color: var(--muted); font-size: .8125rem; font-weight: 500; }
+.bkq-rail__list li.is-empty a { opacity: .45; }
+.bkq-rail__help { display: grid; gap: .75rem; margin-top: 1.25rem; padding: 1.1rem; border-radius: 8px; background: var(--navy); color: var(--on-dark-muted); font-size: .9063rem; line-height: 1.45; }
+.bkq-rail__help strong { display: block; margin-bottom: .15rem; color: #fff; font-size: 1rem; }
+.bkq-rail__help .btn { min-height: 2.9rem; padding-inline: 1rem; font-size: 1rem; }
+
+.bkq-groups { display: grid; gap: 2rem; min-width: 0; }
+.bkq-group { scroll-margin-top: calc(var(--nav-h) + 1.25rem); }
+.bkq-group[hidden], .bkq-group details[hidden] { display: none; }
+.bkq-group__title { display: flex; align-items: baseline; gap: .5rem; margin-bottom: .9rem; padding-bottom: .65rem; border-bottom: 2px solid var(--navy); font-size: clamp(1.4rem, 1.15rem + .7vw, 1.75rem); letter-spacing: -.02em; }
+.bkq-group__num { color: var(--red); }
+.bkq-group .faq__list { gap: .55rem; }
+.bkq-group .faq__list summary { min-height: 3.5rem; padding: .75rem 1.1rem; }
+.bkq-group .faq__list details p { padding: 0 3.5rem 1.1rem 1.1rem; font-size: .9688rem; }
+.bkq-group .faq__list details p a { color: var(--red); font-weight: 700; }
+.bkq-empty { padding: 1.5rem; border: 1px dashed rgba(2, 35, 80, .3); border-radius: 8px; background: #fff; color: var(--muted); }
+.bkq-empty strong { color: var(--navy); }
+.bkq-empty a, .bkq-empty__clear { color: var(--red); font-weight: 700; }
+.bkq-empty__clear { padding: 0; border: 0; background: none; cursor: pointer; text-decoration: underline; text-underline-offset: .2em; }
+
+/* Still have questions: navy panel + standard estimate form --------------- */
+.bkq-ask__inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 1.25rem; align-items: stretch; }
+.bkq-ask__panel { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(1.5rem, 1rem + 1.5vw, 2.5rem); border-radius: 8px; background: var(--navy); color: #fff; }
+.bkq-ask__panel .section-title { color: #fff; }
+.bkq-ask__lede { max-width: 50ch; margin-top: .75rem; color: var(--on-dark-muted); }
+.bkq-ask__panel .contact__info { width: 100%; margin-top: auto; padding-top: 1.5rem; }
+
+/* Responsive -------------------------------------------------------------- */
+@media (max-width: 64rem) {
+  .bkq-hero__inner { grid-template-columns: 1fr; }
+  .bkq-search { max-width: 34rem; }
+}
+@media (max-width: 60rem) {
+  /* The rail becomes a row of numbered topic chips that sticks under the header. */
+  .bkq-body { padding-top: 0; }
+  .bkq-body__inner { grid-template-columns: 1fr; gap: 1.25rem; }
+  .bkq-rail { top: calc(var(--nav-h) + 3px); z-index: 5; margin-inline: calc(-1 * var(--edge)); padding: .6rem 0; background: #fafafa; border-bottom: 1px solid var(--hairline); }
+  .bkq-rail__title, .bkq-rail__help { display: none; }
+  .bkq-rail__list { display: flex; gap: .5rem; overflow-x: auto; padding-inline: var(--edge); scrollbar-width: none; scroll-padding-inline: var(--edge); }
+  .bkq-rail__list::-webkit-scrollbar { display: none; }
+  .bkq-rail__list li { flex: none; }
+  .bkq-rail__list a { grid-template-columns: auto auto; gap: .5rem; min-height: 2.75rem; padding: .35rem .85rem .35rem .4rem; border: 1px solid var(--hairline); border-radius: 6px; background: #fff; font-size: .9375rem; white-space: nowrap; }
+  .bkq-rail__list a.is-active { border-color: var(--navy); background: var(--navy); color: #fff; box-shadow: none; }
+  .bkq-rail__num { width: 1.6rem; height: 1.6rem; font-size: .8125rem; }
+  .bkq-rail__count { display: none; }
+  .bkq-group { scroll-margin-top: calc(var(--nav-h) + 4.75rem); }
+  .bkq-ask__inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 40rem) {
+  .bk-phero { padding: calc(var(--nav-h) + 1.25rem) 0 1.25rem; background-size: 70% 100%, 100% 100%; }
+  .bk-phero__lede { font-size: 1rem; }
+  .bkq-hero__inner { gap: 1rem; }
+  .bkq-search { padding: .85rem; }
+  .bkq-groups { gap: 1.5rem; }
+  .bkq-group .faq__list summary { padding: .7rem .9rem; font-size: 1rem; }
+  .bkq-group .faq__list details p { padding: 0 .9rem 1rem; font-size: 1rem; }
+  .bkq-ask__panel { padding: 1.5rem; }
+}

@@ -1,0 +1,261 @@
+/* ==========================================================================
+   Royal Roofing Bronx: About Us page (bronx-about-us.html)
+   --------------------------------------------------------------------------
+   Loads after css/bronx.css and only adds page blocks, prefixed bxa-.
+   Tokens, buttons, section heads, header and footer all come from bronx.css.
+
+   CONTENTS
+     1. Hero (navy band with a real job photo on the right)
+     2. Who we are (photo collage + story + facts)
+     3. Built for Bronx buildings (two panels + photo)
+     4. Our approach (navy: photo + four numbered points)
+     5. Services (compact link tiles)
+     6. Why choose us (four points + photo)
+     7. Areas we serve (office card + neighborhoods)
+     8. Reviews (Trustindex)
+     9. CTA band
+     10. Short desktop screens (1366 x 650)
+     11. Responsive
+   ========================================================================== */
+
+/* 1. Hero ------------------------------------------------------------------
+   Same navy band, breadcrumb and type as the other Bronx inner pages, with
+   the photo as the right column so a real roof shows on first load. */
+.bxa-hero .bx-pagehero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 40rem); gap: var(--space-5) clamp(2rem, 1rem + 3vw, 4.5rem); }
+.bxa-hero .bx-pagehero__copy > p { max-width: 56ch; }
+.bxa-hero__facts { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin-top: var(--space-5); }
+.bxa-hero__facts li { display: inline-flex; align-items: center; gap: .5rem; color: #fff; font-size: var(--fs-small); font-weight: 700; line-height: 1.3; }
+.bxa-hero__facts svg { width: 1.05rem; height: 1.05rem; flex: none; fill: none; stroke: var(--orange-300); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.bxa-hero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
+.bxa-hero :focus-visible { outline-color: #fff; }
+
+.bxa-hero__media { position: relative; justify-self: stretch; }
+.bxa-hero__media img { width: 100%; height: clamp(15rem, 44vh, 22rem); object-fit: cover; object-position: center 35%; border-radius: var(--radius-media); box-shadow: var(--shadow-float); }
+.bxa-hero__media figcaption {
+  position: absolute; left: -1.25rem; bottom: 1.25rem;
+  display: grid; gap: .15rem; padding: .7rem 1.1rem .75rem 1rem;
+  border-left: 4px solid var(--brand); border-radius: var(--radius-sm); background: #fff; box-shadow: var(--shadow-card);
+  color: var(--muted); font-size: var(--fs-xs); line-height: 1.35;
+}
+.bxa-hero__media figcaption strong { color: var(--navy); font-size: 1.25rem; line-height: 1.1; letter-spacing: -.015em; }
+
+/* 2. Who we are -------------------------------------------------------------
+   Collage: one large photo plus two stacked, all with the Bronx leaf corner. */
+.bxa-story__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 1rem + 3vw, 4.5rem); align-items: center; }
+.bxa-collage { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); grid-template-rows: repeat(2, clamp(10.5rem, 25vh, 13.5rem)); gap: .85rem; }
+.bxa-collage figure { position: relative; overflow: hidden; border-radius: var(--radius-media); background: var(--navy-50); }
+.bxa-collage img { width: 100%; height: 100%; object-fit: cover; }
+.bxa-collage__main { grid-row: span 2; }
+.bxa-collage__main::after { content: ""; position: absolute; left: 0; bottom: 0; width: 4.5rem; height: 4px; background: var(--brand); }
+.bxa-story__copy > p:not(.bx-kicker):not(.bx-lede) { max-width: 64ch; margin-top: var(--space-3); color: var(--muted); }
+
+.bxa-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); margin-top: var(--space-5); }
+.bxa-facts div { padding: .15rem 0 .15rem .9rem; border-left: 3px solid var(--brand); }
+.bxa-facts dt { color: var(--navy); font-size: clamp(1.25rem, 1.05rem + .5vw, 1.5rem); font-weight: 700; line-height: 1.15; letter-spacing: -.015em; }
+.bxa-facts dd { margin: .3rem 0 0; text-wrap: balance; color: var(--muted); font-size: var(--fs-xs); font-weight: 500; line-height: 1.4; }
+
+/* 3. Built for Bronx buildings ---------------------------------------------
+   Two equal white panels (conditions, building types) and a photo, all the
+   same height. Every row is one bold line plus one line of text. */
+.bxa-built__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; align-items: stretch; }
+.bxa-panel { display: flex; flex-direction: column; min-width: 0; padding: 1.15rem 1.35rem .5rem; border: 1px solid var(--line); border-top: 3px solid var(--brand); border-radius: var(--radius-card); background: #fff; }
+.bxa-panel__title { padding-bottom: .65rem; color: var(--navy); font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; line-height: 1.3; text-transform: uppercase; }
+.bxa-rows { display: grid; flex: 1; align-content: space-between; }
+.bxa-rows li { display: flex; align-items: center; gap: .85rem; padding: .7rem 0; border-top: 1px solid var(--line); }
+.bxa-rows .bx-ico { width: 2.5rem; height: 2.5rem; }
+.bxa-rows .bx-ico svg { width: 1.15rem; height: 1.15rem; }
+.bxa-rows strong { display: block; color: var(--navy); font-size: 1rem; line-height: 1.3; }
+.bxa-rows span:not(.bx-ico) { display: block; margin-top: .1rem; color: var(--muted); font-size: var(--fs-small); line-height: 1.45; }
+
+.bxa-built__media { position: relative; min-height: 18rem; overflow: hidden; border-radius: var(--radius-media); background: var(--navy); }
+.bxa-built__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.bxa-built__media figcaption {
+  position: absolute; inset: auto 0 0 0;
+  padding: 2.75rem 1.25rem 1.1rem;
+  background: linear-gradient(180deg, rgba(2, 22, 52, 0), rgba(2, 22, 52, .82) 45%, rgba(2, 22, 52, .94));
+  color: #fff; font-size: var(--fs-small); font-weight: 700; line-height: 1.45;
+}
+.bxa-built__media::after { content: ""; position: absolute; left: 0; bottom: 0; width: 4.5rem; height: 4px; background: var(--brand); }
+
+/* 4. Our approach -------------------------------------------------------------
+   Navy section: tall photo on the left, four numbered points in a 2 x 2 grid. */
+.bxa-approach__inner { display: grid; grid-template-columns: minmax(0, 21rem) minmax(0, 1fr); gap: clamp(2rem, 1rem + 3vw, 4.5rem); align-items: stretch; }
+.bxa-approach__media { position: relative; overflow: hidden; min-height: 22rem; border-radius: var(--radius-media); background: var(--navy-700); }
+.bxa-approach__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.bxa-approach__copy { align-self: center; min-width: 0; }
+.bxa-approach .bx-title { color: #fff; }
+.bxa-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2rem; margin-top: var(--space-5); counter-reset: none; }
+.bxa-steps li { display: flex; align-items: flex-start; gap: 1rem; padding: 1.1rem 0; border-top: 1px solid var(--line-dark); }
+.bxa-steps__num {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 2.75rem; height: 2.5rem; border-radius: 10px 3px 10px 3px; background: var(--brand); color: #fff;
+  font-size: .9375rem; font-weight: 700; letter-spacing: .02em; line-height: 1;
+}
+.bxa-steps h3 { color: #fff; font-size: 1.0625rem; line-height: 1.3; letter-spacing: -.005em; }
+.bxa-steps p { margin-top: .25rem; color: var(--on-dark-muted); font-size: var(--fs-small); line-height: 1.5; }
+.bxa-approach__note { margin-top: var(--space-4); padding-top: 1rem; border-top: 1px solid var(--line-dark); color: var(--orange-300); font-size: var(--fs-small); font-weight: 700; line-height: 1.45; }
+
+/* 5. Services: compact link tiles (3 x 2) ------------------------------------ */
+.bxa-svc { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.bxa-svc li { display: flex; min-width: 0; }
+.bxa-svc__link {
+  display: flex; align-items: center; gap: 1rem; width: 100%;
+  padding: 1.05rem 1.15rem; border: 1px solid var(--line); border-left: 3px solid var(--line-strong); border-radius: var(--radius-card);
+  background: #fff; color: inherit; text-decoration: none;
+  transition: border-color .2s, background-color .2s, box-shadow .2s;
+}
+.bxa-svc__body { display: block; flex: 1; min-width: 0; }
+.bxa-svc__body strong { display: block; color: var(--navy); font-size: 1.0625rem; line-height: 1.3; }
+.bxa-svc__body span { display: block; margin-top: .15rem; color: var(--muted); font-size: var(--fs-small); line-height: 1.45; }
+.bxa-svc__arrow { width: 1.2rem; height: 1.2rem; flex: none; fill: none; stroke: var(--brand); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+.bxa-svc__link:hover, .bxa-svc__link:focus-visible { border-color: var(--orange-100); border-left-color: var(--brand); background: var(--orange-50); box-shadow: var(--shadow-sm); }
+.bxa-svc__link:hover strong { color: var(--brand-ink); }
+.bxa-svc__link:hover .bxa-svc__arrow { transform: translateX(3px); }
+
+/* 6. Why choose us --------------------------------------------------------- */
+.bxa-why__inner { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: clamp(2rem, 1rem + 3vw, 4.5rem); align-items: stretch; }
+.bxa-why__main { min-width: 0; }
+.bxa-why__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 1rem; }
+.bxa-point { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto 1fr; gap: .25rem 1rem; min-width: 0; padding: 1.15rem 1.25rem; border: 1px solid var(--line); border-radius: var(--radius-card); background: #fff; }
+.bxa-point .bx-ico { grid-row: span 2; }
+.bxa-point h3 { align-self: center; font-size: var(--fs-h3); letter-spacing: -.012em; }
+.bxa-point p { color: var(--muted); font-size: var(--fs-small); line-height: 1.55; }
+.bxa-why__media { position: relative; min-height: 20rem; overflow: hidden; border-radius: var(--radius-media); background: var(--navy); }
+.bxa-why__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.bxa-why__media figcaption {
+  position: absolute; left: 1rem; right: 1rem; bottom: 1rem;
+  display: grid; gap: .15rem; padding: .8rem 1rem;
+  border-left: 4px solid var(--brand); border-radius: var(--radius-sm); background: #fff; box-shadow: var(--shadow-card);
+  color: var(--muted); font-size: var(--fs-xs); line-height: 1.4;
+}
+.bxa-why__media figcaption strong { color: var(--navy); font-size: 1.125rem; line-height: 1.2; }
+
+/* 7. Areas we serve ------------------------------------------------------- */
+.bxa-areas__inner { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(2rem, 1rem + 3vw, 4.5rem); align-items: center; }
+.bxa-office { display: flex; align-items: flex-start; gap: 1rem; margin-top: var(--space-5); padding: 1rem 1.15rem .5rem; border: 1px solid var(--line); border-left: 4px solid var(--brand); border-radius: var(--radius-sm); background: var(--grey-25); }
+.bxa-office__label { color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .12em; line-height: 1.3; text-transform: uppercase; }
+.bxa-office__addr { margin-top: .2rem; color: var(--navy); font-size: 1.0625rem; font-weight: 700; line-height: 1.4; }
+
+.bxa-areas__main { min-width: 0; }
+.bxa-hoods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; }
+.bxa-hoods li {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: .1rem .65rem;
+  padding: .95rem 1.1rem; border: 1px solid var(--navy-100); border-radius: var(--radius-card); background: var(--navy-50);
+}
+.bxa-hoods svg { grid-row: span 2; width: 1.35rem; height: 1.35rem; fill: none; stroke: var(--brand); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.bxa-hoods strong { color: var(--navy); font-size: 1.125rem; line-height: 1.25; }
+.bxa-hoods span { color: var(--muted); font-size: var(--fs-small); line-height: 1.4; }
+.bxa-also { margin-top: 1.1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.bxa-also__label { margin-bottom: .6rem; color: var(--navy); font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; line-height: 1.2; text-transform: uppercase; }
+.bxa-also__list { display: flex; flex-wrap: wrap; gap: .4rem; }
+.bxa-also__list li { padding: .3rem .7rem; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--navy); font-size: var(--fs-xs); font-weight: 500; line-height: 1.35; white-space: nowrap; }
+.bxa-also .bx-link { margin-top: .35rem; }
+
+/* 8. Reviews --------------------------------------------------------------- */
+.bxa-reviews .bx-head--split { align-items: end; }
+.bxa-reviews__widget { min-height: 12rem; }
+
+/* 9. CTA band --------------------------------------------------------------- */
+.bxa-cta { position: relative; isolation: isolate; overflow: hidden; background: var(--navy); color: var(--on-dark-muted); }
+.bxa-cta::before {
+  content: ""; position: absolute; z-index: -1; inset: 0 0 0 50%;
+  background:
+    linear-gradient(90deg, var(--navy) 0%, transparent 40%),
+    repeating-linear-gradient(135deg, transparent 0 46px, rgba(255, 255, 255, .05) 46px 47px),
+    repeating-linear-gradient(45deg, transparent 0 46px, rgba(255, 255, 255, .05) 46px 47px);
+}
+.bxa-cta::after { content: ""; position: absolute; left: 0; top: 0; width: min(18rem, 40%); height: 4px; background: var(--brand); }
+.bxa-cta__inner { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: var(--space-5) clamp(2rem, 1rem + 3vw, 4.5rem); align-items: center; padding-block: clamp(2rem, 1.4rem + 1.6vw, 3rem); }
+.bxa-cta h2 { color: #fff; font-size: var(--fs-h2); letter-spacing: -.022em; }
+.bxa-cta__copy > p:not(.bx-kicker) { max-width: 60ch; margin-top: var(--space-3); font-size: var(--fs-lede); }
+.bxa-cta__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
+.bxa-cta :focus-visible { outline-color: #fff; }
+.bxa-cta__details { padding: .35rem 1.25rem; border: 1px solid var(--line-dark); border-radius: var(--radius-card); background: rgba(2, 22, 52, .45); }
+.bxa-cta__details li { display: flex; align-items: center; gap: .9rem; padding: .85rem 0; }
+.bxa-cta__details li + li { border-top: 1px solid var(--line-dark); }
+.bxa-cta__label { color: rgba(255, 255, 255, .62); font-size: .6875rem; font-weight: 700; letter-spacing: .12em; line-height: 1.3; text-transform: uppercase; }
+.bxa-cta__value { margin-top: .1rem; color: #fff; font-size: var(--fs-small); font-weight: 700; line-height: 1.4; }
+.bxa-cta__value a { color: inherit; font-size: 1.25rem; text-decoration: none; }
+.bxa-cta__value a:hover { color: var(--orange-300); }
+
+/* 10. Short desktop screens (e.g. 1366 x 650) ------------------------------
+   About 554px sits under the fixed header, so the hero and the taller
+   sections tighten to stay on one screen. */
+@media (min-width: 60.01rem) and (max-height: 780px) {
+  .bxa-hero { padding-top: calc(var(--nav-h) + var(--header-line) + 1.5rem); padding-bottom: 1.5rem; }
+  .bxa-hero__media img { height: clamp(14rem, 50vh, 20rem); }
+  .bxa-hero__facts, .bxa-hero__actions { margin-top: 1rem; }
+  .bxa-collage { grid-template-rows: repeat(2, 10rem); }
+  .bxa-story__copy > p:not(.bx-kicker):not(.bx-lede) { margin-top: .5rem; }
+  .bxa-facts { margin-top: 1rem; }
+  .bxa-panel { padding-top: .9rem; }
+  .bxa-panel__title { padding-bottom: .4rem; }
+  .bxa-rows li { padding: .5rem 0; }
+  .bxa-rows .bx-ico { width: 2.25rem; height: 2.25rem; }
+  .bxa-built__media { min-height: 0; }
+  .bxa-approach__media { min-height: 0; }
+  .bxa-steps { margin-top: 1rem; }
+  .bxa-steps li { padding: .75rem 0; }
+  .bxa-approach__note { margin-top: .5rem; padding-top: .75rem; }
+  .bxa-point { padding: .95rem 1.1rem; }
+  .bxa-why__media { min-height: 0; }
+  .bxa-office { margin-top: 1rem; }
+  .bxa-hoods li { padding: .75rem 1rem; }
+}
+
+/* 11. Responsive -------------------------------------------------------------- */
+@media (max-width: 75rem) {
+  .bxa-hero .bx-pagehero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 30rem); }
+  .bxa-built__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bxa-built__media { grid-column: 1 / -1; min-height: 0; aspect-ratio: 21 / 8; }
+  .bxa-svc { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bxa-why__inner { grid-template-columns: minmax(0, 1fr); }
+  .bxa-why__media { min-height: 0; aspect-ratio: 21 / 8; }
+  .bxa-areas__inner { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 60rem) {
+  .bxa-hero .bx-pagehero__inner { grid-template-columns: minmax(0, 1fr); }
+  .bxa-hero__media { width: 100%; max-width: 40rem; justify-self: start; }
+  .bxa-hero__media img { height: auto; aspect-ratio: 16 / 9; }
+  .bxa-hero__media figcaption { left: .75rem; bottom: .75rem; }
+  .bxa-story__inner { grid-template-columns: minmax(0, 1fr); }
+  .bxa-collage { grid-template-rows: repeat(2, clamp(8rem, 24vw, 12rem)); }
+  .bxa-approach__inner { grid-template-columns: minmax(0, 1fr); }
+  .bxa-approach__media { min-height: 0; aspect-ratio: 16 / 9; }
+  .bxa-approach__media img { object-position: center 15%; }
+  .bxa-cta__inner { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 40rem) {
+  .bxa-hero__actions .btn, .bxa-cta__actions .btn { flex: 1 1 100%; }
+  .bxa-hero__facts { gap: .5rem 1rem; }
+  .bxa-hero__media figcaption strong { font-size: 1.0625rem; }
+
+  .bxa-collage { grid-template-rows: repeat(2, 7.5rem); gap: .6rem; }
+  .bxa-facts { gap: .6rem; }
+  .bxa-facts div { padding-left: .6rem; }
+  .bxa-facts dt { font-size: 1.0625rem; }
+
+  .bxa-built__grid { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .bxa-built__media { aspect-ratio: 16 / 9; }
+  .bxa-panel { padding-inline: 1.1rem; }
+
+  .bxa-steps { grid-template-columns: minmax(0, 1fr); }
+
+  .bxa-svc { grid-template-columns: minmax(0, 1fr); gap: .6rem; }
+  .bxa-svc__link { padding: .85rem 1rem; gap: .85rem; }
+
+  .bxa-why__grid.slider > * { flex-basis: 82%; }
+  .bxa-point { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; }
+  .bxa-point .bx-ico { grid-row: auto; }
+  .bxa-why__media { aspect-ratio: 4 / 3; }
+
+  .bxa-hoods { gap: .6rem; }
+  .bxa-hoods li { grid-template-columns: minmax(0, 1fr); padding: .75rem .85rem; }
+  .bxa-hoods svg { display: none; }
+  .bxa-hoods strong { font-size: 1rem; }
+  .bxa-hoods span { font-size: var(--fs-xs); }
+
+  .bxa-cta__details { padding-inline: 1rem; }
+}

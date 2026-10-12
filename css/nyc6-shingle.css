@@ -1300,3 +1300,35 @@
 /* F1. The overview heading read a size below the hero title; the client wanted
    the pair matched, so it takes the hero's scale. */
 .sr-overview__title { font-size: clamp(2rem, 1.35rem + 2.3vw, 3.5rem); }
+
+/* --- 4 Oct: Queens neighborhoods on phones ------------------------------ */
+@media (max-width: 40rem) {
+  /* The list sits right under the call line instead of 56px below it. */
+  .sr-areas__inner { row-gap: var(--space-4); }
+  .sr-areas__head { margin-bottom: 0; }
+  /* A compact pill under the list, not a full-width bar; it stays visible
+     once open so the list can be collapsed again. */
+  .sr-hoods__more,
+  .sr-hoods__more[aria-expanded="true"] {
+    display: inline-flex;
+    justify-self: center;
+    margin-top: 0;
+    min-height: 2.5rem;
+    padding: .4375rem .875rem;
+    font-size: .8125rem;
+  }
+  .sr-hoods__more i { font-size: .625rem; transition: transform .2s ease; }
+  .sr-hoods__more[aria-expanded="true"] i { transform: rotate(180deg); }
+}
+
+/* --- 5 Oct call: on desktop the estimate button matches the Call button in
+   every pair (hero, "Not sure which one you need?", why-us, CTA band). Phones
+   keep the bigger call button. ------------------------------------------- */
+@media (min-width: 40.0625rem) {
+  .btn.sr-btn--minor {
+    min-height: 3.25rem;
+    padding: .9375rem 1.875rem;
+    padding-left: 22px;
+    font-size: 1.0625rem;
+  }
+}

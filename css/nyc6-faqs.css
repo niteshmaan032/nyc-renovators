@@ -357,3 +357,10 @@
 @media (max-width: 900px) {
   .fq-group__head { padding: var(--space-3) var(--space-4); }
 }
+
+/* 5 Oct call: each topic heading carries its number in red, matching the side rail. */
+.fq-group__num {
+  margin-right: .25em;
+  font-variant-numeric: tabular-nums;
+  color: var(--red);
+}

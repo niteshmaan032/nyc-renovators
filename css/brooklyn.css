@@ -537,45 +537,9 @@ svg { display: inline-block; }
 .contact .btn--block { margin-top: .1rem; }
 .contact .form-availability { text-align: center; }
 
-/* Compact footer --------------------------------------------------------- */
+/* Footer shell (layout rules: see the "bkf" block at the end) ------------ */
 .footer { border-top: 4px solid var(--red); background: var(--navy-deep); color: var(--on-dark-muted); font-size: .9rem; }
 .footer a { text-decoration: none; }
-.footer__main { display: grid; grid-template-columns: minmax(0, .38fr) minmax(0, .62fr); gap: clamp(2rem, 3vw, 3.5rem); padding-block: 1.65rem 1.35rem; }
-.footer__brand { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); align-content: start; align-items: center; gap: .8rem 1rem; min-width: 0; }
-.footer__brand img { width: 5.5rem; height: 5.5rem; object-fit: cover; border-radius: 5px; }
-.footer__brand p { max-width: 34ch; line-height: 1.4; }
-.footer__actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: .65rem 1rem; }
-.footer__estimate { min-height: 3.1rem; padding: .65rem 1rem; font-size: .9375rem; }
-.footer__estimate.btn--solid { border-color: #fff; }
-.footer__estimate.btn--solid:hover, .footer__estimate.btn--solid:focus-visible { border-color: #fff; }
-.footer__social-proof { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; }
-.footer__social { display: flex; gap: .2rem; }
-.footer__social a { display: inline-flex; position: relative; align-items: center; justify-content: center; width: 2.35rem; height: 2.35rem; color: #fff; }
-.footer__social a::before { content: ""; position: absolute; inset: .125rem; border: 1px solid var(--hairline-dark); border-radius: 50%; transition: background-color .15s, border-color .15s; }
-.footer__social a:hover::before { background: var(--red); border-color: var(--red); }
-.footer__social svg { position: relative; z-index: 1; width: .875rem; height: .875rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.footer__badges { display: flex; align-items: center; gap: .4rem; padding-left: .65rem; border-left: 1px solid var(--hairline-dark); }
-.footer__google { gap: .35rem; padding: .25rem .45rem; border-radius: 5px; }
-.footer__google img { width: 1.25rem; height: 1.25rem; }
-.footer__google strong { font-size: .875rem; }
-.footer__google .stars { font-size: .65rem; }
-.footer__google small { font-size: .55rem; }
-.footer__brand img.footer__yelp { width: 1.5rem; height: 1.5rem; object-fit: contain; border-radius: 0; }
-.footer__right { display: grid; align-content: space-between; min-width: 0; }
-.footer__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
-.footer__heading { margin: 0 0 .55rem; color: #fff; font-size: .75rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
-.footer__cols ul { display: grid; gap: .3rem; }
-.footer__cols a { display: inline-block; color: var(--on-dark-muted); line-height: 1.35; }
-.footer__cols a:hover { color: #fff; text-decoration: underline; text-underline-offset: .2em; }
-.footer__office { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; padding-top: .85rem; border-top: 1px solid var(--hairline-dark); }
-.footer__office-item { display: flex; align-items: flex-start; gap: .6rem; min-width: 0; }
-.footer__office-item > svg { width: 1.9rem; height: 1.9rem; flex: none; padding: .43rem; border-radius: 50%; background: #fff; fill: none; stroke: var(--red); stroke-width: 2; }
-.footer__office-item > div { min-width: 0; }
-.footer__office span { display: block; margin-bottom: .2rem; color: #fff; font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.footer__office strong, .footer__office a { display: block; color: var(--on-dark-muted); font-size: .875rem; font-weight: 500; line-height: 1.4; }
-.footer__office a:hover { color: #fff; text-decoration: underline; text-underline-offset: .2em; }
-.footer__bottom { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .75rem; border-top: 1px solid var(--hairline-dark); }
-.footer__legal, .footer__terms { color: rgba(255, 255, 255, .7); font-size: .75rem; }
 
 /* Responsive ------------------------------------------------------------- */
 @media (max-width: 75rem) {
@@ -591,13 +555,6 @@ svg { display: inline-block; }
 @media (max-width: 64rem) {
   .services__grid { grid-template-columns: 1fr; }
   .service-card { min-height: 15rem; grid-template-columns: minmax(0, .3fr) minmax(0, .7fr); }
-  .footer__main { grid-template-columns: 1fr; gap: 1.5rem; }
-  .footer__brand { grid-template-columns: 5.5rem minmax(0, 1fr) auto; }
-  .footer__brand > a:first-child { grid-row: 1 / 3; }
-  .footer__brand p { max-width: 40ch; }
-  .footer__actions { grid-column: 3; grid-row: 1 / 3; }
-  .footer__social-proof { grid-column: 2 / 3; }
-  .footer__right { gap: 1rem; }
 }
 @media (max-width: 60rem) {
   .hero__inner { grid-template-columns: 1fr; min-height: 0; }
@@ -611,9 +568,6 @@ svg { display: inline-block; }
 @media (max-width: 48rem) {
   .flatshingle__compare, .editorial__inner, .commitment__inner, .contact__inner { grid-template-columns: 1fr; }
   .editorial__media { min-height: 0; aspect-ratio: 16 / 7; }
-  .footer__brand { grid-template-columns: 5.5rem minmax(0, 1fr); }
-  .footer__brand > a:first-child { grid-row: auto; }
-  .footer__actions, .footer__social-proof { grid-column: 1 / -1; grid-row: auto; }
 }
 @media (max-width: 40rem) {
   .section { padding-block: 2.75rem; }
@@ -647,13 +601,6 @@ svg { display: inline-block; }
   .areas__item { min-height: 3.4rem; font-size: .875rem; }
   .areas__bar { padding: 1rem; }
   .contact__map { flex: none; height: 25rem; min-height: 25rem; }
-  .footer__brand { grid-template-columns: 5rem minmax(0, 1fr); gap: .75rem 1rem; }
-  .footer__brand img { width: 5rem; height: 5rem; }
-  .footer__cols { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .footer__cols > div:last-child { grid-column: 1 / -1; }
-  .footer__cols > div:last-child ul { grid-template-columns: 1fr 1fr; }
-  .footer__office { grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .footer__office-item:last-child { grid-column: 1 / -1; }
   /* Material cards retain the existing swipe pattern on small screens. */
   .slider { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: .25rem; margin-inline: calc(-1 * var(--edge)); padding-inline: var(--edge); scrollbar-width: none; }
   .slider::-webkit-scrollbar { display: none; }
@@ -662,12 +609,6 @@ svg { display: inline-block; }
 }
 @media (max-width: 22rem) {
   .areas__list { grid-template-columns: 1fr; }
-  .footer__cols { grid-template-columns: 1fr; }
-  .footer__cols > div:last-child { grid-column: auto; }
-  .footer__cols > div:last-child ul { grid-template-columns: 1fr; }
-  .footer__office { grid-template-columns: 1fr; }
-  .footer__office-item:last-child { grid-column: auto; }
-  .footer__badges { padding-left: 0; border-left: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .header, .hero__slide, .hero__dot::before { transition: none; }
@@ -759,9 +700,6 @@ svg { display: inline-block; }
 .contact .field textarea { min-height: 5.25rem; }
 .contact__privacy { justify-self: end; margin-top: -.35rem; font-size: .6875rem; letter-spacing: -.01em; white-space: nowrap; }
 
-/* 18. Footer: Yelp mark matches the Google mark. */
-.footer__brand img.footer__yelp { width: 2.1rem; height: 2.1rem; }
-
 /* 18. Live chat (Blazeo/ApexChat) invitation sits bottom-right. */
 #apexchat_prechat_invitation_wrapper { left: auto !important; right: 0 !important; padding: 0 0 0 10px !important; }
 
@@ -804,17 +742,179 @@ svg { display: inline-block; }
   .slider { scroll-padding-inline: var(--edge); }
   .areas__list.slider { scroll-padding-inline: .75rem; }
 
-  /* Footer: the paragraph sits under the logo, the Google box is back to its
-     compact size (the logo rule was sizing its icon too), and each contact
-     item gets its own full-width line. */
-  .footer__brand { grid-template-columns: 1fr; }
-  .footer__brand p { max-width: none; }
-  .footer__brand .footer__google { padding: .25rem .5rem; }
-  .footer__brand .footer__google img { width: 1.25rem; height: 1.25rem; }
-  .footer__office { grid-template-columns: 1fr; gap: .85rem; }
-  .footer__office-item:last-child { grid-column: auto; }
-
   /* Live chat avatar pinned bottom right, not over the middle of the page. */
   #apexchat_prechat_invitation_wrapper { width: 6.5rem !important; padding: 0 !important; right: .25rem !important; }
   #apexchat_prechat_invitation_frame { width: 100% !important; }
+}
+
+/* ==========================================================================
+   5 Oct client call — appended overrides (Brooklyn pages only).
+   ========================================================================== */
+
+/* Header: a red line under the header, the same as the top of the footer,
+   so the header no longer runs straight into the hero photo. */
+.header { border-bottom: 4px solid var(--red); }
+@media (max-width: 48rem) { .header { border-bottom-width: 3px; } }
+
+/* Forms: tighter, and the call-back line sits closer to the button. */
+.hero__form { gap: .75rem; padding-bottom: 1rem; }
+.hero__form .form-callback,
+.contact .form-callback { margin-top: -.35rem; line-height: 1.3; }
+/* Get In Touch: the privacy note sits on the left, under Name. */
+.contact__privacy { justify-self: start; }
+
+/* Roofing types and building systems (replaces "How we work"). */
+.bk-types { padding-block: var(--section-pad); background: var(--sky); }
+.bk-types .section-head { margin-bottom: var(--space-5); }
+.bk-types .section-title { max-width: none; }
+.bk-types .section-lede { margin-top: .75rem; }
+.bk-types__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.bk-types__card { display: flex; flex-direction: column; align-items: flex-start; gap: .5rem; min-width: 0; padding: 1.35rem 1.5rem 1.5rem; border: 1px solid var(--hairline); border-top: 3px solid var(--red); border-radius: 8px; background: #fff; }
+.bk-types__card .icon-box { margin-bottom: .25rem; }
+.bk-types__tag { color: var(--red); font-size: .75rem; font-weight: 700; letter-spacing: .08em; line-height: 1.35; text-transform: uppercase; }
+.bk-types__title { font-size: clamp(1.2rem, 1.05rem + .4vw, 1.4rem); letter-spacing: -.015em; }
+.bk-types__text { color: var(--muted); font-size: .9375rem; line-height: 1.55; }
+
+/* Commercial roofing: photo left, copy right. */
+.bk-commercial { padding-block: var(--section-pad); background: #fff; }
+.bk-commercial__inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(1.5rem, 1rem + 2.5vw, 4rem); align-items: center; }
+.bk-commercial__media { aspect-ratio: 4 / 3; border-radius: 8px; }
+.bk-commercial__media figcaption { border-radius: 4px; }
+.bk-commercial__copy { display: flex; flex-direction: column; align-items: flex-start; }
+.bk-commercial__copy .section-lede { margin-top: .75rem; }
+.bk-commercial__list { display: grid; gap: 0; width: 100%; margin-top: 1.25rem; border-top: 1px solid var(--hairline); }
+.bk-commercial__list li { display: flex; align-items: center; gap: 1rem; padding: .8rem 0; border-bottom: 1px solid var(--hairline); }
+.bk-commercial__list strong, .bk-commercial__list small { display: block; }
+.bk-commercial__list strong { color: var(--navy); font-size: 1.0625rem; }
+.bk-commercial__list small { margin-top: .1rem; color: var(--muted); font-size: .9375rem; line-height: 1.5; }
+.bk-commercial__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+
+/* Reviews: Trustindex widget between the FAQs and Get In Touch. */
+.bk-reviews { padding-block: var(--section-pad); background: #fff; border-top: 1px solid var(--hairline); }
+.bk-reviews .section-head { margin-bottom: var(--space-4); }
+.bk-reviews .section-title { max-width: none; }
+.bk-reviews__widget { min-height: 12rem; }
+
+@media (max-width: 75rem) {
+  .bk-types__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 48rem) {
+  .bk-commercial__inner { grid-template-columns: 1fr; }
+  .bk-commercial__media { aspect-ratio: 16 / 10; }
+}
+
+/* Mobile round from the call. */
+@media (max-width: 40rem) {
+  /* Every estimate form: Name and Phone (and Address and Email) side by side. */
+  .field-row, .hero__form .field-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+  .field input::placeholder, .field textarea::placeholder { font-size: .8125rem; }
+
+  /* Hero: the subtitle becomes a white badge, like the Queens hero badge. */
+  .hero__title span { padding: .4rem .75rem; background: #fff; color: var(--navy); text-decoration: none; font-size: clamp(1.15rem, .95rem + 1vw, 1.35rem); line-height: 1.25; }
+
+  /* Hero proof row: 35+ Years and Licensed get boxes like the rating marks. */
+  .hero__proof { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+  .hero__proof .rating-mark { justify-content: center; }
+  .hero__stat { align-items: center; justify-content: center; min-height: 3.35rem; padding: .35rem .65rem; border: 1px solid var(--hairline-dark); border-radius: 10px; background: rgba(255, 255, 255, .08); }
+
+  /* The trust strip is hidden so the About photo follows the form. */
+  .trust { display: none; }
+
+  /* Neighborhoods: the estimate button is red. */
+  .areas__bar .btn { --color: var(--red); --hover-bg: var(--red-dark); color: #fff; }
+
+  /* New sections: cards swipe, copy stays compact. */
+  .bk-types__grid.slider { display: flex; grid-template-columns: none; }
+  .bk-types__grid.slider > .bk-types__card { flex: 0 0 82%; }
+  .bk-commercial__list li { align-items: flex-start; }
+  .bk-commercial__actions .btn { flex: 1 1 12rem; }
+}
+
+/* ==========================================================================
+   Footer: nyc6 footer layout in the Brooklyn palette (5 Oct call).
+   Every rule is scoped to .bkf so nothing reaches other footers.
+   ========================================================================== */
+.bkf { --bkf-head: #ff8f9b; --bkf-line: rgba(255, 255, 255, .12); font-size: 1rem; }
+.bkf p { margin: 0; }
+.bkf__top { display: grid; grid-template-columns: minmax(0, 2.6fr) repeat(3, minmax(max-content, 1fr)); gap: 2rem clamp(1.5rem, 1rem + 2vw, 2.85rem); padding-block: 1.5rem .75rem; }
+.bkf__brand { min-width: 0; }
+/* Logo on its own white tile, with the same white space above and below it. */
+.bkf__logo { display: inline-flex; padding: .4rem; border-radius: 6px; background: #fff; line-height: 0; }
+.bkf__logo img { width: auto; height: 4.75rem; }
+.bkf__about { max-width: 46ch; margin-top: 1.5rem !important; color: rgba(255, 255, 255, .74); font-size: .9375rem; line-height: 1.7; }
+.bkf__cta { margin-top: 1.5rem; min-height: 3.1rem; padding: .65rem 1.4rem; font-size: 1rem; border-color: #fff; }
+.bkf__cta.btn--solid:hover, .bkf__cta.btn--solid:focus-visible { border-color: #fff; }
+.bkf__col { min-width: 0; }
+/* .bkf scope beats page-level h2 rules (e.g. the About page's large h2). */
+.bkf .bkf__heading { max-width: none; color: var(--bkf-head); font-size: 1rem; line-height: 1.6; letter-spacing: .01em; }
+.bkf__links { display: grid; gap: 2px; margin-top: 1rem; }
+.bkf__links a { display: inline-block; padding: .5rem 0; color: rgba(255, 255, 255, .76); font-size: .9375rem; line-height: 1.4; }
+.bkf__links a:hover, .bkf__links a:focus-visible { color: #fff; text-decoration: underline; text-underline-offset: .2em; }
+
+.bkf__contactbar { border-top: 1px solid var(--bkf-line); }
+.bkf__midrow { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 2rem; padding-block: .75rem; }
+.bkf__badges { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1rem; }
+.bkf__badges li { display: flex; align-items: center; gap: .5rem; }
+.bkf__rating img { width: 2rem; height: 2rem; }
+.bkf__rating strong { color: #fff; font-size: 1.125rem; font-weight: 700; }
+.bkf__star { color: #ffc02e; font-size: 1.125rem; }
+.bkf__yelp img { width: 2.625rem; height: 2.625rem; object-fit: contain; }
+.bkf__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.bkf__contacts { display: grid; grid-auto-flow: column; justify-content: end; gap: 1.5rem; }
+.bkf__contacts li { display: grid; grid-template-columns: 2.5rem auto; align-items: start; gap: 1rem; }
+.bkf__icon { display: flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--red); color: #fff; }
+.bkf__icon svg { width: 1.05rem; height: 1.05rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.bkf__label { color: rgba(255, 255, 255, .58); font-size: .8125rem; letter-spacing: .14em; line-height: 1.6; text-transform: uppercase; }
+.bkf__value { margin-top: .25rem !important; color: #fff; font-size: .9375rem; font-weight: 700; line-height: 1.45; }
+.bkf__value a { color: #fff; }
+.bkf__value a:hover, .bkf__value a:focus-visible { text-decoration: underline; text-underline-offset: .2em; }
+
+.bkf__bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 1.5rem; padding-block: .5rem .75rem; }
+.bkf__socials { display: flex; flex-wrap: wrap; gap: .25rem; margin-right: auto; }
+.bkf__socials a, .bkf__totop { display: flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border: 1px solid rgba(255, 255, 255, .18); border-radius: 3px; color: #fff; transition: background-color .15s, border-color .15s; }
+.bkf__socials a:hover, .bkf__socials a:focus-visible, .bkf__totop:hover, .bkf__totop:focus-visible { background: var(--red); border-color: var(--red); }
+.bkf__socials svg, .bkf__totop svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.bkf__totop { margin-left: .75rem; border-color: rgba(255, 255, 255, .22); }
+/* The Facebook glyph reads better filled than outlined at this size. */
+.bkf__socials a[aria-label="Facebook"] svg { fill: currentColor; stroke: none; width: 1.15rem; height: 1.15rem; }
+.bkf__copy { margin-left: auto !important; color: rgba(255, 255, 255, .6); font-size: .875rem; line-height: 1.6; }
+.bkf__legal { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.5rem; }
+.bkf__legal a { color: rgba(255, 255, 255, .7); font-size: .875rem; }
+.bkf__legal a:hover, .bkf__legal a:focus-visible { color: #fff; text-decoration: underline; text-underline-offset: .2em; }
+
+@media (max-width: 64rem) {
+  .bkf__top { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .bkf__brand { grid-column: 1 / -1; }
+  .bkf__about { max-width: 62ch; }
+}
+@media (max-width: 48rem) {
+  .bkf__contacts { grid-auto-flow: row; justify-content: start; gap: 1rem; }
+  .bkf__copy { margin-left: 0 !important; }
+}
+@media (max-width: 40rem) {
+  .bkf__top { gap: 1.75rem 1rem; padding-top: 1.25rem; }
+  .bkf__about { margin-top: 1.25rem !important; }
+  .bkf__links { margin-top: .75rem; }
+  /* Column headings get a red pill so they stand apart from the links. */
+  .bkf__top { column-gap: .75rem; }
+  .bkf .bkf__heading { display: inline-block; padding: .2rem .5rem; border-radius: 4px; background: var(--red); color: #fff; font-size: .8125rem; letter-spacing: 0; white-space: nowrap; }
+  .bkf__midrow { flex-direction: column; align-items: flex-start; gap: 1rem; padding-block: 1rem; }
+  /* Google and Yelp: double the old gap, the same on each side. */
+  .bkf__badges { gap: 2rem; }
+  .bkf__rating img { width: 2.5rem; height: 2.5rem; }
+  .bkf__yelp img { width: 2.75rem; height: 2.75rem; }
+  .bkf__bottom { padding-block: .25rem 1rem; }
+  .bkf__socials { flex-basis: 100%; }
+  .bkf__copy { flex-basis: 100%; }
+  .bkf__totop { margin-left: auto; }
+}
+
+/* 8 Oct: footer copy and button sit to the right of the logo (less empty space). */
+.bkf__brand { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 1.25rem; align-content: start; align-items: start; }
+.bkf__logo { grid-row: 1 / span 2; }
+.bkf__about { margin-top: 0 !important; }
+.bkf__brand .bkf__cta { justify-self: start; margin-top: 1rem; }
+@media (max-width: 40rem) {
+  .bkf__brand { column-gap: 1rem; }
+  .bkf__logo img { height: 4rem; }
 }

@@ -54,3 +54,9 @@
   .contact-page__proof-icon { width: 2rem; height: 2rem; }
   .contact-page__proof-icon img, .contact-page__proof-icon svg { width: 1.2rem; height: 1.2rem; }
 }
+
+/* 5 Oct call: the form sets the row height and the map flexes to match, so
+   the form card no longer ends with empty space under the button. */
+@media (min-width: 48.01rem) {
+  .contact-page__main .contact__map { min-height: 14rem; }
+}

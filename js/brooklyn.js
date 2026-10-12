@@ -7,12 +7,8 @@
   var drawer = document.getElementById('drawer');
   var desktop = window.matchMedia('(min-width: 88.01rem)');
 
-  /* ---------- Header surface follows scroll ---------- */
-  if (header) {
-    var syncHeader = function () { header.classList.toggle('is-scrolled', window.scrollY > 8); };
-    syncHeader();
-    window.addEventListener('scroll', syncHeader, { passive: true });
-  }
+  /* ---------- Header surface: solid white from the top (8 Oct client call) ---------- */
+  if (header) header.classList.add('is-scrolled');
 
   /* ---------- Hero photo carousel ---------- */
   var hero = document.querySelector('.hero');

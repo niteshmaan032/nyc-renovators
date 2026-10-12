@@ -1,0 +1,234 @@
+/* ==========================================================================
+   Contact page (nyc6-contact.html, nyc6-contact-v2.html) — 5 Oct call
+   Loaded after nyc6.css on the contact pages only. Every rule is scoped to
+   .page-contact (or .page-contact-v2), so nothing reaches the other nyc6
+   pages that share nyc6.css.
+   ========================================================================== */
+
+
+/* 0:38:16 / 0:44:00 — half the white space between the heading band and the
+   form row (56px to 28px on desktop, 44px to 22px on a phone). */
+.page-contact .contact-hero { padding-top: 1rem; }
+.page-contact .contact-hero__grid { margin-top: .75rem; }
+
+@media (max-width: 40rem) {
+  .page-contact .contact-hero { padding-top: .625rem; }
+}
+
+
+/* 1:08:55 — the form card takes the About page's Get In Touch look: a strong
+   dark-blue edge and the light-blue fill, with the inputs staying white. */
+.page-contact .page-hero--contact .contact-form {
+  border: 2px solid var(--navy);
+  background-color: var(--surface-alt);
+}
+
+/* 0:41:53 — the form title comes up a little. */
+.page-contact .page-hero--contact .contact-form { padding-top: clamp(.75rem, .6rem + .5vw, 1rem); }
+.page-contact .page-hero--contact .contact-form__head { padding-bottom: .375rem; }
+
+
+/* Fields ------------------------------------------------------------------- */
+
+/* 0:38:28 — the reassurance line sits under Phone, not under Name. */
+@media (min-width: 40.0625rem) {
+  .page-contact .contact-form__grid .field--note { grid-column: 2 / 3; }
+}
+
+/* 0:44:20 — and it is dropped on a phone. */
+@media (max-width: 40rem) {
+  .page-contact .contact-form__grid .field--note { display: none; }
+}
+
+/* 0:38:37 / 0:44:05 — Address | Email on every width (the markup now has
+   Address first), and on a phone the form keeps two columns: Name | Phone,
+   then Address | Email, then the message full width. */
+.page-contact .page-hero--contact .field--address,
+.page-contact .page-hero--contact .field--email,
+.page-contact .page-hero--contact .field--message { order: 0; }
+
+@media (max-width: 40rem) {
+  .page-contact .page-hero--contact .contact-form__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: .75rem;
+  }
+}
+
+/* 0:42:23 — the "How Can We Help?" box a touch shorter (83px to 64px). */
+.page-contact .page-hero--contact .field__input--area {
+  height: 4rem;
+  min-height: 3.5rem;
+}
+
+
+/* Submit ------------------------------------------------------------------- */
+
+/* 0:41:57 — the button no longer runs the full width of the card; about an
+   inch and a half comes off each side on desktop. Full width on a phone. */
+.page-contact .page-hero--contact .contact-form__submit {
+  display: flex;
+  width: 100%;
+  max-width: 29rem;
+  margin-inline: auto;
+}
+
+@media (max-width: 40rem) {
+  .page-contact .page-hero--contact .contact-form__submit { max-width: none; }
+}
+
+/* "We'll call you back within the hour" under the button. */
+.page-contact .contact-form__callback {
+  margin-top: .5rem;
+  margin-bottom: 0;
+  font-size: .875rem;
+  font-weight: var(--fw-medium);
+  color: rgba(1, 44, 109, .72);
+}
+.page-contact .contact-form__callback + .form-status:empty { display: none; }
+
+
+/* ==========================================================================
+   Staging layout — nyc6-contact-v2.html only (0:45:08, 0:51:41)
+   ========================================================================== */
+
+/* Main row: the crew photo takes the map's place and grows to the form's
+   height, which at desktop widths is close to the photo's own 4:3. Call Us
+   and Hours sit under it as one row of two; the address tile moved down to
+   the office section. */
+.page-contact-v2 .contact-team {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 40rem;
+  min-height: 19rem;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background-color: var(--surface-alt);
+}
+
+.page-contact-v2 .contact-team__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+/* Phone and tablet: the form leads (nyc6.css already orders it first), then
+   the photo at its own 4:3, then the two tiles. */
+@media (max-width: 68rem) {
+  .page-contact-v2 .contact-team {
+    flex: none;
+    max-width: none;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+
+/* Our Forest Hills Office ------------------------------------------------ */
+
+.page-contact-v2 .office {
+  padding-block: clamp(1.75rem, 1.2rem + 1.6vw, 3rem) clamp(1rem, .7rem + 1vw, 1.75rem);
+  background-color: var(--surface);
+}
+
+.page-contact-v2 .office__head {
+  display: grid;
+  justify-items: center;
+  margin-bottom: var(--space-5);
+  text-align: center;
+}
+
+/* Map column a little narrower than the photo, so the photo keeps close to
+   its own 16:9 at the height the map and address card need together. */
+.page-contact-v2 .office__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  align-items: stretch;
+  gap: clamp(1.25rem, .9rem + 1.2vw, 2rem);
+}
+
+.page-contact-v2 .office__place {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* 19rem is the floor at which Google's embed keeps its own place card. */
+.page-contact-v2 .office__map {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 19rem;
+  max-height: none;
+  max-width: none;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+}
+
+.page-contact-v2 .office__map .contact__map-frame {
+  height: 100%;
+  min-height: 19rem;
+}
+
+.page-contact-v2 .office__address {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem 1rem;
+  padding: .75rem .875rem .75rem 1rem;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface);
+}
+
+.page-contact-v2 .office__address .contact-line__icon { flex: none; }
+
+.page-contact-v2 .office__address-body {
+  display: grid;
+  flex: 1 1 14rem;
+  gap: .125rem;
+  font-style: normal;
+}
+
+.page-contact-v2 .office__address-value {
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.35;
+  color: var(--navy);
+}
+
+.page-contact-v2 .office__photo {
+  min-height: 19rem;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background-color: var(--surface-alt);
+}
+
+.page-contact-v2 .office__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Stacked: map, address, then the team photo at its own 16:9. */
+@media (max-width: 68rem) {
+  .page-contact-v2 .office__grid { grid-template-columns: minmax(0, 1fr); }
+
+  .page-contact-v2 .office__map,
+  .page-contact-v2 .office__map .contact__map-frame {
+    flex: none;
+    height: 17rem;
+    min-height: 0;
+  }
+
+  .page-contact-v2 .office__photo {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+}
+
