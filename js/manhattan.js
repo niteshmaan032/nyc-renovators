@@ -38,11 +38,12 @@
   /* ---------- Homepage hero photo slider (manhattan.html only) ----------
      Crossfades .mh-shero__slide every 6 s. Stops on mouse hover, keyboard
      focus inside the hero, a hidden tab, and prefers-reduced-motion. Pages
-     without .mh-shero skip this block entirely. */
+     without .mh-shero skip this block entirely. The dots were removed on
+     12 Oct (Sean); .mh-shero__dot buttons are still wired if they come back. */
   var shero = document.querySelector('.mh-shero');
   var sheroSlides = shero ? Array.prototype.slice.call(shero.querySelectorAll('.mh-shero__slide')) : [];
   var sheroDots = shero ? Array.prototype.slice.call(shero.querySelectorAll('.mh-shero__dot')) : [];
-  if (shero && sheroSlides.length > 1 && sheroDots.length === sheroSlides.length && window.matchMedia) {
+  if (shero && sheroSlides.length > 1 && (!sheroDots.length || sheroDots.length === sheroSlides.length) && window.matchMedia) {
     var sheroIndex = 0, sheroTimer = null, sheroHover = false;
     var sheroCalm = window.matchMedia('(prefers-reduced-motion: reduce)');
     var showShero = function (index) {

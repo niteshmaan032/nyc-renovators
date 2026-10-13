@@ -11,7 +11,7 @@
   <link rel="preload" href="fonts/HelveticaNeueLight.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/HelveticaNeueMedium.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/brooklyn.css?v=51">
+  <link rel="stylesheet" href="css/brooklyn.css?v=52">
   <link rel="stylesheet" href="css/brooklyn-faqs.css?v=3">
 </head>
 <body class="page-brooklyn page-brooklyn-faqs">
@@ -138,7 +138,7 @@
         <li><a class="drawer__link" href="brooklyn-contact-us.html">Contact Us</a></li>
       </ul>
       <div class="drawer__actions">
-        <a class="btn btn--navy" href="tel:+17185362667">Call 718-536-2667</a>
+        <a class="btn btn--navy" href="tel:+17185362667"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-536-2667</a>
         <a class="btn btn--solid" href="#contact-form">Get a Free Estimate</a>
       </div>
     </nav>
@@ -272,7 +272,7 @@
           <div class="field"><label for="qf-phone">Phone</label><input id="qf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(718) 000-0000" required></div>
         </div>
         <div class="field"><label for="qf-address">Address</label><input id="qf-address" name="address" type="text" autocomplete="street-address" placeholder="Street address, Brooklyn" required></div>
-        <div class="field"><label for="qf-message">How Can We Help?</label><textarea id="qf-message" name="message" rows="3" placeholder="Ask your question or tell us about the roof"></textarea></div>
+        <div class="field"><label for="qf-message">How Can We Help?</label><textarea id="qf-message" name="message" rows="3" placeholder="My Park Slope brownstone has a roof leak. Can I get a repair estimate?"></textarea></div>
         <button class="btn btn--solid btn--block" type="submit">Get My Free Estimate</button>
         <p class="form-callback">We&rsquo;ll call you back within the hour</p>
       </form>
@@ -324,16 +324,6 @@
 
   <div class="bkf__contactbar">
     <div class="container bkf__midrow">
-      <ul class="bkf__badges" aria-label="Customer ratings">
-        <li class="bkf__rating">
-          <img src="images/Google__G__logo.svg.webp" alt="Google" width="28" height="28" loading="lazy" decoding="async">
-          <span><strong>5.0</strong> <span class="bkf__star" aria-hidden="true">&#9733;</span><span class="bkf__sr">5.0 out of 5 on Google</span></span>
-        </li>
-        <li class="bkf__yelp">
-          <img src="images/PngItem_1663.png" alt="People love us on Yelp" width="540" height="539" loading="lazy" decoding="async">
-        </li>
-      </ul>
-
       <ul class="bkf__contacts">
         <li>
           <span class="bkf__icon"><svg aria-hidden="true"><use href="#i-phone"/></svg></span>
@@ -357,6 +347,20 @@
           </div>
         </li>
       </ul>
+
+      <ul class="bkf__badges" aria-label="Customer ratings">
+        <li class="bkf__rating">
+          <img src="images/Google__G__logo.svg.webp" alt="Google" width="28" height="28" loading="lazy" decoding="async">
+          <span class="bkf__score"><span><strong>5.0</strong> <span class="bkf__star" aria-hidden="true">&#9733;</span><span class="bkf__sr">5.0 out of 5 on Google from</span></span> <span class="bkf__count"><span class="bkf__dot" aria-hidden="true">&middot;</span> 178 Google reviews</span></span>
+        </li>
+        <li class="bkf__yelp">
+          <img src="images/PngItem_1663.png" alt="People love us on Yelp" width="540" height="539" loading="lazy" decoding="async">
+        </li>
+        <li class="bkf__licensed">
+          <span class="bkf__shield"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+          <span>Licensed &amp; Insured</span>
+        </li>
+      </ul>
     </div>
   </div>
 
@@ -376,7 +380,7 @@
 
 </footer>
 
-<script src="js/brooklyn.js?v=5" defer></script>
+<script src="js/brooklyn.js?v=6" defer></script>
 <script src="js/brooklyn-pages.js?v=1" defer></script>
 
 <!-- Live chat (Blazeo), starts ten seconds after load.

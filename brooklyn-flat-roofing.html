@@ -11,7 +11,7 @@
   <link rel="preload" href="fonts/HelveticaNeueLight.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/HelveticaNeueMedium.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/brooklyn.css?v=51">
+  <link rel="stylesheet" href="css/brooklyn.css?v=52">
   <link rel="stylesheet" href="css/brooklyn-service.css?v=6">
 </head>
 <body class="page-brooklyn page-brooklyn-service">
@@ -138,7 +138,7 @@
         <li><a class="drawer__link" href="brooklyn-contact-us.html">Contact Us</a></li>
       </ul>
       <div class="drawer__actions">
-        <a class="btn btn--navy" href="tel:+17185362667">Call 718-536-2667</a>
+        <a class="btn btn--navy" href="tel:+17185362667"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-536-2667</a>
         <a class="btn btn--solid" href="#contact-form">Get a Free Estimate</a>
       </div>
     </nav>
@@ -225,7 +225,7 @@
         <p><strong>Not sure which one you need?</strong> We inspect the roof and explain the options before any work starts.</p>
         <div class="bks-svc-bar__actions">
           <a class="btn btn--solid btn--white" href="#contact-form">Get a Free Estimate</a>
-          <a class="btn btn--solid" href="tel:+17185362667">Call 718-536-2667</a>
+          <a class="btn btn--solid" href="tel:+17185362667"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-536-2667</a>
         </div>
       </div>
     </div>
@@ -378,7 +378,7 @@
         <p class="bks-repair__text">Routine maintenance checks drains, seams, flashing, and the roof surface to catch problems early and extend the life of the roof.</p>
         <div class="bks-repair__actions">
           <a class="btn btn--solid" href="#contact-form">Book a Repair</a>
-          <a class="btn btn--navy" href="tel:+17185362667">Call 718-536-2667</a>
+          <a class="btn btn--navy" href="tel:+17185362667"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-536-2667</a>
         </div>
       </div>
       <figure class="media-frame bks-repair__media">
@@ -416,7 +416,7 @@
       <p class="cta-band__text">Tell us what is happening on your roof. We&rsquo;ll inspect it, explain the options, and give you a free estimate.</p>
       <div class="cta-band__actions">
         <a class="btn btn--solid btn--white" href="#contact-form">Get a Free Estimate</a>
-        <a class="btn btn--solid" href="tel:+17185362667">Call 718-536-2667</a>
+        <a class="btn btn--solid" href="tel:+17185362667"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-536-2667</a>
       </div>
       <ul class="cta-band__note"><li>Fully licensed and insured</li><li>Google 5.0 rated</li><li>Open 7 days a week</li></ul>
     </div>
@@ -448,16 +448,22 @@
           <li><span class="areas__item"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>Prospect Heights</span></span></li>
         </ul>
         <p class="swipe-hint" aria-hidden="true">&larr; Swipe to see more &rarr;</p>
-        <div class="areas__bar"><a class="btn btn--solid btn--white" href="#contact-form">Get Free Estimate</a></div>
+        <div class="areas__bar"><a class="btn btn--solid" href="#contact-form">Get Free Estimate</a></div>
       </div>
     </div>
   </section>
 
     <section class="section bk-reviews" id="reviews" aria-labelledby="reviews-title">
     <div class="container">
-      <div class="section-head section-head--center">
-        <p class="eyebrow">Reviews</p>
-        <h2 class="section-title" id="reviews-title">What Our Customers Say</h2>
+      <div class="section-head bk-reviews__head">
+        <div>
+          <p class="eyebrow">Reviews</p>
+          <h2 class="section-title" id="reviews-title">What Our Customers Say</h2>
+        </div>
+        <ul class="bk-reviews__badges" aria-label="Find our reviews">
+          <li class="rating-mark"><img src="images/Google__G__logo.svg.webp" alt="Google" width="28" height="28" loading="lazy"><span><strong>5.0</strong> <span class="stars" aria-label="5 out of 5 stars">★★★★★</span><small>Google rating</small></span></li>
+          <li class="rating-mark"><img src="images/PngItem_1663.png" alt="Yelp" width="28" height="28" loading="lazy"><span><strong>5.0</strong> <span class="stars" aria-label="5 out of 5 stars">★★★★★</span><small>Yelp rating</small></span></li>
+        </ul>
       </div>
       <!-- Trustindex: live Google reviews widget -->
       <div class="bk-reviews__widget">
@@ -503,7 +509,7 @@
             </div>
           </div>
           <div class="contact__map">
-            <iframe title="Map showing Royal Roofing &amp; Siding Brooklyn at 108 Emerson Place" src="https://www.google.com/maps?q=Royal+Roofing+%26+Siding+Brooklyn,+108+Emerson+Place,+Suite+212,+Brooklyn,+NY+11205&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            <iframe title="Map showing Royal Roofing &amp; Siding Brooklyn at 108 Emerson Place" src="https://www.google.com/maps?q=Royal+Roofing+%26+Siding+Brooklyn,+108+Emerson+Place,+Suite+212,+Brooklyn,+NY+11205&amp;z=17&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
           </div>
         </div>
         <form class="quote-card contact__form" id="contact-form" novalidate aria-labelledby="contact-form-title">
@@ -513,7 +519,7 @@
             <div class="field"><label for="cf-phone">Phone</label><input id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(718) 000-0000" required></div>
           </div>
           <div class="field"><label for="cf-address">Address</label><input id="cf-address" name="address" type="text" autocomplete="street-address" placeholder="Street address, Brooklyn" required></div>
-          <div class="field"><label for="cf-message">How Can We Help?</label><textarea id="cf-message" name="message" rows="3" placeholder="Leak, ponding water, or a new flat roof? Tell us what you need"></textarea></div>
+          <div class="field"><label for="cf-message">How Can We Help?</label><textarea id="cf-message" name="message" rows="3" placeholder="My Park Slope brownstone has a roof leak. Can I get a repair estimate?"></textarea></div>
           <button class="btn btn--solid btn--block" type="submit">Get My Free Estimate</button>
           <p class="form-callback">We&rsquo;ll call you back within the hour</p>
         </form>
@@ -566,16 +572,6 @@
 
   <div class="bkf__contactbar">
     <div class="container bkf__midrow">
-      <ul class="bkf__badges" aria-label="Customer ratings">
-        <li class="bkf__rating">
-          <img src="images/Google__G__logo.svg.webp" alt="Google" width="28" height="28" loading="lazy" decoding="async">
-          <span><strong>5.0</strong> <span class="bkf__star" aria-hidden="true">&#9733;</span><span class="bkf__sr">5.0 out of 5 on Google</span></span>
-        </li>
-        <li class="bkf__yelp">
-          <img src="images/PngItem_1663.png" alt="People love us on Yelp" width="540" height="539" loading="lazy" decoding="async">
-        </li>
-      </ul>
-
       <ul class="bkf__contacts">
         <li>
           <span class="bkf__icon"><svg aria-hidden="true"><use href="#i-phone"/></svg></span>
@@ -599,6 +595,20 @@
           </div>
         </li>
       </ul>
+
+      <ul class="bkf__badges" aria-label="Customer ratings">
+        <li class="bkf__rating">
+          <img src="images/Google__G__logo.svg.webp" alt="Google" width="28" height="28" loading="lazy" decoding="async">
+          <span class="bkf__score"><span><strong>5.0</strong> <span class="bkf__star" aria-hidden="true">&#9733;</span><span class="bkf__sr">5.0 out of 5 on Google from</span></span> <span class="bkf__count"><span class="bkf__dot" aria-hidden="true">&middot;</span> 178 Google reviews</span></span>
+        </li>
+        <li class="bkf__yelp">
+          <img src="images/PngItem_1663.png" alt="People love us on Yelp" width="540" height="539" loading="lazy" decoding="async">
+        </li>
+        <li class="bkf__licensed">
+          <span class="bkf__shield"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+          <span>Licensed &amp; Insured</span>
+        </li>
+      </ul>
     </div>
   </div>
 
@@ -618,7 +628,7 @@
 
 </footer>
 
-<script src="js/brooklyn.js?v=5" defer></script>
+<script src="js/brooklyn.js?v=6" defer></script>
 <script src="js/brooklyn-pages.js?v=1" defer></script>
 
 <!-- Live chat (Blazeo), starts ten seconds after load.

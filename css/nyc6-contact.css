@@ -232,3 +232,59 @@
   }
 }
 
+
+
+/* ==========================================================================
+   12 Oct call — both contact pages
+   ========================================================================== */
+
+/* NRCA joins the marks after BBB. The file is a wide lockup, so it is sized
+   by height to sit with the GAF badge. */
+.page-hero--contact .hero__badge--nrca img { width: auto; height: 2.5rem; }
+
+/* Phones: six marks no longer fit on one row, so they sit three over three. */
+@media (max-width: 40rem) {
+  .page-hero--contact .page-hero__marks {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    row-gap: .75rem;
+  }
+  .page-hero--contact .hero__badge img { height: 2.25rem; }
+  .page-hero--contact .hero__badge--rating img { height: 1.625rem; }
+  .page-hero--contact .hero__badge--gaf img { height: 2rem; }
+  .page-hero--contact .hero__badge--extra:not(.hero__badge--inc) img { height: 2.25rem; }
+  .page-hero--contact .hero__badge--nrca img { height: 1.75rem; }
+}
+
+/* FAQ questions are H3s inside the <summary>; they keep the row's type. */
+.faq__q-text {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+/* Reviews band between the contact block and What Happens Next. */
+.page-contact .contact-reviews { padding-block: clamp(1.5rem, 1.1rem + 1.4vw, 2.5rem); }
+.page-contact .contact-reviews .reviews__head { margin-bottom: var(--space-4); }
+/* Same tint as What Happens Next below it, so a content-width hairline
+   separates the two (as between the homepage FAQs and Get in Touch). */
+.page-contact .contact-reviews { padding-bottom: 0; }
+.page-contact .contact-reviews > .container {
+  padding-bottom: clamp(1.25rem, 1rem + 1vw, 2rem);
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* Maps stay at least 19rem (304px) tall so Google keeps the place card. */
+@media (max-width: 68rem) {
+  .page-contact-v2 .office__map,
+  .page-contact-v2 .office__map .contact__map-frame { height: 19rem; }
+  .page-contact .contact-hero__left .contact__map,
+  .page-contact .contact-hero__left .contact__map-frame { min-height: 19rem; height: 19rem; }
+}
+
+/* Sean (Oct 12 email): the two intro lines are separate paragraphs; keep them visually as one block. */
+.page-hero__lede + .page-hero__lede--second { margin-top: 0; }

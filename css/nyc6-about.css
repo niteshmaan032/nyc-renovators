@@ -224,3 +224,15 @@ body .page-hero--service:has(.ab-hero) {
   .ab-reviews .reviews__widget { margin-top: -1.5rem; }
   .ab-reviews + .sr-contact { padding-top: 1.5rem; }
 }
+
+
+/* 12 Oct call: each "Other roofing services" card links to its service page.
+   The title carries the link; its ::after covers the card so the whole tile
+   is the target. */
+.ab-card { position: relative; transition: background-color var(--dur-fast) var(--ease-out); }
+.ab-card__link { color: inherit; text-decoration: none; }
+.ab-card__link::after { content: ""; position: absolute; inset: 0; }
+.ab-card:hover { background: var(--surface-alt); }
+.ab-card:hover .ab-card__title,
+.ab-card__link:focus-visible { color: var(--red); }
+.ab-card:hover .ab-card__icon { background: var(--surface); }

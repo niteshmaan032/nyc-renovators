@@ -3562,15 +3562,15 @@ a.contact-line__value:hover { color: var(--red); }
 
 /* Oct 5 call: a trust card (from the Queens menu) sits above the estimate
    button, and the pair drops to the foot of the Property Types column so the
-   button lines up with the last link in the other two columns. */
+   button lines up with the last link in the other two columns.
+   Oct 12 call: title and red left rule removed; only the credential line stays. */
 .mega__col--cta .mega__promo {
   display: grid;
   justify-items: start;
   gap: .15rem;
   margin-top: auto;
   padding: .45rem .625rem .5rem;
-  border-left: 3px solid var(--red);
-  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  border-radius: var(--radius-lg);
   background: var(--surface-alt);
 }
 .mega__col--cta .mega__promo-title { margin: 0; color: var(--navy); font-size: .875rem; font-weight: var(--fw-bold); line-height: 1.3; }
@@ -3809,4 +3809,93 @@ a.contact-line__value:hover { color: var(--red); }
    back some of the card's side padding to make that fit. */
 @media (max-width: 24rem) {
   .page-home .exterior__card-body { padding-inline: 1.25rem; }
+}
+
+/* ==========================================================================
+   12 Oct call — Royal (homepage scoped to body.page-home)
+   ========================================================================== */
+
+/* "We'll call you back within the hour" under every estimate form button. */
+.contact-form__callback {
+  margin: .5rem 0 0;
+  font-size: .875rem;
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+  text-align: center;
+  color: rgba(1, 44, 109, .72);
+}
+.contact-form__callback + .form-status:empty { display: none; }
+
+/* Google + Yelp pair beside every Trustindex heading (same pattern as the
+   Bronx reviews head, in Royal's hairline-and-8px-radius card style). */
+.review-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.review-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  min-height: 3.25rem;
+  padding: .45rem .9rem .45rem .55rem;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  color: var(--navy);
+  line-height: 1.1;
+}
+.review-badge img { width: 2rem; height: 2rem; object-fit: contain; }
+.review-badge strong { display: block; font-size: 1rem; font-weight: var(--fw-bold); }
+.review-badge small {
+  display: block;
+  margin-top: .15rem;
+  color: rgba(1, 44, 109, .62);
+  font-size: .6875rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* Flat & Shingle: the space under the two cards matches the space above
+   them (the heading-to-cards gap). */
+.page-home #flat-roofing { padding-bottom: var(--space-5); }
+
+/* Why Choose: half the gap between the button row and the three cards. */
+@media (min-width: 64.0625rem) {
+  .page-home .whyus__reasons { margin-top: calc((var(--space-3) - clamp(1.5rem, 1rem + 2vw, 3rem)) / 2); }
+}
+
+/* Accredited and reviewed by: twice the white space under the logos, a
+   little more above the label. */
+@media (min-width: 40.0625rem) {
+  .page-home .accred { padding-top: 1.125rem; padding-bottom: 1.5rem; }
+}
+@media (max-width: 40rem) {
+  .page-home .accred { padding-top: 1.25rem; padding-bottom: 2rem; }
+}
+
+/* Get in Touch: closer under the FAQs; the form keeps its own (smaller)
+   height instead of stretching to the left column, and the map grows. */
+@media (min-width: 40.0625rem) {
+  .page-home .faqs + .contact { padding-top: 0; }
+  .page-home .faqs + .contact > .container { padding-top: var(--space-5); }
+}
+@media (min-width: 60.0625rem) {
+  .page-home .contact__inner { align-items: start; }
+  /* "Get in Touch" sits on the same baseline as the form's title. */
+  .page-home .contact__left--boxed { padding-top: 0; margin-top: -.5rem; }
+  .page-home .contact__inner > .contact-form { height: auto; }
+  .page-home .contact__inner > .contact-form .contact-form__grid { flex: 0 0 auto; }
+  .page-home .contact .contact-form { padding: 1rem 1.125rem 1.125rem; }
+  .page-home .contact .contact-form__head { padding-bottom: .5rem; margin-bottom: .75rem; }
+  .page-home .contact .contact-form__grid { row-gap: .5rem; }
+  .page-home .contact .field__input--area { min-height: 3.75rem; }
+  .page-home .contact .contact-form__submit { margin-top: .75rem; }
+  .page-home .contact__left--boxed .contact__map { max-height: none; height: 27rem; }
+  .page-home .contact__left--boxed .contact__map-frame { height: 27rem; }
 }

@@ -11,7 +11,7 @@
   <link rel="preload" href="fonts/HelveticaNeueLight.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/HelveticaNeueMedium.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/bronx.css?v=2">
+  <link rel="stylesheet" href="css/bronx.css?v=3">
 </head>
 <body class="page-bronx">
 <script>document.documentElement.classList.add('js');</script>
@@ -132,7 +132,7 @@
         <li><a class="drawer__link" href="bronx-contact-us.html">Contact Us</a></li>
       </ul>
       <div class="drawer__actions">
-        <a class="btn btn--solid btn--navy" href="tel:+17183955061">Call 718-395-5061</a>
+        <a class="btn btn--solid btn--navy" href="tel:+17183955061"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-395-5061</a>
         <a class="btn btn--solid" href="bronx-contact-us.html">Get a Free Estimate</a>
       </div>
     </nav>
@@ -159,16 +159,17 @@
     <div class="container bx-hero__inner">
       <div class="bx-hero__copy">
         <p class="bx-kicker bx-kicker--light">Royal Roofing Bronx</p>
+        <!-- Ratings: Google 4.9 (147 reviews) read from the Google Maps place card, Oct 13 2026. Yelp rating not verified, so no number. -->
         <h1 class="bx-hero__title" id="hero-title">Bronx Roofing Contractor <span>Residential &amp; Commercial Roofing</span></h1>
-        <p class="bx-hero__text">Flat roofs, roof replacements, leak repairs, shingles, and siding for Bronx homes, multifamily buildings, and commercial properties, built for the drainage and structural challenges of Bronx buildings.</p>
+        <p class="bx-hero__text">Flat roofs, roof replacements, leak repairs, shingles, and siding for Bronx homes, multifamily buildings, and commercial properties.</p>
         <ul class="bx-hero__proof" aria-label="Why Bronx property owners call us">
-          <li class="bx-badge"><img src="images/Google__G__logo.svg.webp" alt="" width="28" height="28"><span><strong>Google</strong><small>Reviews</small></span></li>
-          <li class="bx-badge"><img src="images/PngItem_1663.png" alt="" width="28" height="28"><span><strong>Yelp</strong><small>Reviews</small></span></li>
+          <li class="rating-mark"><img src="images/Google__G__logo.svg.webp" alt="Google" width="28" height="28"><span><strong>4.9</strong> <span class="stars" aria-label="4.9 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><small>Google rating</small></span></li>
+          <li class="rating-mark"><img src="images/PngItem_1663.png" alt="" width="28" height="28"><span><strong>Yelp</strong><small>Reviews</small></span></li>
           <li class="bx-hero__stat"><strong>35+ Years</strong><small>Hands-on experience</small></li>
         </ul>
         <div class="bx-hero__actions">
+          <a class="btn btn--solid btn--white" href="#hero-form">Get a Free Estimate</a>
           <a class="btn btn--solid" href="tel:+17183955061"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-395-5061</a>
-          <a class="btn btn--ghost-light" href="#services">Our Roofing Services</a>
         </div>
       </div>
 
@@ -179,7 +180,7 @@
           <div class="field"><label for="hf-phone">Phone</label><input id="hf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(718) 000-0000" required></div>
         </div>
         <div class="field"><label for="hf-address">Address</label><input id="hf-address" name="address" type="text" autocomplete="street-address" placeholder="Street address, Bronx" required></div>
-        <div class="field"><label for="hf-message">How Can We Help?</label><textarea id="hf-message" name="message" rows="3" placeholder="Leaking flat roof, worn shingles, or something else?"></textarea></div>
+        <div class="field"><label for="hf-message">How Can We Help?</label><textarea id="hf-message" name="message" rows="3" placeholder="My Riverdale home has a roof leak. Can I get a repair estimate?"></textarea></div>
         <button class="btn btn--solid btn--block" type="submit">Get My Free Estimate</button>
         <p class="form-callback">We&rsquo;ll call you back within the hour</p>
       </form>
@@ -212,13 +213,13 @@
           <div><dt>5 Trades</dt><dd>Roofing, siding, gutters, windows, masonry</dd></div>
         </dl>
         <div class="bx-about__actions">
-          <a class="btn btn--solid" href="#contact">Get a Free Estimate</a>
-          <a class="btn btn--navy" href="tel:+17183955061">Call 718-395-5061</a>
+          <a class="btn btn--solid btn--navy" href="#contact">Get a Free Estimate</a>
+          <a class="btn btn--solid" href="tel:+17183955061"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-395-5061</a>
         </div>
       </div>
       <figure class="bx-about__media">
-        <img src="images/live/about-hero.jpg" alt="The Royal roofing crew together on a rooftop with the Manhattan skyline behind them" width="1600" height="1200" loading="lazy">
-        <figcaption>Royal roofing crews<small>Independently operated in the Bronx</small></figcaption>
+        <img src="images/bronx/bronx-team.jpg" alt="Five Royal Roofing Bronx roofers in orange company shirts standing together on a Bronx flat roof they are rebuilding" width="1600" height="1200" loading="lazy">
+        <figcaption>The Royal Roofing Bronx team<small>On a flat roof rebuild in the Bronx</small></figcaption>
       </figure>
     </div>
   </section>
@@ -236,7 +237,7 @@
 
       <ul class="bx-services__grid slider" data-slider>
         <li class="bx-svc">
-          <img class="bx-svc__img" src="images/brooklyn/bk-08-784ed2a8.png" alt="Royal crew installing a new flat roof membrane" width="400" height="600" loading="lazy">
+          <img class="bx-svc__img" src="images/bronx/bronx-crew-portrait.jpg" alt="Royal Roofing Bronx crew laying a new plywood deck and base sheet on a flat roof" width="1200" height="1600" loading="lazy">
           <span class="bx-svc__num" aria-hidden="true">01</span>
           <div class="bx-svc__body">
             <h3 class="bx-svc__title">Flat Roofing</h3>
@@ -333,8 +334,9 @@
     </div>
   </section>
 
-  <!-- ===== Building types: leaf cards with line drawings ===== -->
-  <section class="bx-section bx-section--tint bx-types" id="building-types" aria-labelledby="types-title">
+  <!-- ===== Building types: leaf cards with line drawings.
+       .bx-types--ruled draws one long divider line along its top edge (Sean, Oct 12). ===== -->
+  <section class="bx-section bx-section--tint bx-types bx-types--ruled" id="building-types" aria-labelledby="types-title">
     <div class="container">
       <div class="bx-head bx-head--split">
         <div>
@@ -395,7 +397,7 @@
           <p class="bx-lede">We install, repair, maintain, and replace roofs for business owners, landlords, and property managers across the Bronx. Rooftop equipment, foot traffic, and long spans wear down membranes, flashing, and drainage, so we plan each job around your operations.</p>
           <div class="bx-commercial__actions">
             <a class="btn btn--solid" href="#contact">Get a Free Estimate</a>
-            <a class="btn btn--ghost-light" href="tel:+17183955061">Call 718-395-5061</a>
+            <a class="btn btn--ghost-light" href="tel:+17183955061"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-395-5061</a>
           </div>
         </div>
         <figure class="bx-commercial__media">
@@ -423,7 +425,7 @@
         <p class="bx-lede">Real tear-offs, replacements, and installations by Royal roofing crews, from flat membranes to new shingle roofs.</p>
       </div>
       <div class="bx-projects__grid slider" data-slider>
-        <figure class="bx-project"><img src="https://www.nycrenovators.com/wp-content/uploads/2022/06/WhatsApp-Image-2022-06-21-at-4.32.39-PM.jpeg" alt="New roof deck and modified bitumen rolls staged on a city flat roof" loading="lazy"><figcaption><strong>Flat roof rebuild</strong>New deck and membrane rolls staged on the roof</figcaption></figure>
+        <figure class="bx-project"><img src="images/bronx/bronx-flat-deck.jpg" alt="Royal Roofing Bronx crew framing a skylight curb and laying new plywood decking on a flat roof, with rolls of roofing staged behind them" width="1600" height="1200" loading="lazy"><figcaption><strong>Flat roof re-deck</strong>Our Bronx crew laying new plywood decking and framing a skylight curb</figcaption></figure>
         <figure class="bx-project"><img src="images/live/crew-tearoff-aerial.jpg" alt="Aerial view of a full crew replacing the flat roof of a multifamily building" width="1400" height="1050" loading="lazy"><figcaption><strong>Flat roof replacement</strong>Full crew on a multifamily roof</figcaption></figure>
         <figure class="bx-project"><img src="images/live/crew-shingle-tearoff.jpg" alt="Roofers stripping old shingles from attached homes, seen from above" width="800" height="449" loading="lazy"><figcaption><strong>Shingle tear-off</strong>Old shingles stripped on attached homes</figcaption></figure>
         <figure class="bx-project"><img src="images/brooklyn/bk-08-784ed2a8.png" alt="New cap sheet flat roof on a row house" width="400" height="600" loading="lazy"><figcaption><strong>Flat roof installation</strong>New cap sheet on an attached row house</figcaption></figure>
@@ -480,7 +482,7 @@
         </div>
         <div class="bx-head__aside">
           <a class="btn btn--navy" href="bronx-faqs.html">See All FAQs</a>
-          <a class="btn btn--solid" href="tel:+17183955061">Call 718-395-5061</a>
+          <a class="btn btn--solid" href="tel:+17183955061"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-395-5061</a>
         </div>
       </div>
       <div class="bx-faq bx-faq--2col">
@@ -514,9 +516,13 @@
     </div>
   </section>
 
-  <!-- ===== Get In Touch: form left, map right with details card ===== -->
+  <!-- ===== Get In Touch: map left (business card with reviews shows on the map), form right ===== -->
   <section class="bx-section bx-contact" id="contact" aria-labelledby="contact-title">
     <div class="container bx-contact__inner">
+      <div class="bx-contact__map">
+        <iframe title="Map showing Royal Roofing Bronx at 1231 Lafayette Ave, Bronx" src="https://www.google.com/maps?q=Royal+Roofing+Bronx,+1231+Lafayette+Ave,+2nd+Floor,+Bronx,+NY+10474&amp;z=14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+
       <form class="quote-card bx-contact__form" id="contact-form" novalidate aria-labelledby="contact-title">
         <div>
           <p class="bx-kicker">Free estimate</p>
@@ -528,19 +534,10 @@
           <div class="field"><label for="cf-phone">Phone</label><input id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(718) 000-0000" required></div>
         </div>
         <div class="field"><label for="cf-address">Address</label><input id="cf-address" name="address" type="text" autocomplete="street-address" placeholder="Street address, Bronx" required></div>
-        <div class="field"><label for="cf-message">How Can We Help?</label><textarea id="cf-message" name="message" rows="3" placeholder="Tell us about the roof or exterior work"></textarea></div>
+        <div class="field"><label for="cf-message">How Can We Help?</label><textarea id="cf-message" name="message" rows="3" placeholder="My Riverdale home has a roof leak. Can I get a repair estimate?"></textarea></div>
         <button class="btn btn--solid btn--block" type="submit">Get My Free Estimate</button>
         <p class="form-callback">We&rsquo;ll call you back within the hour</p>
       </form>
-
-      <div class="bx-contact__map">
-        <iframe title="Map showing Royal Roofing Bronx at 1231 Lafayette Ave, Bronx" src="https://www.google.com/maps?q=Royal+Roofing+Bronx,+1231+Lafayette+Ave,+2nd+Floor,+Bronx,+NY+10474&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-        <ul class="bx-details bx-contact__card">
-          <li><span class="bx-ico"><svg aria-hidden="true"><use href="#i-phone"/></svg></span><div><p class="bx-details__label">Call</p><p class="bx-details__value bx-details__value--lg"><a href="tel:+17183955061">718-395-5061</a></p></div></li>
-          <li><span class="bx-ico"><svg aria-hidden="true"><use href="#i-pin"/></svg></span><div><p class="bx-details__label">Office</p><p class="bx-details__value"><a href="https://www.google.com/maps/search/?api=1&amp;query=Royal+Roofing+Bronx,+1231+Lafayette+Ave,+2nd+Floor,+Bronx,+NY+10474" target="_blank" rel="noopener">1231 Lafayette Ave, 2nd Floor, Bronx, NY 10474</a></p></div></li>
-          <li><span class="bx-ico"><svg aria-hidden="true"><use href="#i-clock"/></svg></span><div><p class="bx-details__label">Hours</p><p class="bx-details__value">Mon&nbsp;–&nbsp;Sun, 7:00&nbsp;am&nbsp;–&nbsp;11:00&nbsp;pm</p></div></li>
-        </ul>
-      </div>
     </div>
   </section>
 
@@ -552,7 +549,7 @@
   <div class="container bkf__top">
     <div class="bkf__brand">
       <a class="bkf__logo" href="bronx.html" aria-label="Royal Roofing Bronx home"><img src="images/bronx/royal-roofing-bronx-logo.webp" alt="Royal Roofing Bronx" width="445" height="464" loading="lazy"></a>
-      <p class="bkf__about">Royal Roofing Bronx specializes in flat roofing systems for attached homes, multifamily buildings, and co-ops across the Bronx, backed by roofing experience that goes back to 1988.</p>
+      <p class="bkf__about">Royal Roofing Bronx is fully licensed &amp; insured, providing roof repairs and replacements for homes, multifamily buildings, and commercial properties throughout the Bronx. We specialize in flat and shingle roofing, backed by 35 years of experience.</p>
       <a class="btn btn--solid bkf__cta" href="bronx-contact-us.html">Get a Free Estimate</a>
     </div>
 
@@ -594,11 +591,15 @@
     <div class="container bkf__midrow">
       <ul class="bkf__badges" aria-label="Find our reviews">
         <li class="bkf__rating">
-          <img src="images/Google__G__logo.svg.webp" alt="" width="28" height="28" loading="lazy" decoding="async">
-          <span>Google Reviews</span>
+          <img src="images/Google__G__logo.svg.webp" alt="Google" width="28" height="28" loading="lazy" decoding="async">
+          <span><strong>4.9</strong> <span class="bkf__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><small>Google</small><span class="bkf__sr">Rated 4.9 out of 5 on Google</span></span>
         </li>
         <li class="bkf__yelp">
           <img src="images/PngItem_1663.png" alt="People love us on Yelp" width="540" height="539" loading="lazy" decoding="async">
+        </li>
+        <li class="bkf__licensed">
+          <span class="bkf__icon"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+          <span>Fully Licensed &amp; Insured</span>
         </li>
       </ul>
 

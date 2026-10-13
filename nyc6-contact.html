@@ -25,8 +25,8 @@
 
   <!-- Page-scoped overrides. Loaded after style.css so this page can diverge
        from index.html without touching the shared stylesheet. -->
-  <link rel="stylesheet" href="css/nyc6.css?v=36">
-  <link rel="stylesheet" href="css/nyc6-contact.css?v=2">
+  <link rel="stylesheet" href="css/nyc6.css?v=37">
+  <link rel="stylesheet" href="css/nyc6-contact.css?v=4">
 </head>
 <body class="page-contact">
 
@@ -85,7 +85,6 @@
                         <li><a href="#commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
                       </ul>
                       <div class="mega__promo">
-                        <p class="mega__promo-title">Roofing NYC since 1988</p>
                         <p class="mega__promo-text">Licensed &middot; BBB A+ &middot; <span>GAF Master Elite</span></p>
                       </div>
                       <a class="btn btn--primary mega__cta" href="nyc6.html#estimate">
@@ -636,8 +635,8 @@
 
             <h1 class="page-hero__title">Contact Royal Renovators Inc.</h1>
 
-            <p class="page-hero__lede">
-              Tell us about your roofing project.<br>
+            <p class="page-hero__lede">Tell us about your roofing project.</p>
+            <p class="page-hero__lede page-hero__lede--second">
               Request a free written estimate or
               call us at <a href="tel:+17184146067">(718) 414-6067</a><span class="u-mob-inline"> for immediate assistance</span>.
             </p>
@@ -655,6 +654,10 @@
             </li>
             <li class="hero__badge">
               <img src="images/bb+.webp" alt="BBB Accredited Business, A+ rating" width="400" height="259" decoding="async">
+            </li>
+            <li class="hero__badge hero__badge--nrca">
+              <img src="images/nrcalogo.gif" alt="NRCA member, National Roofing Contractors Association"
+                   width="920" height="263" decoding="async">
             </li>
             <li class="hero__badge hero__badge--extra">
               <img src="images/PngItem_1663.png" alt="People love us on Yelp"
@@ -679,7 +682,7 @@
                  shows Google's own card rather than a bare address pin. -->
             <div class="contact__map">
               <iframe class="contact__map-frame"
-                      src="https://www.google.com/maps?q=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375&amp;output=embed"
+                      src="https://www.google.com/maps?q=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375&amp;z=15&amp;output=embed"
                       title="Map showing Royal Renovators Inc. at 118-35 Queens Blvd, Forest Hills, NY 11375"
                       loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -776,6 +779,30 @@
       </div>
     </section>
 
+    <!-- Reviews (Trustindex): Royal's live Google reviews widget, with the
+         Google + Yelp pair beside the heading as on the homepage. -->
+    <section class="section reviews contact-reviews" id="reviews">
+      <div class="container">
+
+        <div class="reviews__head">
+          <div>
+            <p class="section-eyebrow">Reviews</p>
+            <h2 class="section-title reviews__title">What Our Customers Say</h2>
+          </div>
+          <ul class="review-badges" aria-label="Find our reviews">
+            <li class="review-badge"><img src="images/Google__G__logo.svg.webp" alt="" width="28" height="28" loading="lazy" decoding="async"><span><strong>Google</strong><small>Reviews</small></span></li>
+            <li class="review-badge"><img src="images/PngItem_1663.png" alt="" width="28" height="28" loading="lazy" decoding="async"><span><strong>Yelp</strong><small>Reviews</small></span></li>
+          </ul>
+        </div>
+
+        <!-- Trustindex: live Google reviews widget -->
+        <div class="reviews__widget">
+          <script defer async src="https://cdn.trustindex.io/loader.js?822a762744ea8344f0862095899"></script>
+        </div>
+
+      </div>
+    </section>
+
     <!-- What happens next: three compact steps in one row, then one trust line. -->
     <section class="section reasons next" id="what-happens-next">
       <div class="container">
@@ -834,7 +861,7 @@
           <div class="faqs__actions faqs__actions--desk">
             <a class="btn btn--primary" href="#contact-form">
               <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
-              <span class="btn__label">Request an Estimate</span>
+              <span class="btn__label">Request a Free Estimate</span>
             </a>
           </div>
         </div>
@@ -843,15 +870,15 @@
 
           <details class="faq" name="contact-faq" open>
             <summary class="faq__q">
-              How quickly will I hear back?
+              <h3 class="faq__q-text">How quickly will I hear back?</h3>
               <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
             </summary>
-            <div class="faq__a"><p>Send the form and we get back to you within one day. If the roof is actively leaking, call instead. The phone reaches someone seven days a week, including outside office hours.</p></div>
+            <div class="faq__a"><p>Send the form and we get back to you within one hour. If the roof is actively leaking, call instead. The phone reaches someone seven days a week, including outside office hours.</p></div>
           </details>
 
           <details class="faq" name="contact-faq">
             <summary class="faq__q">
-              Does an estimate cost anything?
+              <h3 class="faq__q-text">Does an estimate cost anything?</h3>
               <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
             </summary>
             <div class="faq__a"><p>No. We get up on the roof, photograph what we find and put a written, itemized price in front of you at no charge and with no obligation, including when the answer is that it does not need replacing yet.</p></div>
@@ -859,7 +886,7 @@
 
           <details class="faq" name="contact-faq">
             <summary class="faq__q">
-              Can you come out for an emergency?
+              <h3 class="faq__q-text">Can you come out for an emergency?</h3>
               <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
             </summary>
             <div class="faq__a"><p>Yes. We take emergency calls every day of the week, make the building safe first and quote the permanent repair afterwards.</p></div>
@@ -867,7 +894,7 @@
 
           <details class="faq" name="contact-faq">
             <summary class="faq__q">
-              What should I tell you when I get in touch?
+              <h3 class="faq__q-text">What should I tell you when I get in touch?</h3>
               <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
             </summary>
             <div class="faq__a"><p>Your address, what&rsquo;s going on with your roof, and when can we come by to inspect the property.</p></div>
@@ -875,7 +902,7 @@
 
           <details class="faq" name="contact-faq">
             <summary class="faq__q">
-              Which areas do you cover?
+              <h3 class="faq__q-text">Which areas do you cover?</h3>
               <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
             </summary>
             <div class="faq__a"><p>All five boroughs of NYC, Long Island, Yonkers, and Westchester.</p></div>

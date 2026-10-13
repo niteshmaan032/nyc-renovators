@@ -906,7 +906,6 @@ svg { display: inline-block; }
    <section class="mh-shero mh-dark">
      <div class="mh-shero__visual" aria-hidden="true"><img class="mh-shero__slide is-active"> x4</div>
      <div class="container mh-shero__inner"><div class="mh-shero__copy">..</div><form class="quote-card mh-shero__form">..</form></div>
-     <div class="mh-shero__dots"><button class="mh-shero__dot is-active"> x4</div>
    </section> */
 .page-manhattan-home { --mq-h: 2.75rem; }
 .page-manhattan-home .mh-shero {
@@ -933,15 +932,23 @@ svg { display: inline-block; }
 .page-manhattan-home .mh-shero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
 .page-manhattan-home .mh-shero__proof { display: flex; flex-wrap: wrap; align-items: stretch; gap: .6rem; margin-top: var(--space-5); padding-top: var(--space-5); border-top: 1px solid var(--line-dark); }
 .page-manhattan-home .mh-shero__proof .mh-badge { border-color: transparent; background: #fff; }
-.page-manhattan-home .mh-shero__stat { display: flex; flex-direction: column; justify-content: center; min-height: 3.25rem; padding: .35rem 1rem; border-left: 3px solid var(--brand); background: #fff; color: var(--navy); line-height: 1.1; }
+/* Rating marks (Google, Yelp), as on Brooklyn, in Manhattan navy with amber stars.
+   <li class="rating-mark"><img><span><strong>5.0</strong> <span class="stars">★★★★★</span><small>Google rating</small></span></li> */
+.page-manhattan-home .rating-mark {
+  display: inline-flex; align-items: center; gap: .6rem;
+  min-height: 3.25rem; padding: .45rem 1rem .45rem .6rem;
+  border: 1px solid rgba(255, 255, 255, .18); border-radius: var(--radius-sm);
+  background: rgba(1, 29, 56, .78); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  color: #fff; line-height: 1.1;
+}
+.page-manhattan-home .rating-mark img { width: 2rem; height: 2rem; flex: none; padding: .2rem; border-radius: 50%; background: #fff; object-fit: contain; }
+.page-manhattan-home .rating-mark strong { font-size: 1.125rem; font-weight: 700; }
+.page-manhattan-home .rating-mark .stars { color: var(--amber-300); font-size: .875rem; letter-spacing: .05em; }
+.page-manhattan-home .rating-mark small { display: block; margin-top: .2rem; color: var(--on-dark-muted); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.page-manhattan-home .mh-shero__stat { display: flex; flex-direction: column; justify-content: center; min-height: 3.25rem; padding: .35rem 1rem; border: 1px solid rgba(255, 255, 255, .18); border-left: 3px solid var(--brand); border-radius: var(--radius-sm); background: rgba(1, 29, 56, .78); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); color: #fff; line-height: 1.1; }
 .page-manhattan-home .mh-shero__stat strong { font-size: 1.125rem; }
-.page-manhattan-home .mh-shero__stat small { margin-top: .2rem; color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.page-manhattan-home .mh-shero__stat small { margin-top: .2rem; color: var(--on-dark-muted); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .page-manhattan-home .mh-shero__form { box-shadow: var(--shadow-float); }
-.page-manhattan-home .mh-shero__dots { position: absolute; z-index: 2; bottom: .4rem; left: 50%; display: flex; transform: translateX(-50%); }
-.page-manhattan-home .mh-shero__dot { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; padding: 0; border: 0; background: transparent; cursor: pointer; }
-.page-manhattan-home .mh-shero__dot + .mh-shero__dot { margin-left: -1rem; }
-.page-manhattan-home .mh-shero__dot::before { content: ""; width: .65rem; height: .65rem; border: 1px solid #fff; border-radius: 50%; background: rgba(255, 255, 255, .4); transition: background-color .2s ease, transform .2s ease; }
-.page-manhattan-home .mh-shero__dot:hover::before, .page-manhattan-home .mh-shero__dot.is-active::before { border-color: var(--brand); background: var(--brand); transform: scale(1.2); }
 
 /* Marquee strip directly under the hero: amber band, navy type, navy
    diamonds. Three identical groups; the track moves one third, so the loop
@@ -1101,7 +1108,7 @@ svg { display: inline-block; }
   .page-manhattan-home .mh-shero__actions { margin-top: 1rem; }
   .page-manhattan-home .mh-shero__actions .btn { min-height: 2.85rem; padding-block: .55rem; }
   .page-manhattan-home .mh-shero__proof { margin-top: 1rem; padding-top: 1rem; }
-  .page-manhattan-home .mh-shero__proof .mh-badge, .page-manhattan-home .mh-shero__stat { min-height: 2.85rem; }
+  .page-manhattan-home .mh-shero__proof .rating-mark, .page-manhattan-home .mh-shero__stat { min-height: 2.85rem; }
   .page-manhattan-home .mh-shero__form { gap: .5rem; padding: .95rem 1.2rem; }
   .page-manhattan-home .mh-shero__form .quote-card__title { font-size: 1.35rem; }
   .page-manhattan-home .mh-shero__form .field { gap: .2rem; }
@@ -1145,9 +1152,10 @@ svg { display: inline-block; }
   .page-manhattan-home .mh-shero__actions .btn { flex: 1 1 12rem; }
   .page-manhattan-home .mh-shero__proof { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4rem; }
   .page-manhattan-home .mh-shero__proof > * { justify-content: center; min-width: 0; }
-  .page-manhattan-home .mh-shero__proof .mh-badge { gap: .4rem; padding: .35rem .4rem; }
-  .page-manhattan-home .mh-shero__proof .mh-badge img { width: 1.4rem; height: 1.4rem; }
-  .page-manhattan-home .mh-shero__proof .mh-badge strong { font-size: .875rem; }
+  .page-manhattan-home .mh-shero__proof .rating-mark { gap: .35rem; padding: .35rem .4rem; }
+  .page-manhattan-home .mh-shero__proof .rating-mark img { width: 1.4rem; height: 1.4rem; padding: .12rem; }
+  .page-manhattan-home .mh-shero__proof .rating-mark strong { font-size: .875rem; }
+  .page-manhattan-home .mh-shero__proof .rating-mark .stars { font-size: .625rem; letter-spacing: 0; }
   .page-manhattan-home .mh-shero__proof small { font-size: .5625rem; letter-spacing: .06em; }
   .page-manhattan-home .mh-shero__stat { align-items: center; padding: .35rem .4rem; border-left: 0; border-top: 3px solid var(--brand); text-align: center; }
   .page-manhattan-home .mh-shero__stat strong { font-size: .875rem; }

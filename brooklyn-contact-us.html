@@ -11,8 +11,8 @@
   <link rel="preload" href="fonts/HelveticaNeueLight.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/HelveticaNeueMedium.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/brooklyn.css?v=51">
-  <link rel="stylesheet" href="css/brooklyn-contact.css?v=4">
+  <link rel="stylesheet" href="css/brooklyn.css?v=52">
+  <link rel="stylesheet" href="css/brooklyn-contact.css?v=5">
 </head>
 <body class="page-brooklyn page-brooklyn-contact">
 <script>document.documentElement.classList.add('js');</script>
@@ -138,7 +138,7 @@
         <li><a class="drawer__link" href="brooklyn-contact-us.html" aria-current="page">Contact Us</a></li>
       </ul>
       <div class="drawer__actions">
-        <a class="btn btn--navy" href="tel:+17185362667">Call 718-536-2667</a>
+        <a class="btn btn--navy" href="tel:+17185362667"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-536-2667</a>
         <a class="btn btn--solid" href="#contact-form">Get a Free Estimate</a>
       </div>
     </nav>
@@ -150,7 +150,7 @@
     <div class="container contact-page__intro-inner">
       <div class="contact-page__intro-copy">
         <h1 id="contact-page-title">Contact the Brooklyn Team</h1>
-        <p>Call us about your roof or siding project, or share your property details below for a free estimate.</p>
+        <p>Call us about your roofing or siding project, or share your property details below for a free estimate.</p>
       </div>
       <ul class="contact-page__proof" aria-label="Why Brooklyn customers choose us">
         <li><span class="contact-page__proof-icon"><img src="images/Google__G__logo.svg.webp" alt="" width="26" height="26"></span><span><strong>5.0 Google Reviews</strong><small>★★★★★</small></span></li>
@@ -172,7 +172,7 @@
           </div>
         </div>
         <div class="contact__map">
-          <iframe title="Map showing Royal Roofing &amp; Siding Brooklyn at 108 Emerson Place" src="https://www.google.com/maps?q=Royal+Roofing+%26+Siding+Brooklyn,+108+Emerson+Place,+Suite+212,+Brooklyn,+NY+11205&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <iframe title="Map showing Royal Roofing &amp; Siding Brooklyn at 108 Emerson Place" src="https://www.google.com/maps?q=Royal+Roofing+%26+Siding+Brooklyn,+108+Emerson+Place,+Suite+212,+Brooklyn,+NY+11205&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         </div>
       </div>
 
@@ -180,17 +180,39 @@
         <h2 class="quote-card__title" id="contact-form-title">Get a Free Estimate</h2>
         <div class="field-row">
           <div class="field"><label for="cp-name">Name</label><input id="cp-name" name="name" type="text" autocomplete="name" placeholder="Your name" required></div>
-          <div class="field"><label for="cp-phone">Phone</label><input id="cp-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(718) 000-0000" required></div>
+          <div class="field"><label for="cp-phone">Phone</label><input id="cp-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(718) 000-0000" required><p class="field__note contact__privacy">We&rsquo;ll only contact you about your project.</p></div>
         </div>
-        <p class="field__note contact__privacy">We&rsquo;ll only contact you about your project.</p>
         <div class="field-row">
           <div class="field"><label for="cp-address">Address</label><input id="cp-address" name="address" type="text" autocomplete="street-address" placeholder="Street address" required></div>
           <div class="field"><label for="cp-email">Email</label><input id="cp-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required></div>
         </div>
-        <div class="field"><label for="cp-message">How Can We Help?</label><textarea id="cp-message" name="message" rows="3" placeholder="Tell us about your roofing, siding, or gutter project"></textarea></div>
+        <div class="field"><label for="cp-message">How Can We Help?</label><textarea id="cp-message" name="message" rows="3" placeholder="My Park Slope brownstone has a roof leak. Can I get a repair estimate?"></textarea></div>
         <button class="btn btn--solid btn--block" type="submit">Get My Free Estimate</button>
         <p class="form-callback">We&rsquo;ll call you back within the hour</p>
       </form>
+    </div>
+  </section>
+
+  <!-- ===== Reviews (Trustindex): Royal Roofing & Siding Brooklyn Google reviews widget bbd9982719dd15530b967bf42ca ===== -->
+  <section class="section bk-reviews contact-page__reviews" id="reviews" aria-labelledby="reviews-title">
+    <div class="container">
+      <div class="section-head bk-reviews__head">
+        <div>
+          <p class="eyebrow">Reviews</p>
+          <h2 class="section-title" id="reviews-title">What Our Customers Say</h2>
+        </div>
+        <ul class="bk-reviews__badges" aria-label="Find our reviews">
+          <li class="rating-mark"><img src="images/Google__G__logo.svg.webp" alt="Google" width="28" height="28" loading="lazy"><span><strong>5.0</strong> <span class="stars" aria-label="5 out of 5 stars">★★★★★</span><small>Google rating</small></span></li>
+          <li class="rating-mark"><img src="images/PngItem_1663.png" alt="Yelp" width="28" height="28" loading="lazy"><span><strong>5.0</strong> <span class="stars" aria-label="5 out of 5 stars">★★★★★</span><small>Yelp rating</small></span></li>
+        </ul>
+      </div>
+      <div class="contact-page__reviews-grid">
+        <figure class="media-frame contact-page__photo"><img src="images/brooklyn/brooklyn-about-crew.jpg" alt="Royal Roofing &amp; Siding Brooklyn crew tearing off an old flat roof on a Brooklyn rowhouse" width="1600" height="1200" loading="lazy"><figcaption>Our Brooklyn crew</figcaption></figure>
+        <!-- Trustindex: live Google reviews widget -->
+        <div class="bk-reviews__widget">
+          <script defer async src="https://cdn.trustindex.io/loader.js?bbd9982719dd15530b967bf42ca"></script>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -200,7 +222,7 @@
         <p class="eyebrow">Good to know</p>
         <h2 class="section-title" id="contact-faq-title">Contact &amp; Estimate FAQs</h2>
         <p class="section-lede">Quick answers before you call about a Brooklyn roofing or siding project.</p>
-        <a class="btn btn--solid" href="tel:+17185362667">Call 718-536-2667</a>
+        <a class="btn btn--solid" href="tel:+17185362667"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-536-2667</a>
       </div>
       <div class="faq__list">
         <details open><summary>How do I request a free estimate?</summary><p>Call 718-536-2667 and tell us about the property and the work you need. Online requests are not connected yet.</p></details>
@@ -256,16 +278,6 @@
 
   <div class="bkf__contactbar">
     <div class="container bkf__midrow">
-      <ul class="bkf__badges" aria-label="Customer ratings">
-        <li class="bkf__rating">
-          <img src="images/Google__G__logo.svg.webp" alt="Google" width="28" height="28" loading="lazy" decoding="async">
-          <span><strong>5.0</strong> <span class="bkf__star" aria-hidden="true">&#9733;</span><span class="bkf__sr">5.0 out of 5 on Google</span></span>
-        </li>
-        <li class="bkf__yelp">
-          <img src="images/PngItem_1663.png" alt="People love us on Yelp" width="540" height="539" loading="lazy" decoding="async">
-        </li>
-      </ul>
-
       <ul class="bkf__contacts">
         <li>
           <span class="bkf__icon"><svg aria-hidden="true"><use href="#i-phone"/></svg></span>
@@ -289,6 +301,20 @@
           </div>
         </li>
       </ul>
+
+      <ul class="bkf__badges" aria-label="Customer ratings">
+        <li class="bkf__rating">
+          <img src="images/Google__G__logo.svg.webp" alt="Google" width="28" height="28" loading="lazy" decoding="async">
+          <span class="bkf__score"><span><strong>5.0</strong> <span class="bkf__star" aria-hidden="true">&#9733;</span><span class="bkf__sr">5.0 out of 5 on Google from</span></span> <span class="bkf__count"><span class="bkf__dot" aria-hidden="true">&middot;</span> 178 Google reviews</span></span>
+        </li>
+        <li class="bkf__yelp">
+          <img src="images/PngItem_1663.png" alt="People love us on Yelp" width="540" height="539" loading="lazy" decoding="async">
+        </li>
+        <li class="bkf__licensed">
+          <span class="bkf__shield"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+          <span>Licensed &amp; Insured</span>
+        </li>
+      </ul>
     </div>
   </div>
 
@@ -308,7 +334,7 @@
 
 </footer>
 
-<script src="js/brooklyn.js?v=5" defer></script>
+<script src="js/brooklyn.js?v=6" defer></script>
 
 <!-- Live chat (Blazeo), starts ten seconds after load.
      TODO: confirm the Brooklyn chat account id with the client — this uses the Royal account. -->

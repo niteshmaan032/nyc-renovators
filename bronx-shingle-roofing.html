@@ -11,7 +11,7 @@
   <link rel="preload" href="fonts/HelveticaNeueLight.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/HelveticaNeueMedium.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/bronx.css?v=2">
+  <link rel="stylesheet" href="css/bronx.css?v=3">
   <link rel="stylesheet" href="css/bronx-service.css?v=2">
 </head>
 <body class="page-bronx page-bronx-shingle">
@@ -135,7 +135,7 @@
         <li><a class="drawer__link" href="bronx-contact-us.html">Contact Us</a></li>
       </ul>
       <div class="drawer__actions">
-        <a class="btn btn--solid btn--navy" href="tel:+17183955061">Call 718-395-5061</a>
+        <a class="btn btn--solid btn--navy" href="tel:+17183955061"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-395-5061</a>
         <a class="btn btn--solid" href="#contact-form">Get a Free Estimate</a>
       </div>
     </nav>
@@ -383,7 +383,7 @@
         </ul>
         <div class="bxs-repair__actions">
           <a class="btn btn--solid" href="#contact-form">Get a Free Estimate</a>
-          <a class="btn btn--navy" href="tel:+17183955061">Call 718-395-5061</a>
+          <a class="btn btn--navy" href="tel:+17183955061"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-395-5061</a>
         </div>
       </div>
       <div class="bxs-repair__side">
@@ -435,7 +435,7 @@
         <p class="bxs-cta__hours">Monday &ndash; Sunday, 7:00 am &ndash; 11:00 pm</p>
         <div class="bxs-cta__actions">
           <a class="btn btn--solid btn--white" href="#contact-form">Get a Free Estimate</a>
-          <a class="btn btn--solid" href="tel:+17183955061">Call Now</a>
+          <a class="btn btn--solid" href="tel:+17183955061"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call Now</a>
         </div>
       </div>
     </div>
@@ -521,9 +521,13 @@
     </div>
   </section>
 
-  <!-- ===== 13. Get In Touch: the page's estimate form (every "Get a Free Estimate" link lands here) ===== -->
+  <!-- ===== 13. Get In Touch: map left, the page's estimate form right (every "Get a Free Estimate" link lands here) ===== -->
   <section class="bx-section bx-contact" id="contact" aria-labelledby="contact-title">
     <div class="container bx-contact__inner">
+      <div class="bx-contact__map">
+        <iframe title="Map showing Royal Roofing Bronx at 1231 Lafayette Ave, Bronx" src="https://www.google.com/maps?q=Royal+Roofing+Bronx,+1231+Lafayette+Ave,+2nd+Floor,+Bronx,+NY+10474&amp;z=14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+
       <form class="quote-card bx-contact__form" id="contact-form" novalidate aria-labelledby="contact-title">
         <div>
           <p class="bx-kicker">Free estimate</p>
@@ -535,19 +539,10 @@
           <div class="field"><label for="cf-phone">Phone</label><input id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(718) 000-0000" required></div>
         </div>
         <div class="field"><label for="cf-address">Address</label><input id="cf-address" name="address" type="text" autocomplete="street-address" placeholder="Street address, Bronx" required></div>
-        <div class="field"><label for="cf-message">How Can We Help?</label><textarea id="cf-message" name="message" rows="3" placeholder="Missing shingles, a leak, or a new roof?"></textarea></div>
+        <div class="field"><label for="cf-message">How Can We Help?</label><textarea id="cf-message" name="message" rows="3" placeholder="My Riverdale home has a roof leak. Can I get a repair estimate?"></textarea></div>
         <button class="btn btn--solid btn--block" type="submit">Get My Free Estimate</button>
         <p class="form-callback">We&rsquo;ll call you back within the hour</p>
       </form>
-
-      <div class="bx-contact__map">
-        <iframe title="Map showing Royal Roofing Bronx at 1231 Lafayette Ave, Bronx" src="https://www.google.com/maps?q=Royal+Roofing+Bronx,+1231+Lafayette+Ave,+2nd+Floor,+Bronx,+NY+10474&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-        <ul class="bx-details bx-contact__card">
-          <li><span class="bx-ico"><svg aria-hidden="true"><use href="#i-phone"/></svg></span><div><p class="bx-details__label">Call</p><p class="bx-details__value bx-details__value--lg"><a href="tel:+17183955061">718-395-5061</a></p></div></li>
-          <li><span class="bx-ico"><svg aria-hidden="true"><use href="#i-pin"/></svg></span><div><p class="bx-details__label">Office</p><p class="bx-details__value"><a href="https://www.google.com/maps/search/?api=1&amp;query=Royal+Roofing+Bronx,+1231+Lafayette+Ave,+2nd+Floor,+Bronx,+NY+10474" target="_blank" rel="noopener">1231 Lafayette Ave, 2nd Floor, Bronx, NY 10474</a></p></div></li>
-          <li><span class="bx-ico"><svg aria-hidden="true"><use href="#i-clock"/></svg></span><div><p class="bx-details__label">Hours</p><p class="bx-details__value">Mon&nbsp;&ndash;&nbsp;Sun, 7:00&nbsp;am&nbsp;&ndash;&nbsp;11:00&nbsp;pm</p></div></li>
-        </ul>
-      </div>
     </div>
   </section>
 
@@ -559,7 +554,7 @@
   <div class="container bkf__top">
     <div class="bkf__brand">
       <a class="bkf__logo" href="bronx.html" aria-label="Royal Roofing Bronx home"><img src="images/bronx/royal-roofing-bronx-logo.webp" alt="Royal Roofing Bronx" width="445" height="464" loading="lazy"></a>
-      <p class="bkf__about">Royal Roofing Bronx specializes in flat roofing systems for attached homes, multifamily buildings, and co-ops across the Bronx, backed by roofing experience that goes back to 1988.</p>
+      <p class="bkf__about">Royal Roofing Bronx is fully licensed &amp; insured, providing roof repairs and replacements for homes, multifamily buildings, and commercial properties throughout the Bronx. We specialize in flat and shingle roofing, backed by 35 years of experience.</p>
       <a class="btn btn--solid bkf__cta" href="#contact-form">Get a Free Estimate</a>
     </div>
 
@@ -601,11 +596,15 @@
     <div class="container bkf__midrow">
       <ul class="bkf__badges" aria-label="Find our reviews">
         <li class="bkf__rating">
-          <img src="images/Google__G__logo.svg.webp" alt="" width="28" height="28" loading="lazy" decoding="async">
-          <span>Google Reviews</span>
+          <img src="images/Google__G__logo.svg.webp" alt="Google" width="28" height="28" loading="lazy" decoding="async">
+          <span><strong>4.9</strong> <span class="bkf__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><small>Google</small><span class="bkf__sr">Rated 4.9 out of 5 on Google</span></span>
         </li>
         <li class="bkf__yelp">
           <img src="images/PngItem_1663.png" alt="People love us on Yelp" width="540" height="539" loading="lazy" decoding="async">
+        </li>
+        <li class="bkf__licensed">
+          <span class="bkf__icon"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+          <span>Fully Licensed &amp; Insured</span>
         </li>
       </ul>
 

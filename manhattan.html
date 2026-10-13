@@ -11,7 +11,7 @@
   <link rel="preload" href="fonts/HelveticaNeueLight.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/HelveticaNeueMedium.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/manhattan.css?v=4">
+  <link rel="stylesheet" href="css/manhattan.css?v=5">
 </head>
 <body class="page-manhattan page-manhattan-home">
 <script>document.documentElement.classList.add('js');</script>
@@ -132,7 +132,7 @@
         <li><a class="drawer__link" href="manhattan-contact-us.html">Contact Us</a></li>
       </ul>
       <div class="drawer__actions">
-        <a class="btn btn--solid btn--navy" href="tel:+12124571331">Call 212-457-1331</a>
+        <a class="btn btn--solid btn--navy" href="tel:+12124571331"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 212-457-1331</a>
         <a class="btn btn--solid" href="manhattan-contact-us.html">Get a Free Estimate</a>
       </div>
     </nav>
@@ -160,8 +160,8 @@
           <a class="btn btn--ghost-light" href="#services">Our Roofing Services</a>
         </div>
         <ul class="mh-shero__proof" aria-label="Why Manhattan property owners call us">
-          <li class="mh-badge"><img src="images/Google__G__logo.svg.webp" alt="" width="28" height="28"><span><strong>Google</strong><small>Reviews</small></span></li>
-          <li class="mh-badge"><img src="images/PngItem_1663.png" alt="" width="28" height="28"><span><strong>Yelp</strong><small>Reviews</small></span></li>
+          <li class="rating-mark"><img src="images/Google__G__logo.svg.webp" alt="Google" width="28" height="28"><span><strong>4.9</strong> <span class="stars" aria-label="4.9 out of 5 stars">★★★★★</span><small>Google rating</small></span></li>
+          <li class="rating-mark"><img src="images/PngItem_1663.png" alt="Yelp" width="28" height="28"><span><strong>5.0</strong> <span class="stars" aria-label="5 out of 5 stars">★★★★★</span><small>Yelp rating</small></span></li>
           <li class="mh-shero__stat"><strong>35+ Years</strong><small>Roofing experience</small></li>
         </ul>
       </div>
@@ -177,12 +177,6 @@
         <button class="btn btn--solid btn--block" type="submit">Get My Free Estimate</button>
         <p class="form-callback">We&rsquo;ll call you back within the hour</p>
       </form>
-    </div>
-    <div class="mh-shero__dots" role="group" aria-label="Choose hero photo">
-      <button class="mh-shero__dot is-active" type="button" aria-label="Show photo 1 of 4" aria-pressed="true"></button>
-      <button class="mh-shero__dot" type="button" aria-label="Show photo 2 of 4" aria-pressed="false"></button>
-      <button class="mh-shero__dot" type="button" aria-label="Show photo 3 of 4" aria-pressed="false"></button>
-      <button class="mh-shero__dot" type="button" aria-label="Show photo 4 of 4" aria-pressed="false"></button>
     </div>
   </section>
 
@@ -234,7 +228,7 @@
         </ul>
         <div class="mh-ab__actions">
           <a class="btn btn--solid" href="#contact">Get a Free Estimate</a>
-          <a class="btn btn--navy" href="tel:+12124571331">Call 212-457-1331</a>
+          <a class="btn btn--navy" href="tel:+12124571331"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 212-457-1331</a>
         </div>
       </div>
     </div>
@@ -420,7 +414,7 @@
         </ul>
         <div class="mh-commercial__actions">
           <a class="btn btn--solid" href="#contact">Get a Free Estimate</a>
-          <a class="btn btn--ghost-light" href="tel:+12124571331">Call 212-457-1331</a>
+          <a class="btn btn--ghost-light" href="tel:+12124571331"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 212-457-1331</a>
         </div>
       </div>
     </div>
@@ -684,7 +678,7 @@
 
 </footer>
 
-<script src="js/manhattan.js?v=2" defer></script>
+<script src="js/manhattan.js?v=3" defer></script>
 
 <!-- Live chat (Blazeo), starts ten seconds after load.
      TODO: confirm the Manhattan chat account id with the client; this uses the Royal account. -->

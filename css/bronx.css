@@ -261,6 +261,20 @@ svg { display: inline-block; }
 .bx-badge small { display: block; margin-top: .15rem; color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .bx-badge .bx-stars { color: var(--star); font-size: .8rem; letter-spacing: .08em; }
 
+/* Rating marks (hero): the usual "5.0 ★★★★★ Google rating" mark used on the
+   other sites, in Bronx colours (white card, navy text, orange underline).
+   <li class="rating-mark"><img ...><span><strong>5.0</strong> <span class="stars">★★★★★</span><small>Google rating</small></span></li> */
+.rating-mark {
+  display: inline-flex; align-items: center; gap: .6rem;
+  min-height: 3.25rem; padding: .4rem .9rem .4rem .6rem;
+  border: 1px solid var(--line); border-bottom: 3px solid var(--brand); border-radius: var(--radius-sm); background: #fff;
+  color: var(--navy); line-height: 1.1;
+}
+.rating-mark img { width: 1.75rem; height: 1.75rem; flex: none; object-fit: contain; }
+.rating-mark strong { font-size: 1.125rem; font-weight: 700; }
+.rating-mark .stars { color: var(--star); font-size: .875rem; letter-spacing: .05em; }
+.rating-mark small { display: block; margin-top: .15rem; color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+
 /* Breadcrumb for inner pages: <nav class="bx-crumbs" aria-label="Breadcrumb"><ol><li><a href="bronx.html">Home</a></li><li aria-current="page">FAQ</li></ol></nav> */
 .bx-crumbs ol { display: flex; flex-wrap: wrap; gap: .35rem; font-size: var(--fs-xs); font-weight: 500; }
 .bx-crumbs li { display: flex; align-items: center; gap: .35rem; color: var(--on-dark-muted); }
@@ -462,14 +476,7 @@ svg { display: inline-block; }
   padding: calc(var(--nav-h) + var(--header-line) + clamp(1.75rem, 1.2rem + 1.5vw, 2.75rem)) 0 clamp(1.75rem, 1.2rem + 1.5vw, 2.75rem);
   background: var(--navy); color: var(--on-dark-muted);
 }
-/* Faint roofline pattern on the right half. */
-.bx-pagehero::before {
-  content: ""; position: absolute; z-index: -1; inset: 0 0 0 52%;
-  background:
-    linear-gradient(90deg, var(--navy) 0%, transparent 35%),
-    repeating-linear-gradient(135deg, transparent 0 46px, rgba(255, 255, 255, .06) 46px 47px),
-    repeating-linear-gradient(45deg, transparent 0 46px, rgba(255, 255, 255, .06) 46px 47px);
-}
+/* Solid navy: the diagonal roofline pattern was removed (Sean, Oct 12). */
 .bx-pagehero::after { content: ""; position: absolute; left: 0; bottom: 0; width: min(18rem, 40%); height: 4px; background: var(--brand); }
 .bx-pagehero__inner { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: var(--space-5) var(--space-8); align-items: center; }
 .bx-pagehero h1 { margin-top: var(--space-3); color: #fff; font-size: clamp(2rem, 1.4rem + 1.8vw, 3rem); letter-spacing: -.028em; }
@@ -487,10 +494,10 @@ svg { display: inline-block; }
 .bkf p { margin: 0; }
 .bkf__top { display: grid; grid-template-columns: minmax(0, 2.6fr) repeat(3, minmax(max-content, 1fr)); gap: 2rem clamp(1.5rem, 1rem + 2vw, 2.85rem); padding-block: 1.5rem .75rem; }
 .bkf__brand { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 1.25rem; align-content: start; align-items: start; min-width: 0; }
-.bkf__logo { grid-row: 1 / span 2; display: inline-flex; padding: .35rem; border-radius: 50%; background: #fff; line-height: 0; }
+.bkf__logo { grid-row: 1; display: inline-flex; padding: .35rem; border-radius: 50%; background: #fff; line-height: 0; }
 .bkf__logo img { width: auto; height: 4.75rem; }
 .bkf__about { max-width: 46ch; color: rgba(255, 255, 255, .74); font-size: .9375rem; line-height: 1.7; }
-.bkf__cta { justify-self: start; margin-top: 1rem; min-height: 3rem; padding: .6rem 1.35rem; font-size: 1rem; }
+.bkf__cta { grid-column: 1 / -1; justify-self: start; margin-top: 1rem; min-height: 3rem; padding: .6rem 1.35rem; font-size: 1rem; }
 .bkf__col { min-width: 0; }
 .bkf .bkf__heading { max-width: none; color: var(--bkf-head); font-size: 1rem; line-height: 1.6; letter-spacing: .01em; }
 .bkf__links { display: grid; gap: 2px; margin-top: 1rem; }
@@ -502,7 +509,12 @@ svg { display: inline-block; }
 .bkf__badges { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; }
 .bkf__badges li { display: flex; align-items: center; gap: .5rem; }
 .bkf__rating img { width: 2rem; height: 2rem; }
-.bkf__rating span { color: #fff; font-size: .9375rem; font-weight: 700; line-height: 1.2; }
+.bkf__rating > span { color: #fff; font-size: .9375rem; font-weight: 700; line-height: 1.2; white-space: nowrap; }
+.bkf__rating strong { font-size: 1.125rem; }
+.bkf__stars { margin-left: .2rem; color: var(--star); font-size: 1rem; letter-spacing: .04em; }
+.bkf__rating small { margin-left: .4rem; color: #fff; font-size: .9375rem; font-weight: 700; }
+.bkf__licensed { color: #fff; font-size: .9375rem; font-weight: 700; line-height: 1.2; white-space: nowrap; }
+.bkf__licensed .bkf__icon { width: 2.25rem; height: 2.25rem; }
 .bkf__yelp img { width: 2.625rem; height: 2.625rem; object-fit: contain; }
 .bkf__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .bkf__contacts { display: grid; grid-auto-flow: column; justify-content: end; gap: 1.5rem; }
@@ -561,7 +573,7 @@ svg { display: inline-block; }
 .bx-hero__title span { display: block; margin-top: .55rem; color: var(--orange-300); font-size: .62em; line-height: 1.2; letter-spacing: -.02em; }
 .bx-hero__text { max-width: 54ch; margin-top: var(--space-4); color: rgba(255, 255, 255, .88); font-size: var(--fs-lede); line-height: 1.6; text-wrap: pretty; }
 .bx-hero__proof { display: flex; flex-wrap: wrap; align-items: stretch; gap: .6rem; margin-top: var(--space-5); }
-.bx-hero__proof .bx-badge { border-color: transparent; box-shadow: var(--shadow-sm); }
+.bx-hero__proof .bx-badge, .bx-hero__proof .rating-mark { border-color: transparent; border-bottom-color: var(--brand); box-shadow: var(--shadow-sm); }
 .bx-hero__stat { display: flex; flex-direction: column; justify-content: center; min-height: 3.25rem; padding: .35rem .9rem; border: 1px solid rgba(255, 255, 255, .22); border-left: 3px solid var(--brand); border-radius: var(--radius-sm); background: rgba(2, 22, 52, .55); color: #fff; line-height: 1.1; }
 .bx-hero__stat strong { font-size: 1.125rem; }
 .bx-hero__stat small { margin-top: .2rem; color: rgba(255, 255, 255, .8); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
@@ -569,6 +581,7 @@ svg { display: inline-block; }
 .bx-hero :focus-visible { outline-color: #fff; }
 .bx-hero__form :focus-visible { outline-color: var(--brand); }
 .bx-hero__form { position: relative; box-shadow: var(--shadow-float); }
+.bx-hero__form .quote-card__title { text-align: center; }
 
 /* Trust strip: navy band directly under the hero. ------------------------ */
 .bx-trust { background: var(--navy); color: var(--on-dark-muted); }
@@ -660,6 +673,9 @@ svg { display: inline-block; }
 .bx-compare__table tfoot td:first-child { background: var(--grey-50); border-right: 1px solid var(--line); }
 
 /* Building types: four leaf cards with line drawings. --------------------- */
+/* One long divider line between the Flat vs. Shingle table and this section. */
+.bx-types--ruled { position: relative; }
+.bx-types--ruled::before { content: ""; position: absolute; top: 0; left: max(var(--edge), (100% - var(--container-max)) / 2 + var(--edge)); right: max(var(--edge), (100% - var(--container-max)) / 2 + var(--edge)); height: 2px; background: var(--navy); opacity: .35; }
 .bx-types__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
 .bx-types__art { display: flex; align-items: flex-end; justify-content: center; height: 8.25rem; padding: 1rem 1rem 0; border-bottom: 3px solid var(--brand); background: linear-gradient(180deg, var(--navy-50), #fff); }
 .bx-types__art svg { width: 100%; max-width: 13.5rem; height: 100%; fill: none; stroke: var(--navy); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
@@ -727,12 +743,12 @@ svg { display: inline-block; }
 .bx-reviews .bx-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem 2rem; align-items: end; }
 .bx-reviews__widget { min-height: 12rem; }
 
-/* Get In Touch: form card left, map right with a details card on top. ---- */
-.bx-contact__inner { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 1.25rem; align-items: stretch; }
+/* Get In Touch: map left (Google's business card with the review count shows
+   in the map's top-left corner), form card right. ----------------------- */
+.bx-contact__inner { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 1.25rem; align-items: stretch; }
 .bx-contact__form .quote-card__title { font-size: var(--fs-h2); }
 .bx-contact__map { position: relative; min-height: 26rem; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--navy-50); }
 .bx-contact__map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.bx-contact__card { position: absolute; z-index: 1; left: 1rem; bottom: 1rem; width: min(22rem, calc(100% - 2rem)); padding: .35rem 1.1rem; border-left: 4px solid var(--brand); border-radius: var(--radius-sm); background: #fff; box-shadow: var(--shadow-card); }
 
 /* Detail rows (call / office / hours), shared by the homepage + contact page:
    <ul class="bx-details"><li><span class="bx-ico">svg</span><div><p class="bx-details__label">Call</p><p class="bx-details__value"><a href="tel:...">718-395-5061</a></p></div></li></ul> */
@@ -793,7 +809,7 @@ svg { display: inline-block; }
   .bx-map__legend { margin-top: .5rem; }
   .bx-contact__form { gap: .6rem; padding: 1.1rem 1.35rem; }
   .bx-contact__form .field textarea { min-height: 4rem; height: 4rem; }
-  .bx-contact__map { min-height: 0; }
+  .bx-contact__map { min-height: 22rem; }
 }
 
 @media (max-width: 75rem) {
@@ -835,6 +851,7 @@ svg { display: inline-block; }
   .bx-faq--2col { grid-template-columns: minmax(0, 1fr); }
   .bx-projects__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; grid-auto-rows: 12rem; }
   .bx-contact__map { min-height: 22rem; }
+  .bx-contact__form { order: -1; }   /* phones/tablets: the form comes first */
   .bx-pagehero__inner { grid-template-columns: minmax(0, 1fr); }
   .bx-pagehero__aside { justify-self: start; }
 }
@@ -863,6 +880,10 @@ svg { display: inline-block; }
   .bx-hero__proof .bx-badge { gap: .4rem; padding: .35rem .4rem; }
   .bx-hero__proof .bx-badge img { width: 1.4rem; height: 1.4rem; }
   .bx-hero__proof .bx-badge strong { font-size: .875rem; }
+  .bx-hero__proof .rating-mark { flex-direction: column; gap: .2rem; padding: .35rem .3rem; text-align: center; }
+  .bx-hero__proof .rating-mark img { width: 1.25rem; height: 1.25rem; }
+  .bx-hero__proof .rating-mark strong { font-size: .875rem; }
+  .bx-hero__proof .rating-mark .stars { font-size: .6875rem; letter-spacing: 0; }
   .bx-hero__proof small { font-size: .5625rem; letter-spacing: .06em; }
   .bx-hero__stat { align-items: center; padding: .35rem .4rem; border-left: 0; border-top: 3px solid var(--brand); }
   .bx-hero__stat strong { font-size: .875rem; }
@@ -919,15 +940,11 @@ svg { display: inline-block; }
   .bx-areas__copy > .btn { width: 100%; }
 
   .bx-contact__map { min-height: 20rem; }
-  .bx-contact__card { position: relative; left: auto; bottom: auto; width: auto; margin: 0; border-radius: 0; box-shadow: none; }
-  .bx-contact__map { display: flex; flex-direction: column; min-height: 0; }
-  .bx-contact__map iframe { position: relative; height: 18rem; }
 
   .field-row { gap: .6rem; }
   .bx-faq__a { padding-right: 1.1rem; }
   .field input::placeholder, .field textarea::placeholder { font-size: .8125rem; }
 
-  .bx-pagehero::before { inset: 0 0 0 30%; }
 
   /* Footer (same mobile rules as Brooklyn). */
   .bkf__top { gap: 1.75rem .75rem; padding-top: 1.25rem; }

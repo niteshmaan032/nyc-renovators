@@ -223,7 +223,7 @@
   .bxa-collage { grid-template-rows: repeat(2, clamp(8rem, 24vw, 12rem)); }
   .bxa-approach__inner { grid-template-columns: minmax(0, 1fr); }
   .bxa-approach__media { min-height: 0; aspect-ratio: 16 / 9; }
-  .bxa-approach__media img { object-position: center 15%; }
+  .bxa-approach__media img { object-position: center 45%; }
   .bxa-cta__inner { grid-template-columns: minmax(0, 1fr); }
 }
 

@@ -10,49 +10,7 @@
   /* ---------- Header surface: solid white from the top (8 Oct client call) ---------- */
   if (header) header.classList.add('is-scrolled');
 
-  /* ---------- Hero photo carousel ---------- */
-  var hero = document.querySelector('.hero');
-  if (hero) {
-    var slides = Array.prototype.slice.call(hero.querySelectorAll('.hero__slide'));
-    var dots = Array.prototype.slice.call(hero.querySelectorAll('.hero__dot'));
-    if (slides.length === 4 && dots.length === 4) {
-      var currentSlide = 0, slideTimer = null, heroHovered = false;
-      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-      function showSlide(index) {
-        currentSlide = index;
-        slides.forEach(function (slide, i) { slide.classList.toggle('is-active', i === index); });
-        dots.forEach(function (dot, i) {
-          dot.classList.toggle('is-active', i === index);
-          dot.setAttribute('aria-pressed', String(i === index));
-        });
-      }
-      function stopSlides() {
-        if (slideTimer) { window.clearInterval(slideTimer); slideTimer = null; }
-      }
-      function startSlides() {
-        stopSlides();
-        if (reducedMotion.matches || document.hidden || heroHovered || hero.contains(document.activeElement)) return;
-        slideTimer = window.setInterval(function () { showSlide((currentSlide + 1) % slides.length); }, 6000);
-      }
-      dots.forEach(function (dot, index) {
-        dot.addEventListener('click', function () { showSlide(index); startSlides(); });
-      });
-      hero.addEventListener('pointerenter', function (event) {
-        if (event.pointerType === 'mouse') { heroHovered = true; stopSlides(); }
-      });
-      hero.addEventListener('pointerleave', function (event) {
-        if (event.pointerType === 'mouse') { heroHovered = false; startSlides(); }
-      });
-      hero.addEventListener('focusin', stopSlides);
-      hero.addEventListener('focusout', function (event) {
-        if (!hero.contains(event.relatedTarget)) startSlides();
-      });
-      document.addEventListener('visibilitychange', startSlides);
-      if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', startSlides);
-      else reducedMotion.addListener(startSlides);
-      startSlides();
-    }
-  }
+  /* Hero: one static background photo since the 12 Oct call (carousel and dots removed). */
 
   /* ---------- Mobile drawer ---------- */
   function closeDrawer() {

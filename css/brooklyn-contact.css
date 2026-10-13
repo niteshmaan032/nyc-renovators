@@ -58,5 +58,15 @@
 /* 5 Oct call: the form sets the row height and the map flexes to match, so
    the form card no longer ends with empty space under the button. */
 @media (min-width: 48.01rem) {
-  .contact-page__main .contact__map { min-height: 14rem; }
+  .contact-page__main .contact__map { min-height: 19rem; }
+}
+
+/* 12 Oct call: crew photo beside the Trustindex reviews, between the form and the FAQs. */
+.contact-page__reviews-grid { display: grid; grid-template-columns: minmax(0, .34fr) minmax(0, .66fr); gap: clamp(1rem, .75rem + 1vw, 1.75rem); align-items: center; }
+.contact-page__photo { aspect-ratio: 4 / 3; border-radius: 8px; }
+.contact-page__photo figcaption { border-radius: 4px; }
+.contact-page__reviews .bk-reviews__widget { min-width: 0; }
+@media (max-width: 48rem) {
+  .contact-page__reviews-grid { grid-template-columns: minmax(0, 1fr); }
+  .contact-page__photo { aspect-ratio: 16 / 10; }
 }
