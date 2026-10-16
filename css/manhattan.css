@@ -1236,3 +1236,18 @@ svg { display: inline-block; }
   .page-manhattan-home .mh-svx__help { gap: .35rem; padding-block: .8rem; }
   .page-manhattan-home .mh-svx__helptext { display: none; }
 }
+
+/* ---- Oct 16 (Nitesh): footer brand stacks: logo on top, the paragraph under it, then the button. ---- */
+.bkf__brand { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+.bkf__logo { grid-row: auto; align-self: flex-start; }
+.bkf__about { max-width: 42ch; margin-top: 0 !important; }
+.bkf__brand .bkf__cta { margin-top: .25rem; }
+.bkf__rating > span { white-space: nowrap; }
+.bkf__rating strong { font-size: 1.125rem; }
+.bkf__stars { margin-left: .2rem; color: #F5A623; font-size: 1rem; letter-spacing: .04em; }
+.bkf__rating small { margin-left: .4rem; color: #fff; font-size: .9375rem; font-weight: 700; }
+.bkf__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Oct 16 (Nitesh): the footer paragraph under the logo runs a little wider. */
+.bkf__about { max-width: 52ch; }
+@media (max-width: 75rem) { .bkf__about { max-width: 62ch; } }

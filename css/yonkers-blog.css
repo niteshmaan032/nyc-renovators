@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Royal Roofing Yonkers: yonkers-blog.html (css/yonkers-blog.css, v1)
+   Carried from the approved Brooklyn blog (css/brooklyn-blog.css): page
+   hero, topic filter, featured post, post grid, CTA band. Same structure,
+   cards, and spacing, in Yonkers colours. Loads after css/yonkers.css, which
+   holds the tokens, buttons, header, footer, and the Brooklyn-design section
+   heads (.ykb-section, .ykb-head, .ykb-eyebrow, .ykb-title, .ykb-lede).
+
+   PREFIX: ykbl- (Brooklyn blog). Brooklyn -> Yonkers:
+     .bk-phero / .bk-crumbs  -> .ykbl-phero / .ykbl-crumbs
+     .bkb-*                  -> .ykbl-*
+     .section / .section-head / .eyebrow / .section-title / .section-lede
+                             -> .ykb-section / .ykb-head / .ykb-eyebrow / .ykb-title / .ykb-lede
+   Colours: navy -> near-black #111111, red -> orange #D2450A (small orange
+   text on white uses --brand-ink #A83708 for AA contrast).
+   ========================================================================== */
+
+/* Brooklyn-design rhythm and body size (same as the other ykb- sections). */
+.ykbl-featured, .ykbl-list, .ykbl-topics, .ykbl-cta { font-size: clamp(1rem, .955rem + .19vw, 1.125rem); }
+.ykbl-featured h2, .ykbl-list h2, .ykbl-cta h2 { line-height: 1.22; }
+
+/* Compact page hero (Brooklyn blog/FAQ pattern) ---------------------------- */
+.ykbl-phero {
+  padding: calc(var(--nav-h) + 1.5rem) 0 1.5rem;
+  background-color: var(--dark-deep);
+  background-image: linear-gradient(90deg, var(--dark-deep) 0%, var(--dark-700) 100%);
+  background-size: 45% 100%, 100% 100%;
+  background-position: right center;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+.ykbl-crumbs ol { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .5rem; margin: 0; padding: 0; list-style: none; color: var(--on-dark-muted); font-size: .8125rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.ykbl-crumbs li + li::before { content: "/"; margin-right: .5rem; color: rgba(255, 255, 255, .4); }
+.ykbl-crumbs a { color: #fff; text-decoration: none; }
+.ykbl-crumbs a:hover, .ykbl-crumbs a:focus-visible { text-decoration: underline; text-underline-offset: .2em; }
+.ykbl-phero h1 { margin-top: .6rem; color: #fff; font-size: clamp(2rem, 1.5rem + 1.4vw, 2.875rem); line-height: 1.15; letter-spacing: -.03em; }
+.ykbl-phero__lede { max-width: 80ch; margin-top: .5rem; color: var(--on-dark-muted); font-size: 1.125rem; }
+
+/* Shared meta row + category chip ----------------------------------------- */
+.ykbl-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .75rem; color: var(--muted); font-size: .8125rem; font-weight: 500; line-height: 1.2; }
+.ykbl-tag { display: inline-flex; align-items: center; padding: .22rem .5rem; border-radius: 4px; background: rgba(210, 69, 10, .08); color: var(--brand-ink); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+
+/* Topic filter strip ------------------------------------------------------ */
+.ykbl-topics { border-bottom: 1px solid var(--line); background: #fff; }
+.ykbl-topics__inner { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; padding-block: .9rem; }
+.ykbl-topics__label { color: var(--muted); font-size: clamp(.75rem, .71rem + .16vw, .8125rem); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.ykbl-topics__chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+.ykbl-chip {
+  min-height: 2.75rem; padding: .5rem 1.1rem;
+  border: 1px solid var(--line); border-radius: 6px; background: #fff; cursor: pointer;
+  color: var(--dark); font-family: inherit; font-size: .9375rem; font-weight: 700; line-height: 1.2; white-space: nowrap;
+  transition: background-color .2s, border-color .2s, color .2s;
+}
+.ykbl-chip:hover { border-color: var(--brand); color: var(--brand-ink); }
+.ykbl-chip[aria-pressed="true"] { border-color: var(--dark); background: var(--dark); color: #fff; }
+.ykbl-topics__count { margin-left: auto; color: var(--muted); font-size: .875rem; }
+
+/* Featured post ----------------------------------------------------------- */
+.ykbl-featured { background: #fff; }
+.ykbl-featured[hidden] { display: none; }
+.ykbl-feature { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #fff; box-shadow: 0 14px 40px rgba(17, 17, 17, .06); }
+.ykbl-feature__media { position: relative; min-height: 0; aspect-ratio: 16 / 9; max-height: 25rem; overflow: hidden; background: var(--dark); }
+.ykbl-feature__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+.ykbl-feature__body { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: .85rem; min-width: 0; padding: clamp(1.5rem, 1rem + 1.5vw, 2.5rem); }
+.ykbl-feature__body .ykb-eyebrow { margin-bottom: 0; }
+.ykbl-feature__title { font-size: clamp(1.5rem, 1.15rem + .9vw, 2rem); line-height: 1.2; letter-spacing: -.02em; }
+.ykbl-feature__excerpt { max-width: 56ch; color: var(--muted); font-size: 1rem; line-height: 1.6; }
+.ykbl-feature__btn { margin-top: .35rem; }
+
+/* Post grid --------------------------------------------------------------- */
+.ykbl-list { background: var(--grey-25); }
+.ykbl-list .ykb-head { margin-bottom: .875rem; }
+.ykbl-list .ykb-lede { max-width: 48ch; }
+.ykbl-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+.ykbl-card {
+  position: relative; display: grid; grid-template-columns: minmax(0, .38fr) minmax(0, .62fr);
+  min-width: 0; overflow: hidden;
+  border: 1px solid var(--line); border-radius: 8px; background: #fff;
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.ykbl-card[hidden] { display: none; }
+.ykbl-card:hover, .ykbl-card:focus-within { transform: translateY(-3px); border-color: rgba(17, 17, 17, .3); box-shadow: 0 16px 34px rgba(17, 17, 17, .1); }
+.ykbl-card:focus-within { outline: 3px solid var(--brand); outline-offset: 3px; }
+.ykbl-card__media { position: relative; min-height: 0; overflow: hidden; background: var(--dark); }
+.ykbl-card__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.ykbl-card:hover .ykbl-card__media img { transform: scale(1.04); }
+.ykbl-card__body { display: flex; flex-direction: column; align-items: flex-start; gap: .3rem; min-width: 0; padding: .6rem 1.25rem .65rem; }
+/* Title: a three-line slot (real post titles run long), excerpt: three lines,
+   so every card is identical. The clamps are only a safety net. */
+.ykbl-card__title {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;
+  min-height: calc(3 * 1.25em);
+  font-size: 1rem; line-height: 1.25; letter-spacing: -.01em;
+}
+.ykbl-card__excerpt {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;
+  min-height: calc(3 * 1.45em);
+  color: var(--muted); font-size: .875rem; line-height: 1.45;
+}
+.ykbl-card__link { display: inline-flex; align-items: center; gap: .45rem; margin-top: auto; color: var(--brand-ink); font-size: .875rem; font-weight: 700; text-decoration: none; }
+.ykbl-card__link::after { content: ""; position: absolute; z-index: 2; inset: 0; }
+.ykbl-card__link svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 2.2; transition: transform .2s ease; }
+.ykbl-card:hover .ykbl-card__link svg { transform: translateX(3px); }
+.ykbl-card:focus-within .ykbl-card__link:focus-visible { outline: none; }
+.ykbl-card--ask .ykbl-card__media::after { content: ""; position: absolute; inset: 0; background: rgba(17, 17, 17, .25); }
+.ykbl-card--ask .ykbl-tag { background: var(--dark); color: #fff; }
+
+/* CTA band (Brooklyn's brick-line pattern, redrawn in warm grey) ---------- */
+.ykbl-cta {
+  background-color: var(--dark-deep);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='80' viewBox='0 0 160 80'%3E%3Cpath d='M0 0H160M0 40H160M0 80H160M0 0V40M80 0V40M160 0V40M40 40V80M120 40V80' fill='none' stroke='%23d9cdc3' stroke-opacity='.17' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-size: 160px 80px; color: #fff;
+}
+.ykbl-cta__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; padding-block: clamp(1.5rem, 1rem + 1.5vw, 2.25rem); }
+.ykbl-cta h2 { color: #fff; font-size: clamp(1.5rem, 1.15rem + 1vw, 2.125rem); letter-spacing: -.02em; }
+.ykbl-cta p { max-width: 60ch; margin-top: .35rem; color: var(--on-dark-muted); }
+.ykbl-cta__actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+/* Orange buttons on near-black grounds darken to the orange hover, not black. */
+.ykbl-cta .btn--solid:not(.btn--white) { --hover: var(--brand-hover); }
+
+/* Responsive -------------------------------------------------------------- */
+@media (max-width: 64rem) {
+  .ykbl-feature { grid-template-columns: 1fr; }
+  .ykbl-feature__media { aspect-ratio: 16 / 7; max-height: none; }
+  .ykbl-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 48rem) {
+  .ykbl-topics__count { margin-left: 0; flex-basis: 100%; }
+}
+@media (max-width: 40rem) {
+  .ykbl-phero { padding: calc(var(--nav-h) + 1.25rem) 0 1.25rem; background-size: 70% 100%, 100% 100%; }
+  .ykbl-phero__lede { font-size: 1rem; }
+  /* Topic chips scroll sideways instead of wrapping into rows. */
+  .ykbl-topics__inner { gap: .5rem; padding-block: .75rem; }
+  .ykbl-topics__chips { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(-1 * var(--edge)); padding-inline: var(--edge); scrollbar-width: none; }
+  .ykbl-topics__chips::-webkit-scrollbar { display: none; }
+  .ykbl-feature__media { aspect-ratio: 16 / 10; }
+  .ykbl-feature__body { padding: 1.25rem; gap: .7rem; }
+  .ykbl-feature__btn { width: 100%; }
+  /* Post cards become a swipe row of vertical cards. */
+  .ykbl-grid.slider { display: flex; grid-template-columns: none; gap: 1rem !important; }
+  .ykbl-grid.slider > .ykbl-card { flex: 0 0 84%; grid-template-columns: 1fr; }
+  .ykbl-grid.slider > .ykbl-card[hidden] { display: none; }
+  .ykbl-card__media { aspect-ratio: 16 / 9; }
+  .ykbl-card__body { padding: 1rem 1.1rem 1.15rem; }
+  .ykbl-card:hover, .ykbl-card:focus-within { transform: none; }
+  .ykbl-cta__actions, .ykbl-cta__actions .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ykbl-card, .ykbl-card__media img, .ykbl-card__link svg { transition: none; }
+  .ykbl-card:hover, .ykbl-card:focus-within, .ykbl-card:hover .ykbl-card__media img { transform: none; }
+}

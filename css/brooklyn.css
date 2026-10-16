@@ -970,3 +970,13 @@ svg { display: inline-block; }
   .bkf__licensed { margin-left: auto; font-size: .875rem; }
   .bkf__licensed > span:last-child { max-width: 5.5rem; }
 }
+
+/* ---- Oct 16 (Nitesh): footer brand stacks: logo on top, the paragraph under it, then the button. ---- */
+.bkf__brand { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+.bkf__logo { grid-row: auto; align-self: flex-start; }
+.bkf__about { max-width: 42ch; margin-top: 0 !important; }
+.bkf__brand .bkf__cta { margin-top: .25rem; }
+
+/* Oct 16 (Nitesh): the footer paragraph under the logo runs a little wider. */
+.bkf__about { max-width: 52ch; }
+@media (max-width: 75rem) { .bkf__about { max-width: 62ch; } }

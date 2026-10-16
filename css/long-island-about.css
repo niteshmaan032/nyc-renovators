@@ -1,0 +1,174 @@
+/* ==========================================================================
+   Royal Roofing & Siding Long Island: long-island-about-us.html
+   Loads after css/long-island.css. Carried from css/manhattan-about.css
+   (same layout and behaviour), recoloured to the Long Island green and navy.
+   ========================================================================== */
+/* Shared small parts ------------------------------------------------------- */
+.lia-eyebrow { display: flex; align-items: center; gap: .45rem; color: var(--brand-ink); font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; line-height: 1.3; text-transform: uppercase; }
+.lia-eyebrow svg { width: 1rem; height: 1rem; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+/* 1. Hero: light ground, copy left, real job photo right. ------------------
+   A photo up top instead of a navy banner (client request). */
+.lia-hero {
+  position: relative; overflow: hidden;
+  padding: calc(var(--nav-h) + var(--header-line) + clamp(1.25rem, .5rem + 2.2vh, 2.5rem)) 0 clamp(1.5rem, .75rem + 2.2vh, 2.75rem);
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--grey-50) 0%, #fff 100%);
+}
+.lia-hero__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: var(--col-gap); align-items: center; }
+.lia-hero__copy { min-width: 0; }
+.lia-hero .li-crumbs { margin-bottom: var(--space-5); }
+.lia-hero .li-crumbs li { color: var(--muted); }
+.lia-hero .li-crumbs a { color: var(--navy); font-weight: 700; }
+.lia-hero h1 { max-width: none; font-size: var(--fs-h1); line-height: 1.06; letter-spacing: -.022em; }
+.lia-hero .li-lede { max-width: 54ch; margin-top: var(--space-4); }
+.lia-hero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
+.lia-hero__facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: var(--space-6); border-block: 1px solid var(--line); }
+.lia-hero__facts li { min-width: 0; padding: .8rem 1rem; }
+.lia-hero__facts li:first-child { padding-left: 0; }
+.lia-hero__facts li + li { border-left: 1px solid var(--line); }
+.lia-hero__facts strong { display: block; color: var(--navy); font-size: 1rem; line-height: 1.3; }
+.lia-hero__facts span { display: block; margin-top: .15rem; color: var(--muted); font-size: var(--fs-xs); line-height: 1.4; }
+.lia-hero__media { position: relative; z-index: 0; min-width: 0; margin: 0 0 .75rem .75rem; }
+/* Amber block offset behind the photo: the window square from the logo. */
+.lia-hero__media::before { content: ""; position: absolute; z-index: -1; left: -.75rem; bottom: -.75rem; width: 42%; height: 46%; background: var(--brand); }
+.lia-hero__media img {
+  width: 100%; height: clamp(17rem, calc(100svh - var(--nav-h) - 12rem), 31rem);
+  object-fit: cover; object-position: 50% 38%; border-radius: var(--radius-media); box-shadow: var(--shadow-card);
+}
+.lia-hero__media figcaption { position: absolute; right: 1rem; bottom: 1rem; padding: .4rem .75rem; border-radius: var(--radius-xs); background: var(--navy); color: #fff; font-size: var(--fs-xs); font-weight: 700; line-height: 1.3; }
+/* 2. Intro: lead photo with an inset photo, copy right. -------------------- */
+.lia-intro__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: var(--col-gap); align-items: center; }
+.lia-intro__media { position: relative; min-width: 0; padding: 0 16% 11% 0; }
+.lia-frame { overflow: hidden; border-radius: var(--radius-media); background: var(--navy-50); }
+.lia-frame img { width: 100%; height: 100%; object-fit: cover; }
+.lia-frame--lead { aspect-ratio: 4 / 3; max-height: 26rem; }
+.lia-frame--inset { position: absolute; right: 0; bottom: 0; width: 44%; aspect-ratio: 4 / 3; border: 6px solid #fff; box-shadow: var(--shadow-card); }
+.lia-frame--inset::after { content: ""; position: absolute; top: 0; left: 0; width: 3rem; height: 3px; background: var(--brand); }
+.lia-intro__copy { min-width: 0; }
+.lia-intro__text { max-width: 62ch; margin-top: var(--space-3); color: var(--muted); }
+.lia-intro__checks { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem 1.5rem; margin-top: var(--space-5); padding-block: var(--space-4); border-block: 1px solid var(--line); }
+.lia-intro__checks li { font-size: var(--fs-small); line-height: 1.45; }
+.lia-intro__checks svg { margin-top: .15rem; }
+.lia-intro__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; margin-top: var(--space-5); }
+/* 3. Specialties: flat roofing feature left, 2 x 3 equal cards right. ------ */
+.lia-spec .li-head { margin-bottom: var(--space-5); }
+.lia-spec__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 1.25rem; align-items: stretch; }
+.lia-feature { position: relative; display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: #fff; }
+.lia-feature__media { position: relative; flex: 1 1 auto; min-height: 9rem; overflow: hidden; background: var(--navy-50); }
+/* Absolute so the photo fills whatever height the card rows give it, never sets it. */
+.lia-feature__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.lia-feature__body { display: flex; flex-direction: column; gap: .55rem; padding: 1.15rem 1.35rem 1.35rem; border-top: 3px solid var(--brand); }
+.lia-feature__title { font-size: clamp(1.25rem, 1.05rem + .5vw, 1.55rem); }
+.lia-feature__text { color: var(--muted); font-size: var(--fs-small); line-height: 1.55; }
+.lia-feature .li-tags { margin-top: .15rem; }
+.lia-feature__btn { align-self: flex-start; margin-top: .5rem; }
+.lia-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 1.25rem; }
+.lia-card { position: relative; display: flex; flex-direction: column; gap: .5rem; min-width: 0; padding: 1.05rem 1.25rem .6rem; border: 1px solid var(--line); border-radius: var(--radius-card); background: #fff; transition: border-color .2s, box-shadow .2s; }
+.lia-card::before { content: ""; position: absolute; top: -1px; left: -1px; width: 3rem; height: 3px; background: var(--brand); }
+.lia-card:hover { border-color: var(--line-strong); box-shadow: var(--shadow-card); }
+.lia-card__head { display: flex; align-items: center; gap: .85rem; }
+.lia-card__head .li-ico { width: 2.5rem; height: 2.5rem; }
+.lia-card h3 { font-size: var(--fs-h3); }
+.lia-card p { color: var(--muted); font-size: var(--fs-small); line-height: 1.55; }
+.lia-card .li-link { align-self: flex-start; margin-top: auto; min-height: 2.25rem; }
+.lia-card .li-link::after { content: ""; position: absolute; inset: 0; }
+/* whole card is clickable */
+.lia-card:has(.li-link:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
+.lia-card .li-link:focus-visible { outline: 0; }
+/* 4. Boards, managers & high-rises (navy). ---------------------------------- */
+.lia-boards__inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: var(--col-gap); align-items: center; }
+.lia-boards__media { position: relative; min-width: 0; }
+.lia-boards__media img { width: 100%; height: clamp(20rem, 52vh, 28rem); object-fit: cover; border-radius: var(--radius-media); }
+.lia-boards__media figcaption { position: absolute; left: 1rem; bottom: 1rem; padding: .4rem .75rem; border-radius: var(--radius-xs); background: var(--navy-deep); color: #fff; font-size: var(--fs-xs); font-weight: 700; box-shadow: inset 0 -2px 0 var(--brand); }
+.lia-boards__copy { min-width: 0; }
+.lia-boards .li-title { color: #fff; }
+.lia-boards__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; margin-top: var(--space-5); border-top: 1px solid var(--line-dark); }
+.lia-boards__list li { display: flex; align-items: flex-start; gap: .9rem; min-width: 0; padding: .95rem 0; border-bottom: 1px solid var(--line-dark); }
+.lia-boards__list h3 { color: #fff; font-size: 1.0625rem; line-height: 1.3; }
+.lia-boards__list p { margin-top: .2rem; font-size: var(--fs-small); line-height: 1.5; }
+/* 5. Approach: copy left, 2 x 2 numbered steps right. ----------------------- */
+.lia-approach__inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: var(--col-gap); align-items: center; }
+.lia-approach__copy { min-width: 0; }
+.lia-approach__text { max-width: 60ch; margin-top: var(--space-3); color: var(--muted); }
+.lia-approach__copy .btn { margin-top: var(--space-5); }
+.lia-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6) var(--space-7); }
+.lia-steps .li-step p { display: block; overflow: visible; -webkit-line-clamp: unset; }
+/* copy written to fit; never cut */
+.lia-approach__hint { grid-column: 1 / -1; }
+/* 6. Why choose us: photo left, 2 x 3 reasons right. ------------------------ */
+.lia-why .li-head { margin-bottom: var(--space-5); }
+.lia-why .li-title { max-width: none; }
+.lia-why__inner { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: var(--col-gap); align-items: stretch; }
+.lia-why__media { position: relative; min-width: 0; min-height: 18rem; overflow: hidden; border-radius: var(--radius-media); background: var(--navy-50); }
+.lia-why__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.lia-why__media figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 2.5rem 1.25rem 1rem; background: linear-gradient(180deg, transparent, rgba(6, 25, 55, .88)); color: #fff; line-height: 1.35; }
+.lia-why__media figcaption strong { display: block; font-size: 1.0625rem; }
+.lia-why__media figcaption span { display: block; color: var(--on-dark-muted); font-size: var(--fs-xs); font-weight: 500; }
+.lia-reasons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; border-top: 2px solid var(--navy); }
+.lia-reasons li { display: flex; align-items: flex-start; gap: .9rem; min-width: 0; padding: 1.1rem 0; border-bottom: 1px solid var(--line-strong); }
+.lia-reasons h3 { font-size: 1.0625rem; line-height: 1.3; }
+.lia-reasons p { margin-top: .2rem; color: var(--muted); font-size: var(--fs-small); line-height: 1.5; }
+/* 9. FAQ: head left, shared accordion right. -------------------------------- */
+.lia-faq__inner { display: grid; grid-template-columns: minmax(0, 24rem) minmax(0, 1fr); gap: var(--col-gap); align-items: start; }
+.lia-faq__head { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.lia-faq__head .li-lede { margin-bottom: var(--space-4); }
+.lia-faq__call { font-size: 1.25rem; }
+.lia-faq__call svg { stroke: var(--brand-ink); }
+/* Short laptop screens (1366 x 650): hero copy tightens so the hero fits. -- */
+@media (min-width: 60.01rem) and (max-height: 780px) {
+  .lia-hero .li-crumbs { margin-bottom: var(--space-3); }
+  .lia-hero .li-kicker { margin-bottom: .5rem; }
+  .lia-hero .li-lede { margin-top: .75rem; font-size: 1rem; }
+  .lia-hero__actions { margin-top: 1rem; }
+  .lia-hero__actions .btn { min-height: 2.85rem; padding-block: .55rem; }
+  .lia-hero__facts { margin-top: 1.1rem; }
+  .lia-hero__facts li { padding-block: .6rem; }
+}
+/* Responsive ---------------------------------------------------------------- */
+@media (max-width: 75rem) {
+  .lia-spec__grid { grid-template-columns: minmax(0, 1fr); }
+  .lia-feature { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+  .lia-feature__media { min-height: 16rem; }
+  .lia-feature__body { border-top: 0; border-left: 3px solid var(--brand); }
+  .lia-reasons { grid-template-columns: minmax(0, 1fr); }
+  .lia-reasons li { padding-block: .8rem; }
+}
+@media (max-width: 60rem) {
+  .lia-hero__inner, .lia-intro__inner, .lia-boards__inner, .lia-approach__inner, .lia-why__inner, .lia-faq__inner { grid-template-columns: minmax(0, 1fr); }
+  /* The photo leads on tablets and phones so it is the first thing seen. */
+  .lia-hero__media { order: -1; margin: 0 0 .75rem .75rem; }
+  .lia-hero__media img { height: auto; aspect-ratio: 16 / 9; }
+  .lia-hero h1 { max-width: none; }
+  .lia-intro__media { max-width: 40rem; }
+  .lia-boards__media img { height: auto; aspect-ratio: 16 / 9; }
+  .lia-why__media { min-height: 0; aspect-ratio: 16 / 9; }
+  .lia-reasons { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 48rem) {
+  .lia-feature { display: flex; }
+  .lia-feature__media { flex: none; min-height: 0; aspect-ratio: 16 / 9; }
+  .lia-feature__body { border-left: 0; border-top: 3px solid var(--brand); }
+  .lia-reasons { grid-template-columns: minmax(0, 1fr); }
+  .lia-boards__list { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 40rem) {
+  .lia-hero { padding-top: calc(var(--nav-h) + var(--header-line) + 1rem); }
+  .lia-hero .li-crumbs { margin-bottom: var(--space-3); }
+  .lia-hero__actions .btn { flex: 1 1 12rem; }
+  .lia-hero__facts { grid-template-columns: minmax(0, 1fr); }
+  .lia-hero__facts li, .lia-hero__facts li:first-child { padding: .6rem 0; }
+  .lia-hero__facts li + li { border-left: 0; border-top: 1px solid var(--line); }
+  .lia-hero__media::before { left: -.75rem; bottom: -.75rem; }
+  .lia-intro__checks { grid-template-columns: minmax(0, 1fr); }
+  .lia-intro__actions .btn { flex: 1 1 12rem; }
+  .lia-spec__grid { gap: 1rem; }
+  .lia-cards.slider { grid-auto-rows: auto; }
+  .lia-cards.slider > .lia-card { flex-basis: 78%; }
+  .lia-boards__list li { padding-block: .8rem; }
+  .lia-approach__copy .btn { width: 100%; }
+  .lia-steps.slider { gap: .85rem; }
+  .lia-faq__head .li-lede { margin-bottom: .5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lia-card { transition: none; }
+}

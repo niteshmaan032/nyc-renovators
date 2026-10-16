@@ -1,0 +1,1223 @@
+/* ==========================================================================
+   Royal Roofing & Siding Long Island: design system + homepage
+   --------------------------------------------------------------------------
+   Shared by every Long Island page. Page CSS (long-island-about.css,
+   -contact.css, -faqs.css, -projects.css, -service.css) loads after it.
+
+   Built from the approved sister-brand sections, recoloured to the Long
+   Island green #16572D and navy #0A2753:
+     A. Manhattan system: tokens, base, header, footer (.bkf), photo-slider
+        hero + marquee, flat vs shingle compare, areas, contact     (li-)
+     B. Brooklyn sections: trust strip, service cards, commercial, FAQ (lib-)
+     C. Bronx sections: about, building types, projects, reviews     (lix-)
+
+   PREFIXES (one scheme, everything starts with "li")
+     li-  Manhattan-based system and sections   lib- Brooklyn-based sections
+     lix- Bronx-based sections                  lia-/lis-/lic-/liq-/lip- page CSS
+     Header, drawer, dropdowns, forms and footer keep the shared class names
+     (header, nav__*, drawer__*, quote-card, field, bkf__*).
+
+   CONTRAST NOTES
+     Green #16572D on white is 8.6:1 and white on green is the same, so green
+     fills carry white text. Green accents on navy use --green-300 #9BD3AC
+     (8.6:1 on #0A2753). Navy #0A2753 on white is 14.6:1.
+   ========================================================================== */
+
+/* One family across all Royal brand sites: Helvetica Neue (300/500/700).    */
+@font-face { font-family: 'Helvetica Neue'; src: url('../fonts/HelveticaNeueLight.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Helvetica Neue'; src: url('../fonts/HelveticaNeueMedium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Helvetica Neue'; src: url('../fonts/HelveticaNeueBold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+/* 2. Tokens --------------------------------------------------------------- */
+:root {
+  /* Brand: amber #16572D and navy #0A2753, with tints and shades. */
+  --green-50:  #EEF6F0;    /* warm wash: hover rows, light panel */
+  --green-100: #D6EBDC;    /* borders on warm panels, chips */
+  --green-200: #B7DEC2;
+  --green-300: #9BD3AC;    /* green text on navy (8.6:1) */
+  --green-500: #16572D;    /* BRAND: CTA fills, header line, rules, dots */
+  --green-600: #0F4321;    /* pressed amber */
+  --green-700: #16572D;    /* green text on white (8.6:1) */
+
+  --navy-50:  #EEF3F8;     /* light section background */
+  --navy-100: #DBE4EE;     /* fills in line drawings, borders on tint */
+  --navy-200: #B9C8DA;
+  --navy-600: #22508C;
+  --navy-700: #14396F;     /* raised surface on navy, focus ring */
+  --navy-800: #0A2753;     /* BRAND: headings, dark panels */
+  --navy-900: #061937;     /* footer, deep bands */
+
+  /* Neutrals, biased slightly toward navy. */
+  --grey-25:  #F8F9FB;
+  --grey-50:  #F3F5F8;
+  --grey-100: #E5E9EF;
+  --grey-200: #CED6E0;
+  --grey-400: #8B96A6;     /* placeholders, disabled */
+  --grey-600: #566273;     /* muted body text (5.9:1 on white) */
+  --grey-800: #1F2B3A;     /* body text */
+
+  /* Semantic aliases: use these in components. */
+  --brand: var(--green-500);
+  --brand-hover: var(--green-600);
+  --brand-ink: var(--green-700);
+  --on-brand: #fff;          /* text on small amber labels/chips */
+  --on-brand-cta: #fff;                 /* text + icons on amber buttons and CTAs */
+  --cta-shadow: 0 1px 1px rgba(0, 0, 0, .25);
+  --navy: var(--navy-800);
+  --navy-deep: var(--navy-900);
+  --ink: var(--grey-800);
+  --muted: var(--grey-600);
+  --surface: #fff;
+  --surface-alt: var(--grey-50);
+  --surface-tint: var(--navy-50);
+  --surface-warm: var(--green-50);
+  --line: rgba(10, 39, 83, .12);
+  --line-strong: rgba(10, 39, 83, .24);
+  --line-dark: rgba(255, 255, 255, .14);
+  --on-dark: #fff;
+  --on-dark-muted: rgba(255, 255, 255, .8);
+  --focus: var(--navy-700);
+
+  /* Type: Helvetica Neue everywhere, same as Brooklyn and Bronx. */
+  --font-sans: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-display: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --fs-h1: clamp(2.2rem, 1.2rem + 2.2vw, 3.25rem);
+  --fs-h2: clamp(1.7rem, 1.2rem + 1.25vw, 2.4rem);
+  --fs-h3: clamp(1.15rem, 1rem + .35vw, 1.35rem);
+  --fs-lede: clamp(1.0625rem, 1rem + .2vw, 1.1875rem);
+  --fs-body: 1rem;
+  --fs-small: .9375rem;
+  --fs-xs: .8125rem;
+  --fs-label: .75rem;          /* uppercase labels, kickers */
+
+  /* Space: one gap scale, one section padding. */
+  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
+  --space-5: 1.5rem; --space-6: 2rem; --space-7: 2.5rem; --space-8: 3rem;
+  --section-pad: clamp(2rem, 1.2rem + 1.6vw, 2.75rem);
+  --head-gap: var(--space-6);  /* section head -> content */
+  --col-gap: clamp(1.5rem, 1rem + 2.4vw, 4rem);
+
+  /* Shape: square and crisp. */
+  --radius-xs: 2px;
+  --radius-sm: 2px;            /* buttons, inputs */
+  --radius-card: 3px;
+  --radius-media: 2px;
+
+  --shadow-sm: 0 2px 10px rgba(6, 25, 55, .06);
+  --shadow-card: 0 14px 34px rgba(6, 25, 55, .10);
+  --shadow-float: 0 26px 60px rgba(6, 25, 55, .22);
+  --shadow-header: 0 2px 14px rgba(6, 25, 55, .10);
+  --shadow-menu: 0 18px 44px rgba(6, 25, 55, .18);
+
+  /* Layout (same container and header height as Brooklyn and Bronx). */
+  --container-max: 112.5rem;
+  --edge: 70px;
+  --nav-h: 6.25rem;
+  --header-line: 4px;
+  --z-header: 50;
+}
+@media (max-width: 88rem) {
+  :root { --nav-h: 5.75rem; }
+}
+@media (max-width: 75rem) {
+  :root { --edge: 40px; }
+}
+@media (max-width: 48rem) {
+  :root { --edge: 20px; --nav-h: 4.75rem; --header-line: 3px; }
+}
+@media (max-width: 40rem) {
+  :root { --section-pad: 2.25rem; --head-gap: 1.25rem; }
+}
+/* 3. Base + reset ---------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+section[id], form[id] { scroll-margin-top: calc(var(--nav-h) + var(--header-line) + .75rem); }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--surface);
+  overflow-x: clip;
+}
+img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3, h4 { margin: 0; color: var(--navy); font-family: var(--font-display); font-weight: 700; line-height: 1.15; letter-spacing: -.012em; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+figure { margin: 0; }
+dl, dd { margin: 0; }
+button { font: inherit; color: inherit; }
+svg { display: inline-block; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.li-dark :focus-visible, .footer :focus-visible, .li-pagehero :focus-visible { outline-color: var(--green-300); }
+.skip-link { position: absolute; left: -999px; top: 0; z-index: 100; padding: .5rem 1rem; background: var(--navy); color: #fff; }
+.skip-link:focus { left: 1rem; top: 1rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* 4. Layout ---------------------------------------------------------------- */
+.container { width: min(var(--container-max), 100%); margin-inline: auto; padding-inline: var(--edge); }
+/* Every content section: <section class="li-section [li-section--alt|--tint|--warm|--navy]"> */
+.li-section { padding-block: var(--section-pad); background: var(--surface); }
+.li-section--alt { background: var(--surface-alt); }
+.li-section--tint { background: var(--surface-tint); }
+.li-section--navy { background: var(--navy-deep); color: var(--on-dark-muted); }
+.li-section--navy h2, .li-section--navy h3 { color: #fff; }
+.li-section + .li-section:not([class*="--"]) { border-top: 1px solid var(--line); }
+/* 5. Section heads ---------------------------------------------------------
+   <div class="li-head [li-head--split|li-head--center] [li-head--rule]">
+     <div>
+       <p class="li-kicker">Eyebrow</p>
+       <h2 class="li-title">Title</h2>
+     </div>
+     <p class="li-lede">Lede</p>          (or inside the first div)
+   </div>
+   The kicker -> title -> lede spacing is identical in every section.       */
+.li-head { margin-bottom: var(--head-gap); }
+.li-head--center { text-align: center; }
+.li-head--center .li-title, .li-head--center .li-lede { margin-inline: auto; }
+.li-head--center .li-kicker { justify-content: center; }
+.li-head--split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--space-4) var(--space-8); align-items: end; }
+.li-head--split .li-lede { margin-top: 0; justify-self: end; max-width: 52ch; }
+.li-kicker {
+  display: flex; align-items: center; gap: .6rem;
+  margin-bottom: var(--space-3);
+  color: var(--brand-ink);
+  font-family: var(--font-sans); font-size: var(--fs-label); font-weight: 700; line-height: 1.2; letter-spacing: .16em; text-transform: uppercase;
+}
+/* Small amber square: a nod to the window in the logo. */
+.li-kicker::before { content: ""; width: .5rem; height: .5rem; flex: none; background: var(--brand); }
+.li-kicker--light { color: var(--green-300); }
+.li-title { max-width: 28ch; font-size: var(--fs-h2); letter-spacing: -.018em; line-height: 1.12; }
+.li-lede { max-width: 62ch; margin-top: var(--space-3); color: var(--ink); font-size: var(--fs-lede); font-weight: 300; line-height: 1.6; text-wrap: pretty; }
+.li-section--navy .li-lede, .li-dark .li-lede { color: var(--on-dark-muted); }
+/* 6. Buttons ---------------------------------------------------------------
+   .btn                       base (navy outline)
+   .btn--solid                amber fill, white bold text (default CTA)
+   .btn--navy                 navy outline; with .btn--solid: navy fill
+   .btn--white                white fill, navy text (on dark backgrounds)
+   .btn--ghost-light          white outline on dark backgrounds
+   .btn--block / .btn--sm     full width / compact
+   .btn__icon                 leading svg icon                               */
+.btn {
+  --bg: transparent; --fg: var(--navy); --bd: var(--navy);
+  --hbg: var(--navy); --hfg: #fff; --hbd: var(--navy);
+  display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+  min-height: 3.125rem; margin: 0; padding: .7rem 1.5rem;
+  border: 2px solid var(--bd); border-radius: var(--radius-sm);
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-sans); font-size: 1.0625rem; font-weight: 700; line-height: 1.2; letter-spacing: .005em;
+  text-decoration: none; white-space: nowrap; cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+}
+.btn:hover, .btn:focus-visible { background: var(--hbg); border-color: var(--hbd); color: var(--hfg); }
+.btn:active { transform: translateY(1px); }
+.btn--solid { --bg: var(--brand); --fg: var(--on-brand-cta); --bd: var(--brand); --hbg: var(--navy); --hfg: #fff; --hbd: var(--navy); }
+.btn--navy { --bg: transparent; --fg: var(--navy); --bd: var(--navy); --hbg: var(--navy); --hfg: #fff; --hbd: var(--navy); }
+.btn--navy.btn--solid { --bg: var(--navy); --fg: #fff; --bd: var(--navy); --hbg: var(--brand); --hfg: var(--on-brand-cta); --hbd: var(--brand); }
+.btn--white { --bg: #fff; --fg: var(--navy); --bd: #fff; --hbg: var(--brand); --hfg: var(--on-brand-cta); --hbd: var(--brand); }
+.btn--ghost-light { --bg: transparent; --fg: #fff; --bd: rgba(255, 255, 255, .7); --hbg: #fff; --hfg: var(--navy); --hbd: #fff; }
+.li-dark .btn--solid, .li-section--navy .btn--solid, .li-ctaband .btn--solid, .footer .btn--solid { --hbg: var(--green-600); --hfg: #fff; --hbd: var(--green-600); }
+/* White on amber: always bold, 16px+, with a soft shadow (see CONTRAST NOTES). */
+.btn--solid:not(.btn--navy), .btn--navy.btn--solid:hover, .btn--white:hover, .btn--navy.btn--solid:focus-visible, .btn--white:focus-visible { font-weight: 700; text-shadow: var(--cta-shadow); }
+.btn--solid:not(.btn--navy) .btn__icon { filter: drop-shadow(var(--cta-shadow)); }
+.btn--block { width: 100%; }
+.btn--sm { min-height: 2.75rem; padding: .55rem 1.1rem; font-size: 1rem; }
+.btn__icon { width: 1.05rem; height: 1.05rem; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+/* Text link with arrow: <a class="li-link">Label <svg><use href="#i-arrow"/></svg></a> */
+.li-link { display: inline-flex; align-items: center; gap: .45rem; min-height: 2.75rem; color: var(--navy); font-size: var(--fs-small); font-weight: 700; text-decoration: none; }
+.li-link svg { width: 1.05rem; height: 1.05rem; fill: none; stroke: var(--brand-ink); stroke-width: 2.2; transition: transform .2s; }
+.li-link:hover { color: var(--brand-ink); text-decoration: underline; text-underline-offset: .2em; }
+.li-link:hover svg { transform: translateX(3px); }
+/* Icon: <span class="li-ico"><svg><use href="#i-roof"/></svg></span>
+   A square navy-tint tile with a navy line icon (amber is too light for
+   icons on white). .li-ico--dark for navy backgrounds (amber icon). */
+.li-ico {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 2.75rem; height: 2.75rem; border-radius: var(--radius-sm);
+  background: var(--navy-50); color: var(--navy); box-shadow: inset 0 -2px 0 var(--brand);
+}
+.li-ico svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.li-ico--dark { background: rgba(255, 255, 255, .07); color: var(--green-300); box-shadow: inset 0 0 0 1px var(--line-dark); }
+.li-ico--brand { background: var(--brand); color: var(--on-brand); box-shadow: none; }
+/* Check list: <ul class="li-checks"><li><svg><use href="#i-check"/></svg>Text</li></ul> */
+.li-checks { display: grid; gap: .5rem; }
+.li-checks li { display: flex; align-items: flex-start; gap: .55rem; color: var(--navy); font-weight: 500; }
+.li-checks svg { width: 1.1rem; height: 1.1rem; flex: none; margin-top: .25rem; fill: none; stroke: var(--brand-ink); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+/* Tags: <ul class="li-tags"><li>EPDM</li></ul> */
+.li-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+.li-tags li { padding: .18rem .55rem; border: 1px solid var(--line); border-radius: var(--radius-xs); background: #fff; color: var(--navy); font-size: var(--fs-xs); font-weight: 500; line-height: 1.4; white-space: nowrap; }
+/* Review badges (Google, Yelp): no rating numbers for Manhattan.
+   <ul class="li-badges"><li class="li-badge"><img ...><span><strong>Google</strong><small>Reviews</small></span></li></ul> */
+.li-badges { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.li-badge {
+  display: inline-flex; align-items: center; gap: .6rem;
+  min-height: 3.25rem; padding: .45rem .95rem .45rem .6rem;
+  border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fff;
+  color: var(--navy); line-height: 1.1;
+}
+.li-badge img { width: 2rem; height: 2rem; object-fit: contain; }
+.li-badge strong { display: block; font-size: 1rem; }
+.li-badge small { display: block; margin-top: .15rem; color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+/* Breadcrumb for inner pages (on the navy page hero):
+   <nav class="li-crumbs" aria-label="Breadcrumb"><ol><li><a href="manhattan.html">Home</a></li><li aria-current="page">FAQ</li></ol></nav> */
+.li-crumbs ol { display: flex; flex-wrap: wrap; gap: .4rem; font-size: var(--fs-xs); font-weight: 500; letter-spacing: .02em; }
+.li-crumbs li { display: flex; align-items: center; gap: .4rem; color: var(--on-dark-muted); }
+.li-crumbs li + li::before { content: "/"; color: var(--green-300); }
+.li-crumbs a { color: #fff; text-decoration: none; }
+.li-crumbs a:hover { text-decoration: underline; text-underline-offset: .2em; }
+/* Detail rows (call / office / hours), shared by the homepage + contact page:
+   <ul class="li-details [li-details--row]"><li><span class="li-ico">svg</span><div>
+     <p class="li-details__label">Call</p><p class="li-details__value"><a href="tel:+12124571331">212-457-1331</a></p>
+   </div></li></ul>                                                          */
+.li-details li { display: flex; align-items: center; gap: .85rem; min-width: 0; padding: .8rem 0; }
+.li-details li + li { border-top: 1px solid var(--line); }
+.li-details .li-ico { width: 2.5rem; height: 2.5rem; }
+.li-details .li-ico svg { width: 1.1rem; height: 1.1rem; }
+.li-details__label { color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .12em; line-height: 1.3; text-transform: uppercase; }
+.li-details__value { margin-top: .1rem; color: var(--navy); font-size: var(--fs-small); font-weight: 700; line-height: 1.4; }
+.li-details__value a { color: inherit; text-decoration: none; }
+.li-details__value a:hover { color: var(--brand-ink); text-decoration: underline; text-underline-offset: .2em; }
+.li-details__value--lg { font-family: var(--font-display); font-size: 1.375rem; font-weight: 600; letter-spacing: -.005em; }
+.li-details--row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-block: 1px solid var(--line); }
+.li-details--row li { align-items: flex-start; padding: .9rem 1rem; }
+.li-details--row li:first-child { padding-left: 0; }
+.li-details--row li + li { border-top: 0; border-left: 1px solid var(--line); }
+/* 8. Forms -----------------------------------------------------------------
+   <form class="quote-card" novalidate>
+     <h2 class="quote-card__title">Get a Free Estimate</h2>
+     <div class="field-row"> <div class="field">label+input</div> x2 </div>
+     <div class="field">...</div>
+     <button class="btn btn--solid btn--block">Get My Free Estimate</button>
+     <p class="form-callback">We’ll call you back within the hour</p>
+   </form>
+   js/manhattan.js validates every form.quote-card (name, phone, email, address).
+   The amber top rule is the card's signature.                              */
+.quote-card {
+  display: grid; gap: .8rem;
+  padding: clamp(1.2rem, .9rem + .8vw, 1.65rem);
+  border: 1px solid var(--line); border-top: 4px solid var(--brand); border-radius: var(--radius-sm);
+  background: #fff; color: var(--ink); box-shadow: var(--shadow-card);
+}
+.quote-card__title { font-size: clamp(1.4rem, 1.2rem + .5vw, 1.65rem); letter-spacing: -.012em; }
+.quote-card__sub { margin-top: -.45rem; color: var(--muted); font-size: var(--fs-small); }
+.field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; align-items: start; }
+.field { display: grid; gap: .3rem; min-width: 0; }
+.field label { color: var(--navy); font-size: .6875rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.field input, .field textarea {
+  width: 100%; min-height: 2.75rem; padding: .6rem .8rem;
+  border: 1px solid var(--grey-200); border-radius: var(--radius-sm); background: var(--grey-25);
+  font: inherit; font-size: 1rem; font-weight: 500; color: var(--ink);
+  transition: border-color .15s, background-color .15s;
+}
+.field textarea { min-height: 5.25rem; resize: vertical; }
+.field input:hover, .field textarea:hover { border-color: var(--grey-400); }
+.field input:focus, .field textarea:focus { outline: 2px solid var(--navy); outline-offset: 0; border-color: var(--navy); background: #fff; }
+.field input::placeholder, .field textarea::placeholder { color: var(--grey-400); font-size: .875rem; }
+.field-error { color: #A4281B; font-size: var(--fs-xs); font-weight: 700; }
+.has-error input, .has-error textarea { border-color: #A4281B; }
+.form-callback { margin-top: -.35rem; color: var(--navy); font-size: var(--fs-xs); line-height: 1.3; text-align: center; }
+.form-thanks { padding: .75rem 0 0; text-align: center; }
+.form-thanks strong { display: block; margin-bottom: .35rem; color: var(--navy); font-size: 1.125rem; }
+.form-thanks a { color: var(--brand-ink); font-weight: 700; }
+/* 9. Cards -----------------------------------------------------------------
+   <article class="li-card">
+     <div class="li-card__media"><img ...></div>    (optional, fixed 3:2)
+     <div class="li-card__body">
+       <p class="li-card__tag">Tag</p>
+       <h3 class="li-card__title">One-line title</h3>
+       <p class="li-card__text">Three lines max (clamped)</p>
+       <div class="li-card__foot">button / link (pinned to the bottom)</div>
+     </div>
+   </article>
+   Cards in a row share structure; text is clamped so rows stay level. The
+   amber hairline on top is the Manhattan card signature.                   */
+.li-card { position: relative; display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: #fff; transition: border-color .2s, box-shadow .2s; }
+.li-card::before { content: ""; position: absolute; z-index: 1; top: 0; left: 0; width: 3rem; height: 3px; background: var(--brand); }
+.li-card:hover { border-color: var(--line-strong); box-shadow: var(--shadow-card); }
+.li-card__body { display: flex; flex-direction: column; flex: 1; gap: .45rem; padding: 1.15rem 1.25rem 1.25rem; }
+.li-card__tag { color: var(--brand-ink); font-size: var(--fs-label); font-weight: 700; letter-spacing: .1em; line-height: 1.35; text-transform: uppercase; }
+.li-card__title { font-size: var(--fs-h3); display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.li-card__text { color: var(--muted); font-size: var(--fs-small); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.li-card__foot { margin-top: auto; padding-top: .5rem; }
+/* 10. FAQ accordion ---------------------------------------------------------
+   Ruled list, no boxes. Use .li-faq--center for the single centered column.
+   <div class="li-faq li-faq--center">
+     <details class="li-faq__item"><summary>Question</summary><div class="li-faq__a"><p>Answer</p></div></details>
+   </div>                                                                     */
+.li-faq { border-top: 2px solid var(--navy); }
+.li-faq--center { max-width: 54rem; margin-inline: auto; }
+.li-faq__item { border-bottom: 1px solid var(--line-strong); }
+.li-faq__item summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  min-height: 3.75rem; padding: .85rem 0;
+  color: var(--navy); font-size: 1.0625rem; font-weight: 700; line-height: 1.35;
+  list-style: none; cursor: pointer; transition: color .15s;
+}
+.li-faq__item summary::-webkit-details-marker { display: none; }
+.li-faq__item summary::after {
+  content: ""; flex: none; width: 2rem; height: 2rem; border: 1.5px solid var(--line-strong); border-radius: 50%;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230A2753' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E") center / .95rem no-repeat;
+  transition: background-color .2s, border-color .2s;
+}
+.li-faq__item[open] summary::after { border-color: var(--brand); background-color: var(--brand); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M6 12h12'/%3E%3C/svg%3E"); }
+.li-faq__item summary:hover { color: var(--brand-ink); }
+.li-faq__a { max-width: 70ch; padding: 0 3.5rem 1.1rem 0; color: var(--muted); font-size: var(--fs-small); line-height: 1.65; }
+.li-faq__a a { color: var(--brand-ink); font-weight: 700; }
+.li-faq__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-top: var(--space-5); }
+/* Steps: numbered columns with an amber rule on top (contact "what happens
+   next", shingle "our process").
+   <ol class="li-steps slider" data-slider><li class="li-step"><h3>Title</h3><p>Text</p></li> x4</ol> */
+.li-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-6); counter-reset: step; }
+.li-step { position: relative; counter-increment: step; display: flex; flex-direction: column; gap: .45rem; padding-top: 1.1rem; border-top: 1px solid var(--line-strong); }
+.li-step::before { content: counter(step, decimal-leading-zero); color: var(--brand-ink); font-family: var(--font-display); font-size: 2.25rem; font-weight: 600; line-height: 1; letter-spacing: -.02em; }
+.li-step::after { content: ""; position: absolute; top: -2px; left: 0; width: 3.25rem; height: 3px; background: var(--brand); }
+.li-step h3 { margin-top: .35rem; font-size: var(--fs-h3); }
+.li-step p { color: var(--muted); font-size: var(--fs-small); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+/* 12. Mobile swipe rows -----------------------------------------------------
+   Add class "slider" (and data-slider) to any grid that should become a
+   horizontal swipe row under 40rem, plus <p class="swipe-hint">.            */
+.swipe-hint { display: none; margin-top: .6rem; color: var(--muted); font-size: var(--fs-xs); text-align: center; }
+/* 13. Header ----------------------------------------------------------------
+   Markup: copy <header class="header is-scrolled" id="top"> ... </header>
+   from manhattan.html. Solid white from the top, amber line underneath.    */
+.header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: var(--z-header);
+  background: #fff; border-bottom: var(--header-line) solid var(--brand); box-shadow: var(--shadow-header);
+}
+.header__inner { position: relative; display: flex; align-items: center; gap: var(--space-4); height: var(--nav-h); }
+.brand { display: block; flex: none; line-height: 0; }
+.brand img { width: auto; height: 5.25rem; }
+.nav { display: flex; flex: 1; align-items: center; justify-content: center; min-width: 0; }
+.nav__list { display: flex; align-items: stretch; gap: .5rem; height: var(--nav-h); }
+.nav__item { position: relative; display: flex; }
+.nav__item + .nav__item { background: linear-gradient(var(--line), var(--line)) left center / 1px 1.5rem no-repeat; }
+.nav__link {
+  display: inline-flex; align-items: center; justify-content: center; gap: .375rem;
+  height: 100%; padding-inline: 1.1875rem; border: 0; background: none; cursor: pointer;
+  color: var(--navy); font-family: var(--font-sans); font-size: 1.0625rem; font-weight: 500; letter-spacing: .005em; text-decoration: none; white-space: nowrap;
+  transition: color .2s, background-color .2s, box-shadow .2s;
+}
+.nav__link:hover, .nav__link[aria-expanded="true"] { color: var(--navy); background: var(--green-50); box-shadow: inset 0 -3px 0 var(--brand); }
+.nav__link[aria-current="page"] { color: var(--navy); font-weight: 700; box-shadow: inset 0 -3px 0 var(--brand); }
+.nav__chevron { width: .75rem; height: .75rem; fill: none; stroke: currentColor; stroke-width: 2.5; transition: transform .2s; }
+.nav__link[aria-expanded="true"] .nav__chevron { transform: rotate(180deg); }
+.header__cta { display: flex; flex: none; align-items: center; gap: var(--space-4); }
+.header__btn { padding-inline: 1.1rem; }
+.dropdown {
+  position: absolute; top: 100%; left: 0; min-width: 14rem; padding: .75rem;
+  border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fff; box-shadow: var(--shadow-menu);
+}
+.dropdown::before { content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 3px; background: var(--brand); }
+.dropdown[hidden] { display: none; }
+.dropdown--mega {
+  position: fixed; top: calc(var(--nav-h) + var(--header-line)); left: 50%;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem 1.5rem;
+  width: min(62rem, calc(100vw - var(--edge) - var(--edge))); padding: 1.25rem 1.5rem 1rem; transform: translateX(-50%);
+}
+.mega__heading { margin: 0 0 .5rem; padding-bottom: .5rem; border-bottom: 1px solid var(--line); color: var(--muted); font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.menu-list a {
+  display: flex; align-items: center; gap: .75rem; padding: .55rem .75rem; border-radius: var(--radius-sm);
+  color: var(--navy); font-size: 1.0625rem; font-weight: 500; text-decoration: none; white-space: nowrap;
+  transition: background-color .15s, color .15s;
+}
+.menu-list a svg { width: 1.125rem; height: 1.125rem; flex: none; fill: none; stroke: var(--navy-600); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.menu-list a:hover { background: var(--green-50); color: var(--navy); }
+.menu-list a:hover svg { stroke: var(--brand-ink); }
+.menu-list a.is-urgent { color: var(--brand-ink); font-weight: 700; }
+.menu-list a.is-urgent svg { stroke: var(--brand-ink); }
+.menu-btn { display: none; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: #fff; cursor: pointer; }
+.menu-btn span { width: 1.25rem; height: 2px; border-radius: 2px; background: var(--navy); transition: transform .2s, opacity .2s; }
+.menu-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.drawer {
+  position: absolute; top: 100%; left: 0; right: 0; max-height: calc(100vh - var(--nav-h)); overflow-y: auto; overscroll-behavior: contain;
+  padding: .5rem var(--edge) 1.25rem; border-top: var(--header-line) solid var(--brand); background: #fff; box-shadow: var(--shadow-menu);
+}
+.drawer[hidden] { display: none; }
+.drawer__list > li + li { border-top: 1px solid var(--line); }
+.drawer__link, .drawer__group {
+  display: flex; align-items: center; justify-content: space-between; width: 100%; padding: .875rem 0;
+  border: 0; background: none; color: var(--navy); font-size: 1.125rem; font-weight: 500; text-align: left; text-decoration: none; cursor: pointer;
+}
+.drawer__link[aria-current="page"] { font-weight: 700; }
+.drawer__group svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 2.2; transition: transform .2s; }
+.drawer__group[aria-expanded="true"] svg { transform: rotate(180deg); }
+.drawer__sub { padding: 0 0 .75rem .75rem; }
+.drawer__sub[hidden] { display: none; }
+.drawer__sub a { display: block; padding: .5rem 0; color: var(--ink); font-size: 1.0625rem; font-weight: 300; text-decoration: none; }
+.drawer__sub a.is-urgent { color: var(--brand-ink); font-weight: 700; }
+.drawer__label { margin-top: .5rem; padding: .25rem 0; color: var(--muted); font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.drawer__actions { display: grid; gap: .75rem; margin-top: 1rem; }
+@media (max-width: 88rem) {
+  .nav { display: none; }
+  .brand img { height: 4.75rem; }
+  .header__cta { margin-left: auto; }
+  .menu-btn { display: inline-flex; }
+  .header__btn { min-height: 3rem; padding: .6rem 1.2rem; font-size: 1rem; }
+}
+@media (min-width: 88.01rem) {
+  .drawer { display: none; }
+}
+@media (max-width: 48rem) {
+  .brand img { height: 3.6rem; }
+  /* Mobile: the phone button becomes an amber square icon button. */
+  .header__btn { width: 2.75rem; min-width: 2.75rem; height: 2.75rem; min-height: 2.75rem; padding: 0; }
+  .header__btn .btn__label { display: none; }
+  .header__btn .btn__icon { width: 1.25rem; height: 1.25rem; }
+  .header__cta { gap: .5rem; }
+}
+/* 14. Compact page hero (inner pages) ---------------------------------------
+   <section class="li-pagehero" aria-labelledby="page-title">
+     <div class="li-pagehero__bg" aria-hidden="true"><img src="images/landing/project-commercial-tpo.jpg" alt=""></div>
+     <div class="container li-pagehero__inner">
+       <div class="li-pagehero__copy">
+         <nav class="li-crumbs" aria-label="Breadcrumb">...</nav>
+         <h1 id="page-title">Title</h1>
+         <p>One or two lines</p>
+       </div>
+       <div class="li-pagehero__aside">optional card / buttons</div>
+     </div>
+   </section>
+   Deep navy with a skyline photo fading in on the right. About 16-17rem
+   tall on desktop, starts under the fixed header. Swap the photo per page. */
+.li-pagehero {
+  position: relative; isolation: isolate; overflow: hidden;
+  padding: calc(var(--nav-h) + var(--header-line) + clamp(1.75rem, 1.2rem + 1.5vw, 2.75rem)) 0 clamp(1.75rem, 1.2rem + 1.5vw, 2.75rem);
+  background: var(--navy-deep); color: var(--on-dark-muted);
+}
+.li-pagehero__bg { position: absolute; z-index: -1; inset: 0 0 0 42%; }
+.li-pagehero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; opacity: .55; }
+.li-pagehero__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--navy-deep) 0%, rgba(6, 25, 55, .55) 45%, rgba(6, 25, 55, .25) 100%); }
+.li-pagehero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line-dark); }
+.li-pagehero__inner { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: var(--space-5) var(--space-8); align-items: center; }
+.li-pagehero h1 { margin-top: var(--space-3); color: #fff; font-size: clamp(2rem, 1.3rem + 1.8vw, 3rem); letter-spacing: -.02em; }
+.li-pagehero__copy > p { max-width: 58ch; margin-top: var(--space-3); font-size: var(--fs-lede); font-weight: 300; }
+.li-pagehero__aside { justify-self: end; }
+/* 15. Footer ----------------------------------------------------------------
+   Markup: copy <footer class="footer bkf"> ... </footer> from manhattan.html.
+   Logo (on a white plate) with text to its right, 3 link columns, contact
+   bar (Google + Yelp, Call / Office / Hours), bottom row (Facebook,
+   Instagram, X, copyright, Terms & Privacy, back to top).                 */
+.footer { border-top: 4px solid var(--brand); background: var(--navy-deep); color: var(--on-dark-muted); font-size: .9rem; }
+.footer a { text-decoration: none; }
+.bkf { --bkf-head: var(--green-300); --bkf-line: rgba(255, 255, 255, .12); font-size: 1rem; }
+.bkf p { margin: 0; }
+.bkf__top { display: grid; grid-template-columns: minmax(0, 2.6fr) repeat(3, minmax(max-content, 1fr)); gap: 2rem clamp(1.5rem, 1rem + 2vw, 2.85rem); padding-block: 1.5rem .75rem; }
+.bkf__brand { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 1.25rem; align-content: start; align-items: start; min-width: 0; }
+/* The logo's navy lettering needs a light plate on the navy footer. */
+.bkf__logo { grid-row: 1 / span 2; display: inline-flex; padding: .45rem .6rem; border-radius: var(--radius-sm); background: #fff; line-height: 0; box-shadow: inset 0 -3px 0 var(--brand); }
+.bkf__logo img { width: auto; height: 4.5rem; }
+.bkf__about { max-width: 46ch; color: rgba(255, 255, 255, .74); font-size: .9375rem; line-height: 1.7; }
+.bkf__cta { justify-self: start; margin-top: 1rem; min-height: 3rem; padding: .6rem 1.35rem; font-size: 1rem; }
+.bkf__col { min-width: 0; }
+.bkf .bkf__heading { max-width: none; color: var(--bkf-head); font-family: var(--font-sans); font-size: 1rem; font-weight: 700; line-height: 1.6; letter-spacing: .01em; }
+.bkf__links { display: grid; gap: 2px; margin-top: 1rem; }
+.bkf__links a { display: inline-block; padding: .5rem 0; color: rgba(255, 255, 255, .76); font-size: .9375rem; line-height: 1.4; }
+.bkf__links a:hover, .bkf__links a:focus-visible { color: #fff; text-decoration: underline; text-decoration-color: var(--brand); text-underline-offset: .2em; }
+.bkf__contactbar { border-top: 1px solid var(--bkf-line); }
+.bkf__midrow { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 2rem; padding-block: .75rem; }
+.bkf__badges { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; }
+.bkf__badges li { display: flex; align-items: center; gap: .5rem; }
+.bkf__rating img { width: 2rem; height: 2rem; }
+.bkf__rating span { color: #fff; font-size: .9375rem; font-weight: 700; line-height: 1.2; }
+.bkf__yelp img { width: 2.625rem; height: 2.625rem; object-fit: contain; }
+.bkf__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.bkf__contacts { display: grid; grid-auto-flow: column; justify-content: end; gap: 1.5rem; }
+.bkf__contacts li { display: grid; grid-template-columns: 2.5rem auto; align-items: start; gap: 1rem; }
+.bkf__icon { display: flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--brand); color: var(--on-brand); }
+.bkf__icon svg { width: 1.05rem; height: 1.05rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.bkf__label { color: rgba(255, 255, 255, .62); font-size: .8125rem; letter-spacing: .14em; line-height: 1.6; text-transform: uppercase; }
+.bkf__value { margin-top: .25rem !important; color: #fff; font-size: .9375rem; font-weight: 700; line-height: 1.45; }
+.bkf__value a { color: #fff; }
+.bkf__value a:hover, .bkf__value a:focus-visible { text-decoration: underline; text-underline-offset: .2em; }
+.bkf__bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 1.5rem; padding-block: .5rem .75rem; }
+.bkf__socials { display: flex; flex-wrap: wrap; gap: .25rem; margin-right: auto; }
+.bkf__socials a, .bkf__totop { display: flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border: 1px solid rgba(255, 255, 255, .18); border-radius: var(--radius-sm); color: #fff; transition: background-color .15s, border-color .15s, color .15s; }
+.bkf__socials a:hover, .bkf__socials a:focus-visible, .bkf__totop:hover, .bkf__totop:focus-visible { background: var(--brand); border-color: var(--brand); color: var(--on-brand-cta); }
+.bkf__socials svg, .bkf__totop svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.bkf__socials a[aria-label="Facebook"] svg { width: 1.15rem; height: 1.15rem; fill: currentColor; stroke: none; }
+.bkf__totop { margin-left: .75rem; border-color: rgba(255, 255, 255, .22); }
+.bkf__copy { margin-left: auto !important; color: rgba(255, 255, 255, .62); font-size: .875rem; line-height: 1.6; }
+.bkf__legal { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.5rem; }
+.bkf__legal a { color: rgba(255, 255, 255, .72); font-size: .875rem; }
+.bkf__legal a:hover, .bkf__legal a:focus-visible { color: #fff; text-decoration: underline; text-underline-offset: .2em; }
+/* Flat vs shingle: two tall contrasting panels. -------------------------- */
+.li-compare__panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.li-panel { display: flex; flex-direction: column; min-width: 0; }
+.li-panel--flat { background: var(--navy); color: var(--on-dark-muted); }
+.li-panel--shingle { border: 1px solid var(--green-100); border-left: 0; background: var(--surface-warm); }
+.li-panel__media { height: clamp(8rem, 17vh, 9.75rem); overflow: hidden; background: var(--navy-50); }
+.li-panel__media img { width: 100%; height: 100%; object-fit: cover; }
+.li-panel__body { display: flex; flex-direction: column; flex: 1; padding: 1.2rem clamp(1.25rem, .8rem + 1.5vw, 2.25rem) 1.4rem; }
+.li-panel__label { color: var(--brand-ink); font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.li-panel--flat .li-panel__label { color: var(--green-300); }
+.li-panel__title { margin-top: .35rem; font-size: clamp(1.5rem, 1.2rem + .8vw, 2rem); }
+.li-panel--flat .li-panel__title { color: #fff; }
+.li-panel__text { margin-top: .4rem; max-width: 56ch; font-size: var(--fs-small); line-height: 1.55; }
+.li-panel--shingle .li-panel__text { color: var(--muted); }
+.li-panel__specs { margin-top: .85rem; border-top: 1px solid var(--line-strong); }
+.li-panel--flat .li-panel__specs { border-color: var(--line-dark); }
+.li-panel__specs div { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 1rem; padding: .5rem 0; border-bottom: 1px solid var(--line); }
+.li-panel--flat .li-panel__specs div { border-color: var(--line-dark); }
+.li-panel__specs dt { color: var(--navy); font-size: .6875rem; font-weight: 700; letter-spacing: .12em; line-height: 1.9; text-transform: uppercase; }
+.li-panel--flat .li-panel__specs dt { color: var(--green-300); }
+.li-panel__specs dd { font-size: var(--fs-small); line-height: 1.5; }
+.li-panel--flat .li-panel__specs dd { color: #fff; }
+.li-panel__foot { margin-top: auto; padding-top: 1.1rem; }
+/* Neighborhoods: Uptown / Midtown / Downtown columns. -------------------- */
+.li-areas__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid var(--navy); }
+.li-zone { min-width: 0; padding: 1.15rem 1.75rem .25rem; }
+.li-zone:first-child { padding-left: 0; }
+.li-zone:last-child { padding-right: 0; }
+.li-zone + .li-zone { border-left: 1px solid var(--line); }
+.li-zone__head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.li-zone__head h3 { font-size: clamp(1.4rem, 1.15rem + .6vw, 1.75rem); }
+.li-zone__range { color: var(--brand-ink); font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
+.li-zone__stock { margin-top: .3rem; color: var(--muted); font-size: var(--fs-small); }
+.li-zone__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.25rem; margin-top: .75rem; }
+.li-zone__list li { display: flex; align-items: center; gap: .5rem; min-width: 0; padding: .6rem 0; border-top: 1px solid var(--line); color: var(--navy); font-size: var(--fs-small); font-weight: 700; line-height: 1.3; white-space: nowrap; }
+.li-zone__list svg { width: .95rem; height: .95rem; flex: none; fill: none; stroke: var(--navy-600); stroke-width: 2; }
+.li-zone__list .is-office svg { stroke: none; fill: var(--brand); }
+.li-areas__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; margin-top: var(--space-5); padding-top: 1.1rem; border-top: 1px solid var(--line); }
+.li-areas__office { display: flex; align-items: center; gap: .6rem; color: var(--navy); font-size: var(--fs-small); font-weight: 500; }
+.li-areas__office svg { width: 1rem; height: 1rem; flex: none; fill: var(--brand); }
+.li-areas__office a { color: inherit; font-weight: 700; text-decoration: none; }
+.li-areas__office a:hover { color: var(--brand-ink); text-decoration: underline; text-underline-offset: .2em; }
+/* Reviews (Trustindex). ---------------------------------------------------- */
+.li-reviews .li-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem 2rem; align-items: end; }
+.li-reviews__widget { min-height: 12rem; }
+/* Get In Touch: copy + details row + map left, form card right. ---------- */
+.li-contact__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 29rem); gap: var(--col-gap); align-items: stretch; }
+.li-contact__info { display: flex; flex-direction: column; min-width: 0; }
+.li-contact__info .li-details { margin-top: var(--space-5); }
+.li-contact__map { position: relative; flex: 1; min-height: 15rem; margin-top: var(--space-5); overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--navy-50); }
+.li-contact__map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.li-contact__form .quote-card__title { font-size: clamp(1.5rem, 1.25rem + .6vw, 1.85rem); }
+/* Simple CTA band for inner pages:
+   <section class="li-ctaband li-dark"><div class="container li-ctaband__inner"><div><h2>..</h2><p>..</p></div><div class="li-ctaband__actions">buttons</div></div></section> */
+.li-ctaband { padding-block: clamp(1.75rem, 1.2rem + 1.4vw, 2.5rem); background: var(--navy); color: var(--on-dark-muted); }
+.li-ctaband__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
+.li-ctaband h2 { color: #fff; font-size: clamp(1.4rem, 1.15rem + .7vw, 1.9rem); }
+.li-ctaband p { margin-top: .3rem; }
+.li-ctaband__actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+/* Live chat (Blazeo/ApexChat) invitation sits bottom-right. */
+#apexchat_prechat_invitation_wrapper { left: auto !important; right: 0 !important; padding: 0 0 0 10px !important; }
+/* ==========================================================================
+   17. Responsive
+   ========================================================================== */
+@media (max-width: 88rem) {
+  .li-zone { padding-inline: 1.25rem; }
+}
+@media (max-width: 75rem) {
+  .li-head--split { grid-template-columns: minmax(0, 1fr); }
+  .li-head--split .li-lede { justify-self: start; }
+  .li-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .li-areas__cols { grid-template-columns: minmax(0, 1fr); }
+  .li-zone, .li-zone:first-child, .li-zone:last-child { padding-inline: 0; }
+  .li-zone + .li-zone { border-left: 0; border-top: 1px solid var(--line); }
+  .li-zone__list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .bkf__top { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .bkf__brand { grid-column: 1 / -1; }
+  .bkf__about { max-width: 62ch; }
+}
+/* Portrait tablets and phones: everything stacks. */
+@media (max-width: 60rem) {
+  .li-contact__inner { grid-template-columns: minmax(0, 1fr); }
+  .li-compare__panels { grid-template-columns: minmax(0, 1fr); }
+  .li-panel--shingle { border-left: 1px solid var(--green-100); border-top: 0; }
+  .li-contact__map { flex: none; height: 20rem; }
+  .li-pagehero__inner { grid-template-columns: minmax(0, 1fr); }
+  .li-pagehero__aside { justify-self: start; }
+  .li-pagehero__bg { inset: 0 0 0 20%; }
+}
+@media (max-width: 48rem) {
+  .bkf__contacts { grid-auto-flow: row; justify-content: start; gap: 1rem; }
+  .bkf__copy { margin-left: 0 !important; }
+  .li-reviews .li-head { grid-template-columns: minmax(0, 1fr); }
+  .li-details--row { grid-template-columns: minmax(0, 1fr); }
+  .li-details--row li { padding-inline: 0; }
+  .li-details--row li + li { border-left: 0; border-top: 1px solid var(--line); }
+  .li-zone__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 40rem) {
+  /* Swipe rows: cards scroll sideways and snap to the page edge. */
+  .slider { display: flex !important; grid-template-columns: none !important; grid-template-rows: none !important; gap: .85rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--edge); -webkit-overflow-scrolling: touch; margin-inline: calc(-1 * var(--edge)); padding: 0 var(--edge) .25rem; scrollbar-width: none; }
+  .slider::-webkit-scrollbar { display: none; }
+  .slider > * { flex: 0 0 82%; scroll-snap-align: start; }
+  .swipe-hint { display: block; }
+  /* Index entries become swipe cards. */
+  .li-panel__body { padding: 1.15rem 1rem 1.25rem; }
+  .li-panel__specs div { grid-template-columns: minmax(0, 1fr); gap: .1rem; }
+  .li-panel__foot .btn { width: 100%; }
+  .li-steps.slider > .li-step { padding: 1rem; border: 1px solid var(--line); border-radius: var(--radius-card); background: #fff; }
+  .li-step::after { top: -1px; }
+  .li-areas__cols.slider { border-top: 0; }
+  .li-areas__cols.slider > .li-zone { padding: 1rem; border: 1px solid var(--line); border-top: 2px solid var(--navy); border-radius: var(--radius-card); background: #fff; }
+  .li-areas__foot .btn { width: 100%; }
+  .li-zone__list { column-gap: .75rem; }
+  .li-zone__list li { align-items: flex-start; white-space: normal; }
+  .li-zone__list svg { margin-top: .15rem; }
+  .li-faq__a { padding-right: 0; }
+  .li-faq__actions .btn { flex: 1 1 12rem; }
+  .li-contact__map { height: 18rem; }
+  .field-row { gap: .6rem; }
+  .field input::placeholder, .field textarea::placeholder { font-size: .8125rem; }
+  .li-pagehero__bg { inset: 0; }
+  .li-pagehero__bg img { opacity: .3; }
+  /* Footer (same mobile rules as Brooklyn and Bronx). */
+  .bkf__top { gap: 1.75rem .75rem; padding-top: 1.25rem; }
+  .bkf__brand { column-gap: 1rem; }
+  .bkf__logo img { height: 3.75rem; }
+  .bkf__links { margin-top: .75rem; }
+  .bkf .bkf__heading { display: inline-block; padding: .2rem .5rem; border-radius: var(--radius-sm); background: var(--brand); color: var(--on-brand); font-size: .8125rem; letter-spacing: 0; white-space: nowrap; }
+  .bkf__midrow { flex-direction: column; align-items: flex-start; gap: 1rem; padding-block: 1rem; }
+  .bkf__badges { gap: 2rem; }
+  .bkf__bottom { padding-block: .25rem 1rem; }
+  .bkf__socials, .bkf__copy { flex-basis: 100%; }
+  .bkf__totop { margin-left: auto; }
+  #apexchat_prechat_invitation_wrapper, #apexchat_invitation_wrapper, [id^="apexchat"][id*="invitation"] { left: auto !important; right: .25rem !important; }
+}
+/* 18. Reduced motion ------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
+/* Hero: four real job photos crossfade behind a navy overlay (js/manhattan.js).
+   Copy, buttons and review badges left; estimate card right; dots centred at
+   the bottom. Hero + marquee fill the screen minus a 2.5rem slice of the next
+   section.
+   <section class="li-shero li-dark">
+     <div class="li-shero__visual" aria-hidden="true"><img class="li-shero__slide is-active"> x4</div>
+     <div class="container li-shero__inner"><div class="li-shero__copy">..</div><form class="quote-card li-shero__form">..</form></div>
+   </section> */
+.page-long-island-home { --mq-h: 2.75rem; }
+.page-long-island-home .li-shero {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center;
+  min-height: min(calc(100svh - var(--mq-h) - 2.5rem), 56rem);
+  padding: calc(var(--nav-h) + var(--header-line) + clamp(1.25rem, .5rem + 2.5vh, 2.75rem)) 0 clamp(2.75rem, 1.5rem + 2.5vh, 3.5rem);
+  background: var(--navy-deep); color: var(--on-dark-muted);
+}
+.page-long-island-home .li-shero__visual { position: absolute; z-index: -1; inset: 0; overflow: hidden; }
+.page-long-island-home .li-shero__visual::after {
+  content: ""; position: absolute; z-index: 1; inset: 0;
+  background: linear-gradient(180deg, rgba(6, 25, 55, .55) 0%, rgba(6, 25, 55, 0) 32%),
+  linear-gradient(90deg, rgba(6, 25, 55, .95) 0%, rgba(6, 25, 55, .84) 45%, rgba(6, 25, 55, .55) 100%);
+}
+.page-long-island-home .li-shero__slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; opacity: 0; transition: opacity .9s ease-in-out; }
+.page-long-island-home .li-shero__slide.is-active { opacity: 1; }
+.page-long-island-home .li-shero__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 27.5rem); gap: var(--col-gap); align-items: center; }
+.page-long-island-home .li-shero__copy { min-width: 0; max-width: 44rem; }
+.page-long-island-home .li-shero__title { color: #fff; font-size: var(--fs-h1); line-height: 1.04; letter-spacing: -.022em; }
+.page-long-island-home .li-shero__sub { display: flex; align-items: center; gap: .9rem; margin-top: .85rem; color: #fff; font-size: clamp(1.15rem, .95rem + .55vw, 1.5rem); font-weight: 300; line-height: 1.25; }
+.page-long-island-home .li-shero__sub::before { content: ""; width: 2.75rem; height: 2px; flex: none; background: var(--green-300); }
+.page-long-island-home .li-shero__text { max-width: 52ch; margin-top: var(--space-5); color: var(--on-dark-muted); font-size: var(--fs-lede); font-weight: 300; line-height: 1.6; text-wrap: pretty; }
+.page-long-island-home .li-shero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
+.page-long-island-home .li-shero__proof { display: flex; flex-wrap: wrap; align-items: stretch; gap: .6rem; margin-top: var(--space-5); padding-top: var(--space-5); border-top: 1px solid var(--line-dark); }
+.page-long-island-home .li-shero__proof .li-badge { border-color: transparent; background: #fff; }
+/* Rating marks (Google, Yelp), as on Brooklyn, in Manhattan navy with amber stars.
+   <li class="rating-mark"><img><span><strong>5.0</strong> <span class="stars">★★★★★</span><small>Google rating</small></span></li> */
+.page-long-island-home .rating-mark {
+  display: inline-flex; align-items: center; gap: .6rem;
+  min-height: 3.25rem; padding: .45rem 1rem .45rem .6rem;
+  border: 1px solid rgba(255, 255, 255, .18); border-radius: var(--radius-sm);
+  background: rgba(6, 25, 55, .78); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  color: #fff; line-height: 1.1;
+}
+.page-long-island-home .rating-mark img { width: 2rem; height: 2rem; flex: none; padding: .2rem; border-radius: 50%; background: #fff; object-fit: contain; }
+.page-long-island-home .rating-mark strong { font-size: 1.125rem; font-weight: 700; }
+.page-long-island-home .rating-mark .stars { color: #F5A623; font-size: .875rem; letter-spacing: .05em; }
+.page-long-island-home .rating-mark small { display: block; margin-top: .2rem; color: var(--on-dark-muted); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.page-long-island-home .li-shero__stat { display: flex; flex-direction: column; justify-content: center; min-height: 3.25rem; padding: .35rem 1rem; border: 1px solid rgba(255, 255, 255, .18); border-left: 3px solid var(--green-300); border-radius: var(--radius-sm); background: rgba(6, 25, 55, .78); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); color: #fff; line-height: 1.1; }
+.page-long-island-home .li-shero__stat strong { font-size: 1.125rem; }
+.page-long-island-home .li-shero__stat small { margin-top: .2rem; color: var(--on-dark-muted); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.page-long-island-home .li-shero__form { box-shadow: var(--shadow-float); }
+/* Marquee strip directly under the hero: amber band, navy type, navy
+   diamonds. Three identical groups; the track moves one third, so the loop
+   has no seam. Pauses on hover/focus and under reduced motion. */
+.page-long-island-home .li-marquee { overflow: hidden; background: var(--brand); color: #fff; border-bottom: 1px solid rgba(10, 39, 83, .18); }
+.page-long-island-home .li-marquee__track { display: flex; width: max-content; animation: li-marquee 55s linear infinite; }
+.page-long-island-home .li-marquee:hover .li-marquee__track, .page-long-island-home .li-marquee:focus-within .li-marquee__track { animation-play-state: paused; }
+.page-long-island-home .li-marquee__group { display: flex; flex: none; align-items: center; height: var(--mq-h); }
+.page-long-island-home .li-marquee__group:first-child { padding-left: var(--edge); }
+.page-long-island-home .li-marquee__group li { display: flex; align-items: center; font-size: .875rem; font-weight: 700; letter-spacing: .14em; line-height: 1.2; text-transform: uppercase; white-space: nowrap; }
+.page-long-island-home .li-marquee__group li::after { content: ""; flex: none; width: .4rem; height: .4rem; margin-inline: 1.75rem; background: var(--green-300); transform: rotate(45deg); }
+@keyframes li-marquee { from { transform: translateX(0); } to { transform: translateX(-33.3333%); } }
+/* Short desktop screens (e.g. 1366 x 650): compact hero copy and card. */
+@media (min-width: 60.01rem) and (max-height: 780px) {
+  .page-long-island-home .li-shero__sub { margin-top: .5rem; }
+  .page-long-island-home .li-shero__text { margin-top: .75rem; font-size: 1rem; }
+  .page-long-island-home .li-shero__actions { margin-top: 1rem; }
+  .page-long-island-home .li-shero__actions .btn { min-height: 2.85rem; padding-block: .55rem; }
+  .page-long-island-home .li-shero__proof { margin-top: 1rem; padding-top: 1rem; }
+  .page-long-island-home .li-shero__proof .rating-mark, .page-long-island-home .li-shero__stat { min-height: 2.85rem; }
+  .page-long-island-home .li-shero__form { gap: .5rem; padding: .95rem 1.2rem; }
+  .page-long-island-home .li-shero__form .quote-card__title { font-size: 1.35rem; }
+  .page-long-island-home .li-shero__form .field { gap: .2rem; }
+  .page-long-island-home .li-shero__form .field input { min-height: 2.4rem; padding-block: .4rem; }
+  .page-long-island-home .li-shero__form .field textarea { min-height: 3.25rem; padding-block: .4rem; }
+  .page-long-island-home .li-shero__form .btn { min-height: 2.75rem; }
+}
+@media (min-width: 60.01rem) and (max-width: 75rem) {
+  .page-long-island-home .li-shero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 23rem); }
+}
+@media (max-width: 60rem) {
+  .page-long-island-home .li-shero { min-height: 0; }
+  .page-long-island-home .li-shero__inner { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+  .page-long-island-home .li-shero__form { max-width: 36rem; }
+}
+@media (max-width: 40rem) {
+  .page-long-island-home { --mq-h: 2.5rem; }
+  .page-long-island-home .li-shero { padding: calc(var(--nav-h) + var(--header-line) + 1.5rem) 0 3rem; }
+  .page-long-island-home .li-shero__title { font-size: clamp(2.1rem, 1.6rem + 2.4vw, 2.5rem); }
+  .page-long-island-home .li-shero__sub { font-size: 1.125rem; }
+  .page-long-island-home .li-shero__sub::before { width: 1.75rem; }
+  .page-long-island-home .li-shero__text { margin-top: 1rem; font-size: 1rem; }
+  .page-long-island-home .li-shero__actions .btn { flex: 1 1 12rem; }
+  .page-long-island-home .li-shero__proof { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4rem; }
+  .page-long-island-home .li-shero__proof > * { justify-content: center; min-width: 0; }
+  .page-long-island-home .li-shero__proof .rating-mark { gap: .35rem; padding: .35rem .4rem; }
+  .page-long-island-home .li-shero__proof .rating-mark img { width: 1.4rem; height: 1.4rem; padding: .12rem; }
+  .page-long-island-home .li-shero__proof .rating-mark strong { font-size: .875rem; }
+  .page-long-island-home .li-shero__proof .rating-mark .stars { font-size: .625rem; letter-spacing: 0; }
+  .page-long-island-home .li-shero__proof small { font-size: .5625rem; letter-spacing: .06em; }
+  .page-long-island-home .li-shero__stat { align-items: center; padding: .35rem .4rem; border-left: 0; border-top: 3px solid var(--brand); text-align: center; }
+  .page-long-island-home .li-shero__stat strong { font-size: .875rem; }
+  .page-long-island-home .li-marquee__group li { font-size: .75rem; }
+  .page-long-island-home .li-marquee__group li::after { margin-inline: 1.1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-long-island-home .li-marquee__track { animation: none; }
+  .page-long-island-home .li-shero__slide { transition: none; }
+}
+/* Homepage map: Google only shows the business place card (name, address,
+   rating) when the embed is at least ~300px tall, so keep it there. */
+.page-long-island-home .li-contact__map { min-height: 19rem; }
+/* Short laptop screens (1366 x 650): the taller homepage sections tighten
+   so each one still fits the screen. Homepage only. */
+@media (min-width: 60.01rem) and (max-height: 780px) {
+  .page-long-island-home .li-compare .li-head { margin-bottom: 1.25rem; }
+  .page-long-island-home .li-panel__media { height: 5.5rem; }
+  .page-long-island-home .li-panel__body { padding-block: 1rem 1.1rem; }
+  .page-long-island-home .li-panel__specs div { padding-block: .3rem; }
+  .page-long-island-home .li-panel__foot { padding-top: .8rem; }
+  .page-long-island-home .li-contact__info .li-details, .page-long-island-home .li-contact__map { margin-top: 1rem; }
+  .page-long-island-home .li-contact__form { gap: .6rem; }
+  .page-long-island-home .li-contact__form .field textarea { min-height: 4rem; }
+}
+/* ---- Oct 16 (Nitesh): footer brand stacks: logo on top, the paragraph under it, then the button. ---- */
+.bkf__brand { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+.bkf__logo { grid-row: auto; align-self: flex-start; }
+.bkf__about { max-width: 42ch; margin-top: 0 !important; }
+.bkf__brand .bkf__cta { margin-top: .25rem; }
+.bkf__rating > span { white-space: nowrap; }
+.bkf__rating strong { font-size: 1.125rem; }
+.bkf__stars { margin-left: .2rem; color: #F5A623; font-size: 1rem; letter-spacing: .04em; }
+.bkf__rating small { margin-left: .4rem; color: #fff; font-size: .9375rem; font-weight: 700; }
+.bkf__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ==========================================================================
+   B. Sections carried from Brooklyn (lib-): trust strip, service cards,
+   commercial, FAQ, plus the parts the FAQ page uses (page hero, contact).
+   ========================================================================== */
+/* Tokens ------------------------------------------------------------------ */
+:root { --lib-sky: #EAF0F8; --lib-navy: #0A2753; --lib-navy-deep: #061937; --lib-red: #16572D; --lib-red-dark: #0F4321; --lib-mist: #F1F2F3; --lib-ink: #33373D; --lib-muted: #5b6470; --lib-white: #ffffff; --lib-hairline: rgba(10, 39, 83, .14); --lib-hairline-dark: rgba(255, 255, 255, .16); --lib-on-dark-muted: rgba(255, 255, 255, .85); --lib-fs-body: clamp(1rem, .955rem + .19vw, 1.125rem); --lib-fs-utility: clamp(.75rem, .71rem + .16vw, .8125rem); --lib-radius-lg: 8px; --lib-radius-xl: 14px; --lib-shadow-menu: 0 18px 44px rgba(6, 25, 55, .18); --lib-shadow-header: 0 2px 14px rgba(6, 25, 55, .12); --lib-shadow-card: 0 20px 55px rgba(6, 25, 55, .12); }
+/* Section rhythm (nyc6) --------------------------------------------------- */
+.lib-section { padding-block: clamp(1.25rem, 1rem + 1vw, 2rem); }
+.lib-section-head { margin-bottom: var(--space-5); }
+.lib-section-head--split { display: grid; grid-template-columns: 1.1fr .9fr; gap: var(--space-5) var(--space-8); align-items: end; }
+.lib-section-head--split .lib-section-lede { margin-top: 0; justify-self: end; max-width: 44ch; }
+.lib-eyebrow {
+  display: inline-block;
+  margin: 0 0 var(--space-3); padding: .42rem 1.15rem .42rem .75rem;
+  background: var(--lib-red); color: #fff;
+  clip-path: polygon(0 0, 100% 0, calc(100% - .55rem) 100%, 0 100%);
+  font-size: .8125rem; font-weight: 700; line-height: 1.2; letter-spacing: .11em; text-transform: uppercase;
+}
+.lib-eyebrow--light { background: #fff; color: var(--lib-red); }
+.lib-section-title {
+  font-size: clamp(1.75rem, 1.15rem + 1.9vw, 2.75rem);
+  line-height: 1.22;
+  letter-spacing: -.02em;
+  max-width: 26ch;
+}
+.lib-section-lede {
+  margin-top: var(--space-5);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 62ch;
+  color: var(--lib-ink);
+  text-wrap: pretty;
+}
+.lib-section-lede + p { margin-top: var(--space-4); max-width: 62ch; }
+/* Icon boxes ------------------------------------------------------------- */
+.lib-icon-box {
+  flex: none; display: inline-flex; align-items: center; justify-content: center;
+  width: 2.75rem; height: 2.75rem; border-radius: 10px;
+  background: var(--lib-red); color: #fff;
+}
+.lib-icon-box svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+/* Trust strip ------------------------------------------------------------ */
+.lib-trust { border-bottom: 1px solid var(--lib-hairline); background: #fff; }
+.lib-trust__inner { display: grid; grid-template-columns: repeat(4, 1fr); padding-block: 1rem; }
+.lib-trust__item { display: flex; align-items: center; gap: .875rem; padding-inline: 1rem; }
+.lib-trust__item + .lib-trust__item { border-left: 1px solid var(--lib-hairline); }
+.lib-trust__item strong { display: block; color: var(--lib-navy); font-size: 1rem; }
+.lib-trust__item span:not(.lib-icon-box) { font-size: .875rem; color: var(--lib-muted); }
+/* Split service cards ---------------------------------------------------- */
+.lib-services { padding-block: clamp(3rem, 2rem + 2vw, 5rem); background: #fafafa; }
+.lib-services .lib-section-head { margin-bottom: clamp(1.5rem, 1rem + 1.5vw, 2.5rem); }
+.lib-services__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, .75rem + 1vw, 1.5rem); }
+.lib-service-card { position: relative; display: grid; grid-template-columns: minmax(0, .39fr) minmax(0, .61fr); min-width: 0; min-height: 17rem; overflow: hidden; border: 1px solid var(--lib-hairline); border-radius: 8px; background: #fff; cursor: pointer; transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
+.lib-service-card:hover, .lib-service-card:focus-within { transform: translateY(-3px); border-color: rgba(10, 39, 83, .3); box-shadow: 0 16px 34px rgba(10, 39, 83, .1); }
+.lib-service-card:focus-within { outline: 3px solid var(--lib-red); outline-offset: 3px; }
+.lib-service-card__media { position: relative; min-height: 0; overflow: hidden; background: var(--lib-navy); }
+.lib-service-card__media::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 55%, rgba(6, 25, 55, .2)); }
+.lib-service-card__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.lib-service-card:hover .lib-service-card__media img { transform: scale(1.04); }
+.lib-service-card__body { display: flex; flex-direction: column; align-items: flex-start; gap: .6rem; min-width: 0; padding: clamp(1.25rem, 1rem + .75vw, 1.75rem); }
+.lib-service-card h3 { font-size: clamp(1.4rem, 1.15rem + .65vw, 1.7rem); letter-spacing: -.025em; }
+.lib-service-card__summary { color: var(--lib-muted); font-size: .9375rem; line-height: 1.55; }
+.lib-service-card__points { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .4rem .65rem; width: 100%; margin-top: .2rem; padding-top: .7rem; border-top: 1px solid var(--lib-hairline); }
+.lib-service-card__points li { display: flex; align-items: center; gap: .45rem; min-width: 0; color: var(--lib-navy); font-size: .8125rem; font-weight: 500; line-height: 1.35; }
+.lib-service-card__points li::before { content: ""; width: .45rem; height: .45rem; flex: none; border-radius: 50%; background: var(--lib-red); }
+.lib-service-card__link { display: inline-flex; align-items: center; justify-content: space-between; gap: .75rem; width: 100%; min-height: 3rem; margin-top: auto; padding-top: .5rem; color: var(--lib-navy); font-size: .875rem; font-weight: 700; text-decoration: none; }
+.lib-service-card__link::after { content: ""; position: absolute; z-index: 2; inset: 0; }
+.lib-service-card__link svg { width: 2.35rem; height: 2.35rem; flex: none; padding: .62rem; border-radius: 4px; background: var(--lib-red); color: #fff; fill: none; stroke: currentColor; stroke-width: 2.2; transition: background-color .2s ease, transform .2s ease; }
+.lib-service-card__link:hover svg, .lib-service-card__link:focus-visible svg { background: var(--lib-navy); transform: translateX(2px); }
+.lib-media-frame { margin: 0; position: relative; border-radius: var(--lib-radius-xl); overflow: hidden; }
+.lib-media-frame img { width: 100%; height: 100%; object-fit: cover; }
+.lib-media-frame figcaption { position: absolute; left: 1rem; bottom: 1rem; padding: .5rem .875rem; border-radius: 8px; background: #fff; color: var(--lib-navy); font-size: .8125rem; font-weight: 700; }
+/* FAQ -------------------------------------------------------------------- */
+.lib-faq { padding-block: clamp(3rem, 2rem + 2vw, 5rem); background: #fafafa; }
+.lib-faq__inner { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); gap: clamp(1rem, 1rem + 2vw, 3rem); align-items: start; }
+.lib-faq__intro { position: static; padding: clamp(1.5rem, 1rem + 2vw, 2.5rem); border-radius: 8px; background: var(--lib-navy); color: #fff; }
+.lib-faq__intro .lib-eyebrow { color: #fff; }
+.lib-faq__intro .lib-section-title { color: #fff; }
+.lib-faq__intro .lib-section-lede { margin-top: 1rem; color: #fff; font-size: 1rem; }
+.lib-faq__intro .btn { margin-top: 1.5rem; }
+.lib-faq__intro .btn--solid { border-color: #fff; }
+.lib-faq__intro .btn--solid:hover, .lib-faq__intro .btn--solid:focus-visible { border-color: #fff; }
+.lib-faq__list { display: grid; gap: .7rem; }
+.lib-faq__list details { overflow: hidden; border: 1px solid var(--lib-hairline); border-radius: 7px; background: #fff; }
+.lib-faq__list details:first-child { border-top: 1px solid var(--lib-hairline); }
+.lib-faq__list details[open] { border-color: rgba(10, 39, 83, .32); box-shadow: 0 8px 25px rgba(10, 39, 83, .07); }
+.lib-faq__list summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4rem; padding: .9rem 1.2rem; cursor: pointer; list-style: none; font-weight: 700; font-size: 1rem; color: var(--lib-navy); }
+.lib-faq__list summary::-webkit-details-marker { display: none; }
+.lib-faq__list summary::after { content: "+"; flex: none; width: 2rem; height: 2rem; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: #eaf0f8; color: var(--lib-navy); font-size: 1.3rem; line-height: 1; }
+.lib-faq__list details[open] summary::after { content: "−"; background: var(--lib-navy); color: #fff; }
+.lib-faq__list details p { padding: 0 3.5rem 1.25rem 1.2rem; color: var(--lib-muted); font-size: .94rem; }
+/* Contact ---------------------------------------------------------------- */
+.lib-contact { padding-block: clamp(3rem, 2rem + 2vw, 5rem); background: #eaf0f8; }
+.lib-contact__info { display: grid; }
+.lib-contact__info > a, .lib-contact__info > div { display: flex; align-items: center; gap: .875rem; min-height: 3.2rem; padding: .7rem 0; border-top: 1px solid var(--lib-hairline-dark); color: var(--lib-on-dark-muted); font-size: .9375rem; line-height: 1.45; }
+.lib-contact__info svg { width: 2.35rem; height: 2.35rem; flex: none; padding: .55rem; border-radius: 50%; background: #fff; fill: none; stroke: var(--lib-red); stroke-width: 2; }
+.lib-contact__phone { text-decoration: none; }
+.lib-contact__phone span { color: #fff; font-size: 1.25rem; font-weight: 700; line-height: 1.25; }
+.lib-contact__phone:hover span { text-decoration: underline; text-underline-offset: .2em; }
+.lib-contact .quote-card { gap: 1rem; padding: clamp(1.5rem, 1rem + 2vw, 2.75rem); border: 1px solid var(--lib-hairline); border-radius: 8px; box-shadow: 0 14px 40px rgba(10, 39, 83, .08); }
+.lib-contact .quote-card__title { padding: .15rem 0 1rem; border-bottom: 1px solid var(--lib-hairline); text-align: center; font-size: clamp(1.5rem, 1.2rem + .6vw, 1.875rem); }
+.lib-contact .field label { font-size: .75rem; }
+.lib-contact .field input { min-height: 3rem; }
+.lib-contact .field textarea { min-height: 6rem; }
+.lib-contact .btn--block { margin-top: .1rem; }
+/* Responsive ------------------------------------------------------------- */
+@media (max-width: 75rem) {
+  .lib-trust__inner { grid-template-columns: repeat(2, 1fr); row-gap: 1rem; }
+  .lib-trust__item:nth-child(3) { border-left: 0; }
+  .lib-section-head--split { grid-template-columns: 1fr; }
+  .lib-section-head--split .lib-section-lede { justify-self: start; }
+}
+@media (max-width: 64rem) {
+  .lib-services__grid { grid-template-columns: 1fr; }
+  .lib-service-card { min-height: 15rem; grid-template-columns: minmax(0, .3fr) minmax(0, .7fr); }
+}
+@media (max-width: 60rem) {
+  .lib-faq__inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 40rem) {
+  .lib-section { padding-block: 2.75rem; }
+  .lib-trust__inner { grid-template-columns: 1fr; padding-block: .75rem; }
+  .lib-trust__item { padding-inline: 0; padding-block: .5rem; border-left: 0 !important; }
+  .lib-trust__item + .lib-trust__item { border-top: 1px solid var(--lib-hairline); }
+  .lib-service-card { grid-template-columns: 1fr; min-height: 0; }
+  .lib-service-card__media { min-height: 0; aspect-ratio: 16 / 8; }
+  .lib-service-card__body { padding: 1.25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lib-service-card, .lib-service-card__media img, .lib-service-card__link svg { transition: none; }
+  .lib-service-card:hover, .lib-service-card:focus-within, .lib-service-card:hover .lib-service-card__media img { transform: none; }
+}
+/* ==========================================================================
+   Client-screen pass (26 Sep): fluid hero fold + nyc6 section rhythm.
+   Appended as overrides so the design rules above stay untouched.
+   ========================================================================== */
+:root { --lib-section-pad: clamp(1.25rem, 1rem + 1vw, 2rem); }
+/* Section spacing halved to the nyc6 rhythm. */
+.lib-services, .lib-faq, .lib-contact { padding-block: var(--lib-section-pad); }
+.lib-services .lib-section-head { margin-bottom: var(--space-5); }
+@media (max-width: 40rem) {
+  .lib-section, .lib-services, .lib-faq, .lib-contact { padding-block: 2rem; }
+}
+/* Mobile: service cards, roof-system cards, and neighborhood tiles become
+   swipe sliders like the materials tiles (client rule). */
+@media (max-width: 40rem) {
+  .lib-services__grid.slider { display: flex; grid-template-columns: none; }
+  .lib-services__grid.slider > .lib-service-card { flex: 0 0 84%; grid-template-columns: 1fr; }
+}
+/* 17. Contact: the two columns finish level and the form matches the hero. */
+.lib-contact .quote-card { height: 100%; }
+/* The form sets the row height; the map flexes to fill the other column,
+   so neither card carries dead space. */
+.lib-contact .quote-card { align-content: start; gap: .875rem; padding: clamp(1.25rem, 1rem + 1vw, 1.75rem); }
+.lib-contact .quote-card__title { padding: 0 0 .85rem; font-size: clamp(1.4rem, 1.2rem + .5vw, 1.65rem); }
+.lib-contact .field label { font-size: .6875rem; }
+.lib-contact .field input { min-height: 2.75rem; }
+.lib-contact .field textarea { min-height: 5.25rem; }
+/* Forms: tighter, and the call-back line sits closer to the button. */
+.lib-contact .form-callback { margin-top: -.35rem; line-height: 1.3; }
+/* Commercial roofing: photo left, copy right. */
+.lib-commercial { padding-block: var(--lib-section-pad); background: #fff; }
+.lib-commercial__inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(1.5rem, 1rem + 2.5vw, 4rem); align-items: center; }
+.lib-commercial__media { aspect-ratio: 4 / 3; border-radius: 8px; }
+.lib-commercial__media figcaption { border-radius: 4px; }
+.lib-commercial__copy { display: flex; flex-direction: column; align-items: flex-start; }
+.lib-commercial__copy .lib-section-lede { margin-top: .75rem; }
+.lib-commercial__list { display: grid; gap: 0; width: 100%; margin-top: 1.25rem; border-top: 1px solid var(--lib-hairline); }
+.lib-commercial__list li { display: flex; align-items: center; gap: 1rem; padding: .8rem 0; border-bottom: 1px solid var(--lib-hairline); }
+.lib-commercial__list strong, .lib-commercial__list small { display: block; }
+.lib-commercial__list strong { color: var(--lib-navy); font-size: 1.0625rem; }
+.lib-commercial__list small { margin-top: .1rem; color: var(--lib-muted); font-size: .9375rem; line-height: 1.5; }
+.lib-commercial__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+/* Reviews: Trustindex widget between the FAQs and Get In Touch. */
+@media (max-width: 48rem) {
+  .lib-commercial__inner { grid-template-columns: 1fr; }
+  .lib-commercial__media { aspect-ratio: 16 / 10; }
+}
+/* Mobile round from the call. */
+@media (max-width: 40rem) {
+  /* The trust strip is hidden so the About photo follows the form. */
+  .lib-trust { display: none; }
+  /* New sections: cards swipe, copy stays compact. */
+  .lib-commercial__list li { align-items: flex-start; }
+  .lib-commercial__actions .btn { flex: 1 1 12rem; }
+}
+
+/* ==========================================================================
+   C. Sections carried from the Bronx (lix-): about, building types,
+   projects, reviews, plus the parts the projects page uses.
+   ========================================================================== */
+/* 2. Tokens --------------------------------------------------------------- */
+:root { --lix-star: #F5A623; --lix-fs-h1: clamp(2.1rem, 1.35rem + 2.3vw, 3.4rem); --lix-fs-h2: clamp(1.65rem, 1.2rem + 1.35vw, 2.4rem); --lix-fs-h3: clamp(1.125rem, 1rem + .35vw, 1.3rem); --lix-fs-lede: clamp(1rem, .95rem + .2vw, 1.125rem); --lix-section-pad: clamp(2rem, 1.2rem + 1.6vw, 2.75rem); --lix-head-gap: var(--space-5); --lix-radius-xs: 3px; --lix-radius-sm: 4px; --lix-radius-card: 16px 4px 16px 4px; --lix-radius-media: 16px 4px 16px 4px; }
+@media (max-width: 40rem) {
+  :root { --lix-section-pad: 2rem; --lix-head-gap: 1.25rem; }
+}
+/* Every content section: <section class="lix-section [lix-section--alt]"> */
+.lix-section { padding-block: var(--lix-section-pad); background: var(--surface); }
+.lix-section--alt { background: var(--surface-alt); }
+.lix-section--tint { background: var(--surface-tint); }
+.lix-section + .lix-section:not([class*="--"]) { border-top: 1px solid var(--line); }
+/* 5. Section heads ---------------------------------------------------------
+   <div class="lix-head [lix-head--split|lix-head--center]">
+     <div>
+       <p class="lix-kicker">Eyebrow</p>
+       <h2 class="lix-title">Title</h2>
+     </div>
+     <p class="lix-lede">Lede</p>          (or inside the first div)
+   </div>
+   The kicker -> title -> lede spacing is identical in every section. */
+.lix-head { margin-bottom: var(--lix-head-gap); }
+.lix-head--split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--space-4) var(--space-8); align-items: end; }
+.lix-head--split .lix-lede { margin-top: 0; justify-self: end; max-width: 54ch; }
+.lix-kicker {
+  display: flex; align-items: center; gap: .65rem;
+  margin-bottom: var(--space-3);
+  color: var(--brand-ink);
+  font-size: var(--fs-label); font-weight: 700; line-height: 1.2; letter-spacing: .14em; text-transform: uppercase;
+}
+.lix-kicker::before { content: ""; width: 1.75rem; height: 3px; flex: none; border-radius: 2px; background: var(--brand); }
+.lix-title { max-width: 30ch; font-size: var(--lix-fs-h2); letter-spacing: -.022em; }
+.lix-lede { max-width: 64ch; margin-top: var(--space-3); font-size: var(--lix-fs-lede); line-height: 1.6; color: var(--ink); text-wrap: pretty; }
+/* Text link with arrow: <a class="lix-link">Label <svg><use href="#i-arrow"/></svg></a> */
+.lix-link { display: inline-flex; align-items: center; gap: .45rem; min-height: 2.75rem; color: var(--navy); font-weight: 700; text-decoration: none; }
+.lix-link svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: var(--brand); stroke-width: 2.2; transition: transform .2s; }
+.lix-link:hover { color: var(--brand-ink); }
+.lix-link:hover svg { transform: translateX(3px); }
+/* Icon chip: <span class="lix-ico"><svg><use href="#i-roof"/></svg></span> */
+.lix-ico {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 2.75rem; height: 2.75rem; border-radius: 50%;
+  background: var(--green-50); color: var(--brand); box-shadow: inset 0 0 0 1px var(--green-100);
+}
+.lix-ico svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.lix-ico--dark { background: rgba(255, 255, 255, .08); color: var(--green-300); box-shadow: inset 0 0 0 1px var(--line-dark); }
+/* Review badges (Google, Yelp): no rating numbers for the Bronx.
+   <ul class="lix-badges"><li class="lix-badge"><img ...><span><strong>Google</strong><small>Reviews</small></span></li></ul> */
+.lix-badges { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.lix-badge {
+  display: inline-flex; align-items: center; gap: .6rem;
+  min-height: 3.25rem; padding: .45rem .9rem .45rem .55rem;
+  border: 1px solid var(--line); border-radius: var(--lix-radius-sm); background: #fff;
+  color: var(--navy); line-height: 1.1;
+}
+.lix-badge img { width: 2rem; height: 2rem; object-fit: contain; }
+.lix-badge strong { display: block; font-size: 1rem; }
+.lix-badge small { display: block; margin-top: .15rem; color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+/* Breadcrumb for inner pages: <nav class="lix-crumbs" aria-label="Breadcrumb"><ol><li><a href="bronx.html">Home</a></li><li aria-current="page">FAQ</li></ol></nav> */
+.lix-crumbs ol { display: flex; flex-wrap: wrap; gap: .35rem; font-size: var(--fs-xs); font-weight: 500; }
+.lix-crumbs li { display: flex; align-items: center; gap: .35rem; color: var(--on-dark-muted); }
+.lix-crumbs li + li::before { content: "/"; color: rgba(255, 255, 255, .45); }
+.lix-crumbs a { color: #fff; text-decoration: none; }
+.lix-crumbs a:hover { text-decoration: underline; text-underline-offset: .2em; }
+/* 9. Cards -----------------------------------------------------------------
+   <article class="lix-card">
+     <div class="lix-card__media"><img ...></div>    (optional, fixed 3:2)
+     <div class="lix-card__body">
+       <p class="lix-card__tag">Tag</p>
+       <h3 class="lix-card__title">One-line title</h3>
+       <p class="lix-card__text">Three lines max (clamped)</p>
+       <div class="lix-card__foot">button / link (pinned to the bottom)</div>
+     </div>
+   </article>
+   Cards in a row share structure; text is clamped so rows stay level. */
+.lix-card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--lix-radius-card); background: #fff; transition: border-color .2s, box-shadow .2s, transform .2s; }
+.lix-card:hover { border-color: var(--line-strong); box-shadow: var(--shadow-card); }
+.lix-card__body { display: flex; flex-direction: column; flex: 1; gap: .45rem; padding: 1.15rem 1.25rem 1.25rem; }
+.lix-card__tag { color: var(--brand-ink); font-size: var(--fs-label); font-weight: 700; letter-spacing: .08em; line-height: 1.35; text-transform: uppercase; }
+.lix-card__title { font-size: var(--lix-fs-h3); letter-spacing: -.012em; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.lix-card__text { color: var(--muted); font-size: var(--fs-small); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.lix-card__foot { margin-top: auto; padding-top: .5rem; }
+/* 13. Compact page hero (inner pages) ---------------------------------------
+   <section class="lix-pagehero" aria-labelledby="page-title">
+     <div class="container lix-pagehero__inner">
+       <div class="lix-pagehero__copy">
+         <nav class="lix-crumbs">...</nav>
+         <h1 id="page-title">Title</h1>
+         <p>One or two lines</p>
+       </div>
+       <div class="lix-pagehero__aside">optional card / buttons</div>
+     </div>
+   </section>
+   Navy, ~16rem tall on desktop, starts under the fixed header.            */
+.lix-pagehero {
+  position: relative; isolation: isolate; overflow: hidden;
+  padding: calc(var(--nav-h) + var(--header-line) + clamp(1.75rem, 1.2rem + 1.5vw, 2.75rem)) 0 clamp(1.75rem, 1.2rem + 1.5vw, 2.75rem);
+  background: var(--navy); color: var(--on-dark-muted);
+}
+/* Solid navy: the diagonal roofline pattern was removed (Sean, Oct 12). */
+.lix-pagehero::after { content: ""; position: absolute; left: 0; bottom: 0; width: min(18rem, 40%); height: 4px; background: var(--brand); }
+.lix-pagehero__inner { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: var(--space-5) var(--space-8); align-items: center; }
+.lix-pagehero h1 { margin-top: var(--space-3); color: #fff; font-size: clamp(2rem, 1.4rem + 1.8vw, 3rem); letter-spacing: -.028em; }
+.lix-pagehero__copy > p { max-width: 58ch; margin-top: var(--space-3); font-size: var(--lix-fs-lede); }
+.lix-pagehero__aside { justify-self: end; }
+/* About: copy left, photo right, facts row underneath the copy. ---------- */
+.lix-about__inner { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(2rem, 1rem + 3vw, 4.5rem); align-items: center; }
+.lix-about__copy > p:not(.lix-kicker):not(.lix-lede) { max-width: 64ch; margin-top: var(--space-3); color: var(--muted); }
+.lix-about__facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: var(--space-5); border-block: 1px solid var(--line); }
+.lix-about__facts div { padding: .9rem 1rem; }
+.lix-about__facts div:first-child { padding-left: 0; }
+.lix-about__facts div + div { border-left: 1px solid var(--line); }
+.lix-about__facts dt { color: var(--navy); font-size: clamp(1.5rem, 1.2rem + .8vw, 2rem); font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+.lix-about__facts dd { margin: .35rem 0 0; color: var(--muted); font-size: var(--fs-xs); font-weight: 500; line-height: 1.4; }
+.lix-about__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
+.lix-about__media { position: relative; }
+.lix-about__media img { width: 100%; height: clamp(18rem, 40vh, 25rem); object-fit: cover; border-radius: var(--lix-radius-media); }
+.lix-about__media figcaption { position: absolute; left: 0; bottom: 1.25rem; padding: .7rem 1rem .7rem .9rem; border-left: 4px solid var(--brand); background: #fff; color: var(--navy); font-size: var(--fs-small); font-weight: 700; line-height: 1.3; box-shadow: var(--shadow-card); }
+.lix-about__media figcaption small { display: block; color: var(--muted); font-size: var(--fs-xs); font-weight: 500; }
+/* One long divider line between the Flat vs. Shingle table and this section. */
+.lix-types--ruled { position: relative; }
+.lix-types--ruled::before { content: ""; position: absolute; top: 0; left: max(var(--edge), (100% - var(--container-max)) / 2 + var(--edge)); right: max(var(--edge), (100% - var(--container-max)) / 2 + var(--edge)); height: 2px; background: var(--navy); opacity: .35; }
+.lix-types__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+.lix-types__art { display: flex; align-items: flex-end; justify-content: center; height: 8.25rem; padding: 1rem 1rem 0; border-bottom: 3px solid var(--brand); background: linear-gradient(180deg, var(--navy-50), #fff); }
+.lix-types__art svg { width: 100%; max-width: 13.5rem; height: 100%; fill: none; stroke: var(--navy); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.lix-types__art .roof { stroke: var(--brand); stroke-width: 3.5; }
+.lix-types__art .fill { fill: var(--navy-100); stroke: none; }
+.lix-types__where { display: flex; align-items: flex-start; gap: .45rem; min-height: calc(2.8em + .75rem); padding-top: .75rem; border-top: 1px solid var(--line); color: var(--navy); font-size: var(--fs-xs); font-weight: 700; line-height: 1.4; }
+.lix-types__where svg { width: 1rem; height: 1rem; flex: none; margin-top: .05rem; fill: none; stroke: var(--brand); stroke-width: 2; }
+/* Projects: mosaic (one large tile + four). ----------------------------- */
+.lix-projects__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(2, clamp(10.5rem, 23vh, 13rem)); gap: .9rem; }
+.lix-project { position: relative; overflow: hidden; border-radius: var(--lix-radius-media); background: var(--navy); }
+.lix-project:first-child { grid-column: span 2; grid-row: span 2; }
+.lix-project img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+.lix-project:hover img { transform: scale(1.04); }
+.lix-project figcaption { position: absolute; inset: auto 0 0 0; padding: 2.5rem 1.1rem .9rem; background: linear-gradient(180deg, transparent, rgba(6, 25, 55, .7) 40%, rgba(6, 25, 55, .92)); color: var(--on-dark-muted); font-size: var(--fs-xs); line-height: 1.4; }
+.lix-project figcaption strong { display: block; color: #fff; font-size: 1rem; }
+.lix-project:first-child figcaption strong { font-size: 1.25rem; }
+/* Reviews (Trustindex). ---------------------------------------------------- */
+.lix-reviews .lix-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem 2rem; align-items: end; }
+.lix-reviews__widget { min-height: 12rem; }
+/* Short desktop screens (1366 x 650): every homepage section keeps to one
+   screen below the fixed header (about 554px), so the rhythm tightens. */
+@media (min-width: 60.01rem) and (max-height: 780px) {
+  :root { --lix-section-pad: 1.5rem; --lix-head-gap: 1rem; }
+  .lix-about__facts div { padding-block: .65rem; }
+  .lix-about__media img { height: clamp(16rem, 52vh, 21rem); }
+  .lix-types__art { height: 6.5rem; }
+}
+@media (max-width: 75rem) {
+  .lix-head--split { grid-template-columns: minmax(0, 1fr); }
+  .lix-head--split .lix-lede { justify-self: start; }
+  .lix-types__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* Portrait tablets and phones: the hero stacks (copy, then the form); the
+   scrim evens out because text now runs the full width of the video. */
+@media (max-width: 60rem) {
+  .lix-about__inner { grid-template-columns: minmax(0, 1fr); }
+  .lix-about__media { order: -1; }
+  .lix-about__media img { height: auto; aspect-ratio: 16 / 9; }
+  .lix-projects__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; grid-auto-rows: 12rem; }
+  /* phones/tablets: the form comes first */
+  .lix-pagehero__inner { grid-template-columns: minmax(0, 1fr); }
+  .lix-pagehero__aside { justify-self: start; }
+}
+@media (max-width: 48rem) {
+  .lix-reviews .lix-head { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 40rem) {
+  /* Swipe rows: cards scroll sideways and snap to the page edge. */
+  .lix-about__facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .lix-about__facts div { padding: .75rem .5rem; }
+  .lix-about__facts dt { font-size: 1.25rem; }
+  .lix-about__facts div:first-child { padding-left: 0; }
+  .lix-about__media figcaption { bottom: .75rem; font-size: var(--fs-xs); }
+  .lix-about__actions .btn { flex: 1 1 12rem; }
+  /* Comparison table: each criterion becomes a label row over two columns. */
+  .lix-projects__grid { grid-auto-rows: auto; }
+  .lix-project, .lix-project:first-child { aspect-ratio: 4 / 3; }
+}
+/* 17. Reduced motion ------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .lix-project:hover img { transform: none; }
+}
+
+/* ==========================================================================
+   D. Long Island additions (small, on top of the carried sections)
+   ========================================================================== */
+/* Footer contact bar: Licensed & Insured mark (as on the Bronx footer). */
+.bkf__licensed { color: #fff; font-size: .9375rem; font-weight: 700; line-height: 1.2; white-space: nowrap; }
+.bkf__licensed .bkf__icon { width: 2.25rem; height: 2.25rem; }
+/* Areas: two zones (Nassau, Suffolk) instead of three. */
+.li-areas__cols--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.li-areas__cols--two .li-zone__list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+/* Header and #service-* links land on the matching service card. */
+.lib-service-card, .lib-service-anchor { scroll-margin-top: calc(var(--nav-h) + var(--header-line) + 1.5rem); }
+.lib-service-card.is-target { outline: 3px solid var(--brand); outline-offset: 3px; }
+.lib-service-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; }
+/* The Long Island crew photo in the hero slider: keep the team in frame. */
+.page-long-island-home .li-shero__slide--team { object-position: center 62%; }
+@media (max-width: 40rem) {
+  .li-areas__cols--two .li-zone__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Oct 16 (Nitesh): the footer paragraph under the logo runs a little wider. */
+.bkf__about { max-width: 52ch; }
+@media (max-width: 75rem) { .bkf__about { max-width: 62ch; } }
+
+/* Oct 16 (Nitesh): lighter layer over the hero photos, so the crew shows through. */
+.page-long-island-home .li-shero__visual::after {
+  background: linear-gradient(180deg, rgba(6, 25, 55, .4) 0%, rgba(6, 25, 55, 0) 30%),
+  linear-gradient(90deg, rgba(6, 25, 55, .78) 0%, rgba(6, 25, 55, .52) 45%, rgba(6, 25, 55, .15) 100%);
+}
+.page-long-island-home .li-shero__copy { text-shadow: 0 1px 12px rgba(6, 25, 55, .45); }

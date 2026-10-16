@@ -1,0 +1,173 @@
+/* ==========================================================================
+   Royal Roofing & Siding Long Island: blog page (long-island-blog.html)
+   Carried over from the approved Bronx blog (css/bronx-blog.css), recoloured
+   to the Long Island green and navy. Loads after css/long-island.css and only
+   uses its tokens. Prefix: lixb- (Bronx bxb-); shared Bronx blocks use lix-.
+   Sections: compact hero with topic chips, featured post (photo with the
+   title over it) + "Also new" list, equal .lix-card grid, small CTA band.
+   ========================================================================== */
+
+/* Card media: the Bronx .bx-card__media rule, which css/long-island.css does
+   not carry (its .lix-card has no photo slot). ---------------------------- */
+.lixb-card .lix-card__media { overflow: hidden; background: var(--navy-50); }
+.lixb-card .lix-card__media img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Shared meta row + category tag ------------------------------------------ */
+.lixb-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .75rem; color: var(--muted); font-size: var(--fs-xs); font-weight: 500; line-height: 1.3; }
+.lixb-tag { display: inline-flex; align-items: center; padding: .2rem .5rem; border-radius: var(--lix-radius-xs); background: var(--green-100); color: var(--brand-ink); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; line-height: 1.3; text-transform: uppercase; }
+.lixb-meta--light { color: rgba(255, 255, 255, .86); }
+.lixb-meta--light .lixb-tag { background: rgba(255, 255, 255, .14); color: #fff; }
+
+/* Hero: copy left, topic chips right -------------------------------------- */
+@media (min-width: 60.01rem) {
+  .lixb-hero .lix-pagehero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 41rem); align-items: end; }
+}
+.lixb-topics__label { margin-bottom: .6rem; color: #fff; font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; line-height: 1.2; text-transform: uppercase; }
+.lixb-topics__chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+.lixb-chip {
+  display: inline-flex; align-items: center; gap: .5rem;
+  min-height: 2.75rem; padding: .35rem .45rem .35rem 1rem;
+  border: 1px solid rgba(255, 255, 255, .28); border-radius: 999px; background: rgba(255, 255, 255, .06);
+  color: #fff; font-family: inherit; font-size: .9375rem; font-weight: 700; line-height: 1.2; white-space: nowrap; cursor: pointer;
+  transition: background-color .2s, border-color .2s;
+}
+.lixb-chip:hover { border-color: var(--green-300); }
+.lixb-chip__n { display: inline-flex; align-items: center; justify-content: center; min-width: 1.75rem; height: 1.75rem; padding: 0 .4rem; border-radius: 999px; background: rgba(255, 255, 255, .14); font-size: var(--fs-xs); }
+.lixb-chip[aria-pressed="true"] { border-color: var(--brand-hover); background: var(--brand-hover); }
+.lixb-chip[aria-pressed="true"] .lixb-chip__n { background: #fff; color: var(--brand-ink); }
+.lixb-topics__count { min-height: 1.3em; margin-top: .6rem; color: var(--on-dark-muted); font-size: var(--fs-xs); line-height: 1.3; }
+
+/* Featured: photo with the title over it + "Also new" column -------------- */
+.lixb-featured[hidden] { display: none; }
+.lixb-featured__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 28rem); gap: var(--space-5) clamp(1.5rem, 1rem + 2vw, 2.75rem); align-items: stretch; }
+.lixb-lead { display: flex; flex-direction: column; min-width: 0; }
+.lixb-lead__media { position: relative; height: clamp(17rem, 38vh, 21.5rem); overflow: hidden; border-radius: var(--lix-radius-media); background: var(--navy); }
+.lixb-lead__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; }
+.lixb-lead__badge { position: absolute; z-index: 1; top: 0; left: 0; padding: .45rem .9rem; border-radius: 0 0 12px 0; background: var(--brand-hover); color: #fff; font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; line-height: 1.2; text-transform: uppercase; }
+.lixb-lead__over { position: absolute; inset: auto 0 0 0; padding: 4.5rem clamp(1.25rem, 1rem + 1vw, 1.9rem) clamp(1.1rem, .9rem + .6vw, 1.5rem); background: linear-gradient(180deg, transparent 0, rgba(6, 25, 55, .78) 42%, rgba(6, 25, 55, .95) 100%); }
+.lixb-lead__title { max-width: 36ch; margin-top: .6rem; color: #fff; font-size: clamp(1.4rem, 1.1rem + .85vw, 1.9rem); line-height: 1.2; letter-spacing: -.022em; }
+.lixb-lead__foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem 2rem; padding-top: 1rem; }
+.lixb-lead__text { max-width: 62ch; color: var(--ink); font-size: var(--lix-fs-lede); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.lixb-lead__btn { flex: none; }
+
+.lixb-also { display: flex; flex-direction: column; min-width: 0; padding-left: clamp(1.25rem, 1rem + 1vw, 1.75rem); border-left: 1px solid var(--line); }
+.lixb-also__title { display: flex; align-items: center; gap: .65rem; padding-bottom: .7rem; border-bottom: 2px solid var(--navy); font-size: var(--lix-fs-h3); letter-spacing: -.012em; }
+.lixb-also__title::before { content: ""; width: 1.75rem; height: 3px; flex: none; border-radius: 2px; background: var(--brand); }
+.lixb-also__list { display: flex; flex-direction: column; flex: 1; }
+.lixb-also__list li { display: flex; flex: 1; align-items: center; }
+.lixb-also__list li + li { border-top: 1px solid var(--line); }
+.lixb-also__item { position: relative; width: 100%; display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: 1rem; align-items: start; padding: 1rem 0; }
+.lixb-also__num { position: absolute; z-index: 1; top: 0; left: 0; padding: .2rem .45rem; border-radius: 10px 0 10px 0; background: var(--brand-hover); color: #fff; font-size: var(--fs-xs); font-weight: 700; line-height: 1.2; }
+.lixb-also__thumb { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 10px 3px 10px 3px; background: var(--navy-50); }
+.lixb-also__thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.lixb-also__item:hover .lixb-also__thumb img { transform: scale(1.05); }
+.lixb-also__heading { margin-top: .45rem; font-size: 1rem; line-height: 1.3; letter-spacing: -.01em; }
+.lixb-also__heading a { color: var(--navy); text-decoration: none; }
+.lixb-also__heading a::after { content: ""; position: absolute; inset: 0; }
+.lixb-also__item:hover .lixb-also__heading a, .lixb-also__heading a:focus-visible { color: var(--brand-ink); text-decoration: underline; text-underline-offset: .18em; }
+.lixb-also__more { margin-top: auto; padding-top: .5rem; border-top: 1px solid var(--line); }
+
+/* Equal-card grid (built on .lix-card) ------------------------------------- */
+.lixb-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.lixb-card { position: relative; }
+.lixb-card[hidden], .slider > .lixb-card[hidden] { display: none; }
+.lixb-card:focus-within { outline: 3px solid var(--brand); outline-offset: 3px; }
+.lixb-card .lix-card__media { position: relative; aspect-ratio: 2 / 1; }
+.lixb-card .lix-card__media img { transition: transform .4s ease; }
+.lixb-card:hover .lix-card__media img { transform: scale(1.04); }
+.lixb-card__chip { position: absolute; left: .75rem; bottom: .75rem; padding: .25rem .55rem; border-radius: var(--lix-radius-xs); background: var(--navy); color: #fff; font-size: .6875rem; font-weight: 700; letter-spacing: .1em; line-height: 1.3; text-transform: uppercase; }
+.lixb-card--ask .lixb-card__chip { background: var(--brand-hover); }
+.lixb-card .lix-card__body { gap: .4rem; padding: 1rem 1.25rem 1.1rem; }
+.lixb-card__date { display: flex; align-items: center; gap: .4rem; color: var(--muted); font-size: var(--fs-xs); font-weight: 500; line-height: 1.3; }
+.lixb-card__date svg { width: .95rem; height: .95rem; flex: none; fill: none; stroke: var(--brand); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+/* Real post titles run long, so each splits at its colon: a one-line main
+   title and a two-line subtitle. Slots are fixed, so every card is level;
+   the copy is written to fit, and the clamps are only a safety net. */
+.lixb-card__title { display: grid; gap: .2rem; }
+.lixb-card__main { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; color: var(--navy); font-size: 1.125rem; line-height: 1.3; letter-spacing: -.012em; }
+.lixb-card__sub { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: calc(2 * 1.4em); color: var(--brand-ink); font-size: .9375rem; font-weight: 500; line-height: 1.4; }
+.lix-card__text.lixb-card__text { -webkit-line-clamp: 2; min-height: calc(2 * 1.55em); }
+.lixb-card .lix-card__foot { padding-top: .35rem; }
+.lixb-card__link { display: inline-flex; align-items: center; gap: .45rem; min-height: 2rem; color: var(--navy); font-size: var(--fs-small); font-weight: 700; text-decoration: none; }
+.lixb-card__link::after { content: ""; position: absolute; z-index: 1; inset: 0; }
+.lixb-card__link svg { width: 1rem; height: 1rem; fill: none; stroke: var(--brand); stroke-width: 2.2; transition: transform .2s ease; }
+.lixb-card:hover .lixb-card__link { color: var(--brand-ink); }
+.lixb-card:hover .lixb-card__link svg { transform: translateX(3px); }
+.lixb-card__link:focus-visible { outline: none; }
+
+/* Small CTA band ---------------------------------------------------------- */
+.lixb-cta__panel {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 1rem 1.5rem;
+  padding: clamp(1.25rem, 1rem + 1vw, 1.75rem) clamp(1.25rem, 1rem + 1.5vw, 2.25rem);
+  border-radius: var(--lix-radius-card); background: var(--navy); color: var(--on-dark-muted);
+}
+.lixb-cta__panel::before {
+  content: ""; position: absolute; z-index: -1; inset: 0 0 0 55%;
+  background:
+    linear-gradient(90deg, var(--navy) 0%, transparent 40%),
+    repeating-linear-gradient(135deg, transparent 0 34px, rgba(255, 255, 255, .06) 34px 35px),
+    repeating-linear-gradient(45deg, transparent 0 34px, rgba(255, 255, 255, .06) 34px 35px);
+}
+.lixb-cta__panel::after { content: ""; position: absolute; left: 0; bottom: 0; width: min(14rem, 35%); height: 4px; background: var(--brand); }
+.lixb-cta__ico { width: 3.25rem; height: 3.25rem; }
+.lixb-cta__ico svg { width: 1.5rem; height: 1.5rem; }
+.lixb-cta h2 { color: #fff; font-size: clamp(1.35rem, 1.1rem + .8vw, 1.85rem); letter-spacing: -.02em; }
+.lixb-cta__copy p { max-width: 62ch; margin-top: .3rem; }
+.lixb-cta__actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+/* Responsive -------------------------------------------------------------- */
+/* Short laptop screens (e.g. 1366 x 650): flatter photos keep each section on one screen. */
+@media (min-width: 60.01rem) and (max-height: 780px) {
+  .lixb-card .lix-card__media { aspect-ratio: 5 / 2; }
+  .lixb-lead__media { height: 15.5rem; }
+}
+@media (max-width: 75rem) {
+  .lixb-featured__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 24rem); }
+  .lixb-also__item { grid-template-columns: 7.5rem minmax(0, 1fr); }
+  .lixb-cta__panel { grid-template-columns: auto minmax(0, 1fr); }
+  .lixb-cta__actions { grid-column: 2; }
+}
+@media (max-width: 64rem) {
+  .lixb-featured__inner { grid-template-columns: minmax(0, 1fr); }
+  .lixb-also { padding-left: 0; border-left: 0; }
+  .lixb-also__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1.5rem; }
+  .lixb-also__list li + li { border-top: 0; }
+}
+/* Tablets: the grid becomes one column of horizontal cards. */
+@media (min-width: 40.01rem) and (max-width: 60rem) {
+  .lixb-grid { grid-template-columns: minmax(0, 1fr); gap: .9rem; }
+  .lixb-card { flex-direction: row; }
+  .lixb-card .lix-card__media { flex: 0 0 38%; aspect-ratio: auto; }
+}
+@media (max-width: 40rem) {
+  .lixb-topics { width: 100%; }
+  /* Chips scroll sideways instead of wrapping into rows. */
+  .lixb-topics__chips { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(-1 * var(--edge)); padding-inline: var(--edge); scrollbar-width: none; }
+  .lixb-topics__chips::-webkit-scrollbar { display: none; }
+
+  /* Featured: the title panel moves under the photo. */
+  .lixb-lead__media { display: flex; flex-direction: column; height: auto; }
+  .lixb-lead__media img { position: static; height: auto; aspect-ratio: 16 / 10; }
+  .lixb-lead__over { position: static; padding: 1rem 1.1rem 1.15rem; background: var(--navy); }
+  .lixb-lead__title { font-size: 1.3rem; }
+  .lixb-lead__foot { flex-direction: column; align-items: stretch; }
+  .lixb-lead__text { -webkit-line-clamp: 3; }
+  .lixb-also__list { grid-template-columns: minmax(0, 1fr); }
+  .lixb-also__list li + li { border-top: 1px solid var(--line); }
+  .lixb-also__item { grid-template-columns: 7rem minmax(0, 1fr); gap: .8rem; padding: .85rem 0; }
+
+  /* Swipe cards: two-line title slot and a three-line excerpt. */
+  .lixb-card__main { -webkit-line-clamp: 2; min-height: calc(2 * 1.3em); }
+  .lix-card__text.lixb-card__text { -webkit-line-clamp: 3; min-height: calc(3 * 1.55em); }
+  .lixb-card .lix-card__media { aspect-ratio: 16 / 9; }
+  .lixb-card:hover .lix-card__media img { transform: none; }
+
+  .lixb-cta__panel { grid-template-columns: minmax(0, 1fr); }
+  .lixb-cta__actions { grid-column: auto; }
+  .lixb-cta__actions .btn { flex: 1 1 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lixb-card .lix-card__media img, .lixb-also__thumb img, .lixb-card__link svg { transition: none; }
+  .lixb-card:hover .lix-card__media img, .lixb-also__item:hover .lixb-also__thumb img { transform: none; }
+}

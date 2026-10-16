@@ -1,0 +1,46 @@
+/* ==========================================================================
+   Royal Roofing & Siding Long Island: long-island-contact-us.html
+   Loads after css/long-island.css. Carried from css/manhattan-contact.css
+   (same layout and behaviour), recoloured to the Long Island green and navy.
+   ========================================================================== */
+/* Hero call card (sits in .li-pagehero__aside) ---------------------------- */
+.lic-callcard { display: flex; align-items: center; gap: 1rem; padding: 1.15rem 1.5rem; border: 1px solid var(--line-dark); border-top: 3px solid var(--brand); border-radius: var(--radius-sm); background: rgba(6, 25, 55, .72); backdrop-filter: blur(4px); }
+.lic-callcard .li-ico { width: 3rem; height: 3rem; }
+.lic-callcard__label { color: var(--on-dark-muted); font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.lic-callcard__phone { display: inline-block; margin-top: .15rem; color: #fff; font-family: var(--font-display); font-size: clamp(1.6rem, 1.25rem + .9vw, 2rem); font-weight: 600; line-height: 1.15; letter-spacing: -.01em; text-decoration: none; }
+.lic-callcard__phone:hover { text-decoration: underline; text-decoration-color: var(--brand); text-underline-offset: .18em; }
+.lic-callcard__hours { margin-top: .2rem; color: var(--on-dark-muted); font-size: var(--fs-small); }
+/* Form + details + map ---------------------------------------------------- */
+.lic-main__inner { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: var(--space-6); align-items: stretch; }
+.lic-form { align-content: start; }
+.lic-form .quote-card__title { font-size: var(--fs-h2); }
+.lic-side { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-top: 2px solid var(--navy); border-radius: var(--radius-card); background: #fff; }
+.lic-details { padding: 1.15rem 1.5rem .35rem; }
+.lic-details__title { font-size: var(--fs-h3); }
+.lic-details .li-details { margin-top: .35rem; }
+.lic-map { position: relative; flex: 1; min-height: 15rem; border-top: 1px solid var(--line); background: var(--navy-50); }
+.lic-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+/* Responsive -------------------------------------------------------------- */
+@media (max-width: 60rem) {
+  .lic-main__inner { grid-template-columns: minmax(0, 1fr); }
+  .lic-map { flex: none; height: 20rem; }
+}
+@media (max-width: 40rem) {
+  .lic-callcard { width: 100%; padding: .9rem 1rem; }
+  .lic-callcard .li-ico { width: 2.5rem; height: 2.5rem; }
+  .lic-details { padding: 1rem 1rem .25rem; }
+  .lic-map { height: 18rem; }
+}
+/* Map tall enough for Google to show the business card (it needs about 300px). */
+.lic-map { min-height: 19rem; }
+
+/* Long Island: the crew photo behind the page hero stays clearly visible.
+   The photo sits between the heading and the call card instead of under the card. */
+.page-long-island-contact .li-pagehero__bg { inset: 0 0 0 28%; }
+.page-long-island-contact .li-pagehero__bg img { width: 72%; opacity: .9; object-position: center 62%; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 16%, #000 80%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 16%, #000 80%, transparent 100%); }
+.page-long-island-contact .li-pagehero__bg::after { background: linear-gradient(90deg, var(--navy-deep) 0%, rgba(6, 25, 55, .3) 30%, rgba(6, 25, 55, 0) 60%); }
+@media (max-width: 60rem) {
+  .page-long-island-contact .li-pagehero__bg { inset: 0; }
+  .page-long-island-contact .li-pagehero__bg img { width: 100%; opacity: .45; -webkit-mask-image: none; mask-image: none; }
+  .page-long-island-contact .li-pagehero__bg::after { background: linear-gradient(90deg, var(--navy-deep) 0%, rgba(6, 25, 55, .55) 100%); }
+}

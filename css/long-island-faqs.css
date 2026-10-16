@@ -1,0 +1,107 @@
+/* ==========================================================================
+   Royal Roofing & Siding Long Island: long-island-faqs.html
+   Loads after css/long-island.css. Carried from css/brooklyn-faqs.css
+   (same layout and behaviour), recoloured to the Long Island green and navy.
+   ========================================================================== */
+/* Compact page hero (shared pattern with brooklyn-blog.html) -------------- */
+.lib-phero {
+  padding: calc(var(--nav-h) + 1.5rem) 0 1.5rem;
+  background-color: var(--lib-navy-deep);
+  background-image: repeating-linear-gradient(135deg, transparent 0 68px, rgba(255, 255, 255, .075) 69px, transparent 70px), linear-gradient(90deg, var(--lib-navy-deep) 0%, #123468 100%);
+  background-size: 45% 100%, 100% 100%;
+  background-position: right center;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+.lib-crumbs ol { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem .5rem; margin: 0; padding: 0; list-style: none; color: var(--lib-on-dark-muted); font-size: .8125rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.lib-crumbs li + li::before { content: "/"; margin-right: .5rem; color: rgba(255, 255, 255, .4); }
+.lib-crumbs a { color: #fff; text-decoration: none; }
+.lib-crumbs a:hover, .lib-crumbs a:focus-visible { text-decoration: underline; text-underline-offset: .2em; }
+.lib-phero h1 { margin-top: .6rem; color: #fff; font-size: clamp(2rem, 1.5rem + 1.4vw, 2.875rem); line-height: 1.15; letter-spacing: -.03em; }
+.lib-phero__lede { max-width: 80ch; margin-top: .5rem; color: var(--lib-on-dark-muted); font-size: 1.125rem; }
+/* Hero: copy left, search right ------------------------------------------- */
+.liq-hero__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 30rem); align-items: end; gap: 1.5rem clamp(2rem, 4vw, 5rem); }
+.liq-search { padding: 1rem 1.1rem .85rem; border: 1px solid var(--lib-hairline-dark); border-left: 3px solid var(--lib-red); border-radius: 8px; background: rgba(255, 255, 255, .06); }
+.liq-search__label { display: block; margin-bottom: .5rem; color: #fff; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.liq-search__field { position: relative; }
+.liq-search__field svg { position: absolute; left: .9rem; top: 50%; width: 1.15rem; height: 1.15rem; transform: translateY(-50%); fill: none; stroke: var(--lib-navy); stroke-width: 2.2; pointer-events: none; }
+.liq-search__field input {
+  width: 100%; min-height: 3.25rem; padding: .7rem 1rem .7rem 2.75rem;
+  border: 2px solid transparent; border-radius: 6px; background: #fff;
+  font: inherit; font-size: 1rem; font-weight: 500; color: var(--lib-ink);
+}
+.liq-search__field input::placeholder { color: #8c95a1; }
+.liq-search__field input:focus { outline: none; border-color: var(--lib-red); }
+.liq-search__status { min-height: 1.3em; margin-top: .5rem; color: var(--lib-on-dark-muted); font-size: .8125rem; line-height: 1.3; }
+/* Body: sticky topic rail + grouped accordions ---------------------------- */
+.liq-body { padding-block: var(--lib-section-pad) calc(var(--lib-section-pad) + 1rem); background: #fafafa; }
+.liq-body__inner { display: grid; grid-template-columns: minmax(0, 17.5rem) minmax(0, 1fr); gap: clamp(1.5rem, 1rem + 2.5vw, 3.5rem); align-items: start; }
+.liq-rail { position: sticky; top: calc(var(--nav-h) + 4px + 1.25rem); min-width: 0; }
+.liq-rail__title { margin-bottom: .6rem; color: var(--lib-muted); font-size: var(--lib-fs-utility); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.liq-rail__list { display: grid; gap: .3rem; margin: 0; padding: 0; list-style: none; }
+.liq-rail__list a {
+  display: grid; grid-template-columns: 1.85rem minmax(0, 1fr) auto; align-items: center; gap: .7rem;
+  min-height: 3rem; padding: .45rem .75rem .45rem .5rem;
+  border: 1px solid transparent; border-left: 3px solid transparent; border-radius: 6px;
+  color: var(--lib-navy); font-size: .9688rem; font-weight: 700; line-height: 1.25; text-decoration: none;
+  transition: background-color .2s, border-color .2s, color .2s;
+}
+.liq-rail__list a:hover { background: #fff; border-color: var(--lib-hairline); }
+.liq-rail__list a.is-active { background: #fff; border-color: var(--lib-hairline); border-left-color: var(--lib-red); box-shadow: 0 8px 22px rgba(10, 39, 83, .06); }
+.liq-rail__num { display: inline-flex; align-items: center; justify-content: center; width: 1.85rem; height: 1.85rem; border-radius: 6px; background: var(--lib-sky); color: var(--lib-navy); font-size: .875rem; }
+.liq-rail__list a.is-active .liq-rail__num { background: var(--lib-red); color: #fff; }
+.liq-rail__count { color: var(--lib-muted); font-size: .8125rem; font-weight: 500; }
+.liq-rail__list li.is-empty a { opacity: .45; }
+.liq-rail__help { display: grid; gap: .75rem; margin-top: 1.25rem; padding: 1.1rem; border-radius: 8px; background: var(--lib-navy); color: var(--lib-on-dark-muted); font-size: .9063rem; line-height: 1.45; }
+.liq-rail__help strong { display: block; margin-bottom: .15rem; color: #fff; font-size: 1rem; }
+.liq-rail__help .btn { min-height: 2.9rem; padding-inline: 1rem; font-size: 1rem; }
+.liq-groups { display: grid; gap: 2rem; min-width: 0; }
+.liq-group { scroll-margin-top: calc(var(--nav-h) + 1.25rem); }
+.liq-group[hidden], .liq-group details[hidden] { display: none; }
+.liq-group__title { display: flex; align-items: baseline; gap: .5rem; margin-bottom: .9rem; padding-bottom: .65rem; border-bottom: 2px solid var(--lib-navy); font-size: clamp(1.4rem, 1.15rem + .7vw, 1.75rem); letter-spacing: -.02em; }
+.liq-group__num { color: var(--lib-red); }
+.liq-group .lib-faq__list { gap: .55rem; }
+.liq-group .lib-faq__list summary { min-height: 3.5rem; padding: .75rem 1.1rem; }
+.liq-group .lib-faq__list details p { padding: 0 3.5rem 1.1rem 1.1rem; font-size: .9688rem; }
+.liq-group .lib-faq__list details p a { color: var(--lib-red); font-weight: 700; }
+.liq-empty { padding: 1.5rem; border: 1px dashed rgba(10, 39, 83, .3); border-radius: 8px; background: #fff; color: var(--lib-muted); }
+.liq-empty strong { color: var(--lib-navy); }
+.liq-empty a, .liq-empty__clear { color: var(--lib-red); font-weight: 700; }
+.liq-empty__clear { padding: 0; border: 0; background: none; cursor: pointer; text-decoration: underline; text-underline-offset: .2em; }
+/* Still have questions: navy panel + standard estimate form --------------- */
+.liq-ask__inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 1.25rem; align-items: stretch; }
+.liq-ask__panel { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(1.5rem, 1rem + 1.5vw, 2.5rem); border-radius: 8px; background: var(--lib-navy); color: #fff; }
+.liq-ask__panel .lib-section-title { color: #fff; }
+.liq-ask__lede { max-width: 50ch; margin-top: .75rem; color: var(--lib-on-dark-muted); }
+.liq-ask__panel .lib-contact__info { width: 100%; margin-top: auto; padding-top: 1.5rem; }
+/* Responsive -------------------------------------------------------------- */
+@media (max-width: 64rem) {
+  .liq-hero__inner { grid-template-columns: 1fr; }
+  .liq-search { max-width: 34rem; }
+}
+@media (max-width: 60rem) {
+  /* The rail becomes a row of numbered topic chips that sticks under the header. */
+  .liq-body { padding-top: 0; }
+  .liq-body__inner { grid-template-columns: 1fr; gap: 1.25rem; }
+  .liq-rail { top: calc(var(--nav-h) + 3px); z-index: 5; margin-inline: calc(-1 * var(--edge)); padding: .6rem 0; background: #fafafa; border-bottom: 1px solid var(--lib-hairline); }
+  .liq-rail__title, .liq-rail__help { display: none; }
+  .liq-rail__list { display: flex; gap: .5rem; overflow-x: auto; padding-inline: var(--edge); scrollbar-width: none; scroll-padding-inline: var(--edge); }
+  .liq-rail__list::-webkit-scrollbar { display: none; }
+  .liq-rail__list li { flex: none; }
+  .liq-rail__list a { grid-template-columns: auto auto; gap: .5rem; min-height: 2.75rem; padding: .35rem .85rem .35rem .4rem; border: 1px solid var(--lib-hairline); border-radius: 6px; background: #fff; font-size: .9375rem; white-space: nowrap; }
+  .liq-rail__list a.is-active { border-color: var(--lib-navy); background: var(--lib-navy); color: #fff; box-shadow: none; }
+  .liq-rail__num { width: 1.6rem; height: 1.6rem; font-size: .8125rem; }
+  .liq-rail__count { display: none; }
+  .liq-group { scroll-margin-top: calc(var(--nav-h) + 4.75rem); }
+  .liq-ask__inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 40rem) {
+  .lib-phero { padding: calc(var(--nav-h) + 1.25rem) 0 1.25rem; background-size: 70% 100%, 100% 100%; }
+  .lib-phero__lede { font-size: 1rem; }
+  .liq-hero__inner { gap: 1rem; }
+  .liq-search { padding: .85rem; }
+  .liq-groups { gap: 1.5rem; }
+  .liq-group .lib-faq__list summary { padding: .7rem .9rem; font-size: 1rem; }
+  .liq-group .lib-faq__list details p { padding: 0 .9rem 1rem; font-size: 1rem; }
+  .liq-ask__panel { padding: 1.5rem; }
+}

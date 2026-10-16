@@ -1,0 +1,1316 @@
+/* ==========================================================================
+   Royal Roofing Yonkers: design system + homepage (css/yonkers.css, v2)
+   --------------------------------------------------------------------------
+   Rebuilt from the approved sister-brand sections, in Yonkers colours
+   (orange #D2450A, hover #A83708, near-black #111111). Every Yonkers page
+   loads this file; inner pages add one page file:
+     yonkers-about.css, yonkers-contact.css, yonkers-faqs.css,
+     yonkers-projects.css, yonkers-service.css
+
+   PREFIX SCHEME (one scheme, "yk" + where the section came from)
+     yk-    sections and parts carried from the Bronx design (hero, compare
+            table, projects mosaic, FAQ accordion, cards, map grid, details)
+     ykm-   sections carried from the Manhattan design (trust ledger,
+            service cards, commercial band, reviews head)
+     ykb-   sections carried from the Brooklyn design (about, building
+            types, neighborhoods, Get In Touch)
+     ykq- / yks- / ykc- / ykp- / ykb-about-   page files (FAQ, service,
+            contact, projects, about)
+   Header, drawer, dropdowns, forms (quote-card, field) and the footer (bkf)
+   keep the shared class names so js/yonkers.js works unchanged.
+
+   CONTENTS
+     1-14  Base, tokens, buttons, small parts, forms, cards, FAQ, header,
+           page hero, footer (Bronx system, Yonkers colours)
+     15    Homepage sections from the Bronx design (.yk-hero ... .yk-contact)
+     16-17 Responsive + reduced motion
+     18    Sections from the Manhattan design (.ykm-*)
+     19    Sections from the Brooklyn design (.ykb-*)
+     20    Yonkers additions (logo plate, Google reviews card, scoped tokens)
+
+   CONTRAST
+     White on #D2450A 4.6:1 (AA). Small orange text on white uses
+     --brand-ink #A83708 (6.5:1). Orange text on near-black uses
+     --orange-300 #FF9A5C (8.6:1).
+   ========================================================================== */
+
+/* 1. Fonts ---------------------------------------------------------------- */
+@font-face { font-family: 'Helvetica Neue'; src: url('../fonts/HelveticaNeueLight.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Helvetica Neue'; src: url('../fonts/HelveticaNeueMedium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Helvetica Neue'; src: url('../fonts/HelveticaNeueBold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+/* 2. Tokens --------------------------------------------------------------- */
+:root {
+  /* Brand: orange #D2450A and near-black #111111, with tints and shades. */
+  --orange-50:  #FFF3EC;   /* faint wash: hover rows, tinted panels */
+  --orange-100: #FBDCCB;   /* chip / tag background */
+  --orange-300: #FF9A5C;   /* orange text on near-black (7.5:1) */
+  --orange-500: #D2450A;   /* BRAND: buttons, header line, accents */
+  --orange-600: #A83708;   /* button hover / pressed */
+  --orange-700: #A83708;   /* small orange text on white (6.5:1) */
+  --dark-50:  #F6F2EE;     /* light section background */
+  --dark-100: #E8E0D9;     /* borders on tinted panels */
+  --dark-600: #3A3A3A;
+  --dark-700: #262626;     /* raised surface on near-black */
+  --dark-800: #111111;     /* BRAND: headings, dark sections */
+  --dark-900: #0A0A0A;     /* footer, deepest surface */
+  /* Neutrals, biased slightly toward near-black. */
+  --grey-25:  #FAFAFA;
+  --grey-50:  #F4F4F4;
+  --grey-100: #E6E6E6;
+  --grey-200: #D0D0D0;
+  --grey-400: #8E8E8E;     /* placeholders, disabled */
+  --grey-600: #5C5C5C;     /* muted body text (6:1 on white) */
+  --grey-800: #2A2A2A;     /* body text */
+  /* Semantic aliases: use these in components. */
+  --brand: var(--orange-500);
+  --brand-hover: var(--orange-600);
+  --brand-ink: var(--orange-700);
+  --dark: var(--dark-800);
+  --dark-deep: var(--dark-900);
+  --ink: var(--grey-800);
+  --muted: var(--grey-600);
+  --surface: #fff;
+  --surface-alt: var(--grey-50);
+  --surface-tint: var(--dark-50);
+  --line: rgba(17, 17, 17, .13);
+  --line-strong: rgba(17, 17, 17, .26);
+  --line-dark: rgba(255, 255, 255, .16);
+  --on-dark: #fff;
+  --on-dark-muted: rgba(255, 255, 255, .8);
+  --star: #F5A623;
+  /* Type: one family, one scale. */
+  --font-sans: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --fs-h1: clamp(2.1rem, 1.35rem + 2.3vw, 3.4rem);
+  --fs-h2: clamp(1.65rem, 1.2rem + 1.35vw, 2.4rem);
+  --fs-h3: clamp(1.125rem, 1rem + .35vw, 1.3rem);
+  --fs-lede: clamp(1rem, .95rem + .2vw, 1.125rem);
+  --fs-body: 1rem;
+  --fs-small: .9375rem;
+  --fs-xs: .8125rem;
+  --fs-label: .75rem;          /* uppercase labels, kickers */
+  /* Space: one gap scale, one section padding. */
+  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
+  --space-5: 1.5rem; --space-6: 2rem; --space-7: 2.5rem; --space-8: 3rem;
+  --section-pad: clamp(2rem, 1.2rem + 1.6vw, 2.75rem);
+  --head-gap: var(--space-5);  /* section head -> content */
+  /* Shape. The "Bronx leaf": big radius on two opposite corners. */
+  --radius-xs: 3px;            /* chips, tags */
+  --radius-sm: 4px;            /* buttons, inputs */
+  --radius-card: 16px 4px 16px 4px;
+  --radius-media: 16px 4px 16px 4px;
+  --shadow-sm: 0 2px 10px rgba(10, 10, 10, .06);
+  --shadow-card: 0 14px 36px rgba(10, 10, 10, .10);
+  --shadow-float: 0 24px 60px rgba(10, 10, 10, .22);
+  --shadow-header: 0 2px 14px rgba(10, 10, 10, .12);
+  --shadow-menu: 0 18px 44px rgba(10, 10, 10, .18);
+  /* Layout (same container and header height as Brooklyn). */
+  --container-max: 112.5rem;
+  --edge: 70px;
+  --nav-h: 6.25rem;
+  --header-line: 4px;
+  --z-header: 50;
+  --col-gap: clamp(1.5rem, 1rem + 2.4vw, 4rem);
+}
+@media (max-width: 88rem) {
+  :root { --nav-h: 5.75rem; }
+}
+@media (max-width: 75rem) {
+  :root { --edge: 40px; }
+}
+@media (max-width: 48rem) {
+  :root { --edge: 20px; --nav-h: 4.75rem; --header-line: 3px; }
+}
+@media (max-width: 40rem) {
+  :root { --section-pad: 2rem; --head-gap: 1.25rem; }
+}
+/* 3. Base + reset ---------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+section[id], form[id] { scroll-margin-top: calc(var(--nav-h) + var(--header-line) + .75rem); }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--surface);
+  overflow-x: clip;
+}
+img { max-width: 100%; height: auto; display: block; }
+h1,
+h2,
+h3,
+h4 { margin: 0; color: var(--dark); font-weight: 700; line-height: 1.18; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+figure { margin: 0; }
+button { font: inherit; color: inherit; }
+svg { display: inline-block; }
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+.skip-link { position: absolute; left: -999px; top: 0; z-index: 100; padding: .5rem 1rem; background: var(--dark); color: #fff; }
+.skip-link:focus { left: 1rem; top: 1rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* 4. Layout ---------------------------------------------------------------- */
+.container { width: min(var(--container-max), 100%); margin-inline: auto; padding-inline: var(--edge); }
+/* Every content section: <section class="yk-section [yk-section--alt]"> */
+.yk-section { padding-block: var(--section-pad); background: var(--surface); }
+.yk-section--alt { background: var(--surface-alt); }
+.yk-section--tint { background: var(--surface-tint); }
+.yk-section--dark { background: var(--dark); color: var(--on-dark-muted); }
+.yk-section--dark h2, .yk-section--dark h3 { color: #fff; }
+.yk-section + .yk-section:not([class*="--"]) { border-top: 1px solid var(--line); }
+/* 5. Section heads ---------------------------------------------------------
+   <div class="yk-head [yk-head--split|yk-head--center]">
+     <div>
+       <p class="yk-kicker">Eyebrow</p>
+       <h2 class="yk-title">Title</h2>
+     </div>
+     <p class="yk-lede">Lede</p>          (or inside the first div)
+   </div>
+   The kicker -> title -> lede spacing is identical in every section. */
+.yk-head { margin-bottom: var(--head-gap); }
+.yk-head--center { text-align: center; }
+.yk-head--center .yk-title, .yk-head--center .yk-lede { margin-inline: auto; }
+.yk-head--center .yk-kicker { justify-content: center; }
+.yk-head--split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--space-4) var(--space-8); align-items: end; }
+.yk-head--split .yk-lede { margin-top: 0; justify-self: end; max-width: 54ch; }
+.yk-head__aside { justify-self: end; display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.yk-kicker {
+  display: flex; align-items: center; gap: .65rem;
+  margin-bottom: var(--space-3);
+  color: var(--brand-ink);
+  font-size: var(--fs-label); font-weight: 700; line-height: 1.2; letter-spacing: .14em; text-transform: uppercase;
+}
+.yk-kicker::before { content: ""; width: 1.75rem; height: 3px; flex: none; border-radius: 2px; background: var(--brand); }
+.yk-kicker--light { color: var(--orange-300); }
+.yk-title { max-width: 30ch; font-size: var(--fs-h2); letter-spacing: -.022em; }
+.yk-title--light { color: #fff; }
+.yk-lede { max-width: 64ch; margin-top: var(--space-3); font-size: var(--fs-lede); line-height: 1.6; color: var(--ink); text-wrap: pretty; }
+.yk-section--dark .yk-lede { color: var(--on-dark-muted); }
+/* 6. Buttons ---------------------------------------------------------------
+   .btn                       base (orange outline)
+   .btn--solid                orange fill (default CTA)
+   .btn--dark                 near-black fill or near-black outline (with/without --solid)
+   .btn--white                white fill, near-black text (on dark backgrounds)
+   .btn--ghost-light          white outline on dark backgrounds
+   .btn--block / .btn--sm     full width / compact
+   .btn__icon                 leading svg icon                               */
+.btn {
+  --color: var(--brand);
+  --hover: var(--dark);
+  display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+  min-height: 3.125rem; margin: 0; padding: .7rem 1.6rem;
+  border: 2px solid var(--color); border-radius: var(--radius-sm);
+  background: transparent; color: var(--color);
+  font-family: inherit; font-size: 1.0625rem; font-weight: 700; line-height: 1.2;
+  text-decoration: none; white-space: nowrap; cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+}
+.btn:hover, .btn:focus-visible { background: var(--color); color: #fff; }
+.btn:active { transform: translateY(1px); }
+.btn--solid { background: var(--color); color: #fff; }
+.btn--solid:hover, .btn--solid:focus-visible { background: var(--hover); border-color: var(--hover); color: #fff; }
+.btn--dark { --color: var(--dark); --hover: var(--brand); }
+.btn--white { --color: #fff; --hover: var(--brand); color: var(--dark); }
+.btn--white.btn--solid { color: var(--dark); }
+.btn--white.btn--solid:hover, .btn--white.btn--solid:focus-visible { color: #fff; }
+.btn--ghost-light { --color: rgba(255, 255, 255, .85); color: #fff; }
+.btn--ghost-light:hover, .btn--ghost-light:focus-visible { background: #fff; border-color: #fff; color: var(--dark); }
+.btn--block { width: 100%; }
+.btn--sm { min-height: 2.75rem; padding: .55rem 1.1rem; font-size: 1rem; }
+.btn__icon { width: 1.05rem; height: 1.05rem; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+/* Text link with arrow: <a class="yk-link">Label <svg><use href="#i-arrow"/></svg></a> */
+.yk-link { display: inline-flex; align-items: center; gap: .45rem; min-height: 2.75rem; color: var(--dark); font-weight: 700; text-decoration: none; }
+.yk-link svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: var(--brand); stroke-width: 2.2; transition: transform .2s; }
+.yk-link:hover { color: var(--brand-ink); }
+.yk-link:hover svg { transform: translateX(3px); }
+/* 7. Small parts ----------------------------------------------------------- */
+/* Icon chip: <span class="yk-ico"><svg><use href="#i-roof"/></svg></span> */
+.yk-ico {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 2.75rem; height: 2.75rem; border-radius: 50%;
+  background: var(--orange-50); color: var(--brand); box-shadow: inset 0 0 0 1px var(--orange-100);
+}
+.yk-ico svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.yk-ico--dark { background: rgba(255, 255, 255, .08); color: var(--orange-300); box-shadow: inset 0 0 0 1px var(--line-dark); }
+/* Check list: <ul class="yk-checks"><li><svg><use href="#i-check"/></svg>Text</li></ul> */
+.yk-checks { display: grid; gap: .5rem; }
+.yk-checks li { display: flex; align-items: flex-start; gap: .55rem; color: var(--dark); font-weight: 500; }
+.yk-checks svg { width: 1.1rem; height: 1.1rem; flex: none; margin-top: .25rem; fill: none; stroke: var(--brand); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+/* Tags: <ul class="yk-tags"><li>EPDM</li></ul> */
+.yk-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+.yk-tags li { padding: .2rem .55rem; border: 1px solid var(--line); border-radius: var(--radius-xs); background: #fff; color: var(--dark); font-size: var(--fs-xs); font-weight: 500; line-height: 1.4; white-space: nowrap; }
+/* Review badges (Google, Yelp): no rating numbers for the Bronx.
+   <ul class="yk-badges"><li class="yk-badge"><img ...><span><strong>Google</strong><small>Reviews</small></span></li></ul> */
+.yk-badges { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.yk-badge {
+  display: inline-flex; align-items: center; gap: .6rem;
+  min-height: 3.25rem; padding: .45rem .9rem .45rem .55rem;
+  border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fff;
+  color: var(--dark); line-height: 1.1;
+}
+.yk-badge img { width: 2rem; height: 2rem; object-fit: contain; }
+.yk-badge strong { display: block; font-size: 1rem; }
+.yk-badge small { display: block; margin-top: .15rem; color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.yk-badge .yk-stars { color: var(--star); font-size: .8rem; letter-spacing: .08em; }
+/* Rating marks (hero): the usual "5.0 ★★★★★ Google rating" mark used on the
+   other sites, in Bronx colours (white card, near-black text, orange underline).
+   <li class="rating-mark"><img ...><span><strong>5.0</strong> <span class="stars">★★★★★</span><small>Google rating</small></span></li> */
+.rating-mark {
+  display: inline-flex; align-items: center; gap: .6rem;
+  min-height: 3.25rem; padding: .4rem .9rem .4rem .6rem;
+  border: 1px solid var(--line); border-bottom: 3px solid var(--brand); border-radius: var(--radius-sm); background: #fff;
+  color: var(--dark); line-height: 1.1;
+}
+.rating-mark img { width: 1.75rem; height: 1.75rem; flex: none; object-fit: contain; }
+.rating-mark strong { font-size: 1.125rem; font-weight: 700; }
+.rating-mark .stars { color: var(--star); font-size: .875rem; letter-spacing: .05em; }
+.rating-mark small { display: block; margin-top: .15rem; color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+/* Breadcrumb for inner pages: <nav class="yk-crumbs" aria-label="Breadcrumb"><ol><li><a href="yonkers.html">Home</a></li><li aria-current="page">FAQ</li></ol></nav> */
+.yk-crumbs ol { display: flex; flex-wrap: wrap; gap: .35rem; font-size: var(--fs-xs); font-weight: 500; }
+.yk-crumbs li { display: flex; align-items: center; gap: .35rem; color: var(--on-dark-muted); }
+.yk-crumbs li + li::before { content: "/"; color: rgba(255, 255, 255, .45); }
+.yk-crumbs a { color: #fff; text-decoration: none; }
+.yk-crumbs a:hover { text-decoration: underline; text-underline-offset: .2em; }
+/* 8. Forms -----------------------------------------------------------------
+   <form class="quote-card" novalidate>
+     <h2 class="quote-card__title">Get a Free Estimate</h2>
+     <div class="field-row"> <div class="field">label+input</div> x2 </div>
+     <div class="field">...</div>
+     <button class="btn btn--solid btn--block">Get My Free Estimate</button>
+     <p class="form-callback">We’ll call you back within the hour</p>
+   </form>
+   js/yonkers.js validates every form.quote-card (name, phone, email, address). */
+.quote-card {
+  display: grid; gap: .8rem;
+  padding: clamp(1.15rem, .9rem + .8vw, 1.6rem);
+  border: 1px solid var(--line); border-top: 4px solid var(--brand); border-radius: var(--radius-sm);
+  background: #fff; color: var(--ink); box-shadow: var(--shadow-card);
+}
+.quote-card__title { font-size: clamp(1.35rem, 1.15rem + .5vw, 1.6rem); letter-spacing: -.015em; }
+.quote-card__sub { margin-top: -.45rem; color: var(--muted); font-size: var(--fs-small); }
+.field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; align-items: start; }
+.field { display: grid; gap: .3rem; min-width: 0; }
+.field label { color: var(--dark); font-size: .6875rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.field input, .field textarea {
+  width: 100%; min-height: 2.75rem; padding: .6rem .8rem;
+  border: 1px solid var(--grey-200); border-radius: var(--radius-sm); background: var(--grey-25);
+  font: inherit; font-size: 1rem; font-weight: 500; color: var(--ink);
+  transition: border-color .15s, background-color .15s;
+}
+.field textarea { min-height: 5.25rem; resize: vertical; }
+.field input:hover, .field textarea:hover { border-color: var(--grey-400); }
+.field input:focus, .field textarea:focus { outline: 2px solid var(--dark); outline-offset: 0; border-color: var(--dark); background: #fff; }
+.field input::placeholder, .field textarea::placeholder { color: var(--grey-400); font-size: .875rem; }
+.field-error { color: var(--brand-ink); font-size: var(--fs-xs); font-weight: 700; }
+.has-error input, .has-error textarea { border-color: var(--brand); }
+.form-callback { margin-top: -.35rem; color: var(--dark); font-size: var(--fs-xs); line-height: 1.3; text-align: center; }
+.form-thanks { padding: .75rem 0 0; text-align: center; }
+.form-thanks strong { display: block; margin-bottom: .35rem; color: var(--dark); font-size: 1.125rem; }
+.form-thanks a { color: var(--brand-ink); font-weight: 700; }
+/* 9. Cards -----------------------------------------------------------------
+   <article class="yk-card">
+     <div class="yk-card__media"><img ...></div>    (optional, fixed 3:2)
+     <div class="yk-card__body">
+       <p class="yk-card__tag">Tag</p>
+       <h3 class="yk-card__title">One-line title</h3>
+       <p class="yk-card__text">Three lines max (clamped)</p>
+       <div class="yk-card__foot">button / link (pinned to the bottom)</div>
+     </div>
+   </article>
+   Cards in a row share structure; text is clamped so rows stay level. */
+.yk-card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: #fff; transition: border-color .2s, box-shadow .2s, transform .2s; }
+.yk-card:hover { border-color: var(--line-strong); box-shadow: var(--shadow-card); }
+.yk-card__media { aspect-ratio: 3 / 2; overflow: hidden; background: var(--dark-50); }
+.yk-card__media img { width: 100%; height: 100%; object-fit: cover; }
+.yk-card__body { display: flex; flex-direction: column; flex: 1; gap: .45rem; padding: 1.15rem 1.25rem 1.25rem; }
+.yk-card__tag { color: var(--brand-ink); font-size: var(--fs-label); font-weight: 700; letter-spacing: .08em; line-height: 1.35; text-transform: uppercase; }
+.yk-card__title { font-size: var(--fs-h3); letter-spacing: -.012em; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.yk-card__text { color: var(--muted); font-size: var(--fs-small); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.yk-card__foot { margin-top: auto; padding-top: .5rem; }
+/* 10. FAQ accordion ---------------------------------------------------------
+   <div class="yk-faq [yk-faq--2col]">
+     <details class="yk-faq__item"><summary>Question</summary><div class="yk-faq__a"><p>Answer</p></div></details>
+   </div>                                                                     */
+.yk-faq { display: grid; gap: .6rem; align-items: start; }
+.yk-faq--2col { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem 1.25rem; }
+.yk-faq__item { border: 1px solid var(--line); border-left: 3px solid var(--line-strong); border-radius: var(--radius-sm); background: #fff; transition: border-color .2s, box-shadow .2s; }
+.yk-faq__item[open] { border-left-color: var(--brand); box-shadow: var(--shadow-sm); }
+.yk-faq__item summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  min-height: 3.75rem; padding: .75rem 1rem .75rem 1.1rem;
+  color: var(--dark); font-weight: 700; font-size: 1rem; line-height: 1.35;
+  list-style: none; cursor: pointer;
+}
+.yk-faq__item summary::-webkit-details-marker { display: none; }
+.yk-faq__item summary::after {
+  content: ""; flex: none; width: 1.75rem; height: 1.75rem; border-radius: var(--radius-sm);
+  background: var(--grey-50) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E") center / 1rem no-repeat;
+  transition: background-color .2s;
+}
+.yk-faq__item[open] summary::after { background-color: var(--brand); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M6 12h12'/%3E%3C/svg%3E"); }
+.yk-faq__item summary:hover { color: var(--brand-ink); }
+.yk-faq__a { padding: 0 3.25rem 1rem 1.1rem; color: var(--muted); font-size: var(--fs-small); line-height: 1.6; }
+.yk-faq__a a { color: var(--brand-ink); font-weight: 700; }
+/* 11. Mobile swipe rows -----------------------------------------------------
+   Add class "slider" (and data-slider) to any grid that should become a
+   horizontal swipe row under 40rem, plus <p class="swipe-hint">.            */
+.swipe-hint { display: none; margin-top: .6rem; color: var(--muted); font-size: var(--fs-xs); text-align: center; }
+/* 12. Header ----------------------------------------------------------------
+   Markup: copy <header class="header is-scrolled" id="top"> ... </header>
+   from yonkers.html. Solid white from the top, orange line underneath.       */
+.header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: var(--z-header);
+  background: #fff; border-bottom: var(--header-line) solid var(--brand); box-shadow: var(--shadow-header);
+}
+.header__inner { position: relative; display: flex; align-items: center; gap: var(--space-4); height: var(--nav-h); }
+.brand { display: block; flex: none; line-height: 0; }
+.brand img { width: auto; height: 5.25rem; }
+.nav { display: flex; flex: 1; align-items: center; justify-content: center; min-width: 0; }
+.nav__list { display: flex; align-items: stretch; gap: .5rem; height: var(--nav-h); }
+.nav__item { position: relative; display: flex; }
+.nav__item + .nav__item { background: linear-gradient(var(--line), var(--line)) left center / 1px 1.5rem no-repeat; }
+.nav__link {
+  display: inline-flex; align-items: center; justify-content: center; gap: .375rem;
+  height: 100%; padding-inline: 1.1875rem; border: 0; background: none; cursor: pointer;
+  color: var(--dark); font-size: 1.0625rem; font-weight: 500; letter-spacing: .005em; text-decoration: none; white-space: nowrap;
+  transition: color .2s, background-color .2s;
+}
+.nav__link:hover, .nav__link[aria-expanded="true"] { color: var(--brand-ink); background: var(--orange-50); }
+.nav__link[aria-current="page"] { color: var(--brand-ink); box-shadow: inset 0 -3px 0 var(--brand); }
+.nav__chevron { width: .75rem; height: .75rem; fill: none; stroke: currentColor; stroke-width: 2.5; transition: transform .2s; }
+.nav__link[aria-expanded="true"] .nav__chevron { transform: rotate(180deg); }
+.header__cta { display: flex; flex: none; align-items: center; gap: var(--space-4); }
+.header__btn { padding-inline: 1.1rem; }
+.dropdown {
+  position: absolute; top: 100%; left: 0; min-width: 14rem; padding: .75rem;
+  border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fff; box-shadow: var(--shadow-menu);
+}
+.dropdown::before { content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 3px; background: var(--brand); }
+.dropdown[hidden] { display: none; }
+.dropdown--mega {
+  position: fixed; top: calc(var(--nav-h) + var(--header-line)); left: 50%;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem 1.5rem;
+  width: min(62rem, calc(100vw - var(--edge) - var(--edge))); padding: 1.25rem 1.5rem 1rem; transform: translateX(-50%);
+}
+.mega__heading { margin: 0 0 .5rem; padding-bottom: .5rem; border-bottom: 1px solid var(--line); color: var(--muted); font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.menu-list a {
+  display: flex; align-items: center; gap: .75rem; padding: .55rem .75rem; border-radius: var(--radius-sm);
+  color: var(--dark); font-size: 1.0625rem; font-weight: 500; text-decoration: none; white-space: nowrap;
+  transition: background-color .15s, color .15s;
+}
+.menu-list a svg { width: 1.125rem; height: 1.125rem; flex: none; fill: none; stroke: var(--brand); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.menu-list a:hover { background: var(--orange-50); color: var(--brand-ink); }
+.menu-list a.is-urgent { color: var(--brand-ink); font-weight: 700; }
+.menu-btn { display: none; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 2.75rem; height: 2.75rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fff; cursor: pointer; }
+.menu-btn span { width: 1.25rem; height: 2px; border-radius: 2px; background: var(--dark); transition: transform .2s, opacity .2s; }
+.menu-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.drawer {
+  position: absolute; top: 100%; left: 0; right: 0; max-height: calc(100vh - var(--nav-h)); overflow-y: auto; overscroll-behavior: contain;
+  padding: .5rem var(--edge) 1.25rem; border-top: var(--header-line) solid var(--brand); background: #fff; box-shadow: var(--shadow-menu);
+}
+.drawer[hidden] { display: none; }
+.drawer__list > li + li { border-top: 1px solid var(--line); }
+.drawer__link, .drawer__group {
+  display: flex; align-items: center; justify-content: space-between; width: 100%; padding: .875rem 0;
+  border: 0; background: none; color: var(--dark); font-size: 1.125rem; font-weight: 500; text-align: left; text-decoration: none; cursor: pointer;
+}
+.drawer__group svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 2.2; transition: transform .2s; }
+.drawer__group[aria-expanded="true"] svg { transform: rotate(180deg); }
+.drawer__sub { padding: 0 0 .75rem .75rem; }
+.drawer__sub[hidden] { display: none; }
+.drawer__sub a { display: block; padding: .5rem 0; color: var(--ink); font-size: 1.0625rem; font-weight: 300; text-decoration: none; }
+.drawer__sub a.is-urgent { color: var(--brand-ink); font-weight: 700; }
+.drawer__label { margin-top: .5rem; padding: .25rem 0; color: var(--muted); font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.drawer__actions { display: grid; gap: .75rem; margin-top: 1rem; }
+@media (max-width: 88rem) {
+  .nav { display: none; }
+  .brand img { height: 4.75rem; }
+  .header__cta { margin-left: auto; }
+  .menu-btn { display: inline-flex; }
+  .header__btn { min-height: 3rem; padding: .6rem 1.2rem; font-size: 1rem; }
+}
+@media (min-width: 88.01rem) {
+  .drawer { display: none; }
+}
+@media (max-width: 48rem) {
+  .brand img { height: 3.6rem; }
+  /* Mobile: the phone button becomes an orange square icon button. */
+  .header__btn { width: 2.75rem; min-width: 2.75rem; height: 2.75rem; min-height: 2.75rem; padding: 0; }
+  .header__btn .btn__label { display: none; }
+  .header__btn .btn__icon { width: 1.25rem; height: 1.25rem; }
+  .header__cta { gap: .5rem; }
+}
+/* 13. Compact page hero (inner pages) ---------------------------------------
+   <section class="yk-pagehero" aria-labelledby="page-title">
+     <div class="container yk-pagehero__inner">
+       <div class="yk-pagehero__copy">
+         <nav class="yk-crumbs">...</nav>
+         <h1 id="page-title">Title</h1>
+         <p>One or two lines</p>
+       </div>
+       <div class="yk-pagehero__aside">optional card / buttons</div>
+     </div>
+   </section>
+   Near-black, ~16rem tall on desktop, starts under the fixed header.            */
+.yk-pagehero {
+  position: relative; isolation: isolate; overflow: hidden;
+  padding: calc(var(--nav-h) + var(--header-line) + clamp(1.75rem, 1.2rem + 1.5vw, 2.75rem)) 0 clamp(1.75rem, 1.2rem + 1.5vw, 2.75rem);
+  background: var(--dark); color: var(--on-dark-muted);
+}
+/* Solid near-black: the diagonal roofline pattern was removed (Sean, Oct 12). */
+.yk-pagehero::after { content: ""; position: absolute; left: 0; bottom: 0; width: min(18rem, 40%); height: 4px; background: var(--brand); }
+.yk-pagehero__inner { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: var(--space-5) var(--space-8); align-items: center; }
+.yk-pagehero h1 { margin-top: var(--space-3); color: #fff; font-size: clamp(2rem, 1.4rem + 1.8vw, 3rem); letter-spacing: -.028em; }
+.yk-pagehero__copy > p { max-width: 58ch; margin-top: var(--space-3); font-size: var(--fs-lede); }
+.yk-pagehero__aside { justify-self: end; }
+/* 14. Footer ----------------------------------------------------------------
+   Markup: copy <footer class="footer bkf"> ... </footer> from yonkers.html.
+   Logo with text to its right, 3 link columns, contact bar (Google + Yelp,
+   Call / Office / Hours), bottom row (Facebook, Instagram, X, copyright,
+   Terms & Privacy, back to top).                                          */
+.footer { border-top: 4px solid var(--brand); background: var(--dark-deep); color: var(--on-dark-muted); font-size: .9rem; }
+.footer a { text-decoration: none; }
+.bkf { --bkf-head: var(--orange-300); --bkf-line: rgba(255, 255, 255, .12); font-size: 1rem; }
+.bkf p { margin: 0; }
+.bkf__top { display: grid; grid-template-columns: minmax(0, 2.6fr) repeat(3, minmax(max-content, 1fr)); gap: 2rem clamp(1.5rem, 1rem + 2vw, 2.85rem); padding-block: 1.5rem .75rem; }
+.bkf__brand { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 1.25rem; align-content: start; align-items: start; min-width: 0; }
+.bkf__logo { grid-row: 1; display: inline-flex; padding: .35rem; border-radius: 50%; background: #fff; line-height: 0; }
+.bkf__logo img { width: auto; height: 4.75rem; }
+.bkf__about { max-width: 46ch; color: rgba(255, 255, 255, .74); font-size: .9375rem; line-height: 1.7; }
+.bkf__cta { grid-column: 1 / -1; justify-self: start; margin-top: 1rem; min-height: 3rem; padding: .6rem 1.35rem; font-size: 1rem; }
+.bkf__col { min-width: 0; }
+.bkf .bkf__heading { max-width: none; color: var(--bkf-head); font-size: 1rem; line-height: 1.6; letter-spacing: .01em; }
+.bkf__links { display: grid; gap: 2px; margin-top: 1rem; }
+.bkf__links a { display: inline-block; padding: .5rem 0; color: rgba(255, 255, 255, .76); font-size: .9375rem; line-height: 1.4; }
+.bkf__links a:hover, .bkf__links a:focus-visible { color: #fff; text-decoration: underline; text-underline-offset: .2em; }
+.bkf__contactbar { border-top: 1px solid var(--bkf-line); }
+.bkf__midrow { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 2rem; padding-block: .75rem; }
+.bkf__badges { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; }
+.bkf__badges li { display: flex; align-items: center; gap: .5rem; }
+.bkf__rating img { width: 2rem; height: 2rem; }
+.bkf__rating > span { color: #fff; font-size: .9375rem; font-weight: 700; line-height: 1.2; white-space: nowrap; }
+.bkf__rating strong { font-size: 1.125rem; }
+.bkf__stars { margin-left: .2rem; color: var(--star); font-size: 1rem; letter-spacing: .04em; }
+.bkf__rating small { margin-left: .4rem; color: #fff; font-size: .9375rem; font-weight: 700; }
+.bkf__licensed { color: #fff; font-size: .9375rem; font-weight: 700; line-height: 1.2; white-space: nowrap; }
+.bkf__licensed .bkf__icon { width: 2.25rem; height: 2.25rem; }
+.bkf__yelp img { width: 2.625rem; height: 2.625rem; object-fit: contain; }
+.bkf__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.bkf__contacts { display: grid; grid-auto-flow: column; justify-content: end; gap: 1.5rem; }
+.bkf__contacts li { display: grid; grid-template-columns: 2.5rem auto; align-items: start; gap: 1rem; }
+.bkf__icon { display: flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--brand); color: #fff; }
+.bkf__icon svg { width: 1.05rem; height: 1.05rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.bkf__label { color: rgba(255, 255, 255, .58); font-size: .8125rem; letter-spacing: .14em; line-height: 1.6; text-transform: uppercase; }
+.bkf__value { margin-top: .25rem !important; color: #fff; font-size: .9375rem; font-weight: 700; line-height: 1.45; }
+.bkf__value a { color: #fff; }
+.bkf__value a:hover, .bkf__value a:focus-visible { text-decoration: underline; text-underline-offset: .2em; }
+.bkf__bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 1.5rem; padding-block: .5rem .75rem; }
+.bkf__socials { display: flex; flex-wrap: wrap; gap: .25rem; margin-right: auto; }
+.bkf__socials a, .bkf__totop { display: flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border: 1px solid rgba(255, 255, 255, .18); border-radius: 3px; color: #fff; transition: background-color .15s, border-color .15s; }
+.bkf__socials a:hover,
+.bkf__socials a:focus-visible,
+.bkf__totop:hover,
+.bkf__totop:focus-visible { background: var(--brand); border-color: var(--brand); }
+.bkf__socials svg, .bkf__totop svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.bkf__socials a[aria-label="Facebook"] svg { width: 1.15rem; height: 1.15rem; fill: currentColor; stroke: none; }
+.bkf__totop { margin-left: .75rem; border-color: rgba(255, 255, 255, .22); }
+.bkf__copy { margin-left: auto !important; color: rgba(255, 255, 255, .6); font-size: .875rem; line-height: 1.6; }
+.bkf__legal { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.5rem; }
+.bkf__legal a { color: rgba(255, 255, 255, .7); font-size: .875rem; }
+.bkf__legal a:hover, .bkf__legal a:focus-visible { color: #fff; text-decoration: underline; text-underline-offset: .2em; }
+/* ==========================================================================
+   15. Homepage sections (yonkers.html). Inner pages may reuse any of these.
+   ========================================================================== */
+/* Hero: the nyc6 roof-replacement clip fills the section behind a near-black
+   scrim; copy + rating row on the left, estimate card on the right.
+   The scrim never drops below .8 near-black behind the copy column, so white text
+   stays above 9:1 and the orange-300 accents above 4.5:1 even over the
+   brightest frame of the video. -------------------------------------------- */
+.yk-hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center;
+  min-height: calc(100svh - 5.5rem);
+  padding: calc(var(--nav-h) + var(--header-line) + clamp(1.5rem, 1rem + 1.4vw, 2.5rem)) 0 clamp(1.75rem, 1.2rem + 1.4vw, 2.75rem);
+  background: var(--dark-deep); color: var(--on-dark-muted);
+}
+/* The poster frame doubles as the background, so a browser that holds
+   autoplay back (or a reduced-motion visitor) still sees the roof. */
+.yk-hero__media { position: absolute; z-index: -1; inset: 0; background: var(--dark-deep) url("https://res.cloudinary.com/dbsdxu4tv/video/upload/so_1,w_1280,q_auto/v1771496715/Shingle_Roof_Replacement_-_in_6_Hours_memh5b.jpg") center / cover no-repeat; }
+.yk-hero__video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.yk-hero__scrim {
+  position: absolute; inset: 0;
+  background:
+  linear-gradient(90deg, rgba(10, 10, 10, .9) 0%, rgba(10, 10, 10, .84) 45%, rgba(10, 10, 10, .6) 70%, rgba(10, 10, 10, .45) 100%),
+  linear-gradient(180deg, rgba(10, 10, 10, .35) 0%, transparent 30%, transparent 75%, rgba(10, 10, 10, .45) 100%);
+}
+/* Orange rule along the bottom edge, level with the trust strip. */
+.yk-hero::after { content: ""; position: absolute; left: 0; bottom: 0; width: min(22rem, 40%); height: 4px; background: var(--brand); }
+.yk-hero__inner { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 25rem); gap: clamp(2rem, 1rem + 4vw, 6rem); align-items: center; }
+.yk-hero__copy { min-width: 0; max-width: 44rem; }
+.yk-hero__title { color: #fff; font-size: clamp(2.1rem, .6rem + 2.6vw, 3rem); line-height: 1.06; letter-spacing: -.035em; }
+@media (min-width: 75.01rem) {
+  .yk-hero__title { white-space: nowrap; }
+}
+.yk-hero__title span { display: block; margin-top: .55rem; color: var(--orange-300); font-size: .62em; line-height: 1.2; letter-spacing: -.02em; }
+.yk-hero__text { max-width: 54ch; margin-top: var(--space-4); color: rgba(255, 255, 255, .88); font-size: var(--fs-lede); line-height: 1.6; text-wrap: pretty; }
+.yk-hero__proof { display: flex; flex-wrap: wrap; align-items: stretch; gap: .6rem; margin-top: var(--space-5); }
+.yk-hero__proof .yk-badge, .yk-hero__proof .rating-mark { border-color: transparent; border-bottom-color: var(--brand); box-shadow: var(--shadow-sm); }
+.yk-hero__stat { display: flex; flex-direction: column; justify-content: center; min-height: 3.25rem; padding: .35rem .9rem; border: 1px solid rgba(255, 255, 255, .22); border-left: 3px solid var(--brand); border-radius: var(--radius-sm); background: rgba(10, 10, 10, .55); color: #fff; line-height: 1.1; }
+.yk-hero__stat strong { font-size: 1.125rem; }
+.yk-hero__stat small { margin-top: .2rem; color: rgba(255, 255, 255, .8); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.yk-hero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
+.yk-hero :focus-visible { outline-color: #fff; }
+.yk-hero__form :focus-visible { outline-color: var(--brand); }
+.yk-hero__form { position: relative; box-shadow: var(--shadow-float); }
+.yk-hero__form .quote-card__title { text-align: center; }
+/* Flat vs shingle: split comparison table. ------------------------------- */
+.yk-compare__table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; border: 1px solid var(--line); border-radius: var(--radius-card); overflow: hidden; background: #fff; }
+.yk-compare__table col.yk-compare__label-col { width: 16%; }
+.yk-compare__table th, .yk-compare__table td { padding: .85rem 1.35rem; text-align: left; vertical-align: top; }
+.yk-compare__table tbody th { color: var(--dark); font-size: var(--fs-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: var(--grey-50); border-right: 1px solid var(--line); }
+.yk-compare__table tbody td { color: var(--ink); font-size: var(--fs-small); line-height: 1.5; }
+.yk-compare__table tbody tr + tr > * { border-top: 1px solid var(--line); }
+.yk-compare__table tbody td + td, .yk-compare__table thead th + th + th, .yk-compare__table tfoot td + td { border-left: 1px solid var(--line); }
+.yk-compare__table thead th { padding: 0; vertical-align: bottom; background: #fff; border-bottom: 1px solid var(--line-strong); }
+.yk-compare__corner { padding: 1rem 1.35rem !important; background: var(--grey-50) !important; border-right: 1px solid var(--line); vertical-align: middle !important; color: var(--muted); font-size: var(--fs-xs); font-weight: 500; }
+.yk-compare__sys { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); align-items: center; gap: 1rem; padding: .9rem 1.35rem; color: #fff; }
+.yk-compare__sys--flat { background: var(--dark); }
+.yk-compare__sys--shingle { background: var(--brand-hover); }
+/* #A83708: white text passes AA */
+.yk-compare__sys img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px 3px 10px 3px; }
+.yk-compare__sys small { display: block; color: rgba(255, 255, 255, .78); font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.yk-compare__sys strong { display: block; margin-top: .2rem; color: #fff; font-size: clamp(1.25rem, 1.05rem + .5vw, 1.55rem); line-height: 1.15; letter-spacing: -.015em; }
+.yk-compare__table tfoot td { padding: .85rem 1.35rem; border-top: 1px solid var(--line); background: var(--grey-25); }
+.yk-compare__table tfoot td:first-child { background: var(--grey-50); border-right: 1px solid var(--line); }
+/* Projects: mosaic (one large tile + four). ----------------------------- */
+.yk-projects__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(2, clamp(10.5rem, 23vh, 13rem)); gap: .9rem; }
+.yk-project { position: relative; overflow: hidden; border-radius: var(--radius-media); background: var(--dark); }
+.yk-project:first-child { grid-column: span 2; grid-row: span 2; }
+.yk-project img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+.yk-project:hover img { transform: scale(1.04); }
+.yk-project figcaption { position: absolute; inset: auto 0 0 0; padding: 2.5rem 1.1rem .9rem; background: linear-gradient(180deg, transparent, rgba(10, 10, 10, .7) 40%, rgba(10, 10, 10, .92)); color: var(--on-dark-muted); font-size: var(--fs-xs); line-height: 1.4; }
+.yk-project figcaption strong { display: block; color: #fff; font-size: 1rem; }
+.yk-project:first-child figcaption strong { font-size: 1.25rem; }
+.yk-map {
+  position: relative; min-width: 0; padding: 1rem; border: 1px solid var(--dark-100); border-radius: var(--radius-card);
+  background-color: var(--dark-50);
+  background-image:
+  linear-gradient(var(--dark-100) 1px, transparent 1px),
+  linear-gradient(90deg, var(--dark-100) 1px, transparent 1px);
+  background-size: 2rem 2rem;
+  background-position: -1px -1px;
+}
+.yk-map__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+.yk-map__zone { display: flex; flex-direction: column; gap: .45rem; min-width: 0; padding: .7rem .75rem .8rem; border: 1px dashed var(--line-strong); border-radius: var(--radius-sm); background: rgba(255, 255, 255, .86); }
+.yk-map__zone h3 { color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .14em; line-height: 1.2; text-transform: uppercase; }
+.yk-map__zone ul { display: flex; flex-direction: column; align-items: flex-start; gap: .35rem; }
+.yk-map__chip { display: inline-flex; align-items: center; gap: .3rem; padding: .3rem .6rem; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--dark); font-size: var(--fs-xs); font-weight: 700; line-height: 1.3; white-space: nowrap; }
+.yk-map__chip svg { width: .8rem; height: .8rem; fill: none; stroke: var(--brand); stroke-width: 2.4; }
+.yk-map__zone--hq { border: 2px solid var(--brand); background: #fff; }
+.yk-map__chip--hq { border-color: var(--brand); background: var(--brand); color: #fff; }
+.yk-map__chip--hq svg { stroke: #fff; }
+.yk-map__legend { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; margin-top: .75rem; color: var(--dark); font-size: var(--fs-xs); font-weight: 500; }
+.yk-map__legend span { display: inline-flex; align-items: center; gap: .4rem; }
+.yk-map__dot { width: .7rem; height: .7rem; border-radius: 50%; background: var(--brand); }
+.yk-map__north { display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; border: 1.5px solid var(--dark); border-radius: 50%; font-size: .6875rem; font-weight: 700; }
+/* FAQ section on the homepage. ------------------------------------------ */
+.yk-faqsec .yk-head { margin-bottom: var(--head-gap); }
+/* Reviews (Trustindex). ---------------------------------------------------- */
+.yk-reviews .yk-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem 2rem; align-items: end; }
+.yk-reviews__widget { min-height: 12rem; }
+/* Get In Touch: map left (Google's business card with the review count shows
+   in the map's top-left corner), form card right. ----------------------- */
+.yk-contact__inner { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 1.25rem; align-items: stretch; }
+.yk-contact__form .quote-card__title { font-size: var(--fs-h2); }
+.yk-contact__map { position: relative; min-height: 26rem; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--dark-50); }
+.yk-contact__map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+/* Detail rows (call / office / hours), shared by the homepage + contact page:
+   <ul class="yk-details"><li><span class="yk-ico">svg</span><div><p class="yk-details__label">Call</p><p class="yk-details__value"><a href="tel:...">(914) 228-9588</a></p></div></li></ul> */
+.yk-details li { display: flex; align-items: center; gap: .85rem; padding: .7rem 0; }
+.yk-details li + li { border-top: 1px solid var(--line); }
+.yk-details .yk-ico { width: 2.4rem; height: 2.4rem; }
+.yk-details .yk-ico svg { width: 1.1rem; height: 1.1rem; }
+.yk-details__label { color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .12em; line-height: 1.3; text-transform: uppercase; }
+.yk-details__value { margin-top: .1rem; color: var(--dark); font-size: var(--fs-small); font-weight: 700; line-height: 1.4; }
+.yk-details__value a { color: inherit; text-decoration: none; }
+.yk-details__value a:hover { color: var(--brand-ink); text-decoration: underline; text-underline-offset: .2em; }
+.yk-details__value--lg { font-size: 1.25rem; }
+/* Live chat (Blazeo/ApexChat) invitation sits bottom-right. */
+#apexchat_prechat_invitation_wrapper { left: auto !important; right: 0 !important; padding: 0 0 0 10px !important; }
+/* ==========================================================================
+   16. Responsive
+   ========================================================================== */
+/* Short desktop screens (e.g. 1366 x 650): tighten the hero so it fits. */
+@media (min-width: 60.01rem) and (max-height: 780px) {
+  .yk-hero { min-height: calc(100svh - 4rem); padding-top: calc(var(--nav-h) + var(--header-line) + 1.25rem); padding-bottom: 1.5rem; }
+  .yk-hero__form { padding: 1rem 1.15rem; gap: .6rem; }
+  .yk-hero__form .field textarea { min-height: 3.6rem; height: 4.25rem; }
+  .yk-hero__form .field input { min-height: 2.5rem; }
+  .yk-hero__text { margin-top: .75rem; }
+  .yk-hero__proof, .yk-hero__actions { margin-top: 1rem; }
+}
+/* Short desktop screens (1366 x 650): every homepage section keeps to one
+   screen below the fixed header (about 554px), so the rhythm tightens. */
+@media (min-width: 60.01rem) and (max-height: 780px) {
+  :root { --section-pad: 1.5rem; --head-gap: 1rem; }
+  .yk-compare__table th, .yk-compare__table td { padding: .5rem 1.1rem; }
+  .yk-compare__table tbody td { font-size: .875rem; line-height: 1.4; }
+  .yk-compare__sys { grid-template-columns: 4.5rem minmax(0, 1fr); padding: .6rem 1.1rem; }
+  .yk-compare__table tfoot td { padding: .6rem 1.1rem; }
+  .yk-map { padding: .75rem; }
+  .yk-map__grid { gap: .5rem; }
+  .yk-map__zone { padding: .55rem .65rem .6rem; gap: .35rem; }
+  .yk-map__zone ul { flex-direction: row; flex-wrap: wrap; gap: .3rem; }
+  .yk-map__legend { margin-top: .5rem; }
+  .yk-contact__form { gap: .6rem; padding: 1.1rem 1.35rem; }
+  .yk-contact__form .field textarea { min-height: 4rem; height: 4rem; }
+  .yk-contact__map { min-height: 22rem; }
+}
+@media (max-width: 75rem) {
+  .yk-head--split { grid-template-columns: minmax(0, 1fr); }
+  .yk-head--split .yk-lede, .yk-head__aside { justify-self: start; }
+  .bkf__top { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .bkf__brand { grid-column: 1 / -1; }
+  .bkf__about { max-width: 62ch; }
+}
+/* Small laptops and landscape tablets: narrower form column. */
+@media (min-width: 60.01rem) and (max-width: 75rem) {
+  .yk-hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 22rem); }
+}
+/* Portrait tablets and phones: the hero stacks (copy, then the form); the
+   scrim evens out because text now runs the full width of the video. */
+@media (max-width: 60rem) {
+  .yk-hero { min-height: 0; }
+  .yk-hero__scrim { background: linear-gradient(180deg, rgba(10, 10, 10, .86) 0%, rgba(10, 10, 10, .82) 55%, rgba(10, 10, 10, .9) 100%); }
+  .yk-hero__inner { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+  .yk-hero__copy { max-width: 46rem; }
+  .yk-hero__form { width: 100%; max-width: 34rem; }
+}
+@media (max-width: 60rem) {
+  .yk-contact__inner { grid-template-columns: minmax(0, 1fr); }
+  .yk-faq--2col { grid-template-columns: minmax(0, 1fr); }
+  .yk-projects__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; grid-auto-rows: 12rem; }
+  .yk-contact__map { min-height: 22rem; }
+  .yk-contact__form { order: -1; }
+  /* phones/tablets: the form comes first */
+  .yk-pagehero__inner { grid-template-columns: minmax(0, 1fr); }
+  .yk-pagehero__aside { justify-self: start; }
+}
+@media (max-width: 48rem) {
+  .bkf__contacts { grid-auto-flow: row; justify-content: start; gap: 1rem; }
+  .bkf__copy { margin-left: 0 !important; }
+  .yk-reviews .yk-head { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 40rem) {
+  /* Swipe rows: cards scroll sideways and snap to the page edge. */
+  .slider { display: flex !important; grid-template-columns: none !important; grid-template-rows: none !important; gap: .85rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--edge); -webkit-overflow-scrolling: touch; margin-inline: calc(-1 * var(--edge)); padding: 0 var(--edge) .25rem; scrollbar-width: none; }
+  .slider::-webkit-scrollbar { display: none; }
+  .slider > * { flex: 0 0 82%; scroll-snap-align: start; }
+  .swipe-hint { display: block; }
+  .yk-hero { padding-top: calc(var(--nav-h) + var(--header-line) + 1.5rem); padding-bottom: 2rem; }
+  .yk-hero__copy { text-align: center; }
+  .yk-hero__copy .yk-kicker { justify-content: center; }
+  .yk-hero__title { font-size: clamp(2rem, 1.6rem + 2vw, 2.4rem); }
+  .yk-hero__title span { font-size: .66em; }
+  .yk-hero__text { margin-inline: auto; }
+  .yk-hero__proof { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4rem; }
+  .yk-hero__proof > * { justify-content: center; min-width: 0; }
+  .yk-hero__proof .yk-badge { gap: .4rem; padding: .35rem .4rem; }
+  .yk-hero__proof .yk-badge img { width: 1.4rem; height: 1.4rem; }
+  .yk-hero__proof .yk-badge strong { font-size: .875rem; }
+  .yk-hero__proof .rating-mark { flex-direction: column; gap: .2rem; padding: .35rem .3rem; text-align: center; }
+  .yk-hero__proof .rating-mark img { width: 1.25rem; height: 1.25rem; }
+  .yk-hero__proof .rating-mark strong { font-size: .875rem; }
+  .yk-hero__proof .rating-mark .stars { font-size: .6875rem; letter-spacing: 0; }
+  .yk-hero__proof small { font-size: .5625rem; letter-spacing: .06em; }
+  .yk-hero__stat { align-items: center; padding: .35rem .4rem; border-left: 0; border-top: 3px solid var(--brand); }
+  .yk-hero__stat strong { font-size: .875rem; }
+  .yk-hero__actions .btn { flex: 1 1 12rem; }
+  .yk-hero__form { margin-inline: auto; }
+  .yk-hero__proof .yk-hero__stat small { color: rgba(255, 255, 255, .8); }
+  /* Comparison table: each criterion becomes a label row over two columns. */
+  .yk-compare__table,
+.yk-compare__table thead,
+.yk-compare__table tbody,
+.yk-compare__table tfoot { display: block; }
+  .yk-compare__table colgroup { display: none; }
+  .yk-compare__table tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .yk-compare__corner, .yk-compare__table tfoot td:first-child { display: none; }
+  .yk-compare__table tbody th { grid-column: 1 / -1; padding: .5rem .85rem; border-right: 0; }
+  .yk-compare__table tbody tr + tr > * { border-top: 0; }
+  .yk-compare__table tbody tr > th { border-top: 1px solid var(--line); }
+  .yk-compare__table tbody td { padding: .65rem .85rem; font-size: .875rem; }
+  .yk-compare__table tbody td + td { border-left: 1px solid var(--line); }
+  .yk-compare__table thead th + th + th { border-left: 1px solid rgba(255, 255, 255, .2); }
+  .yk-compare__sys { grid-template-columns: 1fr; gap: .6rem; padding: .75rem .85rem; }
+  .yk-compare__sys strong { font-size: 1.1rem; }
+  .yk-compare__table tfoot td { padding: .75rem .85rem; }
+  .yk-compare__table tfoot .btn { width: 100%; padding-inline: .5rem; font-size: .9rem; white-space: normal; text-align: center; }
+  .yk-projects__grid { grid-auto-rows: auto; }
+  .yk-project, .yk-project:first-child { aspect-ratio: 4 / 3; }
+  .yk-map { padding: .75rem; }
+  .yk-map__grid { padding-bottom: .25rem; }
+  .yk-map__grid.slider { margin-inline: -.75rem; padding-inline: .75rem; scroll-padding-inline: .75rem; }
+  .yk-map__grid.slider > * { flex: 0 0 64%; }
+  .yk-contact__map { min-height: 20rem; }
+  .field-row { gap: .6rem; }
+  .yk-faq__a { padding-right: 1.1rem; }
+  .field input::placeholder, .field textarea::placeholder { font-size: .8125rem; }
+  /* Footer (same mobile rules as Brooklyn). */
+  .bkf__top { gap: 1.75rem .75rem; padding-top: 1.25rem; }
+  .bkf__brand { column-gap: 1rem; }
+  .bkf__logo img { height: 4rem; }
+  .bkf__links { margin-top: .75rem; }
+  .bkf .bkf__heading { display: inline-block; padding: .2rem .5rem; border-radius: 4px; background: var(--brand); color: #fff; font-size: .8125rem; letter-spacing: 0; white-space: nowrap; }
+  .bkf__midrow { flex-direction: column; align-items: flex-start; gap: 1rem; padding-block: 1rem; }
+  .bkf__badges { gap: 2rem; }
+  .bkf__bottom { padding-block: .25rem 1rem; }
+  .bkf__socials, .bkf__copy { flex-basis: 100%; }
+  .bkf__totop { margin-left: auto; }
+  #apexchat_prechat_invitation_wrapper, #apexchat_invitation_wrapper, [id^="apexchat"][id*="invitation"] { left: auto !important; right: .25rem !important; }
+}
+/* 17. Reduced motion ------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+  .yk-project:hover img { transform: none; }
+  /* Hero: no autoplaying footage; the poster frame on .yk-hero__media shows instead. */
+  .yk-hero__video { display: none; }
+}
+/* ---- Oct 16 (Nitesh): footer brand stacks: logo on top, the paragraph under it, then the button. ---- */
+.bkf__brand { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+.bkf__logo { grid-row: auto; align-self: flex-start; }
+.bkf__about { max-width: 42ch; margin-top: 0 !important; }
+.bkf__brand .bkf__cta { margin-top: .25rem; }
+
+/* ==========================================================================
+   18. Sections from the Manhattan design (.ykm-*): section heads, trust
+       ledger, service cards, commercial band, reviews head
+   ========================================================================== */
+.ykm-dark :focus-visible { outline-color: var(--brand); }
+/* Every content section: <section class="ykm-section [ykm-section--alt|--tint|--warm|--dark]"> */
+.ykm-section { padding-block: var(--section-pad); background: var(--surface); }
+.ykm-section--alt { background: var(--surface-alt); }
+.ykm-section--tint { background: var(--surface-tint); }
+.ykm-section--warm { background: var(--orange-50); }
+.ykm-section--dark { background: var(--dark-deep); color: var(--on-dark-muted); }
+.ykm-section--dark h2, .ykm-section--dark h3 { color: #fff; }
+.ykm-section + .ykm-section:not([class*="--"]) { border-top: 1px solid var(--line); }
+/* 5. Section heads ---------------------------------------------------------
+   <div class="ykm-head [ykm-head--split|ykm-head--center] [ykm-head--rule]">
+     <div>
+       <p class="ykm-kicker">Eyebrow</p>
+       <h2 class="ykm-title">Title</h2>
+     </div>
+     <p class="ykm-lede">Lede</p>          (or inside the first div)
+   </div>
+   The kicker -> title -> lede spacing is identical in every section.       */
+.ykm-head { margin-bottom: var(--head-gap); }
+.ykm-head--center { text-align: center; }
+.ykm-head--center .ykm-title, .ykm-head--center .ykm-lede { margin-inline: auto; }
+.ykm-head--center .ykm-kicker { justify-content: center; }
+.ykm-head--split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--space-4) var(--space-8); align-items: end; }
+.ykm-head--split .ykm-lede { margin-top: 0; justify-self: end; max-width: 52ch; }
+.ykm-head__aside { justify-self: end; display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.ykm-kicker {
+  display: flex; align-items: center; gap: .6rem;
+  margin-bottom: var(--space-3);
+  color: var(--brand-ink);
+  font-family: var(--font-sans); font-size: var(--fs-label); font-weight: 700; line-height: 1.2; letter-spacing: .16em; text-transform: uppercase;
+}
+/* Small orange square: a nod to the window in the logo. */
+.ykm-kicker::before { content: ""; width: .5rem; height: .5rem; flex: none; background: var(--brand); }
+.ykm-kicker--light { color: var(--orange-300); }
+.ykm-title { max-width: 28ch; font-size: var(--fs-h2); letter-spacing: -.018em; line-height: 1.12; }
+.ykm-title--light { color: #fff; }
+.ykm-lede { max-width: 62ch; margin-top: var(--space-3); color: var(--ink); font-size: var(--fs-lede); font-weight: 300; line-height: 1.6; text-wrap: pretty; }
+.ykm-section--dark .ykm-lede, .ykm-dark .ykm-lede { color: var(--on-dark-muted); }
+/* Text link with arrow: <a class="ykm-link">Label <svg><use href="#i-arrow"/></svg></a> */
+.ykm-link { display: inline-flex; align-items: center; gap: .45rem; min-height: 2.75rem; color: var(--dark); font-size: var(--fs-small); font-weight: 700; text-decoration: none; }
+.ykm-link svg { width: 1.05rem; height: 1.05rem; fill: none; stroke: var(--brand-ink); stroke-width: 2.2; transition: transform .2s; }
+.ykm-link:hover { color: var(--brand-ink); text-decoration: underline; text-underline-offset: .2em; }
+.ykm-link:hover svg { transform: translateX(3px); }
+/* 7. Small parts ----------------------------------------------------------- */
+/* Icon: <span class="ykm-ico"><svg><use href="#i-roof"/></svg></span>
+   A square near-black-tint tile with a near-black line icon (orange is too light for
+   icons on white). .ykm-ico--dark for near-black backgrounds (orange icon). */
+.ykm-ico {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 2.75rem; height: 2.75rem; border-radius: var(--radius-sm);
+  background: var(--dark-50); color: var(--dark); box-shadow: inset 0 -2px 0 var(--brand);
+}
+.ykm-ico svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.ykm-ico--dark { background: rgba(255, 255, 255, .07); color: var(--brand); box-shadow: inset 0 0 0 1px var(--line-dark); }
+.ykm-ico--amber { background: var(--brand); color: #fff; box-shadow: none; }
+/* Review badges (Google, Yelp): no rating numbers for Manhattan.
+   <ul class="ykm-badges"><li class="ykm-badge"><img ...><span><strong>Google</strong><small>Reviews</small></span></li></ul> */
+.ykm-badges { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.ykm-badge {
+  display: inline-flex; align-items: center; gap: .6rem;
+  min-height: 3.25rem; padding: .45rem .95rem .45rem .6rem;
+  border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fff;
+  color: var(--dark); line-height: 1.1;
+}
+.ykm-badge img { width: 2rem; height: 2rem; object-fit: contain; }
+.ykm-badge strong { display: block; font-size: 1rem; }
+.ykm-badge small { display: block; margin-top: .15rem; color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+/* Trust strip: a ruled ledger of four facts. ----------------------------- */
+.ykm-trust { border-bottom: 1px solid var(--line); background: #fff; }
+.ykm-trust__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.ykm-trust__item { display: flex; align-items: center; gap: .9rem; min-width: 0; padding: 1.15rem 1.5rem; }
+.ykm-trust__item:first-child { padding-left: 0; }
+.ykm-trust__item + .ykm-trust__item { border-left: 1px solid var(--line); }
+.ykm-trust__item strong { display: block; color: var(--dark); font-size: 1rem; line-height: 1.3; }
+.ykm-trust__item span:not(.ykm-ico) { display: block; color: var(--muted); font-size: var(--fs-small); line-height: 1.4; }
+/* Services: the index list (see 11). ------------------------------------- */
+.ykm-services .ykm-head { margin-bottom: var(--space-5); }
+/* Commercial: deep near-black, photo left, copy + 2 x 2 coordination list right. */
+.ykm-commercial__inner { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: var(--col-gap); align-items: center; }
+.ykm-commercial__media { position: relative; }
+.ykm-commercial__media img { width: 100%; height: clamp(20rem, 46vh, 26.25rem); object-fit: cover; border-radius: var(--radius-media); }
+.ykm-commercial__media figcaption { position: absolute; left: 1rem; bottom: 1rem; padding: .4rem .75rem; border-radius: var(--radius-xs); background: var(--brand); color: #fff; font-size: var(--fs-xs); font-weight: 700; }
+.ykm-commercial__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; margin-top: var(--space-5); border-top: 1px solid var(--line-dark); }
+.ykm-commercial__list li { display: flex; align-items: flex-start; gap: .9rem; padding: 1rem 0; border-bottom: 1px solid var(--line-dark); }
+.ykm-commercial__list strong { display: block; color: #fff; font-size: 1.0625rem; line-height: 1.3; }
+.ykm-commercial__list span:not(.ykm-ico) { display: block; margin-top: .2rem; font-size: var(--fs-small); line-height: 1.5; }
+.ykm-commercial__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
+/* Reviews (Trustindex). ---------------------------------------------------- */
+.ykm-reviews .ykm-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem 2rem; align-items: end; }
+.ykm-reviews__widget { min-height: 12rem; }
+@media (max-width: 75rem) {
+  .ykm-head--split { grid-template-columns: minmax(0, 1fr); }
+  .ykm-head--split .ykm-lede, .ykm-head__aside { justify-self: start; }
+  .ykm-trust__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ykm-trust__item:nth-child(3) { padding-left: 0; border-left: 0; }
+  .ykm-trust__item:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+/* Portrait tablets and phones: everything stacks. */
+@media (max-width: 60rem) {
+  .ykm-commercial__inner { grid-template-columns: minmax(0, 1fr); }
+  .ykm-commercial__media img { height: auto; aspect-ratio: 16 / 9; }
+}
+@media (max-width: 48rem) {
+  .ykm-reviews .ykm-head { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 40rem) {
+  .ykm-trust__item { flex-direction: column; align-items: flex-start; gap: .5rem; padding: .9rem .75rem; }
+  .ykm-trust__item:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .ykm-trust__item:nth-child(even) { padding-left: .9rem; border-left: 1px solid var(--line); }
+  .ykm-trust__item span:not(.ykm-ico) { font-size: var(--fs-xs); }
+  .ykm-trust .ykm-ico { width: 2.25rem; height: 2.25rem; }
+  .ykm-commercial__list { grid-template-columns: minmax(0, 1fr); }
+  .ykm-commercial__actions .btn { flex: 1 1 12rem; }
+}
+/* Services: featured Flat Roofing card (Manhattan's core service) on the
+   left, spanning two rows; five equal compact cards plus a near-black help tile
+   fill a 3 x 2 grid on the right. Every card: photo on top (fixed height,
+   object-fit), white body with a thin orange top rule; the featured card
+   carries a large faded number. Compact cards: one-line title with a square
+   arrow button, two-line summary written to fit (never cut). The arrow link
+   stretches over the whole card. Under 40rem the grid is a swipe row.
+   <ol class="ykm-svx slider" data-slider>
+     <li class="ykm-svx__card ykm-svx__card--feature">..</li>
+     <li class="ykm-svx__card"><div class="ykm-svx__media"><img></div><div class="ykm-svx__body">
+       <span class="ykm-svx__no">02</span><h3 class="ykm-svx__title">..</h3><p class="ykm-svx__text">..</p><a class="ykm-svx__go">..</a></div></li> x5
+     <li class="ykm-svx__help ykm-dark">h3, p, .btn--solid, phone</li>
+   </ol> */
+.ykm-services .ykm-head { margin-bottom: var(--space-5); }
+@media (min-width: 80.01rem) {
+  /* One-line title, lede beside it: keeps the section inside one screen. */
+  .ykm-services .ykm-head--split { grid-template-columns: max-content minmax(0, 1fr); }
+  .ykm-services .ykm-title { max-width: none; }
+  .ykm-services .ykm-lede { max-width: 46ch; }
+}
+.ykm-svx {
+  --svx-media: 9.5rem;
+  display: grid; grid-template-columns: minmax(0, 1.32fr) repeat(3, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 1.25rem;
+}
+.ykm-svx__card {
+  position: relative; display: flex; flex-direction: column; min-width: 0;
+  overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: #fff;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.ykm-svx__card:hover { transform: translateY(-3px); border-color: var(--line-strong); box-shadow: var(--shadow-card); }
+.ykm-svx__card:has(a:focus-visible) { outline: 3px solid var(--brand); outline-offset: 2px; }
+.ykm-svx__card a:focus-visible { outline: 0; }
+.ykm-svx__media { position: relative; flex: none; height: var(--svx-media); overflow: hidden; background: var(--dark-50); }
+.ykm-svx__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.ykm-svx__card:hover .ykm-svx__media img { transform: scale(1.05); }
+.ykm-svx__body {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto 1fr; gap: .35rem .75rem; flex: 1;
+  padding: .85rem 1rem 1rem 1.1rem; border-top: 3px solid var(--brand);
+}
+.ykm-svx__no { color: var(--brand-ink); font-size: .75rem; font-weight: 700; letter-spacing: .14em; line-height: 1; }
+.ykm-svx__card:not(.ykm-svx__card--feature) .ykm-svx__no { position: absolute; z-index: 1; top: calc(var(--svx-media) - 1.85rem); left: .75rem; padding: .3rem .45rem; border-radius: var(--radius-xs); background: #fff; color: var(--dark); }
+.ykm-svx__title { grid-column: 1; align-self: center; min-width: 0; font-size: 1.1875rem; line-height: 1.2; white-space: nowrap; }
+.ykm-svx__text { grid-column: 1 / -1; color: var(--muted); font-size: var(--fs-small); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.ykm-svx__go {
+  grid-column: 2; grid-row: 1; display: inline-flex; align-items: center; justify-content: center;
+  width: 2.25rem; height: 2.25rem; border: 1.5px solid var(--dark); border-radius: var(--radius-sm); color: var(--dark);
+  transition: background-color .2s ease, color .2s ease;
+}
+.ykm-svx__go::before { content: ""; position: absolute; z-index: 2; inset: 0; }
+/* whole card is clickable */
+.ykm-svx__go svg { width: 1.05rem; height: 1.05rem; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.ykm-svx__card:hover .ykm-svx__go { background: var(--dark); color: #fff; }
+/* Featured card: photo fills the free height; bigger title, 3-line text,
+   a button, and a large faded "01" in the card's bottom-right corner. */
+.ykm-svx__card--feature { grid-row: span 2; }
+.ykm-svx__card--feature .ykm-svx__media { flex: 1 1 auto; height: auto; min-height: 8rem; }
+.ykm-svx__card--feature .ykm-svx__body { display: flex; flex: none; flex-direction: column; align-items: flex-start; gap: .4rem; padding: 1.1rem 1.35rem 1.35rem; }
+.ykm-svx__card--feature .ykm-svx__no { position: absolute; right: 1rem; bottom: .35rem; color: var(--dark); font-size: 4rem; letter-spacing: -.04em; opacity: .07; }
+.ykm-svx__tag { color: var(--brand-ink); font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; line-height: 1.3; text-transform: uppercase; }
+.ykm-svx__card--feature .ykm-svx__title { align-self: flex-start; font-size: clamp(1.4rem, 1.1rem + .7vw, 1.75rem); }
+.ykm-svx__card--feature .ykm-svx__text { -webkit-line-clamp: 3; max-width: 46ch; font-size: 1rem; }
+.ykm-svx__btn { margin-top: .5rem; }
+.ykm-svx__btn::before { content: ""; position: absolute; z-index: 2; inset: 0; }
+/* Help tile: near-black, orange top rule, CTA + phone, same size as a card. */
+.ykm-svx__help {
+  display: flex; flex-direction: column; justify-content: center; gap: .55rem; min-width: 0;
+  padding: 1.1rem 1.25rem; border-top: 3px solid var(--brand); border-radius: var(--radius-card); background: var(--dark); color: var(--on-dark-muted);
+}
+.ykm-svx__helptitle { color: #fff; font-size: 1.1875rem; line-height: 1.25; }
+.ykm-svx__helptext { font-size: var(--fs-small); line-height: 1.5; }
+.ykm-svx__help .btn { margin-top: .35rem; }
+.ykm-svx__phone { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; min-height: 2.25rem; color: #fff; font-weight: 700; text-decoration: none; }
+.ykm-svx__phone svg { width: 1rem; height: 1rem; fill: none; stroke: var(--orange-300); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ykm-svx__phone:hover { color: var(--orange-300); }
+@media (max-width: 80rem) {
+  /* Featured card runs across the top (photo left, copy right); six equal tiles below. */
+  .ykm-svx { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: auto; }
+  .ykm-svx__card--feature { grid-column: 1 / -1; grid-row: auto; flex-direction: row; }
+  .ykm-svx__card--feature .ykm-svx__media { flex: 0 0 48%; min-height: 15rem; }
+  .ykm-svx__card--feature .ykm-svx__body { flex: 1; justify-content: center; border-top: 0; border-left: 3px solid var(--brand); }
+}
+@media (max-width: 52rem) {
+  .ykm-svx { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 40rem) {
+  /* Service cards: one swipe row of equal upright cards (the featured card
+     becomes the first card, the help tile the last). */
+  .ykm-svx { --svx-media: 10.5rem; }
+  .ykm-svx.slider > * { flex: 0 0 82%; }
+  .ykm-svx__card--feature { flex-direction: column; }
+  .ykm-svx__card--feature .ykm-svx__media { flex: none; height: var(--svx-media); min-height: 0; }
+  .ykm-svx__card--feature .ykm-svx__body { flex: 1; justify-content: flex-start; padding: .85rem 1rem 1rem 1.1rem; border-top: 3px solid var(--brand); border-left: 0; }
+  .ykm-svx__card--feature .ykm-svx__text { font-size: var(--fs-small); }
+  .ykm-svx__card--feature .ykm-svx__btn { margin-top: auto; }
+  .ykm-svx__card--feature .ykm-svx__no { display: none; }
+  .ykm-svx__text { -webkit-line-clamp: 3; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ykm-svx__card:hover, .ykm-svx__card:hover .ykm-svx__media img { transform: none; }
+}
+/* Short laptop screens (1366 x 650): the taller homepage sections tighten
+   so each one still fits the screen. Homepage only. */
+@media (min-width: 60.01rem) and (max-height: 780px) {
+  .ykm-commercial .ykm-head { margin-bottom: 1.25rem; }
+  .ykm-commercial__media img { height: 18rem; }
+  .ykm-commercial .ykm-lede { font-size: 1rem; }
+  .ykm-commercial__list { margin-top: 1rem; }
+  .ykm-commercial__list li { padding-block: .6rem; }
+  .ykm-commercial__actions { margin-top: 1rem; }
+  .ykm-services .ykm-head { margin-bottom: 1rem; }
+  .ykm-services .ykm-lede { font-size: 1rem; }
+  .ykm-svx { --svx-media: 4.25rem; gap: 1rem; }
+  .ykm-svx__body { padding-block: .7rem .8rem; }
+  .ykm-svx__card--feature .ykm-svx__body { padding-block: .85rem 1rem; }
+  .ykm-svx__help { gap: .35rem; padding-block: .8rem; }
+  .ykm-svx__helptext { display: none; }
+}
+
+/* ==========================================================================
+   19. Sections from the Brooklyn design (.ykb-*): about, building types,
+       neighborhoods, Get In Touch
+   ========================================================================== */
+/* Section rhythm (nyc6) --------------------------------------------------- */
+.ykb-section { padding-block: clamp(1.25rem, 1rem + 1vw, 2rem); }
+.ykb-section--mist { background: var(--surface-alt); }
+.ykb-section--sky { background: #F6F2EE; }
+.ykb-head { margin-bottom: var(--space-5); }
+.ykb-head--center { text-align: center; }
+.ykb-head--center .ykb-title, .ykb-head--center .ykb-lede { margin-inline: auto; }
+.ykb-head--split { display: grid; grid-template-columns: 1.1fr .9fr; gap: var(--space-5) var(--space-8); align-items: end; }
+.ykb-head--split .ykb-lede { margin-top: 0; justify-self: end; max-width: 44ch; }
+.ykb-eyebrow {
+  display: inline-block;
+  margin: 0 0 var(--space-3); padding: .42rem 1.15rem .42rem .75rem;
+  background: var(--brand); color: #fff;
+  clip-path: polygon(0 0, 100% 0, calc(100% - .55rem) 100%, 0 100%);
+  font-size: .8125rem; font-weight: 700; line-height: 1.2; letter-spacing: .11em; text-transform: uppercase;
+}
+.ykb-eyebrow--light { background: #fff; color: var(--brand); }
+.ykb-title {
+  font-size: clamp(1.75rem, 1.15rem + 1.9vw, 2.75rem);
+  line-height: 1.22;
+  letter-spacing: -.02em;
+  max-width: 26ch;
+}
+.ykb-lede {
+  margin-top: var(--space-5);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 62ch;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+.ykb-lede + p { margin-top: var(--space-4); max-width: 62ch; }
+/* Icon boxes ------------------------------------------------------------- */
+.ykb-icon {
+  flex: none; display: inline-flex; align-items: center; justify-content: center;
+  width: 2.75rem; height: 2.75rem; border-radius: 10px;
+  background: var(--brand); color: #fff;
+}
+.ykb-icon svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.field__note { font-size: .75rem; color: var(--muted); line-height: 1.3; white-space: nowrap; }
+/* About ------------------------------------------------------------------ */
+.ykb-about { padding-block: clamp(3rem, 2rem + 2vw, 5rem); }
+.ykb-about__inner { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(2rem, 2rem + 2vw, 5rem); align-items: stretch; }
+.ykb-about__media { position: relative; min-width: 0; min-height: 34rem; padding: 0 3rem 3rem 0; }
+.ykb-about__photo { margin: 0; overflow: hidden; }
+.ykb-about__photo img { width: 100%; height: 100%; object-fit: cover; }
+.ykb-about__photo--main { position: absolute; inset: 0 3rem 3rem 0; border-radius: 10px; }
+.ykb-about__photo--main figcaption { position: absolute; top: 1rem; left: 1rem; padding: .4rem .7rem; border-radius: 4px; background: #fff; color: var(--dark); font-size: .75rem; font-weight: 700; }
+.ykb-about__photo--small { position: absolute; right: 0; bottom: 0; width: 42%; aspect-ratio: 1 / 1.08; border: 6px solid #fff; border-radius: 10px; box-shadow: 0 18px 42px rgba(17, 17, 17, .16); }
+.ykb-about__stat { position: absolute; left: 1rem; bottom: 1rem; width: min(12rem, 42%); padding: .8rem 1rem; border-left: 4px solid var(--brand); border-radius: 4px; background: #fff; color: var(--dark); box-shadow: 0 10px 32px rgba(17, 17, 17, .16); }
+.ykb-about__stat strong { display: block; font-size: clamp(2rem, 1.4rem + 1.7vw, 2.75rem); line-height: 1; }
+.ykb-about__stat span { display: block; margin-top: .25rem; font-size: .75rem; font-weight: 700; line-height: 1.3; }
+.ykb-about__copy { display: flex; flex-direction: column; align-items: flex-start; }
+.ykb-about__copy > p:not(.ykb-eyebrow):not(.ykb-lede) { margin-top: var(--space-4); max-width: 62ch; }
+.ykb-about__copy > .btn { margin-top: auto; }
+.ykb-checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem 1rem; width: 100%; margin: var(--space-5) 0; }
+.ykb-checks li { display: flex; align-items: center; gap: .5rem; min-width: 0; color: var(--dark); font-size: 1.125rem; font-weight: 500; white-space: nowrap; }
+.ykb-checks svg { width: 1.125rem; height: 1.125rem; flex: none; fill: none; stroke: var(--brand); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+/* Brooklyn neighborhood coverage ---------------------------------------- */
+.ykb-areas { padding-block: clamp(3rem, 2rem + 2vw, 5rem); background: #fff; }
+.ykb-areas__intro { display: grid; grid-template-columns: 1.05fr .95fr; align-items: end; gap: 2rem; margin-bottom: 1.75rem; }
+.ykb-areas__intro .ykb-title { max-width: none; font-size: clamp(1.9rem, 1.45rem + 1.3vw, 2.6rem); }
+.ykb-areas__intro .ykb-lede { justify-self: end; max-width: 51ch; margin: 0; }
+.ykb-areas__panel { overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+.ykb-areas__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 1.25rem; gap: .5rem; }
+.ykb-areas__item { display: flex; align-items: center; gap: .65rem; min-height: 3.2rem; padding: .65rem .75rem; border-radius: 5px; background: #F4F4F4; color: var(--dark); font-size: .94rem; font-weight: 700; }
+.ykb-areas__item svg { width: 1rem; height: 1rem; flex: none; fill: none; stroke: var(--brand); stroke-width: 2; }
+.ykb-areas__bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem 1rem; padding: 1rem 2rem; background: var(--dark); color: #fff; }
+.ykb-areas__bar p { font-weight: 500; }
+.ykb-areas__bar a { display: inline-flex; align-items: center; gap: .5rem; min-height: 2.75rem; color: #fff; font-weight: 700; text-decoration: none; }
+.ykb-areas__bar a svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 2; transition: transform .2s; }
+.ykb-areas__bar a:hover svg { transform: translateX(3px); }
+/* Contact ---------------------------------------------------------------- */
+.ykb-contact { padding-block: clamp(3rem, 2rem + 2vw, 5rem); background: #F6F2EE; }
+.ykb-contact__inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 1rem; align-items: stretch; }
+.ykb-contact__location { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+.ykb-contact__map { position: relative; flex: 1; min-height: 25rem; background: #E6E6E6; }
+.ykb-contact__map iframe { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border: 0; }
+.ykb-contact__details { padding: 1.5rem clamp(1.5rem, 1.1rem + 1vw, 2rem); background: var(--dark); color: #fff; }
+.ykb-contact__details h2 { margin-bottom: 1rem; color: #fff; font-size: clamp(1.625rem, 1.25rem + .9vw, 2rem); }
+.ykb-contact__info { display: grid; }
+.ykb-contact__info > a, .ykb-contact__info > div { display: flex; align-items: center; gap: .875rem; min-height: 3.2rem; padding: .7rem 0; border-top: 1px solid var(--line-dark); color: var(--on-dark-muted); font-size: .9375rem; line-height: 1.45; }
+.ykb-contact__info svg { width: 2.35rem; height: 2.35rem; flex: none; padding: .55rem; border-radius: 50%; background: #fff; fill: none; stroke: var(--brand); stroke-width: 2; }
+.ykb-contact__phone { text-decoration: none; }
+.ykb-contact__phone span { color: #fff; font-size: 1.25rem; font-weight: 700; line-height: 1.25; }
+.ykb-contact__phone:hover span { text-decoration: underline; text-underline-offset: .2em; }
+.ykb-contact .quote-card { gap: 1rem; padding: clamp(1.5rem, 1rem + 2vw, 2.75rem); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 14px 40px rgba(17, 17, 17, .08); }
+.ykb-contact .quote-card__title { padding: .15rem 0 1rem; border-bottom: 1px solid var(--line); text-align: center; font-size: clamp(1.5rem, 1.2rem + .6vw, 1.875rem); }
+.ykb-contact .field label { font-size: .75rem; }
+.ykb-contact .field input { min-height: 3rem; }
+.ykb-contact .field textarea { min-height: 6rem; }
+.ykb-contact__privacy { color: var(--muted); font-size: .8rem; }
+.ykb-contact .btn--block { margin-top: .1rem; }
+.ykb-contact .form-availability { text-align: center; }
+/* Responsive ------------------------------------------------------------- */
+@media (max-width: 75rem) {
+  .ykb-areas__list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ykb-head--split { grid-template-columns: 1fr; }
+  .ykb-head--split .ykb-lede { justify-self: start; }
+  .ykb-areas__intro { grid-template-columns: 1fr; gap: .75rem; }
+  .ykb-areas__intro .ykb-lede { justify-self: start; }
+}
+@media (max-width: 60rem) {
+  .ykb-about__inner { grid-template-columns: 1fr; }
+  .ykb-about__media { max-width: 43rem; min-height: 0; }
+  .ykb-about__photo--main { position: relative; inset: auto; aspect-ratio: 1.24; }
+  .ykb-about__copy > .btn { margin-top: 0; }
+}
+@media (max-width: 48rem) {
+  .ykb-contact__inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 40rem) {
+  .ykb-section { padding-block: 2.75rem; }
+  .field__note { white-space: normal; }
+  .ykb-about__media { padding: 0 2rem 2rem 0; }
+  .ykb-about__photo--small { width: 39%; border-width: 4px; }
+  .ykb-about__stat { left: .5rem; bottom: .5rem; }
+  .ykb-about__photo--main figcaption { font-size: .68rem; }
+  .ykb-checks { grid-template-columns: 1fr; }
+  .ykb-areas__list { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: .75rem; }
+  .ykb-areas__item { min-height: 3.4rem; font-size: .875rem; }
+  .ykb-areas__bar { padding: 1rem; }
+  .ykb-contact__map { flex: none; height: 25rem; min-height: 25rem; }
+}
+@media (max-width: 22rem) {
+  .ykb-areas__list { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ykb-areas__bar a svg { transition: none; }
+}
+/* Section spacing halved to the nyc6 rhythm. */
+.ykb-about, .ykb-areas, .ykb-contact { padding-block: var(--section-pad); }
+.ykb-areas__intro { margin-bottom: var(--space-5); }
+@media (max-width: 40rem) {
+  .ykb-section,
+.ykb-about,
+.ykb-areas,
+.ykb-contact { padding-block: 2rem; }
+}
+/* Mobile: service cards, roof-system cards, and neighborhood tiles become
+   swipe sliders like the materials tiles (client rule). */
+@media (max-width: 40rem) {
+  .ykb-areas__list.slider { display: flex; grid-template-columns: none; }
+  .ykb-areas__list.slider { margin-inline: 0; padding: .75rem; gap: .6rem; }
+  .ykb-areas__panel .swipe-hint { margin: 0; padding-bottom: .75rem; }
+  .ykb-areas__list.slider > .ykb-areas__item { flex: 0 0 62%; }
+}
+/* 6. About: the 35+ line stays on one line. */
+.ykb-about__stat { width: min(13.5rem, 46%); }
+.ykb-about__stat span { white-space: nowrap; }
+/* 12. Neighborhood bar is now a single call to action. */
+.ykb-areas__bar { justify-content: center; padding: .85rem 2rem; }
+/* .ykb-areas__bar a forces white text, so restate the button colours here. */
+.ykb-areas__bar .btn { min-height: 2.75rem; color: var(--dark); font-weight: 700; }
+.ykb-areas__bar .btn:hover, .ykb-areas__bar .btn:focus-visible { color: #fff; }
+/* 15. Areas block sits higher and the two intro columns line up. */
+.ykb-areas__intro { margin-bottom: var(--space-4); align-items: end; }
+.ykb-areas__intro .ykb-lede { align-self: end; }
+/* 17. Contact: the two columns finish level and the form matches the hero. */
+.ykb-contact__inner { align-items: stretch; gap: 1.25rem; }
+.ykb-contact__location, .ykb-contact .quote-card { height: 100%; }
+/* The form sets the row height; the map flexes to fill the other column,
+   so neither card carries dead space. */
+.ykb-contact .ykb-contact__map { min-height: 16rem; }
+.ykb-contact .quote-card { align-content: start; gap: .875rem; padding: clamp(1.25rem, 1rem + 1vw, 1.75rem); }
+.ykb-contact .quote-card__title { padding: 0 0 .85rem; font-size: clamp(1.4rem, 1.2rem + .5vw, 1.65rem); }
+.ykb-contact .field label { font-size: .6875rem; }
+.ykb-contact .field input { min-height: 2.75rem; }
+.ykb-contact .field textarea { min-height: 5.25rem; }
+.ykb-contact__privacy { justify-self: end; margin-top: -.35rem; font-size: .6875rem; letter-spacing: -.01em; white-space: nowrap; }
+@media (max-width: 40rem) {
+  .ykb-contact__privacy { justify-self: start; white-space: normal; }
+  .ykb-areas__bar { padding: .85rem 1rem; }
+  .ykb-areas__bar .btn { width: 100%; }
+}
+@media (max-width: 40rem) {
+  .ykb-areas__list.slider { scroll-padding-inline: .75rem; }
+}
+.ykb-contact .form-callback { margin-top: -.35rem; line-height: 1.3; }
+/* Get In Touch: the privacy note sits on the left, under Name. */
+.ykb-contact__privacy { justify-self: start; }
+/* Roofing types and building systems (replaces "How we work"). */
+.ykb-types { padding-block: var(--section-pad); background: var(--surface-tint); }
+.ykb-types .ykb-head { margin-bottom: var(--space-5); }
+.ykb-types .ykb-title { max-width: none; }
+.ykb-types .ykb-lede { margin-top: .75rem; }
+.ykb-types__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.ykb-types__card { display: flex; flex-direction: column; align-items: flex-start; gap: .5rem; min-width: 0; padding: 1.35rem 1.5rem 1.5rem; border: 1px solid var(--line); border-top: 3px solid var(--brand); border-radius: 8px; background: #fff; }
+.ykb-types__card .ykb-icon { margin-bottom: .25rem; }
+.ykb-types__tag { color: var(--brand); font-size: .75rem; font-weight: 700; letter-spacing: .08em; line-height: 1.35; text-transform: uppercase; }
+.ykb-types__title { font-size: clamp(1.2rem, 1.05rem + .4vw, 1.4rem); letter-spacing: -.015em; }
+.ykb-types__text { color: var(--muted); font-size: .9375rem; line-height: 1.55; }
+@media (max-width: 75rem) {
+  .ykb-types__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* Mobile round from the call. */
+@media (max-width: 40rem) {
+  /* Neighborhoods: the estimate button is red. */
+  .ykb-areas__bar .btn { --color: var(--brand); --hover: var(--brand-hover); color: #fff; }
+  /* New sections: cards swipe, copy stays compact. */
+  .ykb-types__grid.slider { display: flex; grid-template-columns: none; }
+  .ykb-types__grid.slider > .ykb-types__card { flex: 0 0 82%; }
+}
+/* Neighborhoods bar: the estimate button is red on every screen size. */
+.ykb-areas__bar .btn { --color: var(--brand); --hover: var(--brand-hover); color: #fff; }
+.ykb-areas__bar .btn:hover, .ykb-areas__bar .btn:focus-visible { color: #fff; }
+/* Maps: tall enough (300px+) for Google to show the business card with its reviews. */
+.ykb-contact .ykb-contact__map { min-height: 19rem; }
+/* Forms: "We'll only contact you about your project." sits under Phone. */
+.field .ykb-contact__privacy { justify-self: start; margin-top: 0; }
+
+/* ==========================================================================
+   20. Yonkers additions
+   ========================================================================== */
+
+/* Manhattan-design sections keep their own square corners and type scale. */
+.ykm-section, .ykm-trust {
+  --radius-xs: 2px; --radius-sm: 2px; --radius-card: 3px; --radius-media: 2px;
+  --head-gap: var(--space-6);
+  --fs-h2: clamp(1.7rem, 1.2rem + 1.25vw, 2.4rem);
+  --fs-h3: clamp(1.15rem, 1rem + .35vw, 1.35rem);
+  --fs-lede: clamp(1.0625rem, 1rem + .2vw, 1.1875rem);
+}
+@media (max-width: 40rem) { .ykm-section { --head-gap: 1.25rem; } }
+.ykm-section h1, .ykm-section h2, .ykm-section h3 { line-height: 1.15; letter-spacing: -.012em; }
+
+/* Brooklyn-design sections keep their own rhythm and body size. */
+.ykb-section, .ykb-about, .ykb-types, .ykb-areas, .ykb-contact {
+  --section-pad: clamp(1.25rem, 1rem + 1vw, 2rem);
+  font-size: clamp(1rem, .955rem + .19vw, 1.125rem);
+}
+.ykb-section h2, .ykb-about h2, .ykb-types h2, .ykb-areas h2 { line-height: 1.22; }
+.ykb-areas__bar .btn { --hover: var(--brand-hover); }
+.ykb-contact .field input, .ykb-contact .field textarea { border-radius: 8px; }
+
+/* Orange buttons on near-black grounds darken to the orange hover, not black. */
+.yk-hero .btn--solid:not(.btn--white), .ykm-section--dark .btn--solid, .ykm-dark .btn--solid, .ykb-contact__details .btn--solid { --hover: var(--brand-hover); }
+
+/* Footer logo: the Yonkers logo is wide with black lettering, so
+   the footer shows it on a white plate (rounded rectangle, orange base). */
+.bkf__logo { padding: .55rem .8rem; border-radius: var(--radius-sm); box-shadow: inset 0 -3px 0 var(--brand); }
+.bkf__logo img { height: 4.5rem; }
+@media (max-width: 40rem) { .bkf__logo img { height: 3.75rem; } }
+
+/* Google reviews card: stands in for the Trustindex widget until the
+   Yonkers widget id exists. Rating panel left, copy + link right.
+   <div class="yk-greview">
+     <div class="yk-greview__score">img, .yk-greview__num, .yk-greview__stars, .yk-greview__label</div>
+     <div class="yk-greview__body">h3, p, ul.yk-greview__points, .btn</div>
+   </div> */
+.yk-greview {
+  display: grid; grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); min-height: 12rem; overflow: hidden;
+  border: 1px solid var(--line); border-top: 3px solid var(--brand); border-radius: var(--radius-card); background: #fff; box-shadow: var(--shadow-sm);
+}
+.yk-greview__score {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem;
+  padding: 1.5rem 1.25rem; background: var(--dark); color: #fff; text-align: center;
+}
+.yk-greview__score img { width: 2.75rem; height: 2.75rem; padding: .35rem; border-radius: 50%; background: #fff; }
+.yk-greview__num { margin-top: .35rem; font-size: clamp(2.6rem, 2rem + 1.4vw, 3.25rem); font-weight: 700; line-height: 1; letter-spacing: -.03em; }
+.yk-greview__stars { color: var(--star); font-size: 1.25rem; letter-spacing: .12em; line-height: 1; }
+.yk-greview__label { margin-top: .2rem; color: var(--on-dark-muted); font-size: .6875rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.yk-greview__body { display: flex; flex-direction: column; align-items: flex-start; gap: .65rem; padding: clamp(1.25rem, 1rem + 1vw, 1.85rem) clamp(1.25rem, 1rem + 1.5vw, 2.25rem); }
+.yk-greview__body h3 { font-size: var(--fs-h3); }
+.yk-greview__body > p { max-width: 70ch; color: var(--muted); font-size: var(--fs-small); line-height: 1.6; }
+.yk-greview__points { display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; }
+.yk-greview__points li { display: flex; align-items: center; gap: .45rem; color: var(--dark); font-size: var(--fs-small); font-weight: 700; }
+.yk-greview__points svg { width: 1rem; height: 1rem; flex: none; fill: none; stroke: var(--brand); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.yk-greview__body .btn { margin-top: .35rem; }
+@media (max-width: 48rem) {
+  .yk-greview { grid-template-columns: minmax(0, 1fr); }
+  .yk-greview__score { flex-direction: row; flex-wrap: wrap; gap: .5rem .85rem; padding: 1rem 1.25rem; }
+  .yk-greview__num { margin-top: 0; font-size: 2.25rem; }
+  .yk-greview__label { flex-basis: 100%; margin-top: 0; }
+}
+@media (max-width: 40rem) {
+  .yk-greview__points { flex-direction: column; }
+  .yk-greview__body .btn { width: 100%; }
+}
+
+/* Stars inside the review badge beside the reviews heading (Google only). */
+.yk-badge-stars { margin-left: .25rem; color: var(--star); font-size: .8rem; letter-spacing: .06em; }
+
+/* Oct 16 (Nitesh): the footer paragraph under the logo runs a little wider. */
+.bkf__about { max-width: 52ch; }
+@media (max-width: 75rem) { .bkf__about { max-width: 62ch; } }

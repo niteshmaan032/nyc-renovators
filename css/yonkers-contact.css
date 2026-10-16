@@ -1,0 +1,67 @@
+/* ==========================================================================
+   Royal Roofing Yonkers: contact page (yonkers-contact-us.html)
+   Loads after css/yonkers.css and only uses its tokens. Prefix: ykc-
+   Sections: compact hero call card, form + details + map, what happens
+   next, contact FAQs.
+   ========================================================================== */
+
+/* Hero: solid near-black (pattern removed in yonkers.css), orange H1, and less
+   padding so the form row shows on the first screen at 1440 x 630. ------- */
+.ykc-hero { padding-top: calc(var(--nav-h) + var(--header-line) + clamp(1rem, .6rem + 1vw, 1.75rem)); padding-bottom: clamp(1.25rem, .9rem + 1vw, 2rem); }
+.ykc-hero h1 { color: var(--brand); }   /* #D2450A on near-black: 3.9:1, AA for large text */
+
+/* Hero call card (sits in .yk-pagehero__aside) ---------------------------- */
+.ykc-callcard { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.4rem; border: 1px solid var(--line-dark); border-left: 4px solid var(--brand); border-radius: var(--radius-sm); background: rgba(255, 255, 255, .06); }
+.ykc-callcard .yk-ico { width: 3rem; height: 3rem; background: var(--brand); color: #fff; box-shadow: none; }
+.ykc-callcard__label { color: var(--on-dark-muted); font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.ykc-callcard__phone { display: inline-block; margin-top: .15rem; color: #fff; font-size: clamp(1.5rem, 1.2rem + .8vw, 1.9rem); font-weight: 700; line-height: 1.15; letter-spacing: -.01em; text-decoration: none; }
+.ykc-callcard__phone:hover { text-decoration: underline; text-underline-offset: .18em; }
+.ykc-callcard__note { margin-top: .2rem; color: var(--on-dark-muted); font-size: var(--fs-small); }
+
+/* Details + team photo + map (left), form (right) ------------------------ */
+.ykc-main__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.25rem; align-items: stretch; }
+.ykc-form { align-content: start; }
+.ykc-form .quote-card__title { font-size: var(--fs-h2); }
+.ykc-side { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto minmax(19rem, 1fr); min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: #fff; }
+.ykc-team { position: relative; min-height: 13rem; background: var(--dark-50); }
+.ykc-team img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; }
+.ykc-team figcaption { position: absolute; left: 0; bottom: .75rem; padding: .35rem .7rem; border-left: 3px solid var(--brand); background: #fff; color: var(--dark); font-size: var(--fs-xs); font-weight: 700; line-height: 1.3; }
+.ykc-details { padding: 1.1rem 1.35rem .35rem; }
+.ykc-details__title { color: var(--dark); font-size: var(--fs-h3); }
+.ykc-details .yk-details { margin-top: .35rem; }
+.ykc-nowrap { white-space: nowrap; }
+.ykc-map { position: relative; grid-column: 1 / -1; min-height: 19rem; border-top: 1px solid var(--line); background: var(--dark-50); }
+.ykc-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* What happens next ------------------------------------------------------- */
+.ykc-steps__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; counter-reset: none; }
+.ykc-step { position: relative; display: flex; flex-direction: column; gap: .5rem; padding: 1.25rem 1.35rem 1.4rem; border: 1px solid var(--line); border-radius: var(--radius-card); background: #fff; }
+/* Connector line between steps on desktop. */
+.ykc-step:not(:last-child)::after { content: ""; position: absolute; top: 2.15rem; right: -1.3rem; width: 1.3rem; height: 2px; background: var(--brand); }
+.ykc-step__num { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--dark); color: #fff; font-size: 1rem; font-weight: 700; }
+.ykc-step h3 { margin-top: .25rem; font-size: var(--fs-h3); }
+.ykc-step p { color: var(--muted); font-size: var(--fs-small); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Contact FAQs ------------------------------------------------------------ */
+.ykc-faq__inner { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); gap: clamp(1.5rem, 1rem + 3vw, 4rem); align-items: start; }
+.ykc-faq__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
+
+/* Responsive -------------------------------------------------------------- */
+@media (max-width: 75rem) {
+  .ykc-steps__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ykc-step::after { display: none; }
+}
+@media (max-width: 60rem) {
+  .ykc-main__inner, .ykc-faq__inner { grid-template-columns: minmax(0, 1fr); }
+  .ykc-map { height: 20rem; }
+  .ykc-form { order: -1; }   /* phones/tablets: the form comes first */
+}
+@media (max-width: 40rem) {
+  .ykc-callcard { width: 100%; padding: .9rem 1rem; }
+  .ykc-callcard .yk-ico { width: 2.5rem; height: 2.5rem; }
+  .ykc-details { padding: 1rem 1rem .25rem; }
+  .ykc-side { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .ykc-team { min-height: 0; aspect-ratio: 4 / 3; }
+  .ykc-map { height: 18rem; }
+  .ykc-faq__actions .btn { flex: 1 1 12rem; }
+}

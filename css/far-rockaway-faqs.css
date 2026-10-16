@@ -1,0 +1,95 @@
+/* ==========================================================================
+   Royal Roofing & Siding Far Rockaway: FAQ page (far-rockaway-faqs.html)
+   Carried over from css/manhattan-faqs.css (Manhattan FAQ page), recoloured.
+   Loads after css/far-rockaway.css and uses its Manhattan-derived tokens (--m-*).
+   Prefix: frmq- (Manhattan mq-). Search behaviour: js/far-rockaway-faqs.js.
+   ========================================================================== */
+.frmq-search { width: min(100%, 30rem); padding: 1.15rem 1.35rem 1rem; border: 1px solid var(--m-line-dark); border-top: 3px solid var(--m-brand); border-radius: var(--m-radius-sm); background: rgba(0, 23, 47, .72); backdrop-filter: blur(4px); }
+.frmq-search__label { display: block; color: var(--m-purple-300); font-size: var(--m-fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.frmq-search__box { position: relative; margin-top: .6rem; }
+.frmq-search__box svg { position: absolute; top: 50%; left: .9rem; width: 1.1rem; height: 1.1rem; transform: translateY(-50%); fill: none; stroke: var(--m-navy); stroke-width: 2; stroke-linecap: round; pointer-events: none; }
+.frmq-search__box input { width: 100%; min-height: 3rem; padding: .65rem .9rem .65rem 2.6rem; border: 2px solid #fff; border-radius: var(--m-radius-sm); background: #fff; color: var(--m-ink); font: inherit; font-size: 1rem; }
+.frmq-search__box input::placeholder { color: var(--m-grey-400); }
+.frmq-search__box input:focus { outline: 3px solid var(--m-brand); outline-offset: 1px; }
+.frmq-search__quick { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; margin-top: .7rem; font-size: var(--m-fs-xs); }
+.frmq-search__quick span { margin-right: .15rem; color: var(--m-on-dark-muted); }
+.frmq-search__quick button { min-height: 2rem; padding: .2rem .5rem; border: 1px solid rgba(255, 255, 255, .3); border-radius: var(--m-radius-xs); background: transparent; color: #fff; font-size: var(--m-fs-xs); font-weight: 700; cursor: pointer; transition: background-color .15s, border-color .15s, color .15s; }
+.frmq-search__quick button:hover, .frmq-search__quick button[aria-pressed="true"] { border-color: var(--m-brand); background: var(--m-brand); color: #fff; }
+.frmq-search__status { margin-top: .6rem; color: var(--m-on-dark-muted); font-size: var(--m-fs-xs); }
+.frmq-contents { padding-bottom: calc(var(--m-section-pad) * .5); }
+.frmq-toc { display: grid; grid-template-columns: minmax(12rem, .8fr) minmax(0, 4fr); border: 1px solid var(--m-line); border-top: 3px solid var(--m-navy); border-radius: var(--m-radius-card); background: #fff; box-shadow: var(--m-shadow-sm); }
+.frmq-toc__head { padding: 1.25rem 1.5rem; border-right: 1px solid var(--m-line); background: var(--m-grey-25); }
+.frmq-toc__head .frm-kicker { margin-bottom: .5rem; }
+.frmq-toc__title { font-size: var(--m-fs-h3); }
+.frmq-toc__note { margin-top: .4rem; color: var(--m-muted); font-size: var(--m-fs-xs); line-height: 1.5; }
+.frmq-toc__list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.frmq-toc__list li { display: flex; min-width: 0; }
+.frmq-toc__list li + li { border-left: 1px solid var(--m-line); }
+.frmq-toc__link { position: relative; display: flex; flex-direction: column; gap: .35rem; width: 100%; padding: 1.2rem 1.25rem 1.1rem; color: var(--m-navy); text-decoration: none; transition: background-color .15s; }
+.frmq-toc__link::after { content: ""; position: absolute; left: 1.25rem; bottom: 0; width: 2rem; height: 3px; background: var(--m-brand); transition: width .25s ease, left .25s ease; }
+.frmq-toc__link:hover { background: var(--m-purple-50); }
+.frmq-toc__link:hover::after, .frmq-toc__link:focus-visible::after { left: 0; width: 100%; }
+.frmq-toc__num { color: var(--m-brand-ink); font-family: var(--m-font-display); font-size: 1.75rem; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+.frmq-toc__name { min-height: 2.6em; margin-top: .2rem; font-size: 1.0625rem; font-weight: 700; line-height: 1.3; }
+.frmq-toc__count { margin-top: auto; color: var(--m-muted); font-size: var(--m-fs-xs); }
+.frmq-toc__list li.is-empty .frmq-toc__link { opacity: .45; }
+.frmq-empty { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 1.5rem; margin-top: 1rem; padding: 1rem 1.25rem; border-left: 3px solid var(--m-brand); background: var(--m-surface-warm); color: var(--m-navy); }
+.frmq-empty[hidden] { display: none; }
+.frmq-empty a { color: var(--m-brand-ink); font-weight: 700; }
+.frmq-group { scroll-margin-top: calc(var(--nav-h) + var(--m-header-line)); }
+.frmq-group[hidden] { display: none; }
+.frmq-group__head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: .5rem 2rem; align-items: baseline; margin-bottom: 1rem; }
+.frmq-group__title { display: flex; align-items: baseline; gap: .65rem; font-size: var(--m-fs-h2); letter-spacing: -.02em; }
+.frmq-group__num { color: var(--m-brand-ink); }
+.frmq-group__desc { color: var(--m-muted); font-size: var(--m-fs-small); }
+.frmq-group__meta { display: flex; align-items: center; gap: 1.25rem; color: var(--m-muted); font-size: var(--m-fs-xs); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+.frmq-group__top { display: inline-flex; align-items: center; gap: .35rem; min-height: 2.75rem; color: var(--m-navy); text-decoration: none; }
+.frmq-group__top svg { width: .9rem; height: .9rem; fill: none; stroke: var(--m-brand-ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.frmq-group__top:hover { color: var(--m-brand-ink); text-decoration: underline; text-underline-offset: .2em; }
+.frmq-group__cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--m-col-gap); align-items: start; }
+.frmq-group__cols .frm-faq__item summary { min-height: 3.5rem; padding-block: .75rem; font-size: 1rem; }
+.frmq-group__cols .frm-faq__a { padding-right: 3rem; }
+.frmq-group__cols .frm-faq[hidden] { display: none; }
+.frmq-group mark { padding: 0 .1em; background: var(--m-purple-100); color: inherit; }
+.frmq-ask__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 30rem); gap: var(--m-col-gap); align-items: center; }
+.frmq-ask__details { max-width: 30rem; margin-top: var(--m-space-5); border-top: 1px solid var(--m-line); }
+.frmq-ask__details li:last-child { border-bottom: 1px solid var(--m-line); }
+.frmq-form .quote-card__title { font-size: var(--m-fs-h3); }
+@media (max-width: 75rem) {
+  .frmq-toc { grid-template-columns: minmax(0, 1fr); }
+  .frmq-toc__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1rem; padding: .9rem 1.25rem; border-right: 0; border-bottom: 1px solid var(--m-line); }
+  .frmq-toc__head .frm-kicker { margin: 0; }
+  .frmq-toc__note { margin: 0; }
+  .frmq-group__head { grid-template-columns: minmax(0, 1fr) auto; }
+  .frmq-group__desc { grid-row: 2; }
+}
+@media (max-width: 60rem) {
+  .frm-pagehero__inner:has(.frmq-search) { grid-template-columns: minmax(0, 1fr); }
+  .frmq-search { justify-self: stretch; width: 100%; }
+  .frmq-toc__list { grid-template-columns: minmax(0, 1fr); }
+  .frmq-toc__list li + li { border-left: 0; border-top: 1px solid var(--m-line); }
+  .frmq-toc__link { flex-direction: row; align-items: baseline; gap: .75rem; padding: .7rem 1.25rem; }
+  .frmq-toc__link::after { display: none; }
+  .frmq-toc__num { width: 1.75rem; flex: none; font-size: 1.25rem; }
+  .frmq-toc__name { min-height: 0; margin: 0; }
+  .frmq-toc__count { margin: 0 0 0 auto; white-space: nowrap; }
+  .frmq-group__cols { grid-template-columns: minmax(0, 1fr); }
+  .frmq-group__cols .frm-faq:not([hidden]) + .frm-faq { border-top: 0; }
+  .frmq-ask__inner { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 40rem) {
+  .frmq-search { padding: 1rem; }
+  .frmq-toc__head { padding: .8rem 1rem; }
+  .frmq-toc__link { padding: .65rem 1rem; }
+  .frmq-group__head { grid-template-columns: minmax(0, 1fr); gap: .35rem; }
+  .frmq-group__title { font-size: 1.5rem; }
+  .frmq-group__meta { grid-row: auto; justify-content: space-between; }
+  .frmq-group__top { min-height: 2.25rem; }
+  .frmq-group__cols .frm-faq__a { padding-right: 0; }
+  .frmq-ask__details .frm-details__value { font-size: .9375rem; }
+}
+
+/* Far Rockaway: on the navy hero the search card's top rule and the active
+   quick-search chip use the light purple (brand purple would vanish on navy). */
+.frmq-search { border-top-color: var(--m-purple-300); }
+.frmq-search__quick button:hover, .frmq-search__quick button[aria-pressed="true"] { border-color: var(--m-purple-300); background: var(--m-purple-300); color: var(--m-navy); }
