@@ -11,7 +11,7 @@
   <link rel="preload" href="fonts/HelveticaNeueLight.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/HelveticaNeueMedium.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/far-rockaway.css?v=3">
+  <link rel="stylesheet" href="css/far-rockaway.css?v=5">
 </head>
 <body class="page-far-rockaway page-far-rockaway-home">
 <script>document.documentElement.classList.add('js');</script>
@@ -533,14 +533,37 @@
   <!-- ===== Get In Touch (from Bronx): map left (Google's business card shows on it), form right ===== -->
   <section class="frx-section frx-contact" id="contact" aria-labelledby="contact-title">
     <div class="container frx-contact__inner">
-      <div class="frx-contact__map">
-        <iframe title="Map showing Royal Roofing &amp; Siding Far Rockaway at 11-07 Beach 9th St, Far Rockaway" src="https://www.google.com/maps?q=Royal+Roofing+%26+Siding+Far+Rockaway,+11-07+Beach+9th+St,+Far+Rockaway,+NY+11691&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <!-- Oct 16 (Nitesh): phone and office above a shorter map; hours and licensing under it. -->
+      <div class="frx-contact__side">
+        <ul class="frx-contact__tiles">
+          <li class="frx-contact__tile">
+            <span class="frx-contact__ico"><svg aria-hidden="true"><use href="#i-phone"/></svg></span>
+            <div><p class="frx-contact__label">Call us</p><a class="frx-contact__value" href="tel:+17188316489">(718) 831-6489</a></div>
+          </li>
+          <li class="frx-contact__tile">
+            <span class="frx-contact__ico"><svg aria-hidden="true"><use href="#i-pin"/></svg></span>
+            <div><p class="frx-contact__label">Office address</p><p class="frx-contact__value">11-07 Beach 9th St, Far Rockaway, NY 11691</p></div>
+          </li>
+        </ul>
+        <div class="frx-contact__map">
+          <iframe title="Map showing Royal Roofing &amp; Siding Far Rockaway at 11-07 Beach 9th St, Far Rockaway" src="https://www.google.com/maps?q=Royal+Roofing+%26+Siding+Far+Rockaway,+11-07+Beach+9th+St,+Far+Rockaway,+NY+11691&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <ul class="frx-contact__tiles frx-contact__tiles--even">
+          <li class="frx-contact__tile">
+            <span class="frx-contact__ico"><svg aria-hidden="true"><use href="#i-clock"/></svg></span>
+            <div><p class="frx-contact__label">Hours</p><p class="frx-contact__value">Mon&ndash;Sun, 7am&ndash;11pm</p></div>
+          </li>
+          <li class="frx-contact__tile">
+            <span class="frx-contact__ico"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+            <div><p class="frx-contact__label">Fully covered</p><p class="frx-contact__value">Licensed &amp; Insured</p></div>
+          </li>
+        </ul>
       </div>
 
       <form class="quote-card frx-form frx-contact__form" id="contact-form" novalidate aria-labelledby="contact-title">
         <div>
           <p class="frx-kicker">Free estimate</p>
-          <h2 class="quote-card__title" id="contact-title">Get In Touch</h2>
+          <h2 class="quote-card__title" id="contact-title">Get a Free Estimate</h2>
         </div>
         <p class="quote-card__sub">Tell us about the roof and the property. We&rsquo;ll walk you through the options and the next step.</p>
         <div class="field-row">
