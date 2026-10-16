@@ -80,6 +80,46 @@
     });
   });
 
+  /* ---------- Tabs (home building types): click, arrow keys, Home/End ---------- */
+  document.querySelectorAll('[data-tabs]').forEach(function (root) {
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
+    function select(tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        var panel = document.getElementById(t.getAttribute('aria-controls'));
+        if (panel) panel.hidden = !on;
+      });
+      if (focus) {
+        tab.focus();
+        var list = tab.parentNode;
+        if (list.scrollWidth > list.clientWidth) list.scrollLeft = tab.offsetLeft - (list.clientWidth - tab.offsetWidth) / 2;
+      }
+    }
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { select(tab, false); });
+      tab.addEventListener('keydown', function (e) {
+        var next = null, n = tabs.length;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = tabs[(i + 1) % n];
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = tabs[(i - 1 + n) % n];
+        else if (e.key === 'Home') next = tabs[0];
+        else if (e.key === 'End') next = tabs[n - 1];
+        if (next) { e.preventDefault(); select(next, true); }
+      });
+    });
+  });
+
+  /* ---------- Accordions: one item open at a time (fallback for <details name>) ---------- */
+  document.querySelectorAll('[data-accordion]').forEach(function (list) {
+    var items = Array.prototype.slice.call(list.querySelectorAll('details'));
+    items.forEach(function (d) {
+      d.addEventListener('toggle', function () {
+        if (d.open) items.forEach(function (o) { if (o !== d && o.open) o.open = false; });
+      });
+    });
+  });
+
   /* ---------- Forms: inline validation + thank-you ---------- */
   function setError(field, msg) {
     var wrap = field.closest('.field'); if (!wrap) return;
