@@ -70,7 +70,9 @@
     a.addEventListener('click', function (e) { e.preventDefault(); });
   });
 
-  /* ---------- Queens estimate forms: inline validation + notice ---------- */
+  /* ---------- Queens estimate forms: inline validation + notice ----------
+     All fields required: name, phone, address, email (where the form has
+     one), and message. */
   function setError(field, msg) {
     var wrap = field.closest('.q-field'); if (!wrap) return;
     var err = wrap.querySelector('.q-field-error');
@@ -91,6 +93,10 @@
       if (name && name.value.trim().length < 2) { setError(name, 'Enter your full name.'); ok = false; first = first || name; }
       if (phone) { var digits = phone.value.replace(/\D/g, ''); if (digits.length < 10 || digits.length > 11) { setError(phone, 'Enter a valid phone number.'); ok = false; first = first || phone; } }
       if (address && address.value.trim().length < 4) { setError(address, 'Enter the property address.'); ok = false; first = first || address; }
+      /* Oct 17 (R1): every field is required, the email and the message too. */
+      var email = form.querySelector('[name="email"]'), message = form.querySelector('[name="message"]');
+      if (email) { var ev = email.value.trim(); if (!ev) { setError(email, 'Enter your email address.'); ok = false; first = first || email; } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ev)) { setError(email, 'Enter a valid email address.'); ok = false; first = first || email; } }
+      if (message && !message.value.trim()) { setError(message, 'Tell us how we can help.'); ok = false; first = first || message; }
       if (!ok) { if (first) first.focus(); return; }
       var notice = form.querySelector('.q-form-thanks');
       if (!notice) {

@@ -11,7 +11,7 @@
   <link rel="preload" href="fonts/HelveticaNeueLight.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/HelveticaNeueMedium.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/bronx.css?v=5">
+  <link rel="stylesheet" href="css/bronx.css?v=6">
 </head>
 <body class="page-bronx">
 <script>document.documentElement.classList.add('js');</script>
@@ -132,8 +132,8 @@
         <li><a class="drawer__link" href="bronx-contact-us.html">Contact Us</a></li>
       </ul>
       <div class="drawer__actions">
-        <a class="btn btn--solid btn--navy" href="tel:+17183955061"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-395-5061</a>
-        <a class="btn btn--solid" href="bronx-contact-us.html">Get a Free Estimate</a>
+        <a class="btn btn--solid" href="tel:+17183955061"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-395-5061</a>
+        <a class="btn btn--solid btn--navy" href="bronx-contact-us.html">Get a Free Estimate</a>
       </div>
     </nav>
   </div>
@@ -159,18 +159,19 @@
     <div class="container bx-hero__inner">
       <div class="bx-hero__copy">
         <p class="bx-kicker bx-kicker--light">Royal Roofing Bronx</p>
-        <!-- Ratings: Google 4.9 (147 reviews) read from the Google Maps place card, Oct 13 2026. Yelp rating not verified, so no number. -->
+        <!-- Ratings: Google 4.9, as on the Google Business Profile (kept at 4.9 Oct 17 2026). Yelp rating not verified, so no number. -->
         <h1 class="bx-hero__title" id="hero-title">Bronx Roofing Contractor <span>Residential &amp; Commercial Roofing</span></h1>
         <p class="bx-hero__text">Flat roofs, roof replacements, leak repairs, shingles, and siding for Bronx homes, multifamily buildings, and commercial properties.</p>
-        <ul class="bx-hero__proof" aria-label="Why Bronx property owners call us">
-          <li class="rating-mark"><img src="images/Google__G__logo.svg.webp" alt="Google" width="28" height="28"><span><strong>4.9</strong> <span class="stars" aria-label="4.9 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><small>Google rating</small></span></li>
-          <li class="rating-mark"><img src="images/PngItem_1663.png" alt="" width="28" height="28"><span><strong>Yelp</strong><small>Reviews</small></span></li>
-          <li class="bx-hero__stat"><strong>35+ Years</strong><small>Hands-on experience</small></li>
-        </ul>
+        <!-- Oct 17 (Sean): Brooklyn's hero order: the two buttons first, then the transparent proof row under a hairline. -->
         <div class="bx-hero__actions">
-          <a class="btn btn--solid btn--white" href="#hero-form">Get a Free Estimate</a>
+          <a class="btn btn--solid btn--blue" href="#hero-form">Get a Free Estimate</a>
           <a class="btn btn--solid" href="tel:+17183955061"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-395-5061</a>
         </div>
+        <ul class="bx-hero__proof" aria-label="Why Bronx property owners call us">
+          <li class="rating-mark rating-mark--dark"><img src="images/Google__G__logo.svg.webp" alt="Google" width="28" height="28"><span><strong>4.9</strong> <span class="stars" aria-label="4.9 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><small>Google rating</small></span></li>
+          <li class="rating-mark rating-mark--dark"><img src="images/PngItem_1663.png" alt="" width="28" height="28"><span><strong>Yelp</strong><small>Reviews</small></span></li>
+          <li class="bx-hero__stat"><strong>35+ Years</strong><small>Experience</small></li>
+        </ul>
       </div>
 
       <form class="quote-card bx-hero__form" id="hero-form" novalidate aria-labelledby="hero-form-title">
@@ -180,8 +181,8 @@
           <div class="field"><label for="hf-phone">Phone</label><input id="hf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(718) 000-0000" required></div>
         </div>
         <div class="field"><label for="hf-address">Address</label><input id="hf-address" name="address" type="text" autocomplete="street-address" placeholder="Street address, Bronx" required></div>
-        <div class="field"><label for="hf-message">How Can We Help?</label><textarea id="hf-message" name="message" rows="3" placeholder="My Riverdale home has a roof leak. Can I get a repair estimate?"></textarea></div>
-        <button class="btn btn--solid btn--block" type="submit">Get My Free Estimate</button>
+        <div class="field"><label for="hf-message">How Can We Help?</label><textarea id="hf-message" name="message" rows="3" placeholder="My Riverdale home has a roof leak. Can I get a repair estimate?" required></textarea></div>
+        <button class="btn btn--solid btn--navy btn--block" type="submit">Get My Free Estimate</button>
         <p class="form-callback">We&rsquo;ll call you back within the hour</p>
       </form>
     </div>
@@ -191,7 +192,7 @@
   <section class="bx-trust" aria-label="At a glance">
     <div class="container">
       <ul class="bx-trust__list">
-        <li class="bx-trust__item"><span class="bx-ico bx-ico--dark"><svg aria-hidden="true"><use href="#i-map"/></svg></span><div><strong>Bronx-Based Team</strong><span>Office on Lafayette Ave, 10474</span></div></li>
+        <li class="bx-trust__item"><span class="bx-ico bx-ico--dark"><svg aria-hidden="true"><use href="#i-map"/></svg></span><div><strong>Bronx-Based Team</strong><span>Office in Hunts Point, Bronx</span></div></li>
         <li class="bx-trust__item"><span class="bx-ico bx-ico--dark"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><div><strong>Licensed Contractor</strong><span>Residential and commercial</span></div></li>
         <li class="bx-trust__item"><span class="bx-ico bx-ico--dark"><svg aria-hidden="true"><use href="#i-building"/></svg></span><div><strong>Every Building Type</strong><span>Row houses to warehouses</span></div></li>
         <li class="bx-trust__item"><span class="bx-ico bx-ico--dark"><svg aria-hidden="true"><use href="#i-clock"/></svg></span><div><strong>Open 7 Days a Week</strong><span>7:00 am – 11:00 pm</span></div></li>
@@ -205,12 +206,12 @@
       <div class="bx-about__copy">
         <p class="bx-kicker">About us</p>
         <h2 class="bx-title" id="about-title">About Royal Roofing Bronx</h2>
-        <p class="bx-lede">A trusted roofing company for homeowners, landlords, and commercial property owners throughout the Bronx, with more than 35 years of hands-on roofing and exterior experience.</p>
-        <p>Bronx properties often mean flat roofs, older masonry, and multi-unit buildings. From flat roof repairs and replacements to siding, gutters, windows, and masonry, we give honest recommendations and protect each building from water damage, structural wear, and NYC weather.</p>
+        <p class="bx-lede">A trusted roofing company for homeowners, landlords, and commercial property owners throughout the Bronx, with more than 35 years of hands-on experience.</p>
+        <p>Bronx properties often mean flat roofs, older masonry, and multi-unit buildings. From flat roof repairs and replacements to siding, gutters, and masonry, we give honest recommendations and protect each building from water damage, structural wear, and NYC weather.</p>
         <dl class="bx-about__facts">
           <div><dt>35+</dt><dd>Years of hands-on roofing experience</dd></div>
           <div><dt>Since 1988</dt><dd>Family-owned roofing experience</dd></div>
-          <div><dt>5 Trades</dt><dd>Roofing, siding, gutters, windows, masonry</dd></div>
+          <div><dt>4 Trades</dt><dd>Roofing, siding, gutters, masonry</dd></div>
         </dl>
         <div class="bx-about__actions">
           <a class="btn btn--solid btn--navy" href="#contact">Get a Free Estimate</a>
@@ -242,7 +243,8 @@
           <div class="bx-svc__body">
             <h3 class="bx-svc__title">Flat Roofing</h3>
             <p class="bx-svc__text">Membranes, drainage, and flashing that stop leaks and ponding on flat roofs.</p>
-            <a class="bx-svc__more" href="#compare" aria-label="Flat roofing: compare roof systems">Learn more<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <!-- TODO: link to the flat roofing page when it exists -->
+            <a class="bx-svc__more" href="#compare" aria-label="Flat roofing: view service">View Service<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="bx-svc">
@@ -251,7 +253,7 @@
           <div class="bx-svc__body">
             <h3 class="bx-svc__title">Shingle Roofing</h3>
             <p class="bx-svc__text">New shingle roofs, replacements, and repairs for pitched Bronx homes.</p>
-            <a class="bx-svc__more" href="bronx-shingle-roofing.html" aria-label="Shingle roofing: learn more">Learn more<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="bx-svc__more" href="bronx-shingle-roofing.html" aria-label="Shingle roofing: view service">View Service<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="bx-svc">
@@ -260,7 +262,8 @@
           <div class="bx-svc__body">
             <h3 class="bx-svc__title">Commercial Roofing</h3>
             <p class="bx-svc__text">Installs, repairs, and maintenance with minimal disruption to your business.</p>
-            <a class="bx-svc__more" href="#commercial" aria-label="Commercial roofing: learn more">Learn more<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <!-- TODO: link to the commercial roofing page when it exists -->
+            <a class="bx-svc__more" href="#commercial" aria-label="Commercial roofing: view service">View Service<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="bx-svc">
@@ -269,7 +272,8 @@
           <div class="bx-svc__body">
             <h3 class="bx-svc__title">Roof Repair</h3>
             <p class="bx-svc__text">Fast fixes for leaks, damaged flashing, and drainage before they get costly.</p>
-            <a class="bx-svc__more" href="#contact" aria-label="Roof repair: get a free estimate">Get an estimate<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <!-- TODO: link to the roof repair page when it exists -->
+            <a class="bx-svc__more" href="#contact" aria-label="Roof repair: view service">View Service<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="bx-svc">
@@ -278,7 +282,8 @@
           <div class="bx-svc__body">
             <h3 class="bx-svc__title">Roof Replacement</h3>
             <p class="bx-svc__text">A new roof when repairs stop paying off, built for stronger, longer protection.</p>
-            <a class="bx-svc__more" href="#contact" aria-label="Roof replacement: get a free estimate">Get an estimate<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <!-- TODO: link to the roof replacement page when it exists -->
+            <a class="bx-svc__more" href="#contact" aria-label="Roof replacement: view service">View Service<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
         <li class="bx-svc">
@@ -287,7 +292,8 @@
           <div class="bx-svc__body">
             <h3 class="bx-svc__title">Siding</h3>
             <p class="bx-svc__text">Siding that improves insulation and shields walls from moisture and weather.</p>
-            <a class="bx-svc__more" href="#contact" aria-label="Siding: get a free estimate">Get an estimate<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <!-- TODO: link to the siding page when it exists -->
+            <a class="bx-svc__more" href="#contact" aria-label="Siding: view service">View Service<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
       </ul>
@@ -327,7 +333,7 @@
           <tr>
             <td></td>
             <td><a class="btn btn--solid btn--navy btn--sm" href="#contact">Get a Flat Roof Estimate</a></td>
-            <td><a class="btn btn--solid btn--sm" href="bronx-shingle-roofing.html">Explore Shingle Roofing</a></td>
+            <td><a class="btn btn--solid btn--navy btn--sm" href="#contact">Get a Shingle Roof Estimate</a></td>
           </tr>
         </tfoot>
       </table>
@@ -393,11 +399,11 @@
       <div class="bx-commercial__top">
         <div>
           <p class="bx-kicker bx-kicker--light">Commercial roofing</p>
-          <h2 class="bx-title" id="commercial-title">Commercial &amp; Warehouse Roofing in Hunts Point and Port Morris</h2>
+          <h2 class="bx-title" id="commercial-title">Commercial &amp; Warehouse Roofing in the Bronx</h2>
           <p class="bx-lede">We install, repair, maintain, and replace roofs for business owners, landlords, and property managers across the Bronx. Rooftop equipment, foot traffic, and long spans wear down membranes, flashing, and drainage, so we plan each job around your operations.</p>
           <div class="bx-commercial__actions">
-            <a class="btn btn--solid" href="#contact">Get a Free Estimate</a>
-            <a class="btn btn--ghost-light" href="tel:+17183955061"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-395-5061</a>
+            <a class="btn btn--solid btn--blue" href="#contact">Get a Free Estimate</a>
+            <a class="btn btn--solid" href="tel:+17183955061"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-395-5061</a>
           </div>
         </div>
         <figure class="bx-commercial__media">
@@ -422,7 +428,7 @@
           <p class="bx-kicker">Recent work</p>
           <h2 class="bx-title" id="projects-title">Roofing Projects by Our Crews</h2>
         </div>
-        <p class="bx-lede">Real tear-offs, replacements, and installations by Royal roofing crews, from flat membranes to new shingle roofs.</p>
+        <p class="bx-lede">Tear-offs, replacements, and repairs by Royal Roofing Bronx crews, from flat membranes to new shingle roofs.</p>
       </div>
       <div class="bx-projects__grid slider" data-slider>
         <figure class="bx-project"><img src="images/bronx/bronx-flat-deck.jpg" alt="Royal Roofing Bronx crew framing a skylight curb and laying new plywood decking on a flat roof, with rolls of roofing staged behind them" width="1600" height="1200" loading="lazy"><figcaption><strong>Flat roof re-deck</strong>Our Bronx crew laying new plywood decking and framing a skylight curb</figcaption></figure>
@@ -448,7 +454,7 @@
           <li><span class="bx-ico"><svg aria-hidden="true"><use href="#i-home"/></svg></span><div><strong>Detached homes</strong><span>Riverdale and Country Club</span></div></li>
           <li><span class="bx-ico"><svg aria-hidden="true"><use href="#i-warehouse"/></svg></span><div><strong>Commercial and warehouse roofs</strong><span>Hunts Point and Port Morris</span></div></li>
         </ul>
-        <a class="btn btn--solid" href="#contact">Get a Free Estimate</a>
+        <a class="btn btn--solid btn--navy" href="#contact">Get a Free Estimate</a>
       </div>
 
       <div class="bx-map">
@@ -465,7 +471,7 @@
         </div>
         <p class="swipe-hint" aria-hidden="true">&larr; Swipe to see more &rarr;</p>
         <div class="bx-map__legend">
-          <span><span class="bx-map__dot" aria-hidden="true"></span>Our office: 1231 Lafayette Ave, 2nd Floor, Bronx, NY 10474</span>
+          <span><span class="bx-map__dot" aria-hidden="true"></span>Our office: 1231 Lafayette Ave, 2nd Fl, Bronx, NY 10474</span>
           <span><span class="bx-map__north" aria-hidden="true">N</span>Laid out north to south</span>
         </div>
       </div>
@@ -490,7 +496,7 @@
         <details class="bx-faq__item"><summary>What roofing systems are common in the Bronx?</summary><div class="bx-faq__a"><p>Flat roofing systems are common on many Bronx buildings, from row houses to apartment buildings. We specialize in installing and repairing durable flat roofs, and we install shingle roofs on pitched homes.</p></div></details>
         <details class="bx-faq__item"><summary>How do I know if my Bronx property needs roof repair?</summary><div class="bx-faq__a"><p>Signs include leaks, water stains, missing materials, and visible damage. We provide professional inspections to find the cause before recommending a repair.</p></div></details>
         <details class="bx-faq__item"><summary>Do you handle commercial roofing in the Bronx?</summary><div class="bx-faq__a"><p>Yes. We work with commercial property owners and managers across the Bronx, including warehouses, retail, and mixed-use buildings.</p></div></details>
-        <details class="bx-faq__item"><summary>Do you offer exterior services besides roofing?</summary><div class="bx-faq__a"><p>Yes. We provide siding, gutter, window, masonry, and other exterior services in addition to roofing.</p></div></details>
+        <details class="bx-faq__item"><summary>Do you offer exterior services besides roofing?</summary><div class="bx-faq__a"><p>Yes. We provide siding, gutter, masonry, and other exterior services in addition to roofing.</p></div></details>
         <details class="bx-faq__item"><summary>Do you provide free estimates?</summary><div class="bx-faq__a"><p>Yes. Royal Roofing Bronx offers free roofing estimates for residential and commercial property owners. Call <a href="tel:+17183955061">718-395-5061</a> to schedule yours.</p></div></details>
       </div>
     </div>
@@ -520,7 +526,7 @@
   <section class="bx-section bx-contact" id="contact" aria-labelledby="contact-title">
     <div class="container bx-contact__inner">
       <div class="bx-contact__map">
-        <iframe title="Map showing Royal Roofing Bronx at 1231 Lafayette Ave, Bronx" src="https://www.google.com/maps?q=Royal+Roofing+Bronx,+1231+Lafayette+Ave,+2nd+Floor,+Bronx,+NY+10474&amp;z=14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <iframe title="Map showing Royal Roofing Bronx at 1231 Lafayette Ave, Bronx" src="https://www.google.com/maps?q=Royal+Roofing+Bronx,+1231+Lafayette+Ave,+2nd+Fl,+Bronx,+NY+10474&amp;z=13&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
 
       <form class="quote-card bx-contact__form" id="contact-form" novalidate aria-labelledby="contact-title">
@@ -528,14 +534,14 @@
           <p class="bx-kicker">Free estimate</p>
           <h2 class="quote-card__title" id="contact-title">Get In Touch</h2>
         </div>
-        <p class="quote-card__sub">Tell us about the roof and the property. We&rsquo;ll walk you through the options and the next step.</p>
+        <p class="quote-card__sub">Tell us about the property&rsquo;s roof or siding. Get your free estimate today.</p>
         <div class="field-row">
           <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Your name" required></div>
           <div class="field"><label for="cf-phone">Phone</label><input id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(718) 000-0000" required></div>
         </div>
         <div class="field"><label for="cf-address">Address</label><input id="cf-address" name="address" type="text" autocomplete="street-address" placeholder="Street address, Bronx" required></div>
-        <div class="field"><label for="cf-message">How Can We Help?</label><textarea id="cf-message" name="message" rows="3" placeholder="My Riverdale home has a roof leak. Can I get a repair estimate?"></textarea></div>
-        <button class="btn btn--solid btn--block" type="submit">Get My Free Estimate</button>
+        <div class="field"><label for="cf-message">How Can We Help?</label><textarea id="cf-message" name="message" rows="3" placeholder="My Riverdale home has a roof leak. Can I get a repair estimate?" required></textarea></div>
+        <button class="btn btn--solid btn--navy btn--block" type="submit">Get My Free Estimate</button>
         <p class="form-callback">We&rsquo;ll call you back within the hour</p>
       </form>
     </div>
@@ -549,8 +555,10 @@
   <div class="container bkf__top">
     <div class="bkf__brand">
       <a class="bkf__logo" href="bronx.html" aria-label="Royal Roofing Bronx home"><img src="images/bronx/royal-roofing-bronx-logo.webp" alt="Royal Roofing Bronx" width="445" height="464" loading="lazy"></a>
-      <p class="bkf__about">Royal Roofing Bronx is fully licensed &amp; insured, providing roof repairs and replacements for homes, multifamily buildings, and commercial properties throughout the Bronx. We specialize in flat and shingle roofing, backed by 35 years of experience.</p>
-      <a class="btn btn--solid bkf__cta" href="bronx-contact-us.html">Get a Free Estimate</a>
+      <div class="bkf__brandtext">
+        <p class="bkf__about">Royal Roofing Bronx is a fully licensed &amp; insured Bronx roofing contractor, providing roof repairs and replacements for homes, multifamily buildings, and commercial properties throughout the Bronx. We specialize in flat and shingle roofing, backed by 35+ years of experience.</p>
+        <a class="btn btn--solid btn--blue bkf__cta" href="bronx-contact-us.html">Get a Free Estimate</a>
+      </div>
     </div>
 
     <nav class="bkf__col" aria-label="Roofing">
@@ -560,7 +568,6 @@
         <li><a href="bronx-shingle-roofing.html">Shingle Roofing</a></li>
         <li><a href="bronx.html#commercial">Commercial Roofing</a></li>
         <li><a href="bronx.html#services">Roof Repair</a></li>
-        <li><a href="bronx.html#services">Roof Replacement</a></li>
       </ul>
     </nav>
 
@@ -570,8 +577,6 @@
         <li><a href="bronx.html#services">Siding</a></li>
         <li><a href="bronx.html#about">Gutters</a></li>
         <li><a href="bronx.html#about">Masonry</a></li>
-        <li><a href="bronx.html#compare">Roof Systems</a></li>
-        <li><a href="bronx.html#areas">Areas We Serve</a></li>
       </ul>
     </nav>
 
@@ -581,7 +586,6 @@
         <li><a href="bronx-about-us.html">About Us</a></li>
         <li><a href="bronx-projects.html">Projects</a></li>
         <li><a href="bronx-faqs.html">FAQs</a></li>
-        <li><a href="bronx-blog.html">Blog</a></li>
         <li><a href="bronx-contact-us.html">Contact Us</a></li>
       </ul>
     </nav>
@@ -615,7 +619,7 @@
           <span class="bkf__icon"><svg aria-hidden="true"><use href="#i-pin"/></svg></span>
           <div>
             <p class="bkf__label">Office Address</p>
-            <p class="bkf__value"><a href="https://www.google.com/maps/search/?api=1&amp;query=Royal+Roofing+Bronx,+1231+Lafayette+Ave,+2nd+Floor,+Bronx,+NY+10474" target="_blank" rel="noopener">1231 Lafayette Ave, 2nd Floor<br>Bronx, NY 10474</a></p>
+            <p class="bkf__value"><a href="https://www.google.com/maps/search/?api=1&amp;query=Royal+Roofing+Bronx,+1231+Lafayette+Ave,+2nd+Fl,+Bronx,+NY+10474" target="_blank" rel="noopener">1231 Lafayette Ave, 2nd Fl<br>Bronx, NY 10474</a></p>
           </div>
         </li>
         <li>
@@ -645,7 +649,7 @@
 
 </footer>
 
-<script src="js/bronx.js?v=2" defer></script>
+<script src="js/bronx.js?v=3" defer></script>
 
 <!-- Live chat (Blazeo), starts ten seconds after load.
      TODO: confirm the Bronx chat account id with the client; this uses the Royal account. -->

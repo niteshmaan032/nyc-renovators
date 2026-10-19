@@ -22,6 +22,12 @@
 .cx-main__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.25rem; align-items: stretch; }
 .cx-form { align-content: start; }
 .cx-form .quote-card__title { font-size: var(--fs-h2); }
+/* Oct 17 (Sean, BXC2): title at the very top (no eyebrow) and a shorter "How can we help" box. */
+.cx-form { align-self: start; padding-top: clamp(1rem, .8rem + .6vw, 1.35rem); }   /* the card no longer stretches to the map column's height */
+.cx-form .field textarea { min-height: 4.25rem; height: 4.25rem; }
+/* Oct 17 (Sean, BXC3): the H1 reads "Contact Royal Roofing Bronx" on one line on desktop,
+   and "Contact" / "Royal Roofing Bronx" on two lines on phones. */
+.cx-hero__name { display: inline; }
 .cx-side { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto minmax(19rem, 1fr); min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: #fff; }
 .cx-team { position: relative; min-height: 13rem; background: var(--navy-50); }
 .cx-team img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; }
@@ -58,6 +64,7 @@
 }
 @media (max-width: 40rem) {
   .cx-callcard { width: 100%; padding: .9rem 1rem; }
+  .cx-hero__name { display: block; }
   .cx-callcard .bx-ico { width: 2.5rem; height: 2.5rem; }
   .cx-details { padding: 1rem 1rem .25rem; }
   .cx-side { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }

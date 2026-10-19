@@ -1,4 +1,4 @@
-/* Royal Roofing & Siding Brooklyn — brooklyn.html */
+/* Royal Roofing & Siding Brooklyn — shared script for all brooklyn*.html pages */
 (function () {
   'use strict';
   var PHONE = '718-536-2667';
@@ -79,6 +79,18 @@
     });
   });
 
+  /* ---------- FAQ accordions: one answer open at a time ----------
+     Opt in with data-accordion on the element that holds the <details>. */
+  document.querySelectorAll('[data-accordion]').forEach(function (list) {
+    var items = Array.prototype.slice.call(list.querySelectorAll('details'));
+    items.forEach(function (d) {
+      d.addEventListener('toggle', function () {
+        if (!d.open) return;
+        items.forEach(function (other) { if (other !== d && other.open) other.open = false; });
+      });
+    });
+  });
+
   /* ---------- Forms: inline validation + thank-you ---------- */
   function setError(field, msg) {
     var wrap = field.closest('.field'); if (!wrap) return;
@@ -101,6 +113,9 @@
       if (phone) { var digits = phone.value.replace(/\D/g, ''); if (digits.length < 10 || digits.length > 11) { setError(phone, 'Enter a valid phone number.'); ok = false; first = first || phone; } }
       if (email && !email.checkValidity()) { setError(email, 'Enter a valid email address.'); ok = false; first = first || email; }
       if (address && address.value.trim().length < 4) { setError(address, 'Enter the property address.'); ok = false; first = first || address; }
+      /* Oct 19 (Sean): every field is required, the message too. */
+      var message = form.querySelector('[name="message"]');
+      if (message && !message.value.trim()) { setError(message, 'Tell us how we can help.'); ok = false; first = first || message; }
       if (!ok) { if (first) first.focus(); return; }
       var notice = form.querySelector('.form-thanks');
       if (!notice) {

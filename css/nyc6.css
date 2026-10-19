@@ -3899,3 +3899,234 @@ a.contact-line__value:hover { color: var(--red); }
   .page-home .contact__left--boxed .contact__map { max-height: none; height: 27rem; }
   .page-home .contact__left--boxed .contact__map-frame { height: 27rem; }
 }
+
+/* ---------------------------------------------------------------------------
+   Form error state (Oct 17, R1). Every field on the Royal forms is required;
+   js/nyc6.js adds .field--error to the .field wrapper of each empty or
+   malformed field on submit, plus a .field__error line under the input.
+   --------------------------------------------------------------------------- */
+.field--error .field__input,
+.field--error .field__input:focus,
+.estimate-form--white .field--error .field__input,
+.form--light .field--error .field__input {
+  border-color: var(--red);
+  background-color: rgba(232, 38, 60, .06);
+  box-shadow: 0 0 0 1px var(--red);
+}
+.field__error {
+  display: block;
+  margin-top: .125rem;
+  font-size: .8125rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.3;
+  color: var(--red);
+}
+
+/* ---------------------------------------------------------------------------
+   Accredited and reviewed by (Oct 17, R2): logos about 25% bigger and evened
+   out by optical size. Wide marks (GAF, NRCA) get less height than the tall
+   BBB block; round marks (Yelp, Inc. 5000) and the Angi badge, which carries
+   transparent margins in its file, get more so they no longer read small.
+   Before: BBB/Angi/Yelp 36px, Inc. 40px, NRCA 34px, GAF and Google G 28px.
+   Selectors carry .page-home .accred to outrank the older !important rules.
+   --------------------------------------------------------------------------- */
+.page-home .accred .accred__logos { gap: var(--space-4) var(--space-6); }
+.page-home .accred .accred__logos .is-bbb img { height: 2.8125rem !important; }   /* 45px */
+.page-home .accred .accred__logos .is-gaf img { height: 2.1875rem !important; }   /* 35px */
+.page-home .accred .accred__logos .is-nrca img { height: 2.625rem !important; }   /* 42px */
+.page-home .accred .accred__logos .is-yelp img { height: 3.25rem !important; }    /* 52px */
+.page-home .accred .accred__logos .is-inc img { height: 3.25rem !important; }     /* 52px */
+/* Angi: the file is 600x462 with the badge in the middle 296x409, so the
+   box is cropped to the badge (object-fit) instead of showing the margins. */
+.page-home .accred .accred__logos .is-angi img {
+  width: 2.75rem;
+  height: 3.5rem !important;
+  object-fit: cover;
+}
+.page-home .accred .accred__logos .is-google img { height: 2.1875rem !important; }
+.page-home .accred .accred__logos .awards__rating { padding: .75rem 1.375rem; }
+.page-home .accred .accred__logos .awards__rating-score { font-size: 1.25rem; }
+/* Phones: the same proportions a step smaller so the row wraps to two lines. */
+@media (max-width: 40rem) {
+  .page-home .accred .accred__logos { gap: var(--space-4) var(--space-5); }
+  .page-home .accred .accred__logos .is-bbb img { height: 2.5rem !important; }
+  .page-home .accred .accred__logos .is-gaf img { height: 1.875rem !important; }
+  .page-home .accred .accred__logos .is-nrca img { height: 2.25rem !important; }
+  .page-home .accred .accred__logos .is-yelp img,
+  .page-home .accred .accred__logos .is-inc img { height: 2.875rem !important; }
+  .page-home .accred .accred__logos .is-angi img { width: 2.375rem; height: 3.0625rem !important; }
+  .page-home .accred .accred__logos .is-google img { height: 1.875rem !important; }
+  .page-home .accred .accred__logos .awards__rating { padding: .625rem 1.125rem; }
+  .page-home .accred .accred__logos .awards__rating-score { font-size: 1.125rem; }
+}
+
+/* ---------------------------------------------------------------------------
+   See Our Team in Action (homepage, Oct 17, R5). Sits between Roofing Tips
+   and the FAQs, with the same content-width hairlines those two sections use.
+   Desktop: text and buttons left; the video card right (16:9 player with the
+   video title bar under it), about as tall as the text. Phones: text, then the card.
+   The player is a facade (js/nyc6.js, initVideoFacade): muted autoplay when
+   the section scrolls near, or play on click.
+   --------------------------------------------------------------------------- */
+.page-home .blog + .team-video > .container,
+.page-home .team-video + .faqs > .container {
+  border-top: 1px solid var(--hairline);
+  padding-top: clamp(1.5rem, 1.1rem + 1.4vw, 2.5rem);
+}
+.team-video__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: center;
+}
+.team-video__lede { margin-top: var(--space-4); }
+.team-video__points {
+  display: grid;
+  gap: .55rem;
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.team-video__points li {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-weight: var(--fw-semibold, 600);
+  color: var(--navy);
+}
+.team-video__points i {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.375rem;
+  height: 1.375rem;
+  border-radius: 50%;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: .6875rem;
+}
+.team-video__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-top: var(--space-6);
+}
+
+/* The card: player on top, title bar under it, one frame. */
+.team-video__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  background-color: var(--white);
+  box-shadow: 0 14px 34px rgba(1, 27, 68, .14);
+}
+.team-video__player {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #000;
+}
+.team-video__play {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.team-video__poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter var(--dur-fast, .2s) ease-out;
+}
+.team-video__icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: 1.375rem;
+  box-shadow: 0 0 0 7px rgba(255, 255, 255, .28), 0 10px 24px rgba(0, 0, 0, .35);
+  transform: translate(-50%, -50%);
+  transition: transform var(--dur-fast, .2s) ease-out, background-color var(--dur-fast, .2s) ease-out;
+}
+.team-video__icon i { margin-left: .2rem; }   /* optical centre of the triangle */
+.team-video__play:hover .team-video__poster,
+.team-video__play:focus-visible .team-video__poster { filter: brightness(.88); }
+.team-video__play:hover .team-video__icon,
+.team-video__play:focus-visible .team-video__icon {
+  background-color: var(--red-dark);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+.team-video__play:focus-visible { outline: 3px solid var(--red); outline-offset: -3px; }
+.team-video__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+/* The upload is 16:9 with a 4:3 picture in the middle (black side bars).
+   While it plays muted, the iframe is scaled up by 4/3 and centered, so the
+   picture fills the 16:9 frame (a little is cropped top and bottom). */
+.team-video__player.is-ambient { cursor: pointer; }
+.team-video__player.is-ambient .team-video__frame {
+  top: -16.6667%;
+  left: -16.6667%;
+  width: 133.3334%;
+  height: 133.3334%;
+  pointer-events: none;
+}
+.team-video__caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* icon and title centered in the bar */
+  gap: .85rem;
+  padding: .9rem 1.15rem;
+  border-top: 3px solid var(--red);
+  background-color: var(--navy);
+  color: var(--white);
+}
+.team-video__yt { flex: none; font-size: 1.75rem; line-height: 1; color: var(--red); }
+.team-video__meta { display: flex; flex-direction: column; gap: .15rem; min-width: 0; text-align: center; }
+.team-video__name {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.3;
+  letter-spacing: -.005em;
+  color: var(--white);
+}
+
+/* Desktop: the card is as tall as the text column. The column widths are set
+   so a 4:3 player plus the title bar lands on the text column's height. */
+@media (min-width: 64.0625rem) {
+  .team-video__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 44rem);
+    gap: clamp(2rem, 1rem + 3vw, 4.5rem);
+  }
+}
+@media (max-width: 64rem) {
+  .team-video__card { max-width: 40rem; }
+}
+@media (max-width: 40rem) {
+  .team-video__icon { width: 3.5rem; height: 3.5rem; font-size: 1.125rem; box-shadow: 0 0 0 6px rgba(255, 255, 255, .28), 0 8px 18px rgba(0, 0, 0, .35); }
+  .team-video__caption { padding: .8rem 1rem; }
+  .team-video__name { font-size: 1rem; }
+  .team-video__actions .btn { flex: 1 1 100%; justify-content: center; }
+}
+

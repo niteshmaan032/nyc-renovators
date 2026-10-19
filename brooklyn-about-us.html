@@ -12,7 +12,7 @@
   <link rel="preload" href="fonts/HelveticaNeueMedium.woff2" as="font" type="font/woff2" crossorigin>
 
   <link rel="stylesheet" href="css/brooklyn.css?v=54">
-  <link rel="stylesheet" href="css/brooklyn-about.css?v=8">
+  <link rel="stylesheet" href="css/brooklyn-about.css?v=9">
 </head>
 <body class="page-brooklyn page-brooklyn-about">
 <script>document.documentElement.classList.add('js');</script>
@@ -146,23 +146,30 @@
 </header>
 
 <main id="main">
+  <!-- ===== Hero (Oct 17): same layout as bronx-about-us.html, in Brooklyn colors.
+       Compact navy band: breadcrumb, H1, short intro, three facts, two buttons,
+       and a Royal Brooklyn crew photo on the right. ===== -->
   <section class="bk-about-hero" aria-labelledby="bk-about-title">
-    <div class="container bk-about-hero__grid">
+    <div class="container bk-about-hero__inner">
       <div class="bk-about-hero__copy">
-        <p class="bk-about-kicker bk-about-kicker--light">Royal Roofing &amp; Siding Brooklyn</p>
-        <h1 id="bk-about-title"><span>Built for</span> <span><em>Brooklyn</em> roofs.</span></h1>
-        <p>From brownstones and row houses to mixed-use and commercial buildings, Brooklyn roofs rarely ask for the same solution. We bring local building knowledge and practical roofing experience to every property we work on.</p>
+        <nav class="bk-crumbs" aria-label="Breadcrumb"><ol><li><a href="brooklyn.html">Home</a></li><li aria-current="page">About Us</li></ol></nav>
+        <h1 id="bk-about-title">About Royal Roofing &amp; Siding Brooklyn</h1>
+        <p>Roofing and siding specialists for Brooklyn homeowners, landlords, and property managers, with more than 35 years of hands-on experience.</p>
+        <ul class="bk-about-hero__facts" aria-label="At a glance">
+          <li><svg aria-hidden="true"><use href="#i-pin"/></svg>Office on Emerson Place</li>
+          <li><svg aria-hidden="true"><use href="#i-clock"/></svg>Open 7 days a week</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Free estimates</li>
+        </ul>
         <div class="bk-about-hero__actions">
-          <a class="btn btn--solid btn--white" href="brooklyn-contact-us.html#contact-form">Request a Free Estimate</a>
-          <a class="bk-about-text-link bk-about-text-link--light" href="#our-approach">How we work <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--solid btn--white" href="brooklyn-contact-us.html#contact-form">Get a Free Estimate</a>
+          <a class="btn btn--solid btn--phone" href="tel:+17185362667"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-536-2667</a>
         </div>
       </div>
-      <figure class="bk-about-hero__visual">
-        <img src="images/live/crew-brooklyn-street.jpg" alt="Royal crew working across the rooftops of a Brooklyn row-house block" width="1400" height="1050" fetchpriority="high">
-        <figcaption><span>On the rooftops</span><strong>Brooklyn, NY</strong></figcaption>
+      <figure class="bk-about-hero__media">
+        <img src="images/brooklyn/brooklyn-about-crew.jpg" alt="Royal Roofing &amp; Siding Brooklyn crew in company shirts tearing off an old flat roof on a Brooklyn row house" width="1600" height="1200" fetchpriority="high">
+        <figcaption><strong>35+ years</strong><span>Hands-on roofing experience</span></figcaption>
       </figure>
     </div>
-    <div class="bk-about-hero__foot"><div class="container"><span>Local roofs. Considered work.</span><span>Roofing · Siding · Exteriors</span></div></div>
   </section>
 
   <section class="bk-about-intro" aria-labelledby="bk-intro-title">
@@ -173,11 +180,9 @@
       </figure>
       <div class="bk-about-intro__copy">
         <p class="bk-about-kicker">Who we are</p>
-        <h2 id="bk-intro-title"><span>Local crew.</span> <span>Building knowledge.</span></h2>
-        <p>Royal Roofing &amp; Siding Brooklyn serves homeowners, landlords, and property managers who need dependable roofing and exterior work. Our Brooklyn team is independently operated and shares the crew standards that have defined Royal Renovators Inc. since 1988.</p>
-        <p>The borough's building stock demands attention to what is already there: aging flat roofs, masonry details, narrow access, pitched roofs, and neighboring properties close on every side. We start with the condition of the building, then recommend work that fits its structure and the owner's goals.</p>
-        <p>That local focus shapes the questions we ask and the details we check. It helps us approach a brownstone repair, a shingle replacement, and a commercial roof as different projects with different priorities.</p>
-        <a class="bk-about-text-link" href="#our-approach">See how we work <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <h2 id="bk-intro-title"><span>Local Brooklyn Crew.</span> <span>Brooklyn Building Knowledge.</span></h2>
+        <p>Royal Roofing &amp; Siding Brooklyn serves homeowners, landlords, and property managers who need dependable roofing and siding work. Brooklyn&rsquo;s building stock demands special attention: aging flat roofs, deteriorating masonry details, narrow access, and neighboring properties close on every side. That local focus helps us approach a brownstone repair, a detached home roof replacement, and a commercial roofing project completely differently.</p>
+        <a class="btn btn--solid bk-about-intro__cta" href="brooklyn-contact-us.html#contact-form">Get My Free Estimate</a>
       </div>
     </div>
   </section>
@@ -186,14 +191,16 @@
     <div class="container">
       <div class="bk-about-buildings__head">
         <div><p class="bk-about-kicker">Built for the borough</p><h2 id="bk-buildings-title"><span>Different buildings.</span> <span>Different roofs.</span></h2></div>
-        <p>Brooklyn moves from historic streets to dense commercial corridors within a few blocks. The roof and exterior plan should respond to the property in front of us.</p>
+        <p>Brooklyn moves from historic streets to dense commercial corridors within a few blocks. Your roofing and siding team should respond to each property type accordingly.</p>
       </div>
-      <div class="bk-about-buildings__cards">
-        <article><span class="bk-about-buildings__index">A / Residential</span><h3>Brownstones &amp; row houses</h3><p>Flat roof membranes, flashing, drainage, and parapet details all need to work together above older masonry and closely spaced homes.</p><span class="bk-about-buildings__focus">Focus: flat roofs &amp; parapets</span></article>
-        <article><span class="bk-about-buildings__index">B / Pitched roofs</span><h3>Homes with pitched roofs</h3><p>Shingle systems call for careful inspection of the roof deck, ventilation, and roof edges before a repair or replacement is planned.</p><span class="bk-about-buildings__focus">Focus: deck &amp; shingles</span></article>
-        <article><span class="bk-about-buildings__index">C / Larger properties</span><h3>Mixed-use &amp; commercial</h3><p>These roofs often carry equipment and see regular access. We consider the roof's use, drainage, and disruption to the people below.</p><span class="bk-about-buildings__focus">Focus: access &amp; drainage</span></article>
+      <!-- Phones: the three cards become a swipe row (.slider, css/brooklyn.css + brooklyn-about.css) -->
+      <div class="bk-about-buildings__cards slider" data-slider>
+        <article><span class="bk-about-buildings__index">Flat Roofs</span><h3>Brownstones &amp; row houses</h3><p>Flat roof membranes, flashing, drainage, and parapet details all need to work together above older masonry and closely spaced homes.</p><span class="bk-about-buildings__focus">Focus: flat roofs &amp; parapets</span></article>
+        <article><span class="bk-about-buildings__index">Shingle Roofs</span><h3>Homes with pitched roofs</h3><p>Shingle systems call for careful inspection of the roof deck, ventilation, and roof edges before a repair or replacement is planned.</p><span class="bk-about-buildings__focus">Focus: deck &amp; shingles</span></article>
+        <article><span class="bk-about-buildings__index">Commercial Roofs</span><h3>Mixed-use &amp; commercial</h3><p>These roofs often carry equipment and see regular access. We consider the roof's use, drainage, and disruption to the people below.</p><span class="bk-about-buildings__focus">Focus: access &amp; drainage</span></article>
       </div>
-      <div class="bk-about-buildings__cta"><p><strong>Your building has its own needs.</strong><span>Tell us what is happening, and we can discuss the next step.</span></p><a class="btn btn--solid btn--white" href="brooklyn-contact-us.html#contact-form">Request a Free Estimate</a></div>
+      <p class="swipe-hint" aria-hidden="true">&larr; Swipe to see more &rarr;</p>
+      <div class="bk-about-buildings__cta"><p><strong>Your Brooklyn property has its own unique needs.</strong><span>Tell us what is happening, and we can discuss the next step.</span></p><a class="btn btn--solid" href="brooklyn-contact-us.html#contact-form">Request a Free Estimate</a></div>
     </div>
   </section>
 
@@ -248,27 +255,12 @@
 
   <section class="bk-about-planning" aria-labelledby="bk-planning-title">
     <div class="container">
-      <div class="bk-about-planning__head"><div><p class="bk-about-kicker">Project planning</p><h2 id="bk-planning-title"><span>Work planned</span> <span>for real buildings.</span></h2></div><p>A Brooklyn roof project happens above homes, businesses, and neighboring properties. The plan needs to account for more than the material on top.</p></div>
+      <div class="bk-about-planning__head"><div><p class="bk-about-kicker">Project planning</p><h2 id="bk-planning-title"><span>Work planned</span> <span>for real Brooklyn buildings.</span></h2></div><p class="bk-about-planning__lede">A Brooklyn roof project happens above active homes, businesses, and neighboring properties. The plan needs to account for more than just the material type.</p></div>
       <figure class="bk-about-planning__photo"><img src="images/brooklyn/bk-03-0926b4df.jpg" alt="Royal crew working on adjoining flat and pitched roof areas" width="1024" height="576" loading="lazy"><figcaption>Every roof sits in a larger building context</figcaption></figure>
       <div class="bk-about-planning__points">
         <article><span>Access</span><h3>Getting to the work area</h3><p>Row houses and dense blocks can leave little room around the property. We consider how a crew reaches the roof and moves through the site before work begins.</p></article>
         <article><span>Occupancy</span><h3>People below the roof</h3><p>Homes, tenants, and businesses may continue using the building during a project. Clear scope and practical sequencing help owners understand what the work involves.</p></article>
         <article><span>Connections</span><h3>Adjacent surfaces</h3><p>A roof may meet masonry, siding, gutters, skylights, or another roof type. Those junctions belong in the discussion because they affect the whole exterior.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="bk-about-values" aria-labelledby="bk-values-title">
-    <div class="container">
-      <div class="bk-about-values__head">
-        <p class="bk-about-kicker">What owners can expect</p>
-        <h2 id="bk-values-title"><span>Work that fits</span> <span>the property.</span></h2>
-        <p>A useful recommendation should account for the building, explain the material choice, and give the owner a clear scope to consider.</p>
-      </div>
-      <div class="bk-about-values__principles">
-        <article><svg aria-hidden="true"><use href="#i-home"/></svg><h3>Read the building</h3><p>Roof shape, masonry edges, access, and nearby properties all help define what the work needs to address.</p></article>
-        <article><svg aria-hidden="true"><use href="#i-layers"/></svg><h3>Choose for the conditions</h3><p>We discuss roofing and exterior systems in relation to the roof type, its use, and the conditions the materials will face.</p></article>
-        <article><svg aria-hidden="true"><use href="#i-phone"/></svg><h3>Explain the scope</h3><p>We describe what we see and what the proposed work covers so owners and managers can make the next decision.</p></article>
       </div>
     </div>
   </section>
@@ -280,12 +272,12 @@
           <p class="bk-about-kicker bk-about-kicker--light">Where we work</p>
           <h2 id="bk-neighborhoods-title"><span>One borough,</span> <span>many rooflines.</span></h2>
           <p>From brownstone blocks to busy commercial streets, our Brooklyn work responds to each property's roof type, access, and building details.</p>
-          <a class="bk-about-text-link bk-about-text-link--light" href="brooklyn.html#areas">Explore Brooklyn service areas <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--solid btn--white bk-about-neighborhoods__cta" href="brooklyn-contact-us.html#contact-form">Get a Free Estimate</a>
         </div>
         <div class="bk-about-neighborhoods__directory">
           <p>Neighborhoods we serve</p>
           <ul><li>Park Slope</li><li>Williamsburg</li><li>Bushwick</li><li>Bedford-Stuyvesant</li><li>Crown Heights</li><li>Brooklyn Heights</li></ul>
-          <span>And surrounding Brooklyn neighborhoods</span>
+          <span>And all other Brooklyn neighborhoods</span>
         </div>
       </div>
     </div>
@@ -293,11 +285,10 @@
 
   <section class="bk-about-cta" aria-labelledby="bk-about-cta-title">
     <div class="container bk-about-cta__inner">
-      <p class="bk-about-kicker bk-about-kicker--light">Start a conversation</p>
+      <p class="bk-about-kicker bk-about-kicker--light">Get a Free Consultation</p>
       <h2 id="bk-about-cta-title"><span>Tell us about your</span> <span>Brooklyn property.</span></h2>
       <p>Whether the job is a leak repair, a new roof, or an exterior update, call our team to discuss the next step.</p>
-      <div class="bk-about-cta__actions"><a class="btn btn--solid btn--white" href="brooklyn-contact-us.html#contact-form">Request a Free Estimate</a><a class="btn btn--solid btn--phone" href="tel:+17185362667"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-536-2667</a></div>
-      <span class="bk-about-cta__hours">Every day · 7:00 am – 11:00 pm</span>
+      <div class="bk-about-cta__actions"><a class="btn btn--solid btn--white" href="brooklyn-contact-us.html#contact-form">Get a Free Estimate</a><a class="btn btn--solid btn--phone" href="tel:+17185362667"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-536-2667</a></div>
     </div>
   </section>
 </main>
@@ -401,7 +392,7 @@
 
 </footer>
 
-<script src="js/brooklyn.js?v=6" defer></script>
+<script src="js/brooklyn.js?v=8" defer></script>
 
 <!-- Live chat (Blazeo), starts ten seconds after load.
      TODO: confirm the Brooklyn chat account id with the client — this uses the Royal account. -->

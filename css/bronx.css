@@ -195,6 +195,10 @@ svg { display: inline-block; }
    .btn--navy                 navy fill or navy outline (with/without --solid)
    .btn--white                white fill, navy text (on dark backgrounds)
    .btn--ghost-light          white outline on dark backgrounds
+   .btn--blue                 blue fill for estimate buttons on navy backgrounds
+   Oct 17 (Sean): every phone-number call button is orange (.btn--solid);
+   every "Get a Free Estimate" button is navy (.btn--solid.btn--navy) on light
+   backgrounds and blue (.btn--solid.btn--blue) on navy backgrounds.
    .btn--block / .btn--sm     full width / compact
    .btn__icon                 leading svg icon                               */
 .btn {
@@ -217,6 +221,7 @@ svg { display: inline-block; }
 .btn--white.btn--solid { color: var(--navy); }
 .btn--white.btn--solid:hover, .btn--white.btn--solid:focus-visible { color: #fff; }
 .btn--ghost-light { --color: rgba(255, 255, 255, .85); color: #fff; }
+.btn--blue { --color: var(--navy-600); --hover: var(--brand); }
 .btn--ghost-light:hover, .btn--ghost-light:focus-visible { background: #fff; border-color: #fff; color: var(--navy); }
 .btn--block { width: 100%; }
 .btn--sm { min-height: 2.75rem; padding: .55rem 1.1rem; font-size: 1rem; }
@@ -274,6 +279,9 @@ svg { display: inline-block; }
 .rating-mark strong { font-size: 1.125rem; font-weight: 700; }
 .rating-mark .stars { color: var(--star); font-size: .875rem; letter-spacing: .05em; }
 .rating-mark small { display: block; margin-top: .15rem; color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+/* Dark variant (hero): see-through mark with a hairline, no white box (same as brooklyn.html's hero). */
+.rating-mark--dark { border: 1px solid var(--line-dark); border-radius: 10px; background: rgba(255, 255, 255, .08); color: #fff; }
+.rating-mark--dark small { color: var(--on-dark-muted); }
 
 /* Breadcrumb for inner pages: <nav class="bx-crumbs" aria-label="Breadcrumb"><ol><li><a href="bronx.html">Home</a></li><li aria-current="page">FAQ</li></ol></nav> */
 .bx-crumbs ol { display: flex; flex-wrap: wrap; gap: .35rem; font-size: var(--fs-xs); font-weight: 500; }
@@ -543,7 +551,8 @@ svg { display: inline-block; }
    ========================================================================== */
 
 /* Hero: the nyc6 roof-replacement clip fills the section behind a navy
-   scrim; copy + rating row on the left, estimate card on the right.
+   scrim; copy, buttons, then the rating row on the left (Brooklyn's order,
+   Oct 17), estimate card on the right.
    The scrim never drops below .8 navy behind the copy column, so white text
    stays above 9:1 and the orange-300 accents above 4.5:1 even over the
    brightest frame of the video. -------------------------------------------- */
@@ -572,11 +581,12 @@ svg { display: inline-block; }
 @media (min-width: 75.01rem) { .bx-hero__title { white-space: nowrap; } }
 .bx-hero__title span { display: block; margin-top: .55rem; color: var(--orange-300); font-size: .62em; line-height: 1.2; letter-spacing: -.02em; }
 .bx-hero__text { max-width: 54ch; margin-top: var(--space-4); color: rgba(255, 255, 255, .88); font-size: var(--fs-lede); line-height: 1.6; text-wrap: pretty; }
-.bx-hero__proof { display: flex; flex-wrap: wrap; align-items: stretch; gap: .6rem; margin-top: var(--space-5); }
-.bx-hero__proof .bx-badge, .bx-hero__proof .rating-mark { border-color: transparent; border-bottom-color: var(--brand); box-shadow: var(--shadow-sm); }
-.bx-hero__stat { display: flex; flex-direction: column; justify-content: center; min-height: 3.25rem; padding: .35rem .9rem; border: 1px solid rgba(255, 255, 255, .22); border-left: 3px solid var(--brand); border-radius: var(--radius-sm); background: rgba(2, 22, 52, .55); color: #fff; line-height: 1.1; }
-.bx-hero__stat strong { font-size: 1.125rem; }
-.bx-hero__stat small { margin-top: .2rem; color: rgba(255, 255, 255, .8); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+/* Proof row: transparent marks under a hairline, like brooklyn.html's hero. */
+.bx-hero__proof { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1rem; margin-top: var(--space-6); padding-top: var(--space-5); border-top: 1px solid var(--line-dark); }
+.bx-hero__proof .rating-mark { min-height: 0; padding: .35rem .65rem; }
+.bx-hero__stat { display: flex; flex-direction: column; padding-left: 1rem; border-left: 1px solid var(--line-dark); color: #fff; line-height: 1.1; }
+.bx-hero__stat strong { font-size: 1.25rem; }
+.bx-hero__stat small { margin-top: .15rem; color: var(--on-dark-muted); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .bx-hero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
 .bx-hero :focus-visible { outline-color: #fff; }
 .bx-hero__form :focus-visible { outline-color: var(--brand); }
@@ -776,7 +786,8 @@ svg { display: inline-block; }
   .bx-hero__form .field textarea { min-height: 3.6rem; height: 4.25rem; }
   .bx-hero__form .field input { min-height: 2.5rem; }
   .bx-hero__text { margin-top: .75rem; }
-  .bx-hero__proof, .bx-hero__actions { margin-top: 1rem; }
+  .bx-hero__actions { margin-top: 1.25rem; }
+  .bx-hero__proof { margin-top: 1.25rem; padding-top: 1rem; }
   /* Services: two rows of shorter tiles so the section stays on one screen. */
   .bx-services { padding-block: 1.5rem; }
   .bx-services .bx-head { margin-bottom: 1rem; }
@@ -875,7 +886,7 @@ svg { display: inline-block; }
   .bx-hero__title { font-size: clamp(2rem, 1.6rem + 2vw, 2.4rem); }
   .bx-hero__title span { font-size: .66em; }
   .bx-hero__text { margin-inline: auto; }
-  .bx-hero__proof { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4rem; }
+  .bx-hero__proof { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4rem; margin-top: 1.25rem; padding-top: 1rem; }
   .bx-hero__proof > * { justify-content: center; min-width: 0; }
   .bx-hero__proof .bx-badge { gap: .4rem; padding: .35rem .4rem; }
   .bx-hero__proof .bx-badge img { width: 1.4rem; height: 1.4rem; }
@@ -885,11 +896,11 @@ svg { display: inline-block; }
   .bx-hero__proof .rating-mark strong { font-size: .875rem; }
   .bx-hero__proof .rating-mark .stars { font-size: .6875rem; letter-spacing: 0; }
   .bx-hero__proof small { font-size: .5625rem; letter-spacing: .06em; }
-  .bx-hero__stat { align-items: center; padding: .35rem .4rem; border-left: 0; border-top: 3px solid var(--brand); }
+  .bx-hero__stat { align-items: center; justify-content: center; padding: .35rem .4rem; border: 1px solid var(--line-dark); border-radius: 10px; background: rgba(255, 255, 255, .08); }
   .bx-hero__stat strong { font-size: .875rem; }
   .bx-hero__actions .btn { flex: 1 1 12rem; }
   .bx-hero__form { margin-inline: auto; }
-  .bx-hero__proof .bx-hero__stat small { color: rgba(255, 255, 255, .8); }
+  .bx-hero__proof .bx-hero__stat small { color: var(--on-dark-muted); }
 
   .bx-trust__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .bx-trust__item { flex-direction: column; align-items: flex-start; gap: .5rem; padding: .9rem .75rem; }
@@ -971,12 +982,17 @@ svg { display: inline-block; }
   .bx-hero__video { display: none; }
 }
 
-/* ---- Oct 16 (Nitesh): footer brand stacks: logo on top, the paragraph under it, then the button. ---- */
-.bkf__brand { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
-.bkf__logo { grid-row: auto; align-self: flex-start; }
-.bkf__about { max-width: 42ch; margin-top: 0 !important; }
-.bkf__brand .bkf__cta { margin-top: .25rem; }
-
-/* Oct 16 (Nitesh): the footer paragraph under the logo runs a little wider. */
-.bkf__about { max-width: 52ch; }
+/* ---- Oct 17 (Sean, BXH12): footer brand: logo LEFT of the paragraph, side by side,
+   with the button under the paragraph, to shorten the footer.
+   <div class="bkf__brand"><a class="bkf__logo">img</a><div class="bkf__brandtext"><p class="bkf__about">…</p><a class="btn bkf__cta">…</a></div></div> ---- */
+.bkf__brand { display: flex; align-items: flex-start; gap: 1.25rem; }
+.bkf__logo { flex: none; grid-row: auto; }
+.bkf__brandtext { min-width: 0; }
+.bkf__about { max-width: 52ch; margin-top: 0 !important; }
+.bkf__brandtext .bkf__cta { margin-top: .85rem; }
 @media (max-width: 75rem) { .bkf__about { max-width: 62ch; } }
+@media (max-width: 40rem) {
+  .bkf__brand { gap: 1rem; }
+  .bkf__logo img { height: 3.5rem; }
+  .bkf__about { font-size: .875rem; line-height: 1.6; }
+}

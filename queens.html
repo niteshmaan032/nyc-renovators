@@ -22,8 +22,8 @@
        footer) comes from the nyc6 sheets. The Queens body sections live in
        queens.css under the q- class prefix inside .qz, so the two never collide. -->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/nyc6.css?v=37">
-  <link rel="stylesheet" href="css/queens.css?v=29">
+  <link rel="stylesheet" href="css/nyc6.css?v=48">
+  <link rel="stylesheet" href="css/queens.css?v=30">
 </head>
 <body class="page-home page-queens">
 
@@ -747,7 +747,7 @@
               <p class="field field--full">
                 <label class="field__label" for="ef-message">How Can We Help?</label>
                 <textarea class="field__input field__input--area" id="ef-message" name="message"
-                          rows="2" placeholder="We have a leak over our home&rsquo;s back bedroom, it&rsquo;s a flat roof&hellip;"></textarea>
+                          rows="2" placeholder="We have a leak over our home&rsquo;s back bedroom, it&rsquo;s a flat roof&hellip;" required></textarea>
               </p>
 
             </div>
@@ -1306,7 +1306,8 @@
             </div>
           </div>
           <div class="q-contact__map">
-            <iframe title="Map showing Royal Renovators Inc. at 118-35 Queens Blvd, Forest Hills" src="https://www.google.com/maps?q=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            <!-- Map zoom z=14: two levels further out than before (Google default, 16) per Oct 17; the place card still shows. -->
+            <iframe title="Map showing Royal Renovators Inc. at 118-35 Queens Blvd, Forest Hills" src="https://www.google.com/maps?q=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375&amp;z=14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
           </div>
         </div>
         <form class="q-quote-card q-contact__form" id="contact-form" novalidate aria-labelledby="contact-form-title">
@@ -1317,7 +1318,7 @@
           </div>
           <p class="q-field__note q-contact__privacy">We&rsquo;ll only contact you about your project.</p>
           <div class="q-field"><label for="cf-address">Address</label><input id="cf-address" name="address" type="text" autocomplete="street-address" placeholder="Street, Queens" required></div>
-          <div class="q-field"><label for="cf-message">How Can We Help?</label><textarea id="cf-message" name="message" rows="3" placeholder="Tell us about the roof or exterior work"></textarea></div>
+          <div class="q-field"><label for="cf-message">How Can We Help?</label><textarea id="cf-message" name="message" rows="3" placeholder="Tell us about the roof or exterior work" required></textarea></div>
           <button class="q-btn q-btn--red q-btn--block" type="submit">
             <span class="q-btn__pip" aria-hidden="true"><svg class="q-btn__arrow" aria-hidden="true"><use href="#i-btnarrow"/></svg><svg class="q-btn__arrow q-btn__arrow--copy" aria-hidden="true"><use href="#i-btnarrow"/></svg></span>
             <span class="q-btn__label">Get My Free Estimate</span>
@@ -1477,8 +1478,8 @@
     <span class="call-fab__icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
   </a>
 
-  <script src="js/nyc6.js?v=6" defer></script>
-  <script src="js/queens.js?v=6" defer></script>
+  <script src="js/nyc6.js?v=10" defer></script>
+  <script src="js/queens.js?v=7" defer></script>
 
   <!-- Live chat (Blazeo), starts ten seconds after load -->
   <script>

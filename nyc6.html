@@ -25,7 +25,7 @@
 
   <!-- Page-scoped overrides. Loaded after style.css so this page can diverge
        from index.html without touching the shared stylesheet. -->
-  <link rel="stylesheet" href="css/nyc6.css?v=37">
+  <link rel="stylesheet" href="css/nyc6.css?v=48">
 </head>
 <body class="page-home">
 
@@ -755,7 +755,7 @@
               <p class="field field--full">
                 <label class="field__label" for="ef-message">How Can We Help?</label>
                 <textarea class="field__input field__input--area" id="ef-message" name="message"
-                          rows="2" placeholder="We have a leak over our home&rsquo;s back bedroom, it&rsquo;s a flat roof&hellip;"></textarea>
+                          rows="2" placeholder="We have a leak over our home&rsquo;s back bedroom, it&rsquo;s a flat roof&hellip;" required></textarea>
               </p>
 
             </div>
@@ -1900,7 +1900,7 @@
                 </span>
               </a>
             </li>
-            <li>
+            <li class="is-bbb">
               <a href="#bbb">
                 <img src="images/bb+.webp" alt="BBB Accredited Business, A+ rating" width="400" height="259" loading="lazy" decoding="async">
               </a>
@@ -1911,13 +1911,13 @@
                      width="1424" height="520" loading="lazy" decoding="async">
               </a>
             </li>
-            <li>
+            <li class="is-angi">
               <a href="#angi">
                 <img src="images/ANGIES_LIST_SUPER_SAVER_award.png" alt="Angie&rsquo;s List Super Service Award"
                      width="600" height="462" loading="lazy" decoding="async">
               </a>
             </li>
-            <li>
+            <li class="is-yelp">
               <a href="#yelp">
                 <img src="images/PngItem_1663.png" alt="People love us on Yelp"
                      width="540" height="539" loading="lazy" decoding="async">
@@ -2090,6 +2090,60 @@
 
 
 
+    <!-- See Our Team in Action (Oct 17). Only the local poster (lazy) loads with
+         the page. js/nyc6.js (initVideoFacade) swaps in the YouTube iframe
+         (youtube-nocookie) when the section scrolls near: muted, looping, cropped
+         to the 4:3 picture. A click on the video opens the normal player
+         with sound and controls. With reduced motion it waits for a click. -->
+    <section class="section team-video" id="team-video" aria-labelledby="team-video-title">
+      <div class="container team-video__inner">
+
+        <div class="team-video__body">
+          <p class="section-eyebrow">Video</p>
+          <h2 class="section-title team-video__title" id="team-video-title">See Our Team <span class="accent">in Action</span></h2>
+          <p class="section-lede team-video__lede">
+            Watch a Royal Renovators crew at work on a Brooklyn flat roof, with the same
+            careful process we bring to every roof across New York City.
+          </p>
+          <ul class="team-video__points">
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i>Tear-off down to the roof deck</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i>New flat roof installed in one day</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i>Filmed on a Bushwick, Brooklyn job</li>
+          </ul>
+          <div class="team-video__actions">
+            <a class="btn btn--navy" href="#estimate">
+              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+              <span class="btn__label">Get a Free Estimate</span></a>
+            <a class="btn btn--primary" href="tel:+17184146067">
+              <span class="btn__pip" aria-hidden="true"><i class="btn__arrow fa-solid fa-phone"></i><i class="btn__arrow btn__arrow--copy fa-solid fa-phone"></i></span>
+              <span class="btn__label">Call (718) 414-6067</span></a>
+          </div>
+        </div>
+
+        <!-- The video and its title are one card: the player on top, the
+             title bar under it. Same height as the text column on desktop. -->
+        <figure class="team-video__card">
+          <div class="team-video__player" data-yt-facade data-yt-id="JhnAcLc9duE"
+               data-yt-title="Flat Roof Replacement in Bushwick, Brooklyn.">
+            <button class="team-video__play" type="button"
+                    aria-label="Play video: Flat Roof Replacement in Bushwick, Brooklyn.">
+              <img class="team-video__poster" src="images/timelapse-bushwick-flat-roof.jpg"
+                   alt="Royal Renovators crew replacing a flat roof on a Bushwick, Brooklyn row house"
+                   width="960" height="720" loading="lazy" decoding="async">
+              <span class="team-video__icon" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+            </button>
+          </div>
+          <figcaption class="team-video__caption">
+            <span class="team-video__yt" aria-hidden="true"><i class="fa-brands fa-youtube"></i></span>
+            <span class="team-video__meta">
+              <h3 class="team-video__name">Flat Roof Replacement in Bushwick, Brooklyn.</h3>
+            </span>
+          </figcaption>
+        </figure>
+
+      </div>
+    </section>
+
     <section class="section faqs" id="faqs">
       <div class="container faqs__inner">
 
@@ -2189,8 +2243,9 @@
             </ul>
 
           <div class="contact__map">
+            <!-- Map zoom z=14: two levels further out than before (Google default, 16) per Oct 17; the place card still shows. -->
             <iframe class="contact__map-frame"
-                    src="https://www.google.com/maps?q=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375&output=embed"
+                    src="https://www.google.com/maps?q=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375&amp;z=14&amp;output=embed"
                     title="Map showing Royal Renovators Inc. at 118-35 Queens Blvd, Forest Hills, NY 11375"
                     loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
@@ -2237,7 +2292,7 @@
               <p class="field field--full">
                 <label class="field__label" for="cf-message">How Can We Help?</label>
                 <textarea class="field__input field__input--area" id="cf-message" name="message"
-                          rows="2" placeholder="We have a leak over our home&rsquo;s back bedroom, it&rsquo;s a flat roof&hellip;"></textarea>
+                          rows="2" placeholder="We have a leak over our home&rsquo;s back bedroom, it&rsquo;s a flat roof&hellip;" required></textarea>
               </p>
 
             </div>
@@ -2467,7 +2522,7 @@
   </a>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-  <script src="js/nyc6.js?v=6" defer></script>
+  <script src="js/nyc6.js?v=10" defer></script>
 
   <!-- Live chat (Blazeo), starts six seconds after load -->
   <script>

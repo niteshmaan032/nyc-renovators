@@ -142,6 +142,9 @@
       if (phone) { var digits = phone.value.replace(/\D/g, ''); if (digits.length < 10 || digits.length > 11) { setError(phone, 'Enter a valid phone number.'); ok = false; first = first || phone; } }
       if (email && !email.checkValidity()) { setError(email, 'Enter a valid email address.'); ok = false; first = first || email; }
       if (address && address.value.trim().length < 4) { setError(address, 'Enter the property address.'); ok = false; first = first || address; }
+      /* Oct 19 (Sean): every field is required, the message too. */
+      var message = form.querySelector('[name="message"]');
+      if (message && !message.value.trim()) { setError(message, 'Tell us how we can help.'); ok = false; first = first || message; }
       if (!ok) { if (first) first.focus(); return; }
       var notice = form.querySelector('.form-thanks');
       if (!notice) {

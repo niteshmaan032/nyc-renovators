@@ -671,9 +671,63 @@
     });
   }
 
-  /* Both forms on the page — hero estimate and contact.
-     Validation is left to the browser: the fields carry required/type, so an
-     invalid submit never reaches this handler.
+  /* "See Our Team in Action" (homepage, Oct 17): YouTube facade. The page
+     ships only a lazy local poster and a play button. The youtube-nocookie
+     iframe is created when the section scrolls within 200px of the screen
+     (muted autoplay, looping; browsers only allow autoplay when muted), or on
+     a click (with sound). With prefers-reduced-motion it waits for the click.
+     No YouTube scripts or cookies load before then. */
+  function initVideoFacade() {
+    [].slice.call(document.querySelectorAll('[data-yt-facade]')).forEach(function (player) {
+      var button = player.querySelector('button');
+      var id = player.getAttribute('data-yt-id');
+      if (!button || !id) return;
+      var mode = '';
+
+      /* ambient: muted loop, no controls, cropped to the 4:3 picture.
+         full: the normal player with sound and controls. */
+      function load(next) {
+        if (mode === next || mode === 'full') return;
+        var params = next === 'ambient'
+          ? '?autoplay=1&mute=1&loop=1&playlist=' + id + '&controls=0&disablekb=1&playsinline=1&rel=0'
+          : '?autoplay=1&playsinline=1&rel=0';
+        var frame = document.createElement('iframe');
+        frame.className = 'team-video__frame';
+        frame.src = 'https://www.youtube-nocookie.com/embed/' + id + params;
+        frame.title = player.getAttribute('data-yt-title') || 'YouTube video';
+        frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        frame.referrerPolicy = 'strict-origin-when-cross-origin';
+        frame.allowFullscreen = true;
+        if (next === 'ambient') { frame.tabIndex = -1; frame.setAttribute('aria-hidden', 'true'); }
+        player.innerHTML = '';
+        player.appendChild(frame);
+        player.classList.toggle('is-ambient', next === 'ambient');
+        player.classList.add('is-playing');
+        mode = next;
+        if (next === 'full') frame.focus();
+      }
+
+      /* The poster button, or a click on the muted video, opens the player with sound. */
+      button.addEventListener('click', function () { load('full'); });
+      player.addEventListener('click', function () { if (mode === 'ambient') load('full'); });
+
+      var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!calm && 'IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); load('ambient'); }
+        }, { rootMargin: '200px 0px' });
+        io.observe(player);
+      }
+    });
+  }
+
+  /* Every .js-form (hero estimate and contact forms).
+     Every field is required (Oct 17: the message box could be skipped). The
+     browser's own bubbles are switched off (form.noValidate) and the check
+     below runs instead: each empty or malformed [required] field gets
+     .field--error on its .field wrapper, aria-invalid="true", and a
+     .field__error line under it; the first bad field takes focus and the
+     submit is blocked. Typing in a field clears its error.
 
      TODO: no endpoint is wired yet. Point `ENDPOINT` at the form service (or a
      mail handler) and the fetch below goes live; until then the submit is
@@ -691,8 +745,84 @@
       if (status) status.textContent = message;
     }
 
+    form.noValidate = true;
+
+    /* What each field must hold, and the message shown when it doesn't. */
+    function problem(field) {
+      var value = field.value.trim();
+      var digits;
+      if (!field.required) return '';
+      if (field.type === 'tel') {
+        digits = value.replace(/\D/g, '');
+        if (!value) return 'Enter your phone number.';
+        if (digits.length < 10 || digits.length > 11) return 'Enter a valid phone number.';
+        return '';
+      }
+      if (field.type === 'email') {
+        if (!value) return 'Enter your email address.';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Enter a valid email address.';
+        return '';
+      }
+      if (!value) {
+        if (field.name === 'name') return 'Enter your name.';
+        if (field.name === 'address') return 'Enter the property address.';
+        if (field.name === 'message') return 'Tell us how we can help.';
+        return 'This field is required.';
+      }
+      return '';
+    }
+
+    function setError(field, message) {
+      var wrap = field.closest('.field');
+      var line;
+      if (!wrap) return;
+      line = wrap.querySelector('.field__error');
+      if (!line) {
+        line = document.createElement('span');
+        line.className = 'field__error';
+        line.id = field.id + '-error';
+        wrap.appendChild(line);
+      }
+      line.textContent = message;
+      wrap.classList.add('field--error');
+      field.setAttribute('aria-invalid', 'true');
+      field.setAttribute('aria-describedby', line.id);
+    }
+
+    function clearError(field) {
+      var wrap = field.closest('.field');
+      var line = wrap && wrap.querySelector('.field__error');
+      if (line) line.remove();
+      if (wrap) wrap.classList.remove('field--error');
+      field.removeAttribute('aria-invalid');
+      field.removeAttribute('aria-describedby');
+    }
+
+    var fields = [].slice.call(form.querySelectorAll('input, textarea, select'));
+
+    fields.forEach(function (field) {
+      field.addEventListener('input', function () { clearError(field); });
+    });
+
     form.addEventListener('submit', function (event) {
+      var first = null;
       event.preventDefault();
+
+      fields.forEach(function (field) {
+        var message = problem(field);
+        if (message) {
+          setError(field, message);
+          first = first || field;
+        } else {
+          clearError(field);
+        }
+      });
+
+      if (first) {
+        say('');
+        first.focus();
+        return;
+      }
 
       if (!ENDPOINT) {
         say('Thank you. We have your details and will get back to you within one day.');
@@ -748,6 +878,7 @@
     initProjectTabs();
     initLightbox();
     initVideoBox();
+    initVideoFacade();
     initForms();
     initBackToTop();
   });

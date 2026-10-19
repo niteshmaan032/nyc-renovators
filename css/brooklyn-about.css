@@ -14,21 +14,7 @@
 .page-brooklyn-about .bk-about-text-link--light:hover { color: #ffc2c9; }
 .page-brooklyn-about .bk-about-text-link svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 2; }
 
-.bk-about-hero { overflow: hidden; background: var(--navy-deep); color: #fff; }
-.bk-about-hero__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(2rem, 4vw, 5rem); padding-top: calc(var(--nav-h) + 3rem); padding-bottom: clamp(2.5rem, 4vw, 4.5rem); }
-.bk-about-hero__copy { padding-block: 1rem; }
-.bk-about-hero h1 { max-width: none; color: #fff; font-size: clamp(2.7rem, 4.4vw, 5.1rem); line-height: 1.04; }
-.bk-about-hero h1 em { color: #f6b1b9; font-style: normal; }
-.bk-about-hero__copy > p:not(.bk-about-kicker) { max-width: 49ch; margin-top: 1.5rem; color: var(--on-dark-muted); font-size: clamp(1.05rem, 1rem + .25vw, 1.22rem); line-height: 1.6; }
-.bk-about-hero__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 1.5rem; margin-top: 2rem; }
-.bk-about-hero__visual { position: relative; height: clamp(28rem, 43vw, 39rem); min-width: 0; overflow: hidden; background: #31506c; }
-.bk-about-hero__visual::before { position: absolute; z-index: 1; top: 0; left: 0; width: 28%; height: .45rem; background: var(--red); content: ''; }
-.bk-about-hero__visual img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
-.bk-about-hero__visual figcaption { position: absolute; right: 0; bottom: 0; display: grid; gap: .12rem; min-width: 11rem; padding: .85rem 1.2rem; background: #fff; color: var(--navy); }
-.bk-about-hero__visual figcaption span { color: var(--muted); font-size: .67rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
-.bk-about-hero__visual figcaption strong { font-size: 1.08rem; letter-spacing: 0; }
-.bk-about-hero__foot { border-top: 1px solid var(--hairline-dark); }
-.bk-about-hero__foot .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.75rem; color: var(--on-dark-muted); font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+/* Hero: see "17 Oct hero" at the end of this file. */
 
 .bk-about-intro { padding-block: clamp(3.5rem, 6vw, 6rem); background: #fff; }
 .bk-about-intro__grid { display: grid; grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr); gap: clamp(2rem, 5vw, 6rem); align-items: stretch; }
@@ -121,17 +107,6 @@
 .bk-about-planning__points h3 { margin-top: .55rem; }
 .bk-about-planning__points p { max-width: 46ch; margin-top: .55rem; color: var(--muted); font-size: .94rem; }
 
-.bk-about-values { padding-block: clamp(3.5rem, 5vw, 5.5rem); background: #fff; }
-.bk-about-values__head { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.bk-about-values__head h2 { max-width: none; }
-.bk-about-values__head > p:last-child { max-width: 55ch; margin-top: 1rem; color: var(--muted); }
-.bk-about-values__principles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 2.25rem; border-block: 1px solid var(--hairline); }
-.bk-about-values__principles article { min-width: 0; padding: clamp(1.5rem, 2.4vw, 2.5rem); }
-.bk-about-values__principles article + article { border-left: 1px solid var(--hairline); }
-.bk-about-values__principles svg { width: 1.75rem; height: 1.75rem; fill: none; stroke: var(--red); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-.bk-about-values__principles h3 { margin-top: 1.2rem; }
-.bk-about-values__principles p { max-width: 43ch; margin-top: .6rem; color: var(--muted); font-size: .94rem; }
-
 .bk-about-neighborhoods { padding-block: clamp(3.5rem, 5vw, 5.5rem); background: var(--sky); }
 .bk-about-neighborhoods__panel { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); min-height: 24rem; box-shadow: 0 18px 40px rgba(2, 35, 80, .07); }
 .bk-about-neighborhoods__intro { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(2rem, 4vw, 4rem); background: var(--navy); color: #fff; }
@@ -153,13 +128,9 @@
 .bk-about-cta__actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 1rem 1.5rem; margin-top: 1.5rem; }
 .bk-about-cta__phone { display: inline-flex; align-items: center; min-height: 2.75rem; color: #fff; font-size: 1rem; font-weight: 700; text-decoration: underline; text-underline-offset: .25em; }
 .bk-about-cta__phone:hover { color: #f6b1b9; }
-.bk-about-cta__hours { margin-top: .8rem; color: var(--on-dark-muted); font-size: .83rem; }
 
 @media (max-width: 60rem) {
-  .bk-about-hero__grid, .bk-about-intro__grid, .bk-about-buildings__head, .bk-about-scope__head, .bk-about-details__grid, .bk-about-process__grid, .bk-about-planning__head, .bk-about-neighborhoods__panel { grid-template-columns: 1fr; }
-  .bk-about-hero__grid { gap: 2rem; }
-  .bk-about-hero h1 { max-width: 15ch; }
-  .bk-about-hero__visual { height: clamp(20rem, 50vw, 32rem); }
+  .bk-about-intro__grid, .bk-about-buildings__head, .bk-about-scope__head, .bk-about-details__grid, .bk-about-process__grid, .bk-about-planning__head, .bk-about-neighborhoods__panel { grid-template-columns: 1fr; }
   .bk-about-buildings__head { gap: .75rem; }
   .bk-about-buildings__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .bk-about-buildings__cards article { min-height: 20rem; }
@@ -172,8 +143,6 @@
   .bk-about-process__intro figure { height: 18rem; max-width: 36rem; }
 }
 @media (max-width: 48rem) {
-  .bk-about-hero__grid { padding-top: calc(var(--nav-h) + 2.5rem); }
-  .bk-about-hero__foot .container { align-items: flex-start; flex-direction: column; justify-content: center; gap: .2rem; padding-block: .7rem; }
   .bk-about-scope__feature { grid-template-columns: 1fr; grid-template-rows: 15rem auto; }
   .bk-about-buildings__cards { grid-template-columns: 1fr; }
   .bk-about-buildings__cards article, .bk-about-buildings__cards article:last-child { grid-column: auto; min-height: 0; }
@@ -182,54 +151,22 @@
   .bk-about-buildings__cta { align-items: flex-start; flex-direction: column; }
   .bk-about-scope__side { grid-template-columns: 1fr; }
   .bk-about-neighborhoods__directory ul { grid-template-columns: 1fr; }
-  .bk-about-values__principles { grid-template-columns: 1fr; }
-  .bk-about-values__principles article { padding-inline: 0; }
-  .bk-about-values__principles article + article { border-left: 0; border-top: 1px solid var(--hairline); }
   .bk-about-details__notes { grid-template-columns: 1fr; gap: 1.25rem; }
   .bk-about-planning__points { grid-template-columns: 1fr; gap: 1.25rem; }
   .bk-about-planning__photo { height: 17rem; }
   .bk-about-cta__actions { flex-direction: column; gap: .5rem; }
 }
 @media (max-width: 40rem) {
-  .bk-about-hero h1 { font-size: clamp(2.35rem, 8.5vw, 3rem); }
-  .bk-about-hero__visual { height: 19rem; }
   .bk-about-intro__media { aspect-ratio: 4 / 3; }
   .bk-about-process__steps li { grid-template-columns: 2.4rem minmax(0, 1fr); gap: .7rem; }
   .bk-about-neighborhoods__intro, .bk-about-neighborhoods__directory { padding: 1.5rem; }
 }
 
 /* ==========================================================================
-   Client-screen pass (1 Oct): hero above the fold, home-page section rhythm,
+   Client-screen pass (1 Oct): home-page section rhythm,
    and the two CTA pairings. Appended as overrides so the design rules above
    stay untouched.
    ========================================================================== */
-
-/* --- Hero: fills one screen, with the next section peeking -------------- */
-.page-brooklyn-about .bk-about-hero {
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100svh - 3.5rem);
-}
-.page-brooklyn-about .bk-about-hero__grid {
-  flex: 1 1 auto;
-  align-content: center;
-  padding-top: calc(var(--nav-h) + 1.25rem);
-  padding-bottom: 1.5rem;
-  gap: clamp(1.5rem, 3vw, 3.5rem);
-}
-.page-brooklyn-about .bk-about-hero__copy { padding-block: 0; }
-.page-brooklyn-about .bk-about-hero__copy > p:not(.bk-about-kicker) { margin-top: 1rem; }
-.page-brooklyn-about .bk-about-hero__actions { margin-top: 1.5rem; }
-.page-brooklyn-about .bk-about-hero__visual { height: clamp(17rem, 27vw, 26rem); }
-.page-brooklyn-about .bk-about-hero__foot { flex: none; }
-.page-brooklyn-about .bk-about-hero__foot .container { min-height: 3rem; }
-@media (max-height: 640px), (max-width: 60rem) {
-  .page-brooklyn-about .bk-about-hero { min-height: 0; }
-}
-@media (min-width: 60.01rem) and (max-height: 780px) {
-  .page-brooklyn-about .bk-about-hero h1 { font-size: clamp(2.4rem, 3.6vw, 4rem); }
-  .page-brooklyn-about .bk-about-hero__visual { height: clamp(15rem, 24vw, 22rem); }
-}
 
 /* --- Section rhythm: the home page's --section-pad on every band --------- */
 .page-brooklyn-about .bk-about-intro,
@@ -238,7 +175,6 @@
 .page-brooklyn-about .bk-about-details,
 .page-brooklyn-about .bk-about-process,
 .page-brooklyn-about .bk-about-planning,
-.page-brooklyn-about .bk-about-values,
 .page-brooklyn-about .bk-about-neighborhoods {
   padding-block: var(--section-pad);
 }
@@ -253,7 +189,6 @@
 .page-brooklyn-about .bk-about-process__grid { gap: clamp(1.5rem, 4vw, 4rem); }
 .page-brooklyn-about .bk-about-intro__grid { gap: clamp(1.5rem, 3.5vw, 4rem); }
 @media (min-width: 60.01rem) { .page-brooklyn-about .bk-about-intro__media { min-height: 24rem; } }
-.page-brooklyn-about .bk-about-values__principles { margin-top: var(--space-5); }
 .page-brooklyn-about .bk-about-planning__points { margin-top: var(--space-5); }
 .page-brooklyn-about .bk-about-process__intro figure { margin-top: var(--space-5); height: clamp(11rem, 15vw, 15rem); }
 .page-brooklyn-about .bk-about-neighborhoods__panel { min-height: 0; }
@@ -262,7 +197,6 @@
 .page-brooklyn-about .bk-about-buildings__cards article,
 .page-brooklyn-about .bk-about-scope__side article,
 .page-brooklyn-about .bk-about-scope__feature > div,
-.page-brooklyn-about .bk-about-values__principles article,
 .page-brooklyn-about .bk-about-neighborhoods__intro,
 .page-brooklyn-about .bk-about-neighborhoods__directory {
   padding: clamp(1.25rem, 1rem + .75vw, 1.75rem);
@@ -271,7 +205,6 @@
 .page-brooklyn-about .bk-about-buildings__cards h3 { margin-top: 1.25rem; }
 .page-brooklyn-about .bk-about-buildings__focus { padding-top: 1rem; }
 .page-brooklyn-about .bk-about-buildings__cta { padding: 1rem clamp(1.25rem, 1rem + .75vw, 1.75rem); }
-.page-brooklyn-about .bk-about-values__principles h3 { margin-top: .85rem; }
 .page-brooklyn-about .bk-about-planning__photo { height: clamp(15rem, 20vw, 20rem); }
 .page-brooklyn-about .bk-about-neighborhoods__directory li { min-height: 3.2rem; }
 .page-brooklyn-about .bk-about-process__steps li { padding: 1.1rem 0; }
@@ -290,10 +223,86 @@
 .page-brooklyn-about .drawer__actions .btn--white { border-color: rgba(2, 35, 80, .22); }
 .page-brooklyn-about .bk-about-cta__actions .btn { flex: none; }
 
-/* The hero row stretches to the screen it now fills, so the photo uses the
-   height instead of leaving a band of empty navy above and below. */
-@media (min-width: 60.01rem) {
-  .page-brooklyn-about .bk-about-hero__grid { align-content: stretch; align-items: stretch; }
-  .page-brooklyn-about .bk-about-hero__copy { display: flex; flex-direction: column; justify-content: center; }
-  .page-brooklyn-about .bk-about-hero__visual { height: auto; min-height: 20rem; }
+/* ==========================================================================
+   17 Oct hero: the bronx-about-us.html layout in Brooklyn colors.
+   Compact navy band under the fixed header: copy on the left (breadcrumb,
+   H1, intro, facts, two buttons), a crew photo on the right with a white
+   caption card, and a short red rule along the bottom edge.
+   ========================================================================== */
+.bk-about-hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  padding: calc(var(--nav-h) + clamp(1.75rem, 1.2rem + 1.5vw, 2.75rem)) 0 clamp(1.75rem, 1.2rem + 1.5vw, 2.75rem);
+  background: var(--navy-deep); color: var(--on-dark-muted);
+}
+.bk-about-hero::after { content: ""; position: absolute; left: 0; bottom: 0; width: min(18rem, 40%); height: 4px; background: var(--red); }
+.bk-about-hero__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 36rem); gap: var(--space-5) clamp(2rem, 1rem + 3vw, 4.5rem); align-items: center; }
+.bk-about-hero :focus-visible { outline-color: #fff; }
+
+/* Breadcrumb */
+.bk-crumbs ol { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0; padding: 0; list-style: none; font-size: .8125rem; font-weight: 500; }
+.bk-crumbs li { display: flex; align-items: center; gap: .35rem; color: var(--on-dark-muted); }
+.bk-crumbs li + li::before { content: "/"; color: rgba(255, 255, 255, .45); }
+.bk-crumbs a { color: #fff; text-decoration: none; }
+.bk-crumbs a:hover { text-decoration: underline; text-underline-offset: .2em; }
+
+.page-brooklyn-about .bk-about-hero h1 { max-width: none; margin-top: var(--space-3); color: #fff; font-size: clamp(2rem, 1.4rem + 1.8vw, 3rem); line-height: 1.12; letter-spacing: -.028em; }
+.bk-about-hero__copy > p { max-width: 56ch; margin-top: var(--space-3); font-size: clamp(1rem, .95rem + .2vw, 1.125rem); }
+.bk-about-hero__facts { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin: var(--space-5) 0 0; padding: 0; list-style: none; }
+.bk-about-hero__facts li { display: inline-flex; align-items: center; gap: .5rem; color: #fff; font-size: .9375rem; font-weight: 700; line-height: 1.3; }
+.bk-about-hero__facts svg { width: 1.05rem; height: 1.05rem; flex: none; fill: none; stroke: #f6b1b9; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.bk-about-hero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
+
+.bk-about-hero__media { position: relative; justify-self: stretch; margin: 0; }
+.bk-about-hero__media img { display: block; width: 100%; height: clamp(15rem, 44vh, 22rem); object-fit: cover; object-position: center 40%; border-radius: var(--radius-lg); box-shadow: 0 24px 60px rgba(1, 26, 60, .35); }
+.bk-about-hero__media figcaption {
+  position: absolute; left: -1.25rem; bottom: 1.25rem;
+  display: grid; gap: .15rem; padding: .7rem 1.1rem .75rem 1rem;
+  border-left: 4px solid var(--red); border-radius: 4px; background: #fff; box-shadow: var(--shadow-card);
+  color: var(--muted); font-size: .8125rem; font-weight: 500; letter-spacing: 0; line-height: 1.35;
+}
+.bk-about-hero__media figcaption strong { color: var(--navy); font-size: 1.25rem; line-height: 1.1; letter-spacing: -.015em; }
+
+/* Short desktop screens (e.g. 1366 x 650): stay on one screen. */
+@media (min-width: 60.01rem) and (max-height: 780px) {
+  .bk-about-hero { padding-top: calc(var(--nav-h) + 2.25rem); padding-bottom: 1.75rem; }
+  .bk-about-hero__media img { height: clamp(14rem, 50vh, 20rem); }
+  .bk-about-hero__facts, .bk-about-hero__actions { margin-top: 1rem; }
+}
+@media (max-width: 75rem) {
+  .bk-about-hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 30rem); }
+}
+@media (max-width: 60rem) {
+  .bk-about-hero__inner { grid-template-columns: minmax(0, 1fr); }
+  .bk-about-hero__media { width: 100%; max-width: 40rem; justify-self: start; }
+  .bk-about-hero__media img { height: auto; aspect-ratio: 16 / 9; }
+  .bk-about-hero__media figcaption { left: .75rem; bottom: .75rem; }
+}
+@media (max-width: 40rem) {
+  .bk-about-hero__actions .btn { flex: 1 1 100%; }
+  .bk-about-hero__facts { gap: .5rem 1rem; }
+  .bk-about-hero__media figcaption strong { font-size: 1.0625rem; }
+}
+
+/* ==========================================================================
+   17 Oct copy pass (Sean)
+   ========================================================================== */
+/* Who we are: the old text link is now a red estimate button. */
+.page-brooklyn-about .bk-about-intro__cta { margin-top: 1.5rem; }
+
+/* Built for the borough: the estimate button is red; on the navy bar it
+   sweeps to white on hover so it never disappears into the bar. */
+.page-brooklyn-about .bk-about-buildings__cta .btn { --hover-bg: #fff; --hover-ink: var(--navy); }
+
+/* Project planning: this paragraph reads in black, not grey. */
+.page-brooklyn-about .bk-about-planning__head > .bk-about-planning__lede { color: #000; }
+
+/* Where we work: estimate button replaces the text link. */
+.page-brooklyn-about .bk-about-neighborhoods__cta { margin-top: 1.5rem; }
+
+/* Phones: the three "Built for the borough" cards become a swipe row,
+   like the sliders on brooklyn.html (.slider in css/brooklyn.css). */
+@media (max-width: 40rem) {
+  .page-brooklyn-about .bk-about-buildings__cards.slider { display: flex; grid-template-columns: none; gap: .85rem; padding-block: .25rem 1.25rem; }
+  .page-brooklyn-about .bk-about-buildings__cards.slider > article { flex: 0 0 84%; min-height: 0; }
+  .page-brooklyn-about .bk-about-buildings .swipe-hint { margin: 0 0 1rem; }
 }
