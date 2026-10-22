@@ -26,8 +26,8 @@
 
   <!-- Page-scoped overrides. Loaded after style.css so this page can diverge
        from index.html without touching the shared stylesheet. -->
-  <link rel="stylesheet" href="css/nyc6.css?v=48">
-  <link rel="stylesheet" href="css/nyc6-contact.css?v=4">
+  <link rel="stylesheet" href="css/nyc6.css?v=49">
+  <link rel="stylesheet" href="css/nyc6-contact.css?v=6">
 </head>
 <body class="page-contact page-contact-v2">
 
@@ -88,7 +88,7 @@
                       <div class="mega__promo">
                         <p class="mega__promo-text">Licensed &middot; BBB A+ &middot; <span>GAF Master Elite</span></p>
                       </div>
-                      <a class="btn btn--primary mega__cta" href="nyc6.html#estimate">
+                      <a class="btn btn--primary mega__cta" href="#contact-form">
                         <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
                         <span class="btn__label">Get Free Estimate</span>
                       </a>
@@ -607,7 +607,7 @@
       </nav>
 
       <div class="mobile-nav__foot">
-        <a class="btn btn--outline" href="nyc6.html#estimate">
+        <a class="btn btn--outline" href="#contact-form">
               <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
               <span class="btn__label">Get a free estimate</span></a>
         <a class="btn btn--primary" href="tel:+17184146067">
@@ -701,7 +701,7 @@
                 <span class="contact-line__icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
                 <span class="contact-line__body">
                   <span class="contact-line__label">Hours</span>
-                  <span class="contact-line__value">Mon-Sun, 7am-11pm</span>
+                  <span class="contact-line__value">Open 24/7</span>
                 </span>
               </li>
 
@@ -728,10 +728,6 @@
                 <label class="field__label" for="cf-phone">Phone</label>
                 <input class="field__input" type="tel" id="cf-phone" name="phone"
                        autocomplete="tel" inputmode="tel" placeholder="(718) 000-0000" required>
-              </p>
-
-              <p class="field field--note">
-                <span class="field__hint">We&rsquo;ll only contact you about your project.</span>
               </p>
 
               <p class="field field--address">
@@ -853,9 +849,9 @@
             <!-- Queried by business name so the embed resolves to the listing and
                  shows Google's own card rather than a bare address pin. -->
             <div class="contact__map office__map">
-              <!-- Map zoom z=13: two levels further out than before (15) per Oct 17; the place card still shows. -->
+              <!-- Map zoom z=11: two more levels out (Oct 19 call, was 13). -->
               <iframe class="contact__map-frame"
-                      src="https://www.google.com/maps?q=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375&amp;z=13&amp;output=embed"
+                      src="https://www.google.com/maps?q=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375&amp;z=11&amp;output=embed"
                       title="Map showing Royal Renovators Inc. at 118-35 Queens Blvd, Forest Hills, NY 11375"
                       loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -909,7 +905,7 @@
               <h3 class="faq__q-text">How quickly will I hear back?</h3>
               <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
             </summary>
-            <div class="faq__a"><p>Send the form and we get back to you within one hour. If the roof is actively leaking, call instead. The phone reaches someone seven days a week, including outside office hours.</p></div>
+            <div class="faq__a"><p>Send the form and we get back to you within one hour. If the roof is actively leaking, call instead. The phone is answered 24/7.</p></div>
           </details>
 
           <details class="faq" name="contact-faq">
@@ -925,7 +921,7 @@
               <h3 class="faq__q-text">Can you come out for an emergency?</h3>
               <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
             </summary>
-            <div class="faq__a"><p>Yes. We take emergency calls every day of the week, make the building safe first and quote the permanent repair afterwards.</p></div>
+            <div class="faq__a"><p>Yes. We take emergency calls 24/7, make the building safe first and quote the permanent repair afterwards.</p></div>
           </details>
 
           <details class="faq" name="contact-faq">
@@ -961,7 +957,7 @@
                  alt="Royal Renovators Inc." width="1518" height="1036">
           </a>
           <p class="footer__about">
-            Royal Renovators Inc. is a Queens-based, family-owned &amp; operated, fully licensed &amp; insured roofing contractor. BBB A+ rated and GAF Master Elite certified, Royal specializes in flat roofing, shingles, and siding.
+            Royal Renovators Inc. is a Queens-based, family-owned &amp; operated, fully licensed &amp; insured roofing contractor. BBB A+ rated and GAF Master Elite certified, Royal specializes in flat roofing, shingles, and siding since 1988.
           </p>
           <a class="btn btn--primary footer__cta" href="nyc6-contact-v2.html">
             <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
@@ -972,9 +968,9 @@
         <nav class="footer__col" aria-label="Roofing">
           <h2 class="footer__heading">Roofing</h2>
           <ul class="footer__links">
-              <li><a href="https://www.nycrenovators.com/roof-repair/">Roof Repair</a></li>
               <li><a href="https://www.nycrenovators.com/flat-roofing/">Flat Roofing</a></li>
               <li><a href="nyc6-shingle-roofing.html">Shingle Roofing</a></li>
+              <li><a href="https://www.nycrenovators.com/roof-repair/">Roof Repair</a></li>
               <li><a href="https://www.nycrenovators.com/roof-replacement/">Roof Replacement</a></li>
           </ul>
         </nav>
@@ -1009,7 +1005,7 @@
         <ul class="footer__badges">
         <li class="footer__rating">
           <img src="images/Google__G__logo.svg.webp" alt="Google" width="1280" height="1280" loading="lazy" decoding="async">
-          <span><strong>4.9</strong> <span class="rating-star" aria-hidden="true">&#9733;</span><span class="visually-hidden">4.9 out of 5 on Google</span></span>
+          <span><strong>4.9</strong> <span class="rating-star" aria-hidden="true">&#9733;</span> <strong class="footer__rating-brand">Google</strong><span class="visually-hidden">4.9 out of 5 on Google</span></span>
         </li>
         <li>
           <img src="images/bb+.webp" alt="BBB Accredited Business, A+ rating" width="400" height="259" loading="lazy" decoding="async">
@@ -1059,7 +1055,7 @@
           <span class="footer__contactbar-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
           <div>
             <p class="footer__contactbar-label">Hours</p>
-            <p class="footer__contactbar-value"><a href="nyc6-contact-v2.html">Mon-Sun, 7am-11pm</a></p>
+            <p class="footer__contactbar-value"><a href="nyc6-contact-v2.html">Open 24/7</a></p>
           </div>
         </li>
 
@@ -1069,14 +1065,14 @@
     </div>
 
     <div class="container footer__bottom">
-        <ul class="socials footer__socials" aria-label="Royal Renovators on social media">
-            <li><a href="https://www.facebook.com/royalrenovatorsny/" target="_blank" rel="noopener" aria-label="Royal Renovators on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.instagram.com/royalrenovators/" target="_blank" rel="noopener" aria-label="Royal Renovators on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
-            <li><a href="https://x.com/RoyalRenovh3" target="_blank" rel="noopener" aria-label="Royal Renovators on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.youtube.com/channel/UCSTt3eiPY0ogH616G3p5row" target="_blank" rel="noopener" aria-label="Royal Renovators on YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.linkedin.com/company/royal-renovators-inc" target="_blank" rel="noopener" aria-label="Royal Renovators on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.pinterest.com/royalroofingny/" target="_blank" rel="noopener" aria-label="Royal Renovators on Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.tiktok.com/@royalrenovators" target="_blank" rel="noopener" aria-label="Royal Renovators on TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a></li>
+        <ul class="socials footer__socials" aria-label="Royal Renovators Inc. on social media">
+            <li><a href="https://www.facebook.com/royalrenovatorsny/" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.instagram.com/royalrenovators/" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="https://x.com/RoyalRenovh3" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.youtube.com/channel/UCSTt3eiPY0ogH616G3p5row" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/royal-renovators-inc" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.pinterest.com/royalroofingny/" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.tiktok.com/@royalrenovators" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a></li>
           </ul>
       <p class="footer__copy">&copy; 2026 Royal Renovators Inc. All rights reserved.</p>
       <ul class="footer__legal">
@@ -1089,12 +1085,6 @@
     </div>
 
   </footer>
-
-  <!-- Floating call button: a disc at rest, the number slides out on hover. -->
-  <a class="call-fab" href="tel:+17184146067" aria-label="Call Royal Renovators on (718) 414-6067">
-    <span class="call-fab__label">(718) 414-6067</span>
-    <span class="call-fab__icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
-  </a>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
   <script src="js/nyc6.js?v=10" defer></script>

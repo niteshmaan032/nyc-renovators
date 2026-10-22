@@ -11,7 +11,7 @@
   <link rel="preload" href="fonts/HelveticaNeueLight.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/HelveticaNeueMedium.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/brooklyn.css?v=54">
+  <link rel="stylesheet" href="css/brooklyn.css?v=55">
   <link rel="stylesheet" href="css/brooklyn-faqs.css?v=3">
 </head>
 <body class="page-brooklyn page-brooklyn-faqs">
@@ -138,8 +138,8 @@
         <li><a class="drawer__link" href="brooklyn-contact-us.html">Contact Us</a></li>
       </ul>
       <div class="drawer__actions">
-        <a class="btn btn--navy" href="tel:+17185362667"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-536-2667</a>
-        <a class="btn btn--solid" href="#contact-form">Get a Free Estimate</a>
+        <a class="btn btn--navy" href="brooklyn-contact-us.html">Get a Free Estimate</a>
+        <a class="btn btn--solid" href="tel:+17185362667"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-536-2667</a>
       </div>
     </nav>
   </div>
@@ -157,7 +157,7 @@
           </ol>
         </nav>
         <h1 id="faq-title">Brooklyn Roofing FAQs</h1>
-        <p class="bk-phero__lede">Straight answers about roofs, gutters, siding, and masonry on Brooklyn buildings.</p>
+        <p class="bk-phero__lede">Straight answers about roofing, siding, gutters, and masonry on Brooklyn buildings.</p>
       </div>
       <div class="bkq-search" role="search">
         <label class="bkq-search__label" for="faq-search">Search the questions</label>
@@ -183,7 +183,7 @@
           <li><a href="#topic-working"><span class="bkq-rail__num">5</span><span class="bkq-rail__name">Working With Us</span><span class="bkq-rail__count">5</span></a></li>
         </ol>
         <div class="bkq-rail__help">
-          <p><strong>Can&rsquo;t find your answer?</strong>Talk to the Brooklyn team, 7 days a week.</p>
+          <p><strong>Can&rsquo;t find your answer?</strong>Talk to the Brooklyn team, 24/7.</p>
           <a class="btn btn--solid btn--block" href="tel:+17185362667"><svg class="btn__icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 718-536-2667</a>
         </div>
       </nav>
@@ -191,7 +191,7 @@
       <div class="bkq-groups">
         <section class="bkq-group" id="topic-brooklyn" aria-labelledby="topic-brooklyn-title">
           <h2 class="bkq-group__title" id="topic-brooklyn-title"><span class="bkq-group__num">1.</span> Roofing in Brooklyn</h2>
-          <div class="faq__list">
+          <div class="faq__list" data-accordion>
             <details><summary>What types of roofing systems are common in Brooklyn?</summary><p>Flat roofs are the most common, because so much of Brooklyn is brownstones, townhouses, and attached buildings. Shingle roofs are also used on pitched homes in some residential areas.</p></details>
             <details><summary>Do you work on Brooklyn brownstones?</summary><p>Yes. We work on brownstones regularly and understand their structure, parapets, and drainage. Every repair or new roof is planned to protect both the building and its appearance.</p></details>
             <details><summary>Can you replace roofs on attached buildings?</summary><p>Yes. Most of our Brooklyn work is on attached and semi-attached buildings. We seal the joints between neighboring roofs and keep disruption next door to a minimum.</p></details>
@@ -202,7 +202,7 @@
 
         <section class="bkq-group" id="topic-flat" aria-labelledby="topic-flat-title">
           <h2 class="bkq-group__title" id="topic-flat-title"><span class="bkq-group__num">2.</span> Flat Roofs</h2>
-          <div class="faq__list">
+          <div class="faq__list" data-accordion>
             <details><summary>Do you offer flat roof repair in Brooklyn?</summary><p>Yes. We trace leaks, patch damaged areas, and restore worn membranes, with repairs built to last rather than quick fixes. See our <a href="brooklyn-flat-roofing.html">flat roofing services</a>.</p></details>
             <details><summary>How long does a flat roof last in Brooklyn?</summary><p>Usually 15 to 25 years, depending on the material and how well the roof is maintained. Regular upkeep can extend its life considerably.</p></details>
             <details><summary>What materials do you use for flat roofs?</summary><p>EPDM, TPO, and modified bitumen. We choose the system based on durability, the building, and how the roof is used.</p></details>
@@ -212,7 +212,7 @@
 
         <section class="bkq-group" id="topic-repairs" aria-labelledby="topic-repairs-title">
           <h2 class="bkq-group__title" id="topic-repairs-title"><span class="bkq-group__num">3.</span> Inspections &amp; Repairs</h2>
-          <div class="faq__list">
+          <div class="faq__list" data-accordion>
             <details><summary>How often should a roof be inspected in Brooklyn?</summary><p>At least once a year, and again after any major storm. Regular inspections catch small problems before they become costly repairs.</p></details>
             <details><summary>How do I know if my roof needs replacement?</summary><p>Frequent leaks, visible damage, and aging materials are the main signs. A professional inspection tells you whether a repair will do or a <a href="brooklyn-flat-roofing.html">new roof</a> makes more sense.</p></details>
             <details><summary>Do you handle emergency roof repairs?</summary><p>Yes. We respond quickly to urgent roofing problems, because a fast repair keeps water from damaging the rest of the building.</p></details>
@@ -224,7 +224,7 @@
 
         <section class="bkq-group" id="topic-exterior" aria-labelledby="topic-exterior-title">
           <h2 class="bkq-group__title" id="topic-exterior-title"><span class="bkq-group__num">4.</span> Gutters, Siding &amp; Masonry</h2>
-          <div class="faq__list">
+          <div class="faq__list" data-accordion>
             <details><summary>Do you install gutters in Brooklyn?</summary><p>Yes. We install gutter systems sized for dense urban lots, so water drains away properly and does not damage the building.</p></details>
             <details><summary>What are the signs of gutter problems?</summary><p>Overflowing water, sagging sections, and leaking joints. These should be fixed quickly before water reaches walls or the foundation.</p></details>
             <details><summary>Can poor drainage damage my property?</summary><p>Yes. Poor drainage can lead to leaks and even foundation problems. A properly designed roof and gutter system is essential.</p></details>
@@ -236,7 +236,7 @@
 
         <section class="bkq-group" id="topic-working" aria-labelledby="topic-working-title">
           <h2 class="bkq-group__title" id="topic-working-title"><span class="bkq-group__num">5.</span> Working With Us</h2>
-          <div class="faq__list">
+          <div class="faq__list" data-accordion>
             <details><summary>Do you offer free roofing estimates?</summary><p>Yes. We provide free estimates for residential and commercial property owners. We look at the roof and explain the options that fit the building.</p></details>
             <details><summary>How long does a roof installation take?</summary><p>It depends on the size and condition of the property. Most projects are completed efficiently, with as little disruption as possible.</p></details>
             <details><summary>Do you work with landlords and property managers?</summary><p>Yes. We regularly work with owners and managers of multi-unit buildings, and we schedule work to be efficient and reliable for tenants.</p></details>
@@ -261,7 +261,7 @@
         <p class="bkq-ask__lede">Tell us about your building and what you&rsquo;re seeing. A member of our Brooklyn team will call you back to talk it through.</p>
         <div class="contact__info">
           <a class="contact__phone" href="tel:+17185362667"><svg aria-hidden="true"><use href="#i-phone"/></svg><span>718-536-2667</span></a>
-          <div><svg aria-hidden="true"><use href="#i-clock"/></svg><span>Monday – Sunday · 7:00 am – 11:00 pm</span></div>
+          <div><svg aria-hidden="true"><use href="#i-clock"/></svg><span>Open 24 hours, 7 days a week</span></div>
           <div><svg aria-hidden="true"><use href="#i-pin"/></svg><span>108 Emerson Place, Suite 212, Brooklyn, NY 11205</span></div>
         </div>
       </div>
@@ -288,7 +288,7 @@
     <div class="bkf__brand">
       <a class="bkf__logo" href="brooklyn.html" aria-label="Royal Roofing &amp; Siding Brooklyn home"><img src="images/brooklyn/bk-04-62d5c289.jpg" alt="Royal Roofing &amp; Siding Brooklyn" width="761" height="746" loading="lazy"></a>
       <p class="bkf__about">Royal Roofing &amp; Siding Brooklyn specializes in flat roofing systems for brownstones, row houses, and industrial buildings, including TPO, EPDM, and SBS, with a deep understanding of Brooklyn&rsquo;s unique building landscape.</p>
-      <a class="btn btn--solid bkf__cta" href="#contact-form">Get a Free Estimate</a>
+      <a class="btn btn--solid bkf__cta" href="brooklyn-contact-us.html">Get a Free Estimate</a>
     </div>
 
     <nav class="bkf__col" aria-label="Roofing">
@@ -324,6 +324,20 @@
 
   <div class="bkf__contactbar">
     <div class="container bkf__midrow">
+      <ul class="bkf__badges" aria-label="Customer ratings">
+        <li class="bkf__rating">
+          <img src="images/Google__G__logo.svg.webp" alt="Google" width="28" height="28" loading="lazy" decoding="async">
+          <span class="bkf__score"><strong>5.0</strong> <span class="bkf__star" aria-hidden="true">&#9733;</span> <strong class="bkf__source">Google</strong><span class="bkf__sr"> rating, 5.0 out of 5</span></span>
+        </li>
+        <li class="bkf__yelp">
+          <img src="images/PngItem_1663.png" alt="People love us on Yelp" width="540" height="539" loading="lazy" decoding="async">
+        </li>
+        <li class="bkf__licensed">
+          <span class="bkf__shield"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+          <span>Licensed &amp; Insured</span>
+        </li>
+      </ul>
+
       <ul class="bkf__contacts">
         <li>
           <span class="bkf__icon"><svg aria-hidden="true"><use href="#i-phone"/></svg></span>
@@ -343,22 +357,8 @@
           <span class="bkf__icon"><svg aria-hidden="true"><use href="#i-clock"/></svg></span>
           <div>
             <p class="bkf__label">Hours</p>
-            <p class="bkf__value">Mon-Sun, 7am-11pm</p>
+            <p class="bkf__value">Open 24/7</p>
           </div>
-        </li>
-      </ul>
-
-      <ul class="bkf__badges" aria-label="Customer ratings">
-        <li class="bkf__rating">
-          <img src="images/Google__G__logo.svg.webp" alt="Google" width="28" height="28" loading="lazy" decoding="async">
-          <span class="bkf__score"><span><strong>5.0</strong> <span class="bkf__star" aria-hidden="true">&#9733;</span><span class="bkf__sr">5.0 out of 5 on Google from</span></span> <span class="bkf__count"><span class="bkf__dot" aria-hidden="true">&middot;</span> 178 Google reviews</span></span>
-        </li>
-        <li class="bkf__yelp">
-          <img src="images/PngItem_1663.png" alt="People love us on Yelp" width="540" height="539" loading="lazy" decoding="async">
-        </li>
-        <li class="bkf__licensed">
-          <span class="bkf__shield"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
-          <span>Licensed &amp; Insured</span>
         </li>
       </ul>
     </div>

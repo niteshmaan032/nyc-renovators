@@ -33,6 +33,9 @@
     };
   });
 
+  var totalLabel = items.length + ' questions in ' + groups.length + ' topics';
+  if (status) status.textContent = totalLabel;
+
   function escapeRegExp(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 
   function highlight(item, term) {
@@ -75,10 +78,11 @@
     });
 
     empty.hidden = shown !== 0;
-    status.hidden = !term;
+    // The status line sits under the search in the hero (Oct 19): the full
+    // count at rest, the number of matches while a term is typed.
     status.textContent = term
       ? (shown === 1 ? '1 question matches' : shown + ' questions match') + ' “' + input.value.trim() + '”'
-      : '';
+      : totalLabel;
 
     if (!term) setActive(null);
   }

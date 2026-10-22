@@ -259,3 +259,15 @@
 
   .bxa-cta__details { padding-inline: 1rem; }
 }
+
+/* ==== Oct 19 2026 (Sean's call) ==== */
+/* BX-A1: the photo badge is only as wide as its text, so more of the photo shows. */
+.bxa-hero__media figcaption { width: max-content; max-width: calc(100% - 1rem); }
+/* BX-A7: a call to action under "The aim" in the navy Our Approach band. */
+.bxa-approach__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
+.bxa-approach :focus-visible { outline-color: #fff; }
+/* BX-A9: phone button under the Why choose us points. */
+.bxa-why__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
+@media (max-width: 40rem) {
+  .bxa-approach__actions .btn, .bxa-why__actions .btn { flex: 1 1 100%; }
+}

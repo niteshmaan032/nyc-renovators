@@ -306,3 +306,9 @@
   .page-brooklyn-about .bk-about-buildings__cards.slider > article { flex: 0 0 84%; min-height: 0; }
   .page-brooklyn-about .bk-about-buildings .swipe-hint { margin: 0 0 1rem; }
 }
+
+/* Oct 19 (BK-A6): "Neighborhoods we serve" sits higher in the white card (8 neighborhoods, 4 rows). */
+@media (min-width: 60.01rem) {
+  .page-brooklyn-about .bk-about-neighborhoods__directory { justify-content: flex-start; padding-top: 1rem; }
+  .page-brooklyn-about .bk-about-neighborhoods__directory ul { margin-top: .85rem; }
+}

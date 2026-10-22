@@ -22,7 +22,7 @@
        footer) comes from the nyc6 sheets. The Queens body sections live in
        queens.css under the q- class prefix inside .qz, so the two never collide. -->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/nyc6.css?v=48">
+  <link rel="stylesheet" href="css/nyc6.css?v=49">
   <link rel="stylesheet" href="css/queens.css?v=30">
   <link rel="stylesheet" href="css/queens-interior.css?v=25">
 </head>
@@ -86,7 +86,7 @@
                       <div class="mega__promo">
                         <p class="mega__promo-text">Licensed &middot; BBB A+ &middot; <span>GAF Master Elite</span></p>
                       </div>
-                      <a class="btn btn--primary mega__cta" href="queens.html#estimate">
+                      <a class="btn btn--primary mega__cta" href="nyc6-contact-v2.html">
                         <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
                         <span class="btn__label">Get Free Estimate</span>
                       </a>
@@ -114,248 +114,6 @@
               </div>
             </li>
 
-            <li class="primary-nav__item primary-nav__item--menu primary-nav__item--full">
-              <button class="primary-nav__link" type="button" aria-expanded="false" aria-controls="menu-areas">
-                Areas We Serve
-                <i class="primary-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
-              </button>
-              <!-- Contained panel. The tab row swaps which set of columns shows,
-                   and each set carries the borough in its own headings, so they
-                   read "Queens roofing systems" rather than a bare "Roofing
-                   systems". Every link is in the markup, so all of them are
-                   crawlable and the first area stays open without JS. -->
-              <div class="mega mega--full mega--panel mega--panel-areas" id="menu-areas" hidden>
-                <div class="mega__inner areas-menu">
-                  <ul class="areas-menu__tabs">
-                    <li>
-                      <button class="areas-menu__tab" type="button"
-                              aria-expanded="true" aria-controls="am-queens" data-href="queens.html">Queens</button>
-                    </li>
-                    <li>
-                      <button class="areas-menu__tab" type="button"
-                              aria-expanded="false" aria-controls="am-brooklyn" data-href="brooklyn.html">Brooklyn</button>
-                    </li>
-                    <li>
-                      <button class="areas-menu__tab" type="button"
-                              aria-expanded="false" aria-controls="am-bronx" data-href="bronx.html">Bronx</button>
-                    </li>
-                    <li>
-                      <button class="areas-menu__tab" type="button"
-                              aria-expanded="false" aria-controls="am-manhattan" data-href="manhattan.html">Manhattan</button>
-                    </li>
-                    <li class="areas-menu__split" aria-hidden="true"></li>
-                    <li>
-                      <button class="areas-menu__tab" type="button"
-                              aria-expanded="false" aria-controls="am-far-rockaway" data-href="far-rockaway.html">Far Rockaway</button>
-                    </li>
-                    <li>
-                      <button class="areas-menu__tab" type="button"
-                              aria-expanded="false" aria-controls="am-long-island" data-href="long-island.html">Long Island</button>
-                    </li>
-                    <li>
-                      <button class="areas-menu__tab" type="button"
-                              aria-expanded="false" aria-controls="am-yonkers" data-href="yonkers.html">Yonkers</button>
-                    </li>
-                  </ul>
-                  <div class="areas-menu__pane" id="am-queens">
-                    <div class="mega__cols mega__cols--3">
-                    <div class="mega__col">
-                      <p class="mega__heading">Queens Roofing Systems</p>
-                      <ul class="mega__list">
-                        <li><a href="queens.html#flat-shingle"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
-                        <li><a href="queens.html#flat-shingle"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
-                        <li><a href="queens.html#commercial"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
-                      </ul>
-                    </div>
-                    <div class="mega__col">
-                      <p class="mega__heading">Queens Repairs</p>
-                      <ul class="mega__list">
-                        <li><a href="queens.html#repairs"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
-                        <li><a href="queens.html#repairs"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
-                        <li><a href="queens.html#repairs" class="mega__link--urgent"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Repair</span></a></li>
-                      </ul>
-                    </div>
-                    <div class="mega__col">
-                      <p class="mega__heading">Queens Exteriors</p>
-                      <ul class="mega__list">
-                        <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
-                        <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
-                        <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
-                      </ul>
-                    </div>
-                    </div>
-                  </div>
-                  <div class="areas-menu__pane" id="am-brooklyn" hidden>
-                    <div class="mega__cols mega__cols--3">
-                    <div class="mega__col">
-                      <p class="mega__heading">Brooklyn Roofing Systems</p>
-                      <ul class="mega__list">
-                        <li><a href="#brooklyn-flat-roofing"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
-                        <li><a href="#brooklyn-shingle-roofing"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
-                        <li><a href="#brooklyn-commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
-                      </ul>
-                    </div>
-                    <div class="mega__col">
-                      <p class="mega__heading">Brooklyn Repairs</p>
-                      <ul class="mega__list">
-                        <li><a href="#brooklyn-roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
-                        <li><a href="#brooklyn-roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
-                        <li><a href="#brooklyn-emergency-roof-repair" class="mega__link--urgent"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Repair</span></a></li>
-                      </ul>
-                    </div>
-                    <div class="mega__col">
-                      <p class="mega__heading">Brooklyn Exteriors</p>
-                      <ul class="mega__list">
-                        <li><a href="#brooklyn-siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
-                        <li><a href="#brooklyn-gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
-                        <li><a href="#brooklyn-masonry"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
-                      </ul>
-                    </div>
-                    </div>
-                  </div>
-                  <div class="areas-menu__pane" id="am-bronx" hidden>
-                    <div class="mega__cols mega__cols--3">
-                    <div class="mega__col">
-                      <p class="mega__heading">Bronx Roofing Systems</p>
-                      <ul class="mega__list">
-                        <li><a href="#bronx-flat-roofing"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
-                        <li><a href="bronx-shingle-roofing.html"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
-                        <li><a href="#bronx-commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
-                      </ul>
-                    </div>
-                    <div class="mega__col">
-                      <p class="mega__heading">Bronx Repairs</p>
-                      <ul class="mega__list">
-                        <li><a href="#bronx-roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
-                        <li><a href="#bronx-roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
-                        <li><a href="#bronx-emergency-roof-repair" class="mega__link--urgent"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Repair</span></a></li>
-                      </ul>
-                    </div>
-                    <div class="mega__col">
-                      <p class="mega__heading">Bronx Exteriors</p>
-                      <ul class="mega__list">
-                        <li><a href="#bronx-siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
-                        <li><a href="#bronx-gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
-                        <li><a href="#bronx-masonry"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
-                      </ul>
-                    </div>
-                    </div>
-                  </div>
-                  <div class="areas-menu__pane" id="am-manhattan" hidden>
-                    <div class="mega__cols mega__cols--3">
-                    <div class="mega__col">
-                      <p class="mega__heading">Manhattan Roofing Systems</p>
-                      <ul class="mega__list">
-                        <li><a href="#manhattan-flat-roofing"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
-                        <li><a href="manhattan-shingle-roofing.html"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
-                        <li><a href="#manhattan-commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
-                      </ul>
-                    </div>
-                    <div class="mega__col">
-                      <p class="mega__heading">Manhattan Repairs</p>
-                      <ul class="mega__list">
-                        <li><a href="#manhattan-roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
-                        <li><a href="#manhattan-roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
-                        <li><a href="#manhattan-emergency-roof-repair" class="mega__link--urgent"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Repair</span></a></li>
-                      </ul>
-                    </div>
-                    <div class="mega__col">
-                      <p class="mega__heading">Manhattan Exteriors</p>
-                      <ul class="mega__list">
-                        <li><a href="#manhattan-siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
-                        <li><a href="#manhattan-gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
-                        <li><a href="#manhattan-masonry"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
-                      </ul>
-                    </div>
-                    </div>
-                  </div>
-                  <div class="areas-menu__pane" id="am-far-rockaway" hidden>
-                    <div class="mega__cols mega__cols--3">
-                    <div class="mega__col">
-                      <p class="mega__heading">Far Rockaway Roofing Systems</p>
-                      <ul class="mega__list">
-                        <li><a href="far-rockaway-flat-roofing.html"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
-                        <li><a href="far-rockaway.html#compare"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
-                        <li><a href="far-rockaway.html#commercial"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
-                      </ul>
-                    </div>
-                    <div class="mega__col">
-                      <p class="mega__heading">Far Rockaway Repairs</p>
-                      <ul class="mega__list">
-                        <li><a href="far-rockaway.html#services"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
-                        <li><a href="far-rockaway.html#services"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
-                        <li><a href="far-rockaway-contact-us.html" class="mega__link--urgent"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Repair</span></a></li>
-                      </ul>
-                    </div>
-                    <div class="mega__col">
-                      <p class="mega__heading">Far Rockaway Exteriors</p>
-                      <ul class="mega__list">
-                        <li><a href="far-rockaway.html#services"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
-                        <li><a href="far-rockaway.html#services"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
-                        <li><a href="far-rockaway.html#services"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
-                      </ul>
-                    </div>
-                    </div>
-                  </div>
-                  <div class="areas-menu__pane" id="am-long-island" hidden>
-                    <div class="mega__cols mega__cols--3">
-                    <div class="mega__col">
-                      <p class="mega__heading">Long Island Roofing Systems</p>
-                      <ul class="mega__list">
-                        <li><a href="long-island-flat-roofing.html"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
-                        <li><a href="long-island.html#service-shingle"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
-                        <li><a href="long-island.html#service-commercial"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
-                      </ul>
-                    </div>
-                    <div class="mega__col">
-                      <p class="mega__heading">Long Island Repairs</p>
-                      <ul class="mega__list">
-                        <li><a href="long-island.html#service-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
-                        <li><a href="long-island.html#service-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
-                        <li><a href="long-island-contact-us.html" class="mega__link--urgent"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Repair</span></a></li>
-                      </ul>
-                    </div>
-                    <div class="mega__col">
-                      <p class="mega__heading">Long Island Exteriors</p>
-                      <ul class="mega__list">
-                        <li><a href="long-island.html#service-siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
-                        <li><a href="long-island.html#service-gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
-                        <li><a href="long-island.html#service-gutters"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
-                      </ul>
-                    </div>
-                    </div>
-                  </div>
-                  <div class="areas-menu__pane" id="am-yonkers" hidden>
-                    <div class="mega__cols mega__cols--3">
-                    <div class="mega__col">
-                      <p class="mega__heading">Yonkers Roofing Systems</p>
-                      <ul class="mega__list">
-                        <li><a href="yonkers-flat-roofing.html"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
-                        <li><a href="yonkers.html#compare"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
-                        <li><a href="yonkers.html#commercial"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
-                      </ul>
-                    </div>
-                    <div class="mega__col">
-                      <p class="mega__heading">Yonkers Repairs</p>
-                      <ul class="mega__list">
-                        <li><a href="yonkers.html#services"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
-                        <li><a href="yonkers.html#services"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
-                        <li><a href="yonkers-contact-us.html" class="mega__link--urgent"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Repair</span></a></li>
-                      </ul>
-                    </div>
-                    <div class="mega__col">
-                      <p class="mega__heading">Yonkers Exteriors</p>
-                      <ul class="mega__list">
-                        <li><a href="yonkers.html#services"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
-                        <li><a href="yonkers.html#services"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
-                        <li><a href="yonkers.html#services"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
-                      </ul>
-                    </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
 
             <li class="primary-nav__item"><a class="primary-nav__link" href="nyc6-projects.html">Projects</a></li>
 
@@ -374,7 +132,7 @@
 
             <li class="primary-nav__item"><a class="primary-nav__link" href="queens-about-us.html">About</a></li>
 
-            <li class="primary-nav__item"><a class="primary-nav__link" href="queens-contact-us.html">Contact Us</a></li>
+            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc6-contact-v2.html">Contact Us</a></li>
 
           </ul>
         </nav>
@@ -461,128 +219,6 @@
             </ul>
           </li>
 
-          <li>
-            <button class="mobile-nav__group" type="button" aria-expanded="false" aria-controls="m-areas">
-              Areas We Serve
-              <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
-            </button>
-            <ul class="mobile-nav__sub" id="m-areas" hidden>
-              <li>
-                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-queens" data-href="queens.html">
-                  <i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Queens</span>
-                  <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
-                </button>
-                <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-queens" hidden>
-                  <li><a href="queens.html"><span>Queens Roofing</span></a></li>
-                  <li><a href="queens.html#flat-shingle"><span>Flat Roofing</span></a></li>
-                  <li><a href="queens.html#flat-shingle"><span>Shingle Roofing</span></a></li>
-                  <li><a href="queens.html#commercial"><span>Commercial Roofing</span></a></li>
-                  <li><a href="queens.html#repairs"><span>Roof Repair</span></a></li>
-                  <li><a href="queens.html#repairs"><span>Roof Replacement</span></a></li>
-                  <li><a href="queens.html#services"><span>Siding</span></a></li>
-                  <li><a href="queens.html#services"><span>Gutters</span></a></li>
-                </ul>
-              </li>
-              <li>
-                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-brooklyn" data-href="brooklyn.html">
-                  <i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Brooklyn</span>
-                  <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
-                </button>
-                <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-brooklyn" hidden>
-                  <li><a href="brooklyn.html"><span>Brooklyn Roofing</span></a></li>
-                  <li><a href="#brooklyn-flat-roofing"><span>Flat Roofing</span></a></li>
-                  <li><a href="#brooklyn-shingle-roofing"><span>Shingle Roofing</span></a></li>
-                  <li><a href="#brooklyn-commercial-roofing"><span>Commercial Roofing</span></a></li>
-                  <li><a href="#brooklyn-roof-repair"><span>Roof Repair</span></a></li>
-                  <li><a href="#brooklyn-roof-replacement"><span>Roof Replacement</span></a></li>
-                  <li><a href="#brooklyn-siding"><span>Siding</span></a></li>
-                  <li><a href="#brooklyn-gutters"><span>Gutters</span></a></li>
-                </ul>
-              </li>
-              <li>
-                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-bronx" data-href="bronx.html">
-                  <i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Bronx</span>
-                  <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
-                </button>
-                <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-bronx" hidden>
-                  <li><a href="bronx.html"><span>Bronx Roofing</span></a></li>
-                  <li><a href="#bronx-flat-roofing"><span>Flat Roofing</span></a></li>
-                  <li><a href="bronx-shingle-roofing.html"><span>Shingle Roofing</span></a></li>
-                  <li><a href="#bronx-commercial-roofing"><span>Commercial Roofing</span></a></li>
-                  <li><a href="#bronx-roof-repair"><span>Roof Repair</span></a></li>
-                  <li><a href="#bronx-roof-replacement"><span>Roof Replacement</span></a></li>
-                  <li><a href="#bronx-siding"><span>Siding</span></a></li>
-                  <li><a href="#bronx-gutters"><span>Gutters</span></a></li>
-                </ul>
-              </li>
-              <li>
-                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-manhattan" data-href="manhattan.html">
-                  <i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Manhattan</span>
-                  <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
-                </button>
-                <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-manhattan" hidden>
-                  <li><a href="manhattan.html"><span>Manhattan Roofing</span></a></li>
-                  <li><a href="#manhattan-flat-roofing"><span>Flat Roofing</span></a></li>
-                  <li><a href="manhattan-shingle-roofing.html"><span>Shingle Roofing</span></a></li>
-                  <li><a href="#manhattan-commercial-roofing"><span>Commercial Roofing</span></a></li>
-                  <li><a href="#manhattan-roof-repair"><span>Roof Repair</span></a></li>
-                  <li><a href="#manhattan-roof-replacement"><span>Roof Replacement</span></a></li>
-                  <li><a href="#manhattan-siding"><span>Siding</span></a></li>
-                  <li><a href="#manhattan-gutters"><span>Gutters</span></a></li>
-                </ul>
-              </li>
-              <li>
-                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-far-rockaway" data-href="far-rockaway.html">
-                  <i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Far Rockaway</span>
-                  <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
-                </button>
-                <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-far-rockaway" hidden>
-                  <li><a href="far-rockaway.html"><span>Far Rockaway Roofing</span></a></li>
-                  <li><a href="far-rockaway-flat-roofing.html"><span>Flat Roofing</span></a></li>
-                  <li><a href="far-rockaway.html#compare"><span>Shingle Roofing</span></a></li>
-                  <li><a href="far-rockaway.html#commercial"><span>Commercial Roofing</span></a></li>
-                  <li><a href="far-rockaway.html#services"><span>Roof Repair</span></a></li>
-                  <li><a href="far-rockaway.html#services"><span>Roof Replacement</span></a></li>
-                  <li><a href="far-rockaway.html#services"><span>Siding</span></a></li>
-                  <li><a href="far-rockaway.html#services"><span>Gutters</span></a></li>
-                </ul>
-              </li>
-              <li>
-                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-long-island" data-href="long-island.html">
-                  <i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Long Island</span>
-                  <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
-                </button>
-                <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-long-island" hidden>
-                  <li><a href="long-island.html"><span>Long Island Roofing</span></a></li>
-                  <li><a href="long-island-flat-roofing.html"><span>Flat Roofing</span></a></li>
-                  <li><a href="long-island.html#service-shingle"><span>Shingle Roofing</span></a></li>
-                  <li><a href="long-island.html#service-commercial"><span>Commercial Roofing</span></a></li>
-                  <li><a href="long-island.html#service-repair"><span>Roof Repair</span></a></li>
-                  <li><a href="long-island.html#service-replacement"><span>Roof Replacement</span></a></li>
-                  <li><a href="long-island.html#service-siding"><span>Siding</span></a></li>
-                  <li><a href="long-island.html#service-gutters"><span>Gutters</span></a></li>
-                </ul>
-              </li>
-              <li>
-                <button class="mobile-nav__group mobile-nav__group--sub" type="button" aria-expanded="false" aria-controls="m-yonkers" data-href="yonkers.html">
-                  <i class="menu-icon fa-solid fa-location-dot" aria-hidden="true"></i><span>Yonkers</span>
-                  <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
-                </button>
-                <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-yonkers" hidden>
-                  <li><a href="yonkers.html"><span>Yonkers Roofing</span></a></li>
-                  <li><a href="yonkers-flat-roofing.html"><span>Flat Roofing</span></a></li>
-                  <li><a href="yonkers.html#compare"><span>Shingle Roofing</span></a></li>
-                  <li><a href="yonkers.html#commercial"><span>Commercial Roofing</span></a></li>
-                  <li><a href="yonkers.html#building-types"><span>Residential Roofing</span></a></li>
-                  <li><a href="yonkers.html#services"><span>Roof Repair</span></a></li>
-                  <li><a href="yonkers.html#services"><span>Roof Replacement</span></a></li>
-                  <li><a href="yonkers.html#services"><span>Siding</span></a></li>
-                  <li><a href="yonkers.html#services"><span>Gutters</span></a></li>
-                  <li><a href="yonkers.html#services"><span>Masonry</span></a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
 
           <li><a class="mobile-nav__link" href="nyc6-projects.html">Projects</a></li>
 
@@ -599,13 +235,13 @@
 
           <li><a class="mobile-nav__link" href="queens-about-us.html">About</a></li>
 
-          <li><a class="mobile-nav__link" href="queens-contact-us.html">Contact Us</a></li>
+          <li><a class="mobile-nav__link" href="nyc6-contact-v2.html">Contact Us</a></li>
 
         </ul>
       </nav>
 
       <div class="mobile-nav__foot">
-        <a class="btn btn--outline" href="queens.html#estimate">
+        <a class="btn btn--outline" href="nyc6-contact-v2.html">
               <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
               <span class="btn__label">Get a free estimate</span></a>
         <a class="btn btn--primary" href="tel:+17184146067">
@@ -623,12 +259,12 @@
   <section class="q-interior-hero q-interior-hero--about" aria-labelledby="page-title">
     <div class="q-container q-interior-hero__grid">
       <div class="q-interior-hero__copy">
-        <p class="q-section-eyebrow q-section-eyebrow--light">About Royal Renovators</p>
+        <p class="q-section-eyebrow q-section-eyebrow--light">About Royal Renovators Inc.</p>
         <h1 id="page-title">Queens is home.<br>Roofing is our work.</h1>
         <p>Since 1988, Royal Renovators Inc. has helped New York City property owners care for the roofs and exteriors they rely on.</p>
-        <div class="q-interior-hero__actions"><a class="q-btn q-btn--primary" href="queens-contact-us.html#contact-form"><span class="q-btn__pip" aria-hidden="true"><svg class="q-btn__arrow" aria-hidden="true"><use href="#i-btnarrow"/></svg><svg class="q-btn__arrow q-btn__arrow--copy" aria-hidden="true"><use href="#i-btnarrow"/></svg></span><span class="q-btn__label">Get a Free Estimate</span></a><a class="q-btn q-btn--phone" href="tel:+17184146067"><span class="q-btn__pip" aria-hidden="true"><svg class="q-btn__arrow q-btn__arrow--stroke" aria-hidden="true"><use href="#i-phone"/></svg><svg class="q-btn__arrow q-btn__arrow--stroke q-btn__arrow--copy" aria-hidden="true"><use href="#i-phone"/></svg></span><span class="q-btn__label">Call (718) 414-6067</span></a></div>
+        <div class="q-interior-hero__actions"><a class="q-btn q-btn--primary" href="nyc6-contact-v2.html"><span class="q-btn__pip" aria-hidden="true"><svg class="q-btn__arrow" aria-hidden="true"><use href="#i-btnarrow"/></svg><svg class="q-btn__arrow q-btn__arrow--copy" aria-hidden="true"><use href="#i-btnarrow"/></svg></span><span class="q-btn__label">Get a Free Estimate</span></a><a class="q-btn q-btn--phone" href="tel:+17184146067"><span class="q-btn__pip" aria-hidden="true"><svg class="q-btn__arrow q-btn__arrow--stroke" aria-hidden="true"><use href="#i-phone"/></svg><svg class="q-btn__arrow q-btn__arrow--stroke q-btn__arrow--copy" aria-hidden="true"><use href="#i-phone"/></svg></span><span class="q-btn__label">Call (718) 414-6067</span></a></div>
       </div>
-      <figure class="q-interior-hero__media"><img src="images/live/about-hero.jpg" alt="Royal Renovators crew together on a New York City rooftop" width="1600" height="1200" fetchpriority="high"><figcaption>Royal Renovators crew on the roof</figcaption></figure>
+      <figure class="q-interior-hero__media"><img src="images/live/about-hero.jpg" alt="Royal Renovators Inc. crew together on a New York City rooftop" width="1600" height="1200" fetchpriority="high"><figcaption>Royal Renovators Inc. crew on the roof</figcaption></figure>
     </div>
   </section>
   <!-- ===== 1. Intro ===== -->
@@ -636,7 +272,7 @@
     <div class="q-container q-qab-intro__inner">
       <div class="q-qab-intro__media">
         <figure class="q-qab-frame q-qab-frame--lead"><img src="images/live/royal-team-truck.jpg" alt="The Royal Renovators Inc. team in front of a company truck" width="1600" height="900" loading="lazy"></figure>
-        <figure class="q-qab-frame q-qab-frame--inset"><img src="images/live/crew-tearoff-aerial.jpg" alt="Aerial view of a Royal Renovators crew re-roofing a Queens building" width="1400" height="1050" loading="lazy"></figure>
+        <figure class="q-qab-frame q-qab-frame--inset"><img src="images/live/crew-tearoff-aerial.jpg" alt="Aerial view of a Royal Renovators Inc. crew re-roofing a Queens building" width="1400" height="1050" loading="lazy"></figure>
       </div>
       <div class="q-qab-intro__body">
         <p class="q-section-eyebrow">About Royal Renovators Inc.</p>
@@ -649,7 +285,7 @@
           <li><svg aria-hidden="true"><use href="#i-check"/></svg>BBB A+ Accredited</li>
           <li><svg aria-hidden="true"><use href="#i-check"/></svg>GAF Master Elite &amp; Inc. 5000</li>
         </ul>
-        <a class="q-btn q-btn--primary" href="queens-contact-us.html#contact-form"><span class="q-btn__pip" aria-hidden="true"><svg class="q-btn__arrow" aria-hidden="true"><use href="#i-btnarrow"/></svg><svg class="q-btn__arrow q-btn__arrow--copy" aria-hidden="true"><use href="#i-btnarrow"/></svg></span><span class="q-btn__label">Get a Free Estimate</span></a>
+        <a class="q-btn q-btn--primary" href="nyc6-contact-v2.html"><span class="q-btn__pip" aria-hidden="true"><svg class="q-btn__arrow" aria-hidden="true"><use href="#i-btnarrow"/></svg><svg class="q-btn__arrow q-btn__arrow--copy" aria-hidden="true"><use href="#i-btnarrow"/></svg></span><span class="q-btn__label">Get a Free Estimate</span></a>
       </div>
     </div>
   </section>
@@ -721,7 +357,7 @@
         </li>
         <li class="q-qab-card q-qab-card--cta">
           <h3>Not sure what your roof needs?</h3>
-          <a class="q-btn q-btn--primary q-qab-card__cta" href="queens-contact-us.html#contact-form"><span class="q-btn__pip" aria-hidden="true"><svg class="q-btn__arrow" aria-hidden="true"><use href="#i-btnarrow"/></svg><svg class="q-btn__arrow q-btn__arrow--copy" aria-hidden="true"><use href="#i-btnarrow"/></svg></span><span class="q-btn__label">Request a Quote</span></a>
+          <a class="q-btn q-btn--primary q-qab-card__cta" href="nyc6-contact-v2.html"><span class="q-btn__pip" aria-hidden="true"><svg class="q-btn__arrow" aria-hidden="true"><use href="#i-btnarrow"/></svg><svg class="q-btn__arrow q-btn__arrow--copy" aria-hidden="true"><use href="#i-btnarrow"/></svg></span><span class="q-btn__label">Request a Quote</span></a>
         </li>
       </ul>
     </div>
@@ -739,7 +375,7 @@
       </div>
       <div class="q-qab-why__inner">
         <figure class="q-qab-why__photo">
-          <img src="images/live/flat-roof-crew-queens.jpg" alt="Royal Renovators roofers working together on a Queens flat roof" width="1600" height="1200" loading="lazy">
+          <img src="images/live/flat-roof-crew-queens.jpg" alt="Royal Renovators Inc. roofers working together on a Queens flat roof" width="1600" height="1200" loading="lazy">
           <figcaption><span class="q-qab-why__years">35<span>+</span></span><div><strong>Years of hands-on experience.</strong><span>Roofing Queens since 1988.</span></div></figcaption>
         </figure>
         <ul class="q-qab-reasons">
@@ -778,7 +414,7 @@
           <ul>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>A written price after a full inspection, not a guess by phone</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>One crew from tear-off to cleanup, with no subcontracted roof</li>
-            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Phones answered seven days a week, 7:00 am to 11:00 pm</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Phones answered 24 hours a day, 7 days a week</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Rated 4.9 on Google, BBB A+, and GAF Master Elite</li>
           </ul>
         </div>
@@ -793,7 +429,7 @@
       <h2 class="q-section-title q-qab-title" id="value-title">A Roofing Company Focused<br>on Long-Term Value</h2>
       <p class="q-qab-value__text">A roof protects everything beneath it. We evaluate the building first, then build a system around what your Queens property actually needs. Talk with our Forest Hills team about the work ahead.</p>
       <div class="q-qab-value__actions">
-        <a class="q-btn q-btn--primary" href="queens-contact-us.html#contact-form"><span class="q-btn__pip" aria-hidden="true"><svg class="q-btn__arrow" aria-hidden="true"><use href="#i-btnarrow"/></svg><svg class="q-btn__arrow q-btn__arrow--copy" aria-hidden="true"><use href="#i-btnarrow"/></svg></span><span class="q-btn__label">Get a Free Estimate</span></a>
+        <a class="q-btn q-btn--primary" href="nyc6-contact-v2.html"><span class="q-btn__pip" aria-hidden="true"><svg class="q-btn__arrow" aria-hidden="true"><use href="#i-btnarrow"/></svg><svg class="q-btn__arrow q-btn__arrow--copy" aria-hidden="true"><use href="#i-btnarrow"/></svg></span><span class="q-btn__label">Get a Free Estimate</span></a>
         <a class="q-btn q-btn--phone" href="tel:+17184146067"><span class="q-btn__pip" aria-hidden="true"><svg class="q-btn__arrow q-btn__arrow--stroke" aria-hidden="true"><use href="#i-phone"/></svg><svg class="q-btn__arrow q-btn__arrow--stroke q-btn__arrow--copy" aria-hidden="true"><use href="#i-phone"/></svg></span><span class="q-btn__label">Call (718) 414-6067</span></a>
       </div>
       <ul class="q-qab-value__note"><li>Licensed NYC contractor #2030146</li><li>BBB A+</li><li>GAF Master Elite</li></ul>
@@ -813,9 +449,9 @@
                  alt="Royal Renovators Inc." width="1518" height="1036">
           </a>
           <p class="footer__about">
-            Royal Renovators Inc. is a Queens-based, family-owned &amp; operated, fully licensed &amp; insured roofing contractor. BBB A+ rated and GAF Master Elite certified, Royal specializes in flat roofing, shingles, and siding.
+            Royal Renovators Inc. is a Queens-based, family-owned &amp; operated, fully licensed &amp; insured roofing contractor. BBB A+ rated and GAF Master Elite certified, Royal specializes in flat roofing, shingles, and siding since 1988.
           </p>
-          <a class="btn btn--primary footer__cta" href="queens-contact-us.html">
+          <a class="btn btn--primary footer__cta" href="nyc6-contact-v2.html">
             <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
             <span class="btn__label">Get a free estimate</span>
           </a>
@@ -824,9 +460,9 @@
         <nav class="footer__col" aria-label="Roofing">
           <h2 class="footer__heading">Roofing</h2>
           <ul class="footer__links">
-              <li><a href="https://www.nycrenovators.com/roof-repair/">Roof Repair</a></li>
               <li><a href="https://www.nycrenovators.com/flat-roofing/">Flat Roofing</a></li>
               <li><a href="nyc6-shingle-roofing.html">Shingle Roofing</a></li>
+              <li><a href="https://www.nycrenovators.com/roof-repair/">Roof Repair</a></li>
               <li><a href="https://www.nycrenovators.com/roof-replacement/">Roof Replacement</a></li>
           </ul>
         </nav>
@@ -847,7 +483,7 @@
               <li><a href="queens-about-us.html">About Us</a></li>
               <li><a href="nyc6-projects.html">Projects</a></li>
               <li><a href="nyc6-faqs.html">FAQs</a></li>
-              <li><a href="queens-contact-us.html">Contact Us</a></li>
+              <li><a href="nyc6-contact-v2.html">Contact Us</a></li>
           </ul>
         </nav>
 
@@ -861,7 +497,7 @@
         <ul class="footer__badges">
         <li class="footer__rating">
           <img src="images/Google__G__logo.svg.webp" alt="Google" width="1280" height="1280" loading="lazy" decoding="async">
-          <span><strong>4.9</strong> <span class="rating-star" aria-hidden="true">&#9733;</span><span class="visually-hidden">4.9 out of 5 on Google</span></span>
+          <span><strong>4.9</strong> <span class="rating-star" aria-hidden="true">&#9733;</span> <strong class="footer__rating-brand">Google</strong><span class="visually-hidden">4.9 out of 5 on Google</span></span>
         </li>
         <li>
           <img src="images/bb+.webp" alt="BBB Accredited Business, A+ rating" width="400" height="259" loading="lazy" decoding="async">
@@ -911,7 +547,7 @@
           <span class="footer__contactbar-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
           <div>
             <p class="footer__contactbar-label">Hours</p>
-            <p class="footer__contactbar-value"><a href="queens-contact-us.html">Mon-Sun, 7am-11pm</a></p>
+            <p class="footer__contactbar-value"><a href="nyc6-contact-v2.html">Open 24/7</a></p>
           </div>
         </li>
 
@@ -921,14 +557,14 @@
     </div>
 
     <div class="container footer__bottom">
-        <ul class="socials footer__socials" aria-label="Royal Renovators on social media">
-            <li><a href="https://www.facebook.com/royalrenovatorsny/" target="_blank" rel="noopener" aria-label="Royal Renovators on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.instagram.com/royalrenovators/" target="_blank" rel="noopener" aria-label="Royal Renovators on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
-            <li><a href="https://x.com/RoyalRenovh3" target="_blank" rel="noopener" aria-label="Royal Renovators on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.youtube.com/channel/UCSTt3eiPY0ogH616G3p5row" target="_blank" rel="noopener" aria-label="Royal Renovators on YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.linkedin.com/company/royal-renovators-inc" target="_blank" rel="noopener" aria-label="Royal Renovators on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.pinterest.com/royalroofingny/" target="_blank" rel="noopener" aria-label="Royal Renovators on Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.tiktok.com/@royalrenovators" target="_blank" rel="noopener" aria-label="Royal Renovators on TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a></li>
+        <ul class="socials footer__socials" aria-label="Royal Renovators Inc. on social media">
+            <li><a href="https://www.facebook.com/royalrenovatorsny/" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.instagram.com/royalrenovators/" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="https://x.com/RoyalRenovh3" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.youtube.com/channel/UCSTt3eiPY0ogH616G3p5row" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/royal-renovators-inc" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.pinterest.com/royalroofingny/" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.tiktok.com/@royalrenovators" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a></li>
           </ul>
       <p class="footer__copy">&copy; 2026 Royal Renovators Inc. All rights reserved.</p>
       <ul class="footer__legal">
@@ -941,12 +577,6 @@
     </div>
 
   </footer>
-
-  <!-- Floating call button: a disc at rest, the number slides out on hover. -->
-  <a class="call-fab" href="tel:+17184146067" aria-label="Call Royal Renovators on (718) 414-6067">
-    <span class="call-fab__label">(718) 414-6067</span>
-    <span class="call-fab__icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
-  </a>
 
   <script src="js/nyc6.js?v=10" defer></script>
   <script src="js/queens.js?v=7" defer></script>

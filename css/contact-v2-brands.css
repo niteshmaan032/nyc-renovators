@@ -1,0 +1,341 @@
+/* ==========================================================================
+   Contact page v2 for the Royal sister brands (review variants for Sean).
+   Pages: <slug>-contact-us-v2.html, body class "cv2 cv2--<slug>".
+   Loads AFTER the brand stylesheet (css/<slug>.css), which still styles the
+   header, footer, buttons, reviews head/badges and the FAQ items. This file
+   only adds the new layout pieces (prefix .cv2-):
+     1. Palettes (one block per brand, incl. the Bronx for a later clone)
+     2. Hero band: H1 + lede left, Google / Yelp / Licensed proof box right,
+        call button under it on phones only
+     3. Main row (nyc6-contact-v2 pattern): big crew photo + Call / Hours
+        tiles left, the colored form right (about 45% of the row, like
+        NY Roofing's .ch-form)
+     4. Reviews, steps, office (map + address card + photo), FAQ
+   Form text colors were measured (WCAG 2.x, normal text needs 4.5:1):
+     Brooklyn  white on #AD0315  7.50    Far Rockaway white on #41185C 13.91
+     Long Isl. white on #16572D  8.62    Yonkers      white on #D2450A  4.57
+     Manhattan navy #012B53 on #E89E02 6.33 (white would be 2.25)
+     Bronx     #111111 on #E25002 4.84 (white would be 3.90, navy 3.84)
+   ========================================================================== */
+
+/* 1. Palettes ------------------------------------------------------------- */
+.cv2 {
+  --cv2-head: calc(var(--nav-h) + var(--header-line, 4px));
+  --cv2-star: #F5B73E;
+  --cv2-radius: 14px;
+  --cv2-error: #8A0210;          /* error text on its white chip: 9.9:1 */
+}
+.cv2--brooklyn {
+  --cv2-accent: #AD0315;  --cv2-accent-hover: #8A0210;  --cv2-accent-ink: #AD0315;
+  --cv2-on-accent: #FFFFFF;      /* form text on the red: 7.50:1 */
+  --cv2-accent-on-dark: #AD0315;
+  --cv2-dark: #022350;    --cv2-dark-deep: #011A3C;
+  --cv2-tint: #EAF0F8;    --cv2-ink: #33373D;  --cv2-muted: #5B6470;
+  --cv2-line: rgba(2, 35, 80, .14);
+  --cv2-band: repeating-linear-gradient(135deg, transparent 0 68px, rgba(255, 255, 255, .075) 69px, transparent 70px) right center / 45% 100% no-repeat, linear-gradient(90deg, #011A3C 0%, #092F62 100%);
+}
+.cv2--bronx {
+  --cv2-accent: #E25002;  --cv2-accent-hover: #C44502;  --cv2-accent-ink: #A63A01;
+  --cv2-on-accent: #111111;      /* form text on the orange: 4.84:1 */
+  --cv2-accent-on-dark: #E25002;
+  --cv2-dark: #042651;    --cv2-dark-deep: #021634;
+  --cv2-tint: #EEF2F8;    --cv2-ink: #2B3243;  --cv2-muted: #5A6478;
+  --cv2-line: rgba(4, 38, 81, .13);
+  --cv2-band: #042651;
+}
+.cv2--manhattan {
+  --cv2-accent: #E89E02;  --cv2-accent-hover: #C98A02;  --cv2-accent-ink: #8A5C00;
+  --cv2-on-accent: #012B53;      /* form text on the amber: 6.33:1 */
+  --cv2-accent-on-dark: #E89E02;
+  --cv2-dark: #012B53;    --cv2-dark-deep: #011D38;
+  --cv2-tint: #EEF3F8;    --cv2-ink: #1F2B3A;  --cv2-muted: #566273;
+  --cv2-line: rgba(1, 43, 83, .12);
+  --cv2-band: #011D38;           /* plus the skyline photo (.mh-pagehero__bg) */
+}
+.cv2--far-rockaway {
+  --cv2-accent: #41185C;  --cv2-accent-hover: #2C0F40;  --cv2-accent-ink: #41185C;
+  --cv2-on-accent: #FFFFFF;      /* 13.91:1 */
+  --cv2-accent-on-dark: #CFAEEA;
+  --cv2-dark: #012246;    --cv2-dark-deep: #00172F;
+  --cv2-tint: #F6F0FA;    --cv2-ink: #33373D;  --cv2-muted: #5B6470;
+  --cv2-line: rgba(1, 34, 70, .14);
+  --cv2-band: repeating-linear-gradient(135deg, transparent 0 68px, rgba(255, 255, 255, .075) 69px, transparent 70px) right center / 45% 100% no-repeat, linear-gradient(90deg, #00172F 0%, #0A2E58 100%);
+}
+.cv2--long-island {
+  --cv2-accent: #16572D;  --cv2-accent-hover: #0F4321;  --cv2-accent-ink: #16572D;
+  --cv2-on-accent: #FFFFFF;      /* 8.62:1 */
+  --cv2-accent-on-dark: #9BD3AC;
+  --cv2-dark: #0A2753;    --cv2-dark-deep: #061937;
+  --cv2-tint: #EEF3F8;    --cv2-ink: #1F2B3A;  --cv2-muted: #566273;
+  --cv2-line: rgba(10, 39, 83, .12);
+  --cv2-band: #061937;           /* plus a Long Island photo (.li-pagehero__bg) */
+}
+.cv2--yonkers {
+  --cv2-accent: #D2450A;  --cv2-accent-hover: #A83708;  --cv2-accent-ink: #A83708;
+  --cv2-on-accent: #FFFFFF;      /* 4.57:1 */
+  --cv2-accent-on-dark: #D2450A;
+  --cv2-dark: #111111;    --cv2-dark-deep: #0A0A0A;
+  --cv2-tint: #F6F2EE;    --cv2-ink: #2A2A2A;  --cv2-muted: #5C5C5C;
+  --cv2-line: rgba(17, 17, 17, .13);
+  --cv2-band: #111111;
+}
+
+.cv2 .u-nowrap { white-space: nowrap; }
+
+
+/* 2. Hero band ------------------------------------------------------------ */
+.cv2-band {
+  position: relative; isolation: isolate; overflow: hidden;
+  padding: calc(var(--cv2-head) + clamp(1rem, .7rem + .9vw, 1.5rem)) 0 clamp(1rem, .7rem + .9vw, 1.5rem);
+  background: var(--cv2-band); color: rgba(255, 255, 255, .86);
+}
+.cv2--yonkers .cv2-band::after { content: ""; position: absolute; left: 0; bottom: 0; width: min(18rem, 40%); height: 4px; background: var(--cv2-accent); }
+.cv2-band__inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem clamp(2rem, 4vw, 4rem); align-items: start; }
+.cv2-band__copy { min-width: 0; }
+.cv2-band h1 {
+  margin: 0; color: #fff;
+  font-size: clamp(2rem, 1.5rem + 1.4vw, 2.75rem); line-height: 1.12; letter-spacing: -.03em;
+}
+.cv2-band__lede { max-width: 62ch; margin: .6rem 0 0; color: rgba(255, 255, 255, .86); font-size: 1.0625rem; line-height: 1.5; }
+.cv2-band__aside { display: grid; justify-items: stretch; gap: .875rem; min-width: 0; }
+
+/* The Brooklyn proof box: Google, Yelp, Licensed & Insured. */
+.cv2-proof {
+  display: grid; grid-template-columns: repeat(3, auto); width: fit-content; max-width: 100%;
+  margin: 0; padding: .5rem .2rem; list-style: none;
+  border: 1px solid rgba(255, 255, 255, .16); border-left: 3px solid var(--cv2-accent-on-dark); border-radius: 8px;
+  background: rgba(255, 255, 255, .06);
+}
+.cv2-proof li { display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; min-width: 0; padding: .2rem .9rem; }
+.cv2-proof li + li { border-left: 1px solid rgba(255, 255, 255, .16); }
+.cv2-proof__icon { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: #fff; }
+.cv2-proof__icon img { width: 1.45rem; height: 1.45rem; object-fit: contain; }
+.cv2-proof__icon svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: var(--cv2-accent-ink); stroke-width: 1.7; }
+.cv2-proof strong { display: block; color: #fff; font-size: .9375rem; line-height: 1.2; white-space: nowrap; }
+.cv2-proof small { display: block; margin-top: .15rem; color: var(--cv2-star); font-size: .75rem; letter-spacing: .05em; line-height: 1.2; }
+.cv2-proof small.cv2-proof__note { color: rgba(255, 255, 255, .8); letter-spacing: 0; }
+
+/* Sean (Oct 19): no hero call button on desktop, the header has one. */
+.cv2-band__call { white-space: nowrap; }
+@media (min-width: 48.01rem) {
+  .cv2-band__call { display: none !important; }
+}
+
+
+/* 3. Main row: photo + tiles left, colored form right --------------------- */
+.cv2-main { padding-block: clamp(.875rem, .7rem + .6vw, 1.25rem) clamp(1.5rem, 1rem + 1.4vw, 2.5rem); background: #fff; }
+.cv2-main__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; align-items: stretch; }
+@media (min-width: 62em) {
+  .cv2-main__grid { grid-template-columns: minmax(0, 1fr) calc((100% - 3rem) * .45); column-gap: 3rem; }
+}
+.cv2-main__left { display: flex; flex-direction: column; gap: .75rem; min-width: 0; }
+
+.cv2-photo {
+  position: relative; flex: 1 1 auto; min-height: 16rem; margin: 0; overflow: hidden;
+  border-radius: var(--cv2-radius); background: var(--cv2-tint);
+  box-shadow: 0 24px 44px -30px rgba(0, 0, 0, .5);
+}
+.cv2-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cv2-photo::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: var(--cv2-accent); }
+
+.cv2-tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin: 0; padding: 0; list-style: none; }
+.cv2-tile {
+  display: flex; align-items: center; gap: .75rem; min-width: 0; padding: .7rem .9rem;
+  border: 1px solid var(--cv2-line); border-radius: 10px; background: #fff;
+}
+.cv2-tile__icon { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--cv2-accent); color: var(--cv2-on-accent); }
+.cv2-tile__icon svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.cv2-tile__body { display: grid; min-width: 0; }
+.cv2-tile__label { color: var(--cv2-muted); font-size: .6875rem; font-weight: 700; letter-spacing: .12em; line-height: 1.3; text-transform: uppercase; }
+.cv2-tile__value { color: var(--cv2-dark); font-size: 1.125rem; font-weight: 700; line-height: 1.25; white-space: nowrap; text-decoration: none; }
+a.cv2-tile__value:hover { text-decoration: underline; text-underline-offset: .18em; }
+
+/* The colored form (NY Roofing .ch-form): brand accent card, dark frame,
+   white title box, white inputs, dark pill submit. Overrides .quote-card. */
+.cv2 .cv2-form.quote-card {
+  position: relative; display: block; min-width: 0; margin: 0;
+  padding: .875rem clamp(1rem, .6rem + 1.2vw, 1.75rem) .875rem;
+  border: 2px solid var(--cv2-dark); border-top-width: 2px; border-radius: var(--cv2-radius);
+  background: var(--cv2-accent); color: var(--cv2-on-accent);
+  box-shadow: none;
+}
+.cv2 .cv2-form__head { margin: 0 0 .625rem; padding: .3rem 0 .625rem; border-bottom: 1px solid color-mix(in srgb, var(--cv2-on-accent) 35%, transparent); text-align: center; }
+.cv2 .cv2-form .quote-card__title {
+  display: inline-block; margin: 0; padding: .25rem 1rem;
+  border: 0; border-radius: 4px; background: #fff;
+  outline: 2px solid var(--cv2-on-accent); outline-offset: 3px;
+  color: var(--cv2-dark); font-size: clamp(1.375rem, 1.2rem + .6vw, 1.625rem); font-weight: 700; line-height: 1.15; letter-spacing: -.02em; text-align: center;
+}
+/* Optional sub line under the title (Bronx, Sean BX-C2 / BX-C8): centered
+   on desktop, left-aligned on phones; the title stays centered on both. */
+.cv2 .cv2-form .cv2-form__sub { margin: .7rem 0 0; color: var(--cv2-on-accent); font-size: .9375rem; font-weight: 500; line-height: 1.4; text-align: center; }
+@media (max-width: 48rem) {
+  .cv2 .cv2-form .cv2-form__sub { text-align: left; }
+}
+.cv2 .cv2-form .field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .625rem 1rem; margin: 0 0 .625rem; }
+.cv2 .cv2-form .field { display: grid; gap: .25rem; min-width: 0; margin: 0; }
+.cv2 .cv2-form .field label {
+  color: var(--cv2-on-accent); font-size: .75rem; font-weight: 700; letter-spacing: .1em; line-height: 1.2; text-transform: uppercase;
+}
+.cv2 .cv2-form .field input,
+.cv2 .cv2-form .field textarea {
+  width: 100%; min-height: 2.625rem; padding: .45rem .875rem;
+  border: 1px solid rgba(0, 0, 0, .28); border-radius: 8px; background: #fff;
+  color: var(--cv2-ink); font: inherit; font-size: 1rem; font-weight: 500;
+}
+.cv2 .cv2-form .field textarea { height: 4rem; min-height: 3.25rem; resize: vertical; }
+.cv2 .cv2-form .field input::placeholder,
+.cv2 .cv2-form .field textarea::placeholder { color: #6B6F76; font-size: .9375rem; }
+.cv2 .cv2-form .field input:hover,
+.cv2 .cv2-form .field textarea:hover { border-color: rgba(0, 0, 0, .5); }
+.cv2 .cv2-form .field input:focus,
+.cv2 .cv2-form .field textarea:focus { outline: 0; border-color: var(--cv2-dark); box-shadow: 0 0 0 3px var(--cv2-on-accent); background: #fff; }
+
+/* Errors (js: .field.has-error + span.field-error): a white chip with dark
+   red text, readable on every accent. */
+.cv2 .cv2-form .field-error {
+  justify-self: start; padding: .15rem .5rem; border-radius: 4px; background: #fff;
+  color: var(--cv2-error); font-size: .8125rem; font-weight: 700; line-height: 1.3;
+}
+.cv2 .cv2-form .has-error input,
+.cv2 .cv2-form .has-error textarea { border: 2px solid var(--cv2-error); }
+
+/* Dark pill submit with an accent pip (NY Roofing .ch-btn). */
+.cv2-submit {
+  display: flex; align-items: center; justify-content: center; gap: .75rem;
+  width: min(100%, 29rem); min-height: 3rem; margin: .875rem auto 0; padding: .375rem 1.75rem .375rem .375rem;
+  border: 2px solid var(--cv2-dark); border-radius: 999px; background: var(--cv2-dark); color: #fff;
+  font: inherit; font-size: 1.0625rem; font-weight: 700; line-height: 1.2; cursor: pointer;
+  transition: background-color .15s ease, color .15s ease;
+}
+.cv2-submit__pip { display: grid; place-items: center; flex: none; width: 2.125rem; height: 2.125rem; border-radius: 50%; background: var(--cv2-accent); color: var(--cv2-on-accent); transition: transform .15s ease; }
+.cv2-submit__pip svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.cv2-submit:hover, .cv2-submit:focus-visible { background: #fff; color: var(--cv2-dark); }
+.cv2-submit:hover .cv2-submit__pip, .cv2-submit:focus-visible .cv2-submit__pip { transform: translateX(2px); }
+.cv2-submit:focus-visible { outline: 3px solid var(--cv2-on-accent); outline-offset: 3px; }
+.cv2 .cv2-form .form-callback { margin: .4rem 0 0; color: var(--cv2-on-accent); font-size: .875rem; font-weight: 700; line-height: 1.3; text-align: center; }
+
+/* The js thank-you notice lands inside the form: a white panel. */
+.cv2 .cv2-form .form-thanks { margin-top: .75rem; padding: .875rem 1rem; border-radius: 8px; background: #fff; color: var(--cv2-ink); text-align: center; }
+.cv2 .cv2-form .form-thanks strong { display: block; margin-bottom: .3rem; color: var(--cv2-dark); font-size: 1.0625rem; }
+.cv2 .cv2-form .form-thanks a { color: var(--cv2-accent-ink); font-weight: 700; }
+
+
+/* 4. Sections below -------------------------------------------------------- */
+.cv2 .cv2-sec { padding-block: clamp(1.75rem, 1.2rem + 1.6vw, 3rem); }
+.cv2 .cv2-sec--tint { background: var(--cv2-tint); }
+.cv2 .cv2-sec--line { border-top: 1px solid var(--cv2-line); }
+
+/* Reviews: brand head + badge pair; the H2 stays on one line on desktop. */
+.cv2 .cv2-reviews { padding-bottom: clamp(1rem, .8rem + .8vw, 1.75rem); }
+@media (min-width: 62em) {
+  .cv2 .cv2-reviews h2 { max-width: none; white-space: nowrap; }
+  /* Long Island centres its reviews head on its own pages; here the badge
+     pair sits on the right like the other brands. */
+  .cv2--long-island .cv2-reviews .lix-head { grid-template-columns: minmax(0, 1fr) auto; justify-items: stretch; text-align: left; }
+  .cv2--long-island .cv2-reviews .lix-head > div { align-items: flex-start; }
+}
+
+/* Section heads for the new sections (brand kicker + title classes inside). */
+.cv2-head { margin-bottom: clamp(1rem, .8rem + .8vw, 1.5rem); }
+.cv2-head h2 { max-width: none; }
+
+/* What happens next: three compact steps in one row (nyc6-contact-v2). */
+.cv2-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 0; padding: 0; list-style: none; counter-reset: cv2-step; }
+.cv2-step { display: flex; align-items: flex-start; gap: .9rem; padding: 1.1rem 1.2rem 1.2rem; border: 1px solid var(--cv2-line); border-radius: 10px; background: #fff; }
+.cv2-step__num { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--cv2-dark); color: #fff; font-size: 1rem; font-weight: 700; }
+.cv2-step h3 { margin: .35rem 0 0; color: var(--cv2-dark); font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); line-height: 1.25; }
+.cv2-step p { margin: .35rem 0 0; color: var(--cv2-muted); font-size: .9375rem; line-height: 1.55; }
+
+/* Office: map with the address card under it (left), a second photo (right). */
+.cv2-office { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, .75rem + 1vw, 1.75rem); align-items: stretch; }
+.cv2-office__place { display: flex; flex-direction: column; gap: .75rem; min-width: 0; }
+.cv2-office__map { position: relative; flex: 1 1 auto; min-height: 19rem; overflow: hidden; border: 1px solid var(--cv2-line); border-radius: var(--cv2-radius); background: var(--cv2-tint); }
+.cv2-office__map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.cv2-office__address {
+  display: flex; align-items: center; gap: .875rem; padding: .875rem 1rem;
+  border: 1px solid var(--cv2-line); border-radius: 10px; background: #fff;
+  color: var(--cv2-dark); text-decoration: none; font-style: normal;
+}
+.cv2-office__address:hover .cv2-office__value, .cv2-office__address:focus-visible .cv2-office__value { text-decoration: underline; text-underline-offset: .18em; }
+.cv2-office__address .cv2-tile__icon { width: 2.75rem; height: 2.75rem; }
+.cv2-office__body { display: grid; gap: .1rem; min-width: 0; }
+.cv2-office__value { color: var(--cv2-dark); font-size: 1.0625rem; font-weight: 700; line-height: 1.35; }
+.cv2-office__link { color: var(--cv2-accent-ink); font-size: .8125rem; font-weight: 700; }
+.cv2-office__photo { position: relative; min-height: 22rem; margin: 0; overflow: hidden; border-radius: var(--cv2-radius); background: var(--cv2-tint); }
+.cv2-office__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* FAQ: intro left (with the Call button), the brand's accordion right.
+   Brooklyn and Far Rockaway keep their own navy intro card (.faq__inner /
+   .fr-faq__inner); the other brands use this grid. */
+.cv2-faq { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); gap: clamp(1.5rem, 1rem + 3vw, 4rem); align-items: start; }
+.cv2-faq__intro h2 { max-width: none; }
+.cv2-faq__intro p.cv2-faq__lede { margin-top: .6rem; color: var(--cv2-muted); }
+.cv2-faq__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.25rem; }
+.cv2-faq__actions .btn, .cv2 .faq__intro .btn, .cv2 .fr-faq__intro .btn { white-space: nowrap; }
+
+
+/* Short laptop screens (Sean's ~1440 x 630): the photo, tiles and the whole
+   form on the first screen. */
+@media (min-width: 62em) and (max-height: 760px) {
+  .cv2-band { padding-top: calc(var(--cv2-head) + .875rem); padding-bottom: .875rem; }
+  .cv2-band h1 { font-size: clamp(2rem, 1.5rem + 1.2vw, 2.5rem); }
+  .cv2-band__lede { margin-top: .4rem; }
+  .cv2-proof { padding-block: .35rem; }
+  .cv2-proof__icon { width: 2.125rem; height: 2.125rem; }
+  .cv2-proof__icon img, .cv2-proof__icon svg { width: 1.25rem; height: 1.25rem; }
+  .cv2-proof li { gap: .3rem; }
+  .cv2-main { padding-top: .75rem; }
+  .cv2 .cv2-form.quote-card { padding-block: .625rem; }
+  .cv2 .cv2-form__head { margin-bottom: .5rem; padding-bottom: .5rem; }
+  .cv2 .cv2-form .cv2-form__sub { margin-top: .5rem; font-size: .875rem; }
+  .cv2 .cv2-form .field-row { gap: .4rem 1rem; margin-bottom: .4rem; }
+  .cv2 .cv2-form .field input, .cv2 .cv2-form .field textarea { min-height: 2.3rem; padding-block: .3rem; }
+  .cv2 .cv2-form .field textarea { height: 2.9rem; min-height: 2.9rem; }
+  .cv2-submit { margin-top: .625rem; min-height: 2.75rem; }
+  .cv2-submit__pip { width: 1.9rem; height: 1.9rem; }
+  .cv2-tile { padding-block: .5rem; }
+  .cv2-tile__icon { width: 2.125rem; height: 2.125rem; }
+}
+
+
+/* Tablet and phone -------------------------------------------------------- */
+@media (max-width: 61.99em) {
+  .cv2-form { order: -1; }                  /* the form comes first */
+  .cv2-photo { flex: none; min-height: 0; aspect-ratio: 16 / 10; }
+  .cv2-steps { grid-template-columns: minmax(0, 1fr); }
+  .cv2-office { grid-template-columns: minmax(0, 1fr); }
+  .cv2-office__map { flex: none; height: 19rem; }
+  .cv2-office__photo { min-height: 0; aspect-ratio: 4 / 3; }
+  .cv2-faq { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 48rem) {
+  .cv2 { --cv2-head: calc(var(--nav-h) + var(--header-line, 3px)); }
+  .cv2-band { padding-top: calc(var(--cv2-head) + 1.25rem); padding-bottom: 1.25rem; }
+  .cv2-band__inner { grid-template-columns: minmax(0, 1fr); }
+  .cv2-band h1 { font-size: clamp(1.75rem, 1.3rem + 2vw, 2.25rem); }
+  .cv2-band__lede { font-size: 1rem; }
+  .cv2-band__aside { justify-items: stretch; }
+  .cv2-proof { grid-template-columns: repeat(3, minmax(0, 1fr)); width: auto; padding: .45rem .15rem; }
+  .cv2-proof li { padding-inline: .5rem; }
+  .cv2-band__call { width: 100%; }
+  .cv2-main { padding-top: 1rem; }
+}
+@media (max-width: 40rem) {
+  .cv2-proof li { padding-inline: .4rem; }
+  .cv2-proof strong { font-size: .75rem; white-space: normal; }
+  .cv2-proof small { font-size: .65rem; }
+  .cv2-proof__icon { width: 2rem; height: 2rem; }
+  .cv2-proof__icon img, .cv2-proof__icon svg { width: 1.2rem; height: 1.2rem; }
+  .cv2 .cv2-form.quote-card { padding: .75rem .875rem; }
+  .cv2 .cv2-form .quote-card__title { font-size: 1.375rem; }
+  .cv2-tiles { gap: .5rem; }
+  .cv2-tile { gap: .5rem; padding: .6rem .65rem; }
+  .cv2-tile__icon { width: 2rem; height: 2rem; }
+  .cv2-tile__icon svg { width: 1rem; height: 1rem; }
+  .cv2-tile__value { font-size: 1rem; }
+  .cv2-faq__actions .btn { width: 100%; }
+}
+@media (max-width: 22em) {
+  .cv2 .cv2-form .field-row { grid-template-columns: minmax(0, 1fr); }
+}

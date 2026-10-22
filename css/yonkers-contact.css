@@ -8,7 +8,7 @@
 /* Hero: solid near-black (pattern removed in yonkers.css), orange H1, and less
    padding so the form row shows on the first screen at 1440 x 630. ------- */
 .ykc-hero { padding-top: calc(var(--nav-h) + var(--header-line) + clamp(1rem, .6rem + 1vw, 1.75rem)); padding-bottom: clamp(1.25rem, .9rem + 1vw, 2rem); }
-.ykc-hero h1 { color: var(--brand); }   /* #D2450A on near-black: 3.9:1, AA for large text */
+.ykc-hero h1 { color: #fff; }   /* Oct 19 (Sean, YK-C1): white H1, like the other brands */
 
 /* Hero call card (sits in .yk-pagehero__aside) ---------------------------- */
 .ykc-callcard { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.4rem; border: 1px solid var(--line-dark); border-left: 4px solid var(--brand); border-radius: var(--radius-sm); background: rgba(255, 255, 255, .06); }

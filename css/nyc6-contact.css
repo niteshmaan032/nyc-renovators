@@ -288,3 +288,122 @@
 
 /* Sean (Oct 12 email): the two intro lines are separate paragraphs; keep them visually as one block. */
 .page-hero__lede + .page-hero__lede--second { margin-top: 0; }
+
+
+/* ==========================================================================
+   19 Oct call
+   ========================================================================== */
+
+/* RR-C1 (1:12:07): half the white gap between the heading band and the
+   photo/form row on desktop (28px to 14px). */
+@media (min-width: 40.0625rem) {
+  .page-contact-v2 .contact-hero { padding-top: .375rem; }
+  .page-contact-v2 .contact-hero__grid { margin-top: .5rem; }
+}
+
+/* RR-C2 (1:16:25): the form about 10% thinner and the team photo bigger,
+   45/55 instead of 40/60. Desktop only; the row stacks below 68rem. */
+@media (min-width: 68.0625rem) {
+  .page-contact-v2 .contact-hero__grid { grid-template-columns: minmax(0, 9fr) minmax(0, 11fr); }
+  .page-contact-v2 .contact-team { max-width: none; }
+}
+
+/* RR-C3 (0:13:22): phones, three over three. BBB and Yelp swap places
+   (row 1: Google, GAF, Yelp; row 2: NRCA, BBB, Inc.) and the marks sit
+   closer together, leaving the white space at the end of the row. */
+@media (max-width: 40rem) {
+  .page-hero--contact .page-hero__marks {
+    justify-content: start;
+    column-gap: 1.25rem;
+  }
+  .page-hero--contact .page-hero__marks > li:nth-child(1) { order: 1; }
+  .page-hero--contact .page-hero__marks > li:nth-child(2) { order: 2; }
+  .page-hero--contact .page-hero__marks > li:nth-child(5) { order: 3; }
+  .page-hero--contact .page-hero__marks > li:nth-child(4) { order: 4; }
+  .page-hero--contact .page-hero__marks > li:nth-child(3) { order: 5; }
+  .page-hero--contact .page-hero__marks > li:nth-child(6) { order: 6; }
+}
+
+
+/* ==========================================================================
+   RR-V1 (19 Oct, 4:13:40): review variant, nyc6-contact-v3.html only.
+   The form card filled with Royal red, like the NY Roofing yellow form:
+   solid card, white boxed title, white inputs, white labels and a navy
+   submit. The red is a step deeper than the button red (#E8263C) so white
+   text on it passes AA (#DC2238 is 4.85:1 with white; #E8263C is 4.4:1).
+   ========================================================================== */
+.page-contact-v3 .page-hero--contact .contact-form {
+  --form-red: #DC2238;
+  border: 2px solid var(--navy-deep);
+  background-color: var(--form-red);
+  color: var(--white);
+  box-shadow: 0 30px 60px -34px rgba(1, 27, 68, .55);
+}
+
+.page-contact-v3 .page-hero--contact .contact-form__head {
+  border-bottom-color: rgba(255, 255, 255, .35);
+  text-align: center;
+}
+
+.page-contact-v3 .page-hero--contact .contact-form__title {
+  display: table;
+  margin-inline: auto;
+  padding: .1875rem .875rem;
+  border: 2px solid var(--navy-deep);
+  background-color: var(--white);
+  color: var(--navy);
+}
+
+.page-contact-v3 .contact-form .field__label { color: var(--white); }
+
+.page-contact-v3 .contact-form .field__input {
+  background-color: var(--white);
+  border-color: rgba(1, 27, 68, .35);
+  color: var(--navy);
+}
+.page-contact-v3 .contact-form .field__input::placeholder { color: #5E6B80; }
+.page-contact-v3 .contact-form .field__input:hover { border-color: var(--navy-deep); }
+.page-contact-v3 .contact-form .field__input:focus,
+.page-contact-v3 .contact-form .field__input:focus-visible {
+  outline: 0;
+  border-color: var(--navy-deep);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .7);
+}
+
+/* Errors: red on red would vanish, so the input gets a navy edge and the
+   message reads white on the card. */
+.page-contact-v3 .contact-form .field--error .field__input,
+.page-contact-v3 .contact-form .field__input:user-invalid {
+  border-color: var(--navy-deep);
+  background-color: #FFF4F5;
+  box-shadow: 0 0 0 2px var(--navy-deep);
+}
+.page-contact-v3 .contact-form .field__error { color: var(--white); }
+
+/* Submit: navy-deep pill (3.5:1 against the card, white label 15:1), white
+   on hover. */
+.page-contact-v3 .page-hero--contact .contact-form__submit {
+  --clr: var(--navy-deep);
+  --btn-ink: var(--white);
+  --pip-bg: var(--white);
+  --pip-ink: var(--navy-deep);
+}
+.page-contact-v3 .page-hero--contact .contact-form__submit:hover,
+.page-contact-v3 .page-hero--contact .contact-form__submit:focus-visible {
+  --clr: var(--white);
+  --btn-ink: var(--navy-deep);
+  --pip-bg: var(--navy-deep);
+  --pip-ink: var(--white);
+}
+.page-contact-v3 .page-hero--contact .contact-form__submit:focus-visible {
+  outline: 3px solid var(--white);
+  outline-offset: 3px;
+}
+
+.page-contact-v3 .contact-form__callback { color: var(--white); font-weight: var(--fw-bold); }
+
+.page-contact-v3 .contact-form .form-status {
+  background-color: var(--white);
+  border-color: var(--navy-deep);
+  color: var(--navy);
+}

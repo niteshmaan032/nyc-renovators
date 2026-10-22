@@ -3896,8 +3896,10 @@ a.contact-line__value:hover { color: var(--red); }
   .page-home .contact .contact-form__grid { row-gap: .5rem; }
   .page-home .contact .field__input--area { min-height: 3.75rem; }
   .page-home .contact .contact-form__submit { margin-top: .75rem; }
-  .page-home .contact__left--boxed .contact__map { max-height: none; height: 27rem; }
-  .page-home .contact__left--boxed .contact__map-frame { height: 27rem; }
+  /* Oct 19 (RR-H5): about 72% of the old 27rem, level with Sean's mark. Not
+     lower than ~19rem: below ~300px Google drops the place card. */
+  .page-home .contact__left--boxed .contact__map { max-height: none; height: 19.5rem; }
+  .page-home .contact__left--boxed .contact__map-frame { height: 19.5rem; }
 }
 
 /* ---------------------------------------------------------------------------
@@ -4130,3 +4132,72 @@ a.contact-line__value:hover { color: var(--red); }
   .team-video__actions .btn { flex: 1 1 100%; justify-content: center; }
 }
 
+
+
+/* ==========================================================================
+   Oct 19 call — shared by every nyc6* and queens* page
+   ========================================================================== */
+
+/* No sideways scroll on a phone, ever (iOS ignores overflow-x on body alone,
+   so both carry it). */
+html, body { overflow-x: clip; }
+
+/* A phone number never breaks across two lines. */
+a[href^="tel:"],
+.call-cta__number { white-space: nowrap; }
+
+/* The floating green call button is gone on every width; the header carries
+   the call button now. */
+.call-fab { display: none !important; }
+
+/* Footer rating: "4.9 ★ Google", one star, the word Google in bold. */
+.footer__rating-brand { font-weight: var(--fw-bold); }
+
+@media (max-width: 40rem) {
+  /* RR-M1 (1:05:47): a red call button next to "Menu" in the phone header,
+     icon only, the same height as the Menu button. */
+  .nav-bar__actions { gap: .5rem; }
+  .nav-bar__actions .call-cta {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    min-width: 0;
+    height: 3rem;
+    min-height: 0;
+    padding: 0;
+    border-radius: var(--radius-md);
+  }
+  .nav-bar__actions .call-cta .btn__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .nav-bar__actions .call-cta .btn__pip { width: 28px; height: 28px; }
+  .nav-bar__actions .call-cta .btn__arrow { width: 13px; height: 13px; font-size: 13px; }
+
+  /* RR-M1 (0:12 / 0:48): the drawer's two buttons and the BBB line sit fully
+     above the live chat, which pops up about ten seconds after load: the
+     LIVE CHAT / TEXT US bar (62px) and the agent bubble above it (150px). */
+  .mobile-nav__foot { padding-bottom: calc(14rem + env(safe-area-inset-bottom)); }
+}
+
+/* Phones: "4.9 ★ Google", BBB and GAF stay on one row with the new word. */
+@media (max-width: 40rem) {
+  .footer__badges { gap: .75rem; }
+  .footer__rating { gap: .5rem; }
+  .footer__rating img { height: 1.75rem; }
+  .footer__rating span { font-size: 1.0625rem; }
+  .footer__badges li:not(.footer__rating) img { height: 2.625rem; }
+  .footer__badges .is-gaf img { height: 2rem; }
+}
+@media (max-width: 24.5rem) {
+  .footer__badges { gap: .5rem; }
+  .footer__rating span { font-size: .9375rem; }
+  .footer__badges li:not(.footer__rating) img { height: 2.375rem; }
+  .footer__badges .is-gaf img { height: 1.75rem; }
+}

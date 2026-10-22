@@ -980,3 +980,36 @@ svg { display: inline-block; }
 /* Oct 16 (Nitesh): the footer paragraph under the logo runs a little wider. */
 .bkf__about { max-width: 52ch; }
 @media (max-width: 75rem) { .bkf__about { max-width: 62ch; } }
+
+/* ==========================================================================
+   Oct 19 client call (Brooklyn pages only).
+   ========================================================================== */
+
+/* Phones: the page never scrolls sideways (iOS needs the guard on html too). */
+html { overflow-x: hidden; }
+
+/* Phone numbers never break onto two lines. */
+a[href^="tel:"], .contact__phone span, .bkf__value a[href^="tel:"] { white-space: nowrap; }
+
+/* Footer (BK-H5): ratings on the left like the Bronx footer, "5.0 ★ Google", no review count;
+   Call / Office / Hours on the right. */
+.bkf__contacts { justify-content: end; }
+.bkf__score { display: inline-flex; flex-wrap: nowrap; align-items: baseline; gap: 0 .35rem; color: #fff; white-space: nowrap; }
+.bkf__score .bkf__star { font-size: 1.125rem; line-height: 1; }
+.bkf__source { color: #fff; font-size: 1rem; font-weight: 700; }
+@media (max-width: 48rem) {
+  .bkf__contacts { justify-content: start; }
+}
+@media (max-width: 40rem) {
+  .bkf__score { flex-direction: row; align-items: baseline; gap: 0 .3rem; }
+}
+
+/* Bottom contact section on home and flat roofing (BK-H4): the form card ends just under
+   "We'll call you back within the hour"; the details panel is tighter so both columns stay level.
+   The map keeps its 19rem (304px) minimum. */
+@media (min-width: 48.0625rem) {
+  .contact--compact .contact__details { padding-block: 1.1rem; }
+  .contact--compact .contact__details h2 { margin-bottom: .4rem; font-size: 1.75rem; }
+  .contact--compact .contact__info > a, .contact--compact .contact__info > div { min-height: 2.75rem; padding: .35rem 0; }
+  .contact--compact .contact__info svg { width: 2.1rem; height: 2.1rem; padding: .5rem; }
+}

@@ -3,9 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Oct 19 call (QN-C1): Queens shares Royal's one contact page, so this is an exact
+       copy of nyc6-contact-v2.html. Every Queens link now points at nyc6-contact-v2.html;
+       this file only keeps the old queens-contact-us.html URL working. -->
 
-  <title>Contact Royal Renovators Inc. | Queens Roofing</title>
-  <meta name="description" content="Contact Royal Renovators Inc. in Forest Hills, Queens. Call (718) 414-6067 or tell us about your roofing project.">
+  <title>Contact Us | Royal Renovators Inc.</title>
+  <meta name="description" content="Contact Royal Renovators Inc., Queens roofing contractor since 1988. Call (718) 414-6067 or request a free written quote. Serving all five boroughs, Long Island and Westchester.">
 
   <link rel="icon" href="images/royal-renovators-logo-removebg-preview-e1776149232571.webp">
 
@@ -18,26 +21,27 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer">
 
-  <!-- Shared Royal shell (header, hero, marquee, building types, reviews,
-       footer) comes from the nyc6 sheets. The Queens body sections live in
-       queens.css under the q- class prefix inside .qz, so the two never collide. -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/nyc6.css?v=48">
-  <link rel="stylesheet" href="css/queens.css?v=30">
-  <link rel="stylesheet" href="css/queens-interior.css?v=25">
+
+  <!-- Page-scoped overrides. Loaded after style.css so this page can diverge
+       from index.html without touching the shared stylesheet. -->
+  <link rel="stylesheet" href="css/nyc6.css?v=49">
+  <link rel="stylesheet" href="css/nyc6-contact.css?v=6">
 </head>
-<body class="page-queens q-page-interior q-page-contact">
+<body class="page-contact page-contact-v2">
 
   <a class="skip-link" href="#main">Skip to main content</a>
 
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-roof" viewBox="0 0 24 24"><path d="m2 11 10-8 10 8M5 10v11h14V10M9 21v-7h6v7"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 3 6v6c0 5.2 3.6 8.4 9 10 5.4-1.6 9-4.8 9-10V6l-9-4Zm-4 10 2.6 2.6L16 9"/></symbol><symbol id="i-tools" viewBox="0 0 24 24"><path d="m14 7 3-3 3 3-3 3-3-3ZM4 20l9.5-9.5M7 4l13 13M4 7l3-3M17 20l3-3"/></symbol><symbol id="i-building" viewBox="0 0 24 24"><path d="M3 21V7l9-4 9 4v14M3 21h18M8 10h2m4 0h2M8 14h2m4 0h2M10 21v-4h4v4"/></symbol><symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2C8 8 5 11 5 15a7 7 0 0 0 14 0c0-4-3-7-7-13Zm-3 13c0 2 1 3 3 3"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M6 2h4l1 5-2.5 2c1.5 3 3.5 5 6.5 6.5l2-2.5 5 1v4a3 3 0 0 1-3 3C9.5 21 3 14.5 3 5a3 3 0 0 1 3-3Z"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5.3-8 12-8 12S4 15.3 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol><symbol id="i-fb" viewBox="0 0 24 24"><path d="M14.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.4 1.6-1.4H18V4c-.4-.1-1.6-.2-2.6-.2-2.6 0-4.4 1.5-4.4 4.4V10H8v3h3v8"/></symbol><symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M4 3h3.5L20 21h-3.5L4 3ZM20 3 4 21"/></symbol><symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5ZM3 13l9 5 9-5M3 17l9 5 9-5"/></symbol><symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 3l9 8M5 10v11h14V10M10 21v-6h4v6"/></symbol><symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></symbol><symbol id="i-wall" viewBox="0 0 24 24"><path d="M3 5h18v14H3zM3 10h18M3 15h18M9 5v5M15 10v5M9 15v4M15 5v5"/></symbol><symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2ZM9 4v14M15 6v14"/></symbol><symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.5-4M4 4v4h4M4 13a8 8 0 0 0 14.5 4M20 20v-4h-4"/></symbol><symbol id="i-hammer" viewBox="0 0 24 24"><path d="m14 4 6 6-2 2-6-6 2-2ZM12 8l-8 8 3 3 8-8M15 3l3 3"/></symbol><symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol><symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3ZM12 10v5M12 18v.5"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol><symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-8 8H7l-4 3v-6a8 8 0 0 1 8-8h2a8 8 0 0 1 8 3Z"/></symbol><symbol id="i-btnarrow" viewBox="0 0 14 15"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></symbol></svg>
 
   <header class="site-header" id="site-header">
 
     <div class="nav-bar">
       <div class="container nav-bar__inner">
 
-        <a class="brand" href="queens.html" aria-label="Royal Renovators Inc. Queens — home">
+        <a class="brand" href="nyc6.html" aria-label="Royal Renovators Inc. — home">
           <img class="brand__mark"
                src="images/royal-renovators-logo-removebg-preview-e1776149232571.webp"
                alt="Royal Renovators Inc." width="440" height="308">
@@ -60,33 +64,33 @@
                     <div class="mega__col">
                       <p class="mega__heading">Roofing Services</p>
                       <ul class="mega__list">
-                        <li><a href="queens.html#repairs"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
-                        <li><a href="queens.html#repairs"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
-                        <li><a href="queens.html#repairs"><i class="menu-icon fa-solid fa-magnifying-glass" aria-hidden="true"></i><span>Roof Inspection</span></a></li>
-                        <li><a href="queens.html#repairs"><i class="menu-icon fa-solid fa-hammer" aria-hidden="true"></i><span>Roof Installation</span></a></li>
-                        <li><a href="queens.html#repairs"><i class="menu-icon fa-solid fa-droplet" aria-hidden="true"></i><span>Leak Detection</span></a></li>
+                        <li><a href="#roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
+                        <li><a href="#roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
+                        <li><a href="#roof-inspection"><i class="menu-icon fa-solid fa-magnifying-glass" aria-hidden="true"></i><span>Roof Inspection</span></a></li>
+                        <li><a href="#roof-replacement"><i class="menu-icon fa-solid fa-hammer" aria-hidden="true"></i><span>Roof Installation</span></a></li>
+                        <li><a href="#leak-detection"><i class="menu-icon fa-solid fa-droplet" aria-hidden="true"></i><span>Leak Detection</span></a></li>
                       </ul>
                     </div>
                     <div class="mega__col">
                       <p class="mega__heading">Roofing Types</p>
                       <ul class="mega__list">
-                        <li><a href="queens.html#flat-shingle"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
+                        <li><a href="#flat-roofing"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
                         <li><a href="nyc6-shingle-roofing.html"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
-                        <li><a href="queens.html#systems"><i class="menu-icon fa-solid fa-scroll" aria-hidden="true"></i><span>EPDM Roofing</span></a></li>
-                        <li><a href="queens.html#systems"><i class="menu-icon fa-solid fa-layer-group" aria-hidden="true"></i><span>TPO Roofing</span></a></li>
-                        <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-sun" aria-hidden="true"></i><span>Skylights</span></a></li>
+                        <li><a href="#epdm-roofing"><i class="menu-icon fa-solid fa-scroll" aria-hidden="true"></i><span>EPDM Roofing</span></a></li>
+                        <li><a href="#tpo-roofing"><i class="menu-icon fa-solid fa-layer-group" aria-hidden="true"></i><span>TPO Roofing</span></a></li>
+                        <li><a href="#skylight-installation"><i class="menu-icon fa-solid fa-sun" aria-hidden="true"></i><span>Skylights</span></a></li>
                       </ul>
                     </div>
                     <div class="mega__col mega__col--cta">
                       <p class="mega__heading">Property Types</p>
                       <ul class="mega__list">
-                        <li><a href="queens.html#building-types"><i class="menu-icon fa-solid fa-house-chimney" aria-hidden="true"></i><span>Residential Roofing</span></a></li>
-                        <li><a href="queens.html#commercial"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
+                        <li><a href="#residential-roofing"><i class="menu-icon fa-solid fa-house-chimney" aria-hidden="true"></i><span>Residential Roofing</span></a></li>
+                        <li><a href="#commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
                       </ul>
                       <div class="mega__promo">
                         <p class="mega__promo-text">Licensed &middot; BBB A+ &middot; <span>GAF Master Elite</span></p>
                       </div>
-                      <a class="btn btn--primary mega__cta" href="queens.html#estimate">
+                      <a class="btn btn--primary mega__cta" href="#contact-form">
                         <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
                         <span class="btn__label">Get Free Estimate</span>
                       </a>
@@ -105,11 +109,11 @@
                    no full-bleed panel. -->
               <div class="mega mega--services" id="menu-exteriors" hidden>
                 <ul class="mega__list">
-                  <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
-                  <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
-                  <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
-                  <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-window-maximize" aria-hidden="true"></i><span>Windows</span></a></li>
-                  <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-house" aria-hidden="true"></i><span>Exterior Services</span></a></li>
+                  <li><a href="#siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
+                  <li><a href="#masonry"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
+                  <li><a href="#gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
+                  <li><a href="#windows"><i class="menu-icon fa-solid fa-window-maximize" aria-hidden="true"></i><span>Windows</span></a></li>
+                  <li><a href="#exterior"><i class="menu-icon fa-solid fa-house" aria-hidden="true"></i><span>Exterior Services</span></a></li>
                 </ul>
               </div>
             </li>
@@ -162,25 +166,25 @@
                     <div class="mega__col">
                       <p class="mega__heading">Queens Roofing Systems</p>
                       <ul class="mega__list">
-                        <li><a href="queens.html#flat-shingle"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
-                        <li><a href="queens.html#flat-shingle"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
-                        <li><a href="queens.html#commercial"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
+                        <li><a href="#queens-flat-roofing"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
+                        <li><a href="#queens-shingle-roofing"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
+                        <li><a href="#queens-commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
                       </ul>
                     </div>
                     <div class="mega__col">
                       <p class="mega__heading">Queens Repairs</p>
                       <ul class="mega__list">
-                        <li><a href="queens.html#repairs"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
-                        <li><a href="queens.html#repairs"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
-                        <li><a href="queens.html#repairs" class="mega__link--urgent"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Repair</span></a></li>
+                        <li><a href="#queens-roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
+                        <li><a href="#queens-roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
+                        <li><a href="#queens-emergency-roof-repair" class="mega__link--urgent"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Repair</span></a></li>
                       </ul>
                     </div>
                     <div class="mega__col">
                       <p class="mega__heading">Queens Exteriors</p>
                       <ul class="mega__list">
-                        <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
-                        <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
-                        <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
+                        <li><a href="#queens-siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
+                        <li><a href="#queens-gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
+                        <li><a href="#queens-masonry"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
                       </ul>
                     </div>
                     </div>
@@ -372,9 +376,9 @@
               </div>
             </li>
 
-            <li class="primary-nav__item"><a class="primary-nav__link" href="queens-about-us.html">About</a></li>
+            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc6-about.html">About</a></li>
 
-            <li class="primary-nav__item"><a class="primary-nav__link" href="queens-contact-us.html">Contact Us</a></li>
+            <li class="primary-nav__item"><a class="primary-nav__link" href="nyc6-contact-v2.html" aria-current="page">Contact Us</a></li>
 
           </ul>
         </nav>
@@ -426,20 +430,20 @@
             <!-- Four rows show; the rest stay in the markup and open on
                  "Click to view more". Fourteen rows was too long a scroll. -->
             <ul class="mobile-nav__sub is-collapsed" id="m-roofing" hidden>
-              <li><a href="queens.html#flat-shingle"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
+              <li><a href="#flat-roofing"><i class="menu-icon fa-solid fa-warehouse" aria-hidden="true"></i><span>Flat Roofing</span></a></li>
               <li><a href="nyc6-shingle-roofing.html"><i class="menu-icon fa-solid fa-angles-up" aria-hidden="true"></i><span>Shingle Roofing</span></a></li>
-              <li><a href="queens.html#repairs" class="mega__link--urgent"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Roof Repair</span></a></li>
-              <li><a href="queens.html#commercial"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
-              <li class="is-more"><a href="queens.html#repairs"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
-              <li class="is-more"><a href="queens.html#repairs"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
-              <li class="is-more"><a href="queens.html#repairs"><i class="menu-icon fa-solid fa-magnifying-glass" aria-hidden="true"></i><span>Roof Inspection</span></a></li>
-              <li class="is-more"><a href="queens.html#repairs"><i class="menu-icon fa-solid fa-hammer" aria-hidden="true"></i><span>Roof Installation</span></a></li>
-              <li class="is-more"><a href="queens.html#repairs"><i class="menu-icon fa-solid fa-droplet" aria-hidden="true"></i><span>Leak Detection</span></a></li>
-              <li class="is-more"><a href="queens.html#building-types"><i class="menu-icon fa-solid fa-house-chimney" aria-hidden="true"></i><span>Residential Roofing</span></a></li>
-              <li class="is-more"><a href="queens.html#systems"><i class="menu-icon fa-solid fa-scroll" aria-hidden="true"></i><span>EPDM Roofing</span></a></li>
-              <li class="is-more"><a href="queens.html#systems"><i class="menu-icon fa-solid fa-layer-group" aria-hidden="true"></i><span>TPO Roofing</span></a></li>
-              <li class="is-more"><a href="queens.html#services"><i class="menu-icon fa-solid fa-sun" aria-hidden="true"></i><span>Skylights</span></a></li>
-              <li class="is-more"><a href="queens.html#systems"><i class="menu-icon fa-solid fa-brush" aria-hidden="true"></i><span>Roof Coating</span></a></li>
+              <li><a href="#emergency-roof-repair" class="mega__link--urgent"><i class="menu-icon fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>Emergency Roof Repair</span></a></li>
+              <li><a href="#commercial-roofing"><i class="menu-icon fa-solid fa-building" aria-hidden="true"></i><span>Commercial Roofing</span></a></li>
+              <li class="is-more"><a href="#roof-repair"><i class="menu-icon fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span>Roof Repair</span></a></li>
+              <li class="is-more"><a href="#roof-replacement"><i class="menu-icon fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>Roof Replacement</span></a></li>
+              <li class="is-more"><a href="#roof-inspection"><i class="menu-icon fa-solid fa-magnifying-glass" aria-hidden="true"></i><span>Roof Inspection</span></a></li>
+              <li class="is-more"><a href="#roof-replacement"><i class="menu-icon fa-solid fa-hammer" aria-hidden="true"></i><span>Roof Installation</span></a></li>
+              <li class="is-more"><a href="#leak-detection"><i class="menu-icon fa-solid fa-droplet" aria-hidden="true"></i><span>Leak Detection</span></a></li>
+              <li class="is-more"><a href="#residential-roofing"><i class="menu-icon fa-solid fa-house-chimney" aria-hidden="true"></i><span>Residential Roofing</span></a></li>
+              <li class="is-more"><a href="#epdm-roofing"><i class="menu-icon fa-solid fa-scroll" aria-hidden="true"></i><span>EPDM Roofing</span></a></li>
+              <li class="is-more"><a href="#tpo-roofing"><i class="menu-icon fa-solid fa-layer-group" aria-hidden="true"></i><span>TPO Roofing</span></a></li>
+              <li class="is-more"><a href="#skylight-installation"><i class="menu-icon fa-solid fa-sun" aria-hidden="true"></i><span>Skylights</span></a></li>
+              <li class="is-more"><a href="#roof-coating"><i class="menu-icon fa-solid fa-brush" aria-hidden="true"></i><span>Roof Coating</span></a></li>
               <li class="mobile-nav__more-row">
                 <button class="mobile-nav__more" type="button" aria-expanded="false" aria-controls="m-roofing"
                         data-more-label="Click to view more" data-less-label="Show less">Click to view more</button>
@@ -453,11 +457,11 @@
               <i class="mobile-nav__chevron fa-solid fa-chevron-down" aria-hidden="true"></i>
             </button>
             <ul class="mobile-nav__sub" id="m-exteriors" hidden>
-              <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
-              <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
-              <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
-              <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-window-maximize" aria-hidden="true"></i><span>Windows</span></a></li>
-              <li><a href="queens.html#services"><i class="menu-icon fa-solid fa-house" aria-hidden="true"></i><span>Exterior Services</span></a></li>
+              <li><a href="#siding"><i class="menu-icon fa-solid fa-grip-lines" aria-hidden="true"></i><span>Siding</span></a></li>
+              <li><a href="#masonry"><i class="menu-icon fa-solid fa-trowel-bricks" aria-hidden="true"></i><span>Masonry</span></a></li>
+              <li><a href="#gutters"><i class="menu-icon fa-solid fa-water" aria-hidden="true"></i><span>Gutters</span></a></li>
+              <li><a href="#windows"><i class="menu-icon fa-solid fa-window-maximize" aria-hidden="true"></i><span>Windows</span></a></li>
+              <li><a href="#exterior"><i class="menu-icon fa-solid fa-house" aria-hidden="true"></i><span>Exterior Services</span></a></li>
             </ul>
           </li>
 
@@ -474,13 +478,13 @@
                 </button>
                 <ul class="mobile-nav__sub mobile-nav__sub--nested" id="m-queens" hidden>
                   <li><a href="queens.html"><span>Queens Roofing</span></a></li>
-                  <li><a href="queens.html#flat-shingle"><span>Flat Roofing</span></a></li>
-                  <li><a href="queens.html#flat-shingle"><span>Shingle Roofing</span></a></li>
-                  <li><a href="queens.html#commercial"><span>Commercial Roofing</span></a></li>
-                  <li><a href="queens.html#repairs"><span>Roof Repair</span></a></li>
-                  <li><a href="queens.html#repairs"><span>Roof Replacement</span></a></li>
-                  <li><a href="queens.html#services"><span>Siding</span></a></li>
-                  <li><a href="queens.html#services"><span>Gutters</span></a></li>
+                  <li><a href="#queens-flat-roofing"><span>Flat Roofing</span></a></li>
+                  <li><a href="#queens-shingle-roofing"><span>Shingle Roofing</span></a></li>
+                  <li><a href="#queens-commercial-roofing"><span>Commercial Roofing</span></a></li>
+                  <li><a href="#queens-roof-repair"><span>Roof Repair</span></a></li>
+                  <li><a href="#queens-roof-replacement"><span>Roof Replacement</span></a></li>
+                  <li><a href="#queens-siding"><span>Siding</span></a></li>
+                  <li><a href="#queens-gutters"><span>Gutters</span></a></li>
                 </ul>
               </li>
               <li>
@@ -597,15 +601,15 @@
             </ul>
           </li>
 
-          <li><a class="mobile-nav__link" href="queens-about-us.html">About</a></li>
+          <li><a class="mobile-nav__link" href="nyc6-about.html">About</a></li>
 
-          <li><a class="mobile-nav__link" href="queens-contact-us.html">Contact Us</a></li>
+          <li><a class="mobile-nav__link" href="nyc6-contact-v2.html" aria-current="page">Contact Us</a></li>
 
         </ul>
       </nav>
 
       <div class="mobile-nav__foot">
-        <a class="btn btn--outline" href="queens.html#estimate">
+        <a class="btn btn--outline" href="#contact-form">
               <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
               <span class="btn__label">Get a free estimate</span></a>
         <a class="btn btn--primary" href="tel:+17184146067">
@@ -618,82 +622,331 @@
   </div>
 
   <main id="main">
-    <div class="qz">
 
-  <section class="q-contact-hero" aria-labelledby="contact-hero-title">
-    <div class="q-container q-contact-hero__inner">
-      <div class="q-contact-hero__copy">
-        <h1 id="contact-hero-title">Contact the Queens Team</h1>
-        <p>Call us about your roof or exterior project, or share your property details below for a free estimate.</p>
-      </div>
-      <ul class="q-contact-hero__proof" aria-label="Why Queens property owners choose us">
-        <li><span class="q-contact-hero__proof-icon"><img src="images/Google__G__logo.svg.webp" alt="" width="26" height="26"></span><span><strong>4.9 Google Reviews</strong><small>★★★★★</small></span></li>
-        <li><span class="q-contact-hero__proof-icon"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span><strong>Licensed &amp; Insured</strong><small>LIC #2030146</small></span></li>
-        <li><span class="q-contact-hero__proof-icon"><svg aria-hidden="true"><use href="#i-clock"/></svg></span><span><strong>Open 7 Days</strong><small>7:00 am – 11:00 pm</small></span></li>
-      </ul>
-    </div>
-  </section>
+    <!-- Two bands. Top: the heading with the credentials opposite it. Below:
+         the team photo with the phone and hours on the left, the form on the
+         right. The map and address live in "Our Forest Hills Office" below. -->
+    <section class="page-hero page-hero--contact">
+      <!-- The heading band runs edge to edge on its own tint; the two cards sit
+           on white below it, with a gap between so the bands read as two steps
+           rather than one long column. -->
+      <div class="contact-hero__band">
+        <div class="container contact-hero__top">
 
-  <section class="q-contact-page" aria-labelledby="contact-page-title">
-    <div class="q-container q-contact-page__grid">
-      <div class="q-contact-page__aside">
-        <h1 class="q-section-title" id="contact-page-title">Get in touch</h1>
-        <div class="q-contact-page__map"><iframe src="https://www.google.com/maps?q=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375&amp;z=14&amp;output=embed" title="Map showing Royal Renovators Inc. at 118-35 Queens Blvd, Forest Hills, NY 11375" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-        <div class="q-contact-page__details">
-          <div><svg aria-hidden="true"><use href="#i-phone"/></svg><span>Call us</span><a href="tel:+17184146067">(718) 414-6067</a></div>
-          <div><svg aria-hidden="true"><use href="#i-pin"/></svg><span>Queens office</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375" target="_blank" rel="noopener">118-35 Queens Blvd, Forest Hills, NY 11375</a></div>
-          <div><svg aria-hidden="true"><use href="#i-clock"/></svg><span>Phone hours</span><strong>Every day · 7:00 am – 11:00 pm</strong></div>
+          <div class="contact-hero__head">
+
+            <h1 class="page-hero__title">Contact Royal Renovators Inc.</h1>
+
+            <p class="page-hero__lede">Tell us about your roofing project.</p>
+            <p class="page-hero__lede page-hero__lede--second">
+              Request a free written estimate or
+              call us at <a href="tel:+17184146067">(718) 414-6067</a><span class="u-mob-inline"> for immediate assistance</span>.
+            </p>
+
+          </div>
+
+          <ul class="hero__badges page-hero__marks">
+            <li class="hero__badge hero__badge--rating">
+              <img src="images/Google__G__logo.svg.webp" alt="Google" width="1280" height="1280" decoding="async">
+              <span class="hero__rating"><strong>4.9</strong> <span class="rating-star" aria-hidden="true">&#9733;</span><span class="visually-hidden">4.9 out of 5 on Google</span></span>
+            </li>
+            <li class="hero__badge hero__badge--gaf">
+              <img src="images/GAF-Master-Elite-Logo.png" alt="GAF Factory-Certified Master Elite roofing contractor"
+                   width="1424" height="520" decoding="async">
+            </li>
+            <li class="hero__badge">
+              <img src="images/bb+.webp" alt="BBB Accredited Business, A+ rating" width="400" height="259" decoding="async">
+            </li>
+            <li class="hero__badge hero__badge--nrca">
+              <img src="images/nrcalogo.gif" alt="NRCA member, National Roofing Contractors Association"
+                   width="920" height="263" decoding="async">
+            </li>
+            <li class="hero__badge hero__badge--extra">
+              <img src="images/PngItem_1663.png" alt="People love us on Yelp"
+                   width="540" height="539" decoding="async">
+            </li>
+            <li class="hero__badge hero__badge--extra hero__badge--inc">
+              <img src="images/Inc.-5000-Color-Medallion-Logo-768x768.png" alt="Inc. 5000 honoree"
+                   width="768" height="768" decoding="async">
+            </li>
+          </ul>
+
         </div>
       </div>
-      <form class="q-quote-card q-contact-page__form" id="contact-form" novalidate aria-labelledby="estimate-title">
-        <h2 class="q-quote-card__title" id="estimate-title">Get a Free Estimate</h2>
-        <div class="q-field-row"><div class="q-field"><label for="cp-name">Name</label><input id="cp-name" name="name" type="text" autocomplete="name" placeholder="Jane Rodriguez" required></div><div class="q-field"><label for="cp-phone">Phone</label><input id="cp-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(718) 000-0000" required></div></div>
-        <p class="q-field__note q-contact-page__privacy">We&rsquo;ll only contact you about your project.</p>
-        <div class="q-field-row"><div class="q-field"><label for="cp-address">Address</label><input id="cp-address" name="address" type="text" autocomplete="street-address" placeholder="Street, Queens" required></div><div class="q-field"><label for="cp-email">Email</label><input id="cp-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="jane@email.com" required></div></div>
-        <div class="q-field q-field--message"><label for="cp-message">How Can We Help?</label><textarea id="cp-message" name="message" rows="3" placeholder="Tell us about your roof, siding, or gutter project&hellip;" required></textarea></div>
-        <button class="q-btn q-btn--red q-btn--block" type="submit"><span class="q-btn__pip" aria-hidden="true"><svg class="q-btn__arrow" aria-hidden="true"><use href="#i-btnarrow"/></svg><svg class="q-btn__arrow q-btn__arrow--copy" aria-hidden="true"><use href="#i-btnarrow"/></svg></span><span class="q-btn__label">Get My Free Estimate</span></button>
-        <p class="q-form-callback">We&rsquo;ll call you back within the hour</p>
-      </form>
-    </div>
-  </section>
-  <section class="q-contact-next" aria-labelledby="next-title"><div class="q-container"><div class="q-contact-next__head"><p class="q-section-eyebrow">What happens next</p><h2 class="q-section-title" id="next-title">A clear starting point for your project.</h2></div><div class="q-contact-next__grid"><div><span>01</span><h3>Describe the issue</h3><p>Share the location, roof type, and what you have noticed.</p></div><div><span>02</span><h3>Talk through the options</h3><p>We discuss the condition and the next useful step for the property.</p></div><div><span>03</span><h3>Plan the work</h3><p>When the scope is clear, we can prepare an estimate for the work.</p></div></div></div></section>
-  <section class="q-contact-faq" id="faq" aria-labelledby="contact-faq-title">
-    <div class="q-container q-contact-faq__grid">
-      <div class="q-contact-faq__intro">
-        <p class="q-section-eyebrow">Questions before you call?</p>
-        <h2 class="q-section-title" id="contact-faq-title">Good to know<br>before we get started.</h2>
-        <p>Here are answers to the questions we hear most often from Queens property owners. If your situation is different, our team can talk it through with you.</p>
-        <a class="q-btn q-btn--primary q-contact-faq__more" href="nyc6-faqs.html"><span class="q-btn__pip" aria-hidden="true"><svg class="q-btn__arrow" aria-hidden="true"><use href="#i-btnarrow"/></svg><svg class="q-btn__arrow q-btn__arrow--copy" aria-hidden="true"><use href="#i-btnarrow"/></svg></span><span class="q-btn__label">More FAQs</span></a>
+
+      <div class="container contact-hero">
+
+        <div class="contact-hero__grid">
+
+          <div class="contact-hero__left">
+
+            <!-- The crew where the map used to be; the map moved down to "Our
+                 Forest Hills Office" with the address. -->
+            <figure class="contact-team">
+              <img class="contact-team__img"
+                   src="https://www.nycrenovators.com/wp-content/uploads/2024/09/Photo-Jul-02-2024_-2-57-14-PM-_5_-_1_-1-1024x768.webp"
+                   alt="The Royal Renovators Inc. crew on a rooftop with the New York City skyline"
+                   width="1024" height="768" decoding="async">
+            </figure>
+
+            <ul class="contact-lines">
+
+              <li class="contact-line">
+                <span class="contact-line__icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+                <span class="contact-line__body">
+                  <span class="contact-line__label">Call Us</span>
+                  <a class="contact-line__value" href="tel:+17184146067">(718) 414-6067</a>
+                </span>
+              </li>
+
+              <li class="contact-line">
+                <span class="contact-line__icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
+                <span class="contact-line__body">
+                  <span class="contact-line__label">Hours</span>
+                  <span class="contact-line__value">Open 24/7</span>
+                </span>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <form class="contact-form form--light js-form" id="contact-form" method="post"
+                action="#contact-form" aria-labelledby="contact-form-title">
+
+            <div class="contact-form__head">
+              <h2 class="contact-form__title" id="contact-form-title">Get a Free Estimate</h2>
+            </div>
+
+            <div class="contact-form__grid">
+
+              <p class="field">
+                <label class="field__label" for="cf-name">Name</label>
+                <input class="field__input" type="text" id="cf-name" name="name"
+                       autocomplete="name" placeholder="Jane Rodriguez" required>
+              </p>
+
+              <p class="field">
+                <label class="field__label" for="cf-phone">Phone</label>
+                <input class="field__input" type="tel" id="cf-phone" name="phone"
+                       autocomplete="tel" inputmode="tel" placeholder="(718) 000-0000" required>
+              </p>
+
+              <p class="field field--address">
+                <label class="field__label" for="cf-address">Address</label>
+                <input class="field__input" type="text" id="cf-address" name="address"
+                       autocomplete="street-address" placeholder="Street, borough" required>
+              </p>
+
+              <p class="field field--email">
+                <label class="field__label" for="cf-email">Email</label>
+                <input class="field__input" type="email" id="cf-email" name="email"
+                       autocomplete="email" inputmode="email" placeholder="jane@email.com" required>
+              </p>
+
+              <p class="field field--full field--message">
+                <label class="field__label" for="cf-message">How Can We Help?</label>
+                <textarea class="field__input field__input--area" id="cf-message" name="message"
+                          rows="2" placeholder="Tell us about your roofing, siding, or gutter project..." required></textarea>
+              </p>
+
+            </div>
+
+            <button class="btn btn--primary contact-form__submit" type="submit">
+              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+              <span class="btn__label">Get My Free Estimate</span>
+            </button>
+
+            <p class="contact-form__note contact-form__callback">We&rsquo;ll call you back within the hour</p>
+
+            <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+
+          </form>
+
+        </div>
+
       </div>
-      <div class="q-contact-faq__list">
-        <details>
-          <summary>Is the roofing estimate free?</summary>
-          <p>Yes. Tell us about your property and the work you have in mind, and we can discuss the next step toward a free estimate.</p>
-        </details>
-        <details>
-          <summary>What information should I have ready?</summary>
-          <p>Your property address, a brief description of the issue, and when you first noticed it are a useful start. If you know your roof type or where a leak appears, share that too.</p>
-        </details>
-        <details>
-          <summary>Do you work on both flat and shingle roofs?</summary>
-          <p>Yes. We work on flat and shingle roofing, including repairs, replacements, inspections, and maintenance. We also handle siding, gutters, masonry, and other exterior work.</p>
-        </details>
-        <details>
-          <summary>Do you serve areas beyond Queens?</summary>
-          <p>Yes. Our office is in Forest Hills, and our roofing and exterior crews serve properties across New York City. Call with your address so we can discuss your project.</p>
-        </details>
-        <details>
-          <summary>What should I do if my roof is leaking now?</summary>
-          <p>Call us at <a href="tel:+17184146067">(718) 414-6067</a> and describe what you are seeing. We can discuss the condition and the next useful step for your property.</p>
-        </details>
-        <details>
-          <summary>When can I call your team?</summary>
-          <p>Our listed phone hours are every day from 7:00 am to 11:00 pm. Call <a href="tel:+17184146067">(718) 414-6067</a> to speak with our team.</p>
-        </details>
+    </section>
+
+    <!-- Reviews (Trustindex): Royal's live Google reviews widget, with the
+         Google + Yelp pair beside the heading as on the homepage. -->
+    <section class="section reviews contact-reviews" id="reviews">
+      <div class="container">
+
+        <div class="reviews__head">
+          <div>
+            <p class="section-eyebrow">Reviews</p>
+            <h2 class="section-title reviews__title">What Our Customers Say</h2>
+          </div>
+          <ul class="review-badges" aria-label="Find our reviews">
+            <li class="review-badge"><img src="images/Google__G__logo.svg.webp" alt="" width="28" height="28" loading="lazy" decoding="async"><span><strong>Google</strong><small>Reviews</small></span></li>
+            <li class="review-badge"><img src="images/PngItem_1663.png" alt="" width="28" height="28" loading="lazy" decoding="async"><span><strong>Yelp</strong><small>Reviews</small></span></li>
+          </ul>
+        </div>
+
+        <!-- Trustindex: live Google reviews widget -->
+        <div class="reviews__widget">
+          <script defer async src="https://cdn.trustindex.io/loader.js?822a762744ea8344f0862095899"></script>
+        </div>
+
       </div>
-    </div>
-  </section>
-    </div>
+    </section>
+
+    <!-- What happens next: three compact steps in one row, then one trust line. -->
+    <section class="section reasons next" id="what-happens-next">
+      <div class="container">
+
+        <div class="reasons__head">
+          <p class="section-eyebrow">After you send the form</p>
+          <h2 class="section-title reasons__title">What Happens Next</h2>
+        </div>
+
+        <ol class="next__grid">
+          <li class="next__card">
+            <span class="next__num" aria-hidden="true">1</span>
+            <div>
+              <h3 class="next__title">We review your request</h3>
+              <p class="next__text">We review the project information you send.</p>
+            </div>
+          </li>
+          <li class="next__card">
+            <span class="next__num" aria-hidden="true">2</span>
+            <div>
+              <h3 class="next__title">We contact you</h3>
+              <p class="next__text">A member of our team calls to discuss the project and schedule a free inspection.</p>
+            </div>
+          </li>
+          <li class="next__card">
+            <span class="next__num" aria-hidden="true">3</span>
+            <div>
+              <h3 class="next__title">Receive Your Written Estimate</h3>
+              <p class="next__text">After inspecting the roof or exterior, we provide a clear written scope and price.</p>
+            </div>
+          </li>
+        </ol>
+
+        <ul class="next__trust" aria-label="Credentials">
+          <li>Licensed NYC Contractor #2030146</li>
+          <li>BBB A+ Accredited</li>
+          <li>GAF Master Elite Roofer</li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- Our Forest Hills Office: the map and the street address together on the
+         left, the office team on the right. Stacks on a phone. -->
+    <section class="section office" id="office">
+      <div class="container">
+
+        <div class="office__head">
+          <p class="section-eyebrow">Visit Us</p>
+          <h2 class="section-title office__title">Our Forest Hills Office</h2>
+        </div>
+
+        <div class="office__grid">
+
+          <div class="office__place">
+
+            <!-- Queried by business name so the embed resolves to the listing and
+                 shows Google's own card rather than a bare address pin. -->
+            <div class="contact__map office__map">
+              <!-- Map zoom z=11: two more levels out (Oct 19 call, was 13). -->
+              <iframe class="contact__map-frame"
+                      src="https://www.google.com/maps?q=Royal+Renovators+Inc,+118-35+Queens+Blvd,+Forest+Hills,+NY+11375&amp;z=11&amp;output=embed"
+                      title="Map showing Royal Renovators Inc. at 118-35 Queens Blvd, Forest Hills, NY 11375"
+                      loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div class="office__address">
+              <span class="contact-line__icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+              <address class="office__address-body">
+                <span class="contact-line__label">Office Address</span>
+                <span class="office__address-value">118-35 Queens Blvd<br>Forest Hills, NY 11375</span>
+              </address>
+            </div>
+
+          </div>
+
+          <figure class="office__photo">
+            <img src="images/live/royal-team-truck.jpg"
+                 alt="The Royal Renovators Inc. team in front of a company truck"
+                 width="1600" height="900" loading="lazy" decoding="async">
+          </figure>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Same disclosure component as the homepage, so it inherits the styling
+         and the accordion script; the questions are the ones people ask before
+         they get in touch rather than the homepage's roofing ones. -->
+    <section class="section faqs" id="faqs">
+      <div class="container faqs__inner">
+
+        <div class="faqs__body">
+          <p class="section-eyebrow">FAQs</p>
+          <h2 class="section-title faqs__title">Contact &amp; Estimate FAQs</h2>
+          <p class="section-lede faqs__lede">
+            Answers about response times, free estimates, emergency service, and the areas we
+            cover.
+          </p>
+          <div class="faqs__actions faqs__actions--desk">
+            <a class="btn btn--primary" href="#contact-form">
+              <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
+              <span class="btn__label">Request a Free Estimate</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="faqs__list">
+
+          <details class="faq" name="contact-faq" open>
+            <summary class="faq__q">
+              <h3 class="faq__q-text">How quickly will I hear back?</h3>
+              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="faq__a"><p>Send the form and we get back to you within one hour. If the roof is actively leaking, call instead. The phone is answered 24/7.</p></div>
+          </details>
+
+          <details class="faq" name="contact-faq">
+            <summary class="faq__q">
+              <h3 class="faq__q-text">Does an estimate cost anything?</h3>
+              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="faq__a"><p>No. We get up on the roof, photograph what we find and put a written, itemized price in front of you at no charge and with no obligation, including when the answer is that it does not need replacing yet.</p></div>
+          </details>
+
+          <details class="faq" name="contact-faq">
+            <summary class="faq__q">
+              <h3 class="faq__q-text">Can you come out for an emergency?</h3>
+              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="faq__a"><p>Yes. We take emergency calls 24/7, make the building safe first and quote the permanent repair afterwards.</p></div>
+          </details>
+
+          <details class="faq" name="contact-faq">
+            <summary class="faq__q">
+              <h3 class="faq__q-text">What should I tell you when I get in touch?</h3>
+              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="faq__a"><p>Your address, what&rsquo;s going on with your roof, and when can we come by to inspect the property.</p></div>
+          </details>
+
+          <details class="faq" name="contact-faq">
+            <summary class="faq__q">
+              <h3 class="faq__q-text">Which areas do you cover?</h3>
+              <i class="fa-solid fa-chevron-down faq__chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="faq__a"><p>All five boroughs of NYC, Long Island, Yonkers, and Westchester.</p></div>
+          </details>
+
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer" id="footer">
@@ -701,14 +954,14 @@
     <div class="container footer__top">
 
         <div class="footer__brand">
-          <a class="footer__logo" href="queens.html" aria-label="Royal Renovators Inc. Queens — home">
+          <a class="footer__logo" href="nyc6.html" aria-label="Royal Renovators Inc. — home">
             <img src="images/royalwhite.png"
                  alt="Royal Renovators Inc." width="1518" height="1036">
           </a>
           <p class="footer__about">
-            Royal Renovators Inc. is a Queens-based, family-owned &amp; operated, fully licensed &amp; insured roofing contractor. BBB A+ rated and GAF Master Elite certified, Royal specializes in flat roofing, shingles, and siding.
+            Royal Renovators Inc. is a Queens-based, family-owned &amp; operated, fully licensed &amp; insured roofing contractor. BBB A+ rated and GAF Master Elite certified, Royal specializes in flat roofing, shingles, and siding since 1988.
           </p>
-          <a class="btn btn--primary footer__cta" href="queens-contact-us.html">
+          <a class="btn btn--primary footer__cta" href="nyc6-contact-v2.html">
             <span class="btn__pip" aria-hidden="true"><svg class="btn__arrow" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg><svg class="btn__arrow btn__arrow--copy" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"/></svg></span>
             <span class="btn__label">Get a free estimate</span>
           </a>
@@ -717,9 +970,9 @@
         <nav class="footer__col" aria-label="Roofing">
           <h2 class="footer__heading">Roofing</h2>
           <ul class="footer__links">
-              <li><a href="https://www.nycrenovators.com/roof-repair/">Roof Repair</a></li>
               <li><a href="https://www.nycrenovators.com/flat-roofing/">Flat Roofing</a></li>
               <li><a href="nyc6-shingle-roofing.html">Shingle Roofing</a></li>
+              <li><a href="https://www.nycrenovators.com/roof-repair/">Roof Repair</a></li>
               <li><a href="https://www.nycrenovators.com/roof-replacement/">Roof Replacement</a></li>
           </ul>
         </nav>
@@ -737,10 +990,10 @@
         <nav class="footer__col" aria-label="Company">
           <h2 class="footer__heading">Company</h2>
           <ul class="footer__links">
-              <li><a href="queens-about-us.html">About Us</a></li>
+              <li><a href="nyc6-about.html">About Us</a></li>
               <li><a href="nyc6-projects.html">Projects</a></li>
               <li><a href="nyc6-faqs.html">FAQs</a></li>
-              <li><a href="queens-contact-us.html">Contact Us</a></li>
+              <li><a href="nyc6-contact-v2.html">Contact Us</a></li>
           </ul>
         </nav>
 
@@ -754,7 +1007,7 @@
         <ul class="footer__badges">
         <li class="footer__rating">
           <img src="images/Google__G__logo.svg.webp" alt="Google" width="1280" height="1280" loading="lazy" decoding="async">
-          <span><strong>4.9</strong> <span class="rating-star" aria-hidden="true">&#9733;</span><span class="visually-hidden">4.9 out of 5 on Google</span></span>
+          <span><strong>4.9</strong> <span class="rating-star" aria-hidden="true">&#9733;</span> <strong class="footer__rating-brand">Google</strong><span class="visually-hidden">4.9 out of 5 on Google</span></span>
         </li>
         <li>
           <img src="images/bb+.webp" alt="BBB Accredited Business, A+ rating" width="400" height="259" loading="lazy" decoding="async">
@@ -804,7 +1057,7 @@
           <span class="footer__contactbar-icon"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
           <div>
             <p class="footer__contactbar-label">Hours</p>
-            <p class="footer__contactbar-value"><a href="queens-contact-us.html">Mon-Sun, 7am-11pm</a></p>
+            <p class="footer__contactbar-value"><a href="nyc6-contact-v2.html">Open 24/7</a></p>
           </div>
         </li>
 
@@ -814,14 +1067,14 @@
     </div>
 
     <div class="container footer__bottom">
-        <ul class="socials footer__socials" aria-label="Royal Renovators on social media">
-            <li><a href="https://www.facebook.com/royalrenovatorsny/" target="_blank" rel="noopener" aria-label="Royal Renovators on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.instagram.com/royalrenovators/" target="_blank" rel="noopener" aria-label="Royal Renovators on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
-            <li><a href="https://x.com/RoyalRenovh3" target="_blank" rel="noopener" aria-label="Royal Renovators on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.youtube.com/channel/UCSTt3eiPY0ogH616G3p5row" target="_blank" rel="noopener" aria-label="Royal Renovators on YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.linkedin.com/company/royal-renovators-inc" target="_blank" rel="noopener" aria-label="Royal Renovators on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.pinterest.com/royalroofingny/" target="_blank" rel="noopener" aria-label="Royal Renovators on Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.tiktok.com/@royalrenovators" target="_blank" rel="noopener" aria-label="Royal Renovators on TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a></li>
+        <ul class="socials footer__socials" aria-label="Royal Renovators Inc. on social media">
+            <li><a href="https://www.facebook.com/royalrenovatorsny/" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.instagram.com/royalrenovators/" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="https://x.com/RoyalRenovh3" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.youtube.com/channel/UCSTt3eiPY0ogH616G3p5row" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/royal-renovators-inc" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.pinterest.com/royalroofingny/" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on Pinterest"><i class="fa-brands fa-pinterest-p" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.tiktok.com/@royalrenovators" target="_blank" rel="noopener" aria-label="Royal Renovators Inc. on TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a></li>
           </ul>
       <p class="footer__copy">&copy; 2026 Royal Renovators Inc. All rights reserved.</p>
       <ul class="footer__legal">
@@ -835,23 +1088,17 @@
 
   </footer>
 
-  <!-- Floating call button: a disc at rest, the number slides out on hover. -->
-  <a class="call-fab" href="tel:+17184146067" aria-label="Call Royal Renovators on (718) 414-6067">
-    <span class="call-fab__label">(718) 414-6067</span>
-    <span class="call-fab__icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
-  </a>
-
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
   <script src="js/nyc6.js?v=10" defer></script>
-  <script src="js/queens.js?v=7" defer></script>
 
-  <!-- Live chat (Blazeo), starts ten seconds after load -->
+  <!-- Live chat (Blazeo), starts six seconds after load -->
   <script>
   function delayStartChat(){
   var script = document.createElement('script');
   script.src = "//blazeo.com/scripts/invitation.ashx?company=nycrenovators";
   document.body.appendChild(script);
   }
-  setTimeout(delayStartChat, 10000);
+  setTimeout(delayStartChat, 6000);
   </script>
 </body>
 </html>

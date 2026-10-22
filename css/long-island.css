@@ -1221,3 +1221,61 @@ svg { display: inline-block; }
   linear-gradient(90deg, rgba(6, 25, 55, .78) 0%, rgba(6, 25, 55, .52) 45%, rgba(6, 25, 55, .15) 100%);
 }
 .page-long-island-home .li-shero__copy { text-shadow: 0 1px 12px rgba(6, 25, 55, .45); }
+
+/* ==========================================================================
+   Oct 19 call (Sean)
+   ========================================================================== */
+/* Home bottom contact: the Yonkers home layout (details + map left, wide form right,
+   one screen), in Long Island colors: white boxes with green icon circles. */
+.li-contact--wide { padding-block: clamp(2rem, 1.5rem + 1.5vw, 3rem); }
+.li-contact--wide .li-contact__inner { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 1.25rem; align-items: stretch; }
+.li-contact__side { display: flex; flex-direction: column; gap: .75rem; min-width: 0; }
+.li-contact__title { margin-bottom: .15rem; font-size: clamp(1.625rem, 1.25rem + .9vw, 2rem); }
+.li-contact__tiles { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: .75rem; }
+.li-contact__tiles--even { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.li-contact__tile { display: flex; align-items: center; gap: .75rem; min-width: 0; padding: .85rem 1rem; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+.li-contact__ico { display: inline-flex; flex: none; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--brand); }
+.li-contact__ico svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.li-contact__label { color: var(--muted); font-size: .6875rem; font-weight: 700; letter-spacing: .12em; line-height: 1.3; text-transform: uppercase; }
+.li-contact__value { display: block; color: var(--navy); font-size: 1rem; font-weight: 700; line-height: 1.35; text-decoration: none; }
+.li-contact__value--phone { font-size: 1.25rem; white-space: nowrap; }
+a.li-contact__value:hover { color: var(--brand-ink); text-decoration: underline; text-underline-offset: .2em; }
+.li-contact--wide .li-contact__map { flex: 1; min-height: 19rem; margin-top: 0; border-radius: 8px; }
+.li-contact--wide .quote-card { align-content: start; gap: .875rem; height: 100%; padding: clamp(1.25rem, 1rem + 1vw, 1.75rem) clamp(1.25rem, 1rem + 1.5vw, 2.25rem); border-radius: 8px; }
+.li-contact__form-head { padding-bottom: .85rem; border-bottom: 1px solid var(--line); text-align: center; }
+.li-contact--wide .quote-card__title { font-size: clamp(1.5rem, 1.2rem + .6vw, 1.875rem); }
+.li-contact__form-head .quote-card__sub { margin-top: .35rem; }
+.li-contact--wide .field input { min-height: 2.9rem; }
+.li-contact--wide .field textarea { min-height: 5.25rem; }
+@media (max-width: 60rem) {
+  .li-contact--wide .li-contact__inner { grid-template-columns: minmax(0, 1fr); }
+  .li-contact--wide .li-contact__map { flex: none; height: 20rem; }
+}
+@media (max-width: 40rem) {
+  .li-contact__tiles, .li-contact__tiles--even { grid-template-columns: minmax(0, 1fr); }
+  .li-contact--wide .li-contact__map { height: 19rem; }
+}
+
+/* Estimate form titles are centered (hero form included). */
+.page-long-island-home .li-shero__form .quote-card__title { text-align: center; }
+
+/* Reviews heading "What Our Long Island Customers Say": centered, one line on desktop,
+   Google and Yelp badges centered under it. */
+.lix-reviews .lix-head, .li-reviews .li-head { grid-template-columns: minmax(0, 1fr); justify-items: center; gap: .85rem; text-align: center; }
+.lix-reviews .lix-head .lix-title, .li-reviews .li-head .li-title { text-wrap: nowrap; }
+.lix-reviews .lix-head > div, .li-reviews .li-head > div { display: flex; flex-direction: column; align-items: center; }
+.li-reviews .li-head .li-badges { justify-content: center; }
+@media (max-width: 48rem) {
+  .lix-reviews .lix-head .lix-title, .li-reviews .li-head .li-title { text-wrap: balance; }
+}
+
+/* Footer rating reads "5.0 ★ Google": one star, "Google" bold. */
+.bkf__stars { letter-spacing: 0; }
+.bkf__rating small { font-weight: 700; }
+
+/* Phone numbers never wrap. */
+a[href^="tel:"] { white-space: nowrap; }
+
+/* Mobile: the page never scrolls sideways (iOS Safari needs the guard on html too). */
+html { overflow-x: hidden; }
+.btn--solid.btn--white:not(:hover):not(:focus-visible) { text-shadow: none; }

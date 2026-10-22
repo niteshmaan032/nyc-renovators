@@ -72,3 +72,6 @@
   .cx-map { height: 18rem; }
   .cx-faq__actions .btn { flex: 1 1 12rem; }
 }
+
+/* Oct 19 2026 (Sean, BX-C7): the hero H1 is white, like the Brooklyn contact page. */
+.cx-hero h1 { color: #fff; }

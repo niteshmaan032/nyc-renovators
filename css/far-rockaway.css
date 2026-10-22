@@ -1302,3 +1302,11 @@ a.btn[href^="tel:"] { --color: var(--brand); --active: var(--brand-dark); --hove
 a.btn[href^="tel:"]::before { background: var(--hover-bg); }
 a.btn[href^="tel:"]:hover, a.btn[href^="tel:"]:focus-visible { border-color: var(--brand-dark); color: #fff; }
 a.btn[href^="tel:"] .btn__icon { color: #fff; stroke: #fff; }
+
+/* Oct 19 (Sean): footer rating reads "5.0 ★ Google", one star, Google bold. */
+.bkf__rating small strong { font-size: inherit; font-weight: 700; }
+.bkf__rating small { margin-left: .1rem; }
+/* Oct 19: phone numbers never wrap. */
+a[href^="tel:"], .bkf__value a[href^="tel:"] { white-space: nowrap; }
+/* Oct 19 (Sean): pages stay locked sideways on phones (iOS Safari ignores overflow-x on body alone). */
+html { overflow-x: hidden; }

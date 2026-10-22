@@ -323,3 +323,14 @@
   .bx-faqsec .bx-head__aside { width: 100%; }
   .bx-faqsec .bx-head__aside .btn { flex: 1 1 10rem; }
 }
+
+/* ==== Oct 19 2026 (Sean's call) ==== */
+/* BX-S8: center only the "Get In Touch" title (desktop); kicker and sub stay as they are. */
+@media (min-width: 60.01rem) {
+  .page-bronx-shingle #contact-title { text-align: center; }
+}
+/* BX-S10: the map is about 25% smaller (width and height); the freed space stays
+   white and the form keeps its size and place. */
+@media (min-width: 60.01rem) {
+  .page-bronx-shingle .bx-contact__map { align-self: start; width: 75%; height: 75%; min-height: 0; }
+}

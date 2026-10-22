@@ -16,13 +16,14 @@
     var timer;
     function norm(s) { return s.toLowerCase().replace(/\s+/g, ' ').trim(); }
     function runSearch() {
-      var q = norm(search.value), matches = 0, groupsShown = 0;
+      var q = norm(search.value), matches = 0, groupsShown = 0, firstOpened = false;
       groups.forEach(function (group) {
         var inGroup = 0;
         group.querySelectorAll('details').forEach(function (d) {
           var hit = !q || norm(d.textContent).indexOf(q) !== -1;
           d.hidden = !hit;
-          if (q) d.open = hit && inGroup === 0;
+          // Exclusive accordion (Oct 19): only the first match on the page opens.
+          if (q) { d.open = hit && !firstOpened; if (hit) firstOpened = true; }
           if (hit) inGroup++;
         });
         group.hidden = inGroup === 0;

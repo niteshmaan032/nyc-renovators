@@ -1251,3 +1251,40 @@ svg { display: inline-block; }
 /* Oct 16 (Nitesh): the footer paragraph under the logo runs a little wider. */
 .bkf__about { max-width: 52ch; }
 @media (max-width: 75rem) { .bkf__about { max-width: 62ch; } }
+
+/* ==== Oct 19 call (Sean) ==== */
+/* MH-H1: the short line before the hero sub-line is a third of its old length. */
+.page-manhattan-home .mh-shero__sub::before { width: .9rem; }
+/* MH-H30: no yellow line on the "35+ Years" hero chip; a 1px border like the other chips. */
+.page-manhattan-home .mh-shero__stat { border-left: 1px solid rgba(255, 255, 255, .18); }
+/* MH-H3, MH-H23, R7: estimate form headings are centered. */
+.quote-card__title { text-align: center; }
+.mc-form .quote-card__title { text-align: left; } /* contact page form keeps its left kicker; its layout moves to contact v2 */
+/* MH-H10: the phone number in the "Not sure which service" tile is bigger and spans the card. */
+.page-manhattan-home .mh-svx__phone { width: 100%; font-size: 1.25rem; }
+.page-manhattan-home .mh-svx__phone svg { width: 1.2rem; height: 1.2rem; }
+/* MH-H12: "Get a Free Estimate" button in the building-types head. */
+.page-manhattan-home .mh-bt__head .mh-bt__cta { margin-top: var(--space-4); }
+/* MH-H25: footer text and button sit to the right of the logo (Bronx layout). */
+.bkf__brand { flex-direction: row; align-items: flex-start; gap: 1.25rem; }
+.bkf__logo { flex: none; }
+.bkf__brandtext { min-width: 0; }
+.bkf__brandtext .bkf__cta { margin-top: .85rem; }
+/* Footer: Licensed & Insured badge beside Google and Yelp. */
+.bkf__licensed { color: #fff; font-size: .9375rem; font-weight: 700; line-height: 1.2; white-space: nowrap; }
+.bkf__licensed .bkf__icon { width: 2.25rem; height: 2.25rem; }
+/* Phone numbers never wrap. */
+a[href^="tel:"], .bkf__value a[href^="tel:"] { white-space: nowrap; }
+/* No sideways scroll on phones (iOS ignores overflow-x on body alone). */
+html { overflow-x: hidden; }
+@media (max-width: 40rem) {
+  .page-manhattan-home .mh-shero__sub::before { width: .6rem; }
+  .page-manhattan-home .mh-shero__stat { border-top: 1px solid rgba(255, 255, 255, .18); }
+  .bkf__brand { gap: 1rem; }
+  .bkf__logo img { height: 3.5rem; }
+  .bkf__about { font-size: .875rem; line-height: 1.6; }
+  /* MH-H31: footer button centered on mobile. */
+  .bkf__brand { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+  .bkf__brandtext { display: contents; }
+  .bkf__brandtext .bkf__cta { grid-column: 1 / -1; justify-self: center; margin-top: .25rem; }
+}

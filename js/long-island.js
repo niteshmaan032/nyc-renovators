@@ -183,4 +183,12 @@
     });
   });
 
+  /* Oct 19 (Sean): FAQ accordions are exclusive. <details name="..."> does this natively;
+     this covers browsers without support for the name attribute. */
+  document.addEventListener('toggle', function (e) {
+    var d = e.target;
+    if (!d || d.tagName !== 'DETAILS' || !d.open || !d.getAttribute('name')) return;
+    document.querySelectorAll('details[name="' + d.getAttribute('name') + '"][open]').forEach(function (o) { if (o !== d) o.open = false; });
+  }, true);
+
 })();

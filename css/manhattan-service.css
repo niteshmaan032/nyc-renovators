@@ -227,3 +227,17 @@
 
 /* Map tall enough for Google to show the business card (it needs about 300px). */
 .mh-contact__map { min-height: 19rem; }
+
+/* ==== Oct 19 call (Sean) ==== */
+/* MH-S1: hero proof chips are see-through like the homepage hero, with no yellow line. */
+.ms-hero__proof .mh-badge { border: 1px solid rgba(255, 255, 255, .18); background: rgba(1, 29, 56, .78); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); color: #fff; }
+.ms-hero__proof .mh-badge img { padding: .2rem; border-radius: 50%; background: #fff; }
+.ms-hero__proof .mh-badge small { color: var(--on-dark-muted); }
+.ms-hero__stat { border: 1px solid rgba(255, 255, 255, .18); border-radius: var(--radius-sm); background: rgba(1, 29, 56, .78); }
+@media (max-width: 40rem) {
+  .ms-hero__stat { border-top: 1px solid rgba(255, 255, 255, .18); }
+}
+/* MH-S10: the map ends level with the bottom of the form (desktop). */
+@media (min-width: 60.01rem) {
+  .ms-contact .mh-contact__map { margin-top: .75rem; margin-bottom: 1.25rem; }
+}

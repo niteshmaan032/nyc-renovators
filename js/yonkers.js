@@ -85,6 +85,17 @@
   var onChange = function () { closeAll(); closeDrawer(); };
   if (desktop.addEventListener) desktop.addEventListener('change', onChange); else desktop.addListener(onChange);
 
+  /* ---------- FAQ accordions: opening one closes the others (Sean, Oct 19) ----------
+     The <details name="yk-faq"> markup does this natively in current browsers;
+     this covers browsers without the name attribute. */
+  var faqItems = Array.prototype.slice.call(document.querySelectorAll('details.yk-faq__item'));
+  faqItems.forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (!d.open) return;
+      faqItems.forEach(function (o) { if (o !== d && o.open) o.open = false; });
+    });
+  });
+
   /* ---------- Placeholder links (pages not built yet) ---------- */
   document.querySelectorAll('a[href="#"][data-href]').forEach(function (a) {
     a.addEventListener('click', function (e) { e.preventDefault(); });
