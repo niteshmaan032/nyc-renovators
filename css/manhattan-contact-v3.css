@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Royal Roofing & Siding NYC (Manhattan): contact page v3
+   (manhattan-contact-us-v3.html, from Sean's Oct 27 light-blue mockup)
+   Loads after css/manhattan.css and css/manhattan-contact.css and only uses
+   their tokens. Prefix: mc3-
+   Sections: light-blue hero (copy + crew photo left, form right),
+   "What Happens Next" 3 steps, Trustindex reviews (.mh-reviews),
+   contact details + map (.mc-side laid out in a row), FAQs (.mc-faq).
+   ========================================================================== */
+
+/* Hero ---------------------------------------------------------------------- */
+.mc3-hero {
+  padding: calc(var(--nav-h) + var(--header-line) + clamp(1.25rem, 1rem + 1vw, 2rem)) 0 clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
+  background: var(--navy-50);
+  border-bottom: 1px solid var(--line);
+}
+.mc3-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.32fr) minmax(0, 1fr);
+  grid-template-areas: "copy form" "photo form";
+  grid-template-rows: auto 1fr;
+  gap: 1.1rem clamp(1.5rem, .75rem + 2vw, 2.75rem);
+}
+.mc3-hero__copy { grid-area: copy; min-width: 0; }
+.mc3-eyebrow { margin-bottom: .7rem; }
+.mc3-hero h1 { max-width: 15ch; font-size: clamp(2.3rem, 1.2rem + 2.7vw, 3.6rem); line-height: 1.04; letter-spacing: -.028em; }
+.mc3-hero__sub { margin-top: .75rem; color: var(--ink); font-size: var(--fs-lede); font-weight: 300; line-height: 1.5; }
+
+/* Phone line: big number with a solid phone icon, note under it. */
+.mc3-call { display: flex; align-items: center; gap: .8rem; margin-top: 1.1rem; }
+.mc3-call__icon { width: 2rem; height: 2rem; flex: none; fill: var(--navy); stroke: var(--navy); stroke-width: 1; stroke-linejoin: round; }
+.mc3-call__phone { display: inline-block; color: var(--navy); font-family: var(--font-display); font-size: clamp(1.75rem, 1.4rem + .9vw, 2.25rem); font-weight: 700; line-height: 1.1; letter-spacing: -.01em; text-decoration: none; white-space: nowrap; }
+.mc3-call__phone:hover { text-decoration: underline; text-decoration-color: var(--brand); text-underline-offset: .15em; }
+.mc3-call__note { margin-top: .15rem; color: var(--muted); font-size: .875rem; line-height: 1.3; }
+
+/* Badge row: Google | Yelp | Licensed & Insured, hairline dividers. */
+.mc3-proof { display: flex; flex-wrap: wrap; align-items: center; row-gap: .5rem; margin-top: 1.1rem; }
+.mc3-proof li { display: inline-flex; align-items: center; gap: .45rem; padding: .1rem 1.1rem; color: var(--navy); font-size: .9375rem; font-weight: 500; line-height: 1.2; white-space: nowrap; }
+.mc3-proof li:first-child { padding-left: 0; }
+.mc3-proof li + li { border-left: 1px solid var(--line-strong); }
+.mc3-proof img { width: 1.4rem; height: 1.4rem; object-fit: contain; }
+.mc3-stars { color: var(--amber-500); font-size: .9375rem; letter-spacing: .06em; }
+.mc3-proof__icon { width: 1.35rem; height: 1.35rem; fill: none; stroke: var(--navy); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Crew photo + services caption. */
+.mc3-photo { grid-area: photo; align-self: start; min-width: 0; }
+.mc3-photo img { width: 100%; aspect-ratio: 2.45 / 1; object-fit: cover; object-position: center 36%; border-radius: 6px; box-shadow: var(--shadow-sm); }
+.mc3-photo figcaption { margin-top: .55rem; color: var(--muted); font-size: .8125rem; font-weight: 500; letter-spacing: .02em; }
+
+/* Form card: white, soft shadow, stretches to the height of the left column
+   (the message box takes up any extra height). */
+.mc3-form {
+  grid-area: form; align-self: stretch;
+  grid-template-rows: auto auto auto auto 1fr auto auto;
+  gap: .8rem;
+  padding: clamp(1.25rem, .9rem + 1vw, 1.9rem);
+  border: 1px solid var(--line); border-radius: 6px;
+  box-shadow: 0 18px 44px rgba(1, 29, 56, .10);
+}
+.mc3-form .quote-card__title { text-align: left; font-size: clamp(1.6rem, 1.25rem + .9vw, 2.1rem); letter-spacing: -.02em; }
+.mc3-form .quote-card__sub { margin-top: .3rem; font-size: 1rem; }
+.mc3-form .field label { color: var(--navy); font-size: .8125rem; font-weight: 700; letter-spacing: 0; text-transform: none; }
+.mc3-form .field input, .mc3-form .field textarea { border-radius: 4px; background: #fff; }
+.mc3-form__msg { grid-template-rows: auto 1fr; }
+.mc3-form__msg textarea { height: 100%; min-height: 5.5rem; }
+.mc3-form__submit { min-height: 3.25rem; border-radius: 4px; }
+.mc3-form__submit .btn__icon { width: 1.15rem; height: 1.15rem; }
+.mc3-form .form-callback { margin-top: -.3rem; font-size: .8125rem; }
+
+/* What happens next: three numbered steps with dividers -------------------- */
+.mc3-next { padding-block: clamp(1.5rem, 1.3rem + 1vw, 2.25rem); }
+.mc3-next__title { max-width: none; margin-bottom: clamp(1rem, .8rem + .6vw, 1.5rem); font-size: clamp(1.6rem, 1.25rem + 1vw, 2.25rem); text-align: center; }
+.mc3-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.mc3-step { display: flex; align-items: flex-start; gap: 1rem; min-width: 0; padding: .2rem clamp(1rem, .25rem + 2.2vw, 2.75rem); }
+.mc3-step:first-child { padding-left: 0; }
+.mc3-step + .mc3-step { border-left: 1px solid var(--line-strong); }
+.mc3-step__num { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; flex: none; border-radius: 50%; background: var(--amber-100); color: var(--amber-700); font-size: 1.125rem; font-weight: 700; line-height: 1; }
+.mc3-step h3 { margin-top: .1rem; font-size: clamp(1.05rem, .98rem + .25vw, 1.2rem); }
+.mc3-step p { margin-top: .2rem; color: var(--muted); font-size: var(--fs-small); line-height: 1.45; }
+
+/* Contact details + map: the old side card, laid out in a row -------------- */
+.mc3-visit__card { flex-direction: row; }
+.mc3-visit__card .mc-details { flex: 0 0 min(27rem, 40%); padding: 1.25rem 1.75rem .5rem; }
+.mc3-visit__card .mc-map { flex: 1; min-height: 19rem; border-top: 0; border-left: 1px solid var(--line); }
+
+/* Responsive ---------------------------------------------------------------- */
+@media (max-width: 75rem) {
+  .mc3-hero__inner { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+}
+@media (max-width: 60rem) {
+  /* Phones/tablets: copy, then the form, then the photo. */
+  .mc3-hero__inner { grid-template-columns: minmax(0, 1fr); grid-template-areas: "copy" "form" "photo"; grid-template-rows: none; gap: 1.25rem; }
+  .mc3-hero h1 { max-width: none; }
+  .mc3-photo img { aspect-ratio: 16 / 10; }
+  .mc3-form { grid-template-rows: none; }
+  .mc3-form__msg textarea { height: auto; }
+}
+@media (max-width: 48rem) {
+  .mc3-visit__card { flex-direction: column; }
+  .mc3-visit__card .mc-details { flex: none; padding: 1rem 1.25rem .25rem; }
+  .mc3-visit__card .mc-map { flex: none; height: 19rem; border-left: 0; border-top: 1px solid var(--line); }
+}
+@media (max-width: 40rem) {
+  .mc3-hero { padding-top: calc(var(--nav-h) + var(--header-line) + 1.1rem); }
+  .mc3-hero__sub { font-size: 1.0625rem; }
+  .mc3-proof li { padding-inline: .6rem; font-size: .875rem; gap: .35rem; }
+  .mc3-proof .mc3-stars { font-size: .8125rem; letter-spacing: .02em; }
+  .mc3-proof li:nth-child(3) { flex-basis: 100%; padding-left: 0; border-left: 0; }   /* own line under Google + Yelp */
+  .mc3-steps { grid-template-columns: minmax(0, 1fr); }
+  .mc3-step { padding: .8rem 0; }
+  .mc3-step + .mc3-step { border-left: 0; border-top: 1px solid var(--line); }
+  .mc3-form .field-row { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Oct 29 (Nitesh): shorter message box; the form card sizes to its content instead of stretching to the photo column. */
+.mc3-form { align-self: start; }
+.mc3-form__msg textarea { height: 6rem; min-height: 0; }

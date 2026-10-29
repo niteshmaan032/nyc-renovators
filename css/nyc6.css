@@ -4201,3 +4201,15 @@ a[href^="tel:"],
   .footer__badges li:not(.footer__rating) img { height: 2.375rem; }
   .footer__badges .is-gaf img { height: 1.75rem; }
 }
+
+/* ---------------------------------------------------------------------------
+   Homepage section order (Sean, Oct 27 call, 0:54): About Royal, What we do
+   (6 service cards), Trustindex reviews, Accredited and reviewed by, Team video,
+   Recent projects, GAF, then the rest as before. These four backgrounds keep
+   the white / tint alternation in that order. Royal homepage only (queens.html
+   also has .page-home).
+   --------------------------------------------------------------------------- */
+.page-home:not(.page-queens) #reviews { background-color: var(--surface); }
+.page-home:not(.page-queens) #awards,
+.page-home:not(.page-queens) #projects,
+.page-home:not(.page-queens) #flat-roofing { background-color: var(--surface-alt); }

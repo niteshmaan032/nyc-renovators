@@ -197,3 +197,9 @@
 @media (prefers-reduced-motion: reduce) {
   .ma-card { transition: none; }
 }
+
+/* Hero team photo (Oct 29): on phones the image is short and the caption
+   would sit over the front row, so the caption is desktop-only. */
+@media (max-width: 40rem) {
+  .ma-hero__media figcaption { display: none; }
+}

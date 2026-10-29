@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Royal Roofing Yonkers: contact page v3 (yonkers-contact-us-v3.html)
+   Built from Sean's Oct 27 mockup. Loads after css/yonkers.css and
+   css/yonkers-contact.css and only uses their tokens. Prefix: ykc3-
+     1. Google rating badge (.g-badge): brand-neutral, reuse on every brand
+     2. Hero: copy + call + badges + crew photo (left), estimate form (right)
+     3. 3-step strip
+     4. Contact details + crew photo + map band (old page markup, new layout)
+     5. Responsive
+   ========================================================================== */
+
+/* 1. Google rating badge ----------------------------------------------------
+   Sean (Oct 27) wants this exact Google style on the other brands too.
+   Copy the markup and this block as is; it uses no brand tokens.
+   <span class="g-badge">
+     <span class="g-badge__word" aria-hidden="true"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></span>
+     <span class="g-badge__score" aria-hidden="true">5.0</span>
+     <span class="g-badge__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+     <span class="sr-only">Rated 5.0 out of 5 on Google</span>
+   </span>                                                                    */
+.g-badge { display: inline-flex; align-items: center; gap: .5rem; line-height: 1; white-space: nowrap; }
+.g-badge__word { font-family: Arial, 'Helvetica Neue', sans-serif; font-size: 1.375rem; font-weight: 400; letter-spacing: -.035em; }
+.g-badge__word > :nth-child(1), .g-badge__word > :nth-child(4) { color: #4285F4; }
+.g-badge__word > :nth-child(2), .g-badge__word > :nth-child(6) { color: #EA4335; }
+.g-badge__word > :nth-child(3) { color: #FBBC05; }
+.g-badge__word > :nth-child(5) { color: #34A853; }
+.g-badge__score { color: #202124; font-size: 1rem; font-weight: 700; }
+.g-badge__stars { color: #FBBC04; font-size: 1.1rem; letter-spacing: .04em; }
+
+/* 2. Hero ------------------------------------------------------------------ */
+.ykc3-hero {
+  padding: calc(var(--nav-h) + var(--header-line) + clamp(1rem, .7rem + .8vw, 1.5rem)) 0 clamp(1.25rem, 1rem + .8vw, 1.75rem);
+  background: var(--surface-tint);
+}
+.ykc3-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "copy form" "photo form";
+  gap: 1.25rem clamp(1.5rem, 1rem + 1.6vw, 2.5rem);
+}
+.ykc3-hero__copy { grid-area: copy; min-width: 0; }
+.ykc3-eyebrow { color: var(--brand-ink); font-size: var(--fs-label); font-weight: 700; line-height: 1.3; letter-spacing: .12em; text-transform: uppercase; }
+.ykc3-hero h1 { max-width: 16ch; margin-top: .55rem; font-size: var(--fs-h1); line-height: 1.06; letter-spacing: -.03em; }
+.ykc3-hero__sub { margin-top: .8rem; color: var(--ink); font-size: var(--fs-lede); line-height: 1.5; }
+
+.ykc3-hero__call { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1rem; margin-top: 1.15rem; }
+.ykc3-callbtn { border-radius: 6px; font-size: 1.125rem; }
+.ykc3-callbtn .btn__icon { width: 1.2rem; height: 1.2rem; }
+.ykc3-chip { display: inline-flex; align-items: center; gap: .45rem; padding: .45rem .85rem; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--dark); font-size: var(--fs-xs); font-weight: 700; line-height: 1.2; white-space: nowrap; }
+.ykc3-chip svg { width: 1rem; height: 1rem; flex: none; fill: none; stroke: var(--brand); stroke-width: 2; stroke-linecap: round; }
+
+.ykc3-proof { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.25rem; margin-top: 1.1rem; }
+.ykc3-proof li + li { padding-left: 1.25rem; border-left: 1px solid var(--line-strong); }
+.ykc3-proof__item { display: inline-flex; align-items: center; gap: .5rem; color: var(--dark); font-size: var(--fs-small); font-weight: 700; line-height: 1.2; white-space: nowrap; }
+.ykc3-proof__item svg { width: 1.35rem; height: 1.35rem; flex: none; fill: none; stroke: var(--dark); stroke-width: 1.8; stroke-linejoin: round; }
+
+.ykc3-hero__photo { grid-area: photo; position: relative; min-height: 15rem; overflow: hidden; border-radius: 10px; background: var(--dark-100); }
+.ykc3-hero__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+.ykc3-hero__photo figcaption { position: absolute; left: .9rem; bottom: .9rem; max-width: calc(100% - 1.8rem); padding: .4rem .8rem; border-radius: 6px; background: rgba(17, 17, 17, .8); color: #fff; font-size: var(--fs-xs); font-weight: 700; line-height: 1.3; }
+
+/* Form card: keeps .quote-card (js/yonkers.js hooks); the message box grows
+   so the card bottom lines up with the photo. */
+.ykc3-form { grid-area: form; display: flex; flex-direction: column; gap: .8rem; min-width: 0; padding: clamp(1.15rem, .9rem + .8vw, 1.6rem); border-radius: 10px; }
+.ykc3-form .quote-card__title { font-size: clamp(1.5rem, 1.2rem + .8vw, 1.9rem); }
+.ykc3-form .quote-card__sub { margin-top: .25rem; }
+.ykc3-form .field label { font-size: .875rem; letter-spacing: 0; text-transform: none; }
+.ykc3-form__grow { flex: 1 1 auto; grid-template-rows: auto minmax(5.25rem, 1fr); }
+.ykc3-form__grow textarea { height: 100%; }
+.ykc3-form .btn { flex: none; border-radius: 6px; }
+.ykc3-form .btn .btn__icon { width: 1.15rem; height: 1.15rem; }
+.ykc3-form .form-callback { margin-top: -.2rem; font-size: var(--fs-small); font-weight: 700; }
+
+/* 3. 3-step strip ------------------------------------------------------------ */
+.ykc3-strip { border-block: 1px solid var(--line); background: #fff; }
+.ykc3-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding-block: .85rem; }
+.ykc3-steps li { display: flex; align-items: center; justify-content: center; gap: .85rem; min-width: 0; padding-inline: 1rem; color: var(--dark); font-size: var(--fs-small); font-weight: 700; line-height: 1.3; }
+.ykc3-steps li + li { border-left: 1px solid var(--line); }
+.ykc3-steps__num { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 2.25rem; height: 2.25rem; border: 2px solid var(--brand); border-radius: 50%; color: var(--brand-ink); font-size: 1rem; font-weight: 700; }
+.ykc3-strip + .ykm-section { border-top: 0; }
+
+/* 4. Contact details + crew photo + map ------------------------------------- */
+@media (min-width: 60.01rem) {
+  .ykc3-visit .ykc-side { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); grid-template-rows: minmax(17rem, auto); } /* Sean Oct 27: map left, call/address/hours right */
+  .ykc3-visit .ykc-team { min-height: 0; }
+  .ykc3-visit .ykc-details { padding-bottom: .75rem; }
+  .ykc3-visit .ykc-map { grid-column: auto; grid-row: auto; min-height: 17rem; border-top: 0; border-right: 1px solid var(--line); }
+}
+
+/* 5. Responsive -------------------------------------------------------------- */
+@media (max-width: 75rem) {
+  .ykc3-hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+@media (max-width: 60rem) {
+  .ykc3-hero__inner { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-template-areas: "copy" "form" "photo"; }
+  .ykc3-hero h1 { max-width: none; }
+  .ykc3-hero__photo { min-height: 0; aspect-ratio: 16 / 10; }
+  .ykc3-form__grow { flex: none; }
+}
+@media (max-width: 40rem) {
+  .ykc3-hero__sub br { display: none; }
+  .ykc3-hero__call { gap: .5rem; }
+  .ykc3-callbtn { flex: 1 1 auto; padding-inline: .9rem; font-size: 1.0625rem; }
+  .ykc3-chip { flex: 0 0 auto; padding-inline: .7rem; }
+  .ykc3-proof { flex-wrap: nowrap; gap: .75rem; }
+  .ykc3-proof li + li { padding-left: .75rem; }
+  .ykc3-proof__item { gap: .35rem; font-size: .8125rem; }
+  .ykc3-proof__item svg { width: 1.15rem; height: 1.15rem; }
+  .g-badge { gap: .35rem; }
+  .g-badge__word { font-size: 1.1875rem; }
+  .g-badge__score { font-size: .9375rem; }
+  .g-badge__stars { font-size: .95rem; letter-spacing: .02em; }
+  .ykc3-form__wide { grid-template-columns: minmax(0, 1fr); }
+  .ykc3-steps { padding-block: .75rem; }
+  .ykc3-steps li { flex-direction: column; gap: .4rem; padding-inline: .35rem; font-size: var(--fs-xs); text-align: center; }
+  .ykc3-steps__num { width: 2rem; height: 2rem; font-size: .9375rem; }
+}
+
+/* Oct 29 (Nitesh): shorter message box; the form card sizes to its content instead of stretching to the photo column. */
+.ykc3-form { align-self: start; }
+.ykc3-form__grow { flex: none; grid-template-rows: auto auto; }
+.ykc3-form__grow textarea { height: 6rem; min-height: 0; }

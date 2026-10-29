@@ -1,0 +1,142 @@
+/* ==========================================================================
+   Royal Roofing & Siding Long Island: contact page v3 (long-island-contact-us-v3.html)
+   Sean, Oct 27 2026 call: his ChatGPT mockup copied as is (copy, crew photo
+   and call row left; white estimate card right; three-step strip), with the
+   form done the usual way. Below the strip: reviews, then the map left with a
+   thin info box right. No FAQ section on this page.
+   Loads after css/long-island.css and css/long-island-contact.css and only
+   uses their tokens. Prefix: lic3-
+   ========================================================================== */
+
+/* Hero: light grey band under the fixed header ---------------------------- */
+.lic3-hero {
+  padding: calc(var(--nav-h) + var(--header-line) + clamp(1.1rem, .8rem + .9vw, 1.75rem)) 0 clamp(1.25rem, 1rem + .9vw, 2rem);
+  background: var(--grey-50);
+}
+/* Desktop: copy (top) and photo + call row (bottom) on the left, the form spans both rows on the right.
+   Phones: copy, form, photo + call row. */
+.lic3-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.22fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "copy form" "media form";
+  column-gap: clamp(1.5rem, 1rem + 1.4vw, 2.5rem);
+}
+.lic3-hero__copy { grid-area: copy; min-width: 0; }
+.lic3-hero__media { grid-area: media; display: flex; flex-direction: column; min-width: 0; margin-top: clamp(1rem, .8rem + .5vw, 1.35rem); }
+.lic3-form { grid-area: form; }
+
+/* Eyebrow with a short green rule before it. */
+.lic3-eyebrow {
+  display: flex; align-items: center; gap: .75rem;
+  color: var(--brand-ink); font-size: var(--fs-label); font-weight: 700; line-height: 1.2; letter-spacing: .16em; text-transform: uppercase;
+}
+.lic3-eyebrow::before { content: ""; width: 2.5rem; height: 2px; flex: none; background: var(--brand); }
+.lic3-hero h1 {
+  margin-top: .85rem;
+  font-size: clamp(2.1rem, 1.2rem + 3.1vw, 4.1rem); line-height: 1.05; letter-spacing: -.028em; text-wrap: wrap;
+}
+.lic3-hero__sub { max-width: 36rem; margin-top: .9rem; color: var(--muted); font-size: clamp(1.0625rem, .9rem + .55vw, 1.375rem); font-weight: 300; line-height: 1.42; }
+
+/* Rating row: Google G + stars + "5.0 on Google" | shield + "Licensed & Insured". */
+/* The divider sits in the gap; when the row wraps, the list clips it at the left edge. */
+.lic3-proof { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 2.5rem; margin-top: 1rem; overflow: hidden; }
+.lic3-proof li { position: relative; display: inline-flex; align-items: center; gap: .6rem; color: var(--navy); font-size: 1.0625rem; font-weight: 500; line-height: 1.2; white-space: nowrap; }
+.lic3-proof li + li::before { content: ""; position: absolute; top: 50%; left: -1.25rem; height: 1.75rem; border-left: 1px solid var(--line-strong); transform: translateY(-50%); }
+.lic3-proof img { width: 1.9rem; height: 1.9rem; flex: none; }
+.lic3-proof svg { width: 1.9rem; height: 1.9rem; flex: none; fill: none; stroke: var(--brand); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.lic3-stars { margin-right: .4rem; color: var(--lix-star); font-size: 1.55rem; letter-spacing: .04em; line-height: 1; }
+
+/* Crew photo: rounded, fills the space the form leaves; the call row sits under it. */
+.lic3-photo { position: relative; flex: 1 0 auto; min-height: clamp(13rem, 6rem + 15vw, 21rem); overflow: hidden; border-radius: 10px; background: var(--navy-50); }
+.lic3-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 44%; }
+.lic3-call { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
+.lic3-call__ico { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 3.25rem; height: 3.25rem; border-radius: 50%; background: var(--green-100); color: var(--brand); }
+.lic3-call__ico svg { width: 1.35rem; height: 1.35rem; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.lic3-call__phone { color: var(--navy); font-size: clamp(1.6rem, 1.15rem + 1.1vw, 2.15rem); font-weight: 700; line-height: 1.1; letter-spacing: -.015em; text-decoration: none; white-space: nowrap; }
+.lic3-call__phone:hover { color: var(--brand-ink); }
+.lic3-call__note { margin-left: .75rem; padding-left: 1.5rem; border-left: 1px solid var(--line-strong); color: var(--muted); font-size: var(--fs-small); line-height: 1.4; }
+.lic3-call__note strong { display: block; color: var(--navy); font-weight: 700; }
+
+/* Estimate card: white, green top rule, sentence-case labels (mockup look). The message box takes up any
+   spare height so the card ends level with the call row. */
+.lic3-form {
+  display: flex; flex-direction: column; gap: 1rem;
+  padding: clamp(1.25rem, .8rem + 1.3vw, 2.25rem) clamp(1.25rem, .9rem + 1vw, 2rem) clamp(1.1rem, .9rem + .6vw, 1.5rem);
+  border-radius: 8px; box-shadow: 0 18px 44px rgba(6, 25, 55, .10);
+}
+.lic3-form .quote-card__title { font-size: clamp(1.6rem, 1.2rem + 1.15vw, 2.35rem); letter-spacing: -.02em; }
+.lic3-form .quote-card__sub { margin-top: .4rem; font-size: 1rem; }
+.lic3-form__head { margin-bottom: .35rem; }
+.lic3-form .field-row { gap: 1rem; }
+.lic3-form .field { gap: .4rem; }
+.lic3-form .field label { color: var(--navy); font-size: .875rem; font-weight: 500; letter-spacing: 0; text-transform: none; }
+.lic3-form .field input, .lic3-form .field textarea { min-height: 3.1rem; border-radius: 6px; background: #fff; }
+.lic3-form__msg { display: flex; flex: 1 0 auto; flex-direction: column; }
+.lic3-form__msg textarea { flex: 1 0 auto; min-height: 6.5rem; }
+.lic3-form__submit { min-height: 3.5rem; border-radius: 6px; font-size: 1.125rem; }
+.lic3-form__submit .btn__icon { width: 1.2rem; height: 1.2rem; }
+.lic3-form .form-callback { margin-top: -.15rem; color: var(--muted); font-size: var(--fs-small); }
+
+/* Three-step strip ---------------------------------------------------------- */
+.lic3-steps { padding-block: clamp(1rem, .8rem + .6vw, 1.4rem); border-block: 1px solid var(--line); background: #fff; }
+.lic3-steps__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.lic3-step { display: flex; align-items: flex-start; gap: 1rem; min-width: 0; padding-inline: clamp(1rem, .4rem + 1.6vw, 2.5rem); }
+.lic3-step:first-child { padding-left: 0; }
+.lic3-step + .lic3-step { border-left: 1px solid var(--line); }
+.lic3-step__ico { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 3.25rem; height: 3.25rem; border-radius: 50%; background: var(--green-50); color: var(--brand); box-shadow: inset 0 0 0 1px var(--green-100); }
+.lic3-step__ico svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.lic3-step h3 { padding-top: .15rem; font-size: 1.0625rem; line-height: 1.3; letter-spacing: -.005em; }
+.lic3-step p { margin-top: .25rem; color: var(--muted); font-size: var(--fs-small); line-height: 1.45; }
+
+/* Office: map left, thin info box right -------------------------------------- */
+.lic3-office__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 23rem); gap: 1.25rem; align-items: stretch; }
+.lic3-office__map { position: relative; min-height: 23rem; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--navy-50); }
+.lic3-office__map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.lic3-office__info { display: flex; flex-direction: column; min-width: 0; padding: 1.25rem 1.5rem 1.5rem; border: 1px solid var(--line); border-top: 4px solid var(--brand); border-radius: 8px; background: #fff; }
+.lic3-office__title { font-size: var(--fs-h3); }
+.lic3-office__info .li-details { margin-top: .35rem; margin-bottom: 1rem; }
+.lic3-office__info .li-details__value--lg { white-space: nowrap; }
+.lic3-office__cta { margin-top: auto; }
+
+/* The thank-you note the form script adds. */
+.lic3-form .form-thanks { padding-top: .25rem; }
+
+/* Responsive ------------------------------------------------------------------ */
+@media (max-width: 75rem) {
+  .lic3-call { flex-wrap: wrap; }
+  .lic3-proof { column-gap: 2rem; }
+  .lic3-proof li { font-size: 1rem; }
+  .lic3-proof li + li::before { left: -1rem; }
+  .lic3-proof img, .lic3-proof svg { width: 1.6rem; height: 1.6rem; }
+  .lic3-stars { font-size: 1.25rem; }
+}
+@media (max-width: 60rem) {
+  .lic3-hero__grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-template-areas: "copy" "form" "media"; }
+  .lic3-form { margin-top: 1.25rem; }
+  .lic3-hero__media { margin-top: 1.25rem; }
+  .lic3-photo { flex: none; min-height: 0; aspect-ratio: 16 / 10; }
+  .lic3-form__msg, .lic3-form__msg textarea { flex: none; }
+  .lic3-steps__list { grid-template-columns: minmax(0, 1fr); }
+  .lic3-step { padding: .85rem 0; }
+  .lic3-step:first-child { padding-top: 0; }
+  .lic3-step:last-child { padding-bottom: 0; }
+  .lic3-step + .lic3-step { border-left: 0; border-top: 1px solid var(--line); }
+  .lic3-office__grid { grid-template-columns: minmax(0, 1fr); }
+  .lic3-office__map { min-height: 19rem; }
+}
+@media (max-width: 40rem) {
+  .lic3-hero h1 br { display: none; }
+  .lic3-proof { flex-direction: column; align-items: flex-start; }
+  .lic3-stars { font-size: 1.15rem; }
+  .lic3-call { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: .85rem; row-gap: .1rem; }
+  .lic3-call__ico { grid-row: span 2; width: 2.85rem; height: 2.85rem; }
+  .lic3-call__note { grid-column: 2; margin: 0; padding: 0; border: 0; }
+  .lic3-call__note strong { display: inline; }
+  .lic3-office__info { padding: 1rem 1rem 1.25rem; }
+}
+
+/* Oct 29 (Nitesh): shorter message box; the form card sizes to its content instead of stretching to the photo column. */
+.lic3-form { align-self: start; }
+.lic3-form__msg { flex: none; }
+.lic3-form__msg textarea { flex: none; height: 6rem; min-height: 0; }

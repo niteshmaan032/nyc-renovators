@@ -1,0 +1,129 @@
+/* ==========================================================================
+   Royal Roofing & Siding Far Rockaway: contact page v3 (far-rockaway-contact-us-v3.html)
+   Built from Sean's edited Oct 27 mockup. Loads after css/far-rockaway.css
+   and css/far-rockaway-contact.css and only uses their tokens. Prefix: frc3-
+     1. Google rating badge (.g-badge): the same block as css/yonkers-contact-v3.css
+     2. Hero: copy + phone + badges + large crew photo (left), estimate form (right)
+     3. 3-step strip
+     4. Contact details + map band (service-area business: "Area served")
+     5. Responsive
+   ========================================================================== */
+
+/* 1. Google rating badge ----------------------------------------------------
+   Brand-neutral; identical to the Yonkers contact page so every brand matches.
+   <span class="g-badge">
+     <span class="g-badge__word" aria-hidden="true"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></span>
+     <span class="g-badge__score" aria-hidden="true">5.0</span>
+     <span class="g-badge__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+     <span class="sr-only">Rated 5.0 out of 5 on Google</span>
+   </span>                                                                    */
+.g-badge { display: inline-flex; align-items: center; gap: .5rem; line-height: 1; white-space: nowrap; }
+.g-badge__word { font-family: Arial, 'Helvetica Neue', sans-serif; font-size: 1.375rem; font-weight: 400; letter-spacing: -.035em; }
+.g-badge__word > :nth-child(1), .g-badge__word > :nth-child(4) { color: #4285F4; }
+.g-badge__word > :nth-child(2), .g-badge__word > :nth-child(6) { color: #EA4335; }
+.g-badge__word > :nth-child(3) { color: #FBBC05; }
+.g-badge__word > :nth-child(5) { color: #34A853; }
+.g-badge__score { color: #202124; font-size: 1rem; font-weight: 700; }
+.g-badge__stars { color: #FBBC04; font-size: 1.1rem; letter-spacing: .04em; }
+
+/* 2. Hero ------------------------------------------------------------------ */
+.frc3-hero {
+  padding: calc(var(--nav-h) + 4px + clamp(1rem, .7rem + .8vw, 1.5rem)) 0 clamp(1rem, .8rem + .5vw, 1.25rem);
+  background: var(--sky);
+}
+.frc3-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "copy form" "photo form";
+  gap: 1rem clamp(1.5rem, 1rem + 1.6vw, 2.5rem);
+}
+.frc3-hero__copy { grid-area: copy; min-width: 0; }
+.frc3-eyebrow { color: var(--brand); font-size: .75rem; font-weight: 700; line-height: 1.3; letter-spacing: .14em; text-transform: uppercase; }
+/* Sean (Oct 27): a smaller H1 than the usual contact hero (2.875rem). */
+.frc3-hero h1 { margin-top: .5rem; font-size: clamp(1.75rem, 1.25rem + 1.1vw, 2.375rem); line-height: 1.12; letter-spacing: -.025em; }
+.frc3-hero__sub { margin-top: .5rem; color: var(--ink); font-size: 1.125rem; line-height: 1.5; }
+
+.frc3-call { margin-top: .9rem; }
+.frc3-call__phone { display: inline-flex; align-items: center; gap: .6rem; color: var(--navy); font-size: clamp(1.625rem, 1.3rem + .8vw, 2rem); font-weight: 700; line-height: 1.15; letter-spacing: -.01em; text-decoration: none; white-space: nowrap; }
+.frc3-call__phone svg { width: 1.75rem; height: 1.75rem; flex: none; fill: none; stroke: var(--brand); stroke-width: 2; stroke-linejoin: round; }
+.frc3-call__phone:hover span, .frc3-call__phone:focus-visible span { text-decoration: underline; text-underline-offset: .18em; }
+.frc3-call__note { margin-top: .2rem; padding-left: 2.35rem; color: var(--muted); font-size: .875rem; line-height: 1.3; }
+
+.frc3-proof { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.25rem; margin-top: 1rem; }
+.frc3-proof li + li { padding-left: 1.25rem; border-left: 1px solid rgba(1, 34, 70, .24); }
+.frc3-proof__item { display: inline-flex; align-items: center; gap: .5rem; color: var(--navy); font-size: .9375rem; font-weight: 700; line-height: 1.2; white-space: nowrap; }
+.frc3-proof__item svg { width: 1.35rem; height: 1.35rem; flex: none; fill: none; stroke: var(--navy); stroke-width: 1.8; stroke-linejoin: round; }
+
+/* Sean (Oct 27): make the photo larger. Wider left column + taller frame. */
+.frc3-hero__photo { grid-area: photo; position: relative; min-height: clamp(18rem, 10rem + 17.2vw, 25.5rem); margin: 0; overflow: hidden; border-radius: 10px; background: #d9e2ed; }
+.frc3-hero__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+
+/* Form card: keeps .quote-card (js/far-rockaway.js hooks). Left-aligned title
+   like the mockup; the message box grows so the card ends with the photo. */
+.quote-card.frc3-form { grid-area: form; display: flex; flex-direction: column; gap: .95rem; min-width: 0; padding: clamp(1.15rem, .9rem + .8vw, 1.6rem); border-top: 4px solid var(--brand); border-radius: 10px; box-shadow: 0 18px 44px rgba(1, 34, 70, .12); }
+.frc3-form .quote-card__title { padding: 0; border: 0; color: var(--navy); font-size: clamp(1.5rem, 1.1rem + 1vw, 2rem); text-align: left; letter-spacing: -.015em; }
+.frc3-form__sub { margin-top: .25rem; color: var(--muted); font-size: .9375rem; }
+.frc3-form .field label { color: var(--navy); font-size: .875rem; letter-spacing: 0; text-transform: none; }
+.frc3-form .field input { min-height: 3rem; }
+.frc3-form__grow { flex: 1 1 auto; grid-template-rows: auto minmax(5.25rem, 1fr); }
+.frc3-form__grow textarea { height: 100%; }
+.frc3-form .btn { flex: none; }
+.frc3-form .btn .btn__icon { width: 1.15rem; height: 1.15rem; }
+.frc3-form .form-callback { margin-top: -.2rem; color: var(--navy); font-size: .9375rem; font-weight: 700; }
+
+/* 3. 3-step strip ------------------------------------------------------------ */
+.frc3-strip { border-block: 1px solid var(--hairline); background: #fff; }
+.frc3-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding: .85rem 0; list-style: none; }
+.frc3-steps li { display: flex; align-items: center; justify-content: center; gap: .85rem; min-width: 0; padding-inline: 1rem; color: var(--navy); font-size: .9375rem; font-weight: 700; line-height: 1.3; }
+.frc3-steps li + li { border-left: 1px solid var(--hairline); }
+.frc3-steps__num { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--brand); color: #fff; font-size: 1rem; font-weight: 700; }
+.frc3-strip + .fr-reviews { border-top: 0; }
+
+/* 4. Contact details + map ---------------------------------------------------- */
+.frc3-area { padding-block: clamp(1.5rem, 1.3rem + 1vw, 2.25rem); background: var(--sky); }
+.frc3-area .fr-contact__location { box-shadow: 0 14px 40px rgba(1, 34, 70, .06); }
+.frc3-area__served span { display: grid; color: #fff; font-weight: 700; }
+.frc3-area__served small { color: rgba(255, 255, 255, .62); font-size: .75rem; font-weight: 700; letter-spacing: .12em; line-height: 1.4; text-transform: uppercase; }
+@media (min-width: 48.01rem) {
+  .frc3-area .fr-contact__location { flex-direction: row; }
+  .frc3-area .fr-contact__details { flex: 0 0 min(26rem, 42%); }
+  .frc3-area .fr-contact__map { min-height: 19rem; }
+}
+
+/* 5. Responsive -------------------------------------------------------------- */
+@media (max-width: 75rem) {
+  .frc3-hero__inner { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+}
+@media (min-width: 60.01rem) and (max-width: 75rem) {
+  .frc3-form__wide { grid-template-columns: minmax(0, 1fr); }   /* narrow form column: full-width address */
+}
+@media (max-width: 60rem) {
+  .frc3-hero__inner { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-template-areas: "copy" "form" "photo"; }
+  .frc3-hero__photo { min-height: 0; aspect-ratio: 4 / 3; }
+  .frc3-form__grow { flex: none; }
+}
+@media (max-width: 48rem) {
+  .frc3-hero { padding-top: calc(var(--nav-h) + 3px + 1rem); }
+  .frc3-area .fr-contact__map { min-height: 20rem; }
+}
+@media (max-width: 40rem) {
+  .frc3-hero__sub { font-size: 1rem; }
+  .frc3-proof { flex-wrap: nowrap; gap: .75rem; }
+  .frc3-proof li + li { padding-left: .75rem; }
+  .frc3-proof__item { gap: .35rem; font-size: .8125rem; }
+  .frc3-proof__item svg { width: 1.15rem; height: 1.15rem; }
+  .g-badge { gap: .35rem; }
+  .g-badge__word { font-size: 1.1875rem; }
+  .g-badge__score { font-size: .9375rem; }
+  .g-badge__stars { font-size: .95rem; letter-spacing: .02em; }
+  .frc3-form__wide { grid-template-columns: minmax(0, 1fr); }
+  .frc3-steps { padding-block: .75rem; }
+  .frc3-steps li { flex-direction: column; gap: .4rem; padding-inline: .35rem; font-size: .8125rem; text-align: center; }
+  .frc3-steps__num { width: 2rem; height: 2rem; font-size: .9375rem; }
+}
+
+/* Oct 29 (Nitesh): shorter message box; the form card sizes to its content instead of stretching to the photo column. */
+.quote-card.frc3-form { align-self: start; }
+.frc3-form__grow { flex: none; grid-template-rows: auto auto; }
+.frc3-form__grow textarea { height: 6rem; min-height: 0; }
